@@ -1,0 +1,34 @@
+name: build-release
+on:
+  push:
+    branches:
+      - main
+      -
+jobs:
+  build:
+    runs-on:
+      - fireactions-c2-m4
+
+    steps:
+      - name: Repo checkout
+        uses: actions/checkout@v4
+
+      - name: Composer install
+        uses: php-actions/composer@v6
+
+      - name: PHPStan check
+        uses: php-actions/phpstan@v3
+        with:
+          path: src/
+
+      - name: Bump version and push tag
+        id: bump
+        uses: hennejg/github-tag-action@v4.3.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_branches: main
+
+      - uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.bump.outputs.new_tag }}
+          generateReleaseNotes: true
