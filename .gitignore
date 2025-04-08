@@ -1,0 +1,8 @@
+composer.phar
+composer.lock
+/vendor/
+.php_cs.cache
+.php-cs-fixer.cache
+.phpunit.result.cache
+build/phplint.cache
+.idea/
