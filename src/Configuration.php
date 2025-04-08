@@ -19,15 +19,12 @@ class Configuration
     public const BOOLEAN_FORMAT_INT = 'int';
     public const BOOLEAN_FORMAT_STRING = 'string';
 
-    /**
-     * @var Configuration|null
-     */
     private static ?Configuration $defaultConfiguration = null;
 
     /**
      * Associate array to store API key(s)
      *
-     * @var string[]
+     * @var array<string>
      */
     protected array $apiKeys = [];
 
@@ -40,70 +37,49 @@ class Configuration
 
     /**
      * Access token for OAuth/Bearer authentication
-     *
-     * @var string
      */
     protected string $accessToken = '';
 
     /**
      * Boolean format for query string
-     *
-     * @var string
      */
     protected string $booleanFormatForQueryString = self::BOOLEAN_FORMAT_INT;
 
     /**
      * Username for HTTP basic authentication
-     *
-     * @var string
      */
     protected string $username = '';
 
     /**
      * Password for HTTP basic authentication
-     *
-     * @var string
      */
     protected string $password = '';
 
     /**
      * The host
-     *
-     * @var string
      */
     protected string $host = 'https://developers.hostinger.com';
 
     /**
-     * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
-     *
-     * @var string
+     * User agent of the HTTP request
      */
     protected string $userAgent = 'Hostinger-API-PHP-SDK/1.0.0';
 
     /**
      * Debug switch (default set to false)
-     *
-     * @var bool
      */
     protected bool $debug = false;
 
     /**
      * Debug file location (log to STDOUT by default)
-     *
-     * @var string
      */
     protected string $debugFile = 'php://output';
 
     /**
      * Debug file location (log to STDOUT by default)
-     *
-     * @var string
      */
     protected string $tempFolderPath;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
         $this->tempFolderPath = sys_get_temp_dir();
