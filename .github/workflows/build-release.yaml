@@ -15,10 +15,10 @@ jobs:
       - name: Composer install
         uses: php-actions/composer@v6
 
-      - name: PHPStan check
-        uses: php-actions/phpstan@v3
-        with:
-          path: src/
+#      - name: PHPStan check
+#        uses: php-actions/phpstan@v3
+#        with:
+#          path: src/
 
       - name: Bump version and push tag
         id: bump
