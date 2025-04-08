@@ -6,8 +6,7 @@ on:
       -
 jobs:
   build:
-    runs-on:
-      - fireactions-c2-m4
+    runs-on: ubuntu-latest
 
     steps:
       - name: Repo checkout
