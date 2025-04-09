@@ -10,63 +10,42 @@
  * If you want to contribute or request a new feature, please create an issue or pull request on https://github.com/hostinger/api
  */
 
-namespace Hostinger\Test\Api;
+namespace Hostinger\Test\Model;
 
-use Hostinger\Configuration;
-use Hostinger\ApiException;
-use Hostinger\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
-class BillingSubscriptionsApiTest extends TestCase
+class BillingV1SubscriptionCancelRequestTest extends TestCase
 {
 
-    /**
-     * Setup before running any test cases
-     */
     public static function setUpBeforeClass(): void
     {
     }
 
-    /**
-     * Setup before running each test case
-     */
     public function setUp(): void
     {
     }
 
-    /**
-     * Clean up after running each test case
-     */
     public function tearDown(): void
     {
     }
 
-    /**
-     * Clean up after running all test cases
-     */
     public static function tearDownAfterClass(): void
     {
     }
 
-    /**
-     * Test case for cancelSubscriptionV1
-     *
-     * Cancel subscription.
-     *
-     */
-    public function testCancelSubscriptionV1()
+    public function testBillingV1SubscriptionCancelRequest()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
-    /**
-     * Test case for getSubscriptionListV1
-     *
-     * Get subscription list.
-     *
-     */
-    public function testGetSubscriptionListV1()
+    public function testPropertyReasonCode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    public function testPropertyCancelOption()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -4,8 +4,71 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**cancelSubscriptionV1()**](BillingSubscriptionsApi.md#cancelSubscriptionV1) | **DELETE** /api/billing/v1/subscriptions/{subscriptionId} | Cancel subscription |
 | [**getSubscriptionListV1()**](BillingSubscriptionsApi.md#getSubscriptionListV1) | **GET** /api/billing/v1/subscriptions | Get subscription list |
 
+
+## `cancelSubscriptionV1()`
+
+```php
+cancelSubscriptionV1($subscription_id, $billing_v1_subscription_cancel_request): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Cancel subscription
+
+This endpoint cancels a subscription and stops any further billing.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\BillingSubscriptionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$subscription_id = Cxy353Uhl1xC54pG6; // string | Subscription ID
+$billing_v1_subscription_cancel_request = new \Hostinger\Model\BillingV1SubscriptionCancelRequest(); // \Hostinger\Model\BillingV1SubscriptionCancelRequest
+
+try {
+    $result = $apiInstance->cancelSubscriptionV1($subscription_id, $billing_v1_subscription_cancel_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BillingSubscriptionsApi->cancelSubscriptionV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **subscription_id** | **string**| Subscription ID | |
+| **billing_v1_subscription_cancel_request** | [**\Hostinger\Model\BillingV1SubscriptionCancelRequest**](../Model/BillingV1SubscriptionCancelRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+### Authorization
+
+[apiToken](../../README.md#apiToken)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getSubscriptionListV1()`
 
