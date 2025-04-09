@@ -165,7 +165,6 @@ class VPSV1PublicKeyPublicKeyResource implements ModelInterface, ArrayAccess, Js
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -303,5 +302,4 @@ class VPSV1PublicKeyPublicKeyResource implements ModelInterface, ArrayAccess, Js
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

@@ -153,7 +153,6 @@ class VPSV1VirtualMachineVirtualMachineResourceIpv4 implements ModelInterface, A
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -162,7 +161,6 @@ class VPSV1VirtualMachineVirtualMachineResourceIpv4 implements ModelInterface, A
     public function __construct()
     {
     }
-
 
     /**
      * @return array<string> invalid properties with reasons
@@ -223,5 +221,4 @@ class VPSV1VirtualMachineVirtualMachineResourceIpv4 implements ModelInterface, A
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

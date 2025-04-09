@@ -110,10 +110,6 @@ class BillingSubscriptionsApi
             $resourcePath
         );
 
-
-
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($billingV1SubscriptionCancelRequest));
         $query = [];
 
@@ -179,7 +175,6 @@ class BillingSubscriptionsApi
 
         return $this->buildRequest('GET', $resourcePath, $body, $query);
     }
-
 
     /**
      * @return array<string, mixed>

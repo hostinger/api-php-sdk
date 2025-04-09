@@ -606,4 +606,3 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
     }
 }
 
-

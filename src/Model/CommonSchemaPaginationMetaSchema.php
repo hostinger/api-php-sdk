@@ -165,7 +165,6 @@ class CommonSchemaPaginationMetaSchema implements ModelInterface, ArrayAccess, J
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -303,5 +302,4 @@ class CommonSchemaPaginationMetaSchema implements ModelInterface, ArrayAccess, J
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

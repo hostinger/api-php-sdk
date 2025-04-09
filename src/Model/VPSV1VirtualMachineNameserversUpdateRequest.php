@@ -159,7 +159,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -282,5 +281,4 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

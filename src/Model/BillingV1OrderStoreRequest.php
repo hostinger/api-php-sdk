@@ -165,7 +165,6 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -309,5 +308,4 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

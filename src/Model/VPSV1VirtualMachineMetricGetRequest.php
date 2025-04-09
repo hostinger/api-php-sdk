@@ -159,7 +159,6 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -285,5 +284,4 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

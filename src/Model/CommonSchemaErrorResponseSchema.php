@@ -159,7 +159,6 @@ class CommonSchemaErrorResponseSchema implements ModelInterface, ArrayAccess, Js
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -279,5 +278,4 @@ class CommonSchemaErrorResponseSchema implements ModelInterface, ArrayAccess, Js
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

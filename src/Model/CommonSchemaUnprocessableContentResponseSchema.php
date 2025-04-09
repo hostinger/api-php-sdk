@@ -165,7 +165,6 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -303,5 +302,4 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

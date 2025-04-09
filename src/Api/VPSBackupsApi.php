@@ -112,10 +112,6 @@ class VPSBackupsApi
             $resourcePath
         );
 
-
-
-
-
         $body = null;
         $query = [];
 
@@ -180,10 +176,6 @@ class VPSBackupsApi
             ObjectSerializer::toPathValue((string) $virtualMachineId),
             $resourcePath
         );
-
-
-
-
 
         $body = null;
         $query = ObjectSerializer::toQueryValue(
@@ -262,16 +254,11 @@ class VPSBackupsApi
             $resourcePath
         );
 
-
-
-
-
         $body = null;
         $query = [];
 
         return $this->buildRequest('POST', $resourcePath, $body, $query);
     }
-
 
     /**
      * @return array<string, mixed>

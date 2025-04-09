@@ -159,7 +159,6 @@ class VPSV1PublicKeyStoreRequest implements ModelInterface, ArrayAccess, JsonSer
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -285,5 +284,4 @@ class VPSV1PublicKeyStoreRequest implements ModelInterface, ArrayAccess, JsonSer
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

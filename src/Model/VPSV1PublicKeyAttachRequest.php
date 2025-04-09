@@ -153,7 +153,6 @@ class VPSV1PublicKeyAttachRequest implements ModelInterface, ArrayAccess, JsonSe
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -258,5 +257,4 @@ class VPSV1PublicKeyAttachRequest implements ModelInterface, ArrayAccess, JsonSe
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

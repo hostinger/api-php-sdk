@@ -159,7 +159,6 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -279,5 +278,4 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

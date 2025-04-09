@@ -177,7 +177,6 @@ class VPSV1PostInstallScriptPostInstallScriptResource implements ModelInterface,
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -351,5 +350,4 @@ class VPSV1PostInstallScriptPostInstallScriptResource implements ModelInterface,
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

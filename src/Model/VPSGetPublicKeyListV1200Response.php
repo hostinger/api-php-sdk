@@ -159,7 +159,6 @@ class VPSGetPublicKeyListV1200Response implements ModelInterface, ArrayAccess, J
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -279,5 +278,4 @@ class VPSGetPublicKeyListV1200Response implements ModelInterface, ArrayAccess, J
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

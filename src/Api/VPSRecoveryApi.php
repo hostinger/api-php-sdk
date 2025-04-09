@@ -110,10 +110,6 @@ class VPSRecoveryApi
             $resourcePath
         );
 
-
-
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineRecoveryStartRequest));
         $query = [];
 
@@ -179,14 +175,11 @@ class VPSRecoveryApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
         return $this->buildRequest('DELETE', $resourcePath, $body, $query);
     }
-
 
     /**
      * @return array<string, mixed>

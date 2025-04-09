@@ -159,7 +159,6 @@ class VPSGetPostInstallScriptListV1200Response implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -279,5 +278,4 @@ class VPSGetPostInstallScriptListV1200Response implements ModelInterface, ArrayA
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

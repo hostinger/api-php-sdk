@@ -105,14 +105,11 @@ class BillingOrdersApi
     {
         $resourcePath = '/api/billing/v1/orders';
 
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($billingV1OrderStoreRequest));
         $query = [];
 
         return $this->buildRequest('POST', $resourcePath, $body, $query);
     }
-
 
     /**
      * @return array<string, mixed>

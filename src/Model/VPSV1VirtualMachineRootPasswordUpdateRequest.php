@@ -153,7 +153,6 @@ class VPSV1VirtualMachineRootPasswordUpdateRequest implements ModelInterface, Ar
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -267,5 +266,4 @@ class VPSV1VirtualMachineRootPasswordUpdateRequest implements ModelInterface, Ar
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

@@ -107,8 +107,6 @@ class VPSSnapshotsApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
@@ -173,8 +171,6 @@ class VPSSnapshotsApi
             ObjectSerializer::toPathValue((string) $virtualMachineId),
             $resourcePath
         );
-
-
 
         $body = null;
         $query = [];
@@ -241,8 +237,6 @@ class VPSSnapshotsApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
@@ -308,14 +302,11 @@ class VPSSnapshotsApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
         return $this->buildRequest('POST', $resourcePath, $body, $query);
     }
-
 
     /**
      * @return array<string, mixed>

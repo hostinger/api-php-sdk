@@ -165,7 +165,6 @@ class VPSV1BackupBackupResource implements ModelInterface, ArrayAccess, JsonSeri
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -303,5 +302,4 @@ class VPSV1BackupBackupResource implements ModelInterface, ArrayAccess, JsonSeri
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 
