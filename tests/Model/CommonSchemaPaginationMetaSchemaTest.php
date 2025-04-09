@@ -14,7 +14,7 @@ namespace Hostinger\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
-class VPSGetFirewallListV1200ResponseMetaTest extends TestCase
+class CommonSchemaPaginationMetaSchemaTest extends TestCase
 {
 
     public static function setUpBeforeClass(): void
@@ -33,7 +33,7 @@ class VPSGetFirewallListV1200ResponseMetaTest extends TestCase
     {
     }
 
-    public function testVPSGetFirewallListV1200ResponseMeta()
+    public function testCommonSchemaPaginationMetaSchema()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

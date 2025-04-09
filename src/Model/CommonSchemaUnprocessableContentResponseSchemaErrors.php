@@ -25,51 +25,38 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'Common_Schema_UnprocessableContentResponseSchema_errors';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'field_1' => 'mixed[]',
-        'field_2' => 'mixed[]'
+        'field1' => 'mixed[]',
+        'field2' => 'mixed[]'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'field_1' => null,
-        'field_2' => null
+        'field1' => null,
+        'field2' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'field_1' => false,
-        'field_2' => false
+        'field1' => false,
+        'field2' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -78,8 +65,6 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -88,8 +73,6 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -98,9 +81,7 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -108,66 +89,48 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'field_1' => 'field_1',
-        'field_2' => 'field_2'
+        'field1' => 'field_1',
+        'field2' => 'field_2'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
-        'field_1' => 'setField1',
-        'field_2' => 'setField2'
+        'field1' => 'setField1',
+        'field2' => 'setField2'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
-        'field_1' => 'getField1',
-        'field_2' => 'getField2'
+        'field1' => 'getField1',
+        'field2' => 'getField2'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -176,8 +139,6 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -186,8 +147,6 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -195,9 +154,6 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -205,8 +161,6 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
 
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -216,18 +170,12 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
      */
     public function __construct(?array $data = [])
     {
-        $this->setIfExists('field_1', $data, null);
-        $this->setIfExists('field_2', $data, null);
+        $this->setIfExists('field1', $data, null);
+        $this->setIfExists('field2', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -248,53 +196,42 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return mixed[]|null
      */
     public function getField1(): ?array
     {
-        return $this->container['field_1'];
+        return $this->container['field1'];
     }
 
     /**
-     * @param mixed[]|null $field_1 field_1
+     * @param mixed[]|null $field1 field1
      */
-    public function setField1(?array $field_1): static
+    public function setField1(?array $field1): static
     {
-        if (is_null($field_1)) {
-            throw new InvalidArgumentException('non-nullable field_1 cannot be null');
-        }
-        $this->container['field_1'] = $field_1;
+        $this->container['field1'] = $field1;
 
         return $this;
     }
-
     /**
      * @return mixed[]|null
      */
     public function getField2(): ?array
     {
-        return $this->container['field_2'];
+        return $this->container['field2'];
     }
 
     /**
-     * @param mixed[]|null $field_2 field_2
+     * @param mixed[]|null $field2 field2
      */
-    public function setField2(?array $field_2): static
+    public function setField2(?array $field2): static
     {
-        if (is_null($field_2)) {
-            throw new InvalidArgumentException('non-nullable field_2 cannot be null');
-        }
-        $this->container['field_2'] = $field_2;
+        $this->container['field2'] = $field2;
 
         return $this;
     }
@@ -323,22 +260,12 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -347,9 +274,6 @@ class CommonSchemaUnprocessableContentResponseSchemaErrors implements ModelInter
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

@@ -11,7 +11,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `startRecoveryModeV1()`
 
 ```php
-startRecoveryModeV1($virtual_machine_id, $vpsv1_virtual_machine_recovery_start_request): \Hostinger\Model\VPSV1ActionActionResource
+startRecoveryModeV1($virtualMachineId, $vPSV1VirtualMachineRecoveryStartRequest): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Start recovery mode
@@ -35,11 +35,11 @@ $apiInstance = new Hostinger\Api\VPSRecoveryApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
-$vpsv1_virtual_machine_recovery_start_request = new \Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest(); // \Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$vPSV1VirtualMachineRecoveryStartRequest = new \Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest(); // \Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest
 
 try {
-    $result = $apiInstance->startRecoveryModeV1($virtual_machine_id, $vpsv1_virtual_machine_recovery_start_request);
+    $result = $apiInstance->startRecoveryModeV1($virtualMachineId, $vPSV1VirtualMachineRecoveryStartRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSRecoveryApi->startRecoveryModeV1: ', $e->getMessage(), PHP_EOL;
@@ -50,8 +50,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
-| **vpsv1_virtual_machine_recovery_start_request** | [**\Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest**](../Model/VPSV1VirtualMachineRecoveryStartRequest.md)|  | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **vPSV1VirtualMachineRecoveryStartRequest** | [**\Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest**](../Model/VPSV1VirtualMachineRecoveryStartRequest.md)|  | |
 
 ### Return type
 
@@ -73,7 +73,7 @@ try {
 ## `stopRecoveryModeV1()`
 
 ```php
-stopRecoveryModeV1($virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+stopRecoveryModeV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Stop recovery mode
@@ -97,10 +97,10 @@ $apiInstance = new Hostinger\Api\VPSRecoveryApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->stopRecoveryModeV1($virtual_machine_id);
+    $result = $apiInstance->stopRecoveryModeV1($virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSRecoveryApi->stopRecoveryModeV1: ', $e->getMessage(), PHP_EOL;
@@ -111,7 +111,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 

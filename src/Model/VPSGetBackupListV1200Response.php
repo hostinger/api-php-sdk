@@ -25,24 +25,17 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'VPS_getBackupListV1_200_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
         'data' => '\Hostinger\Model\VPSV1BackupBackupResource[]',
-        'meta' => '\Hostinger\Model\VPSGetFirewallListV1200ResponseMeta'
+        'meta' => '\Hostinger\Model\CommonSchemaPaginationMetaSchema'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
@@ -51,8 +44,6 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
@@ -61,15 +52,11 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -78,8 +65,6 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -88,8 +73,6 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -98,9 +81,7 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -108,35 +89,24 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
@@ -145,8 +115,6 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
@@ -155,8 +123,6 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
@@ -165,9 +131,6 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -176,8 +139,6 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -186,8 +147,6 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -195,9 +154,6 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -205,8 +161,6 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
 
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -221,13 +175,7 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -248,14 +196,10 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return \Hostinger\Model\VPSV1BackupBackupResource[]|null
@@ -270,30 +214,23 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
      */
     public function setData(?array $data): static
     {
-        if (is_null($data)) {
-            throw new InvalidArgumentException('non-nullable data cannot be null');
-        }
         $this->container['data'] = $data;
 
         return $this;
     }
-
     /**
-     * @return \Hostinger\Model\VPSGetFirewallListV1200ResponseMeta|null
+     * @return \Hostinger\Model\CommonSchemaPaginationMetaSchema|null
      */
-    public function getMeta(): ?\Hostinger\Model\VPSGetFirewallListV1200ResponseMeta
+    public function getMeta(): ?\Hostinger\Model\CommonSchemaPaginationMetaSchema
     {
         return $this->container['meta'];
     }
 
     /**
-     * @param \Hostinger\Model\VPSGetFirewallListV1200ResponseMeta|null $meta meta
+     * @param \Hostinger\Model\CommonSchemaPaginationMetaSchema|null $meta meta
      */
-    public function setMeta(?\Hostinger\Model\VPSGetFirewallListV1200ResponseMeta $meta): static
+    public function setMeta(?\Hostinger\Model\CommonSchemaPaginationMetaSchema $meta): static
     {
-        if (is_null($meta)) {
-            throw new InvalidArgumentException('non-nullable meta cannot be null');
-        }
         $this->container['meta'] = $meta;
 
         return $this;
@@ -323,22 +260,12 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -347,9 +274,6 @@ class VPSGetBackupListV1200Response implements ModelInterface, ArrayAccess, Json
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

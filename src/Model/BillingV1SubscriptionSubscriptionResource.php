@@ -25,84 +25,71 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'Billing.V1.Subscription.SubscriptionResource';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
         'status' => 'string',
-        'billing_period' => 'int',
-        'billing_period_unit' => 'string',
-        'currency_code' => 'string',
-        'total_price' => 'int',
-        'renewal_price' => 'int',
-        'auto_renew' => 'bool',
-        'created_at' => '\DateTime',
-        'expires_at' => '\DateTime',
-        'next_billing_at' => '\DateTime',
-        'canceled_at' => '\DateTime'
+        'billingPeriod' => 'int',
+        'billingPeriodUnit' => 'string',
+        'currencyCode' => 'string',
+        'totalPrice' => 'int',
+        'renewalPrice' => 'int',
+        'autoRenew' => 'bool',
+        'createdAt' => '\DateTime',
+        'expiresAt' => '\DateTime',
+        'nextBillingAt' => '\DateTime',
+        'canceledAt' => '\DateTime'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
         'id' => null,
         'name' => null,
         'status' => null,
-        'billing_period' => null,
-        'billing_period_unit' => null,
-        'currency_code' => null,
-        'total_price' => null,
-        'renewal_price' => null,
-        'auto_renew' => null,
-        'created_at' => 'date-time',
-        'expires_at' => 'date-time',
-        'next_billing_at' => 'date-time',
-        'canceled_at' => 'date-time'
+        'billingPeriod' => null,
+        'billingPeriodUnit' => null,
+        'currencyCode' => null,
+        'totalPrice' => null,
+        'renewalPrice' => null,
+        'autoRenew' => null,
+        'createdAt' => 'date-time',
+        'expiresAt' => 'date-time',
+        'nextBillingAt' => 'date-time',
+        'canceledAt' => 'date-time'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
         'id' => false,
         'name' => false,
         'status' => false,
-        'billing_period' => false,
-        'billing_period_unit' => false,
-        'currency_code' => false,
-        'total_price' => false,
-        'renewal_price' => false,
-        'auto_renew' => false,
-        'created_at' => false,
-        'expires_at' => false,
-        'next_billing_at' => true,
-        'canceled_at' => true
+        'billingPeriod' => false,
+        'billingPeriodUnit' => false,
+        'currencyCode' => false,
+        'totalPrice' => false,
+        'renewalPrice' => false,
+        'autoRenew' => false,
+        'createdAt' => false,
+        'expiresAt' => false,
+        'nextBillingAt' => true,
+        'canceledAt' => true
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -111,8 +98,6 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -121,8 +106,6 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -131,9 +114,7 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -141,99 +122,81 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
         'id' => 'id',
         'name' => 'name',
         'status' => 'status',
-        'billing_period' => 'billing_period',
-        'billing_period_unit' => 'billing_period_unit',
-        'currency_code' => 'currency_code',
-        'total_price' => 'total_price',
-        'renewal_price' => 'renewal_price',
-        'auto_renew' => 'auto_renew',
-        'created_at' => 'created_at',
-        'expires_at' => 'expires_at',
-        'next_billing_at' => 'next_billing_at',
-        'canceled_at' => 'canceled_at'
+        'billingPeriod' => 'billing_period',
+        'billingPeriodUnit' => 'billing_period_unit',
+        'currencyCode' => 'currency_code',
+        'totalPrice' => 'total_price',
+        'renewalPrice' => 'renewal_price',
+        'autoRenew' => 'auto_renew',
+        'createdAt' => 'created_at',
+        'expiresAt' => 'expires_at',
+        'nextBillingAt' => 'next_billing_at',
+        'canceledAt' => 'canceled_at'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
         'id' => 'setId',
         'name' => 'setName',
         'status' => 'setStatus',
-        'billing_period' => 'setBillingPeriod',
-        'billing_period_unit' => 'setBillingPeriodUnit',
-        'currency_code' => 'setCurrencyCode',
-        'total_price' => 'setTotalPrice',
-        'renewal_price' => 'setRenewalPrice',
-        'auto_renew' => 'setAutoRenew',
-        'created_at' => 'setCreatedAt',
-        'expires_at' => 'setExpiresAt',
-        'next_billing_at' => 'setNextBillingAt',
-        'canceled_at' => 'setCanceledAt'
+        'billingPeriod' => 'setBillingPeriod',
+        'billingPeriodUnit' => 'setBillingPeriodUnit',
+        'currencyCode' => 'setCurrencyCode',
+        'totalPrice' => 'setTotalPrice',
+        'renewalPrice' => 'setRenewalPrice',
+        'autoRenew' => 'setAutoRenew',
+        'createdAt' => 'setCreatedAt',
+        'expiresAt' => 'setExpiresAt',
+        'nextBillingAt' => 'setNextBillingAt',
+        'canceledAt' => 'setCanceledAt'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
         'id' => 'getId',
         'name' => 'getName',
         'status' => 'getStatus',
-        'billing_period' => 'getBillingPeriod',
-        'billing_period_unit' => 'getBillingPeriodUnit',
-        'currency_code' => 'getCurrencyCode',
-        'total_price' => 'getTotalPrice',
-        'renewal_price' => 'getRenewalPrice',
-        'auto_renew' => 'getAutoRenew',
-        'created_at' => 'getCreatedAt',
-        'expires_at' => 'getExpiresAt',
-        'next_billing_at' => 'getNextBillingAt',
-        'canceled_at' => 'getCanceledAt'
+        'billingPeriod' => 'getBillingPeriod',
+        'billingPeriodUnit' => 'getBillingPeriodUnit',
+        'currencyCode' => 'getCurrencyCode',
+        'totalPrice' => 'getTotalPrice',
+        'renewalPrice' => 'getRenewalPrice',
+        'autoRenew' => 'getAutoRenew',
+        'createdAt' => 'getCreatedAt',
+        'expiresAt' => 'getExpiresAt',
+        'nextBillingAt' => 'getNextBillingAt',
+        'canceledAt' => 'getCanceledAt'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -242,8 +205,6 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -252,8 +213,6 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -261,9 +220,6 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -280,7 +236,7 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
     /**
      * @return array<string>
      */
-    public function getStatusAllowableValues()
+    public function getStatusAllowableValues(): array
     {
         return [
             self::STATUS_ACTIVE,
@@ -294,8 +250,6 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
     }
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -308,26 +262,20 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
         $this->setIfExists('id', $data, null);
         $this->setIfExists('name', $data, null);
         $this->setIfExists('status', $data, null);
-        $this->setIfExists('billing_period', $data, null);
-        $this->setIfExists('billing_period_unit', $data, null);
-        $this->setIfExists('currency_code', $data, null);
-        $this->setIfExists('total_price', $data, null);
-        $this->setIfExists('renewal_price', $data, null);
-        $this->setIfExists('auto_renew', $data, null);
-        $this->setIfExists('created_at', $data, null);
-        $this->setIfExists('expires_at', $data, null);
-        $this->setIfExists('next_billing_at', $data, null);
-        $this->setIfExists('canceled_at', $data, null);
+        $this->setIfExists('billingPeriod', $data, null);
+        $this->setIfExists('billingPeriodUnit', $data, null);
+        $this->setIfExists('currencyCode', $data, null);
+        $this->setIfExists('totalPrice', $data, null);
+        $this->setIfExists('renewalPrice', $data, null);
+        $this->setIfExists('autoRenew', $data, null);
+        $this->setIfExists('createdAt', $data, null);
+        $this->setIfExists('expiresAt', $data, null);
+        $this->setIfExists('nextBillingAt', $data, null);
+        $this->setIfExists('canceledAt', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -357,14 +305,10 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return string|null
@@ -379,14 +323,10 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
      */
     public function setId(?string $id): static
     {
-        if (is_null($id)) {
-            throw new InvalidArgumentException('non-nullable id cannot be null');
-        }
         $this->container['id'] = $id;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -400,14 +340,10 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
      */
     public function setName(?string $name): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
-        }
         $this->container['name'] = $name;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -421,9 +357,6 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
      */
     public function setStatus(?string $status): static
     {
-        if (is_null($status)) {
-            throw new InvalidArgumentException('non-nullable status cannot be null');
-        }
         $allowedValues = $this->getStatusAllowableValues();
         if (!in_array($status, $allowedValues, true)) {
             throw new InvalidArgumentException(
@@ -438,227 +371,193 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return int|null
      */
     public function getBillingPeriod(): ?int
     {
-        return $this->container['billing_period'];
+        return $this->container['billingPeriod'];
     }
 
     /**
-     * @param int|null $billing_period billing_period
+     * @param int|null $billingPeriod billingPeriod
      */
-    public function setBillingPeriod(?int $billing_period): static
+    public function setBillingPeriod(?int $billingPeriod): static
     {
-        if (is_null($billing_period)) {
-            throw new InvalidArgumentException('non-nullable billing_period cannot be null');
-        }
-        $this->container['billing_period'] = $billing_period;
+        $this->container['billingPeriod'] = $billingPeriod;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
     public function getBillingPeriodUnit(): ?string
     {
-        return $this->container['billing_period_unit'];
+        return $this->container['billingPeriodUnit'];
     }
 
     /**
-     * @param string|null $billing_period_unit billing_period_unit
+     * @param string|null $billingPeriodUnit billingPeriodUnit
      */
-    public function setBillingPeriodUnit(?string $billing_period_unit): static
+    public function setBillingPeriodUnit(?string $billingPeriodUnit): static
     {
-        if (is_null($billing_period_unit)) {
-            throw new InvalidArgumentException('non-nullable billing_period_unit cannot be null');
-        }
-        $this->container['billing_period_unit'] = $billing_period_unit;
+        $this->container['billingPeriodUnit'] = $billingPeriodUnit;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
     public function getCurrencyCode(): ?string
     {
-        return $this->container['currency_code'];
+        return $this->container['currencyCode'];
     }
 
     /**
-     * @param string|null $currency_code currency_code
+     * @param string|null $currencyCode currencyCode
      */
-    public function setCurrencyCode(?string $currency_code): static
+    public function setCurrencyCode(?string $currencyCode): static
     {
-        if (is_null($currency_code)) {
-            throw new InvalidArgumentException('non-nullable currency_code cannot be null');
-        }
-        $this->container['currency_code'] = $currency_code;
+        $this->container['currencyCode'] = $currencyCode;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
     public function getTotalPrice(): ?int
     {
-        return $this->container['total_price'];
+        return $this->container['totalPrice'];
     }
 
     /**
-     * @param int|null $total_price Total price in cents
+     * @param int|null $totalPrice Total price in cents
      */
-    public function setTotalPrice(?int $total_price): static
+    public function setTotalPrice(?int $totalPrice): static
     {
-        if (is_null($total_price)) {
-            throw new InvalidArgumentException('non-nullable total_price cannot be null');
-        }
-        $this->container['total_price'] = $total_price;
+        $this->container['totalPrice'] = $totalPrice;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
     public function getRenewalPrice(): ?int
     {
-        return $this->container['renewal_price'];
+        return $this->container['renewalPrice'];
     }
 
     /**
-     * @param int|null $renewal_price Renewal price in cents
+     * @param int|null $renewalPrice Renewal price in cents
      */
-    public function setRenewalPrice(?int $renewal_price): static
+    public function setRenewalPrice(?int $renewalPrice): static
     {
-        if (is_null($renewal_price)) {
-            throw new InvalidArgumentException('non-nullable renewal_price cannot be null');
-        }
-        $this->container['renewal_price'] = $renewal_price;
+        $this->container['renewalPrice'] = $renewalPrice;
 
         return $this;
     }
-
     /**
      * @return bool|null
      */
     public function getAutoRenew(): ?bool
     {
-        return $this->container['auto_renew'];
+        return $this->container['autoRenew'];
     }
 
     /**
-     * @param bool|null $auto_renew auto_renew
+     * @param bool|null $autoRenew autoRenew
      */
-    public function setAutoRenew(?bool $auto_renew): static
+    public function setAutoRenew(?bool $autoRenew): static
     {
-        if (is_null($auto_renew)) {
-            throw new InvalidArgumentException('non-nullable auto_renew cannot be null');
-        }
-        $this->container['auto_renew'] = $auto_renew;
+        $this->container['autoRenew'] = $autoRenew;
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime|null $createdAt createdAt
      */
-    public function setCreatedAt(?\DateTime $created_at): static
+    public function setCreatedAt(?\DateTime $createdAt): static
     {
-        if (is_null($created_at)) {
-            throw new InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getExpiresAt(): ?\DateTime
     {
-        return $this->container['expires_at'];
+        return $this->container['expiresAt'];
     }
 
     /**
-     * @param \DateTime|null $expires_at expires_at
+     * @param \DateTime|null $expiresAt expiresAt
      */
-    public function setExpiresAt(?\DateTime $expires_at): static
+    public function setExpiresAt(?\DateTime $expiresAt): static
     {
-        if (is_null($expires_at)) {
-            throw new InvalidArgumentException('non-nullable expires_at cannot be null');
-        }
-        $this->container['expires_at'] = $expires_at;
+        $this->container['expiresAt'] = $expiresAt;
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getNextBillingAt(): ?\DateTime
     {
-        return $this->container['next_billing_at'];
+        return $this->container['nextBillingAt'];
     }
 
     /**
-     * @param \DateTime|null $next_billing_at next_billing_at
+     * @param \DateTime|null $nextBillingAt nextBillingAt
      */
-    public function setNextBillingAt(?\DateTime $next_billing_at): static
+    public function setNextBillingAt(?\DateTime $nextBillingAt): static
     {
-        if (is_null($next_billing_at)) {
-            array_push($this->openAPINullablesSetToNull, 'next_billing_at');
+        if (is_null($nextBillingAt)) {
+            $this->openAPINullablesSetToNull[] = 'nextBillingAt';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('next_billing_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            $index = array_search('nextBillingAt', $nullablesSetToNull);
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['next_billing_at'] = $next_billing_at;
+        $this->container['nextBillingAt'] = $nextBillingAt;
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getCanceledAt(): ?\DateTime
     {
-        return $this->container['canceled_at'];
+        return $this->container['canceledAt'];
     }
 
     /**
-     * @param \DateTime|null $canceled_at canceled_at
+     * @param \DateTime|null $canceledAt canceledAt
      */
-    public function setCanceledAt(?\DateTime $canceled_at): static
+    public function setCanceledAt(?\DateTime $canceledAt): static
     {
-        if (is_null($canceled_at)) {
-            array_push($this->openAPINullablesSetToNull, 'canceled_at');
+        if (is_null($canceledAt)) {
+            $this->openAPINullablesSetToNull[] = 'canceledAt';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('canceled_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            $index = array_search('canceledAt', $nullablesSetToNull);
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['canceled_at'] = $canceled_at;
+        $this->container['canceledAt'] = $canceledAt;
 
         return $this;
     }
@@ -687,22 +586,12 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -711,9 +600,6 @@ class BillingV1SubscriptionSubscriptionResource implements ModelInterface, Array
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

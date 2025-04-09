@@ -10,7 +10,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `createNewServiceOrderV1()`
 
 ```php
-createNewServiceOrderV1($billing_v1_order_store_request): \Hostinger\Model\BillingV1OrderOrderResource
+createNewServiceOrderV1($billingV1OrderStoreRequest): \Hostinger\Model\BillingV1OrderOrderResource
 ```
 
 Create new service order
@@ -34,10 +34,10 @@ $apiInstance = new Hostinger\Api\BillingOrdersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$billing_v1_order_store_request = new \Hostinger\Model\BillingV1OrderStoreRequest(); // \Hostinger\Model\BillingV1OrderStoreRequest
+$billingV1OrderStoreRequest = new \Hostinger\Model\BillingV1OrderStoreRequest(); // \Hostinger\Model\BillingV1OrderStoreRequest
 
 try {
-    $result = $apiInstance->createNewServiceOrderV1($billing_v1_order_store_request);
+    $result = $apiInstance->createNewServiceOrderV1($billingV1OrderStoreRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingOrdersApi->createNewServiceOrderV1: ', $e->getMessage(), PHP_EOL;
@@ -48,7 +48,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **billing_v1_order_store_request** | [**\Hostinger\Model\BillingV1OrderStoreRequest**](../Model/BillingV1OrderStoreRequest.md)|  | |
+| **billingV1OrderStoreRequest** | [**\Hostinger\Model\BillingV1OrderStoreRequest**](../Model/BillingV1OrderStoreRequest.md)|  | |
 
 ### Return type
 

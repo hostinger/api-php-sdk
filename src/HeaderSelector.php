@@ -15,10 +15,10 @@ namespace Hostinger;
 class HeaderSelector
 {
     /**
-     * @param string[] $accept
+     * @param array<string> $accept
      * @param string   $contentType
      * @param bool     $isMultipart
-     * @return string[]
+     * @return array<string>
      */
     public function selectHeaders(array $accept, string $contentType, bool $isMultipart): array
     {
@@ -43,7 +43,7 @@ class HeaderSelector
     /**
      * Return the header 'Accept' based on an array of Accept provided.
      *
-     * @param string[] $accept Array of header
+     * @param array<string> $accept Array of header
      *
      * @return null|string Accept (e.g. application/json)
      */
@@ -75,8 +75,8 @@ class HeaderSelector
     /**
     * Create an Accept header string from the given "Accept" headers array, recalculating all weights
     *
-    * @param string[] $accept            Array of Accept Headers
-    * @param string[] $headersWithJson   Array of Accept Headers of type "json"
+    * @param array<string> $accept            Array of Accept Headers
+    * @param array<string> $headersWithJson   Array of Accept Headers of type "json"
     *
     * @return string "Accept" Header (e.g. "application/json, text/html; q=0.9")
     */
@@ -146,7 +146,7 @@ class HeaderSelector
      * @param array[] $headers
      * @param float   $currentWeight
      * @param bool    $hasMoreThan28Headers
-     * @return string[] array of adjusted "Accept" headers
+     * @return array<string> array of adjusted "Accept" headers
      */
     private function adjustWeight(array $headers, float &$currentWeight, bool $hasMoreThan28Headers): array
     {

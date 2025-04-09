@@ -11,7 +11,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `getActionListV1()`
 
 ```php
-getActionListV1($virtual_machine_id, $page): \Hostinger\Model\VPSGetActionListV1200Response
+getActionListV1($virtualMachineId, $page): \Hostinger\Model\VPSGetActionListV1200Response
 ```
 
 Get action list
@@ -35,11 +35,11 @@ $apiInstance = new Hostinger\Api\VPSActionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 $page = 1; // int | Page number
 
 try {
-    $result = $apiInstance->getActionListV1($virtual_machine_id, $page);
+    $result = $apiInstance->getActionListV1($virtualMachineId, $page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSActionsApi->getActionListV1: ', $e->getMessage(), PHP_EOL;
@@ -50,7 +50,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 | **page** | **int**| Page number | [optional] |
 
 ### Return type
@@ -73,7 +73,7 @@ try {
 ## `getActionV1()`
 
 ```php
-getActionV1($virtual_machine_id, $action_id): \Hostinger\Model\VPSV1ActionActionResource
+getActionV1($virtualMachineId, $actionId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Get action
@@ -97,11 +97,11 @@ $apiInstance = new Hostinger\Api\VPSActionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
-$action_id = 8123712; // int | Action ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$actionId = 8123712; // int | Action ID
 
 try {
-    $result = $apiInstance->getActionV1($virtual_machine_id, $action_id);
+    $result = $apiInstance->getActionV1($virtualMachineId, $actionId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSActionsApi->getActionV1: ', $e->getMessage(), PHP_EOL;
@@ -112,8 +112,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
-| **action_id** | **int**| Action ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **actionId** | **int**| Action ID | |
 
 ### Return type
 

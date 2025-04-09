@@ -68,7 +68,7 @@ This endpoint does not need any parameter.
 ## `getTemplateV1()`
 
 ```php
-getTemplateV1($template_id): \Hostinger\Model\VPSV1TemplateTemplateResource
+getTemplateV1($templateId): \Hostinger\Model\VPSV1TemplateTemplateResource
 ```
 
 Get template
@@ -92,10 +92,10 @@ $apiInstance = new Hostinger\Api\VPSOSTemplatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$template_id = 2868928; // int | Template ID
+$templateId = 2868928; // int | Template ID
 
 try {
-    $result = $apiInstance->getTemplateV1($template_id);
+    $result = $apiInstance->getTemplateV1($templateId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSOSTemplatesApi->getTemplateV1: ', $e->getMessage(), PHP_EOL;
@@ -106,7 +106,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **template_id** | **int**| Template ID | |
+| **templateId** | **int**| Template ID | |
 
 ### Return type
 

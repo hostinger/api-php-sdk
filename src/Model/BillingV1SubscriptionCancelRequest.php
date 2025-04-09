@@ -25,51 +25,38 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'Billing.V1.Subscription.CancelRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'reason_code' => 'string',
-        'cancel_option' => 'string'
+        'reasonCode' => 'string',
+        'cancelOption' => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'reason_code' => null,
-        'cancel_option' => null
+        'reasonCode' => null,
+        'cancelOption' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'reason_code' => true,
-        'cancel_option' => true
+        'reasonCode' => true,
+        'cancelOption' => true
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -78,8 +65,6 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -88,8 +73,6 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -98,9 +81,7 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -108,66 +89,48 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'reason_code' => 'reason_code',
-        'cancel_option' => 'cancel_option'
+        'reasonCode' => 'reason_code',
+        'cancelOption' => 'cancel_option'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
-        'reason_code' => 'setReasonCode',
-        'cancel_option' => 'setCancelOption'
+        'reasonCode' => 'setReasonCode',
+        'cancelOption' => 'setCancelOption'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
-        'reason_code' => 'getReasonCode',
-        'cancel_option' => 'getCancelOption'
+        'reasonCode' => 'getReasonCode',
+        'cancelOption' => 'getCancelOption'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -176,8 +139,6 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -186,8 +147,6 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -195,18 +154,57 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
 
+    public const REASON_CODE_FRAUD = 'fraud';
+    public const REASON_CODE_OTHER = 'other';
+    public const REASON_CODE_ABUSE = 'abuse';
+    public const REASON_CODE_REFUND = 'refund';
+    public const REASON_CODE_TRANSFER = 'transfer';
+    public const REASON_CODE_GDPR = 'gdpr';
+    public const REASON_CODE_WRONG_PRODUCT = 'wrong_product';
+    public const REASON_CODE_NOT_PAID = 'not_paid';
+    public const REASON_CODE_SUSPICIOUS = 'suspicious';
+    public const CANCEL_OPTION_IMMEDIATELY = 'immediately';
+    public const CANCEL_OPTION_SPECIFIC_DATE = 'specific_date';
+    public const CANCEL_OPTION_END_OF_TERM = 'end_of_term';
+    public const CANCEL_OPTION_END_OF_BILLING_TERM = 'end_of_billing_term';
 
     /**
-     * Associative array for storing property values
-     *
+     * @return array<string>
+     */
+    public function getReasonCodeAllowableValues(): array
+    {
+        return [
+            self::REASON_CODE_FRAUD,
+            self::REASON_CODE_OTHER,
+            self::REASON_CODE_ABUSE,
+            self::REASON_CODE_REFUND,
+            self::REASON_CODE_TRANSFER,
+            self::REASON_CODE_GDPR,
+            self::REASON_CODE_WRONG_PRODUCT,
+            self::REASON_CODE_NOT_PAID,
+            self::REASON_CODE_SUSPICIOUS,
+        ];
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getCancelOptionAllowableValues(): array
+    {
+        return [
+            self::CANCEL_OPTION_IMMEDIATELY,
+            self::CANCEL_OPTION_SPECIFIC_DATE,
+            self::CANCEL_OPTION_END_OF_TERM,
+            self::CANCEL_OPTION_END_OF_BILLING_TERM,
+        ];
+    }
+
+    /**
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -216,18 +214,12 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = [])
     {
-        $this->setIfExists('reason_code', $data, null);
-        $this->setIfExists('cancel_option', $data, null);
+        $this->setIfExists('reasonCode', $data, null);
+        $this->setIfExists('cancelOption', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -245,70 +237,103 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getReasonCodeAllowableValues();
+        if (!is_null($this->container['reasonCode']) && !in_array($this->container['reasonCode'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'reasonCode', must be one of '%s'",
+                $this->container['reasonCode'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCancelOptionAllowableValues();
+        if (!is_null($this->container['cancelOption']) && !in_array($this->container['cancelOption'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'cancelOption', must be one of '%s'",
+                $this->container['cancelOption'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return string|null
      */
     public function getReasonCode(): ?string
     {
-        return $this->container['reason_code'];
+        return $this->container['reasonCode'];
     }
 
     /**
-     * @param string|null $reason_code Cancellation reason code
+     * @param string|null $reasonCode Cancellation reason code
      */
-    public function setReasonCode(?string $reason_code): static
+    public function setReasonCode(?string $reasonCode): static
     {
-        if (is_null($reason_code)) {
-            array_push($this->openAPINullablesSetToNull, 'reason_code');
+        if (is_null($reasonCode)) {
+            $this->openAPINullablesSetToNull[] = 'reasonCode';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('reason_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            $index = array_search('reasonCode', $nullablesSetToNull);
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['reason_code'] = $reason_code;
+        $allowedValues = $this->getReasonCodeAllowableValues();
+        if (!is_null($reasonCode) && !in_array($reasonCode, $allowedValues, true)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'reasonCode', must be one of '%s'",
+                    $reasonCode,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['reasonCode'] = $reasonCode;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
     public function getCancelOption(): ?string
     {
-        return $this->container['cancel_option'];
+        return $this->container['cancelOption'];
     }
 
     /**
-     * @param string|null $cancel_option Cancellation option
+     * @param string|null $cancelOption Cancellation option
      */
-    public function setCancelOption(?string $cancel_option): static
+    public function setCancelOption(?string $cancelOption): static
     {
-        if (is_null($cancel_option)) {
-            array_push($this->openAPINullablesSetToNull, 'cancel_option');
+        if (is_null($cancelOption)) {
+            $this->openAPINullablesSetToNull[] = 'cancelOption';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cancel_option', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            $index = array_search('cancelOption', $nullablesSetToNull);
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['cancel_option'] = $cancel_option;
+        $allowedValues = $this->getCancelOptionAllowableValues();
+        if (!is_null($cancelOption) && !in_array($cancelOption, $allowedValues, true)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'cancelOption', must be one of '%s'",
+                    $cancelOption,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['cancelOption'] = $cancelOption;
 
         return $this;
     }
@@ -337,22 +362,12 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -361,9 +376,6 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

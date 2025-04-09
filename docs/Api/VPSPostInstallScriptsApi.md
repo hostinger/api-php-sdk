@@ -14,7 +14,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `createPostInstallScriptV1()`
 
 ```php
-createPostInstallScriptV1($vpsv1_post_install_script_store_request): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
+createPostInstallScriptV1($vPSV1PostInstallScriptStoreRequest): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
 ```
 
 Create post-install script
@@ -38,10 +38,10 @@ $apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$vpsv1_post_install_script_store_request = new \Hostinger\Model\VPSV1PostInstallScriptStoreRequest(); // \Hostinger\Model\VPSV1PostInstallScriptStoreRequest
+$vPSV1PostInstallScriptStoreRequest = new \Hostinger\Model\VPSV1PostInstallScriptStoreRequest(); // \Hostinger\Model\VPSV1PostInstallScriptStoreRequest
 
 try {
-    $result = $apiInstance->createPostInstallScriptV1($vpsv1_post_install_script_store_request);
+    $result = $apiInstance->createPostInstallScriptV1($vPSV1PostInstallScriptStoreRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSPostInstallScriptsApi->createPostInstallScriptV1: ', $e->getMessage(), PHP_EOL;
@@ -52,7 +52,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **vpsv1_post_install_script_store_request** | [**\Hostinger\Model\VPSV1PostInstallScriptStoreRequest**](../Model/VPSV1PostInstallScriptStoreRequest.md)|  | |
+| **vPSV1PostInstallScriptStoreRequest** | [**\Hostinger\Model\VPSV1PostInstallScriptStoreRequest**](../Model/VPSV1PostInstallScriptStoreRequest.md)|  | |
 
 ### Return type
 
@@ -74,7 +74,7 @@ try {
 ## `deleteAPostInstallScriptV1()`
 
 ```php
-deleteAPostInstallScriptV1($post_install_script_id): \Hostinger\Model\CommonSuccessEmptyResource
+deleteAPostInstallScriptV1($postInstallScriptId): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
 Delete a post-install script
@@ -98,10 +98,10 @@ $apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$post_install_script_id = 9568314; // int | Post-install script ID
+$postInstallScriptId = 9568314; // int | Post-install script ID
 
 try {
-    $result = $apiInstance->deleteAPostInstallScriptV1($post_install_script_id);
+    $result = $apiInstance->deleteAPostInstallScriptV1($postInstallScriptId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSPostInstallScriptsApi->deleteAPostInstallScriptV1: ', $e->getMessage(), PHP_EOL;
@@ -112,7 +112,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_install_script_id** | **int**| Post-install script ID | |
+| **postInstallScriptId** | **int**| Post-install script ID | |
 
 ### Return type
 
@@ -194,7 +194,7 @@ try {
 ## `getPostInstallScriptV1()`
 
 ```php
-getPostInstallScriptV1($post_install_script_id): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
+getPostInstallScriptV1($postInstallScriptId): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
 ```
 
 Get post-install script
@@ -218,10 +218,10 @@ $apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$post_install_script_id = 9568314; // int | Post-install script ID
+$postInstallScriptId = 9568314; // int | Post-install script ID
 
 try {
-    $result = $apiInstance->getPostInstallScriptV1($post_install_script_id);
+    $result = $apiInstance->getPostInstallScriptV1($postInstallScriptId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSPostInstallScriptsApi->getPostInstallScriptV1: ', $e->getMessage(), PHP_EOL;
@@ -232,7 +232,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_install_script_id** | **int**| Post-install script ID | |
+| **postInstallScriptId** | **int**| Post-install script ID | |
 
 ### Return type
 
@@ -254,7 +254,7 @@ try {
 ## `updatePostInstallScriptV1()`
 
 ```php
-updatePostInstallScriptV1($post_install_script_id, $vpsv1_post_install_script_store_request): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
+updatePostInstallScriptV1($postInstallScriptId, $vPSV1PostInstallScriptStoreRequest): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
 ```
 
 Update post-install script
@@ -278,11 +278,11 @@ $apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$post_install_script_id = 9568314; // int | Post-install script ID
-$vpsv1_post_install_script_store_request = new \Hostinger\Model\VPSV1PostInstallScriptStoreRequest(); // \Hostinger\Model\VPSV1PostInstallScriptStoreRequest
+$postInstallScriptId = 9568314; // int | Post-install script ID
+$vPSV1PostInstallScriptStoreRequest = new \Hostinger\Model\VPSV1PostInstallScriptStoreRequest(); // \Hostinger\Model\VPSV1PostInstallScriptStoreRequest
 
 try {
-    $result = $apiInstance->updatePostInstallScriptV1($post_install_script_id, $vpsv1_post_install_script_store_request);
+    $result = $apiInstance->updatePostInstallScriptV1($postInstallScriptId, $vPSV1PostInstallScriptStoreRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSPostInstallScriptsApi->updatePostInstallScriptV1: ', $e->getMessage(), PHP_EOL;
@@ -293,8 +293,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_install_script_id** | **int**| Post-install script ID | |
-| **vpsv1_post_install_script_store_request** | [**\Hostinger\Model\VPSV1PostInstallScriptStoreRequest**](../Model/VPSV1PostInstallScriptStoreRequest.md)|  | |
+| **postInstallScriptId** | **int**| Post-install script ID | |
+| **vPSV1PostInstallScriptStoreRequest** | [**\Hostinger\Model\VPSV1PostInstallScriptStoreRequest**](../Model/VPSV1PostInstallScriptStoreRequest.md)|  | |
 
 ### Return type
 

@@ -25,60 +25,47 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'VPS.V1.Action.ActionResource';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
         'id' => 'int',
         'name' => 'string',
         'state' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'createdAt' => '\DateTime',
+        'updatedAt' => '\DateTime'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
         'id' => null,
         'name' => null,
         'state' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'createdAt' => 'date-time',
+        'updatedAt' => 'date-time'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
         'id' => false,
         'name' => false,
         'state' => false,
-        'created_at' => false,
-        'updated_at' => false
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -87,8 +74,6 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -97,8 +82,6 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -107,9 +90,7 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -117,75 +98,57 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
         'id' => 'id',
         'name' => 'name',
         'state' => 'state',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'createdAt' => 'created_at',
+        'updatedAt' => 'updated_at'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
         'id' => 'setId',
         'name' => 'setName',
         'state' => 'setState',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
         'id' => 'getId',
         'name' => 'getName',
         'state' => 'getState',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -194,8 +157,6 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -204,8 +165,6 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -213,9 +172,6 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -230,7 +186,7 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * @return array<string>
      */
-    public function getStateAllowableValues()
+    public function getStateAllowableValues(): array
     {
         return [
             self::STATE_SUCCESS,
@@ -242,8 +198,6 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
     }
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -256,18 +210,12 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
         $this->setIfExists('id', $data, null);
         $this->setIfExists('name', $data, null);
         $this->setIfExists('state', $data, null);
-        $this->setIfExists('created_at', $data, null);
-        $this->setIfExists('updated_at', $data, null);
+        $this->setIfExists('createdAt', $data, null);
+        $this->setIfExists('updatedAt', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -297,14 +245,10 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return int|null
@@ -319,14 +263,10 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
      */
     public function setId(?int $id): static
     {
-        if (is_null($id)) {
-            throw new InvalidArgumentException('non-nullable id cannot be null');
-        }
         $this->container['id'] = $id;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -340,14 +280,10 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
      */
     public function setName(?string $name): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
-        }
         $this->container['name'] = $name;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -361,9 +297,6 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
      */
     public function setState(?string $state): static
     {
-        if (is_null($state)) {
-            throw new InvalidArgumentException('non-nullable state cannot be null');
-        }
         $allowedValues = $this->getStateAllowableValues();
         if (!in_array($state, $allowedValues, true)) {
             throw new InvalidArgumentException(
@@ -378,45 +311,37 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime|null $createdAt createdAt
      */
-    public function setCreatedAt(?\DateTime $created_at): static
+    public function setCreatedAt(?\DateTime $createdAt): static
     {
-        if (is_null($created_at)) {
-            throw new InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime|null $updatedAt updatedAt
      */
-    public function setUpdatedAt(?\DateTime $updated_at): static
+    public function setUpdatedAt(?\DateTime $updatedAt): static
     {
-        if (is_null($updated_at)) {
-            throw new InvalidArgumentException('non-nullable updated_at cannot be null');
-        }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }
@@ -445,22 +370,12 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -469,9 +384,6 @@ class VPSV1ActionActionResource implements ModelInterface, ArrayAccess, JsonSeri
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

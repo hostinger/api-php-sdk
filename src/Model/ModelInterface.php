@@ -43,7 +43,7 @@ interface ModelInterface
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
-     * @return array
+     * @return array<string, string>
      */
     public static function setters(): array;
 

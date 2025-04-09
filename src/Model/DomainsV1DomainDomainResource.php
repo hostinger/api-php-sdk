@@ -25,14 +25,9 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'Domains.V1.Domain.DomainResource';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
@@ -40,13 +35,11 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
         'name' => 'string',
         'type' => 'string',
         'status' => 'string',
-        'created_at' => '\DateTime',
-        'expires_at' => '\DateTime'
+        'createdAt' => '\DateTime',
+        'expiresAt' => '\DateTime'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
@@ -54,13 +47,11 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
         'name' => null,
         'type' => null,
         'status' => null,
-        'created_at' => 'date-time',
-        'expires_at' => 'date-time'
+        'createdAt' => 'date-time',
+        'expiresAt' => 'date-time'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
@@ -68,20 +59,16 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
         'name' => true,
         'type' => false,
         'status' => false,
-        'created_at' => false,
-        'expires_at' => true
+        'createdAt' => false,
+        'expiresAt' => true
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -90,8 +77,6 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -100,8 +85,6 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -110,9 +93,7 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -120,35 +101,24 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
@@ -156,13 +126,11 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
         'name' => 'name',
         'type' => 'type',
         'status' => 'status',
-        'created_at' => 'created_at',
-        'expires_at' => 'expires_at'
+        'createdAt' => 'created_at',
+        'expiresAt' => 'expires_at'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
@@ -170,13 +138,11 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
         'name' => 'setName',
         'type' => 'setType',
         'status' => 'setStatus',
-        'created_at' => 'setCreatedAt',
-        'expires_at' => 'setExpiresAt'
+        'createdAt' => 'setCreatedAt',
+        'expiresAt' => 'setExpiresAt'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
@@ -184,14 +150,11 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
         'name' => 'getName',
         'type' => 'getType',
         'status' => 'getStatus',
-        'created_at' => 'getCreatedAt',
-        'expires_at' => 'getExpiresAt'
+        'createdAt' => 'getCreatedAt',
+        'expiresAt' => 'getExpiresAt'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -200,8 +163,6 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -210,8 +171,6 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -219,9 +178,6 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -236,7 +192,7 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
     /**
      * @return array<string>
      */
-    public function getTypeAllowableValues()
+    public function getTypeAllowableValues(): array
     {
         return [
             self::TYPE_DOMAIN,
@@ -247,7 +203,7 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
     /**
      * @return array<string>
      */
-    public function getStatusAllowableValues()
+    public function getStatusAllowableValues(): array
     {
         return [
             self::STATUS_ACTIVE,
@@ -257,8 +213,6 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -272,18 +226,12 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
         $this->setIfExists('name', $data, null);
         $this->setIfExists('type', $data, null);
         $this->setIfExists('status', $data, null);
-        $this->setIfExists('created_at', $data, null);
-        $this->setIfExists('expires_at', $data, null);
+        $this->setIfExists('createdAt', $data, null);
+        $this->setIfExists('expiresAt', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -322,14 +270,10 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return int|null
@@ -344,14 +288,10 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
      */
     public function setId(?int $id): static
     {
-        if (is_null($id)) {
-            throw new InvalidArgumentException('non-nullable id cannot be null');
-        }
         $this->container['id'] = $id;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -366,11 +306,11 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
     public function setName(?string $name): static
     {
         if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+            $this->openAPINullablesSetToNull[] = 'name';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('name', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -379,7 +319,6 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -393,9 +332,6 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
      */
     public function setType(?string $type): static
     {
-        if (is_null($type)) {
-            throw new InvalidArgumentException('non-nullable type cannot be null');
-        }
         $allowedValues = $this->getTypeAllowableValues();
         if (!in_array($type, $allowedValues, true)) {
             throw new InvalidArgumentException(
@@ -410,7 +346,6 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -424,9 +359,6 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
      */
     public function setStatus(?string $status): static
     {
-        if (is_null($status)) {
-            throw new InvalidArgumentException('non-nullable status cannot be null');
-        }
         $allowedValues = $this->getStatusAllowableValues();
         if (!in_array($status, $allowedValues, true)) {
             throw new InvalidArgumentException(
@@ -441,52 +373,47 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime|null $createdAt createdAt
      */
-    public function setCreatedAt(?\DateTime $created_at): static
+    public function setCreatedAt(?\DateTime $createdAt): static
     {
-        if (is_null($created_at)) {
-            throw new InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getExpiresAt(): ?\DateTime
     {
-        return $this->container['expires_at'];
+        return $this->container['expiresAt'];
     }
 
     /**
-     * @param \DateTime|null $expires_at expires_at
+     * @param \DateTime|null $expiresAt expiresAt
      */
-    public function setExpiresAt(?\DateTime $expires_at): static
+    public function setExpiresAt(?\DateTime $expiresAt): static
     {
-        if (is_null($expires_at)) {
-            array_push($this->openAPINullablesSetToNull, 'expires_at');
+        if (is_null($expiresAt)) {
+            $this->openAPINullablesSetToNull[] = 'expiresAt';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expires_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            $index = array_search('expiresAt', $nullablesSetToNull);
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['expires_at'] = $expires_at;
+        $this->container['expiresAt'] = $expiresAt;
 
         return $this;
     }
@@ -515,22 +442,12 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -539,9 +456,6 @@ class DomainsV1DomainDomainResource implements ModelInterface, ArrayAccess, Json
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

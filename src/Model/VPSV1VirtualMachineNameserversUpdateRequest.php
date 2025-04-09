@@ -25,14 +25,9 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'VPS.V1.VirtualMachine.NameserversUpdateRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
@@ -41,8 +36,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
@@ -51,8 +44,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
@@ -61,15 +52,11 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -78,8 +65,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -88,8 +73,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -98,9 +81,7 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -108,35 +89,24 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
@@ -145,8 +115,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
@@ -155,8 +123,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
@@ -165,9 +131,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -176,8 +139,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -186,8 +147,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -195,9 +154,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -205,8 +161,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
 
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -221,13 +175,7 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -251,14 +199,10 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return string
@@ -273,14 +217,10 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
      */
     public function setNs1(string $ns1): static
     {
-        if (is_null($ns1)) {
-            throw new InvalidArgumentException('non-nullable ns1 cannot be null');
-        }
         $this->container['ns1'] = $ns1;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -294,9 +234,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
      */
     public function setNs2(?string $ns2): static
     {
-        if (is_null($ns2)) {
-            throw new InvalidArgumentException('non-nullable ns2 cannot be null');
-        }
         $this->container['ns2'] = $ns2;
 
         return $this;
@@ -326,22 +263,12 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -350,9 +277,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest implements ModelInterface, Arr
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

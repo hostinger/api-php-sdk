@@ -11,7 +11,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `cancelSubscriptionV1()`
 
 ```php
-cancelSubscriptionV1($subscription_id, $billing_v1_subscription_cancel_request): \Hostinger\Model\CommonSuccessEmptyResource
+cancelSubscriptionV1($subscriptionId, $billingV1SubscriptionCancelRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
 Cancel subscription
@@ -35,11 +35,11 @@ $apiInstance = new Hostinger\Api\BillingSubscriptionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$subscription_id = Cxy353Uhl1xC54pG6; // string | Subscription ID
-$billing_v1_subscription_cancel_request = new \Hostinger\Model\BillingV1SubscriptionCancelRequest(); // \Hostinger\Model\BillingV1SubscriptionCancelRequest
+$subscriptionId = Cxy353Uhl1xC54pG6; // string | Subscription ID
+$billingV1SubscriptionCancelRequest = new \Hostinger\Model\BillingV1SubscriptionCancelRequest(); // \Hostinger\Model\BillingV1SubscriptionCancelRequest
 
 try {
-    $result = $apiInstance->cancelSubscriptionV1($subscription_id, $billing_v1_subscription_cancel_request);
+    $result = $apiInstance->cancelSubscriptionV1($subscriptionId, $billingV1SubscriptionCancelRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingSubscriptionsApi->cancelSubscriptionV1: ', $e->getMessage(), PHP_EOL;
@@ -50,8 +50,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **subscription_id** | **string**| Subscription ID | |
-| **billing_v1_subscription_cancel_request** | [**\Hostinger\Model\BillingV1SubscriptionCancelRequest**](../Model/BillingV1SubscriptionCancelRequest.md)|  | |
+| **subscriptionId** | **string**| Subscription ID | |
+| **billingV1SubscriptionCancelRequest** | [**\Hostinger\Model\BillingV1SubscriptionCancelRequest**](../Model/BillingV1SubscriptionCancelRequest.md)|  | |
 
 ### Return type
 

@@ -25,51 +25,38 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'Billing_V1_Order_StoreRequest_items_inner';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'item_id' => 'string',
+        'itemId' => 'string',
         'quantity' => 'int'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'item_id' => null,
+        'itemId' => null,
         'quantity' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'item_id' => false,
+        'itemId' => false,
         'quantity' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -78,8 +65,6 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -88,8 +73,6 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -98,9 +81,7 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -108,66 +89,48 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'item_id' => 'item_id',
+        'itemId' => 'item_id',
         'quantity' => 'quantity'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
-        'item_id' => 'setItemId',
+        'itemId' => 'setItemId',
         'quantity' => 'setQuantity'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
-        'item_id' => 'getItemId',
+        'itemId' => 'getItemId',
         'quantity' => 'getQuantity'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -176,8 +139,6 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -186,8 +147,6 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -195,9 +154,6 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -205,8 +161,6 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
 
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -216,18 +170,12 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
      */
     public function __construct(?array $data = [])
     {
-        $this->setIfExists('item_id', $data, null);
+        $this->setIfExists('itemId', $data, null);
         $this->setIfExists('quantity', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -248,36 +196,28 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return string|null
      */
     public function getItemId(): ?string
     {
-        return $this->container['item_id'];
+        return $this->container['itemId'];
     }
 
     /**
-     * @param string|null $item_id Price Item ID
+     * @param string|null $itemId Price Item ID
      */
-    public function setItemId(?string $item_id): static
+    public function setItemId(?string $itemId): static
     {
-        if (is_null($item_id)) {
-            throw new InvalidArgumentException('non-nullable item_id cannot be null');
-        }
-        $this->container['item_id'] = $item_id;
+        $this->container['itemId'] = $itemId;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
@@ -291,9 +231,6 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
      */
     public function setQuantity(?int $quantity): static
     {
-        if (is_null($quantity)) {
-            throw new InvalidArgumentException('non-nullable quantity cannot be null');
-        }
         $this->container['quantity'] = $quantity;
 
         return $this;
@@ -323,22 +260,12 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -347,9 +274,6 @@ class BillingV1OrderStoreRequestItemsInner implements ModelInterface, ArrayAcces
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

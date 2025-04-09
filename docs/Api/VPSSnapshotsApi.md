@@ -13,7 +13,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `createSnapshotV1()`
 
 ```php
-createSnapshotV1($virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+createSnapshotV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Create snapshot
@@ -37,10 +37,10 @@ $apiInstance = new Hostinger\Api\VPSSnapshotsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->createSnapshotV1($virtual_machine_id);
+    $result = $apiInstance->createSnapshotV1($virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSSnapshotsApi->createSnapshotV1: ', $e->getMessage(), PHP_EOL;
@@ -51,7 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 
@@ -73,7 +73,7 @@ try {
 ## `deleteSnapshotV1()`
 
 ```php
-deleteSnapshotV1($virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+deleteSnapshotV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Delete snapshot
@@ -97,10 +97,10 @@ $apiInstance = new Hostinger\Api\VPSSnapshotsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->deleteSnapshotV1($virtual_machine_id);
+    $result = $apiInstance->deleteSnapshotV1($virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSSnapshotsApi->deleteSnapshotV1: ', $e->getMessage(), PHP_EOL;
@@ -111,7 +111,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 
@@ -133,7 +133,7 @@ try {
 ## `getSnapshotV1()`
 
 ```php
-getSnapshotV1($virtual_machine_id): \Hostinger\Model\VPSV1SnapshotSnapshotResource
+getSnapshotV1($virtualMachineId): \Hostinger\Model\VPSV1SnapshotSnapshotResource
 ```
 
 Get snapshot
@@ -157,10 +157,10 @@ $apiInstance = new Hostinger\Api\VPSSnapshotsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->getSnapshotV1($virtual_machine_id);
+    $result = $apiInstance->getSnapshotV1($virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSSnapshotsApi->getSnapshotV1: ', $e->getMessage(), PHP_EOL;
@@ -171,7 +171,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 
@@ -193,7 +193,7 @@ try {
 ## `restoreSnapshotV1()`
 
 ```php
-restoreSnapshotV1($virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+restoreSnapshotV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Restore snapshot
@@ -217,10 +217,10 @@ $apiInstance = new Hostinger\Api\VPSSnapshotsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->restoreSnapshotV1($virtual_machine_id);
+    $result = $apiInstance->restoreSnapshotV1($virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSSnapshotsApi->restoreSnapshotV1: ', $e->getMessage(), PHP_EOL;
@@ -231,7 +231,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 

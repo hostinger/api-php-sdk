@@ -25,24 +25,19 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'VPS.V1.VirtualMachine.VirtualMachineResource';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
         'id' => 'int',
-        'firewall_group_id' => 'int',
-        'subscription_id' => 'string',
+        'firewallGroupId' => 'int',
+        'subscriptionId' => 'string',
         'plan' => 'string',
         'hostname' => 'string',
         'state' => 'string',
-        'actions_lock' => 'string',
+        'actionsLock' => 'string',
         'cpus' => 'int',
         'memory' => 'int',
         'disk' => 'int',
@@ -52,22 +47,20 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
         'ipv4' => '\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResourceIpv4',
         'ipv6' => '\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResourceIpv6',
         'template' => '\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResourceTemplate',
-        'created_at' => '\DateTime'
+        'createdAt' => '\DateTime'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
         'id' => null,
-        'firewall_group_id' => null,
-        'subscription_id' => null,
+        'firewallGroupId' => null,
+        'subscriptionId' => null,
         'plan' => null,
         'hostname' => null,
         'state' => null,
-        'actions_lock' => null,
+        'actionsLock' => null,
         'cpus' => null,
         'memory' => null,
         'disk' => null,
@@ -77,22 +70,20 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
         'ipv4' => null,
         'ipv6' => null,
         'template' => null,
-        'created_at' => 'date-time'
+        'createdAt' => 'date-time'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'firewall_group_id' => true,
-        'subscription_id' => true,
+        'firewallGroupId' => true,
+        'subscriptionId' => true,
         'plan' => true,
         'hostname' => false,
         'state' => false,
-        'actions_lock' => false,
+        'actionsLock' => false,
         'cpus' => false,
         'memory' => false,
         'disk' => false,
@@ -102,19 +93,15 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
         'ipv4' => true,
         'ipv6' => true,
         'template' => true,
-        'created_at' => false
+        'createdAt' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -123,8 +110,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -133,8 +118,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -143,9 +126,7 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -153,45 +134,34 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
         'id' => 'id',
-        'firewall_group_id' => 'firewall_group_id',
-        'subscription_id' => 'subscription_id',
+        'firewallGroupId' => 'firewall_group_id',
+        'subscriptionId' => 'subscription_id',
         'plan' => 'plan',
         'hostname' => 'hostname',
         'state' => 'state',
-        'actions_lock' => 'actions_lock',
+        'actionsLock' => 'actions_lock',
         'cpus' => 'cpus',
         'memory' => 'memory',
         'disk' => 'disk',
@@ -201,22 +171,20 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
         'ipv4' => 'ipv4',
         'ipv6' => 'ipv6',
         'template' => 'template',
-        'created_at' => 'created_at'
+        'createdAt' => 'created_at'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
         'id' => 'setId',
-        'firewall_group_id' => 'setFirewallGroupId',
-        'subscription_id' => 'setSubscriptionId',
+        'firewallGroupId' => 'setFirewallGroupId',
+        'subscriptionId' => 'setSubscriptionId',
         'plan' => 'setPlan',
         'hostname' => 'setHostname',
         'state' => 'setState',
-        'actions_lock' => 'setActionsLock',
+        'actionsLock' => 'setActionsLock',
         'cpus' => 'setCpus',
         'memory' => 'setMemory',
         'disk' => 'setDisk',
@@ -226,22 +194,20 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
         'ipv4' => 'setIpv4',
         'ipv6' => 'setIpv6',
         'template' => 'setTemplate',
-        'created_at' => 'setCreatedAt'
+        'createdAt' => 'setCreatedAt'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
         'id' => 'getId',
-        'firewall_group_id' => 'getFirewallGroupId',
-        'subscription_id' => 'getSubscriptionId',
+        'firewallGroupId' => 'getFirewallGroupId',
+        'subscriptionId' => 'getSubscriptionId',
         'plan' => 'getPlan',
         'hostname' => 'getHostname',
         'state' => 'getState',
-        'actions_lock' => 'getActionsLock',
+        'actionsLock' => 'getActionsLock',
         'cpus' => 'getCpus',
         'memory' => 'getMemory',
         'disk' => 'getDisk',
@@ -251,13 +217,10 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
         'ipv4' => 'getIpv4',
         'ipv6' => 'getIpv6',
         'template' => 'getTemplate',
-        'created_at' => 'getCreatedAt'
+        'createdAt' => 'getCreatedAt'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -266,8 +229,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -276,8 +237,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -285,9 +244,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -303,7 +259,7 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     /**
      * @return array<string>
      */
-    public function getStateAllowableValues()
+    public function getStateAllowableValues(): array
     {
         return [
             self::STATE_RUNNING,
@@ -316,7 +272,7 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     /**
      * @return array<string>
      */
-    public function getActionsLockAllowableValues()
+    public function getActionsLockAllowableValues(): array
     {
         return [
             self::ACTIONS_LOCK_UNLOCKED,
@@ -325,8 +281,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     }
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -337,12 +291,12 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     public function __construct(?array $data = [])
     {
         $this->setIfExists('id', $data, null);
-        $this->setIfExists('firewall_group_id', $data, null);
-        $this->setIfExists('subscription_id', $data, null);
+        $this->setIfExists('firewallGroupId', $data, null);
+        $this->setIfExists('subscriptionId', $data, null);
         $this->setIfExists('plan', $data, null);
         $this->setIfExists('hostname', $data, null);
         $this->setIfExists('state', $data, null);
-        $this->setIfExists('actions_lock', $data, null);
+        $this->setIfExists('actionsLock', $data, null);
         $this->setIfExists('cpus', $data, null);
         $this->setIfExists('memory', $data, null);
         $this->setIfExists('disk', $data, null);
@@ -352,17 +306,11 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
         $this->setIfExists('ipv4', $data, null);
         $this->setIfExists('ipv6', $data, null);
         $this->setIfExists('template', $data, null);
-        $this->setIfExists('created_at', $data, null);
+        $this->setIfExists('createdAt', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -390,10 +338,10 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
         }
 
         $allowedValues = $this->getActionsLockAllowableValues();
-        if (!is_null($this->container['actions_lock']) && !in_array($this->container['actions_lock'], $allowedValues, true)) {
+        if (!is_null($this->container['actionsLock']) && !in_array($this->container['actionsLock'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'actions_lock', must be one of '%s'",
-                $this->container['actions_lock'],
+                "invalid value '%s' for 'actionsLock', must be one of '%s'",
+                $this->container['actionsLock'],
                 implode("', '", $allowedValues)
             );
         }
@@ -401,14 +349,10 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return int|null
@@ -423,70 +367,64 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
      */
     public function setId(?int $id): static
     {
-        if (is_null($id)) {
-            throw new InvalidArgumentException('non-nullable id cannot be null');
-        }
         $this->container['id'] = $id;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
     public function getFirewallGroupId(): ?int
     {
-        return $this->container['firewall_group_id'];
+        return $this->container['firewallGroupId'];
     }
 
     /**
-     * @param int|null $firewall_group_id Active firewall ID, `null` if disabled
+     * @param int|null $firewallGroupId Active firewall ID, `null` if disabled
      */
-    public function setFirewallGroupId(?int $firewall_group_id): static
+    public function setFirewallGroupId(?int $firewallGroupId): static
     {
-        if (is_null($firewall_group_id)) {
-            array_push($this->openAPINullablesSetToNull, 'firewall_group_id');
+        if (is_null($firewallGroupId)) {
+            $this->openAPINullablesSetToNull[] = 'firewallGroupId';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('firewall_group_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            $index = array_search('firewallGroupId', $nullablesSetToNull);
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['firewall_group_id'] = $firewall_group_id;
+        $this->container['firewallGroupId'] = $firewallGroupId;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
     public function getSubscriptionId(): ?string
     {
-        return $this->container['subscription_id'];
+        return $this->container['subscriptionId'];
     }
 
     /**
-     * @param string|null $subscription_id Subscription ID
+     * @param string|null $subscriptionId Subscription ID
      */
-    public function setSubscriptionId(?string $subscription_id): static
+    public function setSubscriptionId(?string $subscriptionId): static
     {
-        if (is_null($subscription_id)) {
-            array_push($this->openAPINullablesSetToNull, 'subscription_id');
+        if (is_null($subscriptionId)) {
+            $this->openAPINullablesSetToNull[] = 'subscriptionId';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('subscription_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            $index = array_search('subscriptionId', $nullablesSetToNull);
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['subscription_id'] = $subscription_id;
+        $this->container['subscriptionId'] = $subscriptionId;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -501,11 +439,11 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     public function setPlan(?string $plan): static
     {
         if (is_null($plan)) {
-            array_push($this->openAPINullablesSetToNull, 'plan');
+            $this->openAPINullablesSetToNull[] = 'plan';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('plan', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -514,7 +452,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -528,14 +465,10 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
      */
     public function setHostname(?string $hostname): static
     {
-        if (is_null($hostname)) {
-            throw new InvalidArgumentException('non-nullable hostname cannot be null');
-        }
         $this->container['hostname'] = $hostname;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -549,9 +482,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
      */
     public function setState(?string $state): static
     {
-        if (is_null($state)) {
-            throw new InvalidArgumentException('non-nullable state cannot be null');
-        }
         $allowedValues = $this->getStateAllowableValues();
         if (!in_array($state, $allowedValues, true)) {
             throw new InvalidArgumentException(
@@ -566,38 +496,33 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return string|null
      */
     public function getActionsLock(): ?string
     {
-        return $this->container['actions_lock'];
+        return $this->container['actionsLock'];
     }
 
     /**
-     * @param string|null $actions_lock actions_lock
+     * @param string|null $actionsLock actionsLock
      */
-    public function setActionsLock(?string $actions_lock): static
+    public function setActionsLock(?string $actionsLock): static
     {
-        if (is_null($actions_lock)) {
-            throw new InvalidArgumentException('non-nullable actions_lock cannot be null');
-        }
         $allowedValues = $this->getActionsLockAllowableValues();
-        if (!in_array($actions_lock, $allowedValues, true)) {
+        if (!in_array($actionsLock, $allowedValues, true)) {
             throw new InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'actions_lock', must be one of '%s'",
-                    $actions_lock,
+                    "Invalid value '%s' for 'actionsLock', must be one of '%s'",
+                    $actionsLock,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['actions_lock'] = $actions_lock;
+        $this->container['actionsLock'] = $actionsLock;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
@@ -611,14 +536,10 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
      */
     public function setCpus(?int $cpus): static
     {
-        if (is_null($cpus)) {
-            throw new InvalidArgumentException('non-nullable cpus cannot be null');
-        }
         $this->container['cpus'] = $cpus;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
@@ -632,14 +553,10 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
      */
     public function setMemory(?int $memory): static
     {
-        if (is_null($memory)) {
-            throw new InvalidArgumentException('non-nullable memory cannot be null');
-        }
         $this->container['memory'] = $memory;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
@@ -653,14 +570,10 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
      */
     public function setDisk(?int $disk): static
     {
-        if (is_null($disk)) {
-            throw new InvalidArgumentException('non-nullable disk cannot be null');
-        }
         $this->container['disk'] = $disk;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
@@ -674,14 +587,10 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
      */
     public function setBandwidth(?int $bandwidth): static
     {
-        if (is_null($bandwidth)) {
-            throw new InvalidArgumentException('non-nullable bandwidth cannot be null');
-        }
         $this->container['bandwidth'] = $bandwidth;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -696,11 +605,11 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     public function setNs1(?string $ns1): static
     {
         if (is_null($ns1)) {
-            array_push($this->openAPINullablesSetToNull, 'ns1');
+            $this->openAPINullablesSetToNull[] = 'ns1';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('ns1', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -709,7 +618,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -724,11 +632,11 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     public function setNs2(?string $ns2): static
     {
         if (is_null($ns2)) {
-            array_push($this->openAPINullablesSetToNull, 'ns2');
+            $this->openAPINullablesSetToNull[] = 'ns2';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('ns2', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -737,7 +645,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResourceIpv4|null
      */
@@ -752,11 +659,11 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     public function setIpv4(?\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResourceIpv4 $ipv4): static
     {
         if (is_null($ipv4)) {
-            array_push($this->openAPINullablesSetToNull, 'ipv4');
+            $this->openAPINullablesSetToNull[] = 'ipv4';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('ipv4', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -765,7 +672,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResourceIpv6|null
      */
@@ -780,11 +686,11 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     public function setIpv6(?\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResourceIpv6 $ipv6): static
     {
         if (is_null($ipv6)) {
-            array_push($this->openAPINullablesSetToNull, 'ipv6');
+            $this->openAPINullablesSetToNull[] = 'ipv6';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('ipv6', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -793,7 +699,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResourceTemplate|null
      */
@@ -808,11 +713,11 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     public function setTemplate(?\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResourceTemplate $template): static
     {
         if (is_null($template)) {
-            array_push($this->openAPINullablesSetToNull, 'template');
+            $this->openAPINullablesSetToNull[] = 'template';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('template', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -821,24 +726,20 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime|null $createdAt createdAt
      */
-    public function setCreatedAt(?\DateTime $created_at): static
+    public function setCreatedAt(?\DateTime $createdAt): static
     {
-        if (is_null($created_at)) {
-            throw new InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
@@ -867,22 +768,12 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -891,9 +782,6 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

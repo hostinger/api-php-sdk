@@ -11,7 +11,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `createPTRRecordV1()`
 
 ```php
-createPTRRecordV1($virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+createPTRRecordV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Create PTR record
@@ -35,10 +35,10 @@ $apiInstance = new Hostinger\Api\VPSPTRRecordsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->createPTRRecordV1($virtual_machine_id);
+    $result = $apiInstance->createPTRRecordV1($virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSPTRRecordsApi->createPTRRecordV1: ', $e->getMessage(), PHP_EOL;
@@ -49,7 +49,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 
@@ -71,7 +71,7 @@ try {
 ## `deletePTRRecordV1()`
 
 ```php
-deletePTRRecordV1($virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+deletePTRRecordV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Delete PTR record
@@ -95,10 +95,10 @@ $apiInstance = new Hostinger\Api\VPSPTRRecordsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->deletePTRRecordV1($virtual_machine_id);
+    $result = $apiInstance->deletePTRRecordV1($virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSPTRRecordsApi->deletePTRRecordV1: ', $e->getMessage(), PHP_EOL;
@@ -109,7 +109,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 

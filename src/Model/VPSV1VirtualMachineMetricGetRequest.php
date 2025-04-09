@@ -25,51 +25,38 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'VPS.V1.VirtualMachine.MetricGetRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'date_from' => '\DateTime',
-        'date_to' => '\DateTime'
+        'dateFrom' => '\DateTime',
+        'dateTo' => '\DateTime'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'date_from' => 'date-time',
-        'date_to' => 'date-time'
+        'dateFrom' => 'date-time',
+        'dateTo' => 'date-time'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'date_from' => false,
-        'date_to' => false
+        'dateFrom' => false,
+        'dateTo' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -78,8 +65,6 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -88,8 +73,6 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -98,9 +81,7 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -108,66 +89,48 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'date_from' => 'date_from',
-        'date_to' => 'date_to'
+        'dateFrom' => 'date_from',
+        'dateTo' => 'date_to'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
-        'date_from' => 'setDateFrom',
-        'date_to' => 'setDateTo'
+        'dateFrom' => 'setDateFrom',
+        'dateTo' => 'setDateTo'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
-        'date_from' => 'getDateFrom',
-        'date_to' => 'getDateTo'
+        'dateFrom' => 'getDateFrom',
+        'dateTo' => 'getDateTo'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -176,8 +139,6 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -186,8 +147,6 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -195,9 +154,6 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -205,8 +161,6 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -216,18 +170,12 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = [])
     {
-        $this->setIfExists('date_from', $data, null);
-        $this->setIfExists('date_to', $data, null);
+        $this->setIfExists('dateFrom', $data, null);
+        $this->setIfExists('dateTo', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -245,62 +193,51 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['date_from'] === null) {
-            $invalidProperties[] = "'date_from' can't be null";
+        if ($this->container['dateFrom'] === null) {
+            $invalidProperties[] = "'dateFrom' can't be null";
         }
-        if ($this->container['date_to'] === null) {
-            $invalidProperties[] = "'date_to' can't be null";
+        if ($this->container['dateTo'] === null) {
+            $invalidProperties[] = "'dateTo' can't be null";
         }
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return \DateTime
      */
     public function getDateFrom(): \DateTime
     {
-        return $this->container['date_from'];
+        return $this->container['dateFrom'];
     }
 
     /**
-     * @param \DateTime $date_from date_from
+     * @param \DateTime $dateFrom dateFrom
      */
-    public function setDateFrom(\DateTime $date_from): static
+    public function setDateFrom(\DateTime $dateFrom): static
     {
-        if (is_null($date_from)) {
-            throw new InvalidArgumentException('non-nullable date_from cannot be null');
-        }
-        $this->container['date_from'] = $date_from;
+        $this->container['dateFrom'] = $dateFrom;
 
         return $this;
     }
-
     /**
      * @return \DateTime
      */
     public function getDateTo(): \DateTime
     {
-        return $this->container['date_to'];
+        return $this->container['dateTo'];
     }
 
     /**
-     * @param \DateTime $date_to date_to
+     * @param \DateTime $dateTo dateTo
      */
-    public function setDateTo(\DateTime $date_to): static
+    public function setDateTo(\DateTime $dateTo): static
     {
-        if (is_null($date_to)) {
-            throw new InvalidArgumentException('non-nullable date_to cannot be null');
-        }
-        $this->container['date_to'] = $date_to;
+        $this->container['dateTo'] = $dateTo;
 
         return $this;
     }
@@ -329,22 +266,12 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -353,9 +280,6 @@ class VPSV1VirtualMachineMetricGetRequest implements ModelInterface, ArrayAccess
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

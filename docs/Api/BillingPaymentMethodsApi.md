@@ -12,7 +12,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `deletePaymentMethodV1()`
 
 ```php
-deletePaymentMethodV1($payment_method_id): \Hostinger\Model\CommonSuccessEmptyResource
+deletePaymentMethodV1($paymentMethodId): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
 Delete payment method
@@ -36,10 +36,10 @@ $apiInstance = new Hostinger\Api\BillingPaymentMethodsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$payment_method_id = 9693613; // int | Payment method ID
+$paymentMethodId = 9693613; // int | Payment method ID
 
 try {
-    $result = $apiInstance->deletePaymentMethodV1($payment_method_id);
+    $result = $apiInstance->deletePaymentMethodV1($paymentMethodId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingPaymentMethodsApi->deletePaymentMethodV1: ', $e->getMessage(), PHP_EOL;
@@ -50,7 +50,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **payment_method_id** | **int**| Payment method ID | |
+| **paymentMethodId** | **int**| Payment method ID | |
 
 ### Return type
 
@@ -129,7 +129,7 @@ This endpoint does not need any parameter.
 ## `setDefaultPaymentMethodV1()`
 
 ```php
-setDefaultPaymentMethodV1($payment_method_id): \Hostinger\Model\CommonSuccessEmptyResource
+setDefaultPaymentMethodV1($paymentMethodId): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
 Set default payment method
@@ -153,10 +153,10 @@ $apiInstance = new Hostinger\Api\BillingPaymentMethodsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$payment_method_id = 9693613; // int | Payment method ID
+$paymentMethodId = 9693613; // int | Payment method ID
 
 try {
-    $result = $apiInstance->setDefaultPaymentMethodV1($payment_method_id);
+    $result = $apiInstance->setDefaultPaymentMethodV1($paymentMethodId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingPaymentMethodsApi->setDefaultPaymentMethodV1: ', $e->getMessage(), PHP_EOL;
@@ -167,7 +167,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **payment_method_id** | **int**| Payment method ID | |
+| **paymentMethodId** | **int**| Payment method ID | |
 
 ### Return type
 

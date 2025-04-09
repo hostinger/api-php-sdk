@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**first_name** | **string** |  | [optional]
-**last_name** | **string** |  | [optional]
+**firstName** | **string** |  | [optional]
+**lastName** | **string** |  | [optional]
 **company** | **string** |  | [optional]
-**address_1** | **string** |  | [optional]
-**address_2** | **string** |  | [optional]
+**address1** | **string** |  | [optional]
+**address2** | **string** |  | [optional]
 **city** | **string** |  | [optional]
 **state** | **string** |  | [optional]
 **zip** | **string** |  | [optional]

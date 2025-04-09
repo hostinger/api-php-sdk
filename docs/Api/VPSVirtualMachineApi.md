@@ -22,7 +22,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `getMetricsV1()`
 
 ```php
-getMetricsV1($virtual_machine_id, $vpsv1_virtual_machine_metric_get_request): \Hostinger\Model\VPSV1MetricsMetricsCollection
+getMetricsV1($virtualMachineId, $vPSV1VirtualMachineMetricGetRequest): \Hostinger\Model\VPSV1MetricsMetricsCollection
 ```
 
 Get metrics
@@ -46,11 +46,11 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
-$vpsv1_virtual_machine_metric_get_request = new \Hostinger\Model\VPSV1VirtualMachineMetricGetRequest(); // \Hostinger\Model\VPSV1VirtualMachineMetricGetRequest
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$vPSV1VirtualMachineMetricGetRequest = new \Hostinger\Model\VPSV1VirtualMachineMetricGetRequest(); // \Hostinger\Model\VPSV1VirtualMachineMetricGetRequest
 
 try {
-    $result = $apiInstance->getMetricsV1($virtual_machine_id, $vpsv1_virtual_machine_metric_get_request);
+    $result = $apiInstance->getMetricsV1($virtualMachineId, $vPSV1VirtualMachineMetricGetRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->getMetricsV1: ', $e->getMessage(), PHP_EOL;
@@ -61,8 +61,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
-| **vpsv1_virtual_machine_metric_get_request** | [**\Hostinger\Model\VPSV1VirtualMachineMetricGetRequest**](../Model/VPSV1VirtualMachineMetricGetRequest.md)|  | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **vPSV1VirtualMachineMetricGetRequest** | [**\Hostinger\Model\VPSV1VirtualMachineMetricGetRequest**](../Model/VPSV1VirtualMachineMetricGetRequest.md)|  | |
 
 ### Return type
 
@@ -141,7 +141,7 @@ This endpoint does not need any parameter.
 ## `getVirtualMachineV1()`
 
 ```php
-getVirtualMachineV1($virtual_machine_id): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource
+getVirtualMachineV1($virtualMachineId): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource
 ```
 
 Get virtual machine
@@ -165,10 +165,10 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->getVirtualMachineV1($virtual_machine_id);
+    $result = $apiInstance->getVirtualMachineV1($virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->getVirtualMachineV1: ', $e->getMessage(), PHP_EOL;
@@ -179,7 +179,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 
@@ -201,7 +201,7 @@ try {
 ## `recreateVirtualMachineV1()`
 
 ```php
-recreateVirtualMachineV1($virtual_machine_id, $vpsv1_virtual_machine_recreate_request): \Hostinger\Model\VPSV1ActionActionResource
+recreateVirtualMachineV1($virtualMachineId, $vPSV1VirtualMachineRecreateRequest): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Recreate virtual machine
@@ -225,11 +225,11 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
-$vpsv1_virtual_machine_recreate_request = new \Hostinger\Model\VPSV1VirtualMachineRecreateRequest(); // \Hostinger\Model\VPSV1VirtualMachineRecreateRequest
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$vPSV1VirtualMachineRecreateRequest = new \Hostinger\Model\VPSV1VirtualMachineRecreateRequest(); // \Hostinger\Model\VPSV1VirtualMachineRecreateRequest
 
 try {
-    $result = $apiInstance->recreateVirtualMachineV1($virtual_machine_id, $vpsv1_virtual_machine_recreate_request);
+    $result = $apiInstance->recreateVirtualMachineV1($virtualMachineId, $vPSV1VirtualMachineRecreateRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->recreateVirtualMachineV1: ', $e->getMessage(), PHP_EOL;
@@ -240,8 +240,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
-| **vpsv1_virtual_machine_recreate_request** | [**\Hostinger\Model\VPSV1VirtualMachineRecreateRequest**](../Model/VPSV1VirtualMachineRecreateRequest.md)|  | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **vPSV1VirtualMachineRecreateRequest** | [**\Hostinger\Model\VPSV1VirtualMachineRecreateRequest**](../Model/VPSV1VirtualMachineRecreateRequest.md)|  | |
 
 ### Return type
 
@@ -263,7 +263,7 @@ try {
 ## `resetHostnameV1()`
 
 ```php
-resetHostnameV1($virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+resetHostnameV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Reset hostname
@@ -287,10 +287,10 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->resetHostnameV1($virtual_machine_id);
+    $result = $apiInstance->resetHostnameV1($virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->resetHostnameV1: ', $e->getMessage(), PHP_EOL;
@@ -301,7 +301,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 
@@ -323,7 +323,7 @@ try {
 ## `restartVirtualMachineV1()`
 
 ```php
-restartVirtualMachineV1($virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+restartVirtualMachineV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Restart virtual machine
@@ -347,10 +347,10 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->restartVirtualMachineV1($virtual_machine_id);
+    $result = $apiInstance->restartVirtualMachineV1($virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->restartVirtualMachineV1: ', $e->getMessage(), PHP_EOL;
@@ -361,7 +361,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 
@@ -383,7 +383,7 @@ try {
 ## `setHostnameV1()`
 
 ```php
-setHostnameV1($virtual_machine_id, $vpsv1_virtual_machine_hostname_update_request): \Hostinger\Model\VPSV1ActionActionResource
+setHostnameV1($virtualMachineId, $vPSV1VirtualMachineHostnameUpdateRequest): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Set hostname
@@ -407,11 +407,11 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
-$vpsv1_virtual_machine_hostname_update_request = new \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest(); // \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$vPSV1VirtualMachineHostnameUpdateRequest = new \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest(); // \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest
 
 try {
-    $result = $apiInstance->setHostnameV1($virtual_machine_id, $vpsv1_virtual_machine_hostname_update_request);
+    $result = $apiInstance->setHostnameV1($virtualMachineId, $vPSV1VirtualMachineHostnameUpdateRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->setHostnameV1: ', $e->getMessage(), PHP_EOL;
@@ -422,8 +422,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
-| **vpsv1_virtual_machine_hostname_update_request** | [**\Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest**](../Model/VPSV1VirtualMachineHostnameUpdateRequest.md)|  | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **vPSV1VirtualMachineHostnameUpdateRequest** | [**\Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest**](../Model/VPSV1VirtualMachineHostnameUpdateRequest.md)|  | |
 
 ### Return type
 
@@ -445,7 +445,7 @@ try {
 ## `setNameserversV1()`
 
 ```php
-setNameserversV1($virtual_machine_id, $vpsv1_virtual_machine_nameservers_update_request): \Hostinger\Model\VPSV1ActionActionResource
+setNameserversV1($virtualMachineId, $vPSV1VirtualMachineNameserversUpdateRequest): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Set nameservers
@@ -469,11 +469,11 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
-$vpsv1_virtual_machine_nameservers_update_request = new \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest(); // \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$vPSV1VirtualMachineNameserversUpdateRequest = new \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest(); // \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest
 
 try {
-    $result = $apiInstance->setNameserversV1($virtual_machine_id, $vpsv1_virtual_machine_nameservers_update_request);
+    $result = $apiInstance->setNameserversV1($virtualMachineId, $vPSV1VirtualMachineNameserversUpdateRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->setNameserversV1: ', $e->getMessage(), PHP_EOL;
@@ -484,8 +484,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
-| **vpsv1_virtual_machine_nameservers_update_request** | [**\Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest**](../Model/VPSV1VirtualMachineNameserversUpdateRequest.md)|  | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **vPSV1VirtualMachineNameserversUpdateRequest** | [**\Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest**](../Model/VPSV1VirtualMachineNameserversUpdateRequest.md)|  | |
 
 ### Return type
 
@@ -507,7 +507,7 @@ try {
 ## `setPanelPasswordV1()`
 
 ```php
-setPanelPasswordV1($virtual_machine_id, $vpsv1_virtual_machine_panel_password_update_request): \Hostinger\Model\VPSV1ActionActionResource
+setPanelPasswordV1($virtualMachineId, $vPSV1VirtualMachinePanelPasswordUpdateRequest): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Set panel password
@@ -531,11 +531,11 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
-$vpsv1_virtual_machine_panel_password_update_request = new \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest(); // \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$vPSV1VirtualMachinePanelPasswordUpdateRequest = new \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest(); // \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest
 
 try {
-    $result = $apiInstance->setPanelPasswordV1($virtual_machine_id, $vpsv1_virtual_machine_panel_password_update_request);
+    $result = $apiInstance->setPanelPasswordV1($virtualMachineId, $vPSV1VirtualMachinePanelPasswordUpdateRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->setPanelPasswordV1: ', $e->getMessage(), PHP_EOL;
@@ -546,8 +546,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
-| **vpsv1_virtual_machine_panel_password_update_request** | [**\Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest**](../Model/VPSV1VirtualMachinePanelPasswordUpdateRequest.md)|  | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **vPSV1VirtualMachinePanelPasswordUpdateRequest** | [**\Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest**](../Model/VPSV1VirtualMachinePanelPasswordUpdateRequest.md)|  | |
 
 ### Return type
 
@@ -569,7 +569,7 @@ try {
 ## `setRootPasswordV1()`
 
 ```php
-setRootPasswordV1($virtual_machine_id, $vpsv1_virtual_machine_root_password_update_request): \Hostinger\Model\VPSV1ActionActionResource
+setRootPasswordV1($virtualMachineId, $vPSV1VirtualMachineRootPasswordUpdateRequest): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Set root password
@@ -593,11 +593,11 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
-$vpsv1_virtual_machine_root_password_update_request = new \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest(); // \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$vPSV1VirtualMachineRootPasswordUpdateRequest = new \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest(); // \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest
 
 try {
-    $result = $apiInstance->setRootPasswordV1($virtual_machine_id, $vpsv1_virtual_machine_root_password_update_request);
+    $result = $apiInstance->setRootPasswordV1($virtualMachineId, $vPSV1VirtualMachineRootPasswordUpdateRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->setRootPasswordV1: ', $e->getMessage(), PHP_EOL;
@@ -608,8 +608,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
-| **vpsv1_virtual_machine_root_password_update_request** | [**\Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest**](../Model/VPSV1VirtualMachineRootPasswordUpdateRequest.md)|  | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **vPSV1VirtualMachineRootPasswordUpdateRequest** | [**\Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest**](../Model/VPSV1VirtualMachineRootPasswordUpdateRequest.md)|  | |
 
 ### Return type
 
@@ -631,7 +631,7 @@ try {
 ## `setupNewVirtualMachineV1()`
 
 ```php
-setupNewVirtualMachineV1($virtual_machine_id, $vpsv1_virtual_machine_setup_request): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource
+setupNewVirtualMachineV1($virtualMachineId, $vPSV1VirtualMachineSetupRequest): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource
 ```
 
 Setup new virtual machine
@@ -655,11 +655,11 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
-$vpsv1_virtual_machine_setup_request = new \Hostinger\Model\VPSV1VirtualMachineSetupRequest(); // \Hostinger\Model\VPSV1VirtualMachineSetupRequest
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$vPSV1VirtualMachineSetupRequest = new \Hostinger\Model\VPSV1VirtualMachineSetupRequest(); // \Hostinger\Model\VPSV1VirtualMachineSetupRequest
 
 try {
-    $result = $apiInstance->setupNewVirtualMachineV1($virtual_machine_id, $vpsv1_virtual_machine_setup_request);
+    $result = $apiInstance->setupNewVirtualMachineV1($virtualMachineId, $vPSV1VirtualMachineSetupRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->setupNewVirtualMachineV1: ', $e->getMessage(), PHP_EOL;
@@ -670,8 +670,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
-| **vpsv1_virtual_machine_setup_request** | [**\Hostinger\Model\VPSV1VirtualMachineSetupRequest**](../Model/VPSV1VirtualMachineSetupRequest.md)|  | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **vPSV1VirtualMachineSetupRequest** | [**\Hostinger\Model\VPSV1VirtualMachineSetupRequest**](../Model/VPSV1VirtualMachineSetupRequest.md)|  | |
 
 ### Return type
 
@@ -693,7 +693,7 @@ try {
 ## `startVirtualMachineV1()`
 
 ```php
-startVirtualMachineV1($virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+startVirtualMachineV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Start virtual machine
@@ -717,10 +717,10 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->startVirtualMachineV1($virtual_machine_id);
+    $result = $apiInstance->startVirtualMachineV1($virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->startVirtualMachineV1: ', $e->getMessage(), PHP_EOL;
@@ -731,7 +731,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 
@@ -753,7 +753,7 @@ try {
 ## `stopVirtualMachineV1()`
 
 ```php
-stopVirtualMachineV1($virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+stopVirtualMachineV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Stop virtual machine
@@ -777,10 +777,10 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->stopVirtualMachineV1($virtual_machine_id);
+    $result = $apiInstance->stopVirtualMachineV1($virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->stopVirtualMachineV1: ', $e->getMessage(), PHP_EOL;
@@ -791,7 +791,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 

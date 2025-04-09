@@ -17,10 +17,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use GuzzleHttp\Promise\PromiseInterface;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
 use Hostinger\HeaderSelector;
@@ -34,43 +32,14 @@ class VPSBackupsApi
 
     protected HeaderSelector $headerSelector;
 
-    protected int $hostIndex;
-
-    /**
-     * @var array<string> $contentTypes
-     */
-    public const contentTypes = [
-        'deleteBackupV1' => [
-            'application/json',
-        ],
-        'getBackupListV1' => [
-            'application/json',
-        ],
-        'restoreBackupV1' => [
-            'application/json',
-        ],
-    ];
-
     public function __construct(
         ?ClientInterface $client = null,
         ?Configuration $config = null,
         ?HeaderSelector $selector = null,
-        int $hostIndex = 0
     ) {
         $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
-        $this->hostIndex = $hostIndex;
-    }
-
-    public function setHostIndex(int $hostIndex): void
-    {
-        $this->hostIndex = $hostIndex;
-    }
-
-    public function getHostIndex(): int
-    {
-        return $this->hostIndex;
     }
 
     public function getConfig(): Configuration
@@ -83,420 +52,73 @@ class VPSBackupsApi
      *
      * Delete backup
      *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int $backup_id Backup ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupV1'] to see the possible values for this operation
+     * @param  int $virtualMachineId Virtual Machine ID (required)
+     * @param  int $backupId Backup ID (required)
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      */
-    public function deleteBackupV1(
-        int $virtual_machine_id,
-        int $backup_id,
-        string $contentType = self::contentTypes['deleteBackupV1'][0]
-    ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function deleteBackupV1(int $virtualMachineId, int $backupId, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
-        list($response) = $this->deleteBackupV1WithHttpInfo($virtual_machine_id, $backup_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation deleteBackupV1WithHttpInfo
-     *
-     * Delete backup
-     *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int $backup_id Backup ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupV1'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return array of \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function deleteBackupV1WithHttpInfo(
-        int $virtual_machine_id,
-        int $backup_id,
-        string $contentType = self::contentTypes['deleteBackupV1'][0]
-    ): array
-    {
-        $request = $this->deleteBackupV1Request($virtual_machine_id, $backup_id, $contentType);
+        $request = $this->deleteBackupV1Request($virtualMachineId, $backupId, );
 
         try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    if (in_array('\Hostinger\Model\CommonSuccessEmptyResource', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSuccessEmptyResource' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSuccessEmptyResource', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if (in_array('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if (in_array('\Hostinger\Model\CommonSchemaErrorResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaErrorResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaErrorResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                    } catch (\JsonException $exception) {
-                        throw new ApiException(
-                            sprintf(
-                                'Error JSON decoding server response (%s)',
-                                $request->getUri()
-                            ),
-                            $statusCode,
-                            $response->getHeaders(),
-                            $content
-                        );
-                    }
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSuccessEmptyResource',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaErrorResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
         }
-    }
 
-    /**
-     * Operation deleteBackupV1Async
-     *
-     * Delete backup
-     *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int $backup_id Backup ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function deleteBackupV1Async(
-        int $virtual_machine_id,
-        int $backup_id,
-        string $contentType = self::contentTypes['deleteBackupV1'][0]
-    ): PromiseInterface
-    {
-        return $this->deleteBackupV1AsyncWithHttpInfo($virtual_machine_id, $backup_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
+        $statusCode = $response->getStatusCode();
+        $returnType = null;
+        $content = \GuzzleHttp\Utils::jsonDecode((string) $response->getBody(), false, 512, JSON_THROW_ON_ERROR);
 
-    /**
-     * Operation deleteBackupV1AsyncWithHttpInfo
-     *
-     * Delete backup
-     *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int $backup_id Backup ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function deleteBackupV1AsyncWithHttpInfo(
-        int $virtual_machine_id,
-        int $backup_id,
-        string $contentType = self::contentTypes['deleteBackupV1'][0]
-    ): PromiseInterface
-    {
-        $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-        $request = $this->deleteBackupV1Request($virtual_machine_id, $backup_id, $contentType);
+        switch ($statusCode) {
+            case 200:
+                $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
+                break;
+            case 401:
+                $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';
+                break;
+            case 500:
+                $returnType = '\Hostinger\Model\CommonSchemaErrorResponseSchema';
+                break;
+        }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
+        return ObjectSerializer::deserialize($content, $returnType);
     }
 
     /**
      * Create request for operation 'deleteBackupV1'
      *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int $backup_id Backup ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupV1'] to see the possible values for this operation
-     *
+     * @param  int $virtualMachineId Virtual Machine ID (required)
+     * @param  int $backupId Backup ID (required)
      * @throws InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteBackupV1Request(
-        int $virtual_machine_id,
-        int $backup_id,
-        string $contentType = self::contentTypes['deleteBackupV1'][0]
-    ): Request
+    protected function deleteBackupV1Request(int $virtualMachineId,int $backupId,): Request
     {
-
-        // verify the required parameter 'virtual_machine_id' is set
-        if ($virtual_machine_id === null || (is_array($virtual_machine_id) && count($virtual_machine_id) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $virtual_machine_id when calling deleteBackupV1'
-            );
-        }
-
-        // verify the required parameter 'backup_id' is set
-        if ($backup_id === null || (is_array($backup_id) && count($backup_id) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $backup_id when calling deleteBackupV1'
-            );
-        }
-
-
         $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/backups/{backupId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($virtual_machine_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'virtualMachineId' . '}',
-                ObjectSerializer::toPathValue($virtual_machine_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($backup_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'backupId' . '}',
-                ObjectSerializer::toPathValue($backup_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
+        $resourcePath = str_replace(
+            '{' . 'virtualMachineId' . '}',
+            ObjectSerializer::toPathValue((string) $virtualMachineId),
+            $resourcePath
+        );
+        $resourcePath = str_replace(
+            '{' . 'backupId' . '}',
+            ObjectSerializer::toPathValue((string) $backupId),
+            $resourcePath
         );
 
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
 
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
 
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
 
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
+        $body = null;
+        $query = [];
 
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->buildRequest('DELETE', $resourcePath, $body, $query);
     }
 
     /**
@@ -504,415 +126,75 @@ class VPSBackupsApi
      *
      * Get backup list
      *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
+     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @param  int|null $page Page number (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupListV1'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return \Hostinger\Model\VPSGetBackupListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      */
-    public function getBackupListV1(
-        int $virtual_machine_id,
-        ?int $page = null,
-        string $contentType = self::contentTypes['getBackupListV1'][0]
-    ): \Hostinger\Model\VPSGetBackupListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function getBackupListV1(int $virtualMachineId, ?int $page = null, ): \Hostinger\Model\VPSGetBackupListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
-        list($response) = $this->getBackupListV1WithHttpInfo($virtual_machine_id, $page, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getBackupListV1WithHttpInfo
-     *
-     * Get backup list
-     *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int|null $page Page number (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupListV1'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return array of \Hostinger\Model\VPSGetBackupListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getBackupListV1WithHttpInfo(
-        int $virtual_machine_id,
-        ?int $page = null,
-        string $contentType = self::contentTypes['getBackupListV1'][0]
-    ): array
-    {
-        $request = $this->getBackupListV1Request($virtual_machine_id, $page, $contentType);
+        $request = $this->getBackupListV1Request($virtualMachineId, $page, );
 
         try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    if (in_array('\Hostinger\Model\VPSGetBackupListV1200Response', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\VPSGetBackupListV1200Response' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\VPSGetBackupListV1200Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if (in_array('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if (in_array('\Hostinger\Model\CommonSchemaErrorResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaErrorResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaErrorResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            $returnType = '\Hostinger\Model\VPSGetBackupListV1200Response';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                    } catch (\JsonException $exception) {
-                        throw new ApiException(
-                            sprintf(
-                                'Error JSON decoding server response (%s)',
-                                $request->getUri()
-                            ),
-                            $statusCode,
-                            $response->getHeaders(),
-                            $content
-                        );
-                    }
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\VPSGetBackupListV1200Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaErrorResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
         }
-    }
 
-    /**
-     * Operation getBackupListV1Async
-     *
-     * Get backup list
-     *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int|null $page Page number (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupListV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function getBackupListV1Async(
-        int $virtual_machine_id,
-        ?int $page = null,
-        string $contentType = self::contentTypes['getBackupListV1'][0]
-    ): PromiseInterface
-    {
-        return $this->getBackupListV1AsyncWithHttpInfo($virtual_machine_id, $page, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
+        $statusCode = $response->getStatusCode();
+        $returnType = null;
+        $content = \GuzzleHttp\Utils::jsonDecode((string) $response->getBody(), false, 512, JSON_THROW_ON_ERROR);
 
-    /**
-     * Operation getBackupListV1AsyncWithHttpInfo
-     *
-     * Get backup list
-     *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int|null $page Page number (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupListV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function getBackupListV1AsyncWithHttpInfo(
-        int $virtual_machine_id,
-        ?int $page = null,
-        string $contentType = self::contentTypes['getBackupListV1'][0]
-    ): PromiseInterface
-    {
-        $returnType = '\Hostinger\Model\VPSGetBackupListV1200Response';
-        $request = $this->getBackupListV1Request($virtual_machine_id, $page, $contentType);
+        switch ($statusCode) {
+            case 200:
+                $returnType = '\Hostinger\Model\VPSGetBackupListV1200Response';
+                break;
+            case 401:
+                $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';
+                break;
+            case 500:
+                $returnType = '\Hostinger\Model\CommonSchemaErrorResponseSchema';
+                break;
+        }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
+        return ObjectSerializer::deserialize($content, $returnType);
     }
 
     /**
      * Create request for operation 'getBackupListV1'
      *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
+     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @param  int|null $page Page number (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupListV1'] to see the possible values for this operation
-     *
      * @throws InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBackupListV1Request(
-        int $virtual_machine_id,
-        ?int $page = null,
-        string $contentType = self::contentTypes['getBackupListV1'][0]
-    ): Request
+    protected function getBackupListV1Request(int $virtualMachineId,?int $page = null,): Request
     {
-
-        // verify the required parameter 'virtual_machine_id' is set
-        if ($virtual_machine_id === null || (is_array($virtual_machine_id) && count($virtual_machine_id) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $virtual_machine_id when calling getBackupListV1'
-            );
-        }
-
-
-
         $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/backups';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
+        $resourcePath = str_replace(
+            '{' . 'virtualMachineId' . '}',
+            ObjectSerializer::toPathValue((string) $virtualMachineId),
+            $resourcePath
+        );
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+
+
+
+
+        $body = null;
+        $query = ObjectSerializer::toQueryValue(
             $page,
             'page', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
             false // required
-        ) ?? []);
-
-
-        // path params
-        if ($virtual_machine_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'virtualMachineId' . '}',
-                ObjectSerializer::toPathValue($virtual_machine_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
         );
 
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->buildRequest('GET', $resourcePath, $body, $query);
     }
 
     /**
@@ -920,423 +202,79 @@ class VPSBackupsApi
      *
      * Restore backup
      *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int $backup_id Backup ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreBackupV1'] to see the possible values for this operation
+     * @param  int $virtualMachineId Virtual Machine ID (required)
+     * @param  int $backupId Backup ID (required)
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      */
-    public function restoreBackupV1(
-        int $virtual_machine_id,
-        int $backup_id,
-        string $contentType = self::contentTypes['restoreBackupV1'][0]
-    ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function restoreBackupV1(int $virtualMachineId, int $backupId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
-        list($response) = $this->restoreBackupV1WithHttpInfo($virtual_machine_id, $backup_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation restoreBackupV1WithHttpInfo
-     *
-     * Restore backup
-     *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int $backup_id Backup ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreBackupV1'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return array of \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function restoreBackupV1WithHttpInfo(
-        int $virtual_machine_id,
-        int $backup_id,
-        string $contentType = self::contentTypes['restoreBackupV1'][0]
-    ): array
-    {
-        $request = $this->restoreBackupV1Request($virtual_machine_id, $backup_id, $contentType);
+        $request = $this->restoreBackupV1Request($virtualMachineId, $backupId, );
 
         try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    if (in_array('\Hostinger\Model\VPSV1ActionActionResource', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\VPSV1ActionActionResource' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\VPSV1ActionActionResource', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if (in_array('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if (in_array('\Hostinger\Model\CommonSchemaErrorResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaErrorResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaErrorResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                    } catch (\JsonException $exception) {
-                        throw new ApiException(
-                            sprintf(
-                                'Error JSON decoding server response (%s)',
-                                $request->getUri()
-                            ),
-                            $statusCode,
-                            $response->getHeaders(),
-                            $content
-                        );
-                    }
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\VPSV1ActionActionResource',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaErrorResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
         }
-    }
 
-    /**
-     * Operation restoreBackupV1Async
-     *
-     * Restore backup
-     *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int $backup_id Backup ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreBackupV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function restoreBackupV1Async(
-        int $virtual_machine_id,
-        int $backup_id,
-        string $contentType = self::contentTypes['restoreBackupV1'][0]
-    ): PromiseInterface
-    {
-        return $this->restoreBackupV1AsyncWithHttpInfo($virtual_machine_id, $backup_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
+        $statusCode = $response->getStatusCode();
+        $returnType = null;
+        $content = \GuzzleHttp\Utils::jsonDecode((string) $response->getBody(), false, 512, JSON_THROW_ON_ERROR);
 
-    /**
-     * Operation restoreBackupV1AsyncWithHttpInfo
-     *
-     * Restore backup
-     *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int $backup_id Backup ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreBackupV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function restoreBackupV1AsyncWithHttpInfo(
-        int $virtual_machine_id,
-        int $backup_id,
-        string $contentType = self::contentTypes['restoreBackupV1'][0]
-    ): PromiseInterface
-    {
-        $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-        $request = $this->restoreBackupV1Request($virtual_machine_id, $backup_id, $contentType);
+        switch ($statusCode) {
+            case 200:
+                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
+                break;
+            case 401:
+                $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';
+                break;
+            case 500:
+                $returnType = '\Hostinger\Model\CommonSchemaErrorResponseSchema';
+                break;
+        }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
+        return ObjectSerializer::deserialize($content, $returnType);
     }
 
     /**
      * Create request for operation 'restoreBackupV1'
      *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  int $backup_id Backup ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreBackupV1'] to see the possible values for this operation
-     *
+     * @param  int $virtualMachineId Virtual Machine ID (required)
+     * @param  int $backupId Backup ID (required)
      * @throws InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
-    public function restoreBackupV1Request(
-        int $virtual_machine_id,
-        int $backup_id,
-        string $contentType = self::contentTypes['restoreBackupV1'][0]
-    ): Request
+    protected function restoreBackupV1Request(int $virtualMachineId,int $backupId,): Request
     {
-
-        // verify the required parameter 'virtual_machine_id' is set
-        if ($virtual_machine_id === null || (is_array($virtual_machine_id) && count($virtual_machine_id) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $virtual_machine_id when calling restoreBackupV1'
-            );
-        }
-
-        // verify the required parameter 'backup_id' is set
-        if ($backup_id === null || (is_array($backup_id) && count($backup_id) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $backup_id when calling restoreBackupV1'
-            );
-        }
-
-
         $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/backups/{backupId}/restore';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($virtual_machine_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'virtualMachineId' . '}',
-                ObjectSerializer::toPathValue($virtual_machine_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($backup_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'backupId' . '}',
-                ObjectSerializer::toPathValue($backup_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
+        $resourcePath = str_replace(
+            '{' . 'virtualMachineId' . '}',
+            ObjectSerializer::toPathValue((string) $virtualMachineId),
+            $resourcePath
+        );
+        $resourcePath = str_replace(
+            '{' . 'backupId' . '}',
+            ObjectSerializer::toPathValue((string) $backupId),
+            $resourcePath
         );
 
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
 
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
 
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
 
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
+        $body = null;
+        $query = [];
 
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->buildRequest('POST', $resourcePath, $body, $query);
     }
 
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function createHttpClientOption(): array
     {
         $options = [];
@@ -1348,5 +286,36 @@ class VPSBackupsApi
         }
 
         return $options;
+    }
+
+    /**
+     * @param array<string, string> $query
+     */
+    protected function buildRequest(
+        string $httpMethod,
+        string $resourcePath,
+        ?string $body = null,
+        array $query = [],
+        string $contentType = 'application/json',
+    ): Request {
+        $headers = $this->headerSelector->selectHeaders(
+            accept: ['application/json'],
+            contentType: $contentType,
+            isMultipart: false
+        );
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $query = ObjectSerializer::buildQuery($query);
+
+        return new Request(
+            $httpMethod,
+            $this->config->getHost() . $resourcePath . ($query ? "?$query" : ''),
+            $headers,
+            $body
+        );
     }
 }

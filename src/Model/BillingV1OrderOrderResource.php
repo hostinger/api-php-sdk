@@ -25,72 +25,59 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'Billing.V1.Order.OrderResource';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
         'id' => 'int',
-        'subscription_id' => 'string',
+        'subscriptionId' => 'string',
         'status' => 'string',
         'currency' => 'string',
         'subtotal' => 'int',
         'total' => 'int',
-        'billing_address' => '\Hostinger\Model\BillingV1OrderOrderBillingAddressResource',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'billingAddress' => '\Hostinger\Model\BillingV1OrderOrderBillingAddressResource',
+        'createdAt' => '\DateTime',
+        'updatedAt' => '\DateTime'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
         'id' => null,
-        'subscription_id' => null,
+        'subscriptionId' => null,
         'status' => null,
         'currency' => null,
         'subtotal' => null,
         'total' => null,
-        'billing_address' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'billingAddress' => null,
+        'createdAt' => 'date-time',
+        'updatedAt' => 'date-time'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'subscription_id' => false,
+        'subscriptionId' => false,
         'status' => false,
         'currency' => false,
         'subtotal' => false,
         'total' => false,
-        'billing_address' => false,
-        'created_at' => false,
-        'updated_at' => false
+        'billingAddress' => false,
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -99,8 +86,6 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -109,8 +94,6 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -119,9 +102,7 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -129,87 +110,69 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
         'id' => 'id',
-        'subscription_id' => 'subscription_id',
+        'subscriptionId' => 'subscription_id',
         'status' => 'status',
         'currency' => 'currency',
         'subtotal' => 'subtotal',
         'total' => 'total',
-        'billing_address' => 'billing_address',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'billingAddress' => 'billing_address',
+        'createdAt' => 'created_at',
+        'updatedAt' => 'updated_at'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
         'id' => 'setId',
-        'subscription_id' => 'setSubscriptionId',
+        'subscriptionId' => 'setSubscriptionId',
         'status' => 'setStatus',
         'currency' => 'setCurrency',
         'subtotal' => 'setSubtotal',
         'total' => 'setTotal',
-        'billing_address' => 'setBillingAddress',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'billingAddress' => 'setBillingAddress',
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
         'id' => 'getId',
-        'subscription_id' => 'getSubscriptionId',
+        'subscriptionId' => 'getSubscriptionId',
         'status' => 'getStatus',
         'currency' => 'getCurrency',
         'subtotal' => 'getSubtotal',
         'total' => 'getTotal',
-        'billing_address' => 'getBillingAddress',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'billingAddress' => 'getBillingAddress',
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -218,8 +181,6 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -228,8 +189,6 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -237,9 +196,6 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -258,7 +214,7 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
     /**
      * @return array<string>
      */
-    public function getStatusAllowableValues()
+    public function getStatusAllowableValues(): array
     {
         return [
             self::STATUS_COMPLETED,
@@ -274,8 +230,6 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
     }
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -286,24 +240,18 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
     public function __construct(?array $data = [])
     {
         $this->setIfExists('id', $data, null);
-        $this->setIfExists('subscription_id', $data, null);
+        $this->setIfExists('subscriptionId', $data, null);
         $this->setIfExists('status', $data, null);
         $this->setIfExists('currency', $data, null);
         $this->setIfExists('subtotal', $data, null);
         $this->setIfExists('total', $data, null);
-        $this->setIfExists('billing_address', $data, null);
-        $this->setIfExists('created_at', $data, null);
-        $this->setIfExists('updated_at', $data, null);
+        $this->setIfExists('billingAddress', $data, null);
+        $this->setIfExists('createdAt', $data, null);
+        $this->setIfExists('updatedAt', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -333,14 +281,10 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return int|null
@@ -355,35 +299,27 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
      */
     public function setId(?int $id): static
     {
-        if (is_null($id)) {
-            throw new InvalidArgumentException('non-nullable id cannot be null');
-        }
         $this->container['id'] = $id;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
     public function getSubscriptionId(): ?string
     {
-        return $this->container['subscription_id'];
+        return $this->container['subscriptionId'];
     }
 
     /**
-     * @param string|null $subscription_id Subscription ID
+     * @param string|null $subscriptionId Subscription ID
      */
-    public function setSubscriptionId(?string $subscription_id): static
+    public function setSubscriptionId(?string $subscriptionId): static
     {
-        if (is_null($subscription_id)) {
-            throw new InvalidArgumentException('non-nullable subscription_id cannot be null');
-        }
-        $this->container['subscription_id'] = $subscription_id;
+        $this->container['subscriptionId'] = $subscriptionId;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -397,9 +333,6 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
      */
     public function setStatus(?string $status): static
     {
-        if (is_null($status)) {
-            throw new InvalidArgumentException('non-nullable status cannot be null');
-        }
         $allowedValues = $this->getStatusAllowableValues();
         if (!in_array($status, $allowedValues, true)) {
             throw new InvalidArgumentException(
@@ -414,7 +347,6 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -428,14 +360,10 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
      */
     public function setCurrency(?string $currency): static
     {
-        if (is_null($currency)) {
-            throw new InvalidArgumentException('non-nullable currency cannot be null');
-        }
         $this->container['currency'] = $currency;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
@@ -449,14 +377,10 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
      */
     public function setSubtotal(?int $subtotal): static
     {
-        if (is_null($subtotal)) {
-            throw new InvalidArgumentException('non-nullable subtotal cannot be null');
-        }
         $this->container['subtotal'] = $subtotal;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
@@ -470,73 +394,58 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
      */
     public function setTotal(?int $total): static
     {
-        if (is_null($total)) {
-            throw new InvalidArgumentException('non-nullable total cannot be null');
-        }
         $this->container['total'] = $total;
 
         return $this;
     }
-
     /**
      * @return \Hostinger\Model\BillingV1OrderOrderBillingAddressResource|null
      */
     public function getBillingAddress(): ?\Hostinger\Model\BillingV1OrderOrderBillingAddressResource
     {
-        return $this->container['billing_address'];
+        return $this->container['billingAddress'];
     }
 
     /**
-     * @param \Hostinger\Model\BillingV1OrderOrderBillingAddressResource|null $billing_address billing_address
+     * @param \Hostinger\Model\BillingV1OrderOrderBillingAddressResource|null $billingAddress billingAddress
      */
-    public function setBillingAddress(?\Hostinger\Model\BillingV1OrderOrderBillingAddressResource $billing_address): static
+    public function setBillingAddress(?\Hostinger\Model\BillingV1OrderOrderBillingAddressResource $billingAddress): static
     {
-        if (is_null($billing_address)) {
-            throw new InvalidArgumentException('non-nullable billing_address cannot be null');
-        }
-        $this->container['billing_address'] = $billing_address;
+        $this->container['billingAddress'] = $billingAddress;
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime|null $createdAt createdAt
      */
-    public function setCreatedAt(?\DateTime $created_at): static
+    public function setCreatedAt(?\DateTime $createdAt): static
     {
-        if (is_null($created_at)) {
-            throw new InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime|null $updatedAt updatedAt
      */
-    public function setUpdatedAt(?\DateTime $updated_at): static
+    public function setUpdatedAt(?\DateTime $updatedAt): static
     {
-        if (is_null($updated_at)) {
-            throw new InvalidArgumentException('non-nullable updated_at cannot be null');
-        }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }
@@ -565,22 +474,12 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -589,9 +488,6 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

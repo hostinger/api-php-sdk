@@ -25,54 +25,41 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'Billing.V1.Order.StoreRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'payment_method_id' => 'int',
+        'paymentMethodId' => 'int',
         'items' => '\Hostinger\Model\BillingV1OrderStoreRequestItemsInner[]',
         'coupons' => 'mixed[]'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'payment_method_id' => null,
+        'paymentMethodId' => null,
         'items' => null,
         'coupons' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'payment_method_id' => false,
+        'paymentMethodId' => false,
         'items' => false,
         'coupons' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -81,8 +68,6 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -91,8 +76,6 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -101,9 +84,7 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -111,69 +92,51 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'payment_method_id' => 'payment_method_id',
+        'paymentMethodId' => 'payment_method_id',
         'items' => 'items',
         'coupons' => 'coupons'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
-        'payment_method_id' => 'setPaymentMethodId',
+        'paymentMethodId' => 'setPaymentMethodId',
         'items' => 'setItems',
         'coupons' => 'setCoupons'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
-        'payment_method_id' => 'getPaymentMethodId',
+        'paymentMethodId' => 'getPaymentMethodId',
         'items' => 'getItems',
         'coupons' => 'getCoupons'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -182,8 +145,6 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -192,8 +153,6 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -201,9 +160,6 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -211,8 +167,6 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
 
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -222,19 +176,13 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
      */
     public function __construct(?array $data = [])
     {
-        $this->setIfExists('payment_method_id', $data, null);
+        $this->setIfExists('paymentMethodId', $data, null);
         $this->setIfExists('items', $data, null);
         $this->setIfExists('coupons', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -252,8 +200,8 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['payment_method_id'] === null) {
-            $invalidProperties[] = "'payment_method_id' can't be null";
+        if ($this->container['paymentMethodId'] === null) {
+            $invalidProperties[] = "'paymentMethodId' can't be null";
         }
         if ($this->container['items'] === null) {
             $invalidProperties[] = "'items' can't be null";
@@ -261,36 +209,28 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return int
      */
     public function getPaymentMethodId(): int
     {
-        return $this->container['payment_method_id'];
+        return $this->container['paymentMethodId'];
     }
 
     /**
-     * @param int $payment_method_id Payment method ID
+     * @param int $paymentMethodId Payment method ID
      */
-    public function setPaymentMethodId(int $payment_method_id): static
+    public function setPaymentMethodId(int $paymentMethodId): static
     {
-        if (is_null($payment_method_id)) {
-            throw new InvalidArgumentException('non-nullable payment_method_id cannot be null');
-        }
-        $this->container['payment_method_id'] = $payment_method_id;
+        $this->container['paymentMethodId'] = $paymentMethodId;
 
         return $this;
     }
-
     /**
      * @return \Hostinger\Model\BillingV1OrderStoreRequestItemsInner[]
      */
@@ -304,14 +244,10 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
      */
     public function setItems(array $items): static
     {
-        if (is_null($items)) {
-            throw new InvalidArgumentException('non-nullable items cannot be null');
-        }
         $this->container['items'] = $items;
 
         return $this;
     }
-
     /**
      * @return mixed[]|null
      */
@@ -325,9 +261,6 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
      */
     public function setCoupons(?array $coupons): static
     {
-        if (is_null($coupons)) {
-            throw new InvalidArgumentException('non-nullable coupons cannot be null');
-        }
         $this->container['coupons'] = $coupons;
 
         return $this;
@@ -357,22 +290,12 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -381,9 +304,6 @@ class BillingV1OrderStoreRequest implements ModelInterface, ArrayAccess, JsonSer
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

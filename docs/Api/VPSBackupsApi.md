@@ -12,7 +12,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `deleteBackupV1()`
 
 ```php
-deleteBackupV1($virtual_machine_id, $backup_id): \Hostinger\Model\CommonSuccessEmptyResource
+deleteBackupV1($virtualMachineId, $backupId): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
 Delete backup
@@ -36,11 +36,11 @@ $apiInstance = new Hostinger\Api\VPSBackupsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
-$backup_id = 8676502; // int | Backup ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$backupId = 8676502; // int | Backup ID
 
 try {
-    $result = $apiInstance->deleteBackupV1($virtual_machine_id, $backup_id);
+    $result = $apiInstance->deleteBackupV1($virtualMachineId, $backupId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSBackupsApi->deleteBackupV1: ', $e->getMessage(), PHP_EOL;
@@ -51,8 +51,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
-| **backup_id** | **int**| Backup ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **backupId** | **int**| Backup ID | |
 
 ### Return type
 
@@ -74,7 +74,7 @@ try {
 ## `getBackupListV1()`
 
 ```php
-getBackupListV1($virtual_machine_id, $page): \Hostinger\Model\VPSGetBackupListV1200Response
+getBackupListV1($virtualMachineId, $page): \Hostinger\Model\VPSGetBackupListV1200Response
 ```
 
 Get backup list
@@ -98,11 +98,11 @@ $apiInstance = new Hostinger\Api\VPSBackupsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 $page = 1; // int | Page number
 
 try {
-    $result = $apiInstance->getBackupListV1($virtual_machine_id, $page);
+    $result = $apiInstance->getBackupListV1($virtualMachineId, $page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSBackupsApi->getBackupListV1: ', $e->getMessage(), PHP_EOL;
@@ -113,7 +113,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 | **page** | **int**| Page number | [optional] |
 
 ### Return type
@@ -136,7 +136,7 @@ try {
 ## `restoreBackupV1()`
 
 ```php
-restoreBackupV1($virtual_machine_id, $backup_id): \Hostinger\Model\VPSV1ActionActionResource
+restoreBackupV1($virtualMachineId, $backupId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Restore backup
@@ -160,11 +160,11 @@ $apiInstance = new Hostinger\Api\VPSBackupsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
-$backup_id = 8676502; // int | Backup ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$backupId = 8676502; // int | Backup ID
 
 try {
-    $result = $apiInstance->restoreBackupV1($virtual_machine_id, $backup_id);
+    $result = $apiInstance->restoreBackupV1($virtualMachineId, $backupId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSBackupsApi->restoreBackupV1: ', $e->getMessage(), PHP_EOL;
@@ -175,8 +175,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
-| **backup_id** | **int**| Backup ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **backupId** | **int**| Backup ID | |
 
 ### Return type
 

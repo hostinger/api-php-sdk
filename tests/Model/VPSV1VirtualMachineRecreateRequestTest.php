@@ -39,6 +39,12 @@ class VPSV1VirtualMachineRecreateRequestTest extends TestCase
         self::markTestIncomplete('Not implemented');
     }
 
+    public function testPropertyTemplateId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
     public function testPropertyPassword()
     {
         // TODO: implement
@@ -46,12 +52,6 @@ class VPSV1VirtualMachineRecreateRequestTest extends TestCase
     }
 
     public function testPropertyPostInstallScriptId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    public function testPropertyTemplateId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

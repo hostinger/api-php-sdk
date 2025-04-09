@@ -66,7 +66,7 @@ class ObjectSerializer
                                     throw new \InvalidArgumentException(
                                         sprintf(
                                             "Invalid value for enum '%s', must be one of: '%s'",
-                                            $openAPIType::class,
+                                            $openAPIType,
                                             $imploded
                                         )
                                     );
@@ -321,7 +321,7 @@ class ObjectSerializer
      *
      * @param mixed         $data          object or primitive to be deserialized
      * @param string        $class         class name is passed as a string
-     * @param string[]|null $httpHeaders   HTTP headers
+     * @param array<string>|null $httpHeaders   HTTP headers
      *
      * @return mixed a single or an array of $class instances
      */

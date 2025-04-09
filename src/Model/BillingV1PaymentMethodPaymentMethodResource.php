@@ -25,72 +25,59 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'Billing.V1.PaymentMethod.PaymentMethodResource';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
         'id' => 'int',
         'name' => 'string',
         'identifier' => 'string',
-        'payment_method' => 'string',
-        'is_default' => 'bool',
-        'is_expired' => 'bool',
-        'is_suspended' => 'bool',
-        'created_at' => '\DateTime',
-        'expires_at' => '\DateTime'
+        'paymentMethod' => 'string',
+        'isDefault' => 'bool',
+        'isExpired' => 'bool',
+        'isSuspended' => 'bool',
+        'createdAt' => '\DateTime',
+        'expiresAt' => '\DateTime'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
         'id' => null,
         'name' => null,
         'identifier' => null,
-        'payment_method' => null,
-        'is_default' => null,
-        'is_expired' => null,
-        'is_suspended' => null,
-        'created_at' => 'date-time',
-        'expires_at' => 'date-time'
+        'paymentMethod' => null,
+        'isDefault' => null,
+        'isExpired' => null,
+        'isSuspended' => null,
+        'createdAt' => 'date-time',
+        'expiresAt' => 'date-time'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
         'id' => false,
         'name' => false,
         'identifier' => false,
-        'payment_method' => false,
-        'is_default' => false,
-        'is_expired' => false,
-        'is_suspended' => false,
-        'created_at' => false,
-        'expires_at' => false
+        'paymentMethod' => false,
+        'isDefault' => false,
+        'isExpired' => false,
+        'isSuspended' => false,
+        'createdAt' => false,
+        'expiresAt' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -99,8 +86,6 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -109,8 +94,6 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -119,9 +102,7 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -129,87 +110,69 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
         'id' => 'id',
         'name' => 'name',
         'identifier' => 'identifier',
-        'payment_method' => 'payment_method',
-        'is_default' => 'is_default',
-        'is_expired' => 'is_expired',
-        'is_suspended' => 'is_suspended',
-        'created_at' => 'created_at',
-        'expires_at' => 'expires_at'
+        'paymentMethod' => 'payment_method',
+        'isDefault' => 'is_default',
+        'isExpired' => 'is_expired',
+        'isSuspended' => 'is_suspended',
+        'createdAt' => 'created_at',
+        'expiresAt' => 'expires_at'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
         'id' => 'setId',
         'name' => 'setName',
         'identifier' => 'setIdentifier',
-        'payment_method' => 'setPaymentMethod',
-        'is_default' => 'setIsDefault',
-        'is_expired' => 'setIsExpired',
-        'is_suspended' => 'setIsSuspended',
-        'created_at' => 'setCreatedAt',
-        'expires_at' => 'setExpiresAt'
+        'paymentMethod' => 'setPaymentMethod',
+        'isDefault' => 'setIsDefault',
+        'isExpired' => 'setIsExpired',
+        'isSuspended' => 'setIsSuspended',
+        'createdAt' => 'setCreatedAt',
+        'expiresAt' => 'setExpiresAt'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
         'id' => 'getId',
         'name' => 'getName',
         'identifier' => 'getIdentifier',
-        'payment_method' => 'getPaymentMethod',
-        'is_default' => 'getIsDefault',
-        'is_expired' => 'getIsExpired',
-        'is_suspended' => 'getIsSuspended',
-        'created_at' => 'getCreatedAt',
-        'expires_at' => 'getExpiresAt'
+        'paymentMethod' => 'getPaymentMethod',
+        'isDefault' => 'getIsDefault',
+        'isExpired' => 'getIsExpired',
+        'isSuspended' => 'getIsSuspended',
+        'createdAt' => 'getCreatedAt',
+        'expiresAt' => 'getExpiresAt'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -218,8 +181,6 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -228,8 +189,6 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -237,9 +196,6 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -247,8 +203,6 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
 
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -261,22 +215,16 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
         $this->setIfExists('id', $data, null);
         $this->setIfExists('name', $data, null);
         $this->setIfExists('identifier', $data, null);
-        $this->setIfExists('payment_method', $data, null);
-        $this->setIfExists('is_default', $data, null);
-        $this->setIfExists('is_expired', $data, null);
-        $this->setIfExists('is_suspended', $data, null);
-        $this->setIfExists('created_at', $data, null);
-        $this->setIfExists('expires_at', $data, null);
+        $this->setIfExists('paymentMethod', $data, null);
+        $this->setIfExists('isDefault', $data, null);
+        $this->setIfExists('isExpired', $data, null);
+        $this->setIfExists('isSuspended', $data, null);
+        $this->setIfExists('createdAt', $data, null);
+        $this->setIfExists('expiresAt', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -297,14 +245,10 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return int|null
@@ -319,14 +263,10 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
      */
     public function setId(?int $id): static
     {
-        if (is_null($id)) {
-            throw new InvalidArgumentException('non-nullable id cannot be null');
-        }
         $this->container['id'] = $id;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -340,14 +280,10 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
      */
     public function setName(?string $name): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
-        }
         $this->container['name'] = $name;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -361,136 +297,109 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
      */
     public function setIdentifier(?string $identifier): static
     {
-        if (is_null($identifier)) {
-            throw new InvalidArgumentException('non-nullable identifier cannot be null');
-        }
         $this->container['identifier'] = $identifier;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
     public function getPaymentMethod(): ?string
     {
-        return $this->container['payment_method'];
+        return $this->container['paymentMethod'];
     }
 
     /**
-     * @param string|null $payment_method payment_method
+     * @param string|null $paymentMethod paymentMethod
      */
-    public function setPaymentMethod(?string $payment_method): static
+    public function setPaymentMethod(?string $paymentMethod): static
     {
-        if (is_null($payment_method)) {
-            throw new InvalidArgumentException('non-nullable payment_method cannot be null');
-        }
-        $this->container['payment_method'] = $payment_method;
+        $this->container['paymentMethod'] = $paymentMethod;
 
         return $this;
     }
-
     /**
      * @return bool|null
      */
     public function getIsDefault(): ?bool
     {
-        return $this->container['is_default'];
+        return $this->container['isDefault'];
     }
 
     /**
-     * @param bool|null $is_default is_default
+     * @param bool|null $isDefault isDefault
      */
-    public function setIsDefault(?bool $is_default): static
+    public function setIsDefault(?bool $isDefault): static
     {
-        if (is_null($is_default)) {
-            throw new InvalidArgumentException('non-nullable is_default cannot be null');
-        }
-        $this->container['is_default'] = $is_default;
+        $this->container['isDefault'] = $isDefault;
 
         return $this;
     }
-
     /**
      * @return bool|null
      */
     public function getIsExpired(): ?bool
     {
-        return $this->container['is_expired'];
+        return $this->container['isExpired'];
     }
 
     /**
-     * @param bool|null $is_expired is_expired
+     * @param bool|null $isExpired isExpired
      */
-    public function setIsExpired(?bool $is_expired): static
+    public function setIsExpired(?bool $isExpired): static
     {
-        if (is_null($is_expired)) {
-            throw new InvalidArgumentException('non-nullable is_expired cannot be null');
-        }
-        $this->container['is_expired'] = $is_expired;
+        $this->container['isExpired'] = $isExpired;
 
         return $this;
     }
-
     /**
      * @return bool|null
      */
     public function getIsSuspended(): ?bool
     {
-        return $this->container['is_suspended'];
+        return $this->container['isSuspended'];
     }
 
     /**
-     * @param bool|null $is_suspended is_suspended
+     * @param bool|null $isSuspended isSuspended
      */
-    public function setIsSuspended(?bool $is_suspended): static
+    public function setIsSuspended(?bool $isSuspended): static
     {
-        if (is_null($is_suspended)) {
-            throw new InvalidArgumentException('non-nullable is_suspended cannot be null');
-        }
-        $this->container['is_suspended'] = $is_suspended;
+        $this->container['isSuspended'] = $isSuspended;
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime|null $createdAt createdAt
      */
-    public function setCreatedAt(?\DateTime $created_at): static
+    public function setCreatedAt(?\DateTime $createdAt): static
     {
-        if (is_null($created_at)) {
-            throw new InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
-
     /**
      * @return \DateTime|null
      */
     public function getExpiresAt(): ?\DateTime
     {
-        return $this->container['expires_at'];
+        return $this->container['expiresAt'];
     }
 
     /**
-     * @param \DateTime|null $expires_at expires_at
+     * @param \DateTime|null $expiresAt expiresAt
      */
-    public function setExpiresAt(?\DateTime $expires_at): static
+    public function setExpiresAt(?\DateTime $expiresAt): static
     {
-        if (is_null($expires_at)) {
-            throw new InvalidArgumentException('non-nullable expires_at cannot be null');
-        }
-        $this->container['expires_at'] = $expires_at;
+        $this->container['expiresAt'] = $expiresAt;
 
         return $this;
     }
@@ -519,22 +428,12 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -543,9 +442,6 @@ class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, Arr
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

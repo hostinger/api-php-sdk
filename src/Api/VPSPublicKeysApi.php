@@ -17,10 +17,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use GuzzleHttp\Promise\PromiseInterface;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
 use Hostinger\HeaderSelector;
@@ -34,46 +32,14 @@ class VPSPublicKeysApi
 
     protected HeaderSelector $headerSelector;
 
-    protected int $hostIndex;
-
-    /**
-     * @var array<string> $contentTypes
-     */
-    public const contentTypes = [
-        'attachPublicKeyV1' => [
-            'application/json',
-        ],
-        'createNewPublicKeyV1' => [
-            'application/json',
-        ],
-        'deleteAPublicKeyV1' => [
-            'application/json',
-        ],
-        'getPublicKeyListV1' => [
-            'application/json',
-        ],
-    ];
-
     public function __construct(
         ?ClientInterface $client = null,
         ?Configuration $config = null,
         ?HeaderSelector $selector = null,
-        int $hostIndex = 0
     ) {
         $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
-        $this->hostIndex = $hostIndex;
-    }
-
-    public function setHostIndex(int $hostIndex): void
-    {
-        $this->hostIndex = $hostIndex;
-    }
-
-    public function getHostIndex(): int
-    {
-        return $this->hostIndex;
     }
 
     public function getConfig(): Configuration
@@ -86,454 +52,71 @@ class VPSPublicKeysApi
      *
      * Attach public key
      *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1PublicKeyAttachRequest $vpsv1_public_key_attach_request vpsv1_public_key_attach_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachPublicKeyV1'] to see the possible values for this operation
+     * @param  int $virtualMachineId Virtual Machine ID (required)
+     * @param  \Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest vPSV1PublicKeyAttachRequest (required)
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      */
-    public function attachPublicKeyV1(
-        int $virtual_machine_id,
-        \Hostinger\Model\VPSV1PublicKeyAttachRequest $vpsv1_public_key_attach_request,
-        string $contentType = self::contentTypes['attachPublicKeyV1'][0]
-    ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function attachPublicKeyV1(int $virtualMachineId, \Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
-        list($response) = $this->attachPublicKeyV1WithHttpInfo($virtual_machine_id, $vpsv1_public_key_attach_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation attachPublicKeyV1WithHttpInfo
-     *
-     * Attach public key
-     *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1PublicKeyAttachRequest $vpsv1_public_key_attach_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachPublicKeyV1'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return array of \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function attachPublicKeyV1WithHttpInfo(
-        int $virtual_machine_id,
-        \Hostinger\Model\VPSV1PublicKeyAttachRequest $vpsv1_public_key_attach_request,
-        string $contentType = self::contentTypes['attachPublicKeyV1'][0]
-    ): array
-    {
-        $request = $this->attachPublicKeyV1Request($virtual_machine_id, $vpsv1_public_key_attach_request, $contentType);
+        $request = $this->attachPublicKeyV1Request($virtualMachineId, $vPSV1PublicKeyAttachRequest, );
 
         try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    if (in_array('\Hostinger\Model\VPSV1ActionActionResource', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\VPSV1ActionActionResource' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\VPSV1ActionActionResource', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 422:
-                    if (in_array('\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if (in_array('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if (in_array('\Hostinger\Model\CommonSchemaErrorResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaErrorResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaErrorResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                    } catch (\JsonException $exception) {
-                        throw new ApiException(
-                            sprintf(
-                                'Error JSON decoding server response (%s)',
-                                $request->getUri()
-                            ),
-                            $statusCode,
-                            $response->getHeaders(),
-                            $content
-                        );
-                    }
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\VPSV1ActionActionResource',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 422:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaErrorResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
         }
-    }
 
-    /**
-     * Operation attachPublicKeyV1Async
-     *
-     * Attach public key
-     *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1PublicKeyAttachRequest $vpsv1_public_key_attach_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachPublicKeyV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function attachPublicKeyV1Async(
-        int $virtual_machine_id,
-        \Hostinger\Model\VPSV1PublicKeyAttachRequest $vpsv1_public_key_attach_request,
-        string $contentType = self::contentTypes['attachPublicKeyV1'][0]
-    ): PromiseInterface
-    {
-        return $this->attachPublicKeyV1AsyncWithHttpInfo($virtual_machine_id, $vpsv1_public_key_attach_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
+        $statusCode = $response->getStatusCode();
+        $returnType = null;
+        $content = \GuzzleHttp\Utils::jsonDecode((string) $response->getBody(), false, 512, JSON_THROW_ON_ERROR);
 
-    /**
-     * Operation attachPublicKeyV1AsyncWithHttpInfo
-     *
-     * Attach public key
-     *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1PublicKeyAttachRequest $vpsv1_public_key_attach_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachPublicKeyV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function attachPublicKeyV1AsyncWithHttpInfo(
-        int $virtual_machine_id,
-        \Hostinger\Model\VPSV1PublicKeyAttachRequest $vpsv1_public_key_attach_request,
-        string $contentType = self::contentTypes['attachPublicKeyV1'][0]
-    ): PromiseInterface
-    {
-        $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-        $request = $this->attachPublicKeyV1Request($virtual_machine_id, $vpsv1_public_key_attach_request, $contentType);
+        switch ($statusCode) {
+            case 200:
+                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
+                break;
+            case 422:
+                $returnType = '\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema';
+                break;
+            case 401:
+                $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';
+                break;
+            case 500:
+                $returnType = '\Hostinger\Model\CommonSchemaErrorResponseSchema';
+                break;
+        }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
+        return ObjectSerializer::deserialize($content, $returnType);
     }
 
     /**
      * Create request for operation 'attachPublicKeyV1'
      *
-     * @param  int $virtual_machine_id Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1PublicKeyAttachRequest $vpsv1_public_key_attach_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachPublicKeyV1'] to see the possible values for this operation
-     *
+     * @param  int $virtualMachineId Virtual Machine ID (required)
+     * @param  \Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest (required)
      * @throws InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
-    public function attachPublicKeyV1Request(
-        int $virtual_machine_id,
-        \Hostinger\Model\VPSV1PublicKeyAttachRequest $vpsv1_public_key_attach_request,
-        string $contentType = self::contentTypes['attachPublicKeyV1'][0]
-    ): Request
+    protected function attachPublicKeyV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest,): Request
     {
-
-        // verify the required parameter 'virtual_machine_id' is set
-        if ($virtual_machine_id === null || (is_array($virtual_machine_id) && count($virtual_machine_id) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $virtual_machine_id when calling attachPublicKeyV1'
-            );
-        }
-
-        // verify the required parameter 'vpsv1_public_key_attach_request' is set
-        if ($vpsv1_public_key_attach_request === null || (is_array($vpsv1_public_key_attach_request) && count($vpsv1_public_key_attach_request) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $vpsv1_public_key_attach_request when calling attachPublicKeyV1'
-            );
-        }
-
-
         $resourcePath = '/api/vps/v1/public-keys/attach/{virtualMachineId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($virtual_machine_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'virtualMachineId' . '}',
-                ObjectSerializer::toPathValue($virtual_machine_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
+        $resourcePath = str_replace(
+            '{' . 'virtualMachineId' . '}',
+            ObjectSerializer::toPathValue((string) $virtualMachineId),
+            $resourcePath
         );
 
-        // for model (json/xml)
-        if (isset($vpsv1_public_key_attach_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vpsv1_public_key_attach_request));
-            } else {
-                $httpBody = $vpsv1_public_key_attach_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
 
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
 
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
 
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
+        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1PublicKeyAttachRequest));
+        $query = [];
 
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->buildRequest('POST', $resourcePath, $body, $query);
     }
 
     /**
@@ -541,429 +124,62 @@ class VPSPublicKeysApi
      *
      * Create new public key
      *
-     * @param  \Hostinger\Model\VPSV1PublicKeyStoreRequest $vpsv1_public_key_store_request vpsv1_public_key_store_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createNewPublicKeyV1'] to see the possible values for this operation
+     * @param  \Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest vPSV1PublicKeyStoreRequest (required)
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return \Hostinger\Model\VPSV1PublicKeyPublicKeyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      */
-    public function createNewPublicKeyV1(
-        \Hostinger\Model\VPSV1PublicKeyStoreRequest $vpsv1_public_key_store_request,
-        string $contentType = self::contentTypes['createNewPublicKeyV1'][0]
-    ): \Hostinger\Model\VPSV1PublicKeyPublicKeyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function createNewPublicKeyV1(\Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest, ): \Hostinger\Model\VPSV1PublicKeyPublicKeyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
-        list($response) = $this->createNewPublicKeyV1WithHttpInfo($vpsv1_public_key_store_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation createNewPublicKeyV1WithHttpInfo
-     *
-     * Create new public key
-     *
-     * @param  \Hostinger\Model\VPSV1PublicKeyStoreRequest $vpsv1_public_key_store_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createNewPublicKeyV1'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return array of \Hostinger\Model\VPSV1PublicKeyPublicKeyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createNewPublicKeyV1WithHttpInfo(
-        \Hostinger\Model\VPSV1PublicKeyStoreRequest $vpsv1_public_key_store_request,
-        string $contentType = self::contentTypes['createNewPublicKeyV1'][0]
-    ): array
-    {
-        $request = $this->createNewPublicKeyV1Request($vpsv1_public_key_store_request, $contentType);
+        $request = $this->createNewPublicKeyV1Request($vPSV1PublicKeyStoreRequest, );
 
         try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    if (in_array('\Hostinger\Model\VPSV1PublicKeyPublicKeyResource', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\VPSV1PublicKeyPublicKeyResource' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\VPSV1PublicKeyPublicKeyResource', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 422:
-                    if (in_array('\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if (in_array('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if (in_array('\Hostinger\Model\CommonSchemaErrorResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaErrorResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaErrorResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            $returnType = '\Hostinger\Model\VPSV1PublicKeyPublicKeyResource';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                    } catch (\JsonException $exception) {
-                        throw new ApiException(
-                            sprintf(
-                                'Error JSON decoding server response (%s)',
-                                $request->getUri()
-                            ),
-                            $statusCode,
-                            $response->getHeaders(),
-                            $content
-                        );
-                    }
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\VPSV1PublicKeyPublicKeyResource',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 422:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaErrorResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
         }
-    }
 
-    /**
-     * Operation createNewPublicKeyV1Async
-     *
-     * Create new public key
-     *
-     * @param  \Hostinger\Model\VPSV1PublicKeyStoreRequest $vpsv1_public_key_store_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createNewPublicKeyV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function createNewPublicKeyV1Async(
-        \Hostinger\Model\VPSV1PublicKeyStoreRequest $vpsv1_public_key_store_request,
-        string $contentType = self::contentTypes['createNewPublicKeyV1'][0]
-    ): PromiseInterface
-    {
-        return $this->createNewPublicKeyV1AsyncWithHttpInfo($vpsv1_public_key_store_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
+        $statusCode = $response->getStatusCode();
+        $returnType = null;
+        $content = \GuzzleHttp\Utils::jsonDecode((string) $response->getBody(), false, 512, JSON_THROW_ON_ERROR);
 
-    /**
-     * Operation createNewPublicKeyV1AsyncWithHttpInfo
-     *
-     * Create new public key
-     *
-     * @param  \Hostinger\Model\VPSV1PublicKeyStoreRequest $vpsv1_public_key_store_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createNewPublicKeyV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function createNewPublicKeyV1AsyncWithHttpInfo(
-        \Hostinger\Model\VPSV1PublicKeyStoreRequest $vpsv1_public_key_store_request,
-        string $contentType = self::contentTypes['createNewPublicKeyV1'][0]
-    ): PromiseInterface
-    {
-        $returnType = '\Hostinger\Model\VPSV1PublicKeyPublicKeyResource';
-        $request = $this->createNewPublicKeyV1Request($vpsv1_public_key_store_request, $contentType);
+        switch ($statusCode) {
+            case 200:
+                $returnType = '\Hostinger\Model\VPSV1PublicKeyPublicKeyResource';
+                break;
+            case 422:
+                $returnType = '\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema';
+                break;
+            case 401:
+                $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';
+                break;
+            case 500:
+                $returnType = '\Hostinger\Model\CommonSchemaErrorResponseSchema';
+                break;
+        }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
+        return ObjectSerializer::deserialize($content, $returnType);
     }
 
     /**
      * Create request for operation 'createNewPublicKeyV1'
      *
-     * @param  \Hostinger\Model\VPSV1PublicKeyStoreRequest $vpsv1_public_key_store_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createNewPublicKeyV1'] to see the possible values for this operation
-     *
+     * @param  \Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest (required)
      * @throws InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
-    public function createNewPublicKeyV1Request(
-        \Hostinger\Model\VPSV1PublicKeyStoreRequest $vpsv1_public_key_store_request,
-        string $contentType = self::contentTypes['createNewPublicKeyV1'][0]
-    ): Request
+    protected function createNewPublicKeyV1Request(\Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest,): Request
     {
-
-        // verify the required parameter 'vpsv1_public_key_store_request' is set
-        if ($vpsv1_public_key_store_request === null || (is_array($vpsv1_public_key_store_request) && count($vpsv1_public_key_store_request) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $vpsv1_public_key_store_request when calling createNewPublicKeyV1'
-            );
-        }
-
-
         $resourcePath = '/api/vps/v1/public-keys';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
 
 
 
+        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1PublicKeyStoreRequest));
+        $query = [];
 
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($vpsv1_public_key_store_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vpsv1_public_key_store_request));
-            } else {
-                $httpBody = $vpsv1_public_key_store_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->buildRequest('POST', $resourcePath, $body, $query);
     }
 
     /**
@@ -971,395 +187,64 @@ class VPSPublicKeysApi
      *
      * Delete a public key
      *
-     * @param  int $public_key_id Public Key ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAPublicKeyV1'] to see the possible values for this operation
+     * @param  int $publicKeyId Public Key ID (required)
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      */
-    public function deleteAPublicKeyV1(
-        int $public_key_id,
-        string $contentType = self::contentTypes['deleteAPublicKeyV1'][0]
-    ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function deleteAPublicKeyV1(int $publicKeyId, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
-        list($response) = $this->deleteAPublicKeyV1WithHttpInfo($public_key_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation deleteAPublicKeyV1WithHttpInfo
-     *
-     * Delete a public key
-     *
-     * @param  int $public_key_id Public Key ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAPublicKeyV1'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return array of \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function deleteAPublicKeyV1WithHttpInfo(
-        int $public_key_id,
-        string $contentType = self::contentTypes['deleteAPublicKeyV1'][0]
-    ): array
-    {
-        $request = $this->deleteAPublicKeyV1Request($public_key_id, $contentType);
+        $request = $this->deleteAPublicKeyV1Request($publicKeyId, );
 
         try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    if (in_array('\Hostinger\Model\CommonSuccessEmptyResource', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSuccessEmptyResource' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSuccessEmptyResource', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if (in_array('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if (in_array('\Hostinger\Model\CommonSchemaErrorResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaErrorResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaErrorResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                    } catch (\JsonException $exception) {
-                        throw new ApiException(
-                            sprintf(
-                                'Error JSON decoding server response (%s)',
-                                $request->getUri()
-                            ),
-                            $statusCode,
-                            $response->getHeaders(),
-                            $content
-                        );
-                    }
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSuccessEmptyResource',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaErrorResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
         }
-    }
 
-    /**
-     * Operation deleteAPublicKeyV1Async
-     *
-     * Delete a public key
-     *
-     * @param  int $public_key_id Public Key ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAPublicKeyV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function deleteAPublicKeyV1Async(
-        int $public_key_id,
-        string $contentType = self::contentTypes['deleteAPublicKeyV1'][0]
-    ): PromiseInterface
-    {
-        return $this->deleteAPublicKeyV1AsyncWithHttpInfo($public_key_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
+        $statusCode = $response->getStatusCode();
+        $returnType = null;
+        $content = \GuzzleHttp\Utils::jsonDecode((string) $response->getBody(), false, 512, JSON_THROW_ON_ERROR);
 
-    /**
-     * Operation deleteAPublicKeyV1AsyncWithHttpInfo
-     *
-     * Delete a public key
-     *
-     * @param  int $public_key_id Public Key ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAPublicKeyV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function deleteAPublicKeyV1AsyncWithHttpInfo(
-        int $public_key_id,
-        string $contentType = self::contentTypes['deleteAPublicKeyV1'][0]
-    ): PromiseInterface
-    {
-        $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-        $request = $this->deleteAPublicKeyV1Request($public_key_id, $contentType);
+        switch ($statusCode) {
+            case 200:
+                $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
+                break;
+            case 401:
+                $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';
+                break;
+            case 500:
+                $returnType = '\Hostinger\Model\CommonSchemaErrorResponseSchema';
+                break;
+        }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
+        return ObjectSerializer::deserialize($content, $returnType);
     }
 
     /**
      * Create request for operation 'deleteAPublicKeyV1'
      *
-     * @param  int $public_key_id Public Key ID (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAPublicKeyV1'] to see the possible values for this operation
-     *
+     * @param  int $publicKeyId Public Key ID (required)
      * @throws InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteAPublicKeyV1Request(
-        int $public_key_id,
-        string $contentType = self::contentTypes['deleteAPublicKeyV1'][0]
-    ): Request
+    protected function deleteAPublicKeyV1Request(int $publicKeyId,): Request
     {
-
-        // verify the required parameter 'public_key_id' is set
-        if ($public_key_id === null || (is_array($public_key_id) && count($public_key_id) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $public_key_id when calling deleteAPublicKeyV1'
-            );
-        }
-
-
         $resourcePath = '/api/vps/v1/public-keys/{publicKeyId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($public_key_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'publicKeyId' . '}',
-                ObjectSerializer::toPathValue($public_key_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
+        $resourcePath = str_replace(
+            '{' . 'publicKeyId' . '}',
+            ObjectSerializer::toPathValue((string) $publicKeyId),
+            $resourcePath
         );
 
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
 
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
 
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
+        $body = null;
+        $query = [];
 
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->buildRequest('DELETE', $resourcePath, $body, $query);
     }
 
     /**
@@ -1368,392 +253,71 @@ class VPSPublicKeysApi
      * Get public key list
      *
      * @param  int|null $page Page number (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPublicKeyListV1'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return \Hostinger\Model\VPSGetPublicKeyListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      */
-    public function getPublicKeyListV1(
-        ?int $page = null,
-        string $contentType = self::contentTypes['getPublicKeyListV1'][0]
-    ): \Hostinger\Model\VPSGetPublicKeyListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function getPublicKeyListV1(?int $page = null, ): \Hostinger\Model\VPSGetPublicKeyListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
-        list($response) = $this->getPublicKeyListV1WithHttpInfo($page, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getPublicKeyListV1WithHttpInfo
-     *
-     * Get public key list
-     *
-     * @param  int|null $page Page number (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPublicKeyListV1'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return array of \Hostinger\Model\VPSGetPublicKeyListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getPublicKeyListV1WithHttpInfo(
-        ?int $page = null,
-        string $contentType = self::contentTypes['getPublicKeyListV1'][0]
-    ): array
-    {
-        $request = $this->getPublicKeyListV1Request($page, $contentType);
+        $request = $this->getPublicKeyListV1Request($page, );
 
         try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    if (in_array('\Hostinger\Model\VPSGetPublicKeyListV1200Response', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\VPSGetPublicKeyListV1200Response' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\VPSGetPublicKeyListV1200Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if (in_array('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if (in_array('\Hostinger\Model\CommonSchemaErrorResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaErrorResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaErrorResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            $returnType = '\Hostinger\Model\VPSGetPublicKeyListV1200Response';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                    } catch (\JsonException $exception) {
-                        throw new ApiException(
-                            sprintf(
-                                'Error JSON decoding server response (%s)',
-                                $request->getUri()
-                            ),
-                            $statusCode,
-                            $response->getHeaders(),
-                            $content
-                        );
-                    }
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\VPSGetPublicKeyListV1200Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaErrorResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
         }
-    }
 
-    /**
-     * Operation getPublicKeyListV1Async
-     *
-     * Get public key list
-     *
-     * @param  int|null $page Page number (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPublicKeyListV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function getPublicKeyListV1Async(
-        ?int $page = null,
-        string $contentType = self::contentTypes['getPublicKeyListV1'][0]
-    ): PromiseInterface
-    {
-        return $this->getPublicKeyListV1AsyncWithHttpInfo($page, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
+        $statusCode = $response->getStatusCode();
+        $returnType = null;
+        $content = \GuzzleHttp\Utils::jsonDecode((string) $response->getBody(), false, 512, JSON_THROW_ON_ERROR);
 
-    /**
-     * Operation getPublicKeyListV1AsyncWithHttpInfo
-     *
-     * Get public key list
-     *
-     * @param  int|null $page Page number (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPublicKeyListV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function getPublicKeyListV1AsyncWithHttpInfo(
-        ?int $page = null,
-        string $contentType = self::contentTypes['getPublicKeyListV1'][0]
-    ): PromiseInterface
-    {
-        $returnType = '\Hostinger\Model\VPSGetPublicKeyListV1200Response';
-        $request = $this->getPublicKeyListV1Request($page, $contentType);
+        switch ($statusCode) {
+            case 200:
+                $returnType = '\Hostinger\Model\VPSGetPublicKeyListV1200Response';
+                break;
+            case 401:
+                $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';
+                break;
+            case 500:
+                $returnType = '\Hostinger\Model\CommonSchemaErrorResponseSchema';
+                break;
+        }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
+        return ObjectSerializer::deserialize($content, $returnType);
     }
 
     /**
      * Create request for operation 'getPublicKeyListV1'
      *
      * @param  int|null $page Page number (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPublicKeyListV1'] to see the possible values for this operation
-     *
      * @throws InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPublicKeyListV1Request(
-        ?int $page = null,
-        string $contentType = self::contentTypes['getPublicKeyListV1'][0]
-    ): Request
+    protected function getPublicKeyListV1Request(?int $page = null,): Request
     {
-
-
-
         $resourcePath = '/api/vps/v1/public-keys';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+
+
+        $body = null;
+        $query = ObjectSerializer::toQueryValue(
             $page,
             'page', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
             false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
         );
 
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->buildRequest('GET', $resourcePath, $body, $query);
     }
 
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function createHttpClientOption(): array
     {
         $options = [];
@@ -1765,5 +329,36 @@ class VPSPublicKeysApi
         }
 
         return $options;
+    }
+
+    /**
+     * @param array<string, string> $query
+     */
+    protected function buildRequest(
+        string $httpMethod,
+        string $resourcePath,
+        ?string $body = null,
+        array $query = [],
+        string $contentType = 'application/json',
+    ): Request {
+        $headers = $this->headerSelector->selectHeaders(
+            accept: ['application/json'],
+            contentType: $contentType,
+            isMultipart: false
+        );
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $query = ObjectSerializer::buildQuery($query);
+
+        return new Request(
+            $httpMethod,
+            $this->config->getHost() . $resourcePath . ($query ? "?$query" : ''),
+            $headers,
+            $body
+        );
     }
 }

@@ -13,7 +13,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `attachPublicKeyV1()`
 
 ```php
-attachPublicKeyV1($virtual_machine_id, $vpsv1_public_key_attach_request): \Hostinger\Model\VPSV1ActionActionResource
+attachPublicKeyV1($virtualMachineId, $vPSV1PublicKeyAttachRequest): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Attach public key
@@ -37,11 +37,11 @@ $apiInstance = new Hostinger\Api\VPSPublicKeysApi(
     new GuzzleHttp\Client(),
     $config
 );
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
-$vpsv1_public_key_attach_request = new \Hostinger\Model\VPSV1PublicKeyAttachRequest(); // \Hostinger\Model\VPSV1PublicKeyAttachRequest
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$vPSV1PublicKeyAttachRequest = new \Hostinger\Model\VPSV1PublicKeyAttachRequest(); // \Hostinger\Model\VPSV1PublicKeyAttachRequest
 
 try {
-    $result = $apiInstance->attachPublicKeyV1($virtual_machine_id, $vpsv1_public_key_attach_request);
+    $result = $apiInstance->attachPublicKeyV1($virtualMachineId, $vPSV1PublicKeyAttachRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSPublicKeysApi->attachPublicKeyV1: ', $e->getMessage(), PHP_EOL;
@@ -52,8 +52,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
-| **vpsv1_public_key_attach_request** | [**\Hostinger\Model\VPSV1PublicKeyAttachRequest**](../Model/VPSV1PublicKeyAttachRequest.md)|  | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **vPSV1PublicKeyAttachRequest** | [**\Hostinger\Model\VPSV1PublicKeyAttachRequest**](../Model/VPSV1PublicKeyAttachRequest.md)|  | |
 
 ### Return type
 
@@ -75,7 +75,7 @@ try {
 ## `createNewPublicKeyV1()`
 
 ```php
-createNewPublicKeyV1($vpsv1_public_key_store_request): \Hostinger\Model\VPSV1PublicKeyPublicKeyResource
+createNewPublicKeyV1($vPSV1PublicKeyStoreRequest): \Hostinger\Model\VPSV1PublicKeyPublicKeyResource
 ```
 
 Create new public key
@@ -99,10 +99,10 @@ $apiInstance = new Hostinger\Api\VPSPublicKeysApi(
     new GuzzleHttp\Client(),
     $config
 );
-$vpsv1_public_key_store_request = new \Hostinger\Model\VPSV1PublicKeyStoreRequest(); // \Hostinger\Model\VPSV1PublicKeyStoreRequest
+$vPSV1PublicKeyStoreRequest = new \Hostinger\Model\VPSV1PublicKeyStoreRequest(); // \Hostinger\Model\VPSV1PublicKeyStoreRequest
 
 try {
-    $result = $apiInstance->createNewPublicKeyV1($vpsv1_public_key_store_request);
+    $result = $apiInstance->createNewPublicKeyV1($vPSV1PublicKeyStoreRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSPublicKeysApi->createNewPublicKeyV1: ', $e->getMessage(), PHP_EOL;
@@ -113,7 +113,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **vpsv1_public_key_store_request** | [**\Hostinger\Model\VPSV1PublicKeyStoreRequest**](../Model/VPSV1PublicKeyStoreRequest.md)|  | |
+| **vPSV1PublicKeyStoreRequest** | [**\Hostinger\Model\VPSV1PublicKeyStoreRequest**](../Model/VPSV1PublicKeyStoreRequest.md)|  | |
 
 ### Return type
 
@@ -135,7 +135,7 @@ try {
 ## `deleteAPublicKeyV1()`
 
 ```php
-deleteAPublicKeyV1($public_key_id): \Hostinger\Model\CommonSuccessEmptyResource
+deleteAPublicKeyV1($publicKeyId): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
 Delete a public key
@@ -159,10 +159,10 @@ $apiInstance = new Hostinger\Api\VPSPublicKeysApi(
     new GuzzleHttp\Client(),
     $config
 );
-$public_key_id = 6672861; // int | Public Key ID
+$publicKeyId = 6672861; // int | Public Key ID
 
 try {
-    $result = $apiInstance->deleteAPublicKeyV1($public_key_id);
+    $result = $apiInstance->deleteAPublicKeyV1($publicKeyId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSPublicKeysApi->deleteAPublicKeyV1: ', $e->getMessage(), PHP_EOL;
@@ -173,7 +173,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **public_key_id** | **int**| Public Key ID | |
+| **publicKeyId** | **int**| Public Key ID | |
 
 ### Return type
 

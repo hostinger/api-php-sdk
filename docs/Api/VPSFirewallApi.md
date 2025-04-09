@@ -19,7 +19,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `activateFirewallV1()`
 
 ```php
-activateFirewallV1($firewall_id, $virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+activateFirewallV1($firewallId, $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Activate firewall
@@ -43,11 +43,11 @@ $apiInstance = new Hostinger\Api\VPSFirewallApi(
     new GuzzleHttp\Client(),
     $config
 );
-$firewall_id = 9449049; // int | Firewall ID
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$firewallId = 9449049; // int | Firewall ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->activateFirewallV1($firewall_id, $virtual_machine_id);
+    $result = $apiInstance->activateFirewallV1($firewallId, $virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSFirewallApi->activateFirewallV1: ', $e->getMessage(), PHP_EOL;
@@ -58,8 +58,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **firewall_id** | **int**| Firewall ID | |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **firewallId** | **int**| Firewall ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 
@@ -81,7 +81,7 @@ try {
 ## `createFirewallRuleV1()`
 
 ```php
-createFirewallRuleV1($firewall_id, $vpsv1_firewall_rules_store_request): \Hostinger\Model\VPSV1FirewallFirewallRuleResource
+createFirewallRuleV1($firewallId, $vPSV1FirewallRulesStoreRequest): \Hostinger\Model\VPSV1FirewallFirewallRuleResource
 ```
 
 Create firewall rule
@@ -105,11 +105,11 @@ $apiInstance = new Hostinger\Api\VPSFirewallApi(
     new GuzzleHttp\Client(),
     $config
 );
-$firewall_id = 9449049; // int | Firewall ID
-$vpsv1_firewall_rules_store_request = new \Hostinger\Model\VPSV1FirewallRulesStoreRequest(); // \Hostinger\Model\VPSV1FirewallRulesStoreRequest
+$firewallId = 9449049; // int | Firewall ID
+$vPSV1FirewallRulesStoreRequest = new \Hostinger\Model\VPSV1FirewallRulesStoreRequest(); // \Hostinger\Model\VPSV1FirewallRulesStoreRequest
 
 try {
-    $result = $apiInstance->createFirewallRuleV1($firewall_id, $vpsv1_firewall_rules_store_request);
+    $result = $apiInstance->createFirewallRuleV1($firewallId, $vPSV1FirewallRulesStoreRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSFirewallApi->createFirewallRuleV1: ', $e->getMessage(), PHP_EOL;
@@ -120,8 +120,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **firewall_id** | **int**| Firewall ID | |
-| **vpsv1_firewall_rules_store_request** | [**\Hostinger\Model\VPSV1FirewallRulesStoreRequest**](../Model/VPSV1FirewallRulesStoreRequest.md)|  | |
+| **firewallId** | **int**| Firewall ID | |
+| **vPSV1FirewallRulesStoreRequest** | [**\Hostinger\Model\VPSV1FirewallRulesStoreRequest**](../Model/VPSV1FirewallRulesStoreRequest.md)|  | |
 
 ### Return type
 
@@ -143,7 +143,7 @@ try {
 ## `createNewFirewallV1()`
 
 ```php
-createNewFirewallV1($vpsv1_firewall_store_request): \Hostinger\Model\VPSV1FirewallFirewallResource
+createNewFirewallV1($vPSV1FirewallStoreRequest): \Hostinger\Model\VPSV1FirewallFirewallResource
 ```
 
 Create new firewall
@@ -167,10 +167,10 @@ $apiInstance = new Hostinger\Api\VPSFirewallApi(
     new GuzzleHttp\Client(),
     $config
 );
-$vpsv1_firewall_store_request = new \Hostinger\Model\VPSV1FirewallStoreRequest(); // \Hostinger\Model\VPSV1FirewallStoreRequest
+$vPSV1FirewallStoreRequest = new \Hostinger\Model\VPSV1FirewallStoreRequest(); // \Hostinger\Model\VPSV1FirewallStoreRequest
 
 try {
-    $result = $apiInstance->createNewFirewallV1($vpsv1_firewall_store_request);
+    $result = $apiInstance->createNewFirewallV1($vPSV1FirewallStoreRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSFirewallApi->createNewFirewallV1: ', $e->getMessage(), PHP_EOL;
@@ -181,7 +181,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **vpsv1_firewall_store_request** | [**\Hostinger\Model\VPSV1FirewallStoreRequest**](../Model/VPSV1FirewallStoreRequest.md)|  | |
+| **vPSV1FirewallStoreRequest** | [**\Hostinger\Model\VPSV1FirewallStoreRequest**](../Model/VPSV1FirewallStoreRequest.md)|  | |
 
 ### Return type
 
@@ -203,7 +203,7 @@ try {
 ## `deactivateFirewallV1()`
 
 ```php
-deactivateFirewallV1($firewall_id, $virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+deactivateFirewallV1($firewallId, $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Deactivate firewall
@@ -227,11 +227,11 @@ $apiInstance = new Hostinger\Api\VPSFirewallApi(
     new GuzzleHttp\Client(),
     $config
 );
-$firewall_id = 9449049; // int | Firewall ID
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$firewallId = 9449049; // int | Firewall ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->deactivateFirewallV1($firewall_id, $virtual_machine_id);
+    $result = $apiInstance->deactivateFirewallV1($firewallId, $virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSFirewallApi->deactivateFirewallV1: ', $e->getMessage(), PHP_EOL;
@@ -242,8 +242,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **firewall_id** | **int**| Firewall ID | |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **firewallId** | **int**| Firewall ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 
@@ -265,7 +265,7 @@ try {
 ## `deleteFirewallRuleV1()`
 
 ```php
-deleteFirewallRuleV1($firewall_id, $rule_id): \Hostinger\Model\CommonSuccessEmptyResource
+deleteFirewallRuleV1($firewallId, $ruleId): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
 Delete firewall rule
@@ -289,11 +289,11 @@ $apiInstance = new Hostinger\Api\VPSFirewallApi(
     new GuzzleHttp\Client(),
     $config
 );
-$firewall_id = 9449049; // int | Firewall ID
-$rule_id = 8941182; // int | Firewall Rule ID
+$firewallId = 9449049; // int | Firewall ID
+$ruleId = 8941182; // int | Firewall Rule ID
 
 try {
-    $result = $apiInstance->deleteFirewallRuleV1($firewall_id, $rule_id);
+    $result = $apiInstance->deleteFirewallRuleV1($firewallId, $ruleId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSFirewallApi->deleteFirewallRuleV1: ', $e->getMessage(), PHP_EOL;
@@ -304,8 +304,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **firewall_id** | **int**| Firewall ID | |
-| **rule_id** | **int**| Firewall Rule ID | |
+| **firewallId** | **int**| Firewall ID | |
+| **ruleId** | **int**| Firewall Rule ID | |
 
 ### Return type
 
@@ -327,7 +327,7 @@ try {
 ## `deleteFirewallV1()`
 
 ```php
-deleteFirewallV1($firewall_id): \Hostinger\Model\CommonSuccessEmptyResource
+deleteFirewallV1($firewallId): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
 Delete firewall
@@ -351,10 +351,10 @@ $apiInstance = new Hostinger\Api\VPSFirewallApi(
     new GuzzleHttp\Client(),
     $config
 );
-$firewall_id = 9449049; // int | Firewall ID
+$firewallId = 9449049; // int | Firewall ID
 
 try {
-    $result = $apiInstance->deleteFirewallV1($firewall_id);
+    $result = $apiInstance->deleteFirewallV1($firewallId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSFirewallApi->deleteFirewallV1: ', $e->getMessage(), PHP_EOL;
@@ -365,7 +365,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **firewall_id** | **int**| Firewall ID | |
+| **firewallId** | **int**| Firewall ID | |
 
 ### Return type
 
@@ -447,7 +447,7 @@ try {
 ## `getFirewallV1()`
 
 ```php
-getFirewallV1($firewall_id): \Hostinger\Model\VPSV1FirewallFirewallResource
+getFirewallV1($firewallId): \Hostinger\Model\VPSV1FirewallFirewallResource
 ```
 
 Get firewall
@@ -471,10 +471,10 @@ $apiInstance = new Hostinger\Api\VPSFirewallApi(
     new GuzzleHttp\Client(),
     $config
 );
-$firewall_id = 9449049; // int | Firewall ID
+$firewallId = 9449049; // int | Firewall ID
 
 try {
-    $result = $apiInstance->getFirewallV1($firewall_id);
+    $result = $apiInstance->getFirewallV1($firewallId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSFirewallApi->getFirewallV1: ', $e->getMessage(), PHP_EOL;
@@ -485,7 +485,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **firewall_id** | **int**| Firewall ID | |
+| **firewallId** | **int**| Firewall ID | |
 
 ### Return type
 
@@ -507,7 +507,7 @@ try {
 ## `syncFirewallV1()`
 
 ```php
-syncFirewallV1($firewall_id, $virtual_machine_id): \Hostinger\Model\VPSV1ActionActionResource
+syncFirewallV1($firewallId, $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Sync firewall
@@ -531,11 +531,11 @@ $apiInstance = new Hostinger\Api\VPSFirewallApi(
     new GuzzleHttp\Client(),
     $config
 );
-$firewall_id = 9449049; // int | Firewall ID
-$virtual_machine_id = 1268054; // int | Virtual Machine ID
+$firewallId = 9449049; // int | Firewall ID
+$virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
-    $result = $apiInstance->syncFirewallV1($firewall_id, $virtual_machine_id);
+    $result = $apiInstance->syncFirewallV1($firewallId, $virtualMachineId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSFirewallApi->syncFirewallV1: ', $e->getMessage(), PHP_EOL;
@@ -546,8 +546,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **firewall_id** | **int**| Firewall ID | |
-| **virtual_machine_id** | **int**| Virtual Machine ID | |
+| **firewallId** | **int**| Firewall ID | |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
 
 ### Return type
 
@@ -569,7 +569,7 @@ try {
 ## `updateFirewallRuleV1()`
 
 ```php
-updateFirewallRuleV1($firewall_id, $rule_id, $vpsv1_firewall_rules_store_request): \Hostinger\Model\VPSV1FirewallFirewallRuleResource
+updateFirewallRuleV1($firewallId, $ruleId, $vPSV1FirewallRulesStoreRequest): \Hostinger\Model\VPSV1FirewallFirewallRuleResource
 ```
 
 Update firewall rule
@@ -593,12 +593,12 @@ $apiInstance = new Hostinger\Api\VPSFirewallApi(
     new GuzzleHttp\Client(),
     $config
 );
-$firewall_id = 9449049; // int | Firewall ID
-$rule_id = 8941182; // int | Firewall Rule ID
-$vpsv1_firewall_rules_store_request = new \Hostinger\Model\VPSV1FirewallRulesStoreRequest(); // \Hostinger\Model\VPSV1FirewallRulesStoreRequest
+$firewallId = 9449049; // int | Firewall ID
+$ruleId = 8941182; // int | Firewall Rule ID
+$vPSV1FirewallRulesStoreRequest = new \Hostinger\Model\VPSV1FirewallRulesStoreRequest(); // \Hostinger\Model\VPSV1FirewallRulesStoreRequest
 
 try {
-    $result = $apiInstance->updateFirewallRuleV1($firewall_id, $rule_id, $vpsv1_firewall_rules_store_request);
+    $result = $apiInstance->updateFirewallRuleV1($firewallId, $ruleId, $vPSV1FirewallRulesStoreRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSFirewallApi->updateFirewallRuleV1: ', $e->getMessage(), PHP_EOL;
@@ -609,9 +609,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **firewall_id** | **int**| Firewall ID | |
-| **rule_id** | **int**| Firewall Rule ID | |
-| **vpsv1_firewall_rules_store_request** | [**\Hostinger\Model\VPSV1FirewallRulesStoreRequest**](../Model/VPSV1FirewallRulesStoreRequest.md)|  | |
+| **firewallId** | **int**| Firewall ID | |
+| **ruleId** | **int**| Firewall Rule ID | |
+| **vPSV1FirewallRulesStoreRequest** | [**\Hostinger\Model\VPSV1FirewallRulesStoreRequest**](../Model/VPSV1FirewallRulesStoreRequest.md)|  | |
 
 ### Return type
 

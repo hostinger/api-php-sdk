@@ -31,7 +31,7 @@ class Configuration
     /**
      * Associate array to store API prefix (e.g. Bearer)
      *
-     * @var string[]
+     * @var array<string>
      */
     protected array $apiKeyPrefixes = [];
 
@@ -416,7 +416,7 @@ class Configuration
     /**
      * Returns an array of host settings
      *
-     * @return array an array of host settings
+     * @return array{url: string, description: string, variables?: array}
      */
     public function getHostSettings(): array
     {
@@ -433,7 +433,7 @@ class Configuration
     *
     * @param array      $hostSettings array of host settings, generated from getHostSettings() or equivalent from the API clients
     * @param int        $hostIndex    index of the host settings
-    * @param array|null $variables    hash of variable and the corresponding value (optional)
+    * @param array<array-key, mixed>|null $variables    hash of variable and the corresponding value (optional)
     * @return string URL based on host settings
     */
     public static function getHostString(array $hostSettings, int $hostIndex, ?array $variables = null): string

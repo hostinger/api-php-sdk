@@ -14,6 +14,8 @@ namespace Hostinger;
 
 use Exception;
 use stdClass;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
 
 class ApiException extends Exception
 {
@@ -91,5 +93,25 @@ class ApiException extends Exception
     public function getResponseObject(): mixed
     {
         return $this->responseObject;
+    }
+
+    public static function fromRequestException(RequestException $e): self
+    {
+        return new self(
+            "[{$e->getCode()}] {$e->getMessage()}",
+            (int) $e->getCode(),
+            $e->getResponse()?->getHeaders(),
+            (string) $e->getResponse()?->getBody()
+        );
+    }
+
+    public static function fromConnectException(ConnectException $e): self
+    {
+        return new self(
+           "[{$e->getCode()}] {$e->getMessage()}",
+           (int) $e->getCode(),
+           null,
+           null
+       );
     }
 }

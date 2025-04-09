@@ -25,14 +25,9 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'Billing.V1.Catalog.CatalogItemPriceResource';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
@@ -40,14 +35,12 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
         'name' => 'string',
         'currency' => 'string',
         'price' => 'int',
-        'first_period_price' => 'int',
+        'firstPeriodPrice' => 'int',
         'period' => 'int',
-        'period_unit' => 'string'
+        'periodUnit' => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
@@ -55,14 +48,12 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
         'name' => null,
         'currency' => null,
         'price' => null,
-        'first_period_price' => null,
+        'firstPeriodPrice' => null,
         'period' => null,
-        'period_unit' => null
+        'periodUnit' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
@@ -70,21 +61,17 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
         'name' => false,
         'currency' => false,
         'price' => false,
-        'first_period_price' => false,
+        'firstPeriodPrice' => false,
         'period' => false,
-        'period_unit' => false
+        'periodUnit' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -93,8 +80,6 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -103,8 +88,6 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -113,9 +96,7 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -123,35 +104,24 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
@@ -159,14 +129,12 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
         'name' => 'name',
         'currency' => 'currency',
         'price' => 'price',
-        'first_period_price' => 'first_period_price',
+        'firstPeriodPrice' => 'first_period_price',
         'period' => 'period',
-        'period_unit' => 'period_unit'
+        'periodUnit' => 'period_unit'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
@@ -174,14 +142,12 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
         'name' => 'setName',
         'currency' => 'setCurrency',
         'price' => 'setPrice',
-        'first_period_price' => 'setFirstPeriodPrice',
+        'firstPeriodPrice' => 'setFirstPeriodPrice',
         'period' => 'setPeriod',
-        'period_unit' => 'setPeriodUnit'
+        'periodUnit' => 'setPeriodUnit'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
@@ -189,15 +155,12 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
         'name' => 'getName',
         'currency' => 'getCurrency',
         'price' => 'getPrice',
-        'first_period_price' => 'getFirstPeriodPrice',
+        'firstPeriodPrice' => 'getFirstPeriodPrice',
         'period' => 'getPeriod',
-        'period_unit' => 'getPeriodUnit'
+        'periodUnit' => 'getPeriodUnit'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -206,8 +169,6 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -216,8 +177,6 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -225,9 +184,6 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -242,7 +198,7 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
     /**
      * @return array<string>
      */
-    public function getPeriodUnitAllowableValues()
+    public function getPeriodUnitAllowableValues(): array
     {
         return [
             self::PERIOD_UNIT_DAY,
@@ -254,8 +210,6 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
     }
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -269,19 +223,13 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
         $this->setIfExists('name', $data, null);
         $this->setIfExists('currency', $data, null);
         $this->setIfExists('price', $data, null);
-        $this->setIfExists('first_period_price', $data, null);
+        $this->setIfExists('firstPeriodPrice', $data, null);
         $this->setIfExists('period', $data, null);
-        $this->setIfExists('period_unit', $data, null);
+        $this->setIfExists('periodUnit', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -300,10 +248,10 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
         $invalidProperties = [];
 
         $allowedValues = $this->getPeriodUnitAllowableValues();
-        if (!is_null($this->container['period_unit']) && !in_array($this->container['period_unit'], $allowedValues, true)) {
+        if (!is_null($this->container['periodUnit']) && !in_array($this->container['periodUnit'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'period_unit', must be one of '%s'",
-                $this->container['period_unit'],
+                "invalid value '%s' for 'periodUnit', must be one of '%s'",
+                $this->container['periodUnit'],
                 implode("', '", $allowedValues)
             );
         }
@@ -311,14 +259,10 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return string|null
@@ -333,14 +277,10 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
      */
     public function setId(?string $id): static
     {
-        if (is_null($id)) {
-            throw new InvalidArgumentException('non-nullable id cannot be null');
-        }
         $this->container['id'] = $id;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -354,14 +294,10 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
      */
     public function setName(?string $name): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
-        }
         $this->container['name'] = $name;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -375,14 +311,10 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
      */
     public function setCurrency(?string $currency): static
     {
-        if (is_null($currency)) {
-            throw new InvalidArgumentException('non-nullable currency cannot be null');
-        }
         $this->container['currency'] = $currency;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
@@ -396,35 +328,27 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
      */
     public function setPrice(?int $price): static
     {
-        if (is_null($price)) {
-            throw new InvalidArgumentException('non-nullable price cannot be null');
-        }
         $this->container['price'] = $price;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
     public function getFirstPeriodPrice(): ?int
     {
-        return $this->container['first_period_price'];
+        return $this->container['firstPeriodPrice'];
     }
 
     /**
-     * @param int|null $first_period_price First period price in cents
+     * @param int|null $firstPeriodPrice First period price in cents
      */
-    public function setFirstPeriodPrice(?int $first_period_price): static
+    public function setFirstPeriodPrice(?int $firstPeriodPrice): static
     {
-        if (is_null($first_period_price)) {
-            throw new InvalidArgumentException('non-nullable first_period_price cannot be null');
-        }
-        $this->container['first_period_price'] = $first_period_price;
+        $this->container['firstPeriodPrice'] = $firstPeriodPrice;
 
         return $this;
     }
-
     /**
      * @return int|null
      */
@@ -438,41 +362,34 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
      */
     public function setPeriod(?int $period): static
     {
-        if (is_null($period)) {
-            throw new InvalidArgumentException('non-nullable period cannot be null');
-        }
         $this->container['period'] = $period;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
     public function getPeriodUnit(): ?string
     {
-        return $this->container['period_unit'];
+        return $this->container['periodUnit'];
     }
 
     /**
-     * @param string|null $period_unit Period unit
+     * @param string|null $periodUnit Period unit
      */
-    public function setPeriodUnit(?string $period_unit): static
+    public function setPeriodUnit(?string $periodUnit): static
     {
-        if (is_null($period_unit)) {
-            throw new InvalidArgumentException('non-nullable period_unit cannot be null');
-        }
         $allowedValues = $this->getPeriodUnitAllowableValues();
-        if (!in_array($period_unit, $allowedValues, true)) {
+        if (!in_array($periodUnit, $allowedValues, true)) {
             throw new InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'period_unit', must be one of '%s'",
-                    $period_unit,
+                    "Invalid value '%s' for 'periodUnit', must be one of '%s'",
+                    $periodUnit,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['period_unit'] = $period_unit;
+        $this->container['periodUnit'] = $periodUnit;
 
         return $this;
     }
@@ -501,22 +418,12 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -525,9 +432,6 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

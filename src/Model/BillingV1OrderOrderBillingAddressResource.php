@@ -25,22 +25,17 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'Billing.V1.Order.OrderBillingAddressResource';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'first_name' => 'string',
-        'last_name' => 'string',
+        'firstName' => 'string',
+        'lastName' => 'string',
         'company' => 'string',
-        'address_1' => 'string',
-        'address_2' => 'string',
+        'address1' => 'string',
+        'address2' => 'string',
         'city' => 'string',
         'state' => 'string',
         'zip' => 'string',
@@ -50,16 +45,14 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'first_name' => null,
-        'last_name' => null,
+        'firstName' => null,
+        'lastName' => null,
         'company' => null,
-        'address_1' => null,
-        'address_2' => null,
+        'address1' => null,
+        'address2' => null,
         'city' => null,
         'state' => null,
         'zip' => null,
@@ -69,16 +62,14 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'first_name' => false,
-        'last_name' => false,
+        'firstName' => false,
+        'lastName' => false,
         'company' => true,
-        'address_1' => true,
-        'address_2' => true,
+        'address1' => true,
+        'address2' => true,
         'city' => true,
         'state' => true,
         'zip' => true,
@@ -88,15 +79,11 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -105,8 +92,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -115,8 +100,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -125,9 +108,7 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -135,43 +116,32 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'first_name' => 'first_name',
-        'last_name' => 'last_name',
+        'firstName' => 'first_name',
+        'lastName' => 'last_name',
         'company' => 'company',
-        'address_1' => 'address_1',
-        'address_2' => 'address_2',
+        'address1' => 'address_1',
+        'address2' => 'address_2',
         'city' => 'city',
         'state' => 'state',
         'zip' => 'zip',
@@ -181,16 +151,14 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
-        'first_name' => 'setFirstName',
-        'last_name' => 'setLastName',
+        'firstName' => 'setFirstName',
+        'lastName' => 'setLastName',
         'company' => 'setCompany',
-        'address_1' => 'setAddress1',
-        'address_2' => 'setAddress2',
+        'address1' => 'setAddress1',
+        'address2' => 'setAddress2',
         'city' => 'setCity',
         'state' => 'setState',
         'zip' => 'setZip',
@@ -200,16 +168,14 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
-        'first_name' => 'getFirstName',
-        'last_name' => 'getLastName',
+        'firstName' => 'getFirstName',
+        'lastName' => 'getLastName',
         'company' => 'getCompany',
-        'address_1' => 'getAddress1',
-        'address_2' => 'getAddress2',
+        'address1' => 'getAddress1',
+        'address2' => 'getAddress2',
         'city' => 'getCity',
         'state' => 'getState',
         'zip' => 'getZip',
@@ -219,9 +185,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -230,8 +193,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -240,8 +201,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -249,9 +208,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -259,8 +215,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
 
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -270,11 +224,11 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
      */
     public function __construct(?array $data = [])
     {
-        $this->setIfExists('first_name', $data, null);
-        $this->setIfExists('last_name', $data, null);
+        $this->setIfExists('firstName', $data, null);
+        $this->setIfExists('lastName', $data, null);
         $this->setIfExists('company', $data, null);
-        $this->setIfExists('address_1', $data, null);
-        $this->setIfExists('address_2', $data, null);
+        $this->setIfExists('address1', $data, null);
+        $this->setIfExists('address2', $data, null);
         $this->setIfExists('city', $data, null);
         $this->setIfExists('state', $data, null);
         $this->setIfExists('zip', $data, null);
@@ -284,13 +238,7 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -311,57 +259,45 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return string|null
      */
     public function getFirstName(): ?string
     {
-        return $this->container['first_name'];
+        return $this->container['firstName'];
     }
 
     /**
-     * @param string|null $first_name first_name
+     * @param string|null $firstName firstName
      */
-    public function setFirstName(?string $first_name): static
+    public function setFirstName(?string $firstName): static
     {
-        if (is_null($first_name)) {
-            throw new InvalidArgumentException('non-nullable first_name cannot be null');
-        }
-        $this->container['first_name'] = $first_name;
+        $this->container['firstName'] = $firstName;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
     public function getLastName(): ?string
     {
-        return $this->container['last_name'];
+        return $this->container['lastName'];
     }
 
     /**
-     * @param string|null $last_name last_name
+     * @param string|null $lastName lastName
      */
-    public function setLastName(?string $last_name): static
+    public function setLastName(?string $lastName): static
     {
-        if (is_null($last_name)) {
-            throw new InvalidArgumentException('non-nullable last_name cannot be null');
-        }
-        $this->container['last_name'] = $last_name;
+        $this->container['lastName'] = $lastName;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -376,11 +312,11 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     public function setCompany(?string $company): static
     {
         if (is_null($company)) {
-            array_push($this->openAPINullablesSetToNull, 'company');
+            $this->openAPINullablesSetToNull[] = 'company';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('company', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -389,63 +325,60 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return string|null
      */
     public function getAddress1(): ?string
     {
-        return $this->container['address_1'];
+        return $this->container['address1'];
     }
 
     /**
-     * @param string|null $address_1 address_1
+     * @param string|null $address1 address1
      */
-    public function setAddress1(?string $address_1): static
+    public function setAddress1(?string $address1): static
     {
-        if (is_null($address_1)) {
-            array_push($this->openAPINullablesSetToNull, 'address_1');
+        if (is_null($address1)) {
+            $this->openAPINullablesSetToNull[] = 'address1';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('address_1', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            $index = array_search('address1', $nullablesSetToNull);
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['address_1'] = $address_1;
+        $this->container['address1'] = $address1;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
     public function getAddress2(): ?string
     {
-        return $this->container['address_2'];
+        return $this->container['address2'];
     }
 
     /**
-     * @param string|null $address_2 address_2
+     * @param string|null $address2 address2
      */
-    public function setAddress2(?string $address_2): static
+    public function setAddress2(?string $address2): static
     {
-        if (is_null($address_2)) {
-            array_push($this->openAPINullablesSetToNull, 'address_2');
+        if (is_null($address2)) {
+            $this->openAPINullablesSetToNull[] = 'address2';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('address_2', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            $index = array_search('address2', $nullablesSetToNull);
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['address_2'] = $address_2;
+        $this->container['address2'] = $address2;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -460,11 +393,11 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     public function setCity(?string $city): static
     {
         if (is_null($city)) {
-            array_push($this->openAPINullablesSetToNull, 'city');
+            $this->openAPINullablesSetToNull[] = 'city';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('city', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -473,7 +406,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -488,11 +420,11 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     public function setState(?string $state): static
     {
         if (is_null($state)) {
-            array_push($this->openAPINullablesSetToNull, 'state');
+            $this->openAPINullablesSetToNull[] = 'state';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('state', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -501,7 +433,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -516,11 +447,11 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     public function setZip(?string $zip): static
     {
         if (is_null($zip)) {
-            array_push($this->openAPINullablesSetToNull, 'zip');
+            $this->openAPINullablesSetToNull[] = 'zip';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('zip', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -529,7 +460,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -544,11 +474,11 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     public function setCountry(?string $country): static
     {
         if (is_null($country)) {
-            array_push($this->openAPINullablesSetToNull, 'country');
+            $this->openAPINullablesSetToNull[] = 'country';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('country', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -557,7 +487,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -572,11 +501,11 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
     public function setPhone(?string $phone): static
     {
         if (is_null($phone)) {
-            array_push($this->openAPINullablesSetToNull, 'phone');
+            $this->openAPINullablesSetToNull[] = 'phone';
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('phone', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -585,7 +514,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
 
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -599,9 +527,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
      */
     public function setEmail(?string $email): static
     {
-        if (is_null($email)) {
-            throw new InvalidArgumentException('non-nullable email cannot be null');
-        }
         $this->container['email'] = $email;
 
         return $this;
@@ -631,22 +556,12 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -655,9 +570,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

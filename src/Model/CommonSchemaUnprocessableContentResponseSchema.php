@@ -25,54 +25,41 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
 {
     public const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      */
     protected static string $openAPIModelName = 'Common.Schema.UnprocessableContentResponseSchema';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
         'message' => 'string',
         'errors' => '\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchemaErrors',
-        'correlation_id' => 'string'
+        'correlationId' => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
         'message' => null,
         'errors' => null,
-        'correlation_id' => null
+        'correlationId' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
         'message' => false,
         'errors' => false,
-        'correlation_id' => false
+        'correlationId' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var array<string, bool>
+      * @var array<string>
       */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPITypes(): array
@@ -81,8 +68,6 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
      * @return array<string, string>
      */
     public static function openAPIFormats(): array
@@ -91,8 +76,6 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
     }
 
     /**
-     * Array of nullable properties
-     *
      * @return array<string, bool>
      */
     protected static function openAPINullables(): array
@@ -101,9 +84,7 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
     }
 
     /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return array<string, bool>
+     * @return array<string>
      */
     private function getOpenAPINullablesSetToNull(): array
     {
@@ -111,69 +92,51 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
     }
 
     /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param array<string, bool> $openAPINullablesSetToNull
+     * @param array<string> $openAPINullablesSetToNull
      */
     private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
     {
         $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
     }
 
-    /**
-     * Checks if a property is nullable
-     */
     public static function isNullable(string $property): bool
     {
         return self::openAPINullables()[$property] ?? false;
     }
 
-    /**
-     * Checks if a nullable property is set to null.
-     */
     public function isNullableSetToNull(string $property): bool
     {
         return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
     }
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @var array<string, string>
      */
     protected static array $attributeMap = [
         'message' => 'message',
         'errors' => 'errors',
-        'correlation_id' => 'correlation_id'
+        'correlationId' => 'correlation_id'
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @var array<string, string>
      */
     protected static array $setters = [
         'message' => 'setMessage',
         'errors' => 'setErrors',
-        'correlation_id' => 'setCorrelationId'
+        'correlationId' => 'setCorrelationId'
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @var array<string, string>
      */
     protected static array $getters = [
         'message' => 'getMessage',
         'errors' => 'getErrors',
-        'correlation_id' => 'getCorrelationId'
+        'correlationId' => 'getCorrelationId'
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
      * @return array<string, string>
      */
     public static function attributeMap(): array
@@ -182,8 +145,6 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
      * @return array<string, string>
      */
     public static function setters(): array
@@ -192,8 +153,6 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
      * @return array<string, string>
      */
     public static function getters(): array
@@ -201,9 +160,6 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
         return self::$getters;
     }
 
-    /**
-     * The original name of the model.
-     */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
@@ -211,8 +167,6 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
 
 
     /**
-     * Associative array for storing property values
-     *
      * @var array<string, mixed>
      */
     protected array $container = [];
@@ -224,17 +178,11 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
     {
         $this->setIfExists('message', $data, null);
         $this->setIfExists('errors', $data, null);
-        $this->setIfExists('correlation_id', $data, null);
+        $this->setIfExists('correlationId', $data, null);
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
+    * @param array<string, mixed> $fields
     */
     private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
     {
@@ -255,14 +203,10 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
         return $invalidProperties;
     }
 
-    /**
-     * Validate all the properties in the model return true if all passed
-     */
     public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * @return string|null
@@ -277,14 +221,10 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
      */
     public function setMessage(?string $message): static
     {
-        if (is_null($message)) {
-            throw new InvalidArgumentException('non-nullable message cannot be null');
-        }
         $this->container['message'] = $message;
 
         return $this;
     }
-
     /**
      * @return \Hostinger\Model\CommonSchemaUnprocessableContentResponseSchemaErrors|null
      */
@@ -298,31 +238,24 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
      */
     public function setErrors(?\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchemaErrors $errors): static
     {
-        if (is_null($errors)) {
-            throw new InvalidArgumentException('non-nullable errors cannot be null');
-        }
         $this->container['errors'] = $errors;
 
         return $this;
     }
-
     /**
      * @return string|null
      */
     public function getCorrelationId(): ?string
     {
-        return $this->container['correlation_id'];
+        return $this->container['correlationId'];
     }
 
     /**
-     * @param string|null $correlation_id correlation_id
+     * @param string|null $correlationId correlationId
      */
-    public function setCorrelationId(?string $correlation_id): static
+    public function setCorrelationId(?string $correlationId): static
     {
-        if (is_null($correlation_id)) {
-            throw new InvalidArgumentException('non-nullable correlation_id cannot be null');
-        }
-        $this->container['correlation_id'] = $correlation_id;
+        $this->container['correlationId'] = $correlationId;
 
         return $this;
     }
@@ -351,22 +284,12 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
         unset($this->container[$offset]);
     }
 
-    /**
-     * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
-     *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
-     */
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
-    /**
-     * Gets the string presentation of the object
-     */
     public function __toString(): string
     {
         return json_encode(
@@ -375,9 +298,6 @@ class CommonSchemaUnprocessableContentResponseSchema implements ModelInterface, 
         );
     }
 
-    /**
-     * Gets a header-safe presentation of the object
-     */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));

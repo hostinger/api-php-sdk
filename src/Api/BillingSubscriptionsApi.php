@@ -17,10 +17,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use GuzzleHttp\Promise\PromiseInterface;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
 use Hostinger\HeaderSelector;
@@ -34,40 +32,14 @@ class BillingSubscriptionsApi
 
     protected HeaderSelector $headerSelector;
 
-    protected int $hostIndex;
-
-    /**
-     * @var array<string> $contentTypes
-     */
-    public const contentTypes = [
-        'cancelSubscriptionV1' => [
-            'application/json',
-        ],
-        'getSubscriptionListV1' => [
-            'application/json',
-        ],
-    ];
-
     public function __construct(
         ?ClientInterface $client = null,
         ?Configuration $config = null,
         ?HeaderSelector $selector = null,
-        int $hostIndex = 0
     ) {
         $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
-        $this->hostIndex = $hostIndex;
-    }
-
-    public function setHostIndex(int $hostIndex): void
-    {
-        $this->hostIndex = $hostIndex;
-    }
-
-    public function getHostIndex(): int
-    {
-        return $this->hostIndex;
     }
 
     public function getConfig(): Configuration
@@ -80,454 +52,71 @@ class BillingSubscriptionsApi
      *
      * Cancel subscription
      *
-     * @param  string $subscription_id Subscription ID (required)
-     * @param  \Hostinger\Model\BillingV1SubscriptionCancelRequest $billing_v1_subscription_cancel_request billing_v1_subscription_cancel_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelSubscriptionV1'] to see the possible values for this operation
+     * @param  string $subscriptionId Subscription ID (required)
+     * @param  \Hostinger\Model\BillingV1SubscriptionCancelRequest $billingV1SubscriptionCancelRequest billingV1SubscriptionCancelRequest (required)
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      */
-    public function cancelSubscriptionV1(
-        string $subscription_id,
-        \Hostinger\Model\BillingV1SubscriptionCancelRequest $billing_v1_subscription_cancel_request,
-        string $contentType = self::contentTypes['cancelSubscriptionV1'][0]
-    ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function cancelSubscriptionV1(string $subscriptionId, \Hostinger\Model\BillingV1SubscriptionCancelRequest $billingV1SubscriptionCancelRequest, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
-        list($response) = $this->cancelSubscriptionV1WithHttpInfo($subscription_id, $billing_v1_subscription_cancel_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation cancelSubscriptionV1WithHttpInfo
-     *
-     * Cancel subscription
-     *
-     * @param  string $subscription_id Subscription ID (required)
-     * @param  \Hostinger\Model\BillingV1SubscriptionCancelRequest $billing_v1_subscription_cancel_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelSubscriptionV1'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return array of \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function cancelSubscriptionV1WithHttpInfo(
-        string $subscription_id,
-        \Hostinger\Model\BillingV1SubscriptionCancelRequest $billing_v1_subscription_cancel_request,
-        string $contentType = self::contentTypes['cancelSubscriptionV1'][0]
-    ): array
-    {
-        $request = $this->cancelSubscriptionV1Request($subscription_id, $billing_v1_subscription_cancel_request, $contentType);
+        $request = $this->cancelSubscriptionV1Request($subscriptionId, $billingV1SubscriptionCancelRequest, );
 
         try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    if (in_array('\Hostinger\Model\CommonSuccessEmptyResource', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSuccessEmptyResource' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSuccessEmptyResource', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 422:
-                    if (in_array('\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if (in_array('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if (in_array('\Hostinger\Model\CommonSchemaErrorResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaErrorResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaErrorResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                    } catch (\JsonException $exception) {
-                        throw new ApiException(
-                            sprintf(
-                                'Error JSON decoding server response (%s)',
-                                $request->getUri()
-                            ),
-                            $statusCode,
-                            $response->getHeaders(),
-                            $content
-                        );
-                    }
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSuccessEmptyResource',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 422:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaErrorResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
         }
-    }
 
-    /**
-     * Operation cancelSubscriptionV1Async
-     *
-     * Cancel subscription
-     *
-     * @param  string $subscription_id Subscription ID (required)
-     * @param  \Hostinger\Model\BillingV1SubscriptionCancelRequest $billing_v1_subscription_cancel_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelSubscriptionV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function cancelSubscriptionV1Async(
-        string $subscription_id,
-        \Hostinger\Model\BillingV1SubscriptionCancelRequest $billing_v1_subscription_cancel_request,
-        string $contentType = self::contentTypes['cancelSubscriptionV1'][0]
-    ): PromiseInterface
-    {
-        return $this->cancelSubscriptionV1AsyncWithHttpInfo($subscription_id, $billing_v1_subscription_cancel_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
+        $statusCode = $response->getStatusCode();
+        $returnType = null;
+        $content = \GuzzleHttp\Utils::jsonDecode((string) $response->getBody(), false, 512, JSON_THROW_ON_ERROR);
 
-    /**
-     * Operation cancelSubscriptionV1AsyncWithHttpInfo
-     *
-     * Cancel subscription
-     *
-     * @param  string $subscription_id Subscription ID (required)
-     * @param  \Hostinger\Model\BillingV1SubscriptionCancelRequest $billing_v1_subscription_cancel_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelSubscriptionV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function cancelSubscriptionV1AsyncWithHttpInfo(
-        string $subscription_id,
-        \Hostinger\Model\BillingV1SubscriptionCancelRequest $billing_v1_subscription_cancel_request,
-        string $contentType = self::contentTypes['cancelSubscriptionV1'][0]
-    ): PromiseInterface
-    {
-        $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-        $request = $this->cancelSubscriptionV1Request($subscription_id, $billing_v1_subscription_cancel_request, $contentType);
+        switch ($statusCode) {
+            case 200:
+                $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
+                break;
+            case 422:
+                $returnType = '\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema';
+                break;
+            case 401:
+                $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';
+                break;
+            case 500:
+                $returnType = '\Hostinger\Model\CommonSchemaErrorResponseSchema';
+                break;
+        }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
+        return ObjectSerializer::deserialize($content, $returnType);
     }
 
     /**
      * Create request for operation 'cancelSubscriptionV1'
      *
-     * @param  string $subscription_id Subscription ID (required)
-     * @param  \Hostinger\Model\BillingV1SubscriptionCancelRequest $billing_v1_subscription_cancel_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelSubscriptionV1'] to see the possible values for this operation
-     *
+     * @param  string $subscriptionId Subscription ID (required)
+     * @param  \Hostinger\Model\BillingV1SubscriptionCancelRequest $billingV1SubscriptionCancelRequest (required)
      * @throws InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
-    public function cancelSubscriptionV1Request(
-        string $subscription_id,
-        \Hostinger\Model\BillingV1SubscriptionCancelRequest $billing_v1_subscription_cancel_request,
-        string $contentType = self::contentTypes['cancelSubscriptionV1'][0]
-    ): Request
+    protected function cancelSubscriptionV1Request(string $subscriptionId,\Hostinger\Model\BillingV1SubscriptionCancelRequest $billingV1SubscriptionCancelRequest,): Request
     {
-
-        // verify the required parameter 'subscription_id' is set
-        if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $subscription_id when calling cancelSubscriptionV1'
-            );
-        }
-
-        // verify the required parameter 'billing_v1_subscription_cancel_request' is set
-        if ($billing_v1_subscription_cancel_request === null || (is_array($billing_v1_subscription_cancel_request) && count($billing_v1_subscription_cancel_request) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $billing_v1_subscription_cancel_request when calling cancelSubscriptionV1'
-            );
-        }
-
-
         $resourcePath = '/api/billing/v1/subscriptions/{subscriptionId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($subscription_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'subscriptionId' . '}',
-                ObjectSerializer::toPathValue($subscription_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
+        $resourcePath = str_replace(
+            '{' . 'subscriptionId' . '}',
+            ObjectSerializer::toPathValue((string) $subscriptionId),
+            $resourcePath
         );
 
-        // for model (json/xml)
-        if (isset($billing_v1_subscription_cancel_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($billing_v1_subscription_cancel_request));
-            } else {
-                $httpBody = $billing_v1_subscription_cancel_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
 
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
 
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
 
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
+        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($billingV1SubscriptionCancelRequest));
+        $query = [];
 
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->buildRequest('DELETE', $resourcePath, $body, $query);
     }
 
     /**
@@ -535,373 +124,61 @@ class BillingSubscriptionsApi
      *
      * Get subscription list
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSubscriptionListV1'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @return \Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      */
-    public function getSubscriptionListV1(
-        string $contentType = self::contentTypes['getSubscriptionListV1'][0]
-    ): array|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function getSubscriptionListV1(): array|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
-        list($response) = $this->getSubscriptionListV1WithHttpInfo($contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getSubscriptionListV1WithHttpInfo
-     *
-     * Get subscription list
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSubscriptionListV1'] to see the possible values for this operation
-     *
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @return array of \Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getSubscriptionListV1WithHttpInfo(
-        string $contentType = self::contentTypes['getSubscriptionListV1'][0]
-    ): array
-    {
-        $request = $this->getSubscriptionListV1Request($contentType);
+        $request = $this->getSubscriptionListV1Request();
 
         try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            switch ($statusCode) {
-                case 200:
-                    if (in_array('\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if (in_array('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if (in_array('\Hostinger\Model\CommonSchemaErrorResponseSchema', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Hostinger\Model\CommonSchemaErrorResponseSchema' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Hostinger\Model\CommonSchemaErrorResponseSchema', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            $returnType = '\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                    } catch (\JsonException $exception) {
-                        throw new ApiException(
-                            sprintf(
-                                'Error JSON decoding server response (%s)',
-                                $request->getUri()
-                            ),
-                            $statusCode,
-                            $response->getHeaders(),
-                            $content
-                        );
-                    }
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Hostinger\Model\CommonSchemaErrorResponseSchema',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
         }
-    }
 
-    /**
-     * Operation getSubscriptionListV1Async
-     *
-     * Get subscription list
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSubscriptionListV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function getSubscriptionListV1Async(
-        string $contentType = self::contentTypes['getSubscriptionListV1'][0]
-    ): PromiseInterface
-    {
-        return $this->getSubscriptionListV1AsyncWithHttpInfo($contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
+        $statusCode = $response->getStatusCode();
+        $returnType = null;
+        $content = \GuzzleHttp\Utils::jsonDecode((string) $response->getBody(), false, 512, JSON_THROW_ON_ERROR);
 
-    /**
-     * Operation getSubscriptionListV1AsyncWithHttpInfo
-     *
-     * Get subscription list
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSubscriptionListV1'] to see the possible values for this operation
-     *
-     * @throws InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function getSubscriptionListV1AsyncWithHttpInfo(
-        string $contentType = self::contentTypes['getSubscriptionListV1'][0]
-    ): PromiseInterface
-    {
-        $returnType = '\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]';
-        $request = $this->getSubscriptionListV1Request($contentType);
+        switch ($statusCode) {
+            case 200:
+                $returnType = '\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]';
+                break;
+            case 401:
+                $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';
+                break;
+            case 500:
+                $returnType = '\Hostinger\Model\CommonSchemaErrorResponseSchema';
+                break;
+        }
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
+        return ObjectSerializer::deserialize($content, $returnType);
     }
 
     /**
      * Create request for operation 'getSubscriptionListV1'
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSubscriptionListV1'] to see the possible values for this operation
-     *
      * @throws InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSubscriptionListV1Request(
-        string $contentType = self::contentTypes['getSubscriptionListV1'][0]
-    ): Request
+    protected function getSubscriptionListV1Request(): Request
     {
-
-
         $resourcePath = '/api/billing/v1/subscriptions';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
 
+        $body = null;
+        $query = [];
 
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->buildRequest('GET', $resourcePath, $body, $query);
     }
 
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function createHttpClientOption(): array
     {
         $options = [];
@@ -913,5 +190,36 @@ class BillingSubscriptionsApi
         }
 
         return $options;
+    }
+
+    /**
+     * @param array<string, string> $query
+     */
+    protected function buildRequest(
+        string $httpMethod,
+        string $resourcePath,
+        ?string $body = null,
+        array $query = [],
+        string $contentType = 'application/json',
+    ): Request {
+        $headers = $this->headerSelector->selectHeaders(
+            accept: ['application/json'],
+            contentType: $contentType,
+            isMultipart: false
+        );
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $query = ObjectSerializer::buildQuery($query);
+
+        return new Request(
+            $httpMethod,
+            $this->config->getHost() . $resourcePath . ($query ? "?$query" : ''),
+            $headers,
+            $body
+        );
     }
 }

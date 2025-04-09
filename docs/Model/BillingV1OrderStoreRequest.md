@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**payment_method_id** | **int** | Payment method ID |
+**paymentMethodId** | **int** | Payment method ID |
 **items** | [**\Hostinger\Model\BillingV1OrderStoreRequestItemsInner[]**](BillingV1OrderStoreRequestItemsInner.md) |  |
 **coupons** | **mixed[]** |  | [optional]
 
