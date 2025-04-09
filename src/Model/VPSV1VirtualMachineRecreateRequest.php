@@ -165,7 +165,6 @@ class VPSV1VirtualMachineRecreateRequest implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -315,5 +314,4 @@ class VPSV1VirtualMachineRecreateRequest implements ModelInterface, ArrayAccess,
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

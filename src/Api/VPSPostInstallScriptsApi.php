@@ -105,8 +105,6 @@ class VPSPostInstallScriptsApi
     {
         $resourcePath = '/api/vps/v1/post-install-scripts';
 
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1PostInstallScriptStoreRequest));
         $query = [];
 
@@ -172,8 +170,6 @@ class VPSPostInstallScriptsApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
@@ -233,8 +229,6 @@ class VPSPostInstallScriptsApi
     protected function getPostInstallScriptListV1Request(?int $page = null,): Request
     {
         $resourcePath = '/api/vps/v1/post-install-scripts';
-
-
 
         $body = null;
         $query = ObjectSerializer::toQueryValue(
@@ -308,8 +302,6 @@ class VPSPostInstallScriptsApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
@@ -378,16 +370,11 @@ class VPSPostInstallScriptsApi
             $resourcePath
         );
 
-
-
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1PostInstallScriptStoreRequest));
         $query = [];
 
         return $this->buildRequest('PUT', $resourcePath, $body, $query);
     }
-
 
     /**
      * @return array<string, mixed>

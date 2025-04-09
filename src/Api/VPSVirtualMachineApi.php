@@ -110,10 +110,6 @@ class VPSVirtualMachineApi
             $resourcePath
         );
 
-
-
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineMetricGetRequest));
         $query = [];
 
@@ -239,8 +235,6 @@ class VPSVirtualMachineApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
@@ -309,10 +303,6 @@ class VPSVirtualMachineApi
             $resourcePath
         );
 
-
-
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineRecreateRequest));
         $query = [];
 
@@ -378,8 +368,6 @@ class VPSVirtualMachineApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
@@ -444,8 +432,6 @@ class VPSVirtualMachineApi
             ObjectSerializer::toPathValue((string) $virtualMachineId),
             $resourcePath
         );
-
-
 
         $body = null;
         $query = [];
@@ -515,10 +501,6 @@ class VPSVirtualMachineApi
             $resourcePath
         );
 
-
-
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineHostnameUpdateRequest));
         $query = [];
 
@@ -586,10 +568,6 @@ class VPSVirtualMachineApi
             ObjectSerializer::toPathValue((string) $virtualMachineId),
             $resourcePath
         );
-
-
-
-
 
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineNameserversUpdateRequest));
         $query = [];
@@ -659,10 +637,6 @@ class VPSVirtualMachineApi
             $resourcePath
         );
 
-
-
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachinePanelPasswordUpdateRequest));
         $query = [];
 
@@ -730,10 +704,6 @@ class VPSVirtualMachineApi
             ObjectSerializer::toPathValue((string) $virtualMachineId),
             $resourcePath
         );
-
-
-
-
 
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineRootPasswordUpdateRequest));
         $query = [];
@@ -803,10 +773,6 @@ class VPSVirtualMachineApi
             $resourcePath
         );
 
-
-
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineSetupRequest));
         $query = [];
 
@@ -871,8 +837,6 @@ class VPSVirtualMachineApi
             ObjectSerializer::toPathValue((string) $virtualMachineId),
             $resourcePath
         );
-
-
 
         $body = null;
         $query = [];
@@ -939,14 +903,11 @@ class VPSVirtualMachineApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
         return $this->buildRequest('POST', $resourcePath, $body, $query);
     }
-
 
     /**
      * @return array<string, mixed>

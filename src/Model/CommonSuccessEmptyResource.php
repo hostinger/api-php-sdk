@@ -153,7 +153,6 @@ class CommonSuccessEmptyResource implements ModelInterface, ArrayAccess, JsonSer
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -255,5 +254,4 @@ class CommonSuccessEmptyResource implements ModelInterface, ArrayAccess, JsonSer
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

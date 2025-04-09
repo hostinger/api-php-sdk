@@ -153,7 +153,6 @@ class VPSV1VirtualMachineHostnameUpdateRequest implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -258,5 +257,4 @@ class VPSV1VirtualMachineHostnameUpdateRequest implements ModelInterface, ArrayA
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

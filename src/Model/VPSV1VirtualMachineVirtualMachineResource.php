@@ -788,4 +788,3 @@ class VPSV1VirtualMachineVirtualMachineResource implements ModelInterface, Array
     }
 }
 
-

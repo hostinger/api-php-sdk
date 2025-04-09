@@ -107,8 +107,6 @@ class BillingPaymentMethodsApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
@@ -234,14 +232,11 @@ class BillingPaymentMethodsApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
         return $this->buildRequest('POST', $resourcePath, $body, $query);
     }
-
 
     /**
      * @return array<string, mixed>

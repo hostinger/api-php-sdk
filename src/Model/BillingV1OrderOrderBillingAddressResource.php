@@ -213,7 +213,6 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -575,5 +574,4 @@ class BillingV1OrderOrderBillingAddressResource implements ModelInterface, Array
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

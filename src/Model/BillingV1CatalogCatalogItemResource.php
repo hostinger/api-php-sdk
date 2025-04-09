@@ -171,7 +171,6 @@ class BillingV1CatalogCatalogItemResource implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -327,5 +326,4 @@ class BillingV1CatalogCatalogItemResource implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

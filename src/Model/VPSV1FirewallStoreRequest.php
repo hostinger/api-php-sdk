@@ -153,7 +153,6 @@ class VPSV1FirewallStoreRequest implements ModelInterface, ArrayAccess, JsonSeri
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -258,5 +257,4 @@ class VPSV1FirewallStoreRequest implements ModelInterface, ArrayAccess, JsonSeri
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

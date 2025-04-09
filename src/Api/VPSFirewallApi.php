@@ -115,10 +115,6 @@ class VPSFirewallApi
             $resourcePath
         );
 
-
-
-
-
         $body = null;
         $query = [];
 
@@ -187,10 +183,6 @@ class VPSFirewallApi
             $resourcePath
         );
 
-
-
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1FirewallRulesStoreRequest));
         $query = [];
 
@@ -253,8 +245,6 @@ class VPSFirewallApi
     protected function createNewFirewallV1Request(\Hostinger\Model\VPSV1FirewallStoreRequest $vPSV1FirewallStoreRequest,): Request
     {
         $resourcePath = '/api/vps/v1/firewall';
-
-
 
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1FirewallStoreRequest));
         $query = [];
@@ -329,10 +319,6 @@ class VPSFirewallApi
             $resourcePath
         );
 
-
-
-
-
         $body = null;
         $query = [];
 
@@ -403,10 +389,6 @@ class VPSFirewallApi
             $resourcePath
         );
 
-
-
-
-
         $body = null;
         $query = [];
 
@@ -472,8 +454,6 @@ class VPSFirewallApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
@@ -533,8 +513,6 @@ class VPSFirewallApi
     protected function getFirewallListV1Request(?int $page = null,): Request
     {
         $resourcePath = '/api/vps/v1/firewall';
-
-
 
         $body = null;
         $query = ObjectSerializer::toQueryValue(
@@ -607,8 +585,6 @@ class VPSFirewallApi
             ObjectSerializer::toPathValue((string) $firewallId),
             $resourcePath
         );
-
-
 
         $body = null;
         $query = [];
@@ -683,10 +659,6 @@ class VPSFirewallApi
             $resourcePath
         );
 
-
-
-
-
         $body = null;
         $query = [];
 
@@ -760,18 +732,11 @@ class VPSFirewallApi
             $resourcePath
         );
 
-
-
-
-
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1FirewallRulesStoreRequest));
         $query = [];
 
         return $this->buildRequest('PUT', $resourcePath, $body, $query);
     }
-
 
     /**
      * @return array<string, mixed>

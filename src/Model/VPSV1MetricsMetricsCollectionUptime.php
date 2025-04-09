@@ -159,7 +159,6 @@ class VPSV1MetricsMetricsCollectionUptime implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -279,5 +278,4 @@ class VPSV1MetricsMetricsCollectionUptime implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

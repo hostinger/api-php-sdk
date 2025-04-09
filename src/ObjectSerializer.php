@@ -419,7 +419,6 @@ class ObjectSerializer
             return $data;
         }
 
-
         if (is_subclass_of($class, '\BackedEnum')) {
             $data = $class::tryFrom($data);
             if ($data === null) {

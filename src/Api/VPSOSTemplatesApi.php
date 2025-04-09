@@ -167,14 +167,11 @@ class VPSOSTemplatesApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
         return $this->buildRequest('GET', $resourcePath, $body, $query);
     }
-
 
     /**
      * @return array<string, mixed>

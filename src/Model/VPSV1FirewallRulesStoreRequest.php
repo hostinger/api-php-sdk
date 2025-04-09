@@ -426,4 +426,3 @@ class VPSV1FirewallRulesStoreRequest implements ModelInterface, ArrayAccess, Jso
     }
 }
 
-

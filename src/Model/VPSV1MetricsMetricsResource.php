@@ -159,7 +159,6 @@ class VPSV1MetricsMetricsResource implements ModelInterface, ArrayAccess, JsonSe
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -279,5 +278,4 @@ class VPSV1MetricsMetricsResource implements ModelInterface, ArrayAccess, JsonSe
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

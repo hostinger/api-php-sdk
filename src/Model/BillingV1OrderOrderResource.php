@@ -494,4 +494,3 @@ class BillingV1OrderOrderResource implements ModelInterface, ArrayAccess, JsonSe
     }
 }
 
-

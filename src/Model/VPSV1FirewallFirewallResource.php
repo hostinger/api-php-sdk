@@ -183,7 +183,6 @@ class VPSV1FirewallFirewallResource implements ModelInterface, ArrayAccess, Json
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -375,5 +374,4 @@ class VPSV1FirewallFirewallResource implements ModelInterface, ArrayAccess, Json
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

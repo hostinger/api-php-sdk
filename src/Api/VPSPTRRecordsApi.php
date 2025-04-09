@@ -107,8 +107,6 @@ class VPSPTRRecordsApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
@@ -174,14 +172,11 @@ class VPSPTRRecordsApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
         return $this->buildRequest('DELETE', $resourcePath, $body, $query);
     }
-
 
     /**
      * @return array<string, mixed>

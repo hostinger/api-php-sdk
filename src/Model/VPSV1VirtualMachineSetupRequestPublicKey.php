@@ -159,7 +159,6 @@ class VPSV1VirtualMachineSetupRequestPublicKey implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
-
     /**
      * @var array<string, mixed>
      */
@@ -279,5 +278,4 @@ class VPSV1VirtualMachineSetupRequestPublicKey implements ModelInterface, ArrayA
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
 

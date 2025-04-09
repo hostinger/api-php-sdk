@@ -110,10 +110,6 @@ class VPSPublicKeysApi
             $resourcePath
         );
 
-
-
-
-
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1PublicKeyAttachRequest));
         $query = [];
 
@@ -176,8 +172,6 @@ class VPSPublicKeysApi
     protected function createNewPublicKeyV1Request(\Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest,): Request
     {
         $resourcePath = '/api/vps/v1/public-keys';
-
-
 
         $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1PublicKeyStoreRequest));
         $query = [];
@@ -244,8 +238,6 @@ class VPSPublicKeysApi
             $resourcePath
         );
 
-
-
         $body = null;
         $query = [];
 
@@ -306,8 +298,6 @@ class VPSPublicKeysApi
     {
         $resourcePath = '/api/vps/v1/public-keys';
 
-
-
         $body = null;
         $query = ObjectSerializer::toQueryValue(
             $page,
@@ -320,7 +310,6 @@ class VPSPublicKeysApi
 
         return $this->buildRequest('GET', $resourcePath, $body, $query);
     }
-
 
     /**
      * @return array<string, mixed>

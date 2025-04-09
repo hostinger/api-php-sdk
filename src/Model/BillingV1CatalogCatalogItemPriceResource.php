@@ -438,4 +438,3 @@ class BillingV1CatalogCatalogItemPriceResource implements ModelInterface, ArrayA
     }
 }
 
-
