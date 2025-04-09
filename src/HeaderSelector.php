@@ -16,8 +16,6 @@ class HeaderSelector
 {
     /**
      * @param array<string> $accept
-     * @param string   $contentType
-     * @param bool     $isMultipart
      * @return array<string>
      */
     public function selectHeaders(array $accept, string $contentType, bool $isMultipart): array
@@ -44,8 +42,6 @@ class HeaderSelector
      * Return the header 'Accept' based on an array of Accept provided.
      *
      * @param array<string> $accept Array of header
-     *
-     * @return null|string Accept (e.g. application/json)
      */
     private function selectAcceptHeader(array $accept): ?string
     {
@@ -77,8 +73,6 @@ class HeaderSelector
     *
     * @param array<string> $accept            Array of Accept Headers
     * @param array<string> $headersWithJson   Array of Accept Headers of type "json"
-    *
-    * @return string "Accept" Header (e.g. "application/json, text/html; q=0.9")
     */
     private function getAcceptHeaderWithAdjustedWeight(array $accept, array $headersWithJson): string
     {
@@ -120,9 +114,7 @@ class HeaderSelector
     /**
      * Given an Accept header, returns an associative array splitting the header and its weight
      *
-     * @param string $header "Accept" Header
-     *
-     * @return array with the header and its weight
+     * @return array{header: string, weight: int} with the header and its weight
      */
     private function getHeaderAndWeight(string $header): array
     {
@@ -130,7 +122,7 @@ class HeaderSelector
         if (preg_match('/(.*);\s*q=(1(?:\.0+)?|0\.\d+)$/', $header, $outputArray) === 1) {
             $headerData = [
                 'header' => $outputArray[1],
-                'weight' => (int)($outputArray[2] * 1000),
+                'weight' => ((int) $outputArray[2]) * 1000,
             ];
         } else {
             $headerData = [
@@ -143,12 +135,10 @@ class HeaderSelector
     }
 
     /**
-     * @param array[] $headers
-     * @param float   $currentWeight
-     * @param bool    $hasMoreThan28Headers
+     * @param array<array-key, mixed> $headers
      * @return array<string> array of adjusted "Accept" headers
      */
-    private function adjustWeight(array $headers, float &$currentWeight, bool $hasMoreThan28Headers): array
+    private function adjustWeight(array $headers, int &$currentWeight, bool $hasMoreThan28Headers): array
     {
         usort($headers, function (array $a, array $b) {
             return $b['weight'] - $a['weight'];
@@ -171,11 +161,6 @@ class HeaderSelector
         return $acceptHeaders;
     }
 
-    /**
-     * @param string $header
-     * @param int    $weight
-     * @return string
-     */
     private function buildAcceptHeader(string $header, int $weight): string
     {
         if($weight === 1000) {
@@ -204,8 +189,6 @@ class HeaderSelector
      * decrement rule, which will result in quality codes like "q=0.999", "q=0.998" etc.
      *
      * @param int  $currentWeight varying from 1 to 1000 (will be divided by 1000 to build the quality value)
-     * @param bool $hasMoreThan28Headers
-     * @return int
      */
     public function getNextWeight(int $currentWeight, bool $hasMoreThan28Headers): int
     {

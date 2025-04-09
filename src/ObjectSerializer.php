@@ -27,7 +27,7 @@ class ObjectSerializer
     }
 
     /**
-     * @return scalar|object|array|null serialized form of $data
+     * @return scalar|object|array<array-key, mixed>|null serialized form of $data
      */
     public static function sanitizeForSerialization(mixed $data, ?string $type = null, ?string $format = null): mixed
     {
@@ -83,9 +83,9 @@ class ObjectSerializer
                     $values[$property] = self::sanitizeForSerialization($value);
                 }
             }
-            return (object)$values;
+            return (object) $values;
         } else {
-            return (string)$data;
+            return (string) $data;
         }
     }
 
@@ -163,7 +163,7 @@ class ObjectSerializer
      * @param bool   $explode     Parameter explode option
      * @param bool   $required    Whether query param is required or not
      *
-     * @return array
+     * @return array<string, string>
      */
     public static function toQueryValue(
         mixed $value,
@@ -294,12 +294,7 @@ class ObjectSerializer
     /**
      * Serialize an array to a string.
      *
-     * @param array  $collection                 collection to serialize to a string
-     * @param string $style                      the format use for serialization (csv,
-     * ssv, tsv, pipes, multi)
-     * @param bool   $allowCollectionFormatMulti allow collection format to be a multidimensional array
-     *
-     * @return string
+     * @param array<array-key, mixed> $collection
      */
     public static function serializeCollection(array $collection, string $style, bool $allowCollectionFormatMulti = false): string
     {
@@ -319,10 +314,7 @@ class ObjectSerializer
     /**
      * Deserialize a JSON string into an object
      *
-     * @param mixed         $data          object or primitive to be deserialized
-     * @param string        $class         class name is passed as a string
-     * @param array<string>|null $httpHeaders   HTTP headers
-     *
+     * @param array<string>|null $httpHeaders
      * @return mixed a single or an array of $class instances
      */
     public static function deserialize(mixed $data, string $class, ?array $httpHeaders = null): mixed
@@ -439,7 +431,7 @@ class ObjectSerializer
             $data = is_string($data) ? json_decode($data) : $data;
 
             if (is_array($data)) {
-                $data = (object)$data;
+                $data = (object) $data;
             }
 
             // If a discriminator is defined and points to a valid subclass, use it.
@@ -456,10 +448,6 @@ class ObjectSerializer
             foreach ($instance::openAPITypes() as $property => $type) {
                 $propertySetter = $instance::setters()[$property];
 
-                if (!isset($propertySetter)) {
-                    continue;
-                }
-
                 if (!isset($data->{$instance::attributeMap()[$property]})) {
                     if ($instance::isNullable($property)) {
                         $instance->$propertySetter(null);
@@ -468,10 +456,8 @@ class ObjectSerializer
                     continue;
                 }
 
-                if (isset($data->{$instance::attributeMap()[$property]})) {
-                    $propertyValue = $data->{$instance::attributeMap()[$property]};
-                    $instance->$propertySetter(self::deserialize($propertyValue, $type, null));
-                }
+                $propertyValue = $data->{$instance::attributeMap()[$property]};
+                $instance->$propertySetter(self::deserialize($propertyValue, $type));
             }
             return $instance;
         }
@@ -484,12 +470,12 @@ class ObjectSerializer
     * string. This function does not modify the provided keys when an array is
     * encountered (like `http_build_query()` would).
     *
-    * @param array     $params              Query string parameters.
+    * @param array<array-key, mixed> $params
     * @param int|false $encoding            Set to false to not encode, PHP_QUERY_RFC3986
     *                                       to encode using RFC3986, or PHP_QUERY_RFC1738
     *                                       to encode using RFC1738.
     */
-    public static function buildQuery(array $params, $encoding = PHP_QUERY_RFC3986): string
+    public static function buildQuery(array $params, mixed $encoding = PHP_QUERY_RFC3986): string
     {
         if (!$params) {
             return '';

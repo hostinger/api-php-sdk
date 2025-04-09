@@ -16,6 +16,7 @@ use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -52,11 +53,10 @@ class VPSPTRRecordsApi
      *
      * Create PTR record
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function createPTRRecordV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -65,7 +65,11 @@ class VPSPTRRecordsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -92,7 +96,6 @@ class VPSPTRRecordsApi
     /**
      * Create request for operation 'createPTRRecordV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function createPTRRecordV1Request(int $virtualMachineId,): Request
@@ -117,11 +120,10 @@ class VPSPTRRecordsApi
      *
      * Delete PTR record
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function deletePTRRecordV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -130,7 +132,11 @@ class VPSPTRRecordsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -157,7 +163,6 @@ class VPSPTRRecordsApi
     /**
      * Create request for operation 'deletePTRRecordV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function deletePTRRecordV1Request(int $virtualMachineId,): Request

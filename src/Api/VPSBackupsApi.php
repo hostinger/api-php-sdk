@@ -16,6 +16,7 @@ use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -52,12 +53,10 @@ class VPSBackupsApi
      *
      * Delete backup
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  int $backupId Backup ID (required)
-     *
+     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function deleteBackupV1(int $virtualMachineId, int $backupId, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -66,7 +65,11 @@ class VPSBackupsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -93,8 +96,6 @@ class VPSBackupsApi
     /**
      * Create request for operation 'deleteBackupV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  int $backupId Backup ID (required)
      * @throws InvalidArgumentException
      */
     protected function deleteBackupV1Request(int $virtualMachineId,int $backupId,): Request
@@ -126,12 +127,10 @@ class VPSBackupsApi
      *
      * Get backup list
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  int|null $page Page number (optional)
-     *
+     * @return \Hostinger\Model\VPSGetBackupListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSGetBackupListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getBackupListV1(int $virtualMachineId, ?int $page = null, ): \Hostinger\Model\VPSGetBackupListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -140,7 +139,11 @@ class VPSBackupsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -167,8 +170,6 @@ class VPSBackupsApi
     /**
      * Create request for operation 'getBackupListV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  int|null $page Page number (optional)
      * @throws InvalidArgumentException
      */
     protected function getBackupListV1Request(int $virtualMachineId,?int $page = null,): Request
@@ -202,12 +203,10 @@ class VPSBackupsApi
      *
      * Restore backup
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  int $backupId Backup ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function restoreBackupV1(int $virtualMachineId, int $backupId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -216,7 +215,11 @@ class VPSBackupsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -243,8 +246,6 @@ class VPSBackupsApi
     /**
      * Create request for operation 'restoreBackupV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  int $backupId Backup ID (required)
      * @throws InvalidArgumentException
      */
     protected function restoreBackupV1Request(int $virtualMachineId,int $backupId,): Request

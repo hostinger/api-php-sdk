@@ -16,6 +16,7 @@ use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -52,12 +53,10 @@ class VPSRecoveryApi
      *
      * Start recovery mode
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest $vPSV1VirtualMachineRecoveryStartRequest vPSV1VirtualMachineRecoveryStartRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function startRecoveryModeV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest $vPSV1VirtualMachineRecoveryStartRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -66,7 +65,11 @@ class VPSRecoveryApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -96,8 +99,6 @@ class VPSRecoveryApi
     /**
      * Create request for operation 'startRecoveryModeV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest $vPSV1VirtualMachineRecoveryStartRequest (required)
      * @throws InvalidArgumentException
      */
     protected function startRecoveryModeV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest $vPSV1VirtualMachineRecoveryStartRequest,): Request
@@ -124,11 +125,10 @@ class VPSRecoveryApi
      *
      * Stop recovery mode
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function stopRecoveryModeV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -137,7 +137,11 @@ class VPSRecoveryApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -164,7 +168,6 @@ class VPSRecoveryApi
     /**
      * Create request for operation 'stopRecoveryModeV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function stopRecoveryModeV1Request(int $virtualMachineId,): Request

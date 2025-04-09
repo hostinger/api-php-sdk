@@ -16,6 +16,7 @@ use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -52,11 +53,10 @@ class VPSPostInstallScriptsApi
      *
      * Create post-install script
      *
-     * @param  \Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest vPSV1PostInstallScriptStoreRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function createPostInstallScriptV1(\Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest, ): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -65,7 +65,11 @@ class VPSPostInstallScriptsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -95,7 +99,6 @@ class VPSPostInstallScriptsApi
     /**
      * Create request for operation 'createPostInstallScriptV1'
      *
-     * @param  \Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest (required)
      * @throws InvalidArgumentException
      */
     protected function createPostInstallScriptV1Request(\Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest,): Request
@@ -115,11 +118,10 @@ class VPSPostInstallScriptsApi
      *
      * Delete a post-install script
      *
-     * @param  int $postInstallScriptId Post-install script ID (required)
-     *
+     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function deleteAPostInstallScriptV1(int $postInstallScriptId, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -128,7 +130,11 @@ class VPSPostInstallScriptsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -155,7 +161,6 @@ class VPSPostInstallScriptsApi
     /**
      * Create request for operation 'deleteAPostInstallScriptV1'
      *
-     * @param  int $postInstallScriptId Post-install script ID (required)
      * @throws InvalidArgumentException
      */
     protected function deleteAPostInstallScriptV1Request(int $postInstallScriptId,): Request
@@ -180,11 +185,10 @@ class VPSPostInstallScriptsApi
      *
      * Get post-install script list
      *
-     * @param  int|null $page Page number (optional)
-     *
+     * @return \Hostinger\Model\VPSGetPostInstallScriptListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSGetPostInstallScriptListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getPostInstallScriptListV1(?int $page = null, ): \Hostinger\Model\VPSGetPostInstallScriptListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -193,7 +197,11 @@ class VPSPostInstallScriptsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -220,7 +228,6 @@ class VPSPostInstallScriptsApi
     /**
      * Create request for operation 'getPostInstallScriptListV1'
      *
-     * @param  int|null $page Page number (optional)
      * @throws InvalidArgumentException
      */
     protected function getPostInstallScriptListV1Request(?int $page = null,): Request
@@ -247,11 +254,10 @@ class VPSPostInstallScriptsApi
      *
      * Get post-install script
      *
-     * @param  int $postInstallScriptId Post-install script ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getPostInstallScriptV1(int $postInstallScriptId, ): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -260,7 +266,11 @@ class VPSPostInstallScriptsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -287,7 +297,6 @@ class VPSPostInstallScriptsApi
     /**
      * Create request for operation 'getPostInstallScriptV1'
      *
-     * @param  int $postInstallScriptId Post-install script ID (required)
      * @throws InvalidArgumentException
      */
     protected function getPostInstallScriptV1Request(int $postInstallScriptId,): Request
@@ -312,12 +321,10 @@ class VPSPostInstallScriptsApi
      *
      * Update post-install script
      *
-     * @param  int $postInstallScriptId Post-install script ID (required)
-     * @param  \Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest vPSV1PostInstallScriptStoreRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function updatePostInstallScriptV1(int $postInstallScriptId, \Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest, ): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -326,7 +333,11 @@ class VPSPostInstallScriptsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -356,8 +367,6 @@ class VPSPostInstallScriptsApi
     /**
      * Create request for operation 'updatePostInstallScriptV1'
      *
-     * @param  int $postInstallScriptId Post-install script ID (required)
-     * @param  \Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest (required)
      * @throws InvalidArgumentException
      */
     protected function updatePostInstallScriptV1Request(int $postInstallScriptId,\Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest,): Request

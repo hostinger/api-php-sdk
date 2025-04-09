@@ -16,6 +16,7 @@ use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -52,12 +53,10 @@ class VPSFirewallApi
      *
      * Activate firewall
      *
-     * @param  int $firewallId Firewall ID (required)
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function activateFirewallV1(int $firewallId, int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -66,7 +65,11 @@ class VPSFirewallApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -96,8 +99,6 @@ class VPSFirewallApi
     /**
      * Create request for operation 'activateFirewallV1'
      *
-     * @param  int $firewallId Firewall ID (required)
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function activateFirewallV1Request(int $firewallId,int $virtualMachineId,): Request
@@ -129,12 +130,10 @@ class VPSFirewallApi
      *
      * Create firewall rule
      *
-     * @param  int $firewallId Firewall ID (required)
-     * @param  \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest vPSV1FirewallRulesStoreRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1FirewallFirewallRuleResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1FirewallFirewallRuleResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function createFirewallRuleV1(int $firewallId, \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest, ): \Hostinger\Model\VPSV1FirewallFirewallRuleResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -143,7 +142,11 @@ class VPSFirewallApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -173,8 +176,6 @@ class VPSFirewallApi
     /**
      * Create request for operation 'createFirewallRuleV1'
      *
-     * @param  int $firewallId Firewall ID (required)
-     * @param  \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest (required)
      * @throws InvalidArgumentException
      */
     protected function createFirewallRuleV1Request(int $firewallId,\Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest,): Request
@@ -201,11 +202,10 @@ class VPSFirewallApi
      *
      * Create new firewall
      *
-     * @param  \Hostinger\Model\VPSV1FirewallStoreRequest $vPSV1FirewallStoreRequest vPSV1FirewallStoreRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1FirewallFirewallResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1FirewallFirewallResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function createNewFirewallV1(\Hostinger\Model\VPSV1FirewallStoreRequest $vPSV1FirewallStoreRequest, ): \Hostinger\Model\VPSV1FirewallFirewallResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -214,7 +214,11 @@ class VPSFirewallApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -244,7 +248,6 @@ class VPSFirewallApi
     /**
      * Create request for operation 'createNewFirewallV1'
      *
-     * @param  \Hostinger\Model\VPSV1FirewallStoreRequest $vPSV1FirewallStoreRequest (required)
      * @throws InvalidArgumentException
      */
     protected function createNewFirewallV1Request(\Hostinger\Model\VPSV1FirewallStoreRequest $vPSV1FirewallStoreRequest,): Request
@@ -264,12 +267,10 @@ class VPSFirewallApi
      *
      * Deactivate firewall
      *
-     * @param  int $firewallId Firewall ID (required)
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function deactivateFirewallV1(int $firewallId, int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -278,7 +279,11 @@ class VPSFirewallApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -308,8 +313,6 @@ class VPSFirewallApi
     /**
      * Create request for operation 'deactivateFirewallV1'
      *
-     * @param  int $firewallId Firewall ID (required)
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function deactivateFirewallV1Request(int $firewallId,int $virtualMachineId,): Request
@@ -341,12 +344,10 @@ class VPSFirewallApi
      *
      * Delete firewall rule
      *
-     * @param  int $firewallId Firewall ID (required)
-     * @param  int $ruleId Firewall Rule ID (required)
-     *
+     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function deleteFirewallRuleV1(int $firewallId, int $ruleId, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -355,7 +356,11 @@ class VPSFirewallApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -382,8 +387,6 @@ class VPSFirewallApi
     /**
      * Create request for operation 'deleteFirewallRuleV1'
      *
-     * @param  int $firewallId Firewall ID (required)
-     * @param  int $ruleId Firewall Rule ID (required)
      * @throws InvalidArgumentException
      */
     protected function deleteFirewallRuleV1Request(int $firewallId,int $ruleId,): Request
@@ -415,11 +418,10 @@ class VPSFirewallApi
      *
      * Delete firewall
      *
-     * @param  int $firewallId Firewall ID (required)
-     *
+     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function deleteFirewallV1(int $firewallId, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -428,7 +430,11 @@ class VPSFirewallApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -455,7 +461,6 @@ class VPSFirewallApi
     /**
      * Create request for operation 'deleteFirewallV1'
      *
-     * @param  int $firewallId Firewall ID (required)
      * @throws InvalidArgumentException
      */
     protected function deleteFirewallV1Request(int $firewallId,): Request
@@ -480,11 +485,10 @@ class VPSFirewallApi
      *
      * Get firewall list
      *
-     * @param  int|null $page Page number (optional)
-     *
+     * @return \Hostinger\Model\VPSGetFirewallListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSGetFirewallListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getFirewallListV1(?int $page = null, ): \Hostinger\Model\VPSGetFirewallListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -493,7 +497,11 @@ class VPSFirewallApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -520,7 +528,6 @@ class VPSFirewallApi
     /**
      * Create request for operation 'getFirewallListV1'
      *
-     * @param  int|null $page Page number (optional)
      * @throws InvalidArgumentException
      */
     protected function getFirewallListV1Request(?int $page = null,): Request
@@ -547,11 +554,10 @@ class VPSFirewallApi
      *
      * Get firewall
      *
-     * @param  int $firewallId Firewall ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1FirewallFirewallResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1FirewallFirewallResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getFirewallV1(int $firewallId, ): \Hostinger\Model\VPSV1FirewallFirewallResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -560,7 +566,11 @@ class VPSFirewallApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -587,7 +597,6 @@ class VPSFirewallApi
     /**
      * Create request for operation 'getFirewallV1'
      *
-     * @param  int $firewallId Firewall ID (required)
      * @throws InvalidArgumentException
      */
     protected function getFirewallV1Request(int $firewallId,): Request
@@ -612,12 +621,10 @@ class VPSFirewallApi
      *
      * Sync firewall
      *
-     * @param  int $firewallId Firewall ID (required)
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function syncFirewallV1(int $firewallId, int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -626,7 +633,11 @@ class VPSFirewallApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -656,8 +667,6 @@ class VPSFirewallApi
     /**
      * Create request for operation 'syncFirewallV1'
      *
-     * @param  int $firewallId Firewall ID (required)
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function syncFirewallV1Request(int $firewallId,int $virtualMachineId,): Request
@@ -689,13 +698,10 @@ class VPSFirewallApi
      *
      * Update firewall rule
      *
-     * @param  int $firewallId Firewall ID (required)
-     * @param  int $ruleId Firewall Rule ID (required)
-     * @param  \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest vPSV1FirewallRulesStoreRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1FirewallFirewallRuleResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1FirewallFirewallRuleResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function updateFirewallRuleV1(int $firewallId, int $ruleId, \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest, ): \Hostinger\Model\VPSV1FirewallFirewallRuleResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -704,7 +710,11 @@ class VPSFirewallApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -734,9 +744,6 @@ class VPSFirewallApi
     /**
      * Create request for operation 'updateFirewallRuleV1'
      *
-     * @param  int $firewallId Firewall ID (required)
-     * @param  int $ruleId Firewall Rule ID (required)
-     * @param  \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest (required)
      * @throws InvalidArgumentException
      */
     protected function updateFirewallRuleV1Request(int $firewallId,int $ruleId,\Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest,): Request

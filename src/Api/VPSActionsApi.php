@@ -16,6 +16,7 @@ use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -52,12 +53,10 @@ class VPSActionsApi
      *
      * Get action list
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  int|null $page Page number (optional)
-     *
+     * @return \Hostinger\Model\VPSGetActionListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSGetActionListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getActionListV1(int $virtualMachineId, ?int $page = null, ): \Hostinger\Model\VPSGetActionListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -66,7 +65,11 @@ class VPSActionsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -93,8 +96,6 @@ class VPSActionsApi
     /**
      * Create request for operation 'getActionListV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  int|null $page Page number (optional)
      * @throws InvalidArgumentException
      */
     protected function getActionListV1Request(int $virtualMachineId,?int $page = null,): Request
@@ -128,12 +129,10 @@ class VPSActionsApi
      *
      * Get action
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  int $actionId Action ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getActionV1(int $virtualMachineId, int $actionId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -142,7 +141,11 @@ class VPSActionsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -169,8 +172,6 @@ class VPSActionsApi
     /**
      * Create request for operation 'getActionV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  int $actionId Action ID (required)
      * @throws InvalidArgumentException
      */
     protected function getActionV1Request(int $virtualMachineId,int $actionId,): Request

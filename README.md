@@ -59,7 +59,7 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
     }
   ],
   "require": {
-    "hostinger/api-php-sdk": "*@main"
+    "hostinger/api-php-sdk": "dev-main"
   }
 }
 ```
@@ -92,8 +92,8 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 $apiInstance = new Hostinger\Api\BillingCatalogApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    client: new GuzzleHttp\Client(),
+    config: $config
 );
 
 try {

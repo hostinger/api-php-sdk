@@ -16,6 +16,7 @@ use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -52,12 +53,10 @@ class BillingSubscriptionsApi
      *
      * Cancel subscription
      *
-     * @param  string $subscriptionId Subscription ID (required)
-     * @param  \Hostinger\Model\BillingV1SubscriptionCancelRequest $billingV1SubscriptionCancelRequest billingV1SubscriptionCancelRequest (required)
-     *
+     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function cancelSubscriptionV1(string $subscriptionId, \Hostinger\Model\BillingV1SubscriptionCancelRequest $billingV1SubscriptionCancelRequest, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -66,7 +65,11 @@ class BillingSubscriptionsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -96,8 +99,6 @@ class BillingSubscriptionsApi
     /**
      * Create request for operation 'cancelSubscriptionV1'
      *
-     * @param  string $subscriptionId Subscription ID (required)
-     * @param  \Hostinger\Model\BillingV1SubscriptionCancelRequest $billingV1SubscriptionCancelRequest (required)
      * @throws InvalidArgumentException
      */
     protected function cancelSubscriptionV1Request(string $subscriptionId,\Hostinger\Model\BillingV1SubscriptionCancelRequest $billingV1SubscriptionCancelRequest,): Request
@@ -124,10 +125,10 @@ class BillingSubscriptionsApi
      *
      * Get subscription list
      *
-     *
+     * @return \Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getSubscriptionListV1(): array|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -136,7 +137,11 @@ class BillingSubscriptionsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }

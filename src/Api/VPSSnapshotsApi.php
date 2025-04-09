@@ -16,6 +16,7 @@ use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -52,11 +53,10 @@ class VPSSnapshotsApi
      *
      * Create snapshot
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function createSnapshotV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -65,7 +65,11 @@ class VPSSnapshotsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -92,7 +96,6 @@ class VPSSnapshotsApi
     /**
      * Create request for operation 'createSnapshotV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function createSnapshotV1Request(int $virtualMachineId,): Request
@@ -117,11 +120,10 @@ class VPSSnapshotsApi
      *
      * Delete snapshot
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function deleteSnapshotV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -130,7 +132,11 @@ class VPSSnapshotsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -157,7 +163,6 @@ class VPSSnapshotsApi
     /**
      * Create request for operation 'deleteSnapshotV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function deleteSnapshotV1Request(int $virtualMachineId,): Request
@@ -182,11 +187,10 @@ class VPSSnapshotsApi
      *
      * Get snapshot
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1SnapshotSnapshotResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1SnapshotSnapshotResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getSnapshotV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1SnapshotSnapshotResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -195,7 +199,11 @@ class VPSSnapshotsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -222,7 +230,6 @@ class VPSSnapshotsApi
     /**
      * Create request for operation 'getSnapshotV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function getSnapshotV1Request(int $virtualMachineId,): Request
@@ -247,11 +254,10 @@ class VPSSnapshotsApi
      *
      * Restore snapshot
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function restoreSnapshotV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -260,7 +266,11 @@ class VPSSnapshotsApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -287,7 +297,6 @@ class VPSSnapshotsApi
     /**
      * Create request for operation 'restoreSnapshotV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function restoreSnapshotV1Request(int $virtualMachineId,): Request

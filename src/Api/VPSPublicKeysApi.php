@@ -16,6 +16,7 @@ use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -52,12 +53,10 @@ class VPSPublicKeysApi
      *
      * Attach public key
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest vPSV1PublicKeyAttachRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function attachPublicKeyV1(int $virtualMachineId, \Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -66,7 +65,11 @@ class VPSPublicKeysApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -96,8 +99,6 @@ class VPSPublicKeysApi
     /**
      * Create request for operation 'attachPublicKeyV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest (required)
      * @throws InvalidArgumentException
      */
     protected function attachPublicKeyV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest,): Request
@@ -124,11 +125,10 @@ class VPSPublicKeysApi
      *
      * Create new public key
      *
-     * @param  \Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest vPSV1PublicKeyStoreRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1PublicKeyPublicKeyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1PublicKeyPublicKeyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function createNewPublicKeyV1(\Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest, ): \Hostinger\Model\VPSV1PublicKeyPublicKeyResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -137,7 +137,11 @@ class VPSPublicKeysApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -167,7 +171,6 @@ class VPSPublicKeysApi
     /**
      * Create request for operation 'createNewPublicKeyV1'
      *
-     * @param  \Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest (required)
      * @throws InvalidArgumentException
      */
     protected function createNewPublicKeyV1Request(\Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest,): Request
@@ -187,11 +190,10 @@ class VPSPublicKeysApi
      *
      * Delete a public key
      *
-     * @param  int $publicKeyId Public Key ID (required)
-     *
+     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function deleteAPublicKeyV1(int $publicKeyId, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -200,7 +202,11 @@ class VPSPublicKeysApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -227,7 +233,6 @@ class VPSPublicKeysApi
     /**
      * Create request for operation 'deleteAPublicKeyV1'
      *
-     * @param  int $publicKeyId Public Key ID (required)
      * @throws InvalidArgumentException
      */
     protected function deleteAPublicKeyV1Request(int $publicKeyId,): Request
@@ -252,11 +257,10 @@ class VPSPublicKeysApi
      *
      * Get public key list
      *
-     * @param  int|null $page Page number (optional)
-     *
+     * @return \Hostinger\Model\VPSGetPublicKeyListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSGetPublicKeyListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getPublicKeyListV1(?int $page = null, ): \Hostinger\Model\VPSGetPublicKeyListV1200Response|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -265,7 +269,11 @@ class VPSPublicKeysApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -292,7 +300,6 @@ class VPSPublicKeysApi
     /**
      * Create request for operation 'getPublicKeyListV1'
      *
-     * @param  int|null $page Page number (optional)
      * @throws InvalidArgumentException
      */
     protected function getPublicKeyListV1Request(?int $page = null,): Request

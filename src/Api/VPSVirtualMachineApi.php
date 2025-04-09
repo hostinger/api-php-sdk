@@ -16,6 +16,7 @@ use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -52,12 +53,10 @@ class VPSVirtualMachineApi
      *
      * Get metrics
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineMetricGetRequest $vPSV1VirtualMachineMetricGetRequest vPSV1VirtualMachineMetricGetRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1MetricsMetricsCollection|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1MetricsMetricsCollection|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getMetricsV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineMetricGetRequest $vPSV1VirtualMachineMetricGetRequest, ): \Hostinger\Model\VPSV1MetricsMetricsCollection|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -66,7 +65,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -96,8 +99,6 @@ class VPSVirtualMachineApi
     /**
      * Create request for operation 'getMetricsV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineMetricGetRequest $vPSV1VirtualMachineMetricGetRequest (required)
      * @throws InvalidArgumentException
      */
     protected function getMetricsV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineMetricGetRequest $vPSV1VirtualMachineMetricGetRequest,): Request
@@ -124,10 +125,10 @@ class VPSVirtualMachineApi
      *
      * Get virtual machine list
      *
-     *
+     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource[]|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource[]|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getVirtualMachineListV1(): array|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -136,7 +137,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -180,11 +185,10 @@ class VPSVirtualMachineApi
      *
      * Get virtual machine
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function getVirtualMachineV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -193,7 +197,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -220,7 +228,6 @@ class VPSVirtualMachineApi
     /**
      * Create request for operation 'getVirtualMachineV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function getVirtualMachineV1Request(int $virtualMachineId,): Request
@@ -245,12 +252,10 @@ class VPSVirtualMachineApi
      *
      * Recreate virtual machine
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineRecreateRequest $vPSV1VirtualMachineRecreateRequest vPSV1VirtualMachineRecreateRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function recreateVirtualMachineV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRecreateRequest $vPSV1VirtualMachineRecreateRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -259,7 +264,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -289,8 +298,6 @@ class VPSVirtualMachineApi
     /**
      * Create request for operation 'recreateVirtualMachineV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineRecreateRequest $vPSV1VirtualMachineRecreateRequest (required)
      * @throws InvalidArgumentException
      */
     protected function recreateVirtualMachineV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineRecreateRequest $vPSV1VirtualMachineRecreateRequest,): Request
@@ -317,11 +324,10 @@ class VPSVirtualMachineApi
      *
      * Reset hostname
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function resetHostnameV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -330,7 +336,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -357,7 +367,6 @@ class VPSVirtualMachineApi
     /**
      * Create request for operation 'resetHostnameV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function resetHostnameV1Request(int $virtualMachineId,): Request
@@ -382,11 +391,10 @@ class VPSVirtualMachineApi
      *
      * Restart virtual machine
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function restartVirtualMachineV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -395,7 +403,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -422,7 +434,6 @@ class VPSVirtualMachineApi
     /**
      * Create request for operation 'restartVirtualMachineV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function restartVirtualMachineV1Request(int $virtualMachineId,): Request
@@ -447,12 +458,10 @@ class VPSVirtualMachineApi
      *
      * Set hostname
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest $vPSV1VirtualMachineHostnameUpdateRequest vPSV1VirtualMachineHostnameUpdateRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function setHostnameV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest $vPSV1VirtualMachineHostnameUpdateRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -461,7 +470,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -491,8 +504,6 @@ class VPSVirtualMachineApi
     /**
      * Create request for operation 'setHostnameV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest $vPSV1VirtualMachineHostnameUpdateRequest (required)
      * @throws InvalidArgumentException
      */
     protected function setHostnameV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest $vPSV1VirtualMachineHostnameUpdateRequest,): Request
@@ -519,12 +530,10 @@ class VPSVirtualMachineApi
      *
      * Set nameservers
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest $vPSV1VirtualMachineNameserversUpdateRequest vPSV1VirtualMachineNameserversUpdateRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function setNameserversV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest $vPSV1VirtualMachineNameserversUpdateRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -533,7 +542,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -563,8 +576,6 @@ class VPSVirtualMachineApi
     /**
      * Create request for operation 'setNameserversV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest $vPSV1VirtualMachineNameserversUpdateRequest (required)
      * @throws InvalidArgumentException
      */
     protected function setNameserversV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest $vPSV1VirtualMachineNameserversUpdateRequest,): Request
@@ -591,12 +602,10 @@ class VPSVirtualMachineApi
      *
      * Set panel password
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest $vPSV1VirtualMachinePanelPasswordUpdateRequest vPSV1VirtualMachinePanelPasswordUpdateRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function setPanelPasswordV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest $vPSV1VirtualMachinePanelPasswordUpdateRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -605,7 +614,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -635,8 +648,6 @@ class VPSVirtualMachineApi
     /**
      * Create request for operation 'setPanelPasswordV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest $vPSV1VirtualMachinePanelPasswordUpdateRequest (required)
      * @throws InvalidArgumentException
      */
     protected function setPanelPasswordV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest $vPSV1VirtualMachinePanelPasswordUpdateRequest,): Request
@@ -663,12 +674,10 @@ class VPSVirtualMachineApi
      *
      * Set root password
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest $vPSV1VirtualMachineRootPasswordUpdateRequest vPSV1VirtualMachineRootPasswordUpdateRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function setRootPasswordV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest $vPSV1VirtualMachineRootPasswordUpdateRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -677,7 +686,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -707,8 +720,6 @@ class VPSVirtualMachineApi
     /**
      * Create request for operation 'setRootPasswordV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest $vPSV1VirtualMachineRootPasswordUpdateRequest (required)
      * @throws InvalidArgumentException
      */
     protected function setRootPasswordV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest $vPSV1VirtualMachineRootPasswordUpdateRequest,): Request
@@ -735,12 +746,10 @@ class VPSVirtualMachineApi
      *
      * Setup new virtual machine
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineSetupRequest $vPSV1VirtualMachineSetupRequest vPSV1VirtualMachineSetupRequest (required)
-     *
+     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function setupNewVirtualMachineV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineSetupRequest $vPSV1VirtualMachineSetupRequest, ): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -749,7 +758,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -779,8 +792,6 @@ class VPSVirtualMachineApi
     /**
      * Create request for operation 'setupNewVirtualMachineV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     * @param  \Hostinger\Model\VPSV1VirtualMachineSetupRequest $vPSV1VirtualMachineSetupRequest (required)
      * @throws InvalidArgumentException
      */
     protected function setupNewVirtualMachineV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineSetupRequest $vPSV1VirtualMachineSetupRequest,): Request
@@ -807,11 +818,10 @@ class VPSVirtualMachineApi
      *
      * Start virtual machine
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function startVirtualMachineV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -820,7 +830,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -847,7 +861,6 @@ class VPSVirtualMachineApi
     /**
      * Create request for operation 'startVirtualMachineV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function startVirtualMachineV1Request(int $virtualMachineId,): Request
@@ -872,11 +885,10 @@ class VPSVirtualMachineApi
      *
      * Stop virtual machine
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
-     *
+     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function stopVirtualMachineV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -885,7 +897,11 @@ class VPSVirtualMachineApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -912,7 +928,6 @@ class VPSVirtualMachineApi
     /**
      * Create request for operation 'stopVirtualMachineV1'
      *
-     * @param  int $virtualMachineId Virtual Machine ID (required)
      * @throws InvalidArgumentException
      */
     protected function stopVirtualMachineV1Request(int $virtualMachineId,): Request

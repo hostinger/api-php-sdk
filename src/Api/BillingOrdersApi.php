@@ -16,6 +16,7 @@ use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -52,11 +53,10 @@ class BillingOrdersApi
      *
      * Create new service order
      *
-     * @param  \Hostinger\Model\BillingV1OrderStoreRequest $billingV1OrderStoreRequest billingV1OrderStoreRequest (required)
-     *
+     * @return \Hostinger\Model\BillingV1OrderOrderResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Hostinger\Model\BillingV1OrderOrderResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @throws GuzzleException
      */
     public function createNewServiceOrderV1(\Hostinger\Model\BillingV1OrderStoreRequest $billingV1OrderStoreRequest, ): \Hostinger\Model\BillingV1OrderOrderResource|\Hostinger\Model\CommonSchemaUnprocessableContentResponseSchema|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
@@ -65,7 +65,11 @@ class BillingOrdersApi
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            throw ApiException::fromRequestException($e);
+            if ($this->config->shouldThrowException()) {
+                throw ApiException::fromRequestException($e);
+            } else {
+                $response = $e->getResponse();
+            }
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
@@ -95,7 +99,6 @@ class BillingOrdersApi
     /**
      * Create request for operation 'createNewServiceOrderV1'
      *
-     * @param  \Hostinger\Model\BillingV1OrderStoreRequest $billingV1OrderStoreRequest (required)
      * @throws InvalidArgumentException
      */
     protected function createNewServiceOrderV1Request(\Hostinger\Model\BillingV1OrderStoreRequest $billingV1OrderStoreRequest,): Request

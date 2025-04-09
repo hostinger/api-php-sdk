@@ -159,19 +159,8 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
-    public const REASON_CODE_FRAUD = 'fraud';
     public const REASON_CODE_OTHER = 'other';
-    public const REASON_CODE_ABUSE = 'abuse';
-    public const REASON_CODE_REFUND = 'refund';
-    public const REASON_CODE_TRANSFER = 'transfer';
-    public const REASON_CODE_GDPR = 'gdpr';
-    public const REASON_CODE_WRONG_PRODUCT = 'wrong_product';
-    public const REASON_CODE_NOT_PAID = 'not_paid';
-    public const REASON_CODE_SUSPICIOUS = 'suspicious';
     public const CANCEL_OPTION_IMMEDIATELY = 'immediately';
-    public const CANCEL_OPTION_SPECIFIC_DATE = 'specific_date';
-    public const CANCEL_OPTION_END_OF_TERM = 'end_of_term';
-    public const CANCEL_OPTION_END_OF_BILLING_TERM = 'end_of_billing_term';
 
     /**
      * @return array<string>
@@ -179,15 +168,7 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
     public function getReasonCodeAllowableValues(): array
     {
         return [
-            self::REASON_CODE_FRAUD,
             self::REASON_CODE_OTHER,
-            self::REASON_CODE_ABUSE,
-            self::REASON_CODE_REFUND,
-            self::REASON_CODE_TRANSFER,
-            self::REASON_CODE_GDPR,
-            self::REASON_CODE_WRONG_PRODUCT,
-            self::REASON_CODE_NOT_PAID,
-            self::REASON_CODE_SUSPICIOUS,
         ];
     }
 
@@ -198,9 +179,6 @@ class BillingV1SubscriptionCancelRequest implements ModelInterface, ArrayAccess,
     {
         return [
             self::CANCEL_OPTION_IMMEDIATELY,
-            self::CANCEL_OPTION_SPECIFIC_DATE,
-            self::CANCEL_OPTION_END_OF_TERM,
-            self::CANCEL_OPTION_END_OF_BILLING_TERM,
         ];
     }
 
