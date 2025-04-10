@@ -10,7 +10,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `getDomainListV1()`
 
 ```php
-getDomainListV1(): \Hostinger\Model\DomainsV1DomainDomainResource[]
+getDomainListV1(): \Hostinger\Model\DomainsV1DomainDomainCollection
 ```
 
 Get domain list
@@ -49,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\DomainsV1DomainDomainResource[]**](../Model/DomainsV1DomainDomainResource.md)
+[**\Hostinger\Model\DomainsV1DomainDomainCollection**](../Model/DomainsV1DomainDomainCollection.md)
 
 ### Authorization
 

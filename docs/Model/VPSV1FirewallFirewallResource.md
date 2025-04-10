@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **int** | Firewall ID | [optional]
 **name** | **string** | Firewall name | [optional]
 **synced** | **bool** | Is current firewall synced with VPS | [optional]
-**rules** | [**\Hostinger\Model\VPSV1FirewallFirewallRuleResource[]**](VPSV1FirewallFirewallRuleResource.md) | Array of [&#x60;VPS.V1.Firewall.FirewallRuleResource&#x60;](#model/vpsv1firewallfirewallruleresource) | [optional]
+**rules** | [**\Hostinger\Model\VPSV1FirewallFirewallRuleCollection**](VPSV1FirewallFirewallRuleCollection.md) |  | [optional]
 **createdAt** | **\DateTime** |  | [optional]
 **updatedAt** | **\DateTime** |  | [optional]
 

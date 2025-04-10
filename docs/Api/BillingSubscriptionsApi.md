@@ -73,7 +73,7 @@ try {
 ## `getSubscriptionListV1()`
 
 ```php
-getSubscriptionListV1(): \Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]
+getSubscriptionListV1(): \Hostinger\Model\BillingV1SubscriptionSubscriptionCollection
 ```
 
 Get subscription list
@@ -112,7 +112,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]**](../Model/BillingV1SubscriptionSubscriptionResource.md)
+[**\Hostinger\Model\BillingV1SubscriptionSubscriptionCollection**](../Model/BillingV1SubscriptionSubscriptionCollection.md)
 
 ### Authorization
 

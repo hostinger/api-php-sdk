@@ -72,7 +72,7 @@ try {
 ## `getPaymentMethodListV1()`
 
 ```php
-getPaymentMethodListV1(): \Hostinger\Model\BillingV1PaymentMethodPaymentMethodResource[]
+getPaymentMethodListV1(): \Hostinger\Model\BillingV1PaymentMethodPaymentMethodCollection
 ```
 
 Get payment method list
@@ -111,7 +111,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\BillingV1PaymentMethodPaymentMethodResource[]**](../Model/BillingV1PaymentMethodPaymentMethodResource.md)
+[**\Hostinger\Model\BillingV1PaymentMethodPaymentMethodCollection**](../Model/BillingV1PaymentMethodPaymentMethodCollection.md)
 
 ### Authorization
 

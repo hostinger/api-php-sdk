@@ -4,6 +4,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**getAttachedPublicKeysV1()**](VPSVirtualMachineApi.md#getAttachedPublicKeysV1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/public-keys | Get attached public keys |
 | [**getMetricsV1()**](VPSVirtualMachineApi.md#getMetricsV1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/metrics | Get metrics |
 | [**getVirtualMachineListV1()**](VPSVirtualMachineApi.md#getVirtualMachineListV1) | **GET** /api/vps/v1/virtual-machines | Get virtual machine list |
 | [**getVirtualMachineV1()**](VPSVirtualMachineApi.md#getVirtualMachineV1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId} | Get virtual machine |
@@ -19,10 +20,72 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**stopVirtualMachineV1()**](VPSVirtualMachineApi.md#stopVirtualMachineV1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/stop | Stop virtual machine |
 
 
+## `getAttachedPublicKeysV1()`
+
+```php
+getAttachedPublicKeysV1($virtualMachineId, $page): \Hostinger\Model\VPSGetPublicKeyListV1200Response
+```
+
+Get attached public keys
+
+This endpoint retrieves a list of public keys attached to a specified virtual machine.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$virtualMachineId = 1268054; // int | Virtual Machine ID
+$page = 1; // int | Page number
+
+try {
+    $result = $apiInstance->getAttachedPublicKeysV1($virtualMachineId, $page);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling VPSVirtualMachineApi->getAttachedPublicKeysV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **virtualMachineId** | **int**| Virtual Machine ID | |
+| **page** | **int**| Page number | [optional] |
+
+### Return type
+
+[**\Hostinger\Model\VPSGetPublicKeyListV1200Response**](../Model/VPSGetPublicKeyListV1200Response.md)
+
+### Authorization
+
+[apiToken](../../README.md#apiToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getMetricsV1()`
 
 ```php
-getMetricsV1($virtualMachineId, $vPSV1VirtualMachineMetricGetRequest): \Hostinger\Model\VPSV1MetricsMetricsCollection
+getMetricsV1($virtualMachineId, $dateFrom, $dateTo): \Hostinger\Model\VPSV1MetricsMetricsCollection
 ```
 
 Get metrics
@@ -47,10 +110,11 @@ $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
     $config
 );
 $virtualMachineId = 1268054; // int | Virtual Machine ID
-$vPSV1VirtualMachineMetricGetRequest = new \Hostinger\Model\VPSV1VirtualMachineMetricGetRequest(); // \Hostinger\Model\VPSV1VirtualMachineMetricGetRequest
+$dateFrom = 2025-05-01T00:00:00Z; // string | the date-time notation as defined by RFC 3339, section 5.6
+$dateTo = 2025-06-01T00:00:00Z; // string | the date-time notation as defined by RFC 3339, section 5.6
 
 try {
-    $result = $apiInstance->getMetricsV1($virtualMachineId, $vPSV1VirtualMachineMetricGetRequest);
+    $result = $apiInstance->getMetricsV1($virtualMachineId, $dateFrom, $dateTo);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSVirtualMachineApi->getMetricsV1: ', $e->getMessage(), PHP_EOL;
@@ -62,7 +126,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **virtualMachineId** | **int**| Virtual Machine ID | |
-| **vPSV1VirtualMachineMetricGetRequest** | [**\Hostinger\Model\VPSV1VirtualMachineMetricGetRequest**](../Model/VPSV1VirtualMachineMetricGetRequest.md)|  | |
+| **dateFrom** | **string**| the date-time notation as defined by RFC 3339, section 5.6 | |
+| **dateTo** | **string**| the date-time notation as defined by RFC 3339, section 5.6 | |
 
 ### Return type
 
@@ -74,7 +139,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -84,7 +149,7 @@ try {
 ## `getVirtualMachineListV1()`
 
 ```php
-getVirtualMachineListV1(): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource[]
+getVirtualMachineListV1(): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection
 ```
 
 Get virtual machine list
@@ -123,7 +188,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource[]**](../Model/VPSV1VirtualMachineVirtualMachineResource.md)
+[**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection**](../Model/VPSV1VirtualMachineVirtualMachineCollection.md)
 
 ### Authorization
 

@@ -10,7 +10,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `getDataCentersListV1()`
 
 ```php
-getDataCentersListV1(): \Hostinger\Model\VPSV1DataCenterDataCenterResource[]
+getDataCentersListV1(): \Hostinger\Model\VPSV1DataCenterDataCenterCollection
 ```
 
 Get data centers list
@@ -49,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\VPSV1DataCenterDataCenterResource[]**](../Model/VPSV1DataCenterDataCenterResource.md)
+[**\Hostinger\Model\VPSV1DataCenterDataCenterCollection**](../Model/VPSV1DataCenterDataCenterCollection.md)
 
 ### Authorization
 
