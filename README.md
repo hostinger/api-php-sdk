@@ -1,7 +1,7 @@
 # Hostinger API PHP SDK
 
 ## About
-This is a Python SDK for the Hostinger API. For more information, please visit [https://developers.hostinger.com](https://developers.hostinger.com).
+This is a PHP SDK for the Hostinger API. For more information, please visit [https://developers.hostinger.com](https://developers.hostinger.com).
 
 ## Installation & Usage
 
