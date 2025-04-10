@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Domain ID | [optional]
-**name** | **string** | Domain name, &#x60;null&#x60; when not claimed free domain | [optional]
-**type** | **string** |  | [optional]
-**status** | **string** |  | [optional]
-**createdAt** | **\DateTime** |  | [optional]
-**expiresAt** | **\DateTime** |  | [optional]
+**id** | **int** | Domain ID |
+**name** | **string** | Domain name, &#x60;null&#x60; when not claimed free domain |
+**type** | **string** |  |
+**status** | **string** |  |
+**createdAt** | **\DateTime** |  |
+**expiresAt** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

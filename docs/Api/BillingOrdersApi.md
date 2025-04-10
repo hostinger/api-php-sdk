@@ -28,12 +28,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\BillingOrdersApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\BillingOrdersApi(config: $config);
 $billingV1OrderStoreRequest = new \Hostinger\Model\BillingV1OrderStoreRequest(); // \Hostinger\Model\BillingV1OrderStoreRequest
 
 try {
@@ -53,15 +48,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\BillingV1OrderOrderResource**](../Model/BillingV1OrderOrderResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

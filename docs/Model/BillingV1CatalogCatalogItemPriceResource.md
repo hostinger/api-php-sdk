@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Price item ID | [optional]
-**name** | **string** | Price item name | [optional]
-**currency** | **string** | Currency code | [optional]
-**price** | **int** | Price in cents | [optional]
-**firstPeriodPrice** | **int** | First period price in cents | [optional]
-**period** | **int** | Period | [optional]
-**periodUnit** | **string** | Period unit | [optional]
+**id** | **string** | Price item ID |
+**name** | **string** | Price item name |
+**currency** | **string** | Currency code |
+**price** | **int** | Price in cents |
+**firstPeriodPrice** | **int** | First period price in cents |
+**period** | **int** | Period |
+**periodUnit** | **string** | Period unit |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

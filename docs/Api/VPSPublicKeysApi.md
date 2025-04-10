@@ -31,12 +31,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSPublicKeysApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSPublicKeysApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 $vPSV1PublicKeyAttachRequest = new \Hostinger\Model\VPSV1PublicKeyAttachRequest(); // \Hostinger\Model\VPSV1PublicKeyAttachRequest
 
@@ -58,15 +53,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -93,12 +79,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSPublicKeysApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSPublicKeysApi(config: $config);
 $vPSV1PublicKeyStoreRequest = new \Hostinger\Model\VPSV1PublicKeyStoreRequest(); // \Hostinger\Model\VPSV1PublicKeyStoreRequest
 
 try {
@@ -118,15 +99,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1PublicKeyPublicKeyResource**](../Model/VPSV1PublicKeyPublicKeyResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -153,12 +125,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSPublicKeysApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSPublicKeysApi(config: $config);
 $publicKeyId = 6672861; // int | Public Key ID
 
 try {
@@ -178,15 +145,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -213,12 +171,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSPublicKeysApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSPublicKeysApi(config: $config);
 $page = 1; // int | Page number
 
 try {
@@ -238,15 +191,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSGetPublicKeyListV1200Response**](../Model/VPSGetPublicKeyListV1200Response.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

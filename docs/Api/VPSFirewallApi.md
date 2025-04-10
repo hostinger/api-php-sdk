@@ -37,12 +37,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSFirewallApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
 $firewallId = 9449049; // int | Firewall ID
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 
@@ -64,15 +59,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -99,12 +85,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSFirewallApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
 $firewallId = 9449049; // int | Firewall ID
 $vPSV1FirewallRulesStoreRequest = new \Hostinger\Model\VPSV1FirewallRulesStoreRequest(); // \Hostinger\Model\VPSV1FirewallRulesStoreRequest
 
@@ -126,15 +107,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1FirewallFirewallRuleResource**](../Model/VPSV1FirewallFirewallRuleResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -161,12 +133,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSFirewallApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
 $vPSV1FirewallStoreRequest = new \Hostinger\Model\VPSV1FirewallStoreRequest(); // \Hostinger\Model\VPSV1FirewallStoreRequest
 
 try {
@@ -186,15 +153,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1FirewallFirewallResource**](../Model/VPSV1FirewallFirewallResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -221,12 +179,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSFirewallApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
 $firewallId = 9449049; // int | Firewall ID
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 
@@ -248,15 +201,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -283,12 +227,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSFirewallApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
 $firewallId = 9449049; // int | Firewall ID
 $ruleId = 8941182; // int | Firewall Rule ID
 
@@ -310,15 +249,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -345,12 +275,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSFirewallApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
 $firewallId = 9449049; // int | Firewall ID
 
 try {
@@ -370,15 +295,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -405,12 +321,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSFirewallApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
 $page = 1; // int | Page number
 
 try {
@@ -430,15 +341,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSGetFirewallListV1200Response**](../Model/VPSGetFirewallListV1200Response.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -465,12 +367,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSFirewallApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
 $firewallId = 9449049; // int | Firewall ID
 
 try {
@@ -490,15 +387,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1FirewallFirewallResource**](../Model/VPSV1FirewallFirewallResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -525,12 +413,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSFirewallApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
 $firewallId = 9449049; // int | Firewall ID
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 
@@ -552,15 +435,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -587,12 +461,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSFirewallApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
 $firewallId = 9449049; // int | Firewall ID
 $ruleId = 8941182; // int | Firewall Rule ID
 $vPSV1FirewallRulesStoreRequest = new \Hostinger\Model\VPSV1FirewallRulesStoreRequest(); // \Hostinger\Model\VPSV1FirewallRulesStoreRequest
@@ -616,15 +485,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1FirewallFirewallRuleResource**](../Model/VPSV1FirewallFirewallRuleResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

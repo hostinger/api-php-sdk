@@ -32,12 +32,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(config: $config);
 $vPSV1PostInstallScriptStoreRequest = new \Hostinger\Model\VPSV1PostInstallScriptStoreRequest(); // \Hostinger\Model\VPSV1PostInstallScriptStoreRequest
 
 try {
@@ -57,15 +52,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource**](../Model/VPSV1PostInstallScriptPostInstallScriptResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -92,12 +78,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(config: $config);
 $postInstallScriptId = 9568314; // int | Post-install script ID
 
 try {
@@ -117,15 +98,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -152,12 +124,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(config: $config);
 $page = 1; // int | Page number
 
 try {
@@ -177,15 +144,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSGetPostInstallScriptListV1200Response**](../Model/VPSGetPostInstallScriptListV1200Response.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -212,12 +170,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(config: $config);
 $postInstallScriptId = 9568314; // int | Post-install script ID
 
 try {
@@ -237,15 +190,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource**](../Model/VPSV1PostInstallScriptPostInstallScriptResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -272,12 +216,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(config: $config);
 $postInstallScriptId = 9568314; // int | Post-install script ID
 $vPSV1PostInstallScriptStoreRequest = new \Hostinger\Model\VPSV1PostInstallScriptStoreRequest(); // \Hostinger\Model\VPSV1PostInstallScriptStoreRequest
 
@@ -299,15 +238,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource**](../Model/VPSV1PostInstallScriptPostInstallScriptResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -41,12 +41,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 $page = 1; // int | Page number
 
@@ -68,15 +63,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSGetPublicKeyListV1200Response**](../Model/VPSGetPublicKeyListV1200Response.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -103,12 +89,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 $dateFrom = 2025-05-01T00:00:00Z; // string | the date-time notation as defined by RFC 3339, section 5.6
 $dateTo = 2025-06-01T00:00:00Z; // string | the date-time notation as defined by RFC 3339, section 5.6
@@ -132,15 +113,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1MetricsMetricsCollection**](../Model/VPSV1MetricsMetricsCollection.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -167,12 +139,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 
 try {
     $result = $apiInstance->getVirtualMachineListV1();
@@ -189,15 +156,6 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection**](../Model/VPSV1VirtualMachineVirtualMachineCollection.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -224,12 +182,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
@@ -249,15 +202,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource**](../Model/VPSV1VirtualMachineVirtualMachineResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -284,12 +228,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 $vPSV1VirtualMachineRecreateRequest = new \Hostinger\Model\VPSV1VirtualMachineRecreateRequest(); // \Hostinger\Model\VPSV1VirtualMachineRecreateRequest
 
@@ -311,15 +250,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -346,12 +276,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
@@ -371,15 +296,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -406,12 +322,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
@@ -431,15 +342,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -466,12 +368,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 $vPSV1VirtualMachineHostnameUpdateRequest = new \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest(); // \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest
 
@@ -493,15 +390,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -528,12 +416,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 $vPSV1VirtualMachineNameserversUpdateRequest = new \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest(); // \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest
 
@@ -555,15 +438,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -590,12 +464,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 $vPSV1VirtualMachinePanelPasswordUpdateRequest = new \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest(); // \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest
 
@@ -617,15 +486,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -652,12 +512,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 $vPSV1VirtualMachineRootPasswordUpdateRequest = new \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest(); // \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest
 
@@ -679,15 +534,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -714,12 +560,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 $vPSV1VirtualMachineSetupRequest = new \Hostinger\Model\VPSV1VirtualMachineSetupRequest(); // \Hostinger\Model\VPSV1VirtualMachineSetupRequest
 
@@ -741,15 +582,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource**](../Model/VPSV1VirtualMachineVirtualMachineResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -776,12 +608,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
@@ -801,15 +628,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -836,12 +654,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
 
 try {
@@ -861,15 +674,6 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-### Authorization
-
-[apiToken](../../README.md#apiToken)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
