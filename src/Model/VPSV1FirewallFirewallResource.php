@@ -34,7 +34,7 @@ class VPSV1FirewallFirewallResource implements ModelInterface, ArrayAccess, Json
         'id' => 'int',
         'name' => 'string',
         'synced' => 'bool',
-        'rules' => '\Hostinger\Model\VPSV1FirewallFirewallRuleCollection',
+        'rules' => '\Hostinger\Model\VPSV1FirewallFirewallRuleResource[]',
         'createdAt' => '\DateTime',
         'updatedAt' => '\DateTime'
     ];
@@ -280,17 +280,17 @@ class VPSV1FirewallFirewallResource implements ModelInterface, ArrayAccess, Json
         return $this;
     }
     /**
-     * @return \Hostinger\Model\VPSV1FirewallFirewallRuleCollection|null
+     * @return \Hostinger\Model\VPSV1FirewallFirewallRuleResource[]|null
      */
-    public function getRules(): ?\Hostinger\Model\VPSV1FirewallFirewallRuleCollection
+    public function getRules(): ?array
     {
         return $this->container['rules'];
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1FirewallFirewallRuleCollection|null $rules rules
+     * @param \Hostinger\Model\VPSV1FirewallFirewallRuleResource[]|null $rules Array of [`VPS.V1.Firewall.FirewallRuleResource`](#model/vpsv1firewallfirewallruleresource)
      */
-    public function setRules(?\Hostinger\Model\VPSV1FirewallFirewallRuleCollection $rules): static
+    public function setRules(?array $rules): static
     {
         $this->container['rules'] = $rules;
 

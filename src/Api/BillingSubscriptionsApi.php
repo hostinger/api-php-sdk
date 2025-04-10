@@ -121,12 +121,12 @@ class BillingSubscriptionsApi
      *
      * Get subscription list
      *
-     * @return \Hostinger\Model\BillingV1SubscriptionSubscriptionCollection|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @return \Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @throws GuzzleException
      */
-    public function getSubscriptionListV1(): \Hostinger\Model\BillingV1SubscriptionSubscriptionCollection|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function getSubscriptionListV1(): array|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
         $request = $this->getSubscriptionListV1Request();
 
@@ -148,7 +148,7 @@ class BillingSubscriptionsApi
 
         switch ($statusCode) {
             case 200:
-                $returnType = '\Hostinger\Model\BillingV1SubscriptionSubscriptionCollection';
+                $returnType = '\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]';
                 break;
             case 401:
                 $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';

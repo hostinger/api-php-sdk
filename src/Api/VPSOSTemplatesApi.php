@@ -53,12 +53,12 @@ class VPSOSTemplatesApi
      *
      * Get template list
      *
-     * @return \Hostinger\Model\VPSV1TemplateTemplateCollection|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @return \Hostinger\Model\VPSV1TemplateTemplateResource[]|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @throws GuzzleException
      */
-    public function getTemplateListV1(): \Hostinger\Model\VPSV1TemplateTemplateCollection|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function getTemplateListV1(): array|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
         $request = $this->getTemplateListV1Request();
 
@@ -80,7 +80,7 @@ class VPSOSTemplatesApi
 
         switch ($statusCode) {
             case 200:
-                $returnType = '\Hostinger\Model\VPSV1TemplateTemplateCollection';
+                $returnType = '\Hostinger\Model\VPSV1TemplateTemplateResource[]';
                 break;
             case 401:
                 $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';

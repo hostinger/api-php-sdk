@@ -121,7 +121,7 @@ try {
 ## `getVirtualMachineListV1()`
 
 ```php
-getVirtualMachineListV1(): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection
+getVirtualMachineListV1(): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource[]
 ```
 
 Get virtual machine list
@@ -155,7 +155,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection**](../Model/VPSV1VirtualMachineVirtualMachineCollection.md)
+[**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource[]**](../Model/VPSV1VirtualMachineVirtualMachineResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -31,7 +31,7 @@ class VPSGetActionListV1200Response implements ModelInterface, ArrayAccess, Json
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'data' => '\Hostinger\Model\VPSV1ActionActionCollection',
+        'data' => '\Hostinger\Model\VPSV1ActionActionResource[]',
         'meta' => '\Hostinger\Model\CommonSchemaPaginationMetaSchema'
     ];
 
@@ -201,17 +201,17 @@ class VPSGetActionListV1200Response implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * @return \Hostinger\Model\VPSV1ActionActionCollection|null
+     * @return \Hostinger\Model\VPSV1ActionActionResource[]|null
      */
-    public function getData(): ?\Hostinger\Model\VPSV1ActionActionCollection
+    public function getData(): ?array
     {
         return $this->container['data'];
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1ActionActionCollection|null $data data
+     * @param \Hostinger\Model\VPSV1ActionActionResource[]|null $data Array of [`VPS.V1.Action.ActionResource`](#model/vpsv1actionactionresource)
      */
-    public function setData(?\Hostinger\Model\VPSV1ActionActionCollection $data): static
+    public function setData(?array $data): static
     {
         $this->container['data'] = $data;
 

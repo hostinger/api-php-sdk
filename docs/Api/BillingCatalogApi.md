@@ -10,7 +10,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `getCatalogItemListV1()`
 
 ```php
-getCatalogItemListV1(): \Hostinger\Model\BillingV1CatalogCatalogItemCollection
+getCatalogItemListV1(): \Hostinger\Model\BillingV1CatalogCatalogItemResource[]
 ```
 
 Get catalog item list
@@ -44,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\BillingV1CatalogCatalogItemCollection**](../Model/BillingV1CatalogCatalogItemCollection.md)
+[**\Hostinger\Model\BillingV1CatalogCatalogItemResource[]**](../Model/BillingV1CatalogCatalogItemResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

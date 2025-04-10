@@ -53,12 +53,12 @@ class VPSDataCentersApi
      *
      * Get data centers list
      *
-     * @return \Hostinger\Model\VPSV1DataCenterDataCenterCollection|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @return \Hostinger\Model\VPSV1DataCenterDataCenterResource[]|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @throws GuzzleException
      */
-    public function getDataCentersListV1(): \Hostinger\Model\VPSV1DataCenterDataCenterCollection|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function getDataCentersListV1(): array|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
         $request = $this->getDataCentersListV1Request();
 
@@ -80,7 +80,7 @@ class VPSDataCentersApi
 
         switch ($statusCode) {
             case 200:
-                $returnType = '\Hostinger\Model\VPSV1DataCenterDataCenterCollection';
+                $returnType = '\Hostinger\Model\VPSV1DataCenterDataCenterResource[]';
                 break;
             case 401:
                 $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';

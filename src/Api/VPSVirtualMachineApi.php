@@ -208,12 +208,12 @@ class VPSVirtualMachineApi
      *
      * Get virtual machine list
      *
-     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource[]|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
      * @throws GuzzleException
      */
-    public function getVirtualMachineListV1(): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
+    public function getVirtualMachineListV1(): array|\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema|\Hostinger\Model\CommonSchemaErrorResponseSchema
     {
         $request = $this->getVirtualMachineListV1Request();
 
@@ -235,7 +235,7 @@ class VPSVirtualMachineApi
 
         switch ($statusCode) {
             case 200:
-                $returnType = '\Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection';
+                $returnType = '\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource[]';
                 break;
             case 401:
                 $returnType = '\Hostinger\Model\CommonSchemaUnauthorizedResponseSchema';

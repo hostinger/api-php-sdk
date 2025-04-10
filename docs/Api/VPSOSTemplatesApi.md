@@ -11,7 +11,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `getTemplateListV1()`
 
 ```php
-getTemplateListV1(): \Hostinger\Model\VPSV1TemplateTemplateCollection
+getTemplateListV1(): \Hostinger\Model\VPSV1TemplateTemplateResource[]
 ```
 
 Get template list
@@ -45,7 +45,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\VPSV1TemplateTemplateCollection**](../Model/VPSV1TemplateTemplateCollection.md)
+[**\Hostinger\Model\VPSV1TemplateTemplateResource[]**](../Model/VPSV1TemplateTemplateResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

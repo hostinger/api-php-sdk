@@ -31,7 +31,7 @@ class VPSGetFirewallListV1200Response implements ModelInterface, ArrayAccess, Js
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'data' => '\Hostinger\Model\VPSV1FirewallFirewallCollection',
+        'data' => '\Hostinger\Model\VPSV1FirewallFirewallResource[]',
         'meta' => '\Hostinger\Model\CommonSchemaPaginationMetaSchema'
     ];
 
@@ -201,17 +201,17 @@ class VPSGetFirewallListV1200Response implements ModelInterface, ArrayAccess, Js
     }
 
     /**
-     * @return \Hostinger\Model\VPSV1FirewallFirewallCollection|null
+     * @return \Hostinger\Model\VPSV1FirewallFirewallResource[]|null
      */
-    public function getData(): ?\Hostinger\Model\VPSV1FirewallFirewallCollection
+    public function getData(): ?array
     {
         return $this->container['data'];
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1FirewallFirewallCollection|null $data data
+     * @param \Hostinger\Model\VPSV1FirewallFirewallResource[]|null $data Array of [`VPS.V1.Firewall.FirewallResource`](#model/vpsv1firewallfirewallresource)
      */
-    public function setData(?\Hostinger\Model\VPSV1FirewallFirewallCollection $data): static
+    public function setData(?array $data): static
     {
         $this->container['data'] = $data;
 

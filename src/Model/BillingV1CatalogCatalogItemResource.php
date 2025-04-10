@@ -34,7 +34,7 @@ class BillingV1CatalogCatalogItemResource implements ModelInterface, ArrayAccess
         'id' => 'string',
         'name' => 'string',
         'category' => 'string',
-        'prices' => '\Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection'
+        'prices' => '\Hostinger\Model\BillingV1CatalogCatalogItemPriceResource[]'
     ];
 
     /**
@@ -266,17 +266,17 @@ class BillingV1CatalogCatalogItemResource implements ModelInterface, ArrayAccess
         return $this;
     }
     /**
-     * @return \Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection|null
+     * @return \Hostinger\Model\BillingV1CatalogCatalogItemPriceResource[]|null
      */
-    public function getPrices(): ?\Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection
+    public function getPrices(): ?array
     {
         return $this->container['prices'];
     }
 
     /**
-     * @param \Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection|null $prices prices
+     * @param \Hostinger\Model\BillingV1CatalogCatalogItemPriceResource[]|null $prices Array of [`Billing.V1.Catalog.CatalogItemPriceResource`](#model/billingv1catalogcatalogitempriceresource)
      */
-    public function setPrices(?\Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection $prices): static
+    public function setPrices(?array $prices): static
     {
         $this->container['prices'] = $prices;
 

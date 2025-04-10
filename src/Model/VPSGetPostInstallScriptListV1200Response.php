@@ -31,7 +31,7 @@ class VPSGetPostInstallScriptListV1200Response implements ModelInterface, ArrayA
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'data' => '\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptCollection',
+        'data' => '\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource[]',
         'meta' => '\Hostinger\Model\CommonSchemaPaginationMetaSchema'
     ];
 
@@ -201,17 +201,17 @@ class VPSGetPostInstallScriptListV1200Response implements ModelInterface, ArrayA
     }
 
     /**
-     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptCollection|null
+     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource[]|null
      */
-    public function getData(): ?\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptCollection
+    public function getData(): ?array
     {
         return $this->container['data'];
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptCollection|null $data data
+     * @param \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource[]|null $data Array of [`VPS.V1.PostInstallScript.PostInstallScriptResource`](#model/vpsv1postinstallscriptpostinstallscriptresource)
      */
-    public function setData(?\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptCollection $data): static
+    public function setData(?array $data): static
     {
         $this->container['data'] = $data;
 

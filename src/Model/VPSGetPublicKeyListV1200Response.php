@@ -31,7 +31,7 @@ class VPSGetPublicKeyListV1200Response implements ModelInterface, ArrayAccess, J
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'data' => '\Hostinger\Model\VPSV1PublicKeyPublicKeyCollection',
+        'data' => '\Hostinger\Model\VPSV1PublicKeyPublicKeyResource[]',
         'meta' => '\Hostinger\Model\CommonSchemaPaginationMetaSchema'
     ];
 
@@ -201,17 +201,17 @@ class VPSGetPublicKeyListV1200Response implements ModelInterface, ArrayAccess, J
     }
 
     /**
-     * @return \Hostinger\Model\VPSV1PublicKeyPublicKeyCollection|null
+     * @return \Hostinger\Model\VPSV1PublicKeyPublicKeyResource[]|null
      */
-    public function getData(): ?\Hostinger\Model\VPSV1PublicKeyPublicKeyCollection
+    public function getData(): ?array
     {
         return $this->container['data'];
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1PublicKeyPublicKeyCollection|null $data data
+     * @param \Hostinger\Model\VPSV1PublicKeyPublicKeyResource[]|null $data Array of [`VPS.V1.PublicKey.PublicKeyResource`](#model/vpsv1publickeypublickeyresource)
      */
-    public function setData(?\Hostinger\Model\VPSV1PublicKeyPublicKeyCollection $data): static
+    public function setData(?array $data): static
     {
         $this->container['data'] = $data;
 
