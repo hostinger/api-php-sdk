@@ -81,6 +81,11 @@ Class | Method | HTTP request | Description
 *BillingPaymentMethodsApi* | [**setDefaultPaymentMethodV1**](docs/Api/BillingPaymentMethodsApi.md#setdefaultpaymentmethodv1) | **POST** /api/billing/v1/payment-methods/{paymentMethodId} | Set default payment method
 *BillingSubscriptionsApi* | [**cancelSubscriptionV1**](docs/Api/BillingSubscriptionsApi.md#cancelsubscriptionv1) | **DELETE** /api/billing/v1/subscriptions/{subscriptionId} | Cancel subscription
 *BillingSubscriptionsApi* | [**getSubscriptionListV1**](docs/Api/BillingSubscriptionsApi.md#getsubscriptionlistv1) | **GET** /api/billing/v1/subscriptions | Get subscription list
+*DNSSnapshotApi* | [**getSnapshotListV1**](docs/Api/DNSSnapshotApi.md#getsnapshotlistv1) | **GET** /api/dns/v1/snapshots/{domain} | Get snapshot list
+*DNSSnapshotApi* | [**getSnapshotV1**](docs/Api/DNSSnapshotApi.md#getsnapshotv1) | **GET** /api/dns/v1/snapshots/{domain}/{snapshotId} | Get snapshot
+*DNSSnapshotApi* | [**restoreSnapshotV1**](docs/Api/DNSSnapshotApi.md#restoresnapshotv1) | **POST** /api/dns/v1/snapshots/{domain}/{snapshotId} | Restore snapshot
+*DNSZoneApi* | [**getRecordsV1**](docs/Api/DNSZoneApi.md#getrecordsv1) | **GET** /api/dns/v1/zones/{domain} | Get records
+*DNSZoneApi* | [**resetZoneRecordsV1**](docs/Api/DNSZoneApi.md#resetzonerecordsv1) | **POST** /api/dns/v1/zones/{domain}/reset | Reset zone records
 *DomainsPortfolioApi* | [**getDomainListV1**](docs/Api/DomainsPortfolioApi.md#getdomainlistv1) | **GET** /api/domains/v1/portfolio | Get domain list
 *VPSActionsApi* | [**getActionListV1**](docs/Api/VPSActionsApi.md#getactionlistv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/actions | Get action list
 *VPSActionsApi* | [**getActionV1**](docs/Api/VPSActionsApi.md#getactionv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/actions/{actionId} | Get action
@@ -152,6 +157,11 @@ Class | Method | HTTP request | Description
 - [CommonSchemaUnprocessableContentResponseSchema](docs/Model/CommonSchemaUnprocessableContentResponseSchema.md)
 - [CommonSchemaUnprocessableContentResponseSchemaErrors](docs/Model/CommonSchemaUnprocessableContentResponseSchemaErrors.md)
 - [CommonSuccessEmptyResource](docs/Model/CommonSuccessEmptyResource.md)
+- [DNSV1SnapshotSnapshotResource](docs/Model/DNSV1SnapshotSnapshotResource.md)
+- [DNSV1SnapshotSnapshotWithContentResource](docs/Model/DNSV1SnapshotSnapshotWithContentResource.md)
+- [DNSV1ZoneNameRecordResource](docs/Model/DNSV1ZoneNameRecordResource.md)
+- [DNSV1ZoneNameResource](docs/Model/DNSV1ZoneNameResource.md)
+- [DNSV1ZoneResetRequest](docs/Model/DNSV1ZoneResetRequest.md)
 - [DomainsV1DomainDomainResource](docs/Model/DomainsV1DomainDomainResource.md)
 - [VPSGetActionListV1200Response](docs/Model/VPSGetActionListV1200Response.md)
 - [VPSGetBackupListV1200Response](docs/Model/VPSGetBackupListV1200Response.md)
