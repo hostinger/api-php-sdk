@@ -1,4 +1,4 @@
-# # DNSV1ZoneNameResource
+# # DNSV1ZoneRecordResource
 
 ## Properties
 

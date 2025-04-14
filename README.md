@@ -84,8 +84,11 @@ Class | Method | HTTP request | Description
 *DNSSnapshotApi* | [**getSnapshotListV1**](docs/Api/DNSSnapshotApi.md#getsnapshotlistv1) | **GET** /api/dns/v1/snapshots/{domain} | Get snapshot list
 *DNSSnapshotApi* | [**getSnapshotV1**](docs/Api/DNSSnapshotApi.md#getsnapshotv1) | **GET** /api/dns/v1/snapshots/{domain}/{snapshotId} | Get snapshot
 *DNSSnapshotApi* | [**restoreSnapshotV1**](docs/Api/DNSSnapshotApi.md#restoresnapshotv1) | **POST** /api/dns/v1/snapshots/{domain}/{snapshotId} | Restore snapshot
+*DNSZoneApi* | [**deleteZoneRecordsV1**](docs/Api/DNSZoneApi.md#deletezonerecordsv1) | **DELETE** /api/dns/v1/zones/{domain} | Delete zone records
 *DNSZoneApi* | [**getRecordsV1**](docs/Api/DNSZoneApi.md#getrecordsv1) | **GET** /api/dns/v1/zones/{domain} | Get records
 *DNSZoneApi* | [**resetZoneRecordsV1**](docs/Api/DNSZoneApi.md#resetzonerecordsv1) | **POST** /api/dns/v1/zones/{domain}/reset | Reset zone records
+*DNSZoneApi* | [**updateZoneRecordsV1**](docs/Api/DNSZoneApi.md#updatezonerecordsv1) | **PUT** /api/dns/v1/zones/{domain} | Update zone records
+*DNSZoneApi* | [**validateZoneRecordsV1**](docs/Api/DNSZoneApi.md#validatezonerecordsv1) | **POST** /api/dns/v1/zones/{domain}/validate | Validate zone records
 *DomainsPortfolioApi* | [**getDomainListV1**](docs/Api/DomainsPortfolioApi.md#getdomainlistv1) | **GET** /api/domains/v1/portfolio | Get domain list
 *VPSActionsApi* | [**getActionListV1**](docs/Api/VPSActionsApi.md#getactionlistv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/actions | Get action list
 *VPSActionsApi* | [**getActionV1**](docs/Api/VPSActionsApi.md#getactionv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/actions/{actionId} | Get action
@@ -159,9 +162,14 @@ Class | Method | HTTP request | Description
 - [CommonSuccessEmptyResource](docs/Model/CommonSuccessEmptyResource.md)
 - [DNSV1SnapshotSnapshotResource](docs/Model/DNSV1SnapshotSnapshotResource.md)
 - [DNSV1SnapshotSnapshotWithContentResource](docs/Model/DNSV1SnapshotSnapshotWithContentResource.md)
+- [DNSV1ZoneDestroyRequest](docs/Model/DNSV1ZoneDestroyRequest.md)
+- [DNSV1ZoneDestroyRequestFiltersInner](docs/Model/DNSV1ZoneDestroyRequestFiltersInner.md)
 - [DNSV1ZoneNameRecordResource](docs/Model/DNSV1ZoneNameRecordResource.md)
-- [DNSV1ZoneNameResource](docs/Model/DNSV1ZoneNameResource.md)
+- [DNSV1ZoneRecordResource](docs/Model/DNSV1ZoneRecordResource.md)
 - [DNSV1ZoneResetRequest](docs/Model/DNSV1ZoneResetRequest.md)
+- [DNSV1ZoneUpdateRequest](docs/Model/DNSV1ZoneUpdateRequest.md)
+- [DNSV1ZoneUpdateRequestZoneInner](docs/Model/DNSV1ZoneUpdateRequestZoneInner.md)
+- [DNSV1ZoneUpdateRequestZoneInnerRecordsInner](docs/Model/DNSV1ZoneUpdateRequestZoneInnerRecordsInner.md)
 - [DomainsV1DomainDomainResource](docs/Model/DomainsV1DomainDomainResource.md)
 - [VPSGetActionListV1200Response](docs/Model/VPSGetActionListV1200Response.md)
 - [VPSGetBackupListV1200Response](docs/Model/VPSGetBackupListV1200Response.md)
