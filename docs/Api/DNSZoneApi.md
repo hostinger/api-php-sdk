@@ -4,14 +4,65 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**deleteZoneRecordsV1()**](DNSZoneApi.md#deleteZoneRecordsV1) | **DELETE** /api/dns/v1/zones/{domain} | Delete zone records |
 | [**getRecordsV1()**](DNSZoneApi.md#getRecordsV1) | **GET** /api/dns/v1/zones/{domain} | Get records |
 | [**resetZoneRecordsV1()**](DNSZoneApi.md#resetZoneRecordsV1) | **POST** /api/dns/v1/zones/{domain}/reset | Reset zone records |
+| [**updateZoneRecordsV1()**](DNSZoneApi.md#updateZoneRecordsV1) | **PUT** /api/dns/v1/zones/{domain} | Update zone records |
+| [**validateZoneRecordsV1()**](DNSZoneApi.md#validateZoneRecordsV1) | **POST** /api/dns/v1/zones/{domain}/validate | Validate zone records |
 
+
+## `deleteZoneRecordsV1()`
+
+```php
+deleteZoneRecordsV1($domain, $dNSV1ZoneDestroyRequest): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Delete zone records
+
+This endpoint deletes selected DNS records for the selected domain.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\DNSZoneApi(config: $config);
+$domain = mydomain.tld; // string | Domain name
+$dNSV1ZoneDestroyRequest = new \Hostinger\Model\DNSV1ZoneDestroyRequest(); // \Hostinger\Model\DNSV1ZoneDestroyRequest
+
+try {
+    $result = $apiInstance->deleteZoneRecordsV1($domain, $dNSV1ZoneDestroyRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DNSZoneApi->deleteZoneRecordsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Domain name | |
+| **dNSV1ZoneDestroyRequest** | [**\Hostinger\Model\DNSV1ZoneDestroyRequest**](../Model/DNSV1ZoneDestroyRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getRecordsV1()`
 
 ```php
-getRecordsV1($domain): \Hostinger\Model\DNSV1ZoneNameResource[]
+getRecordsV1($domain): \Hostinger\Model\DNSV1ZoneRecordResource[]
 ```
 
 Get records
@@ -48,7 +99,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\DNSV1ZoneNameResource[]**](../Model/DNSV1ZoneNameResource.md)
+[**\Hostinger\Model\DNSV1ZoneRecordResource[]**](../Model/DNSV1ZoneRecordResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -93,6 +144,102 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **domain** | **string**| Domain name | |
 | **dNSV1ZoneResetRequest** | [**\Hostinger\Model\DNSV1ZoneResetRequest**](../Model/DNSV1ZoneResetRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateZoneRecordsV1()`
+
+```php
+updateZoneRecordsV1($domain, $dNSV1ZoneUpdateRequest): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Update zone records
+
+This endpoint updates DNS records for the selected domain. This endpoint could also be used to delete single record when multiple records exist under same name. In that case use `overwrite` flag and provide records which should remain. All other records under same name will be deleted.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\DNSZoneApi(config: $config);
+$domain = mydomain.tld; // string | Domain name
+$dNSV1ZoneUpdateRequest = new \Hostinger\Model\DNSV1ZoneUpdateRequest(); // \Hostinger\Model\DNSV1ZoneUpdateRequest
+
+try {
+    $result = $apiInstance->updateZoneRecordsV1($domain, $dNSV1ZoneUpdateRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DNSZoneApi->updateZoneRecordsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Domain name | |
+| **dNSV1ZoneUpdateRequest** | [**\Hostinger\Model\DNSV1ZoneUpdateRequest**](../Model/DNSV1ZoneUpdateRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `validateZoneRecordsV1()`
+
+```php
+validateZoneRecordsV1($domain, $dNSV1ZoneUpdateRequest): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Validate zone records
+
+This endpoint used to validate DNS records prior update for the selected domain.   If the validation is successful, the response will contain `200 Success` code. If there is validation error, the response will fail with `422 Validation error` code.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\DNSZoneApi(config: $config);
+$domain = mydomain.tld; // string | Domain name
+$dNSV1ZoneUpdateRequest = new \Hostinger\Model\DNSV1ZoneUpdateRequest(); // \Hostinger\Model\DNSV1ZoneUpdateRequest
+
+try {
+    $result = $apiInstance->validateZoneRecordsV1($domain, $dNSV1ZoneUpdateRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DNSZoneApi->validateZoneRecordsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Domain name | |
+| **dNSV1ZoneUpdateRequest** | [**\Hostinger\Model\DNSV1ZoneUpdateRequest**](../Model/DNSV1ZoneUpdateRequest.md)|  | |
 
 ### Return type
 
