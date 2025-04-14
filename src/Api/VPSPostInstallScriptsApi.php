@@ -402,6 +402,7 @@ class VPSPostInstallScriptsApi
             contentType: $contentType,
             isMultipart: false
         );
+        $headers['User-Agent'] = $this->config->getUserAgent();
 
         // this endpoint requires Bearer authentication (access token)
         if (!empty($this->config->getAccessToken())) {
