@@ -6,7 +6,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | ------------- | ------------- | ------------- |
 | [**getSnapshotListV1()**](DNSSnapshotApi.md#getSnapshotListV1) | **GET** /api/dns/v1/snapshots/{domain} | Get snapshot list |
 | [**getSnapshotV1()**](DNSSnapshotApi.md#getSnapshotV1) | **GET** /api/dns/v1/snapshots/{domain}/{snapshotId} | Get snapshot |
-| [**restoreSnapshotV1()**](DNSSnapshotApi.md#restoreSnapshotV1) | **POST** /api/dns/v1/snapshots/{domain}/{snapshotId} | Restore snapshot |
+| [**restoreSnapshotV1()**](DNSSnapshotApi.md#restoreSnapshotV1) | **POST** /api/dns/v1/snapshots/{domain}/{snapshotId}/restore | Restore snapshot |
 
 
 ## `getSnapshotListV1()`

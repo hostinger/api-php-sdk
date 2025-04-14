@@ -19,7 +19,7 @@ deleteZoneRecordsV1($domain, $dNSV1ZoneDestroyRequest): \Hostinger\Model\CommonS
 
 Delete zone records
 
-This endpoint deletes selected DNS records for the selected domain.
+This endpoint deletes DNS records for the selected domain.  To filter which records to delete, add the `name` of the record and `type` to the filter.  Multiple filters can be provided with single request.  If you have multiple records with the same name and type, and you want to delete only part of them, refer to the `Update zone records` endpoint.
 
 ### Example
 
@@ -161,7 +161,7 @@ updateZoneRecordsV1($domain, $dNSV1ZoneUpdateRequest): \Hostinger\Model\CommonSu
 
 Update zone records
 
-This endpoint updates DNS records for the selected domain. This endpoint could also be used to delete single record when multiple records exist under same name. In that case use `overwrite` flag and provide records which should remain. All other records under same name will be deleted.
+This endpoint updates DNS records for the selected domain.   Using `overwrite = true` will replace existing records with the provided ones.  Otherwise existing records will be updated and new records will be added.
 
 ### Example
 
