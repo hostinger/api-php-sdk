@@ -11,23 +11,11 @@ PHP 8.1 and later.
 
 ### Composer
 
-To install the bindings via [Composer](https://getcomposer.org/), add the following to `composer.json`:
+To install the package via [Composer](https://getcomposer.org/), run the following command:
 
-```json
-{
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/hostinger/api-php-sdk.git"
-    }
-  ],
-  "require": {
-    "hostinger/api-php-sdk": "*"
-  }
-}
+```bash
+composer require hostinger/api-php-sdk
 ```
-
-Then run `composer install`
 
 ### Manual Installation
 
