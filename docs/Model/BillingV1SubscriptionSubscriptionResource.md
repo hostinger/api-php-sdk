@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **currencyCode** | **string** |  |
 **totalPrice** | **int** | Total price in cents |
 **renewalPrice** | **int** | Renewal price in cents |
-**autoRenew** | **bool** |  |
+**isAutoRenewed** | **bool** |  |
 **createdAt** | **\DateTime** |  |
 **expiresAt** | **\DateTime** |  |
 **nextBillingAt** | **\DateTime** |  |
