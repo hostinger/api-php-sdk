@@ -17,9 +17,9 @@ Name | Type | Description | Notes
 **bandwidth** | **int** | Monthly internet traffic available to virtual machine (in megabytes) |
 **ns1** | **string** | Primary DNS resolver |
 **ns2** | **string** | Secondary DNS resolver |
-**ipv4** | [**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResourceIpv4**](VPSV1VirtualMachineVirtualMachineResourceIpv4.md) |  |
-**ipv6** | [**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResourceIpv6**](VPSV1VirtualMachineVirtualMachineResourceIpv6.md) |  |
-**template** | [**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResourceTemplate**](VPSV1VirtualMachineVirtualMachineResourceTemplate.md) |  |
+**ipv4** | [**\Hostinger\Model\VPSV1IPAddressIPAddressResource[]**](VPSV1IPAddressIPAddressResource.md) | Array of [&#x60;VPS.V1.IPAddress.IPAddressResource&#x60;](#model/vpsv1ipaddressipaddressresource) |
+**ipv6** | [**\Hostinger\Model\VPSV1IPAddressIPAddressResource[]**](VPSV1IPAddressIPAddressResource.md) | Array of [&#x60;VPS.V1.IPAddress.IPAddressResource&#x60;](#model/vpsv1ipaddressipaddressresource) |
+**template** | [**\Hostinger\Model\VPSV1TemplateTemplateResource**](VPSV1TemplateTemplateResource.md) |  |
 **createdAt** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

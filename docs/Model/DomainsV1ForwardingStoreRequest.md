@@ -1,10 +1,11 @@
-# # VPSV1MetricsMetricsCollectionUptime
+# # DomainsV1ForwardingStoreRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**unit** | **string** | Measurement unit |
-**usage** | **object** | Object, containing UNIX timestamps as a key and measurement as a value. |
+**domain** | **string** | Domain name |
+**redirectType** | **string** | Redirect type |
+**redirectUrl** | **string** | URL to forward domain to |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

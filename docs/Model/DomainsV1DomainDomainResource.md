@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Domain ID |
-**name** | **string** | Domain name, &#x60;null&#x60; when not claimed free domain |
+**domain** | **string** | Domain name, &#x60;null&#x60; when not claimed free domain |
 **type** | **string** |  |
 **status** | **string** |  |
 **createdAt** | **\DateTime** |  |

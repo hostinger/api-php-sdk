@@ -78,7 +78,22 @@ Class | Method | HTTP request | Description
 *DNSZoneApi* | [**updateZoneRecordsV1**](docs/Api/DNSZoneApi.md#updatezonerecordsv1) | **PUT** /api/dns/v1/zones/{domain} | Update zone records
 *DNSZoneApi* | [**validateZoneRecordsV1**](docs/Api/DNSZoneApi.md#validatezonerecordsv1) | **POST** /api/dns/v1/zones/{domain}/validate | Validate zone records
 *DomainsAvailabilityApi* | [**checkDomainAvailabilityV1**](docs/Api/DomainsAvailabilityApi.md#checkdomainavailabilityv1) | **POST** /api/domains/v1/availability | Check domain availability
+*DomainsForwardingApi* | [**createForwardingDataV1**](docs/Api/DomainsForwardingApi.md#createforwardingdatav1) | **POST** /api/domains/v1/forwarding | Create forwarding data
+*DomainsForwardingApi* | [**deleteForwardingDataV1**](docs/Api/DomainsForwardingApi.md#deleteforwardingdatav1) | **DELETE** /api/domains/v1/forwarding/{domain} | Delete forwarding data
+*DomainsForwardingApi* | [**getForwardingDataV1**](docs/Api/DomainsForwardingApi.md#getforwardingdatav1) | **GET** /api/domains/v1/forwarding/{domain} | Get forwarding data
+*DomainsPortfolioApi* | [**disableDomainLockV1**](docs/Api/DomainsPortfolioApi.md#disabledomainlockv1) | **DELETE** /api/domains/v1/portfolio/{domain}/domain-lock | Disable domain lock
+*DomainsPortfolioApi* | [**disablePrivacyProtectionV1**](docs/Api/DomainsPortfolioApi.md#disableprivacyprotectionv1) | **DELETE** /api/domains/v1/portfolio/{domain}/privacy-protection | Disable privacy protection
+*DomainsPortfolioApi* | [**enableDomainLockV1**](docs/Api/DomainsPortfolioApi.md#enabledomainlockv1) | **PUT** /api/domains/v1/portfolio/{domain}/domain-lock | Enable domain lock
+*DomainsPortfolioApi* | [**enablePrivacyProtectionV1**](docs/Api/DomainsPortfolioApi.md#enableprivacyprotectionv1) | **PUT** /api/domains/v1/portfolio/{domain}/privacy-protection | Enable privacy protection
 *DomainsPortfolioApi* | [**getDomainListV1**](docs/Api/DomainsPortfolioApi.md#getdomainlistv1) | **GET** /api/domains/v1/portfolio | Get domain list
+*DomainsPortfolioApi* | [**getDomainV1**](docs/Api/DomainsPortfolioApi.md#getdomainv1) | **GET** /api/domains/v1/portfolio/{domain} | Get domain
+*DomainsPortfolioApi* | [**purchaseNewDomainV1**](docs/Api/DomainsPortfolioApi.md#purchasenewdomainv1) | **POST** /api/domains/v1/portfolio | Purchase new domain
+*DomainsPortfolioApi* | [**updateNameserversV1**](docs/Api/DomainsPortfolioApi.md#updatenameserversv1) | **PUT** /api/domains/v1/portfolio/{domain}/nameservers | Update nameservers
+*DomainsWHOISApi* | [**createWHOISProfileV1**](docs/Api/DomainsWHOISApi.md#createwhoisprofilev1) | **POST** /api/domains/v1/whois | Create WHOIS profile
+*DomainsWHOISApi* | [**deleteWHOISProfileV1**](docs/Api/DomainsWHOISApi.md#deletewhoisprofilev1) | **DELETE** /api/domains/v1/whois/{whoisId} | Delete WHOIS profile
+*DomainsWHOISApi* | [**getWHOISProfileListV1**](docs/Api/DomainsWHOISApi.md#getwhoisprofilelistv1) | **GET** /api/domains/v1/whois | Get WHOIS profile list
+*DomainsWHOISApi* | [**getWHOISProfileUsageV1**](docs/Api/DomainsWHOISApi.md#getwhoisprofileusagev1) | **GET** /api/domains/v1/whois/{whoisId}/usage | Get WHOIS profile usage
+*DomainsWHOISApi* | [**getWHOISProfileV1**](docs/Api/DomainsWHOISApi.md#getwhoisprofilev1) | **GET** /api/domains/v1/whois/{whoisId} | Get WHOIS profile
 *VPSActionsApi* | [**getActionListV1**](docs/Api/VPSActionsApi.md#getactionlistv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/actions | Get action list
 *VPSActionsApi* | [**getActionV1**](docs/Api/VPSActionsApi.md#getactionv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/actions/{actionId} | Get action
 *VPSBackupsApi* | [**deleteBackupV1**](docs/Api/VPSBackupsApi.md#deletebackupv1) | **DELETE** /api/vps/v1/virtual-machines/{virtualMachineId}/backups/{backupId} | Delete backup
@@ -161,7 +176,17 @@ Class | Method | HTTP request | Description
 - [DNSV1ZoneUpdateRequestZoneInnerRecordsInner](docs/Model/DNSV1ZoneUpdateRequestZoneInnerRecordsInner.md)
 - [DomainsV1AvailabilityAvailabilityRequest](docs/Model/DomainsV1AvailabilityAvailabilityRequest.md)
 - [DomainsV1AvailabilityAvailabilityResource](docs/Model/DomainsV1AvailabilityAvailabilityResource.md)
+- [DomainsV1DomainDomainExtendedResource](docs/Model/DomainsV1DomainDomainExtendedResource.md)
+- [DomainsV1DomainDomainExtendedResourceDomainContacts](docs/Model/DomainsV1DomainDomainExtendedResourceDomainContacts.md)
+- [DomainsV1DomainDomainExtendedResourceNameServers](docs/Model/DomainsV1DomainDomainExtendedResourceNameServers.md)
 - [DomainsV1DomainDomainResource](docs/Model/DomainsV1DomainDomainResource.md)
+- [DomainsV1ForwardingForwardingResource](docs/Model/DomainsV1ForwardingForwardingResource.md)
+- [DomainsV1ForwardingStoreRequest](docs/Model/DomainsV1ForwardingStoreRequest.md)
+- [DomainsV1PortfolioPurchaseRequest](docs/Model/DomainsV1PortfolioPurchaseRequest.md)
+- [DomainsV1PortfolioPurchaseRequestDomainContacts](docs/Model/DomainsV1PortfolioPurchaseRequestDomainContacts.md)
+- [DomainsV1PortfolioUpdateNameserversRequest](docs/Model/DomainsV1PortfolioUpdateNameserversRequest.md)
+- [DomainsV1WHOISProfileResource](docs/Model/DomainsV1WHOISProfileResource.md)
+- [DomainsV1WHOISStoreRequest](docs/Model/DomainsV1WHOISStoreRequest.md)
 - [VPSGetActionListV1200Response](docs/Model/VPSGetActionListV1200Response.md)
 - [VPSGetBackupListV1200Response](docs/Model/VPSGetBackupListV1200Response.md)
 - [VPSGetFirewallListV1200Response](docs/Model/VPSGetFirewallListV1200Response.md)
@@ -177,12 +202,6 @@ Class | Method | HTTP request | Description
 - [VPSV1IPAddressIPAddressResource](docs/Model/VPSV1IPAddressIPAddressResource.md)
 - [VPSV1MalwareMetricsResource](docs/Model/VPSV1MalwareMetricsResource.md)
 - [VPSV1MetricsMetricsCollection](docs/Model/VPSV1MetricsMetricsCollection.md)
-- [VPSV1MetricsMetricsCollectionCpuUsage](docs/Model/VPSV1MetricsMetricsCollectionCpuUsage.md)
-- [VPSV1MetricsMetricsCollectionDiskSpace](docs/Model/VPSV1MetricsMetricsCollectionDiskSpace.md)
-- [VPSV1MetricsMetricsCollectionIncomingTraffic](docs/Model/VPSV1MetricsMetricsCollectionIncomingTraffic.md)
-- [VPSV1MetricsMetricsCollectionOutgoingTraffic](docs/Model/VPSV1MetricsMetricsCollectionOutgoingTraffic.md)
-- [VPSV1MetricsMetricsCollectionRamUsage](docs/Model/VPSV1MetricsMetricsCollectionRamUsage.md)
-- [VPSV1MetricsMetricsCollectionUptime](docs/Model/VPSV1MetricsMetricsCollectionUptime.md)
 - [VPSV1MetricsMetricsResource](docs/Model/VPSV1MetricsMetricsResource.md)
 - [VPSV1PostInstallScriptPostInstallScriptResource](docs/Model/VPSV1PostInstallScriptPostInstallScriptResource.md)
 - [VPSV1PostInstallScriptStoreRequest](docs/Model/VPSV1PostInstallScriptStoreRequest.md)
@@ -200,6 +219,3 @@ Class | Method | HTTP request | Description
 - [VPSV1VirtualMachineSetupRequest](docs/Model/VPSV1VirtualMachineSetupRequest.md)
 - [VPSV1VirtualMachineSetupRequestPublicKey](docs/Model/VPSV1VirtualMachineSetupRequestPublicKey.md)
 - [VPSV1VirtualMachineVirtualMachineResource](docs/Model/VPSV1VirtualMachineVirtualMachineResource.md)
-- [VPSV1VirtualMachineVirtualMachineResourceIpv4](docs/Model/VPSV1VirtualMachineVirtualMachineResourceIpv4.md)
-- [VPSV1VirtualMachineVirtualMachineResourceIpv6](docs/Model/VPSV1VirtualMachineVirtualMachineResourceIpv6.md)
-- [VPSV1VirtualMachineVirtualMachineResourceTemplate](docs/Model/VPSV1VirtualMachineVirtualMachineResourceTemplate.md)
