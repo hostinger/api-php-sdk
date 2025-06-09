@@ -8,6 +8,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**getMetricsV1()**](VPSVirtualMachineApi.md#getMetricsV1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/metrics | Get metrics |
 | [**getVirtualMachineListV1()**](VPSVirtualMachineApi.md#getVirtualMachineListV1) | **GET** /api/vps/v1/virtual-machines | Get virtual machine list |
 | [**getVirtualMachineV1()**](VPSVirtualMachineApi.md#getVirtualMachineV1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId} | Get virtual machine |
+| [**purchaseNewVirtualMachineV1()**](VPSVirtualMachineApi.md#purchaseNewVirtualMachineV1) | **POST** /api/vps/v1/virtual-machines | Purchase new virtual machine |
 | [**recreateVirtualMachineV1()**](VPSVirtualMachineApi.md#recreateVirtualMachineV1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/recreate | Recreate virtual machine |
 | [**resetHostnameV1()**](VPSVirtualMachineApi.md#resetHostnameV1) | **DELETE** /api/vps/v1/virtual-machines/{virtualMachineId}/hostname | Reset hostname |
 | [**restartVirtualMachineV1()**](VPSVirtualMachineApi.md#restartVirtualMachineV1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/restart | Restart virtual machine |
@@ -91,8 +92,8 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 $apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
-$dateFrom = 2025-05-01T00:00:00Z; // string | the date-time notation as defined by RFC 3339, section 5.6
-$dateTo = 2025-06-01T00:00:00Z; // string | the date-time notation as defined by RFC 3339, section 5.6
+$dateFrom = 2025-05-01T00:00Z; // \DateTime
+$dateTo = 2025-06-01T00:00Z; // \DateTime
 
 try {
     $result = $apiInstance->getMetricsV1($virtualMachineId, $dateFrom, $dateTo);
@@ -107,8 +108,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **virtualMachineId** | **int**| Virtual Machine ID | |
-| **dateFrom** | **string**| the date-time notation as defined by RFC 3339, section 5.6 | |
-| **dateTo** | **string**| the date-time notation as defined by RFC 3339, section 5.6 | |
+| **dateFrom** | **\DateTime**|  | |
+| **dateTo** | **\DateTime**|  | |
 
 ### Return type
 
@@ -202,6 +203,52 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource**](../Model/VPSV1VirtualMachineVirtualMachineResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `purchaseNewVirtualMachineV1()`
+
+```php
+purchaseNewVirtualMachineV1($vPSV1VirtualMachinePurchaseRequest): \Hostinger\Model\BillingV1OrderOrderResource
+```
+
+Purchase new virtual machine
+
+This endpoint allows you to buy (purchase) and setup a new virtual machine.  If virtual machine setup fails for any reason, login to [hPanel](https://hpanel.hostinger.com/) and complete the setup manually.  If no payment method is provided, your default payment method will be used automatically.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
+$vPSV1VirtualMachinePurchaseRequest = new \Hostinger\Model\VPSV1VirtualMachinePurchaseRequest(); // \Hostinger\Model\VPSV1VirtualMachinePurchaseRequest
+
+try {
+    $result = $apiInstance->purchaseNewVirtualMachineV1($vPSV1VirtualMachinePurchaseRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling VPSVirtualMachineApi->purchaseNewVirtualMachineV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **vPSV1VirtualMachinePurchaseRequest** | [**\Hostinger\Model\VPSV1VirtualMachinePurchaseRequest**](../Model/VPSV1VirtualMachinePurchaseRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\BillingV1OrderOrderResource**](../Model/BillingV1OrderOrderResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -547,7 +594,7 @@ setupNewVirtualMachineV1($virtualMachineId, $vPSV1VirtualMachineSetupRequest): \
 
 Setup new virtual machine
 
-This endpoint will setup newly purchased virtual machine. Such virtual machines has `initial` state.  New virtual machine can be purchased using [`/api/billing/v1/orders`](/#tag/billing-orders/POST/api/billing/v1/orders) endpoint.
+This endpoint will setup newly purchased virtual machine with `initial` state.
 
 ### Example
 

@@ -295,7 +295,7 @@ purchaseNewDomainV1($domainsV1PortfolioPurchaseRequest): \Hostinger\Model\Billin
 
 Purchase new domain
 
-This endpoint purchases and registers new domain. If registration fails, login to hPanel and check the domain registration status.  If no payment method is provided, default will be used.  If no WHOIS information is provided, default for that TLD will be used.  Before making request make sure that WHOIS information for TLD exists.  Some TLDs require `additional_details` to be provided and will be validated before making purchase.
+This endpoint allows you to buy (purchase) and register a new domain name.   If registration fails, login to [hPanel](https://hpanel.hostinger.com/) and check the domain registration status.  If no payment method is provided, your default payment method will be used automatically.  If no WHOIS information is provided, the default contact information for that TLD (Top-Level Domain) will be used.  Before making a request, ensure that WHOIS information for the desired TLD exists in your account.  Some TLDs require `additional_details` to be provided and these will be validated before completing the purchase. The required additional details vary by TLD.
 
 ### Example
 

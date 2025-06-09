@@ -15,7 +15,7 @@ checkDomainAvailabilityV1($domainsV1AvailabilityAvailabilityRequest): \Hostinger
 
 Check domain availability
 
-This endpoint checks the availability of a domain name. Multiple TLDs can be checked at once.  Endpoint has rate limit of 10 requests per minute.
+This endpoint checks the availability of a domain name. Multiple TLDs can be checked at once. If you want to get alternative domains with response, provide only one TLD in the request and set `with_alternatives` to `true`. TLDs should be provided without the leading dot (e.g. `com`, `net`, `org`).  Endpoint has rate limit of 10 requests per minute.
 
 ### Example
 

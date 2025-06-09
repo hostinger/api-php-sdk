@@ -125,7 +125,7 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 
 $apiInstance = new Hostinger\Api\DomainsWHOISApi(config: $config);
-$tld = com; // string | Filter by TLD (without trailing dot)
+$tld = com; // string | Filter by TLD (without leading dot)
 
 try {
     $result = $apiInstance->getWHOISProfileListV1($tld);
@@ -139,7 +139,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tld** | **string**| Filter by TLD (without trailing dot) | [optional] |
+| **tld** | **string**| Filter by TLD (without leading dot) | [optional] |
 
 ### Return type
 

@@ -1,4 +1,4 @@
-# # CommonSchemaUnprocessableContentResponseSchemaErrors
+# # BillingCreateNewServiceOrderV1422ResponseErrors
 
 ## Properties
 

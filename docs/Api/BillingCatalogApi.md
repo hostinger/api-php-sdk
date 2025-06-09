@@ -10,7 +10,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `getCatalogItemListV1()`
 
 ```php
-getCatalogItemListV1(): \Hostinger\Model\BillingV1CatalogCatalogItemResource[]
+getCatalogItemListV1($category, $name): \Hostinger\Model\BillingV1CatalogCatalogItemResource[]
 ```
 
 Get catalog item list
@@ -29,9 +29,11 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 
 $apiInstance = new Hostinger\Api\BillingCatalogApi(config: $config);
+$category = VPS; // string | Filter catalog items by category
+$name = .COM*; // string | Filter catalog items by name. Use `*` for wildcard search, e.g. `.COM*` to find .com domain
 
 try {
-    $result = $apiInstance->getCatalogItemListV1();
+    $result = $apiInstance->getCatalogItemListV1($category, $name);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingCatalogApi->getCatalogItemListV1: ', $e->getMessage(), PHP_EOL;
@@ -40,7 +42,10 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **category** | **string**| Filter catalog items by category | [optional] |
+| **name** | **string**| Filter catalog items by name. Use &#x60;*&#x60; for wildcard search, e.g. &#x60;.COM*&#x60; to find .com domain | [optional] |
 
 ### Return type
 

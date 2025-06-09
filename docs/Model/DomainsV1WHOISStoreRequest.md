@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tld** | **string** | TLD of the domain (without trailing dot) |
+**tld** | **string** | TLD of the domain (without leading dot) |
 **country** | **string** | ISO 3166 2-letter country code |
 **entityType** | **string** | Legal entity type |
 **tldDetails** | **object** | TLD details |

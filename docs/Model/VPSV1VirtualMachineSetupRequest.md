@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **hostname** | **string** | Override default hostname of the virtual machine |
 **installMonarx** | **bool** | Install Monarx malware scanner (if supported) | [default to false]
 **enableBackups** | **bool** | Enable weekly backup schedule | [default to true]
-**ns1** | **string** |  |
-**ns2** | **string** |  |
+**ns1** | **string** | Name server 1 |
+**ns2** | **string** | Name server 2 |
 **publicKey** | [**\Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey**](VPSV1VirtualMachineSetupRequestPublicKey.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
