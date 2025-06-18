@@ -211,7 +211,7 @@ try {
 ## `purchaseNewVirtualMachineV1()`
 
 ```php
-purchaseNewVirtualMachineV1($vPSV1VirtualMachinePurchaseRequest): \Hostinger\Model\BillingV1OrderOrderResource
+purchaseNewVirtualMachineV1($vPSV1VirtualMachinePurchaseRequest): \Hostinger\Model\BillingV1OrderVirtualMachineOrderResource
 ```
 
 Purchase new virtual machine
@@ -248,7 +248,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\BillingV1OrderOrderResource**](../Model/BillingV1OrderOrderResource.md)
+[**\Hostinger\Model\BillingV1OrderVirtualMachineOrderResource**](../Model/BillingV1OrderVirtualMachineOrderResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
