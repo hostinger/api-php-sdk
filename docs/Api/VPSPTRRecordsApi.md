@@ -4,14 +4,14 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createPTRRecordV1()**](VPSPTRRecordsApi.md#createPTRRecordV1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/ptr | Create PTR record |
-| [**deletePTRRecordV1()**](VPSPTRRecordsApi.md#deletePTRRecordV1) | **DELETE** /api/vps/v1/virtual-machines/{virtualMachineId}/ptr | Delete PTR record |
+| [**createPTRRecordV1()**](VPSPTRRecordsApi.md#createPTRRecordV1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/ptr/{ipAddressId} | Create PTR record |
+| [**deletePTRRecordV1()**](VPSPTRRecordsApi.md#deletePTRRecordV1) | **DELETE** /api/vps/v1/virtual-machines/{virtualMachineId}/ptr/{ipAddressId} | Delete PTR record |
 
 
 ## `createPTRRecordV1()`
 
 ```php
-createPTRRecordV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+createPTRRecordV1($virtualMachineId, $ipAddressId, $vPSV1VirtualMachinePTRStoreRequest): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Create PTR record
@@ -31,9 +31,11 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 $apiInstance = new Hostinger\Api\VPSPTRRecordsApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
+$ipAddressId = 246547; // int | IP Address ID
+$vPSV1VirtualMachinePTRStoreRequest = new \Hostinger\Model\VPSV1VirtualMachinePTRStoreRequest(); // \Hostinger\Model\VPSV1VirtualMachinePTRStoreRequest
 
 try {
-    $result = $apiInstance->createPTRRecordV1($virtualMachineId);
+    $result = $apiInstance->createPTRRecordV1($virtualMachineId, $ipAddressId, $vPSV1VirtualMachinePTRStoreRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSPTRRecordsApi->createPTRRecordV1: ', $e->getMessage(), PHP_EOL;
@@ -45,6 +47,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **virtualMachineId** | **int**| Virtual Machine ID | |
+| **ipAddressId** | **int**| IP Address ID | |
+| **vPSV1VirtualMachinePTRStoreRequest** | [**\Hostinger\Model\VPSV1VirtualMachinePTRStoreRequest**](../Model/VPSV1VirtualMachinePTRStoreRequest.md)|  | |
 
 ### Return type
 
@@ -57,7 +61,7 @@ try {
 ## `deletePTRRecordV1()`
 
 ```php
-deletePTRRecordV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+deletePTRRecordV1($virtualMachineId, $ipAddressId): \Hostinger\Model\VPSV1ActionActionResource
 ```
 
 Delete PTR record
@@ -77,9 +81,10 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 $apiInstance = new Hostinger\Api\VPSPTRRecordsApi(config: $config);
 $virtualMachineId = 1268054; // int | Virtual Machine ID
+$ipAddressId = 246547; // int | IP Address ID
 
 try {
-    $result = $apiInstance->deletePTRRecordV1($virtualMachineId);
+    $result = $apiInstance->deletePTRRecordV1($virtualMachineId, $ipAddressId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSPTRRecordsApi->deletePTRRecordV1: ', $e->getMessage(), PHP_EOL;
@@ -91,6 +96,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **virtualMachineId** | **int**| Virtual Machine ID | |
+| **ipAddressId** | **int**| IP Address ID | |
 
 ### Return type
 

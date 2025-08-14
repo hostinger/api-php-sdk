@@ -23,27 +23,27 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-class CommonSuccessEmptyResource 
+class VPSV1VirtualMachinePTRStoreRequest 
 {
     /**
-     * @var string $message
+     * @var string $domain
      */
-    private $message;
+    private $domain;
 
     /**
      * @return string
      */
-    public function getMessage()
+    public function getDomain()
     {
-        return $this->message;
+        return $this->domain;
     }
 
     /**
-     * @param string $message
+     * @param string $domain
      */
-    public function setMessage($message): self
+    public function setDomain($domain): self
     {
-        $this->message = $message;
+        $this->domain = $domain;
 
         return $this;
     }

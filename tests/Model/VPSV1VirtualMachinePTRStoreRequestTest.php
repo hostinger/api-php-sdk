@@ -14,7 +14,7 @@ namespace Hostinger\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
-class DomainsV1PortfolioPurchaseRequestDomainContactsTest extends TestCase
+class VPSV1VirtualMachinePTRStoreRequestTest extends TestCase
 {
 
     public static function setUpBeforeClass(): void
@@ -33,31 +33,13 @@ class DomainsV1PortfolioPurchaseRequestDomainContactsTest extends TestCase
     {
     }
 
-    public function testDomainsV1PortfolioPurchaseRequestDomainContacts()
+    public function testVPSV1VirtualMachinePTRStoreRequest()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
-    public function testPropertyOwnerId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    public function testPropertyAdminId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    public function testPropertyBillingId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    public function testPropertyTechId()
+    public function testPropertyDomain()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
