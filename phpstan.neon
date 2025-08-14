@@ -7,3 +7,6 @@ parameters:
           identifier: method.unused
           paths:
             - src/Model/*
+    excludePaths:
+        - src/FormDataProcessor.php
+

@@ -24,42 +24,42 @@ interface ModelInterface
     /**
      * Array of property to type mappings. Used for (de)serialization
      *
-     * @return array
+     * @return array<string, string>
      */
     public static function openAPITypes(): array;
 
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @return array
+     * @return array<string, string|null>
      */
     public static function openAPIFormats(): array;
 
     /**
      * Array of attributes where the key is the local name, and the value is the original name
      *
-     * @return array
+     * @return array<string, string>
      */
     public static function attributeMap(): array;
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
-     * @return array
+     * @return array<string, string>
      */
     public static function setters(): array;
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      *
-     * @return array
+     * @return array<string, string>
      */
     public static function getters(): array;
 
     /**
      * Show all the invalid properties with reasons.
      *
-     * @return array
+     * @return array<string>
      */
     public function listInvalidProperties(): array;
 
