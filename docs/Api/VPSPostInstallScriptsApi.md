@@ -5,9 +5,9 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createPostInstallScriptV1()**](VPSPostInstallScriptsApi.md#createPostInstallScriptV1) | **POST** /api/vps/v1/post-install-scripts | Create post-install script |
-| [**deleteAPostInstallScriptV1()**](VPSPostInstallScriptsApi.md#deleteAPostInstallScriptV1) | **DELETE** /api/vps/v1/post-install-scripts/{postInstallScriptId} | Delete a post-install script |
-| [**getPostInstallScriptListV1()**](VPSPostInstallScriptsApi.md#getPostInstallScriptListV1) | **GET** /api/vps/v1/post-install-scripts | Get post-install script list |
+| [**deletePostInstallScriptV1()**](VPSPostInstallScriptsApi.md#deletePostInstallScriptV1) | **DELETE** /api/vps/v1/post-install-scripts/{postInstallScriptId} | Delete post-install script |
 | [**getPostInstallScriptV1()**](VPSPostInstallScriptsApi.md#getPostInstallScriptV1) | **GET** /api/vps/v1/post-install-scripts/{postInstallScriptId} | Get post-install script |
+| [**getPostInstallScriptsV1()**](VPSPostInstallScriptsApi.md#getPostInstallScriptsV1) | **GET** /api/vps/v1/post-install-scripts | Get post-install scripts |
 | [**updatePostInstallScriptV1()**](VPSPostInstallScriptsApi.md#updatePostInstallScriptV1) | **PUT** /api/vps/v1/post-install-scripts/{postInstallScriptId} | Update post-install script |
 
 
@@ -19,7 +19,7 @@ createPostInstallScriptV1($vPSV1PostInstallScriptStoreRequest): \Hostinger\Model
 
 Create post-install script
 
-This endpoint allows you to add a new post-install script to your account,  which can then be used run after the installation of a virtual machine instance.  The script contents will be saved to the file `/post_install` with executable attribute set and will be executed once virtual machine is installed. The output of the script will be redirected to `/post_install.log`. Maximum script size is 48KB.
+Add a new post-install script to your account, which can then be used after virtual machine installation.  The script contents will be saved to the file `/post_install` with executable attribute set and will be executed once virtual machine is installed. The output of the script will be redirected to `/post_install.log`. Maximum script size is 48KB.  Use this endpoint to create automation scripts for VPS setup tasks.
 
 ### Example
 
@@ -57,15 +57,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteAPostInstallScriptV1()`
+## `deletePostInstallScriptV1()`
 
 ```php
-deleteAPostInstallScriptV1($postInstallScriptId): \Hostinger\Model\CommonSuccessEmptyResource
+deletePostInstallScriptV1($postInstallScriptId): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Delete a post-install script
+Delete post-install script
 
-This endpoint deletes a post-install script from your account.
+Delete a post-install script from your account.         Use this endpoint to remove unused automation scripts.
 
 ### Example
 
@@ -82,10 +82,10 @@ $apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(config: $config);
 $postInstallScriptId = 9568314; // int | Post-install script ID
 
 try {
-    $result = $apiInstance->deleteAPostInstallScriptV1($postInstallScriptId);
+    $result = $apiInstance->deletePostInstallScriptV1($postInstallScriptId);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VPSPostInstallScriptsApi->deleteAPostInstallScriptV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VPSPostInstallScriptsApi->deletePostInstallScriptV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -103,52 +103,6 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getPostInstallScriptListV1()`
-
-```php
-getPostInstallScriptListV1($page): \Hostinger\Model\VPSGetPostInstallScriptListV1200Response
-```
-
-Get post-install script list
-
-This endpoint retrieves a list of post-install scripts associated with your account.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer authorization: apiToken
-$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(config: $config);
-$page = 1; // int | Page number
-
-try {
-    $result = $apiInstance->getPostInstallScriptListV1($page);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling VPSPostInstallScriptsApi->getPostInstallScriptListV1: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**| Page number | [optional] |
-
-### Return type
-
-[**\Hostinger\Model\VPSGetPostInstallScriptListV1200Response**](../Model/VPSGetPostInstallScriptListV1200Response.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `getPostInstallScriptV1()`
 
 ```php
@@ -157,7 +111,7 @@ getPostInstallScriptV1($postInstallScriptId): \Hostinger\Model\VPSV1PostInstallS
 
 Get post-install script
 
-This endpoint retrieves post-install script by its ID.
+Retrieve post-install script by its ID.  Use this endpoint to view specific automation script details.
 
 ### Example
 
@@ -195,6 +149,52 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getPostInstallScriptsV1()`
+
+```php
+getPostInstallScriptsV1($page): \Hostinger\Model\VPSV1PostInstallScriptListResponse
+```
+
+Get post-install scripts
+
+Retrieve post-install scripts associated with your account.  Use this endpoint to view available automation scripts for VPS deployment.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\VPSPostInstallScriptsApi(config: $config);
+$page = 1; // int | Page number
+
+try {
+    $result = $apiInstance->getPostInstallScriptsV1($page);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling VPSPostInstallScriptsApi->getPostInstallScriptsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **page** | **int**| Page number | [optional] |
+
+### Return type
+
+[**\Hostinger\Model\VPSV1PostInstallScriptListResponse**](../Model/VPSV1PostInstallScriptListResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updatePostInstallScriptV1()`
 
 ```php
@@ -203,7 +203,7 @@ updatePostInstallScriptV1($postInstallScriptId, $vPSV1PostInstallScriptStoreRequ
 
 Update post-install script
 
-This endpoint updates a specific post-install script.
+Update a specific post-install script.  Use this endpoint to modify existing automation scripts.
 
 ### Example
 

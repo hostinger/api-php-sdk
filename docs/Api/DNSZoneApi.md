@@ -4,22 +4,22 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deleteZoneRecordsV1()**](DNSZoneApi.md#deleteZoneRecordsV1) | **DELETE** /api/dns/v1/zones/{domain} | Delete zone records |
-| [**getRecordsV1()**](DNSZoneApi.md#getRecordsV1) | **GET** /api/dns/v1/zones/{domain} | Get records |
-| [**resetZoneRecordsV1()**](DNSZoneApi.md#resetZoneRecordsV1) | **POST** /api/dns/v1/zones/{domain}/reset | Reset zone records |
-| [**updateZoneRecordsV1()**](DNSZoneApi.md#updateZoneRecordsV1) | **PUT** /api/dns/v1/zones/{domain} | Update zone records |
-| [**validateZoneRecordsV1()**](DNSZoneApi.md#validateZoneRecordsV1) | **POST** /api/dns/v1/zones/{domain}/validate | Validate zone records |
+| [**deleteDNSRecordsV1()**](DNSZoneApi.md#deleteDNSRecordsV1) | **DELETE** /api/dns/v1/zones/{domain} | Delete DNS records |
+| [**getDNSRecordsV1()**](DNSZoneApi.md#getDNSRecordsV1) | **GET** /api/dns/v1/zones/{domain} | Get DNS records |
+| [**resetDNSRecordsV1()**](DNSZoneApi.md#resetDNSRecordsV1) | **POST** /api/dns/v1/zones/{domain}/reset | Reset DNS records |
+| [**updateDNSRecordsV1()**](DNSZoneApi.md#updateDNSRecordsV1) | **PUT** /api/dns/v1/zones/{domain} | Update DNS records |
+| [**validateDNSRecordsV1()**](DNSZoneApi.md#validateDNSRecordsV1) | **POST** /api/dns/v1/zones/{domain}/validate | Validate DNS records |
 
 
-## `deleteZoneRecordsV1()`
+## `deleteDNSRecordsV1()`
 
 ```php
-deleteZoneRecordsV1($domain, $dNSV1ZoneDestroyRequest): \Hostinger\Model\CommonSuccessEmptyResource
+deleteDNSRecordsV1($domain, $dNSV1ZoneDestroyRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Delete zone records
+Delete DNS records
 
-This endpoint deletes DNS records for the selected domain.  To filter which records to delete, add the `name` of the record and `type` to the filter.  Multiple filters can be provided with single request.  If you have multiple records with the same name and type, and you want to delete only part of them, refer to the `Update zone records` endpoint.
+Delete DNS records for the selected domain.  To filter which records to delete, add the `name` of the record and `type` to the filter.  Multiple filters can be provided with single request.  If you have multiple records with the same name and type, and you want to delete only part of them, refer to the `Update zone records` endpoint.  Use this endpoint to remove specific DNS records from domains.
 
 ### Example
 
@@ -37,10 +37,10 @@ $domain = mydomain.tld; // string | Domain name
 $dNSV1ZoneDestroyRequest = new \Hostinger\Model\DNSV1ZoneDestroyRequest(); // \Hostinger\Model\DNSV1ZoneDestroyRequest
 
 try {
-    $result = $apiInstance->deleteZoneRecordsV1($domain, $dNSV1ZoneDestroyRequest);
+    $result = $apiInstance->deleteDNSRecordsV1($domain, $dNSV1ZoneDestroyRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DNSZoneApi->deleteZoneRecordsV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DNSZoneApi->deleteDNSRecordsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -59,15 +59,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getRecordsV1()`
+## `getDNSRecordsV1()`
 
 ```php
-getRecordsV1($domain): \Hostinger\Model\DNSV1ZoneRecordResource[]
+getDNSRecordsV1($domain): \Hostinger\Model\DNSV1ZoneRecordCollection
 ```
 
-Get records
+Get DNS records
 
-This endpoint retrieves DNS zone records for a specific domain.
+Retrieve DNS zone records for a specific domain.  Use this endpoint to view current DNS configuration for domain management.
 
 ### Example
 
@@ -84,10 +84,10 @@ $apiInstance = new Hostinger\Api\DNSZoneApi(config: $config);
 $domain = mydomain.tld; // string | Domain name
 
 try {
-    $result = $apiInstance->getRecordsV1($domain);
+    $result = $apiInstance->getDNSRecordsV1($domain);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DNSZoneApi->getRecordsV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DNSZoneApi->getDNSRecordsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -99,21 +99,21 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\DNSV1ZoneRecordResource[]**](../Model/DNSV1ZoneRecordResource.md)
+[**\Hostinger\Model\DNSV1ZoneRecordCollection**](../Model/DNSV1ZoneRecordCollection.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `resetZoneRecordsV1()`
+## `resetDNSRecordsV1()`
 
 ```php
-resetZoneRecordsV1($domain, $dNSV1ZoneResetRequest): \Hostinger\Model\CommonSuccessEmptyResource
+resetDNSRecordsV1($domain, $dNSV1ZoneResetRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Reset zone records
+Reset DNS records
 
-This endpoint resets DNS zone to the default records.
+Reset DNS zone to the default records.  Use this endpoint to restore domain DNS to original configuration.
 
 ### Example
 
@@ -131,10 +131,10 @@ $domain = mydomain.tld; // string | Domain name
 $dNSV1ZoneResetRequest = new \Hostinger\Model\DNSV1ZoneResetRequest(); // \Hostinger\Model\DNSV1ZoneResetRequest
 
 try {
-    $result = $apiInstance->resetZoneRecordsV1($domain, $dNSV1ZoneResetRequest);
+    $result = $apiInstance->resetDNSRecordsV1($domain, $dNSV1ZoneResetRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DNSZoneApi->resetZoneRecordsV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DNSZoneApi->resetDNSRecordsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -153,15 +153,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateZoneRecordsV1()`
+## `updateDNSRecordsV1()`
 
 ```php
-updateZoneRecordsV1($domain, $dNSV1ZoneUpdateRequest): \Hostinger\Model\CommonSuccessEmptyResource
+updateDNSRecordsV1($domain, $dNSV1ZoneUpdateRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Update zone records
+Update DNS records
 
-This endpoint updates DNS records for the selected domain.   Using `overwrite = true` will replace existing records with the provided ones.  Otherwise existing records will be updated and new records will be added.
+Update DNS records for the selected domain.  Using `overwrite = true` will replace existing records with the provided ones.  Otherwise existing records will be updated and new records will be added.  Use this endpoint to modify domain DNS configuration.
 
 ### Example
 
@@ -179,10 +179,10 @@ $domain = mydomain.tld; // string | Domain name
 $dNSV1ZoneUpdateRequest = new \Hostinger\Model\DNSV1ZoneUpdateRequest(); // \Hostinger\Model\DNSV1ZoneUpdateRequest
 
 try {
-    $result = $apiInstance->updateZoneRecordsV1($domain, $dNSV1ZoneUpdateRequest);
+    $result = $apiInstance->updateDNSRecordsV1($domain, $dNSV1ZoneUpdateRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DNSZoneApi->updateZoneRecordsV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DNSZoneApi->updateDNSRecordsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -201,15 +201,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `validateZoneRecordsV1()`
+## `validateDNSRecordsV1()`
 
 ```php
-validateZoneRecordsV1($domain, $dNSV1ZoneUpdateRequest): \Hostinger\Model\CommonSuccessEmptyResource
+validateDNSRecordsV1($domain, $dNSV1ZoneUpdateRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Validate zone records
+Validate DNS records
 
-This endpoint used to validate DNS records prior update for the selected domain.   If the validation is successful, the response will contain `200 Success` code. If there is validation error, the response will fail with `422 Validation error` code.
+Validate DNS records prior to update for the selected domain.  If the validation is successful, the response will contain `200 Success` code. If there is validation error, the response will fail with `422 Validation error` code.  Use this endpoint to verify DNS record validity before applying changes.
 
 ### Example
 
@@ -227,10 +227,10 @@ $domain = mydomain.tld; // string | Domain name
 $dNSV1ZoneUpdateRequest = new \Hostinger\Model\DNSV1ZoneUpdateRequest(); // \Hostinger\Model\DNSV1ZoneUpdateRequest
 
 try {
-    $result = $apiInstance->validateZoneRecordsV1($domain, $dNSV1ZoneUpdateRequest);
+    $result = $apiInstance->validateDNSRecordsV1($domain, $dNSV1ZoneUpdateRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DNSZoneApi->validateZoneRecordsV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DNSZoneApi->validateDNSRecordsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

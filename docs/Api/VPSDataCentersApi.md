@@ -4,18 +4,18 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getDataCentersListV1()**](VPSDataCentersApi.md#getDataCentersListV1) | **GET** /api/vps/v1/data-centers | Get data centers list |
+| [**getDataCenterListV1()**](VPSDataCentersApi.md#getDataCenterListV1) | **GET** /api/vps/v1/data-centers | Get data center list |
 
 
-## `getDataCentersListV1()`
+## `getDataCenterListV1()`
 
 ```php
-getDataCentersListV1(): \Hostinger\Model\VPSV1DataCenterDataCenterResource[]
+getDataCenterListV1(): \Hostinger\Model\VPSV1DataCenterDataCenterCollection
 ```
 
-Get data centers list
+Get data center list
 
-This endpoint retrieves a list of all data centers available.
+Retrieve all available data centers.  Use this endpoint to view location options before deploying VPS instances.
 
 ### Example
 
@@ -31,10 +31,10 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 $apiInstance = new Hostinger\Api\VPSDataCentersApi(config: $config);
 
 try {
-    $result = $apiInstance->getDataCentersListV1();
+    $result = $apiInstance->getDataCenterListV1();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VPSDataCentersApi->getDataCentersListV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VPSDataCentersApi->getDataCenterListV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -44,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\VPSV1DataCenterDataCenterResource[]**](../Model/VPSV1DataCenterDataCenterResource.md)
+[**\Hostinger\Model\VPSV1DataCenterDataCenterCollection**](../Model/VPSV1DataCenterDataCenterCollection.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

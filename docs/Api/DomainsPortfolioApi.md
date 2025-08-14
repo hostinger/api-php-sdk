@@ -8,10 +8,10 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**disablePrivacyProtectionV1()**](DomainsPortfolioApi.md#disablePrivacyProtectionV1) | **DELETE** /api/domains/v1/portfolio/{domain}/privacy-protection | Disable privacy protection |
 | [**enableDomainLockV1()**](DomainsPortfolioApi.md#enableDomainLockV1) | **PUT** /api/domains/v1/portfolio/{domain}/domain-lock | Enable domain lock |
 | [**enablePrivacyProtectionV1()**](DomainsPortfolioApi.md#enablePrivacyProtectionV1) | **PUT** /api/domains/v1/portfolio/{domain}/privacy-protection | Enable privacy protection |
+| [**getDomainDetailsV1()**](DomainsPortfolioApi.md#getDomainDetailsV1) | **GET** /api/domains/v1/portfolio/{domain} | Get domain details |
 | [**getDomainListV1()**](DomainsPortfolioApi.md#getDomainListV1) | **GET** /api/domains/v1/portfolio | Get domain list |
-| [**getDomainV1()**](DomainsPortfolioApi.md#getDomainV1) | **GET** /api/domains/v1/portfolio/{domain} | Get domain |
 | [**purchaseNewDomainV1()**](DomainsPortfolioApi.md#purchaseNewDomainV1) | **POST** /api/domains/v1/portfolio | Purchase new domain |
-| [**updateNameserversV1()**](DomainsPortfolioApi.md#updateNameserversV1) | **PUT** /api/domains/v1/portfolio/{domain}/nameservers | Update nameservers |
+| [**updateDomainNameserversV1()**](DomainsPortfolioApi.md#updateDomainNameserversV1) | **PUT** /api/domains/v1/portfolio/{domain}/nameservers | Update domain nameservers |
 
 
 ## `disableDomainLockV1()`
@@ -22,7 +22,7 @@ disableDomainLockV1($domain): \Hostinger\Model\CommonSuccessEmptyResource
 
 Disable domain lock
 
-This endpoint disables domain lock for the domain. Domain lock needs to be disabled  before transferring the domain to another registrar.
+Disable domain lock for the domain.  Domain lock needs to be disabled before transferring the domain to another registrar.  Use this endpoint to prepare domains for transfer to other registrars.
 
 ### Example
 
@@ -68,7 +68,7 @@ disablePrivacyProtectionV1($domain): \Hostinger\Model\CommonSuccessEmptyResource
 
 Disable privacy protection
 
-This endpoint disables privacy protection for the domain. When privacy protection is disabled, the domain owner's personal information is visible in the public WHOIS database.
+Disable privacy protection for the domain.  When privacy protection is disabled, domain owner's personal information is visible in public WHOIS database.  Use this endpoint to make domain owner's information publicly visible.
 
 ### Example
 
@@ -114,7 +114,7 @@ enableDomainLockV1($domain): \Hostinger\Model\CommonSuccessEmptyResource
 
 Enable domain lock
 
-This endpoint enables domain lock for the domain. When domain lock is enabled,  the domain cannot be transferred to another registrar without first disabling the lock.
+Enable domain lock for the domain.  When domain lock is enabled, the domain cannot be transferred to another registrar without first disabling the lock.  Use this endpoint to secure domains against unauthorized transfers.
 
 ### Example
 
@@ -160,7 +160,7 @@ enablePrivacyProtectionV1($domain): \Hostinger\Model\CommonSuccessEmptyResource
 
 Enable privacy protection
 
-This endpoint enables privacy protection for the domain. When privacy protection is enabled, the domain owner's personal information is hidden from the public WHOIS database.
+Enable privacy protection for the domain.  When privacy protection is enabled, domain owner's personal information is hidden from public WHOIS database.  Use this endpoint to protect domain owner's personal information from public view.
 
 ### Example
 
@@ -198,15 +198,61 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getDomainDetailsV1()`
+
+```php
+getDomainDetailsV1($domain): \Hostinger\Model\DomainsV1DomainDomainExtendedResource
+```
+
+Get domain details
+
+Retrieve detailed information for specified domain.  Use this endpoint to view comprehensive domain configuration and status.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\DomainsPortfolioApi(config: $config);
+$domain = mydomain.tld; // string | Domain name
+
+try {
+    $result = $apiInstance->getDomainDetailsV1($domain);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DomainsPortfolioApi->getDomainDetailsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Domain name | |
+
+### Return type
+
+[**\Hostinger\Model\DomainsV1DomainDomainExtendedResource**](../Model/DomainsV1DomainDomainExtendedResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getDomainListV1()`
 
 ```php
-getDomainListV1(): \Hostinger\Model\DomainsV1DomainDomainResource[]
+getDomainListV1(): \Hostinger\Model\DomainsV1DomainDomainCollection
 ```
 
 Get domain list
 
-This endpoint retrieves a list of all domains associated with your account.
+Retrieve all domains associated with your account.  Use this endpoint to view user's domain portfolio.
 
 ### Example
 
@@ -235,53 +281,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\DomainsV1DomainDomainResource[]**](../Model/DomainsV1DomainDomainResource.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getDomainV1()`
-
-```php
-getDomainV1($domain): \Hostinger\Model\DomainsV1DomainDomainExtendedResource
-```
-
-Get domain
-
-This endpoint retrieves details for specified domain.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer authorization: apiToken
-$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Hostinger\Api\DomainsPortfolioApi(config: $config);
-$domain = mydomain.tld; // string | Domain name
-
-try {
-    $result = $apiInstance->getDomainV1($domain);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DomainsPortfolioApi->getDomainV1: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **domain** | **string**| Domain name | |
-
-### Return type
-
-[**\Hostinger\Model\DomainsV1DomainDomainExtendedResource**](../Model/DomainsV1DomainDomainExtendedResource.md)
+[**\Hostinger\Model\DomainsV1DomainDomainCollection**](../Model/DomainsV1DomainDomainCollection.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -295,7 +295,7 @@ purchaseNewDomainV1($domainsV1PortfolioPurchaseRequest): \Hostinger\Model\Billin
 
 Purchase new domain
 
-This endpoint allows you to buy (purchase) and register a new domain name.   If registration fails, login to [hPanel](https://hpanel.hostinger.com/) and check the domain registration status.  If no payment method is provided, your default payment method will be used automatically.  If no WHOIS information is provided, the default contact information for that TLD (Top-Level Domain) will be used.  Before making a request, ensure that WHOIS information for the desired TLD exists in your account.  Some TLDs require `additional_details` to be provided and these will be validated before completing the purchase. The required additional details vary by TLD.
+Purchase and register a new domain name.  If registration fails, login to [hPanel](https://hpanel.hostinger.com/) and check domain registration status.  If no payment method is provided, your default payment method will be used automatically.  If no WHOIS information is provided, default contact information for that TLD will be used.  Before making request, ensure WHOIS information for desired TLD exists in your account.  Some TLDs require `additional_details` to be provided and these will be validated before completing purchase.  Use this endpoint to register new domains for users.
 
 ### Example
 
@@ -333,15 +333,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateNameserversV1()`
+## `updateDomainNameserversV1()`
 
 ```php
-updateNameserversV1($domain, $domainsV1PortfolioUpdateNameserversRequest): \Hostinger\Model\CommonSuccessEmptyResource
+updateDomainNameserversV1($domain, $domainsV1PortfolioUpdateNameserversRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Update nameservers
+Update domain nameservers
 
-This endpoint sets the nameservers for a specified domain.  Be aware, that improper nameserver configuration can lead to the domain being unresolvable or unavailable.
+Set nameservers for a specified domain.  Be aware, that improper nameserver configuration can lead to the domain being unresolvable or unavailable.  Use this endpoint to configure custom DNS hosting for domains.
 
 ### Example
 
@@ -359,10 +359,10 @@ $domain = mydomain.tld; // string | Domain name
 $domainsV1PortfolioUpdateNameserversRequest = new \Hostinger\Model\DomainsV1PortfolioUpdateNameserversRequest(); // \Hostinger\Model\DomainsV1PortfolioUpdateNameserversRequest
 
 try {
-    $result = $apiInstance->updateNameserversV1($domain, $domainsV1PortfolioUpdateNameserversRequest);
+    $result = $apiInstance->updateDomainNameserversV1($domain, $domainsV1PortfolioUpdateNameserversRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DomainsPortfolioApi->updateNameserversV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DomainsPortfolioApi->updateDomainNameserversV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

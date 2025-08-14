@@ -18,7 +18,7 @@ createSnapshotV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 
 Create snapshot
 
-This endpoint creates a snapshot of a specified virtual machine.  A snapshot captures the state and data of the virtual machine at a specific point in time,  allowing users to restore the virtual machine to that state if needed.  This operation is useful for backup purposes, system recovery,  and testing changes without affecting the current state of the virtual machine.  **Creating new snapshot will overwrite the existing snapshot!**
+Create a snapshot of a specified virtual machine.  A snapshot captures the state and data of the virtual machine at a specific point in time,  allowing users to restore the virtual machine to that state if needed.  This operation is useful for backup purposes, system recovery,  and testing changes without affecting the current state of the virtual machine.  **Creating new snapshot will overwrite the existing snapshot!**  Use this endpoint to capture VPS state for backup and recovery purposes.
 
 ### Example
 
@@ -64,7 +64,7 @@ deleteSnapshotV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 
 Delete snapshot
 
-This endpoint deletes a snapshot of a specified virtual machine.
+Delete a snapshot of a specified virtual machine.  Use this endpoint to remove VPS snapshots.
 
 ### Example
 
@@ -110,7 +110,7 @@ getSnapshotV1($virtualMachineId): \Hostinger\Model\VPSV1SnapshotSnapshotResource
 
 Get snapshot
 
-This endpoint retrieves a snapshot for a specified virtual machine.
+Retrieve snapshot for a specified virtual machine.  Use this endpoint to view current VPS snapshot information.
 
 ### Example
 
@@ -156,7 +156,7 @@ restoreSnapshotV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 
 Restore snapshot
 
-This endpoint restores a specified virtual machine to a previous state using a snapshot.  Restoring from a snapshot allows users to revert the virtual machine to that state, which is useful for system recovery, undoing changes, or testing.
+Restore a specified virtual machine to a previous state using a snapshot.  Restoring from a snapshot allows users to revert the virtual machine to that state, which is useful for system recovery, undoing changes, or testing.  Use this endpoint to revert VPS instances to previous saved states.
 
 ### Example
 

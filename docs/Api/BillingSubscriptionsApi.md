@@ -16,7 +16,7 @@ cancelSubscriptionV1($subscriptionId, $billingV1SubscriptionCancelRequest): \Hos
 
 Cancel subscription
 
-This endpoint cancels a subscription and stops any further billing.
+Cancel a subscription and stop any further billing.  Use this endpoint when users want to terminate active services.
 
 ### Example
 
@@ -59,12 +59,12 @@ try {
 ## `getSubscriptionListV1()`
 
 ```php
-getSubscriptionListV1(): \Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]
+getSubscriptionListV1(): \Hostinger\Model\BillingV1SubscriptionSubscriptionCollection
 ```
 
 Get subscription list
 
-This endpoint retrieves a list of all subscriptions associated with your account.
+Retrieve a list of all subscriptions associated with your account.  Use this endpoint to monitor active services and billing status.
 
 ### Example
 
@@ -93,7 +93,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]**](../Model/BillingV1SubscriptionSubscriptionResource.md)
+[**\Hostinger\Model\BillingV1SubscriptionSubscriptionCollection**](../Model/BillingV1SubscriptionSubscriptionCollection.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

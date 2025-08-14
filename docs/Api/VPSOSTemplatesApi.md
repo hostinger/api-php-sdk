@@ -4,62 +4,19 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getTemplateListV1()**](VPSOSTemplatesApi.md#getTemplateListV1) | **GET** /api/vps/v1/templates | Get template list |
-| [**getTemplateV1()**](VPSOSTemplatesApi.md#getTemplateV1) | **GET** /api/vps/v1/templates/{templateId} | Get template |
+| [**getTemplateDetailsV1()**](VPSOSTemplatesApi.md#getTemplateDetailsV1) | **GET** /api/vps/v1/templates/{templateId} | Get template details |
+| [**getTemplatesV1()**](VPSOSTemplatesApi.md#getTemplatesV1) | **GET** /api/vps/v1/templates | Get templates |
 
 
-## `getTemplateListV1()`
-
-```php
-getTemplateListV1(): \Hostinger\Model\VPSV1TemplateTemplateResource[]
-```
-
-Get template list
-
-This endpoint retrieves a list of available OS templates for virtual machines.
-
-### Example
+## `getTemplateDetailsV1()`
 
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer authorization: apiToken
-$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Hostinger\Api\VPSOSTemplatesApi(config: $config);
-
-try {
-    $result = $apiInstance->getTemplateListV1();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling VPSOSTemplatesApi->getTemplateListV1: ', $e->getMessage(), PHP_EOL;
-}
+getTemplateDetailsV1($templateId): \Hostinger\Model\VPSV1TemplateTemplateResource
 ```
 
-### Parameters
+Get template details
 
-This endpoint does not need any parameter.
-
-### Return type
-
-[**\Hostinger\Model\VPSV1TemplateTemplateResource[]**](../Model/VPSV1TemplateTemplateResource.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getTemplateV1()`
-
-```php
-getTemplateV1($templateId): \Hostinger\Model\VPSV1TemplateTemplateResource
-```
-
-Get template
-
-This endpoint retrieves details of a specific OS template for virtual machines.
+Retrieve detailed information about a specific OS template for virtual machines.  Use this endpoint to view specific template specifications before deployment.
 
 ### Example
 
@@ -76,10 +33,10 @@ $apiInstance = new Hostinger\Api\VPSOSTemplatesApi(config: $config);
 $templateId = 2868928; // int | Template ID
 
 try {
-    $result = $apiInstance->getTemplateV1($templateId);
+    $result = $apiInstance->getTemplateDetailsV1($templateId);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VPSOSTemplatesApi->getTemplateV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VPSOSTemplatesApi->getTemplateDetailsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -92,6 +49,49 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1TemplateTemplateResource**](../Model/VPSV1TemplateTemplateResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTemplatesV1()`
+
+```php
+getTemplatesV1(): \Hostinger\Model\VPSV1TemplateTemplateCollection
+```
+
+Get templates
+
+Retrieve available OS templates for virtual machines.  Use this endpoint to view operating system options before creating or recreating VPS instances.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\VPSOSTemplatesApi(config: $config);
+
+try {
+    $result = $apiInstance->getTemplatesV1();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling VPSOSTemplatesApi->getTemplatesV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Hostinger\Model\VPSV1TemplateTemplateCollection**](../Model/VPSV1TemplateTemplateCollection.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

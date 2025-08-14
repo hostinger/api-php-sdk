@@ -10,12 +10,12 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `checkDomainAvailabilityV1()`
 
 ```php
-checkDomainAvailabilityV1($domainsV1AvailabilityAvailabilityRequest): \Hostinger\Model\DomainsV1AvailabilityAvailabilityResource[]
+checkDomainAvailabilityV1($domainsV1AvailabilityAvailabilityRequest): \Hostinger\Model\DomainsV1AvailabilityAvailabilityCollection
 ```
 
 Check domain availability
 
-This endpoint checks the availability of a domain name. Multiple TLDs can be checked at once. If you want to get alternative domains with response, provide only one TLD in the request and set `with_alternatives` to `true`. TLDs should be provided without the leading dot (e.g. `com`, `net`, `org`).  Endpoint has rate limit of 10 requests per minute.
+Check availability of domain names across multiple TLDs.  Multiple TLDs can be checked at once. If you want alternative domains with response, provide only one TLD and set `with_alternatives` to `true`. TLDs should be provided without leading dot (e.g. `com`, `net`, `org`).  Endpoint has rate limit of 10 requests per minute.  Use this endpoint to verify domain availability before purchase.
 
 ### Example
 
@@ -47,7 +47,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\DomainsV1AvailabilityAvailabilityResource[]**](../Model/DomainsV1AvailabilityAvailabilityResource.md)
+[**\Hostinger\Model\DomainsV1AvailabilityAvailabilityCollection**](../Model/DomainsV1AvailabilityAvailabilityCollection.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

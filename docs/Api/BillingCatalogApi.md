@@ -10,12 +10,12 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `getCatalogItemListV1()`
 
 ```php
-getCatalogItemListV1($category, $name): \Hostinger\Model\BillingV1CatalogCatalogItemResource[]
+getCatalogItemListV1($category, $name): \Hostinger\Model\BillingV1CatalogCatalogItemCollection
 ```
 
 Get catalog item list
 
-This endpoint retrieves a list of catalog items available for order.   Prices in catalog items is displayed as cents (without floating point), e.g: float `17.99` is displayed as integer `1799`.
+Retrieve catalog items available for order.  Prices in catalog items is displayed as cents (without floating point), e.g: float `17.99` is displayed as integer `1799`.  Use this endpoint to view available services and pricing before placing orders.
 
 ### Example
 
@@ -49,7 +49,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\BillingV1CatalogCatalogItemResource[]**](../Model/BillingV1CatalogCatalogItemResource.md)
+[**\Hostinger\Model\BillingV1CatalogCatalogItemCollection**](../Model/BillingV1CatalogCatalogItemCollection.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -16,7 +16,7 @@ createPTRRecordV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 
 Create PTR record
 
-This endpoint creates or updates a PTR (Pointer) record for a specified virtual machine.
+Create or update a PTR (Pointer) record for a specified virtual machine.  Use this endpoint to configure reverse DNS lookup for VPS IP addresses.
 
 ### Example
 
@@ -62,7 +62,7 @@ deletePTRRecordV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
 
 Delete PTR record
 
-This endpoint deletes a PTR (Pointer) record for a specified virtual machine.   Once deleted, reverse DNS lookups to the virtual machine's IP address will no longer return the previously configured hostname.
+Delete a PTR (Pointer) record for a specified virtual machine.  Once deleted, reverse DNS lookups to the virtual machine's IP address will no longer return the previously configured hostname.  Use this endpoint to remove reverse DNS configuration from VPS instances.
 
 ### Example
 

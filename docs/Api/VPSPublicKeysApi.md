@@ -5,9 +5,9 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**attachPublicKeyV1()**](VPSPublicKeysApi.md#attachPublicKeyV1) | **POST** /api/vps/v1/public-keys/attach/{virtualMachineId} | Attach public key |
-| [**createNewPublicKeyV1()**](VPSPublicKeysApi.md#createNewPublicKeyV1) | **POST** /api/vps/v1/public-keys | Create new public key |
-| [**deleteAPublicKeyV1()**](VPSPublicKeysApi.md#deleteAPublicKeyV1) | **DELETE** /api/vps/v1/public-keys/{publicKeyId} | Delete a public key |
-| [**getPublicKeyListV1()**](VPSPublicKeysApi.md#getPublicKeyListV1) | **GET** /api/vps/v1/public-keys | Get public key list |
+| [**createPublicKeyV1()**](VPSPublicKeysApi.md#createPublicKeyV1) | **POST** /api/vps/v1/public-keys | Create public key |
+| [**deletePublicKeyV1()**](VPSPublicKeysApi.md#deletePublicKeyV1) | **DELETE** /api/vps/v1/public-keys/{publicKeyId} | Delete public key |
+| [**getPublicKeysV1()**](VPSPublicKeysApi.md#getPublicKeysV1) | **GET** /api/vps/v1/public-keys | Get public keys |
 
 
 ## `attachPublicKeyV1()`
@@ -18,7 +18,7 @@ attachPublicKeyV1($virtualMachineId, $vPSV1PublicKeyAttachRequest): \Hostinger\M
 
 Attach public key
 
-This endpoint attaches an existing public keys from your account to a specified virtual machine.  Multiple keys can be attached to a single virtual machine.
+Attach existing public keys from your account to a specified virtual machine.  Multiple keys can be attached to a single virtual machine.  Use this endpoint to enable SSH key authentication for VPS instances.
 
 ### Example
 
@@ -58,15 +58,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `createNewPublicKeyV1()`
+## `createPublicKeyV1()`
 
 ```php
-createNewPublicKeyV1($vPSV1PublicKeyStoreRequest): \Hostinger\Model\VPSV1PublicKeyPublicKeyResource
+createPublicKeyV1($vPSV1PublicKeyStoreRequest): \Hostinger\Model\VPSV1PublicKeyPublicKeyResource
 ```
 
-Create new public key
+Create public key
 
-This endpoint allows you to add a new public key to your account,  which can then be attached to virtual machine instances for secure access.
+Add a new public key to your account.  Use this endpoint to register SSH keys for VPS authentication.
 
 ### Example
 
@@ -83,10 +83,10 @@ $apiInstance = new Hostinger\Api\VPSPublicKeysApi(config: $config);
 $vPSV1PublicKeyStoreRequest = new \Hostinger\Model\VPSV1PublicKeyStoreRequest(); // \Hostinger\Model\VPSV1PublicKeyStoreRequest
 
 try {
-    $result = $apiInstance->createNewPublicKeyV1($vPSV1PublicKeyStoreRequest);
+    $result = $apiInstance->createPublicKeyV1($vPSV1PublicKeyStoreRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VPSPublicKeysApi->createNewPublicKeyV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VPSPublicKeysApi->createPublicKeyV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -104,15 +104,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteAPublicKeyV1()`
+## `deletePublicKeyV1()`
 
 ```php
-deleteAPublicKeyV1($publicKeyId): \Hostinger\Model\CommonSuccessEmptyResource
+deletePublicKeyV1($publicKeyId): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Delete a public key
+Delete public key
 
-This endpoint deletes a public key from your account.   **Deleting public key from account does not remove it from virtual machine**
+Delete a public key from your account.   **Deleting public key from account does not remove it from virtual machine**          Use this endpoint to remove unused SSH keys from account.
 
 ### Example
 
@@ -129,10 +129,10 @@ $apiInstance = new Hostinger\Api\VPSPublicKeysApi(config: $config);
 $publicKeyId = 6672861; // int | Public Key ID
 
 try {
-    $result = $apiInstance->deleteAPublicKeyV1($publicKeyId);
+    $result = $apiInstance->deletePublicKeyV1($publicKeyId);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VPSPublicKeysApi->deleteAPublicKeyV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VPSPublicKeysApi->deletePublicKeyV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -150,15 +150,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getPublicKeyListV1()`
+## `getPublicKeysV1()`
 
 ```php
-getPublicKeyListV1($page): \Hostinger\Model\VPSGetPublicKeyListV1200Response
+getPublicKeysV1($page): \Hostinger\Model\VPSV1PublicKeyListResponse
 ```
 
-Get public key list
+Get public keys
 
-This endpoint retrieves a list of public keys associated with your account.
+Retrieve public keys associated with your account.  Use this endpoint to view available SSH keys for VPS authentication.
 
 ### Example
 
@@ -175,10 +175,10 @@ $apiInstance = new Hostinger\Api\VPSPublicKeysApi(config: $config);
 $page = 1; // int | Page number
 
 try {
-    $result = $apiInstance->getPublicKeyListV1($page);
+    $result = $apiInstance->getPublicKeysV1($page);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VPSPublicKeysApi->getPublicKeyListV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VPSPublicKeysApi->getPublicKeysV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -190,7 +190,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\VPSGetPublicKeyListV1200Response**](../Model/VPSGetPublicKeyListV1200Response.md)
+[**\Hostinger\Model\VPSV1PublicKeyListResponse**](../Model/VPSV1PublicKeyListResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

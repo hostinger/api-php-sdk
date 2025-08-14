@@ -19,7 +19,7 @@ createWHOISProfileV1($domainsV1WHOISStoreRequest): \Hostinger\Model\DomainsV1WHO
 
 Create WHOIS profile
 
-This endpoint creates WHOIS contact profile.
+Create WHOIS contact profile.  Use this endpoint to add new contact information for domain registration.
 
 ### Example
 
@@ -65,7 +65,7 @@ deleteWHOISProfileV1($whoisId): \Hostinger\Model\CommonSuccessEmptyResource
 
 Delete WHOIS profile
 
-This endpoint deletes WHOIS contact profile.
+Delete WHOIS contact profile.  Use this endpoint to remove unused contact profiles from account.
 
 ### Example
 
@@ -106,12 +106,12 @@ try {
 ## `getWHOISProfileListV1()`
 
 ```php
-getWHOISProfileListV1($tld): \Hostinger\Model\DomainsV1WHOISProfileResource[]
+getWHOISProfileListV1($tld): \Hostinger\Model\DomainsV1WHOISProfileCollection
 ```
 
 Get WHOIS profile list
 
-This endpoint retrieves a list of WHOIS contact profiles.
+Retrieve WHOIS contact profiles.  Use this endpoint to view available contact profiles for domain registration.
 
 ### Example
 
@@ -143,7 +143,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\DomainsV1WHOISProfileResource[]**](../Model/DomainsV1WHOISProfileResource.md)
+[**\Hostinger\Model\DomainsV1WHOISProfileCollection**](../Model/DomainsV1WHOISProfileCollection.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -152,12 +152,12 @@ try {
 ## `getWHOISProfileUsageV1()`
 
 ```php
-getWHOISProfileUsageV1($whoisId): string[]
+getWHOISProfileUsageV1($whoisId): \Hostinger\Model\DomainsV1WHOISProfileUsageResource
 ```
 
 Get WHOIS profile usage
 
-This endpoint retrieves a domain list where provided WHOIS contact profile is used.
+Retrieve domain list where provided WHOIS contact profile is used.  Use this endpoint to view which domains use specific contact profiles.
 
 ### Example
 
@@ -189,7 +189,7 @@ try {
 
 ### Return type
 
-**string[]**
+[**\Hostinger\Model\DomainsV1WHOISProfileUsageResource**](../Model/DomainsV1WHOISProfileUsageResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -203,7 +203,7 @@ getWHOISProfileV1($whoisId): \Hostinger\Model\DomainsV1WHOISProfileResource
 
 Get WHOIS profile
 
-This endpoint retrieves a WHOIS contact profile.
+Retrieve a WHOIS contact profile.  Use this endpoint to view domain registration contact information.
 
 ### Example
 

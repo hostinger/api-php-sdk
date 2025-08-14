@@ -4,20 +4,20 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createForwardingDataV1()**](DomainsForwardingApi.md#createForwardingDataV1) | **POST** /api/domains/v1/forwarding | Create forwarding data |
-| [**deleteForwardingDataV1()**](DomainsForwardingApi.md#deleteForwardingDataV1) | **DELETE** /api/domains/v1/forwarding/{domain} | Delete forwarding data |
-| [**getForwardingDataV1()**](DomainsForwardingApi.md#getForwardingDataV1) | **GET** /api/domains/v1/forwarding/{domain} | Get forwarding data |
+| [**createDomainForwardingV1()**](DomainsForwardingApi.md#createDomainForwardingV1) | **POST** /api/domains/v1/forwarding | Create domain forwarding |
+| [**deleteDomainForwardingV1()**](DomainsForwardingApi.md#deleteDomainForwardingV1) | **DELETE** /api/domains/v1/forwarding/{domain} | Delete domain forwarding |
+| [**getDomainForwardingV1()**](DomainsForwardingApi.md#getDomainForwardingV1) | **GET** /api/domains/v1/forwarding/{domain} | Get domain forwarding |
 
 
-## `createForwardingDataV1()`
+## `createDomainForwardingV1()`
 
 ```php
-createForwardingDataV1($domainsV1ForwardingStoreRequest): \Hostinger\Model\DomainsV1ForwardingForwardingResource
+createDomainForwardingV1($domainsV1ForwardingStoreRequest): \Hostinger\Model\DomainsV1ForwardingForwardingResource
 ```
 
-Create forwarding data
+Create domain forwarding
 
-This endpoint creates domain forwarding data.
+Create domain forwarding configuration.  Use this endpoint to set up domain redirects to other URLs.
 
 ### Example
 
@@ -34,10 +34,10 @@ $apiInstance = new Hostinger\Api\DomainsForwardingApi(config: $config);
 $domainsV1ForwardingStoreRequest = new \Hostinger\Model\DomainsV1ForwardingStoreRequest(); // \Hostinger\Model\DomainsV1ForwardingStoreRequest
 
 try {
-    $result = $apiInstance->createForwardingDataV1($domainsV1ForwardingStoreRequest);
+    $result = $apiInstance->createDomainForwardingV1($domainsV1ForwardingStoreRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DomainsForwardingApi->createForwardingDataV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DomainsForwardingApi->createDomainForwardingV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -55,15 +55,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteForwardingDataV1()`
+## `deleteDomainForwardingV1()`
 
 ```php
-deleteForwardingDataV1($domain): \Hostinger\Model\CommonSuccessEmptyResource
+deleteDomainForwardingV1($domain): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Delete forwarding data
+Delete domain forwarding
 
-This endpoint deletes domain forwarding data.
+Delete domain forwarding data.  Use this endpoint to remove redirect configuration from domains.
 
 ### Example
 
@@ -80,10 +80,10 @@ $apiInstance = new Hostinger\Api\DomainsForwardingApi(config: $config);
 $domain = mydomain.tld; // string | Domain name
 
 try {
-    $result = $apiInstance->deleteForwardingDataV1($domain);
+    $result = $apiInstance->deleteDomainForwardingV1($domain);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DomainsForwardingApi->deleteForwardingDataV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DomainsForwardingApi->deleteDomainForwardingV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -101,15 +101,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getForwardingDataV1()`
+## `getDomainForwardingV1()`
 
 ```php
-getForwardingDataV1($domain): \Hostinger\Model\DomainsV1ForwardingForwardingResource
+getDomainForwardingV1($domain): \Hostinger\Model\DomainsV1ForwardingForwardingResource
 ```
 
-Get forwarding data
+Get domain forwarding
 
-This endpoint retrieves domain forwarding data.
+Retrieve domain forwarding data.  Use this endpoint to view current redirect configuration for domains.
 
 ### Example
 
@@ -126,10 +126,10 @@ $apiInstance = new Hostinger\Api\DomainsForwardingApi(config: $config);
 $domain = mydomain.tld; // string | Domain name
 
 try {
-    $result = $apiInstance->getForwardingDataV1($domain);
+    $result = $apiInstance->getDomainForwardingV1($domain);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DomainsForwardingApi->getForwardingDataV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DomainsForwardingApi->getDomainForwardingV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

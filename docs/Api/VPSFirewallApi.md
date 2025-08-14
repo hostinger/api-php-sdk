@@ -10,8 +10,8 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**deactivateFirewallV1()**](VPSFirewallApi.md#deactivateFirewallV1) | **POST** /api/vps/v1/firewall/{firewallId}/deactivate/{virtualMachineId} | Deactivate firewall |
 | [**deleteFirewallRuleV1()**](VPSFirewallApi.md#deleteFirewallRuleV1) | **DELETE** /api/vps/v1/firewall/{firewallId}/rules/{ruleId} | Delete firewall rule |
 | [**deleteFirewallV1()**](VPSFirewallApi.md#deleteFirewallV1) | **DELETE** /api/vps/v1/firewall/{firewallId} | Delete firewall |
+| [**getFirewallDetailsV1()**](VPSFirewallApi.md#getFirewallDetailsV1) | **GET** /api/vps/v1/firewall/{firewallId} | Get firewall details |
 | [**getFirewallListV1()**](VPSFirewallApi.md#getFirewallListV1) | **GET** /api/vps/v1/firewall | Get firewall list |
-| [**getFirewallV1()**](VPSFirewallApi.md#getFirewallV1) | **GET** /api/vps/v1/firewall/{firewallId} | Get firewall |
 | [**syncFirewallV1()**](VPSFirewallApi.md#syncFirewallV1) | **POST** /api/vps/v1/firewall/{firewallId}/sync/{virtualMachineId} | Sync firewall |
 | [**updateFirewallRuleV1()**](VPSFirewallApi.md#updateFirewallRuleV1) | **PUT** /api/vps/v1/firewall/{firewallId}/rules/{ruleId} | Update firewall rule |
 
@@ -24,7 +24,7 @@ activateFirewallV1($firewallId, $virtualMachineId): \Hostinger\Model\VPSV1Action
 
 Activate firewall
 
-This endpoint activates a firewall for a specified virtual machine.   Only one firewall can be active for a virtual machine at a time.
+Activate a firewall for a specified virtual machine.  Only one firewall can be active for a virtual machine at a time.  Use this endpoint to apply firewall rules to VPS instances.
 
 ### Example
 
@@ -72,7 +72,7 @@ createFirewallRuleV1($firewallId, $vPSV1FirewallRulesStoreRequest): \Hostinger\M
 
 Create firewall rule
 
-This endpoint creates new firewall rule from a specified firewall.  By default, the firewall drops all incoming traffic, which means you must add accept rules for all ports you want to use.  Any virtual machine that has this firewall activated will loose sync with the firewall and will have to be synced again manually.
+Create new firewall rule for a specified firewall.  By default, the firewall drops all incoming traffic, which means you must add accept rules for all ports you want to use.  Any virtual machine that has this firewall activated will lose sync with the firewall and will have to be synced again manually.  Use this endpoint to add new security rules to firewalls.
 
 ### Example
 
@@ -120,7 +120,7 @@ createNewFirewallV1($vPSV1FirewallStoreRequest): \Hostinger\Model\VPSV1FirewallF
 
 Create new firewall
 
-This endpoint creates a new firewall.
+Create a new firewall.  Use this endpoint to set up new firewall configurations for VPS security.
 
 ### Example
 
@@ -166,7 +166,7 @@ deactivateFirewallV1($firewallId, $virtualMachineId): \Hostinger\Model\VPSV1Acti
 
 Deactivate firewall
 
-This endpoint deactivates a firewall for a specified virtual machine.
+Deactivate a firewall for a specified virtual machine.  Use this endpoint to remove firewall protection from VPS instances.
 
 ### Example
 
@@ -214,7 +214,7 @@ deleteFirewallRuleV1($firewallId, $ruleId): \Hostinger\Model\CommonSuccessEmptyR
 
 Delete firewall rule
 
-This endpoint deletes a specific firewall rule from a specified firewall.  Any virtual machine that has this firewall activated will loose sync with the firewall and will have to be synced again manually.
+Delete a specific firewall rule from a specified firewall.  Any virtual machine that has this firewall activated will lose sync with the firewall and will have to be synced again manually.         Use this endpoint to remove specific firewall rules.
 
 ### Example
 
@@ -262,7 +262,7 @@ deleteFirewallV1($firewallId): \Hostinger\Model\CommonSuccessEmptyResource
 
 Delete firewall
 
-This endpoint deletes a specified firewall.   Any virtual machine that has this firewall activated will automatically have it deactivated.
+Delete a specified firewall.  Any virtual machine that has this firewall activated will automatically have it deactivated.  Use this endpoint to remove unused firewall configurations.
 
 ### Example
 
@@ -300,15 +300,61 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getFirewallDetailsV1()`
+
+```php
+getFirewallDetailsV1($firewallId): \Hostinger\Model\VPSV1FirewallFirewallResource
+```
+
+Get firewall details
+
+Retrieve firewall by its ID and rules associated with it.  Use this endpoint to view specific firewall configuration and rules.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
+$firewallId = 9449049; // int | Firewall ID
+
+try {
+    $result = $apiInstance->getFirewallDetailsV1($firewallId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling VPSFirewallApi->getFirewallDetailsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **firewallId** | **int**| Firewall ID | |
+
+### Return type
+
+[**\Hostinger\Model\VPSV1FirewallFirewallResource**](../Model/VPSV1FirewallFirewallResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getFirewallListV1()`
 
 ```php
-getFirewallListV1($page): \Hostinger\Model\VPSGetFirewallListV1200Response
+getFirewallListV1($page): \Hostinger\Model\VPSVFirewallListResponse
 ```
 
 Get firewall list
 
-This endpoint retrieves a list of all firewalls available.
+Retrieve all available firewalls.  Use this endpoint to view existing firewall configurations.
 
 ### Example
 
@@ -340,53 +386,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\VPSGetFirewallListV1200Response**](../Model/VPSGetFirewallListV1200Response.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getFirewallV1()`
-
-```php
-getFirewallV1($firewallId): \Hostinger\Model\VPSV1FirewallFirewallResource
-```
-
-Get firewall
-
-This endpoint retrieves firewall by its ID and rules associated with it.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer authorization: apiToken
-$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
-$firewallId = 9449049; // int | Firewall ID
-
-try {
-    $result = $apiInstance->getFirewallV1($firewallId);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling VPSFirewallApi->getFirewallV1: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **firewallId** | **int**| Firewall ID | |
-
-### Return type
-
-[**\Hostinger\Model\VPSV1FirewallFirewallResource**](../Model/VPSV1FirewallFirewallResource.md)
+[**\Hostinger\Model\VPSVFirewallListResponse**](../Model/VPSVFirewallListResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -400,7 +400,7 @@ syncFirewallV1($firewallId, $virtualMachineId): \Hostinger\Model\VPSV1ActionActi
 
 Sync firewall
 
-This endpoint syncs a firewall for a specified virtual machine.  Firewall can loose sync with virtual machine if the firewall has new rules added, removed or updated.
+Sync a firewall for a specified virtual machine.  Firewall can lose sync with virtual machine if the firewall has new rules added, removed or updated.  Use this endpoint to apply updated firewall rules to VPS instances.
 
 ### Example
 
@@ -448,7 +448,7 @@ updateFirewallRuleV1($firewallId, $ruleId, $vPSV1FirewallRulesStoreRequest): \Ho
 
 Update firewall rule
 
-This endpoint updates a specific firewall rule from a specified firewall.  Any virtual machine that has this firewall activated will loose sync with the firewall and will have to be synced again manually.
+Update a specific firewall rule from a specified firewall.  Any virtual machine that has this firewall activated will lose sync with the firewall and will have to be synced again manually.  Use this endpoint to modify existing firewall rules.
 
 ### Example
 

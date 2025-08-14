@@ -4,20 +4,20 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getSnapshotListV1()**](DNSSnapshotApi.md#getSnapshotListV1) | **GET** /api/dns/v1/snapshots/{domain} | Get snapshot list |
-| [**getSnapshotV1()**](DNSSnapshotApi.md#getSnapshotV1) | **GET** /api/dns/v1/snapshots/{domain}/{snapshotId} | Get snapshot |
-| [**restoreSnapshotV1()**](DNSSnapshotApi.md#restoreSnapshotV1) | **POST** /api/dns/v1/snapshots/{domain}/{snapshotId}/restore | Restore snapshot |
+| [**getDNSSnapshotListV1()**](DNSSnapshotApi.md#getDNSSnapshotListV1) | **GET** /api/dns/v1/snapshots/{domain} | Get DNS snapshot list |
+| [**getDNSSnapshotV1()**](DNSSnapshotApi.md#getDNSSnapshotV1) | **GET** /api/dns/v1/snapshots/{domain}/{snapshotId} | Get DNS snapshot |
+| [**restoreDNSSnapshotV1()**](DNSSnapshotApi.md#restoreDNSSnapshotV1) | **POST** /api/dns/v1/snapshots/{domain}/{snapshotId}/restore | Restore DNS snapshot |
 
 
-## `getSnapshotListV1()`
+## `getDNSSnapshotListV1()`
 
 ```php
-getSnapshotListV1($domain): \Hostinger\Model\DNSV1SnapshotSnapshotResource[]
+getDNSSnapshotListV1($domain): \Hostinger\Model\DNSV1SnapshotSnapshotCollection
 ```
 
-Get snapshot list
+Get DNS snapshot list
 
-This endpoint retrieves list of DNS snapshots.
+Retrieve DNS snapshots for a domain.  Use this endpoint to view available DNS backup points for restoration.
 
 ### Example
 
@@ -34,10 +34,10 @@ $apiInstance = new Hostinger\Api\DNSSnapshotApi(config: $config);
 $domain = mydomain.tld; // string | Domain name
 
 try {
-    $result = $apiInstance->getSnapshotListV1($domain);
+    $result = $apiInstance->getDNSSnapshotListV1($domain);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DNSSnapshotApi->getSnapshotListV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DNSSnapshotApi->getDNSSnapshotListV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -49,21 +49,21 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\DNSV1SnapshotSnapshotResource[]**](../Model/DNSV1SnapshotSnapshotResource.md)
+[**\Hostinger\Model\DNSV1SnapshotSnapshotCollection**](../Model/DNSV1SnapshotSnapshotCollection.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getSnapshotV1()`
+## `getDNSSnapshotV1()`
 
 ```php
-getSnapshotV1($domain, $snapshotId): \Hostinger\Model\DNSV1SnapshotSnapshotWithContentResource
+getDNSSnapshotV1($domain, $snapshotId): \Hostinger\Model\DNSV1SnapshotSnapshotWithContentResource
 ```
 
-Get snapshot
+Get DNS snapshot
 
-This endpoint retrieves particular DNS snapshot with the contents of DNS zone records.
+Retrieve particular DNS snapshot with contents of DNS zone records.  Use this endpoint to view historical DNS configurations for domains.
 
 ### Example
 
@@ -81,10 +81,10 @@ $domain = mydomain.tld; // string | Domain name
 $snapshotId = 53513053; // int | Snapshot ID
 
 try {
-    $result = $apiInstance->getSnapshotV1($domain, $snapshotId);
+    $result = $apiInstance->getDNSSnapshotV1($domain, $snapshotId);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DNSSnapshotApi->getSnapshotV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DNSSnapshotApi->getDNSSnapshotV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -103,15 +103,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `restoreSnapshotV1()`
+## `restoreDNSSnapshotV1()`
 
 ```php
-restoreSnapshotV1($domain, $snapshotId): \Hostinger\Model\CommonSuccessEmptyResource
+restoreDNSSnapshotV1($domain, $snapshotId): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Restore snapshot
+Restore DNS snapshot
 
-This endpoint restores DNS zone to the selected snapshot.
+Restore DNS zone to the selected snapshot.  Use this endpoint to revert domain DNS to a previous configuration.
 
 ### Example
 
@@ -129,10 +129,10 @@ $domain = mydomain.tld; // string | Domain name
 $snapshotId = 53513053; // int | Snapshot ID
 
 try {
-    $result = $apiInstance->restoreSnapshotV1($domain, $snapshotId);
+    $result = $apiInstance->restoreDNSSnapshotV1($domain, $snapshotId);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DNSSnapshotApi->restoreSnapshotV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DNSSnapshotApi->restoreDNSSnapshotV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

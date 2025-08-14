@@ -4,18 +4,18 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createNewServiceOrderV1()**](BillingOrdersApi.md#createNewServiceOrderV1) | **POST** /api/billing/v1/orders | Create new service order |
+| [**createServiceOrderV1()**](BillingOrdersApi.md#createServiceOrderV1) | **POST** /api/billing/v1/orders | Create service order |
 
 
-## `createNewServiceOrderV1()`
+## `createServiceOrderV1()`
 
 ```php
-createNewServiceOrderV1($billingV1OrderStoreRequest): \Hostinger\Model\BillingV1OrderOrderResource
+createServiceOrderV1($billingV1OrderStoreRequest): \Hostinger\Model\BillingV1OrderOrderResource
 ```
 
-Create new service order
+Create service order
 
-This endpoint creates a new service order.   **DEPRECATED**  To purchase a domain, use [`POST /api/domains/v1/portfolio`](/#tag/domains-portfolio/POST/api/domains/v1/portfolio) instead.  To purchase a VPS, use [`POST /api/vps/v1/virtual-machines`](/#tag/vps-virtual-machine/POST/api/vps/v1/virtual-machines) instead.   To place order, you need to provide payment method ID and list of price items from the catalog endpoint together with quantity. Coupons also can be provided during order creation.  Orders created using this endpoint will be set for automatic renewal.  Some `credit_card` payments might need additional verification, rendering purchase unprocessed. We recommend use other payment methods than `credit_card` if you encounter this issue.
+Create a new service order.   **DEPRECATED**  To purchase a domain, use [`POST /api/domains/v1/portfolio`](/#tag/domains-portfolio/POST/api/domains/v1/portfolio) instead.  To purchase a VPS, use [`POST /api/vps/v1/virtual-machines`](/#tag/vps-virtual-machine/POST/api/vps/v1/virtual-machines) instead.   To place order, you need to provide payment method ID and list of price items from the catalog endpoint together with quantity. Coupons also can be provided during order creation.  Orders created using this endpoint will be set for automatic renewal.  Some `credit_card` payments might need additional verification, rendering purchase unprocessed. We recommend use other payment methods than `credit_card` if you encounter this issue.
 
 ### Example
 
@@ -32,10 +32,10 @@ $apiInstance = new Hostinger\Api\BillingOrdersApi(config: $config);
 $billingV1OrderStoreRequest = new \Hostinger\Model\BillingV1OrderStoreRequest(); // \Hostinger\Model\BillingV1OrderStoreRequest
 
 try {
-    $result = $apiInstance->createNewServiceOrderV1($billingV1OrderStoreRequest);
+    $result = $apiInstance->createServiceOrderV1($billingV1OrderStoreRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BillingOrdersApi->createNewServiceOrderV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BillingOrdersApi->createServiceOrderV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
