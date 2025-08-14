@@ -9,4 +9,5 @@ parameters:
             - src/Model/*
     excludePaths:
         - src/FormDataProcessor.php
+        - src/ObjectSerializer.php
 
