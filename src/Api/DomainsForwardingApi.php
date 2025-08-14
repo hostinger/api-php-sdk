@@ -55,14 +55,13 @@ class DomainsForwardingApi
     /**
      * @return \Hostinger\Model\DomainsV1ForwardingForwardingResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function createDomainForwardingV1(\Hostinger\Model\DomainsV1ForwardingStoreRequest $domainsV1ForwardingStoreRequest)
     {
         $request = new Request(
-            method: 'GET',
+            method: 'POST',
             uri: '/api/domains/v1/forwarding',
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($domainsV1ForwardingStoreRequest, JsonEncoder::FORMAT),
@@ -82,15 +81,16 @@ class DomainsForwardingApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function deleteDomainForwardingV1(string $domain)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/domains/v1/forwarding/{domain}', $domain),
+            method: 'DELETE',
+            uri: $this->buildResourcePath('/api/domains/v1/forwarding/{domain}', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -108,7 +108,6 @@ class DomainsForwardingApi
     /**
      * @return \Hostinger\Model\DomainsV1ForwardingForwardingResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -116,7 +115,9 @@ class DomainsForwardingApi
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/domains/v1/forwarding/{domain}', $domain),
+            uri: $this->buildResourcePath('/api/domains/v1/forwarding/{domain}', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -131,7 +132,10 @@ class DomainsForwardingApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DomainsV1ForwardingForwardingResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

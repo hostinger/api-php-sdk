@@ -55,15 +55,16 @@ class VPSRecoveryApi
     /**
      * @return \Hostinger\Model\VPSV1ActionActionResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function startRecoveryModeV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest $vPSV1VirtualMachineRecoveryStartRequest)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/recovery', $virtualMachineId),
+            method: 'POST',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/recovery', [
+                'virtualMachineId' => $virtualMachineId
+            ]),
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($vPSV1VirtualMachineRecoveryStartRequest, JsonEncoder::FORMAT),
         );
@@ -82,15 +83,16 @@ class VPSRecoveryApi
     /**
      * @return \Hostinger\Model\VPSV1ActionActionResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function stopRecoveryModeV1(int $virtualMachineId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/recovery', $virtualMachineId),
+            method: 'DELETE',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/recovery', [
+                'virtualMachineId' => $virtualMachineId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -105,7 +107,10 @@ class VPSRecoveryApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

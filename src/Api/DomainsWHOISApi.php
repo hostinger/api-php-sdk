@@ -55,14 +55,13 @@ class DomainsWHOISApi
     /**
      * @return \Hostinger\Model\DomainsV1WHOISProfileResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function createWHOISProfileV1(\Hostinger\Model\DomainsV1WHOISStoreRequest $domainsV1WHOISStoreRequest)
     {
         $request = new Request(
-            method: 'GET',
+            method: 'POST',
             uri: '/api/domains/v1/whois',
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($domainsV1WHOISStoreRequest, JsonEncoder::FORMAT),
@@ -82,15 +81,16 @@ class DomainsWHOISApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function deleteWHOISProfileV1(int $whoisId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/domains/v1/whois/{whoisId}', $whoisId),
+            method: 'DELETE',
+            uri: $this->buildResourcePath('/api/domains/v1/whois/{whoisId}', [
+                'whoisId' => $whoisId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -108,7 +108,6 @@ class DomainsWHOISApi
     /**
      * @return \Hostinger\Model\DomainsV1WHOISProfileResource[]
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -140,7 +139,6 @@ class DomainsWHOISApi
     /**
      * @return string[]
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -148,7 +146,9 @@ class DomainsWHOISApi
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/domains/v1/whois/{whoisId}/usage', $whoisId),
+            uri: $this->buildResourcePath('/api/domains/v1/whois/{whoisId}/usage', [
+                'whoisId' => $whoisId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -166,7 +166,6 @@ class DomainsWHOISApi
     /**
      * @return \Hostinger\Model\DomainsV1WHOISProfileResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -174,7 +173,9 @@ class DomainsWHOISApi
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/domains/v1/whois/{whoisId}', $whoisId),
+            uri: $this->buildResourcePath('/api/domains/v1/whois/{whoisId}', [
+                'whoisId' => $whoisId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -189,7 +190,10 @@ class DomainsWHOISApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DomainsV1WHOISProfileResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

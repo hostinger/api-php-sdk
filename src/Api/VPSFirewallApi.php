@@ -55,15 +55,16 @@ class VPSFirewallApi
     /**
      * @return \Hostinger\Model\VPSV1ActionActionResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function activateFirewallV1(int $firewallId, int $virtualMachineId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/activate/{virtualMachineId}', $firewallId, $virtualMachineId),
+            method: 'POST',
+            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/activate/{virtualMachineId}', [
+                'firewallId' => $firewallId, 'virtualMachineId' => $virtualMachineId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -81,15 +82,16 @@ class VPSFirewallApi
     /**
      * @return \Hostinger\Model\VPSV1FirewallFirewallRuleResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function createFirewallRuleV1(int $firewallId, \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/rules', $firewallId),
+            method: 'POST',
+            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/rules', [
+                'firewallId' => $firewallId
+            ]),
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($vPSV1FirewallRulesStoreRequest, JsonEncoder::FORMAT),
         );
@@ -108,14 +110,13 @@ class VPSFirewallApi
     /**
      * @return \Hostinger\Model\VPSV1FirewallFirewallResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function createNewFirewallV1(\Hostinger\Model\VPSV1FirewallStoreRequest $vPSV1FirewallStoreRequest)
     {
         $request = new Request(
-            method: 'GET',
+            method: 'POST',
             uri: '/api/vps/v1/firewall',
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($vPSV1FirewallStoreRequest, JsonEncoder::FORMAT),
@@ -135,15 +136,16 @@ class VPSFirewallApi
     /**
      * @return \Hostinger\Model\VPSV1ActionActionResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function deactivateFirewallV1(int $firewallId, int $virtualMachineId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/deactivate/{virtualMachineId}', $firewallId, $virtualMachineId),
+            method: 'POST',
+            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/deactivate/{virtualMachineId}', [
+                'firewallId' => $firewallId, 'virtualMachineId' => $virtualMachineId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -161,15 +163,16 @@ class VPSFirewallApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function deleteFirewallRuleV1(int $firewallId, int $ruleId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/rules/{ruleId}', $firewallId, $ruleId),
+            method: 'DELETE',
+            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/rules/{ruleId}', [
+                'firewallId' => $firewallId, 'ruleId' => $ruleId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -187,15 +190,16 @@ class VPSFirewallApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function deleteFirewallV1(int $firewallId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}', $firewallId),
+            method: 'DELETE',
+            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}', [
+                'firewallId' => $firewallId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -213,7 +217,6 @@ class VPSFirewallApi
     /**
      * @return \Hostinger\Model\VPSV1FirewallFirewallResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -221,7 +224,9 @@ class VPSFirewallApi
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}', $firewallId),
+            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}', [
+                'firewallId' => $firewallId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -239,7 +244,6 @@ class VPSFirewallApi
     /**
      * @return \Hostinger\Model\VPSV1FirewallListResponse
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -271,15 +275,16 @@ class VPSFirewallApi
     /**
      * @return \Hostinger\Model\VPSV1ActionActionResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function syncFirewallV1(int $firewallId, int $virtualMachineId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/sync/{virtualMachineId}', $firewallId, $virtualMachineId),
+            method: 'POST',
+            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/sync/{virtualMachineId}', [
+                'firewallId' => $firewallId, 'virtualMachineId' => $virtualMachineId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -297,15 +302,16 @@ class VPSFirewallApi
     /**
      * @return \Hostinger\Model\VPSV1FirewallFirewallRuleResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function updateFirewallRuleV1(int $firewallId, int $ruleId, \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/rules/{ruleId}', $firewallId, $ruleId),
+            method: 'PUT',
+            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/rules/{ruleId}', [
+                'firewallId' => $firewallId, 'ruleId' => $ruleId
+            ]),
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($vPSV1FirewallRulesStoreRequest, JsonEncoder::FORMAT),
         );
@@ -321,7 +327,10 @@ class VPSFirewallApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1FirewallFirewallRuleResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

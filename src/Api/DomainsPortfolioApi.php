@@ -55,15 +55,16 @@ class DomainsPortfolioApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function disableDomainLockV1(string $domain)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/domain-lock', $domain),
+            method: 'DELETE',
+            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/domain-lock', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -81,15 +82,16 @@ class DomainsPortfolioApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function disablePrivacyProtectionV1(string $domain)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/privacy-protection', $domain),
+            method: 'DELETE',
+            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/privacy-protection', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -107,15 +109,16 @@ class DomainsPortfolioApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function enableDomainLockV1(string $domain)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/domain-lock', $domain),
+            method: 'PUT',
+            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/domain-lock', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -133,15 +136,16 @@ class DomainsPortfolioApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function enablePrivacyProtectionV1(string $domain)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/privacy-protection', $domain),
+            method: 'PUT',
+            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/privacy-protection', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -159,7 +163,6 @@ class DomainsPortfolioApi
     /**
      * @return \Hostinger\Model\DomainsV1DomainDomainExtendedResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -167,7 +170,9 @@ class DomainsPortfolioApi
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}', $domain),
+            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -185,7 +190,6 @@ class DomainsPortfolioApi
     /**
      * @return \Hostinger\Model\DomainsV1DomainDomainResource[]
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -211,14 +215,13 @@ class DomainsPortfolioApi
     /**
      * @return \Hostinger\Model\BillingV1OrderOrderResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function purchaseNewDomainV1(\Hostinger\Model\DomainsV1PortfolioPurchaseRequest $domainsV1PortfolioPurchaseRequest)
     {
         $request = new Request(
-            method: 'GET',
+            method: 'POST',
             uri: '/api/domains/v1/portfolio',
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($domainsV1PortfolioPurchaseRequest, JsonEncoder::FORMAT),
@@ -238,15 +241,16 @@ class DomainsPortfolioApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function updateDomainNameserversV1(string $domain, \Hostinger\Model\DomainsV1PortfolioUpdateNameserversRequest $domainsV1PortfolioUpdateNameserversRequest)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/nameservers', $domain),
+            method: 'PUT',
+            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/nameservers', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($domainsV1PortfolioUpdateNameserversRequest, JsonEncoder::FORMAT),
         );
@@ -262,7 +266,10 @@ class DomainsPortfolioApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

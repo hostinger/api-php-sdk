@@ -55,7 +55,6 @@ class VPSOSTemplatesApi
     /**
      * @return \Hostinger\Model\VPSV1TemplateTemplateResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -63,7 +62,9 @@ class VPSOSTemplatesApi
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/templates/{templateId}', $templateId),
+            uri: $this->buildResourcePath('/api/vps/v1/templates/{templateId}', [
+                'templateId' => $templateId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -81,7 +82,6 @@ class VPSOSTemplatesApi
     /**
      * @return \Hostinger\Model\VPSV1TemplateTemplateResource[]
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -104,7 +104,10 @@ class VPSOSTemplatesApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1TemplateTemplateResource[]', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

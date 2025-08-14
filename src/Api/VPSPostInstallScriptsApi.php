@@ -55,14 +55,13 @@ class VPSPostInstallScriptsApi
     /**
      * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function createPostInstallScriptV1(\Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest)
     {
         $request = new Request(
-            method: 'GET',
+            method: 'POST',
             uri: '/api/vps/v1/post-install-scripts',
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($vPSV1PostInstallScriptStoreRequest, JsonEncoder::FORMAT),
@@ -82,15 +81,16 @@ class VPSPostInstallScriptsApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function deletePostInstallScriptV1(int $postInstallScriptId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/post-install-scripts/{postInstallScriptId}', $postInstallScriptId),
+            method: 'DELETE',
+            uri: $this->buildResourcePath('/api/vps/v1/post-install-scripts/{postInstallScriptId}', [
+                'postInstallScriptId' => $postInstallScriptId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -108,7 +108,6 @@ class VPSPostInstallScriptsApi
     /**
      * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -116,7 +115,9 @@ class VPSPostInstallScriptsApi
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/post-install-scripts/{postInstallScriptId}', $postInstallScriptId),
+            uri: $this->buildResourcePath('/api/vps/v1/post-install-scripts/{postInstallScriptId}', [
+                'postInstallScriptId' => $postInstallScriptId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -134,7 +135,6 @@ class VPSPostInstallScriptsApi
     /**
      * @return \Hostinger\Model\VPSV1PostInstallScriptListResponse
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -166,15 +166,16 @@ class VPSPostInstallScriptsApi
     /**
      * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function updatePostInstallScriptV1(int $postInstallScriptId, \Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/post-install-scripts/{postInstallScriptId}', $postInstallScriptId),
+            method: 'PUT',
+            uri: $this->buildResourcePath('/api/vps/v1/post-install-scripts/{postInstallScriptId}', [
+                'postInstallScriptId' => $postInstallScriptId
+            ]),
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($vPSV1PostInstallScriptStoreRequest, JsonEncoder::FORMAT),
         );
@@ -190,7 +191,10 @@ class VPSPostInstallScriptsApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

@@ -55,7 +55,6 @@ class VPSBackupsApi
     /**
      * @return \Hostinger\Model\VPSV1BackupListResponse
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -69,7 +68,9 @@ class VPSBackupsApi
 
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/backups', $virtualMachineId) . $query,
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/backups', [
+                'virtualMachineId' => $virtualMachineId
+            ]) . $query,
             headers: $this->getHeaders(),
         );
 
@@ -87,15 +88,16 @@ class VPSBackupsApi
     /**
      * @return \Hostinger\Model\VPSV1ActionActionResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function restoreBackupV1(int $virtualMachineId, int $backupId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/backups/{backupId}/restore', $virtualMachineId, $backupId),
+            method: 'POST',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/backups/{backupId}/restore', [
+                'virtualMachineId' => $virtualMachineId, 'backupId' => $backupId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -110,7 +112,10 @@ class VPSBackupsApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

@@ -55,15 +55,16 @@ class BillingSubscriptionsApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function cancelSubscriptionV1(string $subscriptionId, \Hostinger\Model\BillingV1SubscriptionCancelRequest $billingV1SubscriptionCancelRequest)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/billing/v1/subscriptions/{subscriptionId}', $subscriptionId),
+            method: 'DELETE',
+            uri: $this->buildResourcePath('/api/billing/v1/subscriptions/{subscriptionId}', [
+                'subscriptionId' => $subscriptionId
+            ]),
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($billingV1SubscriptionCancelRequest, JsonEncoder::FORMAT),
         );
@@ -82,7 +83,6 @@ class BillingSubscriptionsApi
     /**
      * @return \Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -105,7 +105,10 @@ class BillingSubscriptionsApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

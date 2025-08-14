@@ -55,7 +55,6 @@ class VPSActionsApi
     /**
      * @return \Hostinger\Model\VPSV1ActionActionResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -63,7 +62,9 @@ class VPSActionsApi
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/actions/{actionId}', $virtualMachineId, $actionId),
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/actions/{actionId}', [
+                'virtualMachineId' => $virtualMachineId, 'actionId' => $actionId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -81,7 +82,6 @@ class VPSActionsApi
     /**
      * @return \Hostinger\Model\VPSV1ActionListResponse
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -95,7 +95,9 @@ class VPSActionsApi
 
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/actions', $virtualMachineId) . $query,
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/actions', [
+                'virtualMachineId' => $virtualMachineId
+            ]) . $query,
             headers: $this->getHeaders(),
         );
 
@@ -110,7 +112,10 @@ class VPSActionsApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionListResponse', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

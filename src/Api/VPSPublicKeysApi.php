@@ -55,15 +55,16 @@ class VPSPublicKeysApi
     /**
      * @return \Hostinger\Model\VPSV1ActionActionResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function attachPublicKeyV1(int $virtualMachineId, \Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/public-keys/attach/{virtualMachineId}', $virtualMachineId),
+            method: 'POST',
+            uri: $this->buildResourcePath('/api/vps/v1/public-keys/attach/{virtualMachineId}', [
+                'virtualMachineId' => $virtualMachineId
+            ]),
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($vPSV1PublicKeyAttachRequest, JsonEncoder::FORMAT),
         );
@@ -82,14 +83,13 @@ class VPSPublicKeysApi
     /**
      * @return \Hostinger\Model\VPSV1PublicKeyPublicKeyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function createPublicKeyV1(\Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest)
     {
         $request = new Request(
-            method: 'GET',
+            method: 'POST',
             uri: '/api/vps/v1/public-keys',
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($vPSV1PublicKeyStoreRequest, JsonEncoder::FORMAT),
@@ -109,15 +109,16 @@ class VPSPublicKeysApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function deletePublicKeyV1(int $publicKeyId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/public-keys/{publicKeyId}', $publicKeyId),
+            method: 'DELETE',
+            uri: $this->buildResourcePath('/api/vps/v1/public-keys/{publicKeyId}', [
+                'publicKeyId' => $publicKeyId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -135,7 +136,6 @@ class VPSPublicKeysApi
     /**
      * @return \Hostinger\Model\VPSV1PublicKeyListResponse
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -164,7 +164,10 @@ class VPSPublicKeysApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1PublicKeyListResponse', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

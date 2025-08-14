@@ -55,7 +55,6 @@ class DNSSnapshotApi
     /**
      * @return \Hostinger\Model\DNSV1SnapshotSnapshotResource[]
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -63,7 +62,9 @@ class DNSSnapshotApi
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/dns/v1/snapshots/{domain}', $domain),
+            uri: $this->buildResourcePath('/api/dns/v1/snapshots/{domain}', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -81,7 +82,6 @@ class DNSSnapshotApi
     /**
      * @return \Hostinger\Model\DNSV1SnapshotSnapshotWithContentResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -89,7 +89,9 @@ class DNSSnapshotApi
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/dns/v1/snapshots/{domain}/{snapshotId}', $domain, $snapshotId),
+            uri: $this->buildResourcePath('/api/dns/v1/snapshots/{domain}/{snapshotId}', [
+                'domain' => $domain, 'snapshotId' => $snapshotId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -107,15 +109,16 @@ class DNSSnapshotApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function restoreDNSSnapshotV1(string $domain, int $snapshotId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/dns/v1/snapshots/{domain}/{snapshotId}/restore', $domain, $snapshotId),
+            method: 'POST',
+            uri: $this->buildResourcePath('/api/dns/v1/snapshots/{domain}/{snapshotId}/restore', [
+                'domain' => $domain, 'snapshotId' => $snapshotId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -130,7 +133,10 @@ class DNSSnapshotApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

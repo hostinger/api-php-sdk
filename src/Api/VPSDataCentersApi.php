@@ -55,7 +55,6 @@ class VPSDataCentersApi
     /**
      * @return \Hostinger\Model\VPSV1DataCenterDataCenterResource[]
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -78,7 +77,10 @@ class VPSDataCentersApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1DataCenterDataCenterResource[]', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

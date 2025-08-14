@@ -55,14 +55,13 @@ class BillingOrdersApi
     /**
      * @return \Hostinger\Model\BillingV1OrderOrderResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function createServiceOrderV1(\Hostinger\Model\BillingV1OrderStoreRequest $billingV1OrderStoreRequest)
     {
         $request = new Request(
-            method: 'GET',
+            method: 'POST',
             uri: '/api/billing/v1/orders',
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($billingV1OrderStoreRequest, JsonEncoder::FORMAT),
@@ -79,7 +78,10 @@ class BillingOrdersApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\BillingV1OrderOrderResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

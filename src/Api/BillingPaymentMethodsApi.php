@@ -55,15 +55,16 @@ class BillingPaymentMethodsApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function deletePaymentMethodV1(int $paymentMethodId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/billing/v1/payment-methods/{paymentMethodId}', $paymentMethodId),
+            method: 'DELETE',
+            uri: $this->buildResourcePath('/api/billing/v1/payment-methods/{paymentMethodId}', [
+                'paymentMethodId' => $paymentMethodId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -81,7 +82,6 @@ class BillingPaymentMethodsApi
     /**
      * @return \Hostinger\Model\BillingV1PaymentMethodPaymentMethodResource[]
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -107,15 +107,16 @@ class BillingPaymentMethodsApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function setDefaultPaymentMethodV1(int $paymentMethodId)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/billing/v1/payment-methods/{paymentMethodId}', $paymentMethodId),
+            method: 'POST',
+            uri: $this->buildResourcePath('/api/billing/v1/payment-methods/{paymentMethodId}', [
+                'paymentMethodId' => $paymentMethodId
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -130,7 +131,10 @@ class BillingPaymentMethodsApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {

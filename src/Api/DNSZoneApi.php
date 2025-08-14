@@ -55,15 +55,16 @@ class DNSZoneApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function deleteDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneDestroyRequest $dNSV1ZoneDestroyRequest)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/dns/v1/zones/{domain}', $domain),
+            method: 'DELETE',
+            uri: $this->buildResourcePath('/api/dns/v1/zones/{domain}', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($dNSV1ZoneDestroyRequest, JsonEncoder::FORMAT),
         );
@@ -82,7 +83,6 @@ class DNSZoneApi
     /**
      * @return \Hostinger\Model\DNSV1ZoneRecordResource[]
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
@@ -90,7 +90,9 @@ class DNSZoneApi
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/dns/v1/zones/{domain}', $domain),
+            uri: $this->buildResourcePath('/api/dns/v1/zones/{domain}', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
         );
 
@@ -108,15 +110,16 @@ class DNSZoneApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function resetDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneResetRequest $dNSV1ZoneResetRequest)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/dns/v1/zones/{domain}/reset', $domain),
+            method: 'POST',
+            uri: $this->buildResourcePath('/api/dns/v1/zones/{domain}/reset', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($dNSV1ZoneResetRequest, JsonEncoder::FORMAT),
         );
@@ -135,15 +138,16 @@ class DNSZoneApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function updateDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneUpdateRequest $dNSV1ZoneUpdateRequest)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/dns/v1/zones/{domain}', $domain),
+            method: 'PUT',
+            uri: $this->buildResourcePath('/api/dns/v1/zones/{domain}', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($dNSV1ZoneUpdateRequest, JsonEncoder::FORMAT),
         );
@@ -162,15 +166,16 @@ class DNSZoneApi
     /**
      * @return \Hostinger\Model\CommonSuccessEmptyResource
      *
-     * @throws ExceptionInterface
      * @throws ApiException
      * @throws GuzzleException
      */
     public function validateDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneUpdateRequest $dNSV1ZoneUpdateRequest)
     {
         $request = new Request(
-            method: 'GET',
-            uri: $this->buildResourcePath('/api/dns/v1/zones/{domain}/validate', $domain),
+            method: 'POST',
+            uri: $this->buildResourcePath('/api/dns/v1/zones/{domain}/validate', [
+                'domain' => $domain
+            ]),
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($dNSV1ZoneUpdateRequest, JsonEncoder::FORMAT),
         );
@@ -186,7 +191,10 @@ class DNSZoneApi
         return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, mixed ...$values): string
+    /**
+     * @param array<string, mixed> $values
+     */
+    private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
             if (is_array($value)) {
