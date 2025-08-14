@@ -29,7 +29,7 @@
         "phpdocumentor/reflection-docblock": "*",
         "phpstan/phpdoc-parser": "*",
         "symfony/property-access": "~7.0.0",
-        "symfony/property-info": "~7.0.0",
+        "symfony/property-info": "~7.0.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.5",
