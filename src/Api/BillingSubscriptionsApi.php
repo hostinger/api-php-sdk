@@ -105,12 +105,12 @@ class BillingSubscriptionsApi
 
     private function buildResourcePath(string $path, mixed ...$values): string
     {
-        foreach ($values as $value) {
+        foreach ($values as $key => $value) {
             if (is_array($value)) {
                 $value = implode(',', $value);
             }
 
-            $path = str_replace('{' . 'BillingSubscriptions' . '}', $value, $path);
+            $path = str_replace('{' . $key . '}', $value, $path);
         }
 
         return $path;
