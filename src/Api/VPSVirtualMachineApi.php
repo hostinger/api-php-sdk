@@ -89,19 +89,13 @@ class VPSVirtualMachineApi
         $query = http_build_query(
             array_filter([
                 'date_from' => $dateFrom,
-            ])
-        );
-
-        $query = http_build_query(
-            array_filter([
-                ', '
                 'date_to' => $dateTo,
             ])
         );
 
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/metrics', $virtualMachineId) . $query . $query,
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/metrics', $virtualMachineId) . $query,
             headers: $this->getHeaders(),
         );
 

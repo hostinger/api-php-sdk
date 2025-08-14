@@ -59,19 +59,13 @@ class BillingCatalogApi
         $query = http_build_query(
             array_filter([
                 'category' => $category,
-            ])
-        );
-
-        $query = http_build_query(
-            array_filter([
-                ', '
                 'name' => $name,
             ])
         );
 
         $request = new Request(
             method: 'GET',
-            uri: '/api/billing/v1/catalog' . $query . $query,
+            uri: '/api/billing/v1/catalog' . $query,
             headers: $this->getHeaders(),
         );
 
