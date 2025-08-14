@@ -40,9 +40,11 @@ class VPSPublicKeysApi
         ?Configuration $config = null,
         ?ClientInterface $client = null,
     ) {
-        $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->client = $client ?: new Client();
         $this->serializer = ObjectSerializer::getSerializer();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
+        $this->client = $client ?: new Client([
+            'base_uri' => $this->config->getHost(),
+        ]);
     }
 
     public function getConfig(): Configuration
