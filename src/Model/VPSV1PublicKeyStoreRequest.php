@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1PublicKeyStoreRequest 
 {
     /**
-     * @param string $name
-     * @param string $key
+     * @var string $name
      */
-    protected static $openAPIModelName = 'VPSV1PublicKeyStoreRequest';
-    public function __construct(
-        private $name,
-        private $key,
-    ) {
-    }
+    private $name;
+
+    /**
+     * @var string $key
+     */
+    private $key;
 
     /**
      * @return string
@@ -47,8 +45,6 @@ class VPSV1PublicKeyStoreRequest
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -66,8 +62,6 @@ class VPSV1PublicKeyStoreRequest
 
     /**
      * @param string $key
-     *
-     * @return self
      */
     public function setKey($key): self
     {

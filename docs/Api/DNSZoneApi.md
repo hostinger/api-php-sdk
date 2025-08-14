@@ -62,7 +62,7 @@ try {
 ## `getDNSRecordsV1()`
 
 ```php
-getDNSRecordsV1($domain): \Hostinger\Model\DNSV1ZoneRecordCollection
+getDNSRecordsV1($domain): \Hostinger\Model\DNSV1ZoneRecordResource[]
 ```
 
 Get DNS records
@@ -99,7 +99,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\DNSV1ZoneRecordCollection**](../Model/DNSV1ZoneRecordCollection.md)
+[**\Hostinger\Model\DNSV1ZoneRecordResource[]**](../Model/DNSV1ZoneRecordResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class VPSPublicKeysApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function attachPublicKeyV1(int $virtualMachineId, \Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function attachPublicKeyV1(int $virtualMachineId, \Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -71,15 +74,17 @@ class VPSPublicKeysApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function createPublicKeyV1(\Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest): \Hostinger\Model\VPSV1PublicKeyPublicKeyResource
+     * @return \Hostinger\Model\VPSV1PublicKeyPublicKeyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function createPublicKeyV1(\Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -96,15 +101,17 @@ class VPSPublicKeysApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PublicKeyPublicKeyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1PublicKeyPublicKeyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function deletePublicKeyV1(int $publicKeyId): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function deletePublicKeyV1(int $publicKeyId)
     {
         $request = new Request(
             method: 'GET',
@@ -120,15 +127,17 @@ class VPSPublicKeysApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getPublicKeysV1(?int $page = null): \Hostinger\Model\VPSV1PublicKeyListResponse
+     * @return \Hostinger\Model\VPSV1PublicKeyListResponse
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getPublicKeysV1(?int $page = null)
     {
         $query = http_build_query(
             array_filter([
@@ -150,10 +159,10 @@ class VPSPublicKeysApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PublicKeyListResponse::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1PublicKeyListResponse', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -178,6 +187,9 @@ class VPSPublicKeysApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

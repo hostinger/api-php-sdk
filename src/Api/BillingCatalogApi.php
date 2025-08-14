@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class BillingCatalogApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getCatalogItemListV1(?string $category = null, ?string $name = null): \Hostinger\Model\BillingV1CatalogCatalogItemCollection
+     * @return \Hostinger\Model\BillingV1CatalogCatalogItemResource[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getCatalogItemListV1(?string $category = null, ?string $name = null)
     {
         $query = http_build_query(
             array_filter([
@@ -77,10 +80,10 @@ class BillingCatalogApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\BillingV1CatalogCatalogItemCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\BillingV1CatalogCatalogItemResource[]', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -105,6 +108,9 @@ class BillingCatalogApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class InlineObject1 
 {
     /**
-     * @param string $message
-     * @param string $correlationId
+     * @var string $message
      */
-    protected static $openAPIModelName = 'InlineObject1';
-    public function __construct(
-        private $message,
-        private $correlationId,
-    ) {
-    }
+    private $message;
+
+    /**
+     * @var string $correlationId
+     */
+    private $correlationId;
 
     /**
      * @return string
@@ -47,8 +45,6 @@ class InlineObject1
 
     /**
      * @param string $message
-     *
-     * @return self
      */
     public function setMessage($message): self
     {
@@ -66,8 +62,6 @@ class InlineObject1
 
     /**
      * @param string $correlationId
-     *
-     * @return self
      */
     public function setCorrelationId($correlationId): self
     {

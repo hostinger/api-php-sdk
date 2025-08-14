@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,25 +23,27 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DomainsV1PortfolioPurchaseRequestDomainContacts 
 {
     /**
-     * @param int $ownerId
-     * @param int $adminId
-     * @param int $billingId
-     * @param int $techId
+     * @var int $ownerId
      */
-    protected static $openAPIModelName = 'DomainsV1PortfolioPurchaseRequestDomainContacts';
-    public function __construct(
-        private $ownerId,
-        private $adminId,
-        private $billingId,
-        private $techId,
-    ) {
-    }
+    private $ownerId;
+
+    /**
+     * @var int $adminId
+     */
+    private $adminId;
+
+    /**
+     * @var int $billingId
+     */
+    private $billingId;
+
+    /**
+     * @var int $techId
+     */
+    private $techId;
 
     /**
      * @return int
@@ -51,8 +55,6 @@ class DomainsV1PortfolioPurchaseRequestDomainContacts
 
     /**
      * @param int $ownerId
-     *
-     * @return self
      */
     public function setOwnerId($ownerId): self
     {
@@ -70,8 +72,6 @@ class DomainsV1PortfolioPurchaseRequestDomainContacts
 
     /**
      * @param int $adminId
-     *
-     * @return self
      */
     public function setAdminId($adminId): self
     {
@@ -89,8 +89,6 @@ class DomainsV1PortfolioPurchaseRequestDomainContacts
 
     /**
      * @param int $billingId
-     *
-     * @return self
      */
     public function setBillingId($billingId): self
     {
@@ -108,8 +106,6 @@ class DomainsV1PortfolioPurchaseRequestDomainContacts
 
     /**
      * @param int $techId
-     *
-     * @return self
      */
     public function setTechId($techId): self
     {

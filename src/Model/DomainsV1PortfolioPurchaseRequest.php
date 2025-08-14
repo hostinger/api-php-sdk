@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,29 +23,37 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DomainsV1PortfolioPurchaseRequest 
 {
     /**
-     * @param string $domain
-     * @param string $itemId
-     * @param int $paymentMethodId
-     * @param \Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts $domainContacts
-     * @param object $additionalDetails
-     * @param mixed[] $coupons
+     * @var string $domain
      */
-    protected static $openAPIModelName = 'DomainsV1PortfolioPurchaseRequest';
-    public function __construct(
-        private $domain,
-        private $itemId,
-        private $paymentMethodId,
-        private $domainContacts,
-        private $additionalDetails,
-        private $coupons,
-    ) {
-    }
+    private $domain;
+
+    /**
+     * @var string $itemId
+     */
+    private $itemId;
+
+    /**
+     * @var int $paymentMethodId
+     */
+    private $paymentMethodId;
+
+    /**
+     * @var \Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts $domainContacts
+     */
+    private $domainContacts;
+
+    /**
+     * @var object $additionalDetails
+     */
+    private $additionalDetails;
+
+    /**
+     * @var mixed[] $coupons
+     */
+    private $coupons;
 
     /**
      * @return string
@@ -55,8 +65,6 @@ class DomainsV1PortfolioPurchaseRequest
 
     /**
      * @param string $domain
-     *
-     * @return self
      */
     public function setDomain($domain): self
     {
@@ -74,8 +82,6 @@ class DomainsV1PortfolioPurchaseRequest
 
     /**
      * @param string $itemId
-     *
-     * @return self
      */
     public function setItemId($itemId): self
     {
@@ -93,8 +99,6 @@ class DomainsV1PortfolioPurchaseRequest
 
     /**
      * @param int $paymentMethodId
-     *
-     * @return self
      */
     public function setPaymentMethodId($paymentMethodId): self
     {
@@ -112,8 +116,6 @@ class DomainsV1PortfolioPurchaseRequest
 
     /**
      * @param \Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts $domainContacts
-     *
-     * @return self
      */
     public function setDomainContacts($domainContacts): self
     {
@@ -131,8 +133,6 @@ class DomainsV1PortfolioPurchaseRequest
 
     /**
      * @param object $additionalDetails
-     *
-     * @return self
      */
     public function setAdditionalDetails($additionalDetails): self
     {
@@ -150,8 +150,6 @@ class DomainsV1PortfolioPurchaseRequest
 
     /**
      * @param mixed[] $coupons
-     *
-     * @return self
      */
     public function setCoupons($coupons): self
     {

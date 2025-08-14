@@ -14,7 +14,7 @@ namespace Hostinger\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
-class VPSV1IPAddressIPAddressCollectionTest extends TestCase
+class VPSV1FirewallListResponseTest extends TestCase
 {
 
     public static function setUpBeforeClass(): void
@@ -33,7 +33,19 @@ class VPSV1IPAddressIPAddressCollectionTest extends TestCase
     {
     }
 
-    public function testVPSV1IPAddressIPAddressCollection()
+    public function testVPSV1FirewallListResponse()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    public function testPropertyData()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    public function testPropertyMeta()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

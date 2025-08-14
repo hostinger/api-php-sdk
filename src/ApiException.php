@@ -13,95 +13,39 @@
 namespace Hostinger;
 
 use Exception;
-use stdClass;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use Psr\Http\Message\ResponseInterface;
 
 class ApiException extends Exception
 {
-    /**
-     * The HTTP body of the server response either as Json or string.
-     */
-    protected stdClass|string|null $responseBody;
-
-    /**
-     * The HTTP header of the server response.
-     */
-    protected ?array $responseHeaders;
-
-    /**
-     * The deserialized response object
-     */
-    protected mixed $responseObject = null;
-
     public function __construct(
         string $message = "",
         int $code = 0,
-        ?array $responseHeaders = [],
-        stdClass|string|null $responseBody = null
+        private readonly ?ResponseInterface $response = null,
     ) {
         parent::__construct($message, $code);
-        $this->responseHeaders = $responseHeaders;
-        $this->responseBody = $responseBody;
     }
 
-    /**
-     * Gets the HTTP response header
-     *
-     * @return array<array<string>>|null HTTP response header
-     */
-    public function getResponseHeaders(): ?array
+    public function getResponse(): ?ResponseInterface
     {
-        return $this->responseHeaders;
-    }
-
-    /**
-     * Gets the HTTP body of the server response either as Json or string
-     *
-     * @return stdClass|string|null HTTP body of the server response either as \stdClass or string
-     */
-    public function getResponseBody(): stdClass|string|null
-    {
-        return $this->responseBody;
-    }
-
-    /**
-     * Sets the deserialized response object (during deserialization)
-     *
-     * @param mixed $obj Deserialized response object
-     */
-    public function setResponseObject(mixed $obj): void
-    {
-        $this->responseObject = $obj;
-    }
-
-    /**
-     * Gets the deserialized response object (during deserialization)
-     *
-     * @return mixed the deserialized response object
-     */
-    public function getResponseObject(): mixed
-    {
-        return $this->responseObject;
+        return $this->response;
     }
 
     public static function fromRequestException(RequestException $e): self
     {
         return new self(
-            "[{$e->getCode()}] {$e->getMessage()}",
-            (int) $e->getCode(),
-            $e->getResponse()?->getHeaders(),
-            (string) $e->getResponse()?->getBody()
+            message: "[{$e->getCode()}] {$e->getMessage()}",
+            code: (int) $e->getCode(),
+            response: $e->getResponse(),
         );
     }
 
     public static function fromConnectException(ConnectException $e): self
     {
         return new self(
-           "[{$e->getCode()}] {$e->getMessage()}",
-           (int) $e->getCode(),
-           null,
-           null
+           message: "[{$e->getCode()}] {$e->getMessage()}",
+           code: (int) $e->getCode(),
        );
     }
 }

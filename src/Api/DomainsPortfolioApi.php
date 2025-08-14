@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class DomainsPortfolioApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function disableDomainLockV1(string $domain): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function disableDomainLockV1(string $domain)
     {
         $request = new Request(
             method: 'GET',
@@ -70,15 +73,17 @@ class DomainsPortfolioApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function disablePrivacyProtectionV1(string $domain): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function disablePrivacyProtectionV1(string $domain)
     {
         $request = new Request(
             method: 'GET',
@@ -94,15 +99,17 @@ class DomainsPortfolioApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function enableDomainLockV1(string $domain): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function enableDomainLockV1(string $domain)
     {
         $request = new Request(
             method: 'GET',
@@ -118,15 +125,17 @@ class DomainsPortfolioApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function enablePrivacyProtectionV1(string $domain): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function enablePrivacyProtectionV1(string $domain)
     {
         $request = new Request(
             method: 'GET',
@@ -142,15 +151,17 @@ class DomainsPortfolioApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getDomainDetailsV1(string $domain): \Hostinger\Model\DomainsV1DomainDomainExtendedResource
+     * @return \Hostinger\Model\DomainsV1DomainDomainExtendedResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getDomainDetailsV1(string $domain)
     {
         $request = new Request(
             method: 'GET',
@@ -166,15 +177,17 @@ class DomainsPortfolioApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1DomainDomainExtendedResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DomainsV1DomainDomainExtendedResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getDomainListV1(): \Hostinger\Model\DomainsV1DomainDomainCollection
+     * @return \Hostinger\Model\DomainsV1DomainDomainResource[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getDomainListV1()
     {
         $request = new Request(
             method: 'GET',
@@ -190,15 +203,17 @@ class DomainsPortfolioApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1DomainDomainCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DomainsV1DomainDomainResource[]', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function purchaseNewDomainV1(\Hostinger\Model\DomainsV1PortfolioPurchaseRequest $domainsV1PortfolioPurchaseRequest): \Hostinger\Model\BillingV1OrderOrderResource
+     * @return \Hostinger\Model\BillingV1OrderOrderResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function purchaseNewDomainV1(\Hostinger\Model\DomainsV1PortfolioPurchaseRequest $domainsV1PortfolioPurchaseRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -215,15 +230,17 @@ class DomainsPortfolioApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\BillingV1OrderOrderResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\BillingV1OrderOrderResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function updateDomainNameserversV1(string $domain, \Hostinger\Model\DomainsV1PortfolioUpdateNameserversRequest $domainsV1PortfolioUpdateNameserversRequest): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function updateDomainNameserversV1(string $domain, \Hostinger\Model\DomainsV1PortfolioUpdateNameserversRequest $domainsV1PortfolioUpdateNameserversRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -240,10 +257,10 @@ class DomainsPortfolioApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -268,6 +285,9 @@ class DomainsPortfolioApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

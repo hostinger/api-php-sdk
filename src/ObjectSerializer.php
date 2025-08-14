@@ -15,6 +15,7 @@ namespace Hostinger;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
+use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
@@ -83,8 +84,8 @@ class ObjectSerializer
 
         // Configure encoders
         $encoders = [
-            new JsonEncoder([
-                JsonEncoder::OPTIONS => JSON_UNESCAPED_SLASHES | JSON_PRESERVE_ZERO_FRACTION,
+            new JsonEncoder(defaultContext: [
+                JsonEncode::OPTIONS => JSON_UNESCAPED_SLASHES | JSON_PRESERVE_ZERO_FRACTION,
             ]),
         ];
 

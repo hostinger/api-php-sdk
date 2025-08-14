@@ -4,6 +4,10 @@ parameters:
     level: 6
     ignoreErrors:
         -
-          identifier: method.unused
-          paths:
-            - src/Model/*
+            identifier: method.unused
+            paths:
+                - src/Api/*
+        -
+            identifier: arrayFilter.same
+            paths:
+                - src/Api/*

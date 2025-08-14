@@ -31,7 +31,7 @@ class Configuration
     public function __construct()
     {
         $this->tempFolderPath = sys_get_temp_dir();
-        $this->accessToken = env('HOSTINGER_API_TOKEN');
+        $this->accessToken = getenv('HOSTINGER_API_TOKEN');
     }
 
     public function setAccessToken(string $accessToken): static

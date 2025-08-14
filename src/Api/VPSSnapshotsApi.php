@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class VPSSnapshotsApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function createSnapshotV1(int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function createSnapshotV1(int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
@@ -70,15 +73,17 @@ class VPSSnapshotsApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function deleteSnapshotV1(int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function deleteSnapshotV1(int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
@@ -94,15 +99,17 @@ class VPSSnapshotsApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getSnapshotV1(int $virtualMachineId): \Hostinger\Model\VPSV1SnapshotSnapshotResource
+     * @return \Hostinger\Model\VPSV1SnapshotSnapshotResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getSnapshotV1(int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
@@ -118,15 +125,17 @@ class VPSSnapshotsApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1SnapshotSnapshotResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1SnapshotSnapshotResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function restoreSnapshotV1(int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function restoreSnapshotV1(int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
@@ -142,10 +151,10 @@ class VPSSnapshotsApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -170,6 +179,9 @@ class VPSSnapshotsApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

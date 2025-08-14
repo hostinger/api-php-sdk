@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class DomainsForwardingApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function createDomainForwardingV1(\Hostinger\Model\DomainsV1ForwardingStoreRequest $domainsV1ForwardingStoreRequest): \Hostinger\Model\DomainsV1ForwardingForwardingResource
+     * @return \Hostinger\Model\DomainsV1ForwardingForwardingResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function createDomainForwardingV1(\Hostinger\Model\DomainsV1ForwardingStoreRequest $domainsV1ForwardingStoreRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -71,15 +74,17 @@ class DomainsForwardingApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1ForwardingForwardingResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DomainsV1ForwardingForwardingResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function deleteDomainForwardingV1(string $domain): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function deleteDomainForwardingV1(string $domain)
     {
         $request = new Request(
             method: 'GET',
@@ -95,15 +100,17 @@ class DomainsForwardingApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getDomainForwardingV1(string $domain): \Hostinger\Model\DomainsV1ForwardingForwardingResource
+     * @return \Hostinger\Model\DomainsV1ForwardingForwardingResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getDomainForwardingV1(string $domain)
     {
         $request = new Request(
             method: 'GET',
@@ -119,10 +126,10 @@ class DomainsForwardingApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1ForwardingForwardingResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DomainsV1ForwardingForwardingResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -147,6 +154,9 @@ class DomainsForwardingApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

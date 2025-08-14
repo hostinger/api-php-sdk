@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,19 +23,12 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1PublicKeyAttachRequest 
 {
     /**
-     * @param int[] $ids
+     * @var int[] $ids
      */
-    protected static $openAPIModelName = 'VPSV1PublicKeyAttachRequest';
-    public function __construct(
-        private $ids,
-    ) {
-    }
+    private $ids;
 
     /**
      * @return int[]
@@ -45,8 +40,6 @@ class VPSV1PublicKeyAttachRequest
 
     /**
      * @param int[] $ids
-     *
-     * @return self
      */
     public function setIds($ids): self
     {

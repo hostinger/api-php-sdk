@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,25 +23,27 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1FirewallRulesStoreRequest 
 {
     /**
-     * @param string $protocol
-     * @param string $port
-     * @param string $source
-     * @param string $sourceDetail
+     * @var string $protocol
      */
-    protected static $openAPIModelName = 'VPSV1FirewallRulesStoreRequest';
-    public function __construct(
-        private $protocol,
-        private $port,
-        private $source,
-        private $sourceDetail,
-    ) {
-    }
+    private $protocol;
+
+    /**
+     * @var string $port
+     */
+    private $port;
+
+    /**
+     * @var string $source
+     */
+    private $source;
+
+    /**
+     * @var string $sourceDetail
+     */
+    private $sourceDetail;
 
     /**
      * @return string
@@ -51,8 +55,6 @@ class VPSV1FirewallRulesStoreRequest
 
     /**
      * @param string $protocol
-     *
-     * @return self
      */
     public function setProtocol($protocol): self
     {
@@ -70,8 +72,6 @@ class VPSV1FirewallRulesStoreRequest
 
     /**
      * @param string $port
-     *
-     * @return self
      */
     public function setPort($port): self
     {
@@ -89,8 +89,6 @@ class VPSV1FirewallRulesStoreRequest
 
     /**
      * @param string $source
-     *
-     * @return self
      */
     public function setSource($source): self
     {
@@ -108,8 +106,6 @@ class VPSV1FirewallRulesStoreRequest
 
     /**
      * @param string $sourceDetail
-     *
-     * @return self
      */
     public function setSourceDetail($sourceDetail): self
     {

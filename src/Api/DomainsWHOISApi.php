@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class DomainsWHOISApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function createWHOISProfileV1(\Hostinger\Model\DomainsV1WHOISStoreRequest $domainsV1WHOISStoreRequest): \Hostinger\Model\DomainsV1WHOISProfileResource
+     * @return \Hostinger\Model\DomainsV1WHOISProfileResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function createWHOISProfileV1(\Hostinger\Model\DomainsV1WHOISStoreRequest $domainsV1WHOISStoreRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -71,15 +74,17 @@ class DomainsWHOISApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1WHOISProfileResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DomainsV1WHOISProfileResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function deleteWHOISProfileV1(int $whoisId): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function deleteWHOISProfileV1(int $whoisId)
     {
         $request = new Request(
             method: 'GET',
@@ -95,15 +100,17 @@ class DomainsWHOISApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getWHOISProfileListV1(?string $tld = null): \Hostinger\Model\DomainsV1WHOISProfileCollection
+     * @return \Hostinger\Model\DomainsV1WHOISProfileResource[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getWHOISProfileListV1(?string $tld = null)
     {
         $query = http_build_query(
             array_filter([
@@ -125,15 +132,17 @@ class DomainsWHOISApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1WHOISProfileCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DomainsV1WHOISProfileResource[]', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getWHOISProfileUsageV1(int $whoisId): \Hostinger\Model\DomainsV1WHOISProfileUsageResource
+     * @return string[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getWHOISProfileUsageV1(int $whoisId)
     {
         $request = new Request(
             method: 'GET',
@@ -149,15 +158,17 @@ class DomainsWHOISApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1WHOISProfileUsageResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), 'string[]', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getWHOISProfileV1(int $whoisId): \Hostinger\Model\DomainsV1WHOISProfileResource
+     * @return \Hostinger\Model\DomainsV1WHOISProfileResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getWHOISProfileV1(int $whoisId)
     {
         $request = new Request(
             method: 'GET',
@@ -173,10 +184,10 @@ class DomainsWHOISApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1WHOISProfileResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DomainsV1WHOISProfileResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -201,6 +212,9 @@ class DomainsWHOISApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

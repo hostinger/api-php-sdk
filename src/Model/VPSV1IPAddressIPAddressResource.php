@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,23 +23,22 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1IPAddressIPAddressResource 
 {
     /**
-     * @param int $id
-     * @param string $address
-     * @param string|null $ptr
+     * @var int $id
      */
-    protected static $openAPIModelName = 'VPSV1IPAddressIPAddressResource';
-    public function __construct(
-        private $id,
-        private $address,
-        private $ptr = null,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $address
+     */
+    private $address;
+
+    /**
+     * @var string|null $ptr
+     */
+    private $ptr = null;
 
     /**
      * @return int
@@ -49,8 +50,6 @@ class VPSV1IPAddressIPAddressResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -68,8 +67,6 @@ class VPSV1IPAddressIPAddressResource
 
     /**
      * @param string $address
-     *
-     * @return self
      */
     public function setAddress($address): self
     {
@@ -87,8 +84,6 @@ class VPSV1IPAddressIPAddressResource
 
     /**
      * @param string|null $ptr
-     *
-     * @return self
      */
     public function setPtr($ptr): self
     {

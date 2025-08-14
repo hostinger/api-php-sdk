@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,25 +23,27 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DomainsV1PortfolioUpdateNameserversRequest 
 {
     /**
-     * @param string $ns1
-     * @param string $ns2
-     * @param string $ns3
-     * @param string $ns4
+     * @var string $ns1
      */
-    protected static $openAPIModelName = 'DomainsV1PortfolioUpdateNameserversRequest';
-    public function __construct(
-        private $ns1,
-        private $ns2,
-        private $ns3,
-        private $ns4,
-    ) {
-    }
+    private $ns1;
+
+    /**
+     * @var string $ns2
+     */
+    private $ns2;
+
+    /**
+     * @var string $ns3
+     */
+    private $ns3;
+
+    /**
+     * @var string $ns4
+     */
+    private $ns4;
 
     /**
      * @return string
@@ -51,8 +55,6 @@ class DomainsV1PortfolioUpdateNameserversRequest
 
     /**
      * @param string $ns1
-     *
-     * @return self
      */
     public function setNs1($ns1): self
     {
@@ -70,8 +72,6 @@ class DomainsV1PortfolioUpdateNameserversRequest
 
     /**
      * @param string $ns2
-     *
-     * @return self
      */
     public function setNs2($ns2): self
     {
@@ -89,8 +89,6 @@ class DomainsV1PortfolioUpdateNameserversRequest
 
     /**
      * @param string $ns3
-     *
-     * @return self
      */
     public function setNs3($ns3): self
     {
@@ -108,8 +106,6 @@ class DomainsV1PortfolioUpdateNameserversRequest
 
     /**
      * @param string $ns4
-     *
-     * @return self
      */
     public function setNs4($ns4): self
     {

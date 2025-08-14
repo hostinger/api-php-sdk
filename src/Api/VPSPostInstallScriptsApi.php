@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class VPSPostInstallScriptsApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function createPostInstallScriptV1(\Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
+     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function createPostInstallScriptV1(\Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -71,15 +74,17 @@ class VPSPostInstallScriptsApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function deletePostInstallScriptV1(int $postInstallScriptId): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function deletePostInstallScriptV1(int $postInstallScriptId)
     {
         $request = new Request(
             method: 'GET',
@@ -95,15 +100,17 @@ class VPSPostInstallScriptsApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getPostInstallScriptV1(int $postInstallScriptId): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
+     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getPostInstallScriptV1(int $postInstallScriptId)
     {
         $request = new Request(
             method: 'GET',
@@ -119,15 +126,17 @@ class VPSPostInstallScriptsApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getPostInstallScriptsV1(?int $page = null): \Hostinger\Model\VPSV1PostInstallScriptListResponse
+     * @return \Hostinger\Model\VPSV1PostInstallScriptListResponse
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getPostInstallScriptsV1(?int $page = null)
     {
         $query = http_build_query(
             array_filter([
@@ -149,15 +158,17 @@ class VPSPostInstallScriptsApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PostInstallScriptListResponse::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1PostInstallScriptListResponse', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function updatePostInstallScriptV1(int $postInstallScriptId, \Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
+     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function updatePostInstallScriptV1(int $postInstallScriptId, \Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -174,10 +185,10 @@ class VPSPostInstallScriptsApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -202,6 +213,9 @@ class VPSPostInstallScriptsApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

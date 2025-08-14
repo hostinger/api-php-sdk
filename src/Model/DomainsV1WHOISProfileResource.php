@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,33 +23,47 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DomainsV1WHOISProfileResource 
 {
     /**
-     * @param int $id
-     * @param string $tld
-     * @param string $country
-     * @param string $entityType
-     * @param object $whoisDetails
-     * @param object $tldDetails
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
+     * @var int $id
      */
-    protected static $openAPIModelName = 'DomainsV1WHOISProfileResource';
-    public function __construct(
-        private $id,
-        private $tld,
-        private $country,
-        private $entityType,
-        private $whoisDetails,
-        private $tldDetails,
-        private $createdAt,
-        private $updatedAt,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $tld
+     */
+    private $tld;
+
+    /**
+     * @var string $country
+     */
+    private $country;
+
+    /**
+     * @var string $entityType
+     */
+    private $entityType;
+
+    /**
+     * @var object $whoisDetails
+     */
+    private $whoisDetails;
+
+    /**
+     * @var object $tldDetails
+     */
+    private $tldDetails;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime $updatedAt
+     */
+    private $updatedAt;
 
     /**
      * @return int
@@ -59,8 +75,6 @@ class DomainsV1WHOISProfileResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -78,8 +92,6 @@ class DomainsV1WHOISProfileResource
 
     /**
      * @param string $tld
-     *
-     * @return self
      */
     public function setTld($tld): self
     {
@@ -97,8 +109,6 @@ class DomainsV1WHOISProfileResource
 
     /**
      * @param string $country
-     *
-     * @return self
      */
     public function setCountry($country): self
     {
@@ -116,8 +126,6 @@ class DomainsV1WHOISProfileResource
 
     /**
      * @param string $entityType
-     *
-     * @return self
      */
     public function setEntityType($entityType): self
     {
@@ -135,8 +143,6 @@ class DomainsV1WHOISProfileResource
 
     /**
      * @param object $whoisDetails
-     *
-     * @return self
      */
     public function setWhoisDetails($whoisDetails): self
     {
@@ -154,8 +160,6 @@ class DomainsV1WHOISProfileResource
 
     /**
      * @param object $tldDetails
-     *
-     * @return self
      */
     public function setTldDetails($tldDetails): self
     {
@@ -173,8 +177,6 @@ class DomainsV1WHOISProfileResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {
@@ -192,8 +194,6 @@ class DomainsV1WHOISProfileResource
 
     /**
      * @param \DateTime $updatedAt
-     *
-     * @return self
      */
     public function setUpdatedAt($updatedAt): self
     {

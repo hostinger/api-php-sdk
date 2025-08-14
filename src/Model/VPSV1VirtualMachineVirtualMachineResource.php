@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,51 +23,92 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1VirtualMachineVirtualMachineResource 
 {
     /**
-     * @param int $id
-     * @param int|null $firewallGroupId
-     * @param string|null $subscriptionId
-     * @param string|null $plan
-     * @param string $hostname
-     * @param string $state
-     * @param string $actionsLock
-     * @param int $cpus
-     * @param int $memory
-     * @param int $disk
-     * @param int $bandwidth
-     * @param string|null $ns1
-     * @param string|null $ns2
-     * @param \Hostinger\Model\VPSV1IPAddressIPAddressCollection|null $ipv4
-     * @param \Hostinger\Model\VPSV1IPAddressIPAddressCollection|null $ipv6
-     * @param \Hostinger\Model\VPSV1TemplateTemplateResource|null $template
-     * @param \DateTime $createdAt
+     * @var int $id
      */
-    protected static $openAPIModelName = 'VPSV1VirtualMachineVirtualMachineResource';
-    public function __construct(
-        private $id,
-        private $firewallGroupId = null,
-        private $subscriptionId = null,
-        private $plan = null,
-        private $hostname,
-        private $state,
-        private $actionsLock,
-        private $cpus,
-        private $memory,
-        private $disk,
-        private $bandwidth,
-        private $ns1 = null,
-        private $ns2 = null,
-        private $ipv4 = null,
-        private $ipv6 = null,
-        private $template = null,
-        private $createdAt,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var int|null $firewallGroupId
+     */
+    private $firewallGroupId = null;
+
+    /**
+     * @var string|null $subscriptionId
+     */
+    private $subscriptionId = null;
+
+    /**
+     * @var string|null $plan
+     */
+    private $plan = null;
+
+    /**
+     * @var string $hostname
+     */
+    private $hostname;
+
+    /**
+     * @var string $state
+     */
+    private $state;
+
+    /**
+     * @var string $actionsLock
+     */
+    private $actionsLock;
+
+    /**
+     * @var int $cpus
+     */
+    private $cpus;
+
+    /**
+     * @var int $memory
+     */
+    private $memory;
+
+    /**
+     * @var int $disk
+     */
+    private $disk;
+
+    /**
+     * @var int $bandwidth
+     */
+    private $bandwidth;
+
+    /**
+     * @var string|null $ns1
+     */
+    private $ns1 = null;
+
+    /**
+     * @var string|null $ns2
+     */
+    private $ns2 = null;
+
+    /**
+     * @var \Hostinger\Model\VPSV1IPAddressIPAddressResource[] $ipv4
+     */
+    private $ipv4;
+
+    /**
+     * @var \Hostinger\Model\VPSV1IPAddressIPAddressResource[] $ipv6
+     */
+    private $ipv6;
+
+    /**
+     * @var \Hostinger\Model\VPSV1TemplateTemplateResource|null $template
+     */
+    private $template = null;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
 
     /**
      * @return int
@@ -77,8 +120,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -96,8 +137,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param int|null $firewallGroupId
-     *
-     * @return self
      */
     public function setFirewallGroupId($firewallGroupId): self
     {
@@ -115,8 +154,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param string|null $subscriptionId
-     *
-     * @return self
      */
     public function setSubscriptionId($subscriptionId): self
     {
@@ -134,8 +171,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param string|null $plan
-     *
-     * @return self
      */
     public function setPlan($plan): self
     {
@@ -153,8 +188,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param string $hostname
-     *
-     * @return self
      */
     public function setHostname($hostname): self
     {
@@ -172,8 +205,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param string $state
-     *
-     * @return self
      */
     public function setState($state): self
     {
@@ -191,8 +222,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param string $actionsLock
-     *
-     * @return self
      */
     public function setActionsLock($actionsLock): self
     {
@@ -210,8 +239,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param int $cpus
-     *
-     * @return self
      */
     public function setCpus($cpus): self
     {
@@ -229,8 +256,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param int $memory
-     *
-     * @return self
      */
     public function setMemory($memory): self
     {
@@ -248,8 +273,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param int $disk
-     *
-     * @return self
      */
     public function setDisk($disk): self
     {
@@ -267,8 +290,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param int $bandwidth
-     *
-     * @return self
      */
     public function setBandwidth($bandwidth): self
     {
@@ -286,8 +307,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param string|null $ns1
-     *
-     * @return self
      */
     public function setNs1($ns1): self
     {
@@ -305,8 +324,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param string|null $ns2
-     *
-     * @return self
      */
     public function setNs2($ns2): self
     {
@@ -315,7 +332,7 @@ class VPSV1VirtualMachineVirtualMachineResource
         return $this;
     }
     /**
-     * @return \Hostinger\Model\VPSV1IPAddressIPAddressCollection|null
+     * @return \Hostinger\Model\VPSV1IPAddressIPAddressResource[]
      */
     public function getIpv4()
     {
@@ -323,9 +340,7 @@ class VPSV1VirtualMachineVirtualMachineResource
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1IPAddressIPAddressCollection|null $ipv4
-     *
-     * @return self
+     * @param \Hostinger\Model\VPSV1IPAddressIPAddressResource[] $ipv4
      */
     public function setIpv4($ipv4): self
     {
@@ -334,7 +349,7 @@ class VPSV1VirtualMachineVirtualMachineResource
         return $this;
     }
     /**
-     * @return \Hostinger\Model\VPSV1IPAddressIPAddressCollection|null
+     * @return \Hostinger\Model\VPSV1IPAddressIPAddressResource[]
      */
     public function getIpv6()
     {
@@ -342,9 +357,7 @@ class VPSV1VirtualMachineVirtualMachineResource
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1IPAddressIPAddressCollection|null $ipv6
-     *
-     * @return self
+     * @param \Hostinger\Model\VPSV1IPAddressIPAddressResource[] $ipv6
      */
     public function setIpv6($ipv6): self
     {
@@ -362,8 +375,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param \Hostinger\Model\VPSV1TemplateTemplateResource|null $template
-     *
-     * @return self
      */
     public function setTemplate($template): self
     {
@@ -381,8 +392,6 @@ class VPSV1VirtualMachineVirtualMachineResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {

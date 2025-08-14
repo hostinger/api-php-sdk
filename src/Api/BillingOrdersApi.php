@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class BillingOrdersApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function createServiceOrderV1(\Hostinger\Model\BillingV1OrderStoreRequest $billingV1OrderStoreRequest): \Hostinger\Model\BillingV1OrderOrderResource
+     * @return \Hostinger\Model\BillingV1OrderOrderResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function createServiceOrderV1(\Hostinger\Model\BillingV1OrderStoreRequest $billingV1OrderStoreRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -71,10 +74,10 @@ class BillingOrdersApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\BillingV1OrderOrderResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\BillingV1OrderOrderResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -99,6 +102,9 @@ class BillingOrdersApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

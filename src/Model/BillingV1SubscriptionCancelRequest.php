@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class BillingV1SubscriptionCancelRequest 
 {
     /**
-     * @param string|null $reasonCode
-     * @param string|null $cancelOption
+     * @var string|null $reasonCode
      */
-    protected static $openAPIModelName = 'BillingV1SubscriptionCancelRequest';
-    public function __construct(
-        private $reasonCode = null,
-        private $cancelOption = null,
-    ) {
-    }
+    private $reasonCode = null;
+
+    /**
+     * @var string|null $cancelOption
+     */
+    private $cancelOption = null;
 
     /**
      * @return string|null
@@ -47,8 +45,6 @@ class BillingV1SubscriptionCancelRequest
 
     /**
      * @param string|null $reasonCode
-     *
-     * @return self
      */
     public function setReasonCode($reasonCode): self
     {
@@ -66,8 +62,6 @@ class BillingV1SubscriptionCancelRequest
 
     /**
      * @param string|null $cancelOption
-     *
-     * @return self
      */
     public function setCancelOption($cancelOption): self
     {

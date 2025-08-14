@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DNSV1ZoneNameRecordResource 
 {
     /**
-     * @param string $content
-     * @param bool $isDisabled
+     * @var string $content
      */
-    protected static $openAPIModelName = 'DNSV1ZoneNameRecordResource';
-    public function __construct(
-        private $content,
-        private $isDisabled,
-    ) {
-    }
+    private $content;
+
+    /**
+     * @var bool $isDisabled
+     */
+    private $isDisabled;
 
     /**
      * @return string
@@ -47,8 +45,6 @@ class DNSV1ZoneNameRecordResource
 
     /**
      * @param string $content
-     *
-     * @return self
      */
     public function setContent($content): self
     {
@@ -66,8 +62,6 @@ class DNSV1ZoneNameRecordResource
 
     /**
      * @param bool $isDisabled
-     *
-     * @return self
      */
     public function setIsDisabled($isDisabled): self
     {

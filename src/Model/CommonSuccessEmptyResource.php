@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,19 +23,12 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class CommonSuccessEmptyResource 
 {
     /**
-     * @param string $message
+     * @var string $message
      */
-    protected static $openAPIModelName = 'CommonSuccessEmptyResource';
-    public function __construct(
-        private $message,
-    ) {
-    }
+    private $message;
 
     /**
      * @return string
@@ -45,8 +40,6 @@ class CommonSuccessEmptyResource
 
     /**
      * @param string $message
-     *
-     * @return self
      */
     public function setMessage($message): self
     {

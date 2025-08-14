@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,27 +23,32 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1PostInstallScriptPostInstallScriptResource 
 {
     /**
-     * @param int $id
-     * @param string $name
-     * @param string $content
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
+     * @var int $id
      */
-    protected static $openAPIModelName = 'VPSV1PostInstallScriptPostInstallScriptResource';
-    public function __construct(
-        private $id,
-        private $name,
-        private $content,
-        private $createdAt,
-        private $updatedAt,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $name
+     */
+    private $name;
+
+    /**
+     * @var string $content
+     */
+    private $content;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime $updatedAt
+     */
+    private $updatedAt;
 
     /**
      * @return int
@@ -53,8 +60,6 @@ class VPSV1PostInstallScriptPostInstallScriptResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -72,8 +77,6 @@ class VPSV1PostInstallScriptPostInstallScriptResource
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -91,8 +94,6 @@ class VPSV1PostInstallScriptPostInstallScriptResource
 
     /**
      * @param string $content
-     *
-     * @return self
      */
     public function setContent($content): self
     {
@@ -110,8 +111,6 @@ class VPSV1PostInstallScriptPostInstallScriptResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {
@@ -129,8 +128,6 @@ class VPSV1PostInstallScriptPostInstallScriptResource
 
     /**
      * @param \DateTime $updatedAt
-     *
-     * @return self
      */
     public function setUpdatedAt($updatedAt): self
     {

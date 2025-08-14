@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1MetricsMetricsResource 
 {
     /**
-     * @param string $unit
-     * @param object $usage
+     * @var string $unit
      */
-    protected static $openAPIModelName = 'VPSV1MetricsMetricsResource';
-    public function __construct(
-        private $unit,
-        private $usage,
-    ) {
-    }
+    private $unit;
+
+    /**
+     * @var object $usage
+     */
+    private $usage;
 
     /**
      * @return string
@@ -47,8 +45,6 @@ class VPSV1MetricsMetricsResource
 
     /**
      * @param string $unit
-     *
-     * @return self
      */
     public function setUnit($unit): self
     {
@@ -66,8 +62,6 @@ class VPSV1MetricsMetricsResource
 
     /**
      * @param object $usage
-     *
-     * @return self
      */
     public function setUsage($usage): self
     {

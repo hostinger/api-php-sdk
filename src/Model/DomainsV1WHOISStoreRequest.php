@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,27 +23,32 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DomainsV1WHOISStoreRequest 
 {
     /**
-     * @param string $tld
-     * @param string $country
-     * @param string $entityType
-     * @param object $tldDetails
-     * @param object $whoisDetails
+     * @var string $tld
      */
-    protected static $openAPIModelName = 'DomainsV1WHOISStoreRequest';
-    public function __construct(
-        private $tld,
-        private $country,
-        private $entityType,
-        private $tldDetails,
-        private $whoisDetails,
-    ) {
-    }
+    private $tld;
+
+    /**
+     * @var string $country
+     */
+    private $country;
+
+    /**
+     * @var string $entityType
+     */
+    private $entityType;
+
+    /**
+     * @var object $tldDetails
+     */
+    private $tldDetails;
+
+    /**
+     * @var object $whoisDetails
+     */
+    private $whoisDetails;
 
     /**
      * @return string
@@ -53,8 +60,6 @@ class DomainsV1WHOISStoreRequest
 
     /**
      * @param string $tld
-     *
-     * @return self
      */
     public function setTld($tld): self
     {
@@ -72,8 +77,6 @@ class DomainsV1WHOISStoreRequest
 
     /**
      * @param string $country
-     *
-     * @return self
      */
     public function setCountry($country): self
     {
@@ -91,8 +94,6 @@ class DomainsV1WHOISStoreRequest
 
     /**
      * @param string $entityType
-     *
-     * @return self
      */
     public function setEntityType($entityType): self
     {
@@ -110,8 +111,6 @@ class DomainsV1WHOISStoreRequest
 
     /**
      * @param object $tldDetails
-     *
-     * @return self
      */
     public function setTldDetails($tldDetails): self
     {
@@ -129,8 +128,6 @@ class DomainsV1WHOISStoreRequest
 
     /**
      * @param object $whoisDetails
-     *
-     * @return self
      */
     public function setWhoisDetails($whoisDetails): self
     {

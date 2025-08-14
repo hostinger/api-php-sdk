@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class InlineObject2Errors 
 {
     /**
-     * @param mixed[] $field1
-     * @param mixed[] $field2
+     * @var mixed[] $field1
      */
-    protected static $openAPIModelName = 'InlineObject2Errors';
-    public function __construct(
-        private $field1,
-        private $field2,
-    ) {
-    }
+    private $field1;
+
+    /**
+     * @var mixed[] $field2
+     */
+    private $field2;
 
     /**
      * @return mixed[]
@@ -47,8 +45,6 @@ class InlineObject2Errors
 
     /**
      * @param mixed[] $field1
-     *
-     * @return self
      */
     public function setField1($field1): self
     {
@@ -66,8 +62,6 @@ class InlineObject2Errors
 
     /**
      * @param mixed[] $field2
-     *
-     * @return self
      */
     public function setField2($field2): self
     {

@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,19 +23,12 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1FirewallStoreRequest 
 {
     /**
-     * @param string $name
+     * @var string $name
      */
-    protected static $openAPIModelName = 'VPSV1FirewallStoreRequest';
-    public function __construct(
-        private $name,
-    ) {
-    }
+    private $name;
 
     /**
      * @return string
@@ -45,8 +40,6 @@ class VPSV1FirewallStoreRequest
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {

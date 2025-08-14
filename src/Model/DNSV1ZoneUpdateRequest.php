@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DNSV1ZoneUpdateRequest 
 {
     /**
-     * @param bool $overwrite
-     * @param \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[] $zone
+     * @var bool $overwrite
      */
-    protected static $openAPIModelName = 'DNSV1ZoneUpdateRequest';
-    public function __construct(
-        private $overwrite,
-        private $zone,
-    ) {
-    }
+    private $overwrite;
+
+    /**
+     * @var \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[] $zone
+     */
+    private $zone;
 
     /**
      * @return bool
@@ -47,8 +45,6 @@ class DNSV1ZoneUpdateRequest
 
     /**
      * @param bool $overwrite
-     *
-     * @return self
      */
     public function setOverwrite($overwrite): self
     {
@@ -66,8 +62,6 @@ class DNSV1ZoneUpdateRequest
 
     /**
      * @param \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[] $zone
-     *
-     * @return self
      */
     public function setZone($zone): self
     {

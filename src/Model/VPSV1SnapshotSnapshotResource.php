@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,23 +23,22 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1SnapshotSnapshotResource 
 {
     /**
-     * @param int $id
-     * @param \DateTime $createdAt
-     * @param \DateTime $expiresAt
+     * @var int $id
      */
-    protected static $openAPIModelName = 'VPSV1SnapshotSnapshotResource';
-    public function __construct(
-        private $id,
-        private $createdAt,
-        private $expiresAt,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime $expiresAt
+     */
+    private $expiresAt;
 
     /**
      * @return int
@@ -49,8 +50,6 @@ class VPSV1SnapshotSnapshotResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -68,8 +67,6 @@ class VPSV1SnapshotSnapshotResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {
@@ -87,8 +84,6 @@ class VPSV1SnapshotSnapshotResource
 
     /**
      * @param \DateTime $expiresAt
-     *
-     * @return self
      */
     public function setExpiresAt($expiresAt): self
     {

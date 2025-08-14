@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,15 +51,16 @@ class VPSFirewallApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function activateFirewallV1(int $firewallId, int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function activateFirewallV1(int $firewallId, int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/activate/{virtualMachineId}', $firewallId, $virtualMachineId),
             uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/activate/{virtualMachineId}', $firewallId, $virtualMachineId),
             headers: $this->getHeaders(),
         );
@@ -71,15 +73,17 @@ class VPSFirewallApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function createFirewallRuleV1(int $firewallId, \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest): \Hostinger\Model\VPSV1FirewallFirewallRuleResource
+     * @return \Hostinger\Model\VPSV1FirewallFirewallRuleResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function createFirewallRuleV1(int $firewallId, \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -96,15 +100,17 @@ class VPSFirewallApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1FirewallFirewallRuleResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1FirewallFirewallRuleResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function createNewFirewallV1(\Hostinger\Model\VPSV1FirewallStoreRequest $vPSV1FirewallStoreRequest): \Hostinger\Model\VPSV1FirewallFirewallResource
+     * @return \Hostinger\Model\VPSV1FirewallFirewallResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function createNewFirewallV1(\Hostinger\Model\VPSV1FirewallStoreRequest $vPSV1FirewallStoreRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -121,19 +127,20 @@ class VPSFirewallApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1FirewallFirewallResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1FirewallFirewallResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function deactivateFirewallV1(int $firewallId, int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function deactivateFirewallV1(int $firewallId, int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/deactivate/{virtualMachineId}', $firewallId, $virtualMachineId),
             uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/deactivate/{virtualMachineId}', $firewallId, $virtualMachineId),
             headers: $this->getHeaders(),
         );
@@ -146,19 +153,20 @@ class VPSFirewallApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function deleteFirewallRuleV1(int $firewallId, int $ruleId): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function deleteFirewallRuleV1(int $firewallId, int $ruleId)
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/rules/{ruleId}', $firewallId, $ruleId),
             uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/rules/{ruleId}', $firewallId, $ruleId),
             headers: $this->getHeaders(),
         );
@@ -171,15 +179,17 @@ class VPSFirewallApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function deleteFirewallV1(int $firewallId): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function deleteFirewallV1(int $firewallId)
     {
         $request = new Request(
             method: 'GET',
@@ -195,15 +205,17 @@ class VPSFirewallApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getFirewallDetailsV1(int $firewallId): \Hostinger\Model\VPSV1FirewallFirewallResource
+     * @return \Hostinger\Model\VPSV1FirewallFirewallResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getFirewallDetailsV1(int $firewallId)
     {
         $request = new Request(
             method: 'GET',
@@ -219,15 +231,17 @@ class VPSFirewallApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1FirewallFirewallResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1FirewallFirewallResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getFirewallListV1(?int $page = null): \Hostinger\Model\VPSVFirewallListResponse
+     * @return \Hostinger\Model\VPSV1FirewallListResponse
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getFirewallListV1(?int $page = null)
     {
         $query = http_build_query(
             array_filter([
@@ -249,19 +263,20 @@ class VPSFirewallApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSVFirewallListResponse::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1FirewallListResponse', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function syncFirewallV1(int $firewallId, int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function syncFirewallV1(int $firewallId, int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/sync/{virtualMachineId}', $firewallId, $virtualMachineId),
             uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/sync/{virtualMachineId}', $firewallId, $virtualMachineId),
             headers: $this->getHeaders(),
         );
@@ -274,19 +289,20 @@ class VPSFirewallApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function updateFirewallRuleV1(int $firewallId, int $ruleId, \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest): \Hostinger\Model\VPSV1FirewallFirewallRuleResource
+     * @return \Hostinger\Model\VPSV1FirewallFirewallRuleResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function updateFirewallRuleV1(int $firewallId, int $ruleId, \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest)
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/rules/{ruleId}', $firewallId, $ruleId),
             uri: $this->buildResourcePath('/api/vps/v1/firewall/{firewallId}/rules/{ruleId}', $firewallId, $ruleId),
             headers: $this->getHeaders(),
             body: $this->serializer->serialize($vPSV1FirewallRulesStoreRequest, JsonEncoder::FORMAT),
@@ -300,10 +316,10 @@ class VPSFirewallApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1FirewallFirewallRuleResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1FirewallFirewallRuleResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -328,6 +344,9 @@ class VPSFirewallApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,23 +23,22 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class CommonSchemaPaginationMetaSchema 
 {
     /**
-     * @param int $currentPage
-     * @param int $perPage
-     * @param int $total
+     * @var int $currentPage
      */
-    protected static $openAPIModelName = 'CommonSchemaPaginationMetaSchema';
-    public function __construct(
-        private $currentPage,
-        private $perPage,
-        private $total,
-    ) {
-    }
+    private $currentPage;
+
+    /**
+     * @var int $perPage
+     */
+    private $perPage;
+
+    /**
+     * @var int $total
+     */
+    private $total;
 
     /**
      * @return int
@@ -49,8 +50,6 @@ class CommonSchemaPaginationMetaSchema
 
     /**
      * @param int $currentPage
-     *
-     * @return self
      */
     public function setCurrentPage($currentPage): self
     {
@@ -68,8 +67,6 @@ class CommonSchemaPaginationMetaSchema
 
     /**
      * @param int $perPage
-     *
-     * @return self
      */
     public function setPerPage($perPage): self
     {
@@ -87,8 +84,6 @@ class CommonSchemaPaginationMetaSchema
 
     /**
      * @param int $total
-     *
-     * @return self
      */
     public function setTotal($total): self
     {

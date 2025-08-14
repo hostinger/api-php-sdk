@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,25 +23,27 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1DockerManagerProjectResource 
 {
     /**
-     * @param string $name
-     * @param string $status
-     * @param string $state
-     * @param string $path
+     * @var string $name
      */
-    protected static $openAPIModelName = 'VPSV1DockerManagerProjectResource';
-    public function __construct(
-        private $name,
-        private $status,
-        private $state,
-        private $path,
-    ) {
-    }
+    private $name;
+
+    /**
+     * @var string $status
+     */
+    private $status;
+
+    /**
+     * @var string $state
+     */
+    private $state;
+
+    /**
+     * @var string $path
+     */
+    private $path;
 
     /**
      * @return string
@@ -51,8 +55,6 @@ class VPSV1DockerManagerProjectResource
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -70,8 +72,6 @@ class VPSV1DockerManagerProjectResource
 
     /**
      * @param string $status
-     *
-     * @return self
      */
     public function setStatus($status): self
     {
@@ -89,8 +89,6 @@ class VPSV1DockerManagerProjectResource
 
     /**
      * @param string $state
-     *
-     * @return self
      */
     public function setState($state): self
     {
@@ -108,8 +106,6 @@ class VPSV1DockerManagerProjectResource
 
     /**
      * @param string $path
-     *
-     * @return self
      */
     public function setPath($path): self
     {

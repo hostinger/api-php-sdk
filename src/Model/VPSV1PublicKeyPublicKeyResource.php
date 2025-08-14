@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,23 +23,22 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1PublicKeyPublicKeyResource 
 {
     /**
-     * @param int $id
-     * @param string $name
-     * @param string $key
+     * @var int $id
      */
-    protected static $openAPIModelName = 'VPSV1PublicKeyPublicKeyResource';
-    public function __construct(
-        private $id,
-        private $name,
-        private $key,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $name
+     */
+    private $name;
+
+    /**
+     * @var string $key
+     */
+    private $key;
 
     /**
      * @return int
@@ -49,8 +50,6 @@ class VPSV1PublicKeyPublicKeyResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -68,8 +67,6 @@ class VPSV1PublicKeyPublicKeyResource
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -87,8 +84,6 @@ class VPSV1PublicKeyPublicKeyResource
 
     /**
      * @param string $key
-     *
-     * @return self
      */
     public function setKey($key): self
     {

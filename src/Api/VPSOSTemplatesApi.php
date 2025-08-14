@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class VPSOSTemplatesApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getTemplateDetailsV1(int $templateId): \Hostinger\Model\VPSV1TemplateTemplateResource
+     * @return \Hostinger\Model\VPSV1TemplateTemplateResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getTemplateDetailsV1(int $templateId)
     {
         $request = new Request(
             method: 'GET',
@@ -70,15 +73,17 @@ class VPSOSTemplatesApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1TemplateTemplateResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1TemplateTemplateResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getTemplatesV1(): \Hostinger\Model\VPSV1TemplateTemplateCollection
+     * @return \Hostinger\Model\VPSV1TemplateTemplateResource[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getTemplatesV1()
     {
         $request = new Request(
             method: 'GET',
@@ -94,10 +99,10 @@ class VPSOSTemplatesApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1TemplateTemplateCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1TemplateTemplateResource[]', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -122,6 +127,9 @@ class VPSOSTemplatesApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

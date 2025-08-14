@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,35 +23,52 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class BillingV1PaymentMethodPaymentMethodResource 
 {
     /**
-     * @param int $id
-     * @param string $name
-     * @param string $identifier
-     * @param string $paymentMethod
-     * @param bool $isDefault
-     * @param bool $isExpired
-     * @param bool $isSuspended
-     * @param \DateTime $createdAt
-     * @param \DateTime $expiresAt
+     * @var int $id
      */
-    protected static $openAPIModelName = 'BillingV1PaymentMethodPaymentMethodResource';
-    public function __construct(
-        private $id,
-        private $name,
-        private $identifier,
-        private $paymentMethod,
-        private $isDefault,
-        private $isExpired,
-        private $isSuspended,
-        private $createdAt,
-        private $expiresAt,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $name
+     */
+    private $name;
+
+    /**
+     * @var string $identifier
+     */
+    private $identifier;
+
+    /**
+     * @var string $paymentMethod
+     */
+    private $paymentMethod;
+
+    /**
+     * @var bool $isDefault
+     */
+    private $isDefault;
+
+    /**
+     * @var bool $isExpired
+     */
+    private $isExpired;
+
+    /**
+     * @var bool $isSuspended
+     */
+    private $isSuspended;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime $expiresAt
+     */
+    private $expiresAt;
 
     /**
      * @return int
@@ -61,8 +80,6 @@ class BillingV1PaymentMethodPaymentMethodResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -80,8 +97,6 @@ class BillingV1PaymentMethodPaymentMethodResource
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -99,8 +114,6 @@ class BillingV1PaymentMethodPaymentMethodResource
 
     /**
      * @param string $identifier
-     *
-     * @return self
      */
     public function setIdentifier($identifier): self
     {
@@ -118,8 +131,6 @@ class BillingV1PaymentMethodPaymentMethodResource
 
     /**
      * @param string $paymentMethod
-     *
-     * @return self
      */
     public function setPaymentMethod($paymentMethod): self
     {
@@ -137,8 +148,6 @@ class BillingV1PaymentMethodPaymentMethodResource
 
     /**
      * @param bool $isDefault
-     *
-     * @return self
      */
     public function setIsDefault($isDefault): self
     {
@@ -156,8 +165,6 @@ class BillingV1PaymentMethodPaymentMethodResource
 
     /**
      * @param bool $isExpired
-     *
-     * @return self
      */
     public function setIsExpired($isExpired): self
     {
@@ -175,8 +182,6 @@ class BillingV1PaymentMethodPaymentMethodResource
 
     /**
      * @param bool $isSuspended
-     *
-     * @return self
      */
     public function setIsSuspended($isSuspended): self
     {
@@ -194,8 +199,6 @@ class BillingV1PaymentMethodPaymentMethodResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {
@@ -213,8 +216,6 @@ class BillingV1PaymentMethodPaymentMethodResource
 
     /**
      * @param \DateTime $expiresAt
-     *
-     * @return self
      */
     public function setExpiresAt($expiresAt): self
     {

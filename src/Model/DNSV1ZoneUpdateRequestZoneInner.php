@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,25 +23,27 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DNSV1ZoneUpdateRequestZoneInner 
 {
     /**
-     * @param string $name
-     * @param \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInnerRecordsInner[] $records
-     * @param int $ttl
-     * @param string $type
+     * @var string $name
      */
-    protected static $openAPIModelName = 'DNSV1ZoneUpdateRequestZoneInner';
-    public function __construct(
-        private $name,
-        private $records,
-        private $ttl,
-        private $type,
-    ) {
-    }
+    private $name;
+
+    /**
+     * @var \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInnerRecordsInner[] $records
+     */
+    private $records;
+
+    /**
+     * @var int $ttl
+     */
+    private $ttl;
+
+    /**
+     * @var string $type
+     */
+    private $type;
 
     /**
      * @return string
@@ -51,8 +55,6 @@ class DNSV1ZoneUpdateRequestZoneInner
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -70,8 +72,6 @@ class DNSV1ZoneUpdateRequestZoneInner
 
     /**
      * @param \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInnerRecordsInner[] $records
-     *
-     * @return self
      */
     public function setRecords($records): self
     {
@@ -89,8 +89,6 @@ class DNSV1ZoneUpdateRequestZoneInner
 
     /**
      * @param int $ttl
-     *
-     * @return self
      */
     public function setTtl($ttl): self
     {
@@ -108,8 +106,6 @@ class DNSV1ZoneUpdateRequestZoneInner
 
     /**
      * @param string $type
-     *
-     * @return self
      */
     public function setType($type): self
     {

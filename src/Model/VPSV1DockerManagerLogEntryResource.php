@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1DockerManagerLogEntryResource 
 {
     /**
-     * @param string $timestamp
-     * @param string $line
+     * @var string $timestamp
      */
-    protected static $openAPIModelName = 'VPSV1DockerManagerLogEntryResource';
-    public function __construct(
-        private $timestamp,
-        private $line,
-    ) {
-    }
+    private $timestamp;
+
+    /**
+     * @var string $line
+     */
+    private $line;
 
     /**
      * @return string
@@ -47,8 +45,6 @@ class VPSV1DockerManagerLogEntryResource
 
     /**
      * @param string $timestamp
-     *
-     * @return self
      */
     public function setTimestamp($timestamp): self
     {
@@ -66,8 +62,6 @@ class VPSV1DockerManagerLogEntryResource
 
     /**
      * @param string $line
-     *
-     * @return self
      */
     public function setLine($line): self
     {

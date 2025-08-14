@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,47 +23,82 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DomainsV1DomainDomainExtendedResource 
 {
     /**
-     * @param string $domain
-     * @param string $status
-     * @param string|null $message
-     * @param bool $isPrivacyProtectionAllowed
-     * @param bool $isPrivacyProtected
-     * @param bool $isLockable
-     * @param bool $isLocked
-     * @param \Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers $nameServers
-     * @param string[][] $childNameServers
-     * @param \Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts $domainContacts
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param \DateTime|null $_60daysLockExpiresAt
-     * @param \DateTime|null $registeredAt
-     * @param \DateTime|null $expiresAt
+     * @var string $domain
      */
-    protected static $openAPIModelName = 'DomainsV1DomainDomainExtendedResource';
-    public function __construct(
-        private $domain,
-        private $status,
-        private $message = null,
-        private $isPrivacyProtectionAllowed,
-        private $isPrivacyProtected,
-        private $isLockable,
-        private $isLocked,
-        private $nameServers,
-        private $childNameServers,
-        private $domainContacts,
-        private $createdAt,
-        private $updatedAt,
-        private $_60daysLockExpiresAt = null,
-        private $registeredAt = null,
-        private $expiresAt = null,
-    ) {
-    }
+    private $domain;
+
+    /**
+     * @var string $status
+     */
+    private $status;
+
+    /**
+     * @var string|null $message
+     */
+    private $message = null;
+
+    /**
+     * @var bool $isPrivacyProtectionAllowed
+     */
+    private $isPrivacyProtectionAllowed;
+
+    /**
+     * @var bool $isPrivacyProtected
+     */
+    private $isPrivacyProtected;
+
+    /**
+     * @var bool $isLockable
+     */
+    private $isLockable;
+
+    /**
+     * @var bool $isLocked
+     */
+    private $isLocked;
+
+    /**
+     * @var \Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers $nameServers
+     */
+    private $nameServers;
+
+    /**
+     * @var string[][] $childNameServers
+     */
+    private $childNameServers;
+
+    /**
+     * @var \Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts $domainContacts
+     */
+    private $domainContacts;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime $updatedAt
+     */
+    private $updatedAt;
+
+    /**
+     * @var \DateTime|null $_60daysLockExpiresAt
+     */
+    private $_60daysLockExpiresAt = null;
+
+    /**
+     * @var \DateTime|null $registeredAt
+     */
+    private $registeredAt = null;
+
+    /**
+     * @var \DateTime|null $expiresAt
+     */
+    private $expiresAt = null;
 
     /**
      * @return string
@@ -73,8 +110,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param string $domain
-     *
-     * @return self
      */
     public function setDomain($domain): self
     {
@@ -92,8 +127,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param string $status
-     *
-     * @return self
      */
     public function setStatus($status): self
     {
@@ -111,8 +144,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param string|null $message
-     *
-     * @return self
      */
     public function setMessage($message): self
     {
@@ -130,8 +161,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param bool $isPrivacyProtectionAllowed
-     *
-     * @return self
      */
     public function setIsPrivacyProtectionAllowed($isPrivacyProtectionAllowed): self
     {
@@ -149,8 +178,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param bool $isPrivacyProtected
-     *
-     * @return self
      */
     public function setIsPrivacyProtected($isPrivacyProtected): self
     {
@@ -168,8 +195,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param bool $isLockable
-     *
-     * @return self
      */
     public function setIsLockable($isLockable): self
     {
@@ -187,8 +212,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param bool $isLocked
-     *
-     * @return self
      */
     public function setIsLocked($isLocked): self
     {
@@ -206,8 +229,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param \Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers $nameServers
-     *
-     * @return self
      */
     public function setNameServers($nameServers): self
     {
@@ -225,8 +246,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param string[][] $childNameServers
-     *
-     * @return self
      */
     public function setChildNameServers($childNameServers): self
     {
@@ -244,8 +263,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param \Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts $domainContacts
-     *
-     * @return self
      */
     public function setDomainContacts($domainContacts): self
     {
@@ -263,8 +280,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {
@@ -282,8 +297,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param \DateTime $updatedAt
-     *
-     * @return self
      */
     public function setUpdatedAt($updatedAt): self
     {
@@ -301,8 +314,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param \DateTime|null $_60daysLockExpiresAt
-     *
-     * @return self
      */
     public function set60daysLockExpiresAt($_60daysLockExpiresAt): self
     {
@@ -320,8 +331,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param \DateTime|null $registeredAt
-     *
-     * @return self
      */
     public function setRegisteredAt($registeredAt): self
     {
@@ -339,8 +348,6 @@ class DomainsV1DomainDomainExtendedResource
 
     /**
      * @param \DateTime|null $expiresAt
-     *
-     * @return self
      */
     public function setExpiresAt($expiresAt): self
     {

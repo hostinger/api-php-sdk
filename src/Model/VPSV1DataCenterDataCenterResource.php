@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,27 +23,32 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1DataCenterDataCenterResource 
 {
     /**
-     * @param int $id
-     * @param string|null $name
-     * @param string|null $location
-     * @param string|null $city
-     * @param string|null $continent
+     * @var int $id
      */
-    protected static $openAPIModelName = 'VPSV1DataCenterDataCenterResource';
-    public function __construct(
-        private $id,
-        private $name = null,
-        private $location = null,
-        private $city = null,
-        private $continent = null,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string|null $name
+     */
+    private $name = null;
+
+    /**
+     * @var string|null $location
+     */
+    private $location = null;
+
+    /**
+     * @var string|null $city
+     */
+    private $city = null;
+
+    /**
+     * @var string|null $continent
+     */
+    private $continent = null;
 
     /**
      * @return int
@@ -53,8 +60,6 @@ class VPSV1DataCenterDataCenterResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -72,8 +77,6 @@ class VPSV1DataCenterDataCenterResource
 
     /**
      * @param string|null $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -91,8 +94,6 @@ class VPSV1DataCenterDataCenterResource
 
     /**
      * @param string|null $location
-     *
-     * @return self
      */
     public function setLocation($location): self
     {
@@ -110,8 +111,6 @@ class VPSV1DataCenterDataCenterResource
 
     /**
      * @param string|null $city
-     *
-     * @return self
      */
     public function setCity($city): self
     {
@@ -129,8 +128,6 @@ class VPSV1DataCenterDataCenterResource
 
     /**
      * @param string|null $continent
-     *
-     * @return self
      */
     public function setContinent($continent): self
     {

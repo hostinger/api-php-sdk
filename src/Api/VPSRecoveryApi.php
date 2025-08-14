@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class VPSRecoveryApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function startRecoveryModeV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest $vPSV1VirtualMachineRecoveryStartRequest): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function startRecoveryModeV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRecoveryStartRequest $vPSV1VirtualMachineRecoveryStartRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -71,15 +74,17 @@ class VPSRecoveryApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function stopRecoveryModeV1(int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function stopRecoveryModeV1(int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
@@ -95,10 +100,10 @@ class VPSRecoveryApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -123,6 +128,9 @@ class VPSRecoveryApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

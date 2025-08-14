@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class VPSVirtualMachineApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getAttachedPublicKeysV1(int $virtualMachineId, ?int $page = null): \Hostinger\Model\VPSV1PublicKeyListResponse
+     * @return \Hostinger\Model\VPSV1PublicKeyListResponse
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getAttachedPublicKeysV1(int $virtualMachineId, ?int $page = null)
     {
         $query = http_build_query(
             array_filter([
@@ -76,15 +79,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PublicKeyListResponse::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1PublicKeyListResponse', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getMetricsV1(int $virtualMachineId, \DateTime $dateFrom, \DateTime $dateTo): \Hostinger\Model\VPSV1MetricsMetricsCollection
+     * @return \Hostinger\Model\VPSV1MetricsMetricsCollection
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getMetricsV1(int $virtualMachineId, \DateTime $dateFrom, \DateTime $dateTo)
     {
         $query = http_build_query(
             array_filter([
@@ -107,15 +112,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1MetricsMetricsCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1MetricsMetricsCollection', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getVirtualMachineDetailsV1(int $virtualMachineId): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource
+     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getVirtualMachineDetailsV1(int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
@@ -131,15 +138,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getVirtualMachinesV1(): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection
+     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getVirtualMachinesV1()
     {
         $request = new Request(
             method: 'GET',
@@ -155,15 +164,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource[]', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function purchaseNewVirtualMachineV1(\Hostinger\Model\VPSV1VirtualMachinePurchaseRequest $vPSV1VirtualMachinePurchaseRequest): \Hostinger\Model\BillingV1OrderVirtualMachineOrderResource
+     * @return \Hostinger\Model\BillingV1OrderVirtualMachineOrderResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function purchaseNewVirtualMachineV1(\Hostinger\Model\VPSV1VirtualMachinePurchaseRequest $vPSV1VirtualMachinePurchaseRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -180,15 +191,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\BillingV1OrderVirtualMachineOrderResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\BillingV1OrderVirtualMachineOrderResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function recreateVirtualMachineV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRecreateRequest $vPSV1VirtualMachineRecreateRequest): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function recreateVirtualMachineV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRecreateRequest $vPSV1VirtualMachineRecreateRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -205,15 +218,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function resetHostnameV1(int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function resetHostnameV1(int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
@@ -229,15 +244,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function restartVirtualMachineV1(int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function restartVirtualMachineV1(int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
@@ -253,15 +270,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function setHostnameV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest $vPSV1VirtualMachineHostnameUpdateRequest): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function setHostnameV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest $vPSV1VirtualMachineHostnameUpdateRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -278,15 +297,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function setNameserversV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest $vPSV1VirtualMachineNameserversUpdateRequest): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function setNameserversV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest $vPSV1VirtualMachineNameserversUpdateRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -303,15 +324,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function setPanelPasswordV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest $vPSV1VirtualMachinePanelPasswordUpdateRequest): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function setPanelPasswordV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest $vPSV1VirtualMachinePanelPasswordUpdateRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -328,15 +351,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function setRootPasswordV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest $vPSV1VirtualMachineRootPasswordUpdateRequest): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function setRootPasswordV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest $vPSV1VirtualMachineRootPasswordUpdateRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -353,15 +378,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function setupPurchasedVirtualMachineV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineSetupRequest $vPSV1VirtualMachineSetupRequest): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource
+     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function setupPurchasedVirtualMachineV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineSetupRequest $vPSV1VirtualMachineSetupRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -378,15 +405,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function startVirtualMachineV1(int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function startVirtualMachineV1(int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
@@ -402,15 +431,17 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function stopVirtualMachineV1(int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function stopVirtualMachineV1(int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
@@ -426,10 +457,10 @@ class VPSVirtualMachineApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -454,6 +485,9 @@ class VPSVirtualMachineApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,27 +23,32 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class BillingV1CatalogCatalogItemResource 
 {
     /**
-     * @param string $id
-     * @param string $name
-     * @param string $category
-     * @param object|null $metadata
-     * @param \Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection $prices
+     * @var string $id
      */
-    protected static $openAPIModelName = 'BillingV1CatalogCatalogItemResource';
-    public function __construct(
-        private $id,
-        private $name,
-        private $category,
-        private $metadata = null,
-        private $prices,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $name
+     */
+    private $name;
+
+    /**
+     * @var string $category
+     */
+    private $category;
+
+    /**
+     * @var object|null $metadata
+     */
+    private $metadata = null;
+
+    /**
+     * @var \Hostinger\Model\BillingV1CatalogCatalogItemPriceResource[] $prices
+     */
+    private $prices;
 
     /**
      * @return string
@@ -53,8 +60,6 @@ class BillingV1CatalogCatalogItemResource
 
     /**
      * @param string $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -72,8 +77,6 @@ class BillingV1CatalogCatalogItemResource
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -91,8 +94,6 @@ class BillingV1CatalogCatalogItemResource
 
     /**
      * @param string $category
-     *
-     * @return self
      */
     public function setCategory($category): self
     {
@@ -110,8 +111,6 @@ class BillingV1CatalogCatalogItemResource
 
     /**
      * @param object|null $metadata
-     *
-     * @return self
      */
     public function setMetadata($metadata): self
     {
@@ -120,7 +119,7 @@ class BillingV1CatalogCatalogItemResource
         return $this;
     }
     /**
-     * @return \Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection
+     * @return \Hostinger\Model\BillingV1CatalogCatalogItemPriceResource[]
      */
     public function getPrices()
     {
@@ -128,9 +127,7 @@ class BillingV1CatalogCatalogItemResource
     }
 
     /**
-     * @param \Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection $prices
-     *
-     * @return self
+     * @param \Hostinger\Model\BillingV1CatalogCatalogItemPriceResource[] $prices
      */
     public function setPrices($prices): self
     {

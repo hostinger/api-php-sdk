@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,19 +23,12 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DNSV1ZoneDestroyRequest 
 {
     /**
-     * @param \Hostinger\Model\DNSV1ZoneDestroyRequestFiltersInner[] $filters
+     * @var \Hostinger\Model\DNSV1ZoneDestroyRequestFiltersInner[] $filters
      */
-    protected static $openAPIModelName = 'DNSV1ZoneDestroyRequest';
-    public function __construct(
-        private $filters,
-    ) {
-    }
+    private $filters;
 
     /**
      * @return \Hostinger\Model\DNSV1ZoneDestroyRequestFiltersInner[]
@@ -45,8 +40,6 @@ class DNSV1ZoneDestroyRequest
 
     /**
      * @param \Hostinger\Model\DNSV1ZoneDestroyRequestFiltersInner[] $filters
-     *
-     * @return self
      */
     public function setFilters($filters): self
     {

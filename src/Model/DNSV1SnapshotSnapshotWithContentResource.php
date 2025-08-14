@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,25 +23,27 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DNSV1SnapshotSnapshotWithContentResource 
 {
     /**
-     * @param int $id
-     * @param string $reason
-     * @param \Hostinger\Model\DNSV1ZoneRecordCollection $snapshot
-     * @param \DateTime $createdAt
+     * @var int $id
      */
-    protected static $openAPIModelName = 'DNSV1SnapshotSnapshotWithContentResource';
-    public function __construct(
-        private $id,
-        private $reason,
-        private $snapshot,
-        private $createdAt,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $reason
+     */
+    private $reason;
+
+    /**
+     * @var \Hostinger\Model\DNSV1ZoneRecordResource[] $snapshot
+     */
+    private $snapshot;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
 
     /**
      * @return int
@@ -51,8 +55,6 @@ class DNSV1SnapshotSnapshotWithContentResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -70,8 +72,6 @@ class DNSV1SnapshotSnapshotWithContentResource
 
     /**
      * @param string $reason
-     *
-     * @return self
      */
     public function setReason($reason): self
     {
@@ -80,7 +80,7 @@ class DNSV1SnapshotSnapshotWithContentResource
         return $this;
     }
     /**
-     * @return \Hostinger\Model\DNSV1ZoneRecordCollection
+     * @return \Hostinger\Model\DNSV1ZoneRecordResource[]
      */
     public function getSnapshot()
     {
@@ -88,9 +88,7 @@ class DNSV1SnapshotSnapshotWithContentResource
     }
 
     /**
-     * @param \Hostinger\Model\DNSV1ZoneRecordCollection $snapshot
-     *
-     * @return self
+     * @param \Hostinger\Model\DNSV1ZoneRecordResource[] $snapshot
      */
     public function setSnapshot($snapshot): self
     {
@@ -108,8 +106,6 @@ class DNSV1SnapshotSnapshotWithContentResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {

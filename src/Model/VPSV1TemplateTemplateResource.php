@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,25 +23,27 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1TemplateTemplateResource 
 {
     /**
-     * @param int $id
-     * @param string $name
-     * @param string $description
-     * @param string|null $documentation
+     * @var int $id
      */
-    protected static $openAPIModelName = 'VPSV1TemplateTemplateResource';
-    public function __construct(
-        private $id,
-        private $name,
-        private $description,
-        private $documentation = null,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $name
+     */
+    private $name;
+
+    /**
+     * @var string $description
+     */
+    private $description;
+
+    /**
+     * @var string|null $documentation
+     */
+    private $documentation = null;
 
     /**
      * @return int
@@ -51,8 +55,6 @@ class VPSV1TemplateTemplateResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -70,8 +72,6 @@ class VPSV1TemplateTemplateResource
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -89,8 +89,6 @@ class VPSV1TemplateTemplateResource
 
     /**
      * @param string $description
-     *
-     * @return self
      */
     public function setDescription($description): self
     {
@@ -108,8 +106,6 @@ class VPSV1TemplateTemplateResource
 
     /**
      * @param string|null $documentation
-     *
-     * @return self
      */
     public function setDocumentation($documentation): self
     {

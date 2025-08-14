@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,23 +23,22 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DomainsV1ForwardingStoreRequest 
 {
     /**
-     * @param string $domain
-     * @param string $redirectType
-     * @param string $redirectUrl
+     * @var string $domain
      */
-    protected static $openAPIModelName = 'DomainsV1ForwardingStoreRequest';
-    public function __construct(
-        private $domain,
-        private $redirectType,
-        private $redirectUrl,
-    ) {
-    }
+    private $domain;
+
+    /**
+     * @var string $redirectType
+     */
+    private $redirectType;
+
+    /**
+     * @var string $redirectUrl
+     */
+    private $redirectUrl;
 
     /**
      * @return string
@@ -49,8 +50,6 @@ class DomainsV1ForwardingStoreRequest
 
     /**
      * @param string $domain
-     *
-     * @return self
      */
     public function setDomain($domain): self
     {
@@ -68,8 +67,6 @@ class DomainsV1ForwardingStoreRequest
 
     /**
      * @param string $redirectType
-     *
-     * @return self
      */
     public function setRedirectType($redirectType): self
     {
@@ -87,8 +84,6 @@ class DomainsV1ForwardingStoreRequest
 
     /**
      * @param string $redirectUrl
-     *
-     * @return self
      */
     public function setRedirectUrl($redirectUrl): self
     {

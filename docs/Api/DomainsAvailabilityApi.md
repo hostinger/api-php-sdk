@@ -10,7 +10,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `checkDomainAvailabilityV1()`
 
 ```php
-checkDomainAvailabilityV1($domainsV1AvailabilityAvailabilityRequest): \Hostinger\Model\DomainsV1AvailabilityAvailabilityCollection
+checkDomainAvailabilityV1($domainsV1AvailabilityAvailabilityRequest): \Hostinger\Model\DomainsV1AvailabilityAvailabilityResource[]
 ```
 
 Check domain availability
@@ -47,7 +47,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\DomainsV1AvailabilityAvailabilityCollection**](../Model/DomainsV1AvailabilityAvailabilityCollection.md)
+[**\Hostinger\Model\DomainsV1AvailabilityAvailabilityResource[]**](../Model/DomainsV1AvailabilityAvailabilityResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

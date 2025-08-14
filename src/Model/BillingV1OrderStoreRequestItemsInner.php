@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class BillingV1OrderStoreRequestItemsInner 
 {
     /**
-     * @param string $itemId
-     * @param int $quantity
+     * @var string $itemId
      */
-    protected static $openAPIModelName = 'BillingV1OrderStoreRequestItemsInner';
-    public function __construct(
-        private $itemId,
-        private $quantity,
-    ) {
-    }
+    private $itemId;
+
+    /**
+     * @var int $quantity
+     */
+    private $quantity;
 
     /**
      * @return string
@@ -47,8 +45,6 @@ class BillingV1OrderStoreRequestItemsInner
 
     /**
      * @param string $itemId
-     *
-     * @return self
      */
     public function setItemId($itemId): self
     {
@@ -66,8 +62,6 @@ class BillingV1OrderStoreRequestItemsInner
 
     /**
      * @param int $quantity
-     *
-     * @return self
      */
     public function setQuantity($quantity): self
     {

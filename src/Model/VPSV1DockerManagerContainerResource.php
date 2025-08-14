@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,33 +23,47 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1DockerManagerContainerResource 
 {
     /**
-     * @param string $id
-     * @param string $name
-     * @param string $image
-     * @param string $command
-     * @param string $status
-     * @param string $state
-     * @param \Hostinger\Model\VPSV1DockerManagerContainerPortCollection $ports
-     * @param \Hostinger\Model\VPSV1DockerManagerContainerStatsResource|null $stats
+     * @var string $id
      */
-    protected static $openAPIModelName = 'VPSV1DockerManagerContainerResource';
-    public function __construct(
-        private $id,
-        private $name,
-        private $image,
-        private $command,
-        private $status,
-        private $state,
-        private $ports,
-        private $stats = null,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $name
+     */
+    private $name;
+
+    /**
+     * @var string $image
+     */
+    private $image;
+
+    /**
+     * @var string $command
+     */
+    private $command;
+
+    /**
+     * @var string $status
+     */
+    private $status;
+
+    /**
+     * @var string $state
+     */
+    private $state;
+
+    /**
+     * @var \Hostinger\Model\VPSV1DockerManagerContainerPortResource[] $ports
+     */
+    private $ports;
+
+    /**
+     * @var \Hostinger\Model\VPSV1DockerManagerContainerStatsResource|null $stats
+     */
+    private $stats = null;
 
     /**
      * @return string
@@ -59,8 +75,6 @@ class VPSV1DockerManagerContainerResource
 
     /**
      * @param string $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -78,8 +92,6 @@ class VPSV1DockerManagerContainerResource
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -97,8 +109,6 @@ class VPSV1DockerManagerContainerResource
 
     /**
      * @param string $image
-     *
-     * @return self
      */
     public function setImage($image): self
     {
@@ -116,8 +126,6 @@ class VPSV1DockerManagerContainerResource
 
     /**
      * @param string $command
-     *
-     * @return self
      */
     public function setCommand($command): self
     {
@@ -135,8 +143,6 @@ class VPSV1DockerManagerContainerResource
 
     /**
      * @param string $status
-     *
-     * @return self
      */
     public function setStatus($status): self
     {
@@ -154,8 +160,6 @@ class VPSV1DockerManagerContainerResource
 
     /**
      * @param string $state
-     *
-     * @return self
      */
     public function setState($state): self
     {
@@ -164,7 +168,7 @@ class VPSV1DockerManagerContainerResource
         return $this;
     }
     /**
-     * @return \Hostinger\Model\VPSV1DockerManagerContainerPortCollection
+     * @return \Hostinger\Model\VPSV1DockerManagerContainerPortResource[]
      */
     public function getPorts()
     {
@@ -172,9 +176,7 @@ class VPSV1DockerManagerContainerResource
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1DockerManagerContainerPortCollection $ports
-     *
-     * @return self
+     * @param \Hostinger\Model\VPSV1DockerManagerContainerPortResource[] $ports
      */
     public function setPorts($ports): self
     {
@@ -192,8 +194,6 @@ class VPSV1DockerManagerContainerResource
 
     /**
      * @param \Hostinger\Model\VPSV1DockerManagerContainerStatsResource|null $stats
-     *
-     * @return self
      */
     public function setStats($stats): self
     {

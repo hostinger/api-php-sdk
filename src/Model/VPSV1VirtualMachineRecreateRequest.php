@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,25 +23,27 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1VirtualMachineRecreateRequest 
 {
     /**
-     * @param int $templateId
-     * @param string $password
-     * @param string $panelPassword
-     * @param int $postInstallScriptId
+     * @var int $templateId
      */
-    protected static $openAPIModelName = 'VPSV1VirtualMachineRecreateRequest';
-    public function __construct(
-        private $templateId,
-        private $password,
-        private $panelPassword,
-        private $postInstallScriptId,
-    ) {
-    }
+    private $templateId;
+
+    /**
+     * @var string $password
+     */
+    private $password;
+
+    /**
+     * @var string $panelPassword
+     */
+    private $panelPassword;
+
+    /**
+     * @var int $postInstallScriptId
+     */
+    private $postInstallScriptId;
 
     /**
      * @return int
@@ -51,8 +55,6 @@ class VPSV1VirtualMachineRecreateRequest
 
     /**
      * @param int $templateId
-     *
-     * @return self
      */
     public function setTemplateId($templateId): self
     {
@@ -70,8 +72,6 @@ class VPSV1VirtualMachineRecreateRequest
 
     /**
      * @param string $password
-     *
-     * @return self
      */
     public function setPassword($password): self
     {
@@ -89,8 +89,6 @@ class VPSV1VirtualMachineRecreateRequest
 
     /**
      * @param string $panelPassword
-     *
-     * @return self
      */
     public function setPanelPassword($panelPassword): self
     {
@@ -108,8 +106,6 @@ class VPSV1VirtualMachineRecreateRequest
 
     /**
      * @param int $postInstallScriptId
-     *
-     * @return self
      */
     public function setPostInstallScriptId($postInstallScriptId): self
     {

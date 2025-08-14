@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DomainsV1DomainDomainExtendedResourceNameServers 
 {
     /**
-     * @param string $ns1
-     * @param string $ns2
+     * @var string $ns1
      */
-    protected static $openAPIModelName = 'DomainsV1DomainDomainExtendedResourceNameServers';
-    public function __construct(
-        private $ns1,
-        private $ns2,
-    ) {
-    }
+    private $ns1;
+
+    /**
+     * @var string $ns2
+     */
+    private $ns2;
 
     /**
      * @return string
@@ -47,8 +45,6 @@ class DomainsV1DomainDomainExtendedResourceNameServers
 
     /**
      * @param string $ns1
-     *
-     * @return self
      */
     public function setNs1($ns1): self
     {
@@ -66,8 +62,6 @@ class DomainsV1DomainDomainExtendedResourceNameServers
 
     /**
      * @param string $ns2
-     *
-     * @return self
      */
     public function setNs2($ns2): self
     {

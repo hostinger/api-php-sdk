@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,41 +23,67 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class BillingV1SubscriptionSubscriptionResource 
 {
     /**
-     * @param string $id
-     * @param string $name
-     * @param string $status
-     * @param int $billingPeriod
-     * @param string $billingPeriodUnit
-     * @param string $currencyCode
-     * @param int $totalPrice
-     * @param int $renewalPrice
-     * @param bool $isAutoRenewed
-     * @param \DateTime $createdAt
-     * @param \DateTime|null $expiresAt
-     * @param \DateTime|null $nextBillingAt
+     * @var string $id
      */
-    protected static $openAPIModelName = 'BillingV1SubscriptionSubscriptionResource';
-    public function __construct(
-        private $id,
-        private $name,
-        private $status,
-        private $billingPeriod,
-        private $billingPeriodUnit,
-        private $currencyCode,
-        private $totalPrice,
-        private $renewalPrice,
-        private $isAutoRenewed,
-        private $createdAt,
-        private $expiresAt = null,
-        private $nextBillingAt = null,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $name
+     */
+    private $name;
+
+    /**
+     * @var string $status
+     */
+    private $status;
+
+    /**
+     * @var int $billingPeriod
+     */
+    private $billingPeriod;
+
+    /**
+     * @var string $billingPeriodUnit
+     */
+    private $billingPeriodUnit;
+
+    /**
+     * @var string $currencyCode
+     */
+    private $currencyCode;
+
+    /**
+     * @var int $totalPrice
+     */
+    private $totalPrice;
+
+    /**
+     * @var int $renewalPrice
+     */
+    private $renewalPrice;
+
+    /**
+     * @var bool $isAutoRenewed
+     */
+    private $isAutoRenewed;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime|null $expiresAt
+     */
+    private $expiresAt = null;
+
+    /**
+     * @var \DateTime|null $nextBillingAt
+     */
+    private $nextBillingAt = null;
 
     /**
      * @return string
@@ -67,8 +95,6 @@ class BillingV1SubscriptionSubscriptionResource
 
     /**
      * @param string $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -86,8 +112,6 @@ class BillingV1SubscriptionSubscriptionResource
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -105,8 +129,6 @@ class BillingV1SubscriptionSubscriptionResource
 
     /**
      * @param string $status
-     *
-     * @return self
      */
     public function setStatus($status): self
     {
@@ -124,8 +146,6 @@ class BillingV1SubscriptionSubscriptionResource
 
     /**
      * @param int $billingPeriod
-     *
-     * @return self
      */
     public function setBillingPeriod($billingPeriod): self
     {
@@ -143,8 +163,6 @@ class BillingV1SubscriptionSubscriptionResource
 
     /**
      * @param string $billingPeriodUnit
-     *
-     * @return self
      */
     public function setBillingPeriodUnit($billingPeriodUnit): self
     {
@@ -162,8 +180,6 @@ class BillingV1SubscriptionSubscriptionResource
 
     /**
      * @param string $currencyCode
-     *
-     * @return self
      */
     public function setCurrencyCode($currencyCode): self
     {
@@ -181,8 +197,6 @@ class BillingV1SubscriptionSubscriptionResource
 
     /**
      * @param int $totalPrice
-     *
-     * @return self
      */
     public function setTotalPrice($totalPrice): self
     {
@@ -200,8 +214,6 @@ class BillingV1SubscriptionSubscriptionResource
 
     /**
      * @param int $renewalPrice
-     *
-     * @return self
      */
     public function setRenewalPrice($renewalPrice): self
     {
@@ -219,8 +231,6 @@ class BillingV1SubscriptionSubscriptionResource
 
     /**
      * @param bool $isAutoRenewed
-     *
-     * @return self
      */
     public function setIsAutoRenewed($isAutoRenewed): self
     {
@@ -238,8 +248,6 @@ class BillingV1SubscriptionSubscriptionResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {
@@ -257,8 +265,6 @@ class BillingV1SubscriptionSubscriptionResource
 
     /**
      * @param \DateTime|null $expiresAt
-     *
-     * @return self
      */
     public function setExpiresAt($expiresAt): self
     {
@@ -276,8 +282,6 @@ class BillingV1SubscriptionSubscriptionResource
 
     /**
      * @param \DateTime|null $nextBillingAt
-     *
-     * @return self
      */
     public function setNextBillingAt($nextBillingAt): self
     {

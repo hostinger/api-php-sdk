@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,23 +23,22 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DNSV1SnapshotSnapshotResource 
 {
     /**
-     * @param int $id
-     * @param string $reason
-     * @param \DateTime $createdAt
+     * @var int $id
      */
-    protected static $openAPIModelName = 'DNSV1SnapshotSnapshotResource';
-    public function __construct(
-        private $id,
-        private $reason,
-        private $createdAt,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $reason
+     */
+    private $reason;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
 
     /**
      * @return int
@@ -49,8 +50,6 @@ class DNSV1SnapshotSnapshotResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -68,8 +67,6 @@ class DNSV1SnapshotSnapshotResource
 
     /**
      * @param string $reason
-     *
-     * @return self
      */
     public function setReason($reason): self
     {
@@ -87,8 +84,6 @@ class DNSV1SnapshotSnapshotResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {

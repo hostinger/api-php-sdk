@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class DNSSnapshotApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getDNSSnapshotListV1(string $domain): \Hostinger\Model\DNSV1SnapshotSnapshotCollection
+     * @return \Hostinger\Model\DNSV1SnapshotSnapshotResource[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getDNSSnapshotListV1(string $domain)
     {
         $request = new Request(
             method: 'GET',
@@ -70,19 +73,20 @@ class DNSSnapshotApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DNSV1SnapshotSnapshotCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DNSV1SnapshotSnapshotResource[]', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getDNSSnapshotV1(string $domain, int $snapshotId): \Hostinger\Model\DNSV1SnapshotSnapshotWithContentResource
+     * @return \Hostinger\Model\DNSV1SnapshotSnapshotWithContentResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getDNSSnapshotV1(string $domain, int $snapshotId)
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/dns/v1/snapshots/{domain}/{snapshotId}', $domain, $snapshotId),
             uri: $this->buildResourcePath('/api/dns/v1/snapshots/{domain}/{snapshotId}', $domain, $snapshotId),
             headers: $this->getHeaders(),
         );
@@ -95,19 +99,20 @@ class DNSSnapshotApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DNSV1SnapshotSnapshotWithContentResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DNSV1SnapshotSnapshotWithContentResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function restoreDNSSnapshotV1(string $domain, int $snapshotId): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function restoreDNSSnapshotV1(string $domain, int $snapshotId)
     {
         $request = new Request(
             method: 'GET',
-            uri: $this->buildResourcePath('/api/dns/v1/snapshots/{domain}/{snapshotId}/restore', $domain, $snapshotId),
             uri: $this->buildResourcePath('/api/dns/v1/snapshots/{domain}/{snapshotId}/restore', $domain, $snapshotId),
             headers: $this->getHeaders(),
         );
@@ -120,10 +125,10 @@ class DNSSnapshotApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -148,6 +153,9 @@ class DNSSnapshotApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

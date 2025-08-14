@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,19 +23,12 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DNSV1ZoneUpdateRequestZoneInnerRecordsInner 
 {
     /**
-     * @param string $content
+     * @var string $content
      */
-    protected static $openAPIModelName = 'DNSV1ZoneUpdateRequestZoneInnerRecordsInner';
-    public function __construct(
-        private $content,
-    ) {
-    }
+    private $content;
 
     /**
      * @return string
@@ -45,8 +40,6 @@ class DNSV1ZoneUpdateRequestZoneInnerRecordsInner
 
     /**
      * @param string $content
-     *
-     * @return self
      */
     public function setContent($content): self
     {

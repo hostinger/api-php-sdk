@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,39 +23,62 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class BillingV1OrderOrderBillingAddressResource 
 {
     /**
-     * @param string $firstName
-     * @param string $lastName
-     * @param string|null $company
-     * @param string|null $address1
-     * @param string|null $address2
-     * @param string|null $city
-     * @param string|null $state
-     * @param string|null $zip
-     * @param string|null $country
-     * @param string|null $phone
-     * @param string $email
+     * @var string $firstName
      */
-    protected static $openAPIModelName = 'BillingV1OrderOrderBillingAddressResource';
-    public function __construct(
-        private $firstName,
-        private $lastName,
-        private $company = null,
-        private $address1 = null,
-        private $address2 = null,
-        private $city = null,
-        private $state = null,
-        private $zip = null,
-        private $country = null,
-        private $phone = null,
-        private $email,
-    ) {
-    }
+    private $firstName;
+
+    /**
+     * @var string $lastName
+     */
+    private $lastName;
+
+    /**
+     * @var string|null $company
+     */
+    private $company = null;
+
+    /**
+     * @var string|null $address1
+     */
+    private $address1 = null;
+
+    /**
+     * @var string|null $address2
+     */
+    private $address2 = null;
+
+    /**
+     * @var string|null $city
+     */
+    private $city = null;
+
+    /**
+     * @var string|null $state
+     */
+    private $state = null;
+
+    /**
+     * @var string|null $zip
+     */
+    private $zip = null;
+
+    /**
+     * @var string|null $country
+     */
+    private $country = null;
+
+    /**
+     * @var string|null $phone
+     */
+    private $phone = null;
+
+    /**
+     * @var string $email
+     */
+    private $email;
 
     /**
      * @return string
@@ -65,8 +90,6 @@ class BillingV1OrderOrderBillingAddressResource
 
     /**
      * @param string $firstName
-     *
-     * @return self
      */
     public function setFirstName($firstName): self
     {
@@ -84,8 +107,6 @@ class BillingV1OrderOrderBillingAddressResource
 
     /**
      * @param string $lastName
-     *
-     * @return self
      */
     public function setLastName($lastName): self
     {
@@ -103,8 +124,6 @@ class BillingV1OrderOrderBillingAddressResource
 
     /**
      * @param string|null $company
-     *
-     * @return self
      */
     public function setCompany($company): self
     {
@@ -122,8 +141,6 @@ class BillingV1OrderOrderBillingAddressResource
 
     /**
      * @param string|null $address1
-     *
-     * @return self
      */
     public function setAddress1($address1): self
     {
@@ -141,8 +158,6 @@ class BillingV1OrderOrderBillingAddressResource
 
     /**
      * @param string|null $address2
-     *
-     * @return self
      */
     public function setAddress2($address2): self
     {
@@ -160,8 +175,6 @@ class BillingV1OrderOrderBillingAddressResource
 
     /**
      * @param string|null $city
-     *
-     * @return self
      */
     public function setCity($city): self
     {
@@ -179,8 +192,6 @@ class BillingV1OrderOrderBillingAddressResource
 
     /**
      * @param string|null $state
-     *
-     * @return self
      */
     public function setState($state): self
     {
@@ -198,8 +209,6 @@ class BillingV1OrderOrderBillingAddressResource
 
     /**
      * @param string|null $zip
-     *
-     * @return self
      */
     public function setZip($zip): self
     {
@@ -217,8 +226,6 @@ class BillingV1OrderOrderBillingAddressResource
 
     /**
      * @param string|null $country
-     *
-     * @return self
      */
     public function setCountry($country): self
     {
@@ -236,8 +243,6 @@ class BillingV1OrderOrderBillingAddressResource
 
     /**
      * @param string|null $phone
-     *
-     * @return self
      */
     public function setPhone($phone): self
     {
@@ -255,8 +260,6 @@ class BillingV1OrderOrderBillingAddressResource
 
     /**
      * @param string $email
-     *
-     * @return self
      */
     public function setEmail($email): self
     {

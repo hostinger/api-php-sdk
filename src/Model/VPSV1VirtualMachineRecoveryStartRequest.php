@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,19 +23,12 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1VirtualMachineRecoveryStartRequest 
 {
     /**
-     * @param string $rootPassword
+     * @var string $rootPassword
      */
-    protected static $openAPIModelName = 'VPSV1VirtualMachineRecoveryStartRequest';
-    public function __construct(
-        private $rootPassword,
-    ) {
-    }
+    private $rootPassword;
 
     /**
      * @return string
@@ -45,8 +40,6 @@ class VPSV1VirtualMachineRecoveryStartRequest
 
     /**
      * @param string $rootPassword
-     *
-     * @return self
      */
     public function setRootPassword($rootPassword): self
     {

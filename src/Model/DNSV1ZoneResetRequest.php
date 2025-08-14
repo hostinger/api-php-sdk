@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,23 +23,22 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DNSV1ZoneResetRequest 
 {
     /**
-     * @param bool $sync
-     * @param bool $resetEmailRecords
-     * @param string[] $whitelistedRecordTypes
+     * @var bool $sync
      */
-    protected static $openAPIModelName = 'DNSV1ZoneResetRequest';
-    public function __construct(
-        private $sync,
-        private $resetEmailRecords,
-        private $whitelistedRecordTypes,
-    ) {
-    }
+    private $sync;
+
+    /**
+     * @var bool $resetEmailRecords
+     */
+    private $resetEmailRecords;
+
+    /**
+     * @var string[] $whitelistedRecordTypes
+     */
+    private $whitelistedRecordTypes;
 
     /**
      * @return bool
@@ -49,8 +50,6 @@ class DNSV1ZoneResetRequest
 
     /**
      * @param bool $sync
-     *
-     * @return self
      */
     public function setSync($sync): self
     {
@@ -68,8 +67,6 @@ class DNSV1ZoneResetRequest
 
     /**
      * @param bool $resetEmailRecords
-     *
-     * @return self
      */
     public function setResetEmailRecords($resetEmailRecords): self
     {
@@ -87,8 +84,6 @@ class DNSV1ZoneResetRequest
 
     /**
      * @param string[] $whitelistedRecordTypes
-     *
-     * @return self
      */
     public function setWhitelistedRecordTypes($whitelistedRecordTypes): self
     {

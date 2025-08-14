@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,24 +23,20 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1PostInstallScriptListResponse 
 {
     /**
-     * @param \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptCollection $data
-     * @param \Hostinger\Model\CommonSchemaPaginationMetaSchema $meta
+     * @var \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource[] $data
      */
-    protected static $openAPIModelName = 'VPSV1PostInstallScriptListResponse';
-    public function __construct(
-        private $data,
-        private $meta,
-    ) {
-    }
+    private $data;
 
     /**
-     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptCollection
+     * @var \Hostinger\Model\CommonSchemaPaginationMetaSchema $meta
+     */
+    private $meta;
+
+    /**
+     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource[]
      */
     public function getData()
     {
@@ -46,9 +44,7 @@ class VPSV1PostInstallScriptListResponse
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptCollection $data
-     *
-     * @return self
+     * @param \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource[] $data
      */
     public function setData($data): self
     {
@@ -66,8 +62,6 @@ class VPSV1PostInstallScriptListResponse
 
     /**
      * @param \Hostinger\Model\CommonSchemaPaginationMetaSchema $meta
-     *
-     * @return self
      */
     public function setMeta($meta): self
     {

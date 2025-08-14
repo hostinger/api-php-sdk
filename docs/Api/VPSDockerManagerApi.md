@@ -115,7 +115,7 @@ try {
 ## `getProjectContainersV1()`
 
 ```php
-getProjectContainersV1($virtualMachineId, $projectName): \Hostinger\Model\VPSV1DockerManagerContainerCollection
+getProjectContainersV1($virtualMachineId, $projectName): \Hostinger\Model\VPSV1DockerManagerContainerResource[]
 ```
 
 Get project containers
@@ -154,7 +154,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\VPSV1DockerManagerContainerCollection**](../Model/VPSV1DockerManagerContainerCollection.md)
+[**\Hostinger\Model\VPSV1DockerManagerContainerResource[]**](../Model/VPSV1DockerManagerContainerResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -211,7 +211,7 @@ try {
 ## `getProjectListV1()`
 
 ```php
-getProjectListV1($virtualMachineId): \Hostinger\Model\VPSV1DockerManagerProjectCollection
+getProjectListV1($virtualMachineId): \Hostinger\Model\VPSV1DockerManagerProjectResource[]
 ```
 
 Get project list
@@ -248,7 +248,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\VPSV1DockerManagerProjectCollection**](../Model/VPSV1DockerManagerProjectCollection.md)
+[**\Hostinger\Model\VPSV1DockerManagerProjectResource[]**](../Model/VPSV1DockerManagerProjectResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -257,7 +257,7 @@ try {
 ## `getProjectLogsV1()`
 
 ```php
-getProjectLogsV1($virtualMachineId, $projectName): \Hostinger\Model\VPSV1DockerManagerLogsCollection
+getProjectLogsV1($virtualMachineId, $projectName): \Hostinger\Model\VPSV1DockerManagerLogsResource[]
 ```
 
 Get project logs
@@ -296,7 +296,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\VPSV1DockerManagerLogsCollection**](../Model/VPSV1DockerManagerLogsCollection.md)
+[**\Hostinger\Model\VPSV1DockerManagerLogsResource[]**](../Model/VPSV1DockerManagerLogsResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

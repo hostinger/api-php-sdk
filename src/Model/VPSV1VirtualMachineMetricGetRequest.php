@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1VirtualMachineMetricGetRequest 
 {
     /**
-     * @param \DateTime $dateFrom
-     * @param \DateTime $dateTo
+     * @var \DateTime $dateFrom
      */
-    protected static $openAPIModelName = 'VPSV1VirtualMachineMetricGetRequest';
-    public function __construct(
-        private $dateFrom,
-        private $dateTo,
-    ) {
-    }
+    private $dateFrom;
+
+    /**
+     * @var \DateTime $dateTo
+     */
+    private $dateTo;
 
     /**
      * @return \DateTime
@@ -47,8 +45,6 @@ class VPSV1VirtualMachineMetricGetRequest
 
     /**
      * @param \DateTime $dateFrom
-     *
-     * @return self
      */
     public function setDateFrom($dateFrom): self
     {
@@ -66,8 +62,6 @@ class VPSV1VirtualMachineMetricGetRequest
 
     /**
      * @param \DateTime $dateTo
-     *
-     * @return self
      */
     public function setDateTo($dateTo): self
     {

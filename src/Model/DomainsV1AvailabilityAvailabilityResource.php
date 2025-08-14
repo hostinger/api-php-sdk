@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,25 +23,27 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DomainsV1AvailabilityAvailabilityResource 
 {
     /**
-     * @param string|null $domain
-     * @param bool $isAvailable
-     * @param bool $isAlternative
-     * @param string|null $restriction
+     * @var string|null $domain
      */
-    protected static $openAPIModelName = 'DomainsV1AvailabilityAvailabilityResource';
-    public function __construct(
-        private $domain = null,
-        private $isAvailable,
-        private $isAlternative,
-        private $restriction = null,
-    ) {
-    }
+    private $domain = null;
+
+    /**
+     * @var bool $isAvailable
+     */
+    private $isAvailable;
+
+    /**
+     * @var bool $isAlternative
+     */
+    private $isAlternative;
+
+    /**
+     * @var string|null $restriction
+     */
+    private $restriction = null;
 
     /**
      * @return string|null
@@ -51,8 +55,6 @@ class DomainsV1AvailabilityAvailabilityResource
 
     /**
      * @param string|null $domain
-     *
-     * @return self
      */
     public function setDomain($domain): self
     {
@@ -70,8 +72,6 @@ class DomainsV1AvailabilityAvailabilityResource
 
     /**
      * @param bool $isAvailable
-     *
-     * @return self
      */
     public function setIsAvailable($isAvailable): self
     {
@@ -89,8 +89,6 @@ class DomainsV1AvailabilityAvailabilityResource
 
     /**
      * @param bool $isAlternative
-     *
-     * @return self
      */
     public function setIsAlternative($isAlternative): self
     {
@@ -108,8 +106,6 @@ class DomainsV1AvailabilityAvailabilityResource
 
     /**
      * @param string|null $restriction
-     *
-     * @return self
      */
     public function setRestriction($restriction): self
     {

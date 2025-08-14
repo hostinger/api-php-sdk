@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1PostInstallScriptStoreRequest 
 {
     /**
-     * @param string $name
-     * @param string $content
+     * @var string $name
      */
-    protected static $openAPIModelName = 'VPSV1PostInstallScriptStoreRequest';
-    public function __construct(
-        private $name,
-        private $content,
-    ) {
-    }
+    private $name;
+
+    /**
+     * @var string $content
+     */
+    private $content;
 
     /**
      * @return string
@@ -47,8 +45,6 @@ class VPSV1PostInstallScriptStoreRequest
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -66,8 +62,6 @@ class VPSV1PostInstallScriptStoreRequest
 
     /**
      * @param string $content
-     *
-     * @return self
      */
     public function setContent($content): self
     {

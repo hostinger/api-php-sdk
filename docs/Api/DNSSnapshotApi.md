@@ -12,7 +12,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `getDNSSnapshotListV1()`
 
 ```php
-getDNSSnapshotListV1($domain): \Hostinger\Model\DNSV1SnapshotSnapshotCollection
+getDNSSnapshotListV1($domain): \Hostinger\Model\DNSV1SnapshotSnapshotResource[]
 ```
 
 Get DNS snapshot list
@@ -49,7 +49,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\DNSV1SnapshotSnapshotCollection**](../Model/DNSV1SnapshotSnapshotCollection.md)
+[**\Hostinger\Model\DNSV1SnapshotSnapshotResource[]**](../Model/DNSV1SnapshotSnapshotResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

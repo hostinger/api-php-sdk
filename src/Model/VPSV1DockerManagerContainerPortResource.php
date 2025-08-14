@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,35 +23,52 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1DockerManagerContainerPortResource 
 {
     /**
-     * @param string $type
-     * @param string $protocol
-     * @param string|null $hostIp
-     * @param int|null $hostPort
-     * @param int|null $containerPort
-     * @param int|null $hostPortStart
-     * @param int|null $hostPortEnd
-     * @param int|null $containerPortStart
-     * @param int|null $containerPortEnd
+     * @var string $type
      */
-    protected static $openAPIModelName = 'VPSV1DockerManagerContainerPortResource';
-    public function __construct(
-        private $type,
-        private $protocol,
-        private $hostIp = null,
-        private $hostPort = null,
-        private $containerPort = null,
-        private $hostPortStart = null,
-        private $hostPortEnd = null,
-        private $containerPortStart = null,
-        private $containerPortEnd = null,
-    ) {
-    }
+    private $type;
+
+    /**
+     * @var string $protocol
+     */
+    private $protocol;
+
+    /**
+     * @var string|null $hostIp
+     */
+    private $hostIp = null;
+
+    /**
+     * @var int|null $hostPort
+     */
+    private $hostPort = null;
+
+    /**
+     * @var int|null $containerPort
+     */
+    private $containerPort = null;
+
+    /**
+     * @var int|null $hostPortStart
+     */
+    private $hostPortStart = null;
+
+    /**
+     * @var int|null $hostPortEnd
+     */
+    private $hostPortEnd = null;
+
+    /**
+     * @var int|null $containerPortStart
+     */
+    private $containerPortStart = null;
+
+    /**
+     * @var int|null $containerPortEnd
+     */
+    private $containerPortEnd = null;
 
     /**
      * @return string
@@ -61,8 +80,6 @@ class VPSV1DockerManagerContainerPortResource
 
     /**
      * @param string $type
-     *
-     * @return self
      */
     public function setType($type): self
     {
@@ -80,8 +97,6 @@ class VPSV1DockerManagerContainerPortResource
 
     /**
      * @param string $protocol
-     *
-     * @return self
      */
     public function setProtocol($protocol): self
     {
@@ -99,8 +114,6 @@ class VPSV1DockerManagerContainerPortResource
 
     /**
      * @param string|null $hostIp
-     *
-     * @return self
      */
     public function setHostIp($hostIp): self
     {
@@ -118,8 +131,6 @@ class VPSV1DockerManagerContainerPortResource
 
     /**
      * @param int|null $hostPort
-     *
-     * @return self
      */
     public function setHostPort($hostPort): self
     {
@@ -137,8 +148,6 @@ class VPSV1DockerManagerContainerPortResource
 
     /**
      * @param int|null $containerPort
-     *
-     * @return self
      */
     public function setContainerPort($containerPort): self
     {
@@ -156,8 +165,6 @@ class VPSV1DockerManagerContainerPortResource
 
     /**
      * @param int|null $hostPortStart
-     *
-     * @return self
      */
     public function setHostPortStart($hostPortStart): self
     {
@@ -175,8 +182,6 @@ class VPSV1DockerManagerContainerPortResource
 
     /**
      * @param int|null $hostPortEnd
-     *
-     * @return self
      */
     public function setHostPortEnd($hostPortEnd): self
     {
@@ -194,8 +199,6 @@ class VPSV1DockerManagerContainerPortResource
 
     /**
      * @param int|null $containerPortStart
-     *
-     * @return self
      */
     public function setContainerPortStart($containerPortStart): self
     {
@@ -213,8 +216,6 @@ class VPSV1DockerManagerContainerPortResource
 
     /**
      * @param int|null $containerPortEnd
-     *
-     * @return self
      */
     public function setContainerPortEnd($containerPortEnd): self
     {

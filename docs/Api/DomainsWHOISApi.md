@@ -106,7 +106,7 @@ try {
 ## `getWHOISProfileListV1()`
 
 ```php
-getWHOISProfileListV1($tld): \Hostinger\Model\DomainsV1WHOISProfileCollection
+getWHOISProfileListV1($tld): \Hostinger\Model\DomainsV1WHOISProfileResource[]
 ```
 
 Get WHOIS profile list
@@ -143,7 +143,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\DomainsV1WHOISProfileCollection**](../Model/DomainsV1WHOISProfileCollection.md)
+[**\Hostinger\Model\DomainsV1WHOISProfileResource[]**](../Model/DomainsV1WHOISProfileResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -152,7 +152,7 @@ try {
 ## `getWHOISProfileUsageV1()`
 
 ```php
-getWHOISProfileUsageV1($whoisId): \Hostinger\Model\DomainsV1WHOISProfileUsageResource
+getWHOISProfileUsageV1($whoisId): string[]
 ```
 
 Get WHOIS profile usage
@@ -189,7 +189,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\DomainsV1WHOISProfileUsageResource**](../Model/DomainsV1WHOISProfileUsageResource.md)
+**string[]**
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,25 +23,27 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1VirtualMachinePurchaseRequest 
 {
     /**
-     * @param string $itemId
-     * @param int $paymentMethodId
-     * @param \Hostinger\Model\VPSV1VirtualMachineSetupRequest $setup
-     * @param mixed[] $coupons
+     * @var string $itemId
      */
-    protected static $openAPIModelName = 'VPSV1VirtualMachinePurchaseRequest';
-    public function __construct(
-        private $itemId,
-        private $paymentMethodId,
-        private $setup,
-        private $coupons,
-    ) {
-    }
+    private $itemId;
+
+    /**
+     * @var int $paymentMethodId
+     */
+    private $paymentMethodId;
+
+    /**
+     * @var \Hostinger\Model\VPSV1VirtualMachineSetupRequest $setup
+     */
+    private $setup;
+
+    /**
+     * @var mixed[] $coupons
+     */
+    private $coupons;
 
     /**
      * @return string
@@ -51,8 +55,6 @@ class VPSV1VirtualMachinePurchaseRequest
 
     /**
      * @param string $itemId
-     *
-     * @return self
      */
     public function setItemId($itemId): self
     {
@@ -70,8 +72,6 @@ class VPSV1VirtualMachinePurchaseRequest
 
     /**
      * @param int $paymentMethodId
-     *
-     * @return self
      */
     public function setPaymentMethodId($paymentMethodId): self
     {
@@ -89,8 +89,6 @@ class VPSV1VirtualMachinePurchaseRequest
 
     /**
      * @param \Hostinger\Model\VPSV1VirtualMachineSetupRequest $setup
-     *
-     * @return self
      */
     public function setSetup($setup): self
     {
@@ -108,8 +106,6 @@ class VPSV1VirtualMachinePurchaseRequest
 
     /**
      * @param mixed[] $coupons
-     *
-     * @return self
      */
     public function setCoupons($coupons): self
     {

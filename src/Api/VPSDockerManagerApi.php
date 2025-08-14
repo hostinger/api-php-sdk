@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class VPSDockerManagerApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function createNewProjectV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineDockerManagerUpRequest $vPSV1VirtualMachineDockerManagerUpRequest): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function createNewProjectV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineDockerManagerUpRequest $vPSV1VirtualMachineDockerManagerUpRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -71,20 +74,21 @@ class VPSDockerManagerApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function deleteProjectV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function deleteProjectV1(int $virtualMachineId, string $projectName)
     {
         $request = new Request(
             method: 'GET',
             uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/down', $virtualMachineId, $projectName),
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/down', $virtualMachineId, $projectName),
             headers: $this->getHeaders(),
         );
 
@@ -96,20 +100,21 @@ class VPSDockerManagerApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getProjectContainersV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1DockerManagerContainerCollection
+     * @return \Hostinger\Model\VPSV1DockerManagerContainerResource[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getProjectContainersV1(int $virtualMachineId, string $projectName)
     {
         $request = new Request(
             method: 'GET',
             uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/containers', $virtualMachineId, $projectName),
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/containers', $virtualMachineId, $projectName),
             headers: $this->getHeaders(),
         );
 
@@ -121,20 +126,21 @@ class VPSDockerManagerApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1DockerManagerContainerCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1DockerManagerContainerResource[]', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getProjectContentsV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1DockerManagerContentResource
+     * @return \Hostinger\Model\VPSV1DockerManagerContentResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getProjectContentsV1(int $virtualMachineId, string $projectName)
     {
         $request = new Request(
             method: 'GET',
             uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}', $virtualMachineId, $projectName),
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}', $virtualMachineId, $projectName),
             headers: $this->getHeaders(),
         );
 
@@ -146,15 +152,17 @@ class VPSDockerManagerApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1DockerManagerContentResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1DockerManagerContentResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getProjectListV1(int $virtualMachineId): \Hostinger\Model\VPSV1DockerManagerProjectCollection
+     * @return \Hostinger\Model\VPSV1DockerManagerProjectResource[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getProjectListV1(int $virtualMachineId)
     {
         $request = new Request(
             method: 'GET',
@@ -170,20 +178,21 @@ class VPSDockerManagerApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1DockerManagerProjectCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1DockerManagerProjectResource[]', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getProjectLogsV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1DockerManagerLogsCollection
+     * @return \Hostinger\Model\VPSV1DockerManagerLogsResource[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getProjectLogsV1(int $virtualMachineId, string $projectName)
     {
         $request = new Request(
             method: 'GET',
             uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/logs', $virtualMachineId, $projectName),
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/logs', $virtualMachineId, $projectName),
             headers: $this->getHeaders(),
         );
 
@@ -195,20 +204,21 @@ class VPSDockerManagerApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1DockerManagerLogsCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1DockerManagerLogsResource[]', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function restartProjectV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function restartProjectV1(int $virtualMachineId, string $projectName)
     {
         $request = new Request(
             method: 'GET',
             uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/restart', $virtualMachineId, $projectName),
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/restart', $virtualMachineId, $projectName),
             headers: $this->getHeaders(),
         );
 
@@ -220,20 +230,21 @@ class VPSDockerManagerApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function startProjectV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function startProjectV1(int $virtualMachineId, string $projectName)
     {
         $request = new Request(
             method: 'GET',
             uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/start', $virtualMachineId, $projectName),
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/start', $virtualMachineId, $projectName),
             headers: $this->getHeaders(),
         );
 
@@ -245,20 +256,21 @@ class VPSDockerManagerApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function stopProjectV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function stopProjectV1(int $virtualMachineId, string $projectName)
     {
         $request = new Request(
             method: 'GET',
             uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/stop', $virtualMachineId, $projectName),
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/stop', $virtualMachineId, $projectName),
             headers: $this->getHeaders(),
         );
 
@@ -270,20 +282,21 @@ class VPSDockerManagerApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function updateProjectV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1ActionActionResource
+     * @return \Hostinger\Model\VPSV1ActionActionResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function updateProjectV1(int $virtualMachineId, string $projectName)
     {
         $request = new Request(
             method: 'GET',
             uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/update', $virtualMachineId, $projectName),
-            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/update', $virtualMachineId, $projectName),
             headers: $this->getHeaders(),
         );
 
@@ -295,10 +308,10 @@ class VPSDockerManagerApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\VPSV1ActionActionResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -323,6 +336,9 @@ class VPSDockerManagerApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

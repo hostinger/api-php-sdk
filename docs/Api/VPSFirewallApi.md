@@ -349,7 +349,7 @@ try {
 ## `getFirewallListV1()`
 
 ```php
-getFirewallListV1($page): \Hostinger\Model\VPSVFirewallListResponse
+getFirewallListV1($page): \Hostinger\Model\VPSV1FirewallListResponse
 ```
 
 Get firewall list
@@ -386,7 +386,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\VPSVFirewallListResponse**](../Model/VPSVFirewallListResponse.md)
+[**\Hostinger\Model\VPSV1FirewallListResponse**](../Model/VPSV1FirewallListResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

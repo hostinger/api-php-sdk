@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,29 +23,37 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DomainsV1DomainDomainResource 
 {
     /**
-     * @param int $id
-     * @param string|null $domain
-     * @param string $type
-     * @param string $status
-     * @param \DateTime $createdAt
-     * @param \DateTime|null $expiresAt
+     * @var int $id
      */
-    protected static $openAPIModelName = 'DomainsV1DomainDomainResource';
-    public function __construct(
-        private $id,
-        private $domain = null,
-        private $type,
-        private $status,
-        private $createdAt,
-        private $expiresAt = null,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string|null $domain
+     */
+    private $domain = null;
+
+    /**
+     * @var string $type
+     */
+    private $type;
+
+    /**
+     * @var string $status
+     */
+    private $status;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime|null $expiresAt
+     */
+    private $expiresAt = null;
 
     /**
      * @return int
@@ -55,8 +65,6 @@ class DomainsV1DomainDomainResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -74,8 +82,6 @@ class DomainsV1DomainDomainResource
 
     /**
      * @param string|null $domain
-     *
-     * @return self
      */
     public function setDomain($domain): self
     {
@@ -93,8 +99,6 @@ class DomainsV1DomainDomainResource
 
     /**
      * @param string $type
-     *
-     * @return self
      */
     public function setType($type): self
     {
@@ -112,8 +116,6 @@ class DomainsV1DomainDomainResource
 
     /**
      * @param string $status
-     *
-     * @return self
      */
     public function setStatus($status): self
     {
@@ -131,8 +133,6 @@ class DomainsV1DomainDomainResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {
@@ -150,8 +150,6 @@ class DomainsV1DomainDomainResource
 
     /**
      * @param \DateTime|null $expiresAt
-     *
-     * @return self
      */
     public function setExpiresAt($expiresAt): self
     {

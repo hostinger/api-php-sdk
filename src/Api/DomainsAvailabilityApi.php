@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class DomainsAvailabilityApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function checkDomainAvailabilityV1(\Hostinger\Model\DomainsV1AvailabilityAvailabilityRequest $domainsV1AvailabilityAvailabilityRequest): \Hostinger\Model\DomainsV1AvailabilityAvailabilityCollection
+     * @return \Hostinger\Model\DomainsV1AvailabilityAvailabilityResource[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function checkDomainAvailabilityV1(\Hostinger\Model\DomainsV1AvailabilityAvailabilityRequest $domainsV1AvailabilityAvailabilityRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -71,10 +74,10 @@ class DomainsAvailabilityApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1AvailabilityAvailabilityCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DomainsV1AvailabilityAvailabilityResource[]', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -99,6 +102,9 @@ class DomainsAvailabilityApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

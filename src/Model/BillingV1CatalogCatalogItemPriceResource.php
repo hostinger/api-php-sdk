@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,31 +23,42 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class BillingV1CatalogCatalogItemPriceResource 
 {
     /**
-     * @param string $id
-     * @param string $name
-     * @param string $currency
-     * @param int $price
-     * @param int $firstPeriodPrice
-     * @param int $period
-     * @param string $periodUnit
+     * @var string $id
      */
-    protected static $openAPIModelName = 'BillingV1CatalogCatalogItemPriceResource';
-    public function __construct(
-        private $id,
-        private $name,
-        private $currency,
-        private $price,
-        private $firstPeriodPrice,
-        private $period,
-        private $periodUnit,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $name
+     */
+    private $name;
+
+    /**
+     * @var string $currency
+     */
+    private $currency;
+
+    /**
+     * @var int $price
+     */
+    private $price;
+
+    /**
+     * @var int $firstPeriodPrice
+     */
+    private $firstPeriodPrice;
+
+    /**
+     * @var int $period
+     */
+    private $period;
+
+    /**
+     * @var string $periodUnit
+     */
+    private $periodUnit;
 
     /**
      * @return string
@@ -57,8 +70,6 @@ class BillingV1CatalogCatalogItemPriceResource
 
     /**
      * @param string $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -76,8 +87,6 @@ class BillingV1CatalogCatalogItemPriceResource
 
     /**
      * @param string $name
-     *
-     * @return self
      */
     public function setName($name): self
     {
@@ -95,8 +104,6 @@ class BillingV1CatalogCatalogItemPriceResource
 
     /**
      * @param string $currency
-     *
-     * @return self
      */
     public function setCurrency($currency): self
     {
@@ -114,8 +121,6 @@ class BillingV1CatalogCatalogItemPriceResource
 
     /**
      * @param int $price
-     *
-     * @return self
      */
     public function setPrice($price): self
     {
@@ -133,8 +138,6 @@ class BillingV1CatalogCatalogItemPriceResource
 
     /**
      * @param int $firstPeriodPrice
-     *
-     * @return self
      */
     public function setFirstPeriodPrice($firstPeriodPrice): self
     {
@@ -152,8 +155,6 @@ class BillingV1CatalogCatalogItemPriceResource
 
     /**
      * @param int $period
-     *
-     * @return self
      */
     public function setPeriod($period): self
     {
@@ -171,8 +172,6 @@ class BillingV1CatalogCatalogItemPriceResource
 
     /**
      * @param string $periodUnit
-     *
-     * @return self
      */
     public function setPeriodUnit($periodUnit): self
     {

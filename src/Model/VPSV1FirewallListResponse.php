@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,24 +23,20 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
-class VPSVFirewallListResponse 
+class VPSV1FirewallListResponse 
 {
     /**
-     * @param \Hostinger\Model\VPSV1FirewallFirewallCollection $data
-     * @param \Hostinger\Model\CommonSchemaPaginationMetaSchema $meta
+     * @var \Hostinger\Model\VPSV1FirewallFirewallResource[] $data
      */
-    protected static $openAPIModelName = 'VPSVFirewallListResponse';
-    public function __construct(
-        private $data,
-        private $meta,
-    ) {
-    }
+    private $data;
 
     /**
-     * @return \Hostinger\Model\VPSV1FirewallFirewallCollection
+     * @var \Hostinger\Model\CommonSchemaPaginationMetaSchema $meta
+     */
+    private $meta;
+
+    /**
+     * @return \Hostinger\Model\VPSV1FirewallFirewallResource[]
      */
     public function getData()
     {
@@ -46,9 +44,7 @@ class VPSVFirewallListResponse
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1FirewallFirewallCollection $data
-     *
-     * @return self
+     * @param \Hostinger\Model\VPSV1FirewallFirewallResource[] $data
      */
     public function setData($data): self
     {
@@ -66,8 +62,6 @@ class VPSVFirewallListResponse
 
     /**
      * @param \Hostinger\Model\CommonSchemaPaginationMetaSchema $meta
-     *
-     * @return self
      */
     public function setMeta($meta): self
     {

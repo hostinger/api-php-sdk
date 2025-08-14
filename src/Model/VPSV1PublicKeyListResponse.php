@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,24 +23,20 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1PublicKeyListResponse 
 {
     /**
-     * @param \Hostinger\Model\VPSV1PublicKeyPublicKeyCollection $data
-     * @param \Hostinger\Model\CommonSchemaPaginationMetaSchema $meta
+     * @var \Hostinger\Model\VPSV1PublicKeyPublicKeyResource[] $data
      */
-    protected static $openAPIModelName = 'VPSV1PublicKeyListResponse';
-    public function __construct(
-        private $data,
-        private $meta,
-    ) {
-    }
+    private $data;
 
     /**
-     * @return \Hostinger\Model\VPSV1PublicKeyPublicKeyCollection
+     * @var \Hostinger\Model\CommonSchemaPaginationMetaSchema $meta
+     */
+    private $meta;
+
+    /**
+     * @return \Hostinger\Model\VPSV1PublicKeyPublicKeyResource[]
      */
     public function getData()
     {
@@ -46,9 +44,7 @@ class VPSV1PublicKeyListResponse
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1PublicKeyPublicKeyCollection $data
-     *
-     * @return self
+     * @param \Hostinger\Model\VPSV1PublicKeyPublicKeyResource[] $data
      */
     public function setData($data): self
     {
@@ -66,8 +62,6 @@ class VPSV1PublicKeyListResponse
 
     /**
      * @param \Hostinger\Model\CommonSchemaPaginationMetaSchema $meta
-     *
-     * @return self
      */
     public function setMeta($meta): self
     {

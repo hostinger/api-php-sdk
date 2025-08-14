@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1VirtualMachineDockerManagerUpRequest 
 {
     /**
-     * @param string $projectName
-     * @param string $content
+     * @var string $projectName
      */
-    protected static $openAPIModelName = 'VPSV1VirtualMachineDockerManagerUpRequest';
-    public function __construct(
-        private $projectName,
-        private $content,
-    ) {
-    }
+    private $projectName;
+
+    /**
+     * @var string $content
+     */
+    private $content;
 
     /**
      * @return string
@@ -47,8 +45,6 @@ class VPSV1VirtualMachineDockerManagerUpRequest
 
     /**
      * @param string $projectName
-     *
-     * @return self
      */
     public function setProjectName($projectName): self
     {
@@ -66,8 +62,6 @@ class VPSV1VirtualMachineDockerManagerUpRequest
 
     /**
      * @param string $content
-     *
-     * @return self
      */
     public function setContent($content): self
     {

@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,27 +23,32 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DomainsV1ForwardingForwardingResource 
 {
     /**
-     * @param string|null $domain
-     * @param string $redirectType
-     * @param string $redirectUrl
-     * @param \DateTime $createdAt
-     * @param \DateTime|null $updatedAt
+     * @var string|null $domain
      */
-    protected static $openAPIModelName = 'DomainsV1ForwardingForwardingResource';
-    public function __construct(
-        private $domain = null,
-        private $redirectType,
-        private $redirectUrl,
-        private $createdAt,
-        private $updatedAt = null,
-    ) {
-    }
+    private $domain = null;
+
+    /**
+     * @var string $redirectType
+     */
+    private $redirectType;
+
+    /**
+     * @var string $redirectUrl
+     */
+    private $redirectUrl;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime|null $updatedAt
+     */
+    private $updatedAt = null;
 
     /**
      * @return string|null
@@ -53,8 +60,6 @@ class DomainsV1ForwardingForwardingResource
 
     /**
      * @param string|null $domain
-     *
-     * @return self
      */
     public function setDomain($domain): self
     {
@@ -72,8 +77,6 @@ class DomainsV1ForwardingForwardingResource
 
     /**
      * @param string $redirectType
-     *
-     * @return self
      */
     public function setRedirectType($redirectType): self
     {
@@ -91,8 +94,6 @@ class DomainsV1ForwardingForwardingResource
 
     /**
      * @param string $redirectUrl
-     *
-     * @return self
      */
     public function setRedirectUrl($redirectUrl): self
     {
@@ -110,8 +111,6 @@ class DomainsV1ForwardingForwardingResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {
@@ -129,8 +128,6 @@ class DomainsV1ForwardingForwardingResource
 
     /**
      * @param \DateTime|null $updatedAt
-     *
-     * @return self
      */
     public function setUpdatedAt($updatedAt): self
     {

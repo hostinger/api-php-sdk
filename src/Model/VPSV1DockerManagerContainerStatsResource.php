@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,29 +23,37 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1DockerManagerContainerStatsResource 
 {
     /**
-     * @param float $cpuPercentage
-     * @param float $memoryPercentage
-     * @param float $memoryUsed
-     * @param float $memoryTotal
-     * @param int $netIn
-     * @param int $netOut
+     * @var float $cpuPercentage
      */
-    protected static $openAPIModelName = 'VPSV1DockerManagerContainerStatsResource';
-    public function __construct(
-        private $cpuPercentage,
-        private $memoryPercentage,
-        private $memoryUsed,
-        private $memoryTotal,
-        private $netIn,
-        private $netOut,
-    ) {
-    }
+    private $cpuPercentage;
+
+    /**
+     * @var float $memoryPercentage
+     */
+    private $memoryPercentage;
+
+    /**
+     * @var float $memoryUsed
+     */
+    private $memoryUsed;
+
+    /**
+     * @var float $memoryTotal
+     */
+    private $memoryTotal;
+
+    /**
+     * @var int $netIn
+     */
+    private $netIn;
+
+    /**
+     * @var int $netOut
+     */
+    private $netOut;
 
     /**
      * @return float
@@ -55,8 +65,6 @@ class VPSV1DockerManagerContainerStatsResource
 
     /**
      * @param float $cpuPercentage
-     *
-     * @return self
      */
     public function setCpuPercentage($cpuPercentage): self
     {
@@ -74,8 +82,6 @@ class VPSV1DockerManagerContainerStatsResource
 
     /**
      * @param float $memoryPercentage
-     *
-     * @return self
      */
     public function setMemoryPercentage($memoryPercentage): self
     {
@@ -93,8 +99,6 @@ class VPSV1DockerManagerContainerStatsResource
 
     /**
      * @param float $memoryUsed
-     *
-     * @return self
      */
     public function setMemoryUsed($memoryUsed): self
     {
@@ -112,8 +116,6 @@ class VPSV1DockerManagerContainerStatsResource
 
     /**
      * @param float $memoryTotal
-     *
-     * @return self
      */
     public function setMemoryTotal($memoryTotal): self
     {
@@ -131,8 +133,6 @@ class VPSV1DockerManagerContainerStatsResource
 
     /**
      * @param int $netIn
-     *
-     * @return self
      */
     public function setNetIn($netIn): self
     {
@@ -150,8 +150,6 @@ class VPSV1DockerManagerContainerStatsResource
 
     /**
      * @param int $netOut
-     *
-     * @return self
      */
     public function setNetOut($netOut): self
     {

@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class BillingV1OrderVirtualMachineOrderResource 
 {
     /**
-     * @param \Hostinger\Model\BillingV1OrderOrderResource $order
-     * @param \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource $virtualMachine
+     * @var \Hostinger\Model\BillingV1OrderOrderResource $order
      */
-    protected static $openAPIModelName = 'BillingV1OrderVirtualMachineOrderResource';
-    public function __construct(
-        private $order,
-        private $virtualMachine,
-    ) {
-    }
+    private $order;
+
+    /**
+     * @var \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource $virtualMachine
+     */
+    private $virtualMachine;
 
     /**
      * @return \Hostinger\Model\BillingV1OrderOrderResource
@@ -47,8 +45,6 @@ class BillingV1OrderVirtualMachineOrderResource
 
     /**
      * @param \Hostinger\Model\BillingV1OrderOrderResource $order
-     *
-     * @return self
      */
     public function setOrder($order): self
     {
@@ -66,8 +62,6 @@ class BillingV1OrderVirtualMachineOrderResource
 
     /**
      * @param \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource $virtualMachine
-     *
-     * @return self
      */
     public function setVirtualMachine($virtualMachine): self
     {

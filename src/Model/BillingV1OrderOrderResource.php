@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,35 +23,52 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class BillingV1OrderOrderResource 
 {
     /**
-     * @param int $id
-     * @param string $subscriptionId
-     * @param string $status
-     * @param string $currency
-     * @param int $subtotal
-     * @param int $total
-     * @param \Hostinger\Model\BillingV1OrderOrderBillingAddressResource $billingAddress
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
+     * @var int $id
      */
-    protected static $openAPIModelName = 'BillingV1OrderOrderResource';
-    public function __construct(
-        private $id,
-        private $subscriptionId,
-        private $status,
-        private $currency,
-        private $subtotal,
-        private $total,
-        private $billingAddress,
-        private $createdAt,
-        private $updatedAt,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $subscriptionId
+     */
+    private $subscriptionId;
+
+    /**
+     * @var string $status
+     */
+    private $status;
+
+    /**
+     * @var string $currency
+     */
+    private $currency;
+
+    /**
+     * @var int $subtotal
+     */
+    private $subtotal;
+
+    /**
+     * @var int $total
+     */
+    private $total;
+
+    /**
+     * @var \Hostinger\Model\BillingV1OrderOrderBillingAddressResource $billingAddress
+     */
+    private $billingAddress;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime $updatedAt
+     */
+    private $updatedAt;
 
     /**
      * @return int
@@ -61,8 +80,6 @@ class BillingV1OrderOrderResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -80,8 +97,6 @@ class BillingV1OrderOrderResource
 
     /**
      * @param string $subscriptionId
-     *
-     * @return self
      */
     public function setSubscriptionId($subscriptionId): self
     {
@@ -99,8 +114,6 @@ class BillingV1OrderOrderResource
 
     /**
      * @param string $status
-     *
-     * @return self
      */
     public function setStatus($status): self
     {
@@ -118,8 +131,6 @@ class BillingV1OrderOrderResource
 
     /**
      * @param string $currency
-     *
-     * @return self
      */
     public function setCurrency($currency): self
     {
@@ -137,8 +148,6 @@ class BillingV1OrderOrderResource
 
     /**
      * @param int $subtotal
-     *
-     * @return self
      */
     public function setSubtotal($subtotal): self
     {
@@ -156,8 +165,6 @@ class BillingV1OrderOrderResource
 
     /**
      * @param int $total
-     *
-     * @return self
      */
     public function setTotal($total): self
     {
@@ -175,8 +182,6 @@ class BillingV1OrderOrderResource
 
     /**
      * @param \Hostinger\Model\BillingV1OrderOrderBillingAddressResource $billingAddress
-     *
-     * @return self
      */
     public function setBillingAddress($billingAddress): self
     {
@@ -194,8 +199,6 @@ class BillingV1OrderOrderResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {
@@ -213,8 +216,6 @@ class BillingV1OrderOrderResource
 
     /**
      * @param \DateTime $updatedAt
-     *
-     * @return self
      */
     public function setUpdatedAt($updatedAt): self
     {

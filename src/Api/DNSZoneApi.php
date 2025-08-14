@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class DNSZoneApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function deleteDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneDestroyRequest $dNSV1ZoneDestroyRequest): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function deleteDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneDestroyRequest $dNSV1ZoneDestroyRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -71,15 +74,17 @@ class DNSZoneApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getDNSRecordsV1(string $domain): \Hostinger\Model\DNSV1ZoneRecordCollection
+     * @return \Hostinger\Model\DNSV1ZoneRecordResource[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getDNSRecordsV1(string $domain)
     {
         $request = new Request(
             method: 'GET',
@@ -95,15 +100,17 @@ class DNSZoneApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DNSV1ZoneRecordCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\DNSV1ZoneRecordResource[]', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function resetDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneResetRequest $dNSV1ZoneResetRequest): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function resetDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneResetRequest $dNSV1ZoneResetRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -120,15 +127,17 @@ class DNSZoneApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function updateDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneUpdateRequest $dNSV1ZoneUpdateRequest): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function updateDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneUpdateRequest $dNSV1ZoneUpdateRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -145,15 +154,17 @@ class DNSZoneApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function validateDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneUpdateRequest $dNSV1ZoneUpdateRequest): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function validateDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneUpdateRequest $dNSV1ZoneUpdateRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -170,10 +181,10 @@ class DNSZoneApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -198,6 +209,9 @@ class DNSZoneApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];

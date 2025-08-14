@@ -57,7 +57,7 @@ try {
 ## `getTemplatesV1()`
 
 ```php
-getTemplatesV1(): \Hostinger\Model\VPSV1TemplateTemplateCollection
+getTemplatesV1(): \Hostinger\Model\VPSV1TemplateTemplateResource[]
 ```
 
 Get templates
@@ -91,7 +91,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\VPSV1TemplateTemplateCollection**](../Model/VPSV1TemplateTemplateCollection.md)
+[**\Hostinger\Model\VPSV1TemplateTemplateResource[]**](../Model/VPSV1TemplateTemplateResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

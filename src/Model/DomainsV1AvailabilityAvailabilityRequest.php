@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,23 +23,22 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class DomainsV1AvailabilityAvailabilityRequest 
 {
     /**
-     * @param string $domain
-     * @param string[] $tlds
-     * @param bool $withAlternatives
+     * @var string $domain
      */
-    protected static $openAPIModelName = 'DomainsV1AvailabilityAvailabilityRequest';
-    public function __construct(
-        private $domain,
-        private $tlds,
-        private $withAlternatives,
-    ) {
-    }
+    private $domain;
+
+    /**
+     * @var string[] $tlds
+     */
+    private $tlds;
+
+    /**
+     * @var bool $withAlternatives
+     */
+    private $withAlternatives;
 
     /**
      * @return string
@@ -49,8 +50,6 @@ class DomainsV1AvailabilityAvailabilityRequest
 
     /**
      * @param string $domain
-     *
-     * @return self
      */
     public function setDomain($domain): self
     {
@@ -68,8 +67,6 @@ class DomainsV1AvailabilityAvailabilityRequest
 
     /**
      * @param string[] $tlds
-     *
-     * @return self
      */
     public function setTlds($tlds): self
     {
@@ -87,8 +84,6 @@ class DomainsV1AvailabilityAvailabilityRequest
 
     /**
      * @param bool $withAlternatives
-     *
-     * @return self
      */
     public function setWithAlternatives($withAlternatives): self
     {

@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,19 +23,12 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1VirtualMachinePanelPasswordUpdateRequest 
 {
     /**
-     * @param string $password
+     * @var string $password
      */
-    protected static $openAPIModelName = 'VPSV1VirtualMachinePanelPasswordUpdateRequest';
-    public function __construct(
-        private $password,
-    ) {
-    }
+    private $password;
 
     /**
      * @return string
@@ -45,8 +40,6 @@ class VPSV1VirtualMachinePanelPasswordUpdateRequest
 
     /**
      * @param string $password
-     *
-     * @return self
      */
     public function setPassword($password): self
     {

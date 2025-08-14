@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,21 +23,17 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1DockerManagerLogsResource 
 {
     /**
-     * @param string $service
-     * @param \Hostinger\Model\VPSV1DockerManagerLogEntryCollection $entries
+     * @var string $service
      */
-    protected static $openAPIModelName = 'VPSV1DockerManagerLogsResource';
-    public function __construct(
-        private $service,
-        private $entries,
-    ) {
-    }
+    private $service;
+
+    /**
+     * @var \Hostinger\Model\VPSV1DockerManagerLogEntryResource[] $entries
+     */
+    private $entries;
 
     /**
      * @return string
@@ -47,8 +45,6 @@ class VPSV1DockerManagerLogsResource
 
     /**
      * @param string $service
-     *
-     * @return self
      */
     public function setService($service): self
     {
@@ -57,7 +53,7 @@ class VPSV1DockerManagerLogsResource
         return $this;
     }
     /**
-     * @return \Hostinger\Model\VPSV1DockerManagerLogEntryCollection
+     * @return \Hostinger\Model\VPSV1DockerManagerLogEntryResource[]
      */
     public function getEntries()
     {
@@ -65,9 +61,7 @@ class VPSV1DockerManagerLogsResource
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1DockerManagerLogEntryCollection $entries
-     *
-     * @return self
+     * @param \Hostinger\Model\VPSV1DockerManagerLogEntryResource[] $entries
      */
     public function setEntries($entries): self
     {

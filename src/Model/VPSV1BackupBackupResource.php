@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,23 +23,22 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1BackupBackupResource 
 {
     /**
-     * @param int $id
-     * @param string $location
-     * @param \DateTime $createdAt
+     * @var int $id
      */
-    protected static $openAPIModelName = 'VPSV1BackupBackupResource';
-    public function __construct(
-        private $id,
-        private $location,
-        private $createdAt,
-    ) {
-    }
+    private $id;
+
+    /**
+     * @var string $location
+     */
+    private $location;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
 
     /**
      * @return int
@@ -49,8 +50,6 @@ class VPSV1BackupBackupResource
 
     /**
      * @param int $id
-     *
-     * @return self
      */
     public function setId($id): self
     {
@@ -68,8 +67,6 @@ class VPSV1BackupBackupResource
 
     /**
      * @param string $location
-     *
-     * @return self
      */
     public function setLocation($location): self
     {
@@ -87,8 +84,6 @@ class VPSV1BackupBackupResource
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return self
      */
     public function setCreatedAt($createdAt): self
     {

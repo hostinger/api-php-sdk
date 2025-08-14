@@ -168,7 +168,7 @@ try {
 ## `getVirtualMachinesV1()`
 
 ```php
-getVirtualMachinesV1(): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection
+getVirtualMachinesV1(): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource[]
 ```
 
 Get virtual machines
@@ -202,7 +202,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection**](../Model/VPSV1VirtualMachineVirtualMachineCollection.md)
+[**\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource[]**](../Model/VPSV1VirtualMachineVirtualMachineResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

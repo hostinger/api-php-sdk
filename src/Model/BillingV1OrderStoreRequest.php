@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,23 +23,22 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class BillingV1OrderStoreRequest 
 {
     /**
-     * @param int $paymentMethodId
-     * @param \Hostinger\Model\BillingV1OrderStoreRequestItemsInner[] $items
-     * @param mixed[] $coupons
+     * @var int $paymentMethodId
      */
-    protected static $openAPIModelName = 'BillingV1OrderStoreRequest';
-    public function __construct(
-        private $paymentMethodId,
-        private $items,
-        private $coupons,
-    ) {
-    }
+    private $paymentMethodId;
+
+    /**
+     * @var \Hostinger\Model\BillingV1OrderStoreRequestItemsInner[] $items
+     */
+    private $items;
+
+    /**
+     * @var mixed[] $coupons
+     */
+    private $coupons;
 
     /**
      * @return int
@@ -49,8 +50,6 @@ class BillingV1OrderStoreRequest
 
     /**
      * @param int $paymentMethodId
-     *
-     * @return self
      */
     public function setPaymentMethodId($paymentMethodId): self
     {
@@ -68,8 +67,6 @@ class BillingV1OrderStoreRequest
 
     /**
      * @param \Hostinger\Model\BillingV1OrderStoreRequestItemsInner[] $items
-     *
-     * @return self
      */
     public function setItems($items): self
     {
@@ -87,8 +84,6 @@ class BillingV1OrderStoreRequest
 
     /**
      * @param mixed[] $coupons
-     *
-     * @return self
      */
     public function setCoupons($coupons): self
     {

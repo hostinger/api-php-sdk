@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,23 +23,22 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1VirtualMachineNameserversUpdateRequest 
 {
     /**
-     * @param string $ns1
-     * @param string|null $ns2
-     * @param string|null $ns3
+     * @var string $ns1
      */
-    protected static $openAPIModelName = 'VPSV1VirtualMachineNameserversUpdateRequest';
-    public function __construct(
-        private $ns1,
-        private $ns2 = null,
-        private $ns3 = null,
-    ) {
-    }
+    private $ns1;
+
+    /**
+     * @var string|null $ns2
+     */
+    private $ns2 = null;
+
+    /**
+     * @var string|null $ns3
+     */
+    private $ns3 = null;
 
     /**
      * @return string
@@ -49,8 +50,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest
 
     /**
      * @param string $ns1
-     *
-     * @return self
      */
     public function setNs1($ns1): self
     {
@@ -68,8 +67,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest
 
     /**
      * @param string|null $ns2
-     *
-     * @return self
      */
     public function setNs2($ns2): self
     {
@@ -87,8 +84,6 @@ class VPSV1VirtualMachineNameserversUpdateRequest
 
     /**
      * @param string|null $ns3
-     *
-     * @return self
      */
     public function setNs3($ns3): self
     {

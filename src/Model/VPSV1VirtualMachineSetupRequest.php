@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,37 +23,57 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1VirtualMachineSetupRequest 
 {
     /**
-     * @param int $templateId
-     * @param int $dataCenterId
-     * @param int $postInstallScriptId
-     * @param string $password
-     * @param string $hostname
-     * @param bool $installMonarx
-     * @param bool $enableBackups
-     * @param string $ns1
-     * @param string $ns2
-     * @param \Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey $publicKey
+     * @var int $templateId
      */
-    protected static $openAPIModelName = 'VPSV1VirtualMachineSetupRequest';
-    public function __construct(
-        private $templateId,
-        private $dataCenterId,
-        private $postInstallScriptId,
-        private $password,
-        private $hostname,
-        private $installMonarx,
-        private $enableBackups,
-        private $ns1,
-        private $ns2,
-        private $publicKey,
-    ) {
-    }
+    private $templateId;
+
+    /**
+     * @var int $dataCenterId
+     */
+    private $dataCenterId;
+
+    /**
+     * @var int $postInstallScriptId
+     */
+    private $postInstallScriptId;
+
+    /**
+     * @var string $password
+     */
+    private $password;
+
+    /**
+     * @var string $hostname
+     */
+    private $hostname;
+
+    /**
+     * @var bool $installMonarx
+     */
+    private $installMonarx;
+
+    /**
+     * @var bool $enableBackups
+     */
+    private $enableBackups;
+
+    /**
+     * @var string $ns1
+     */
+    private $ns1;
+
+    /**
+     * @var string $ns2
+     */
+    private $ns2;
+
+    /**
+     * @var \Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey $publicKey
+     */
+    private $publicKey;
 
     /**
      * @return int
@@ -63,8 +85,6 @@ class VPSV1VirtualMachineSetupRequest
 
     /**
      * @param int $templateId
-     *
-     * @return self
      */
     public function setTemplateId($templateId): self
     {
@@ -82,8 +102,6 @@ class VPSV1VirtualMachineSetupRequest
 
     /**
      * @param int $dataCenterId
-     *
-     * @return self
      */
     public function setDataCenterId($dataCenterId): self
     {
@@ -101,8 +119,6 @@ class VPSV1VirtualMachineSetupRequest
 
     /**
      * @param int $postInstallScriptId
-     *
-     * @return self
      */
     public function setPostInstallScriptId($postInstallScriptId): self
     {
@@ -120,8 +136,6 @@ class VPSV1VirtualMachineSetupRequest
 
     /**
      * @param string $password
-     *
-     * @return self
      */
     public function setPassword($password): self
     {
@@ -139,8 +153,6 @@ class VPSV1VirtualMachineSetupRequest
 
     /**
      * @param string $hostname
-     *
-     * @return self
      */
     public function setHostname($hostname): self
     {
@@ -158,8 +170,6 @@ class VPSV1VirtualMachineSetupRequest
 
     /**
      * @param bool $installMonarx
-     *
-     * @return self
      */
     public function setInstallMonarx($installMonarx): self
     {
@@ -177,8 +187,6 @@ class VPSV1VirtualMachineSetupRequest
 
     /**
      * @param bool $enableBackups
-     *
-     * @return self
      */
     public function setEnableBackups($enableBackups): self
     {
@@ -196,8 +204,6 @@ class VPSV1VirtualMachineSetupRequest
 
     /**
      * @param string $ns1
-     *
-     * @return self
      */
     public function setNs1($ns1): self
     {
@@ -215,8 +221,6 @@ class VPSV1VirtualMachineSetupRequest
 
     /**
      * @param string $ns2
-     *
-     * @return self
      */
     public function setNs2($ns2): self
     {
@@ -234,8 +238,6 @@ class VPSV1VirtualMachineSetupRequest
 
     /**
      * @param \Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey $publicKey
-     *
-     * @return self
      */
     public function setPublicKey($publicKey): self
     {

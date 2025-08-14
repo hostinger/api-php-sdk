@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingFieldTypeInspection */
+/** @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
@@ -21,29 +23,37 @@ use InvalidArgumentException;
 use ReturnTypeWillChange;
 use Hostinger\ObjectSerializer;
 
-/**
- * @implements ArrayAccess<string, mixed>
- */
 class VPSV1MetricsMetricsCollection 
 {
     /**
-     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $cpuUsage
-     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $ramUsage
-     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $diskSpace
-     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $outgoingTraffic
-     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $incomingTraffic
-     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $uptime
+     * @var \Hostinger\Model\VPSV1MetricsMetricsResource|null $cpuUsage
      */
-    protected static $openAPIModelName = 'VPSV1MetricsMetricsCollection';
-    public function __construct(
-        private $cpuUsage = null,
-        private $ramUsage = null,
-        private $diskSpace = null,
-        private $outgoingTraffic = null,
-        private $incomingTraffic = null,
-        private $uptime = null,
-    ) {
-    }
+    private $cpuUsage = null;
+
+    /**
+     * @var \Hostinger\Model\VPSV1MetricsMetricsResource|null $ramUsage
+     */
+    private $ramUsage = null;
+
+    /**
+     * @var \Hostinger\Model\VPSV1MetricsMetricsResource|null $diskSpace
+     */
+    private $diskSpace = null;
+
+    /**
+     * @var \Hostinger\Model\VPSV1MetricsMetricsResource|null $outgoingTraffic
+     */
+    private $outgoingTraffic = null;
+
+    /**
+     * @var \Hostinger\Model\VPSV1MetricsMetricsResource|null $incomingTraffic
+     */
+    private $incomingTraffic = null;
+
+    /**
+     * @var \Hostinger\Model\VPSV1MetricsMetricsResource|null $uptime
+     */
+    private $uptime = null;
 
     /**
      * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
@@ -55,8 +65,6 @@ class VPSV1MetricsMetricsCollection
 
     /**
      * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $cpuUsage
-     *
-     * @return self
      */
     public function setCpuUsage($cpuUsage): self
     {
@@ -74,8 +82,6 @@ class VPSV1MetricsMetricsCollection
 
     /**
      * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $ramUsage
-     *
-     * @return self
      */
     public function setRamUsage($ramUsage): self
     {
@@ -93,8 +99,6 @@ class VPSV1MetricsMetricsCollection
 
     /**
      * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $diskSpace
-     *
-     * @return self
      */
     public function setDiskSpace($diskSpace): self
     {
@@ -112,8 +116,6 @@ class VPSV1MetricsMetricsCollection
 
     /**
      * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $outgoingTraffic
-     *
-     * @return self
      */
     public function setOutgoingTraffic($outgoingTraffic): self
     {
@@ -131,8 +133,6 @@ class VPSV1MetricsMetricsCollection
 
     /**
      * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $incomingTraffic
-     *
-     * @return self
      */
     public function setIncomingTraffic($incomingTraffic): self
     {
@@ -150,8 +150,6 @@ class VPSV1MetricsMetricsCollection
 
     /**
      * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $uptime
-     *
-     * @return self
      */
     public function setUptime($uptime): self
     {

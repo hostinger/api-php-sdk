@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
@@ -50,11 +51,13 @@ class BillingSubscriptionsApi
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function cancelSubscriptionV1(string $subscriptionId, \Hostinger\Model\BillingV1SubscriptionCancelRequest $billingV1SubscriptionCancelRequest): \Hostinger\Model\CommonSuccessEmptyResource
+     * @return \Hostinger\Model\CommonSuccessEmptyResource
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function cancelSubscriptionV1(string $subscriptionId, \Hostinger\Model\BillingV1SubscriptionCancelRequest $billingV1SubscriptionCancelRequest)
     {
         $request = new Request(
             method: 'GET',
@@ -71,15 +74,17 @@ class BillingSubscriptionsApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\CommonSuccessEmptyResource', JsonEncoder::FORMAT);
     }
 
     /**
-    * @throws ExceptionInterface
-    * @throws ApiException
-    * @throws GuzzleException
-    */
-    public function getSubscriptionListV1(): \Hostinger\Model\BillingV1SubscriptionSubscriptionCollection
+     * @return \Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]
+     *
+     * @throws ExceptionInterface
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getSubscriptionListV1()
     {
         $request = new Request(
             method: 'GET',
@@ -95,10 +100,10 @@ class BillingSubscriptionsApi
             throw ApiException::fromConnectException($e);
         }
 
-        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\BillingV1SubscriptionSubscriptionCollection::class, JsonEncoder::FORMAT);
+        return $this->serializer->deserialize($response->getBody()->getContents(), '\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]', JsonEncoder::FORMAT);
     }
 
-    private function buildResourcePath(string $path, ...$values): string
+    private function buildResourcePath(string $path, mixed ...$values): string
     {
         foreach ($values as $value) {
             if (is_array($value)) {
@@ -123,6 +128,9 @@ class BillingSubscriptionsApi
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function createHttpClientOption(): array
     {
         $options = [];
