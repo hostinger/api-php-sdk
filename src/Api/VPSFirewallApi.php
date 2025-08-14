@@ -250,9 +250,11 @@ class VPSFirewallApi
     public function getFirewallListV1(?int $page = null)
     {
         $query = http_build_query(
-            array_filter([
-                'page' => $page,
-            ])
+            array_filter(
+                $this->serializer->normalize([
+                        'page' => $page,
+                ])
+            )
         );
 
         $request = new Request(

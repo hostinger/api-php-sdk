@@ -61,10 +61,12 @@ class BillingCatalogApi
     public function getCatalogItemListV1(?string $category = null, ?string $name = null)
     {
         $query = http_build_query(
-            array_filter([
-                'category' => $category,
-                'name' => $name,
-            ])
+            array_filter(
+                $this->serializer->normalize([
+                        'category' => $category,
+                        'name' => $name,
+                ])
+            )
         );
 
         $request = new Request(

@@ -61,16 +61,18 @@ class VPSVirtualMachineApi
     public function getAttachedPublicKeysV1(int $virtualMachineId, ?int $page = null)
     {
         $query = http_build_query(
-            array_filter([
-                'page' => $page,
-            ])
+            array_filter(
+                $this->serializer->normalize([
+                        'page' => $page,
+                ])
+            )
         );
 
         $request = new Request(
             method: 'GET',
             uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/public-keys', [
                 'virtualMachineId' => $virtualMachineId
-            ]) . $query,
+            ]) . '?' . $query,
             headers: $this->getHeaders(),
         );
 
@@ -94,17 +96,19 @@ class VPSVirtualMachineApi
     public function getMetricsV1(int $virtualMachineId, \DateTime $dateFrom, \DateTime $dateTo)
     {
         $query = http_build_query(
-            array_filter([
-                'date_from' => $dateFrom,
-                'date_to' => $dateTo,
-            ])
+            array_filter(
+                $this->serializer->normalize([
+                        'date_from' => $dateFrom,
+                        'date_to' => $dateTo,
+                ])
+            )
         );
 
         $request = new Request(
             method: 'GET',
             uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/metrics', [
                 'virtualMachineId' => $virtualMachineId
-            ]) . $query,
+            ]) . '?' . $query,
             headers: $this->getHeaders(),
         );
 

@@ -114,9 +114,11 @@ class DomainsWHOISApi
     public function getWHOISProfileListV1(?string $tld = null)
     {
         $query = http_build_query(
-            array_filter([
-                'tld' => $tld,
-            ])
+            array_filter(
+                $this->serializer->normalize([
+                        'tld' => $tld,
+                ])
+            )
         );
 
         $request = new Request(

@@ -88,16 +88,18 @@ class VPSActionsApi
     public function getActionsV1(int $virtualMachineId, ?int $page = null)
     {
         $query = http_build_query(
-            array_filter([
-                'page' => $page,
-            ])
+            array_filter(
+                $this->serializer->normalize([
+                        'page' => $page,
+                ])
+            )
         );
 
         $request = new Request(
             method: 'GET',
             uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/actions', [
                 'virtualMachineId' => $virtualMachineId
-            ]) . $query,
+            ]) . '?' . $query,
             headers: $this->getHeaders(),
         );
 
