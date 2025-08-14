@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,309 +24,98 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class DNSV1SnapshotSnapshotWithContentResource implements ModelInterface, ArrayAccess, JsonSerializable
+class DNSV1SnapshotSnapshotWithContentResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'DNS.V1.Snapshot.SnapshotWithContentResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'id' => 'int',
-        'reason' => 'string',
-        'snapshot' => '\Hostinger\Model\DNSV1ZoneRecordCollection',
-        'createdAt' => '\DateTime'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'id' => null,
-        'reason' => null,
-        'snapshot' => null,
-        'createdAt' => 'date-time'
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'id' => false,
-        'reason' => false,
-        'snapshot' => false,
-        'createdAt' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param int $id
+     * @param string $reason
+     * @param \Hostinger\Model\DNSV1ZoneRecordCollection $snapshot
+     * @param \DateTime $createdAt
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'DNSV1SnapshotSnapshotWithContentResource';
+    public function __construct(
+        private $id,
+        private $reason,
+        private $snapshot,
+        private $createdAt,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return int
      */
-    public static function openAPIFormats(): array
+    public function getId()
     {
-        return self::$openAPIFormats;
+        return $this->id;
     }
 
     /**
-     * @return array<string, bool>
+     * @param int $id
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setId($id): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'id' => 'id',
-        'reason' => 'reason',
-        'snapshot' => 'snapshot',
-        'createdAt' => 'created_at'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'id' => 'setId',
-        'reason' => 'setReason',
-        'snapshot' => 'setSnapshot',
-        'createdAt' => 'setCreatedAt'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'id' => 'getId',
-        'reason' => 'getReason',
-        'snapshot' => 'getSnapshot',
-        'createdAt' => 'getCreatedAt'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('id', $data, null);
-        $this->setIfExists('reason', $data, null);
-        $this->setIfExists('snapshot', $data, null);
-        $this->setIfExists('createdAt', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * @param int|null $id Snapshot ID
-     */
-    public function setId(?int $id): static
-    {
-        $this->container['id'] = $id;
+        $this->id = $id;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getReason(): ?string
+    public function getReason()
     {
-        return $this->container['reason'];
+        return $this->reason;
     }
 
     /**
-     * @param string|null $reason Reason of the update
+     * @param string $reason
+     *
+     * @return self
      */
-    public function setReason(?string $reason): static
+    public function setReason($reason): self
     {
-        $this->container['reason'] = $reason;
+        $this->reason = $reason;
 
         return $this;
     }
     /**
-     * @return \Hostinger\Model\DNSV1ZoneRecordCollection|null
+     * @return \Hostinger\Model\DNSV1ZoneRecordCollection
      */
-    public function getSnapshot(): ?\Hostinger\Model\DNSV1ZoneRecordCollection
+    public function getSnapshot()
     {
-        return $this->container['snapshot'];
+        return $this->snapshot;
     }
 
     /**
-     * @param \Hostinger\Model\DNSV1ZoneRecordCollection|null $snapshot snapshot
+     * @param \Hostinger\Model\DNSV1ZoneRecordCollection $snapshot
+     *
+     * @return self
      */
-    public function setSnapshot(?\Hostinger\Model\DNSV1ZoneRecordCollection $snapshot): static
+    public function setSnapshot($snapshot): self
     {
-        $this->container['snapshot'] = $snapshot;
+        $this->snapshot = $snapshot;
 
         return $this;
     }
     /**
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt()
     {
-        return $this->container['createdAt'];
+        return $this->createdAt;
     }
 
     /**
-     * @param \DateTime|null $createdAt createdAt
+     * @param \DateTime $createdAt
+     *
+     * @return self
      */
-    public function setCreatedAt(?\DateTime $createdAt): static
+    public function setCreatedAt($createdAt): self
     {
-        $this->container['createdAt'] = $createdAt;
+        $this->createdAt = $createdAt;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

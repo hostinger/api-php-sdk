@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,568 +24,203 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1DockerManagerContainerPortResource implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1DockerManagerContainerPortResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.DockerManager.ContainerPortResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'type' => 'string',
-        'protocol' => 'string',
-        'hostIp' => 'string',
-        'hostPort' => 'int',
-        'containerPort' => 'int',
-        'hostPortStart' => 'int',
-        'hostPortEnd' => 'int',
-        'containerPortStart' => 'int',
-        'containerPortEnd' => 'int'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'type' => null,
-        'protocol' => null,
-        'hostIp' => null,
-        'hostPort' => null,
-        'containerPort' => null,
-        'hostPortStart' => null,
-        'hostPortEnd' => null,
-        'containerPortStart' => null,
-        'containerPortEnd' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'type' => false,
-        'protocol' => false,
-        'hostIp' => true,
-        'hostPort' => true,
-        'containerPort' => true,
-        'hostPortStart' => true,
-        'hostPortEnd' => true,
-        'containerPortStart' => true,
-        'containerPortEnd' => true
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $type
+     * @param string $protocol
+     * @param string|null $hostIp
+     * @param int|null $hostPort
+     * @param int|null $containerPort
+     * @param int|null $hostPortStart
+     * @param int|null $hostPortEnd
+     * @param int|null $containerPortStart
+     * @param int|null $containerPortEnd
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'VPSV1DockerManagerContainerPortResource';
+    public function __construct(
+        private $type,
+        private $protocol,
+        private $hostIp = null,
+        private $hostPort = null,
+        private $containerPort = null,
+        private $hostPortStart = null,
+        private $hostPortEnd = null,
+        private $containerPortStart = null,
+        private $containerPortEnd = null,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return string
      */
-    public static function openAPIFormats(): array
+    public function getType()
     {
-        return self::$openAPIFormats;
+        return $this->type;
     }
 
     /**
-     * @return array<string, bool>
+     * @param string $type
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setType($type): self
     {
-        return self::$openAPINullables;
+        $this->type = $type;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getProtocol()
+    {
+        return $this->protocol;
     }
 
     /**
-     * @return array<string>
+     * @param string $protocol
+     *
+     * @return self
      */
-    private function getOpenAPINullablesSetToNull(): array
+    public function setProtocol($protocol): self
     {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'type' => 'type',
-        'protocol' => 'protocol',
-        'hostIp' => 'host_ip',
-        'hostPort' => 'host_port',
-        'containerPort' => 'container_port',
-        'hostPortStart' => 'host_port_start',
-        'hostPortEnd' => 'host_port_end',
-        'containerPortStart' => 'container_port_start',
-        'containerPortEnd' => 'container_port_end'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'type' => 'setType',
-        'protocol' => 'setProtocol',
-        'hostIp' => 'setHostIp',
-        'hostPort' => 'setHostPort',
-        'containerPort' => 'setContainerPort',
-        'hostPortStart' => 'setHostPortStart',
-        'hostPortEnd' => 'setHostPortEnd',
-        'containerPortStart' => 'setContainerPortStart',
-        'containerPortEnd' => 'setContainerPortEnd'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'type' => 'getType',
-        'protocol' => 'getProtocol',
-        'hostIp' => 'getHostIp',
-        'hostPort' => 'getHostPort',
-        'containerPort' => 'getContainerPort',
-        'hostPortStart' => 'getHostPortStart',
-        'hostPortEnd' => 'getHostPortEnd',
-        'containerPortStart' => 'getContainerPortStart',
-        'containerPortEnd' => 'getContainerPortEnd'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    public const TYPE_PUBLISHED = 'published';
-    public const TYPE_PUBLISHED_RANGE = 'published_range';
-    public const TYPE_EXPOSED = 'exposed';
-    public const TYPE_EXPOSED_RANGE = 'exposed_range';
-    public const PROTOCOL_TCP = 'tcp';
-    public const PROTOCOL_UDP = 'udp';
-
-    /**
-     * @return array<string>
-     */
-    public function getTypeAllowableValues(): array
-    {
-        return [
-            self::TYPE_PUBLISHED,
-            self::TYPE_PUBLISHED_RANGE,
-            self::TYPE_EXPOSED,
-            self::TYPE_EXPOSED_RANGE,
-        ];
-    }
-
-    /**
-     * @return array<string>
-     */
-    public function getProtocolAllowableValues(): array
-    {
-        return [
-            self::PROTOCOL_TCP,
-            self::PROTOCOL_UDP,
-        ];
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('type', $data, null);
-        $this->setIfExists('protocol', $data, null);
-        $this->setIfExists('hostIp', $data, null);
-        $this->setIfExists('hostPort', $data, null);
-        $this->setIfExists('containerPort', $data, null);
-        $this->setIfExists('hostPortStart', $data, null);
-        $this->setIfExists('hostPortEnd', $data, null);
-        $this->setIfExists('containerPortStart', $data, null);
-        $this->setIfExists('containerPortEnd', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getProtocolAllowableValues();
-        if (!is_null($this->container['protocol']) && !in_array($this->container['protocol'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'protocol', must be one of '%s'",
-                $this->container['protocol'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getType(): ?string
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * @param string|null $type Port mapping type - published (accessible from host), exposed (only internal), or range variants
-     */
-    public function setType(?string $type): static
-    {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->protocol = $protocol;
 
         return $this;
     }
     /**
      * @return string|null
      */
-    public function getProtocol(): ?string
+    public function getHostIp()
     {
-        return $this->container['protocol'];
+        return $this->hostIp;
     }
 
     /**
-     * @param string|null $protocol Network protocol used for communication
+     * @param string|null $hostIp
+     *
+     * @return self
      */
-    public function setProtocol(?string $protocol): static
+    public function setHostIp($hostIp): self
     {
-        $allowedValues = $this->getProtocolAllowableValues();
-        if (!in_array($protocol, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'protocol', must be one of '%s'",
-                    $protocol,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['protocol'] = $protocol;
-
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getHostIp(): ?string
-    {
-        return $this->container['hostIp'];
-    }
-
-    /**
-     * @param string|null $hostIp IP address on host where port is bound (null for exposed-only ports)
-     */
-    public function setHostIp(?string $hostIp): static
-    {
-        if (is_null($hostIp)) {
-            $this->openAPINullablesSetToNull[] = 'hostIp';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hostIp', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['hostIp'] = $hostIp;
+        $this->hostIp = $hostIp;
 
         return $this;
     }
     /**
      * @return int|null
      */
-    public function getHostPort(): ?int
+    public function getHostPort()
     {
-        return $this->container['hostPort'];
+        return $this->hostPort;
     }
 
     /**
-     * @param int|null $hostPort Port number on host machine (null for exposed-only or range ports)
+     * @param int|null $hostPort
+     *
+     * @return self
      */
-    public function setHostPort(?int $hostPort): static
+    public function setHostPort($hostPort): self
     {
-        if (is_null($hostPort)) {
-            $this->openAPINullablesSetToNull[] = 'hostPort';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hostPort', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['hostPort'] = $hostPort;
+        $this->hostPort = $hostPort;
 
         return $this;
     }
     /**
      * @return int|null
      */
-    public function getContainerPort(): ?int
+    public function getContainerPort()
     {
-        return $this->container['containerPort'];
+        return $this->containerPort;
     }
 
     /**
-     * @param int|null $containerPort Port number inside container (null for range ports)
+     * @param int|null $containerPort
+     *
+     * @return self
      */
-    public function setContainerPort(?int $containerPort): static
+    public function setContainerPort($containerPort): self
     {
-        if (is_null($containerPort)) {
-            $this->openAPINullablesSetToNull[] = 'containerPort';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('containerPort', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['containerPort'] = $containerPort;
+        $this->containerPort = $containerPort;
 
         return $this;
     }
     /**
      * @return int|null
      */
-    public function getHostPortStart(): ?int
+    public function getHostPortStart()
     {
-        return $this->container['hostPortStart'];
+        return $this->hostPortStart;
     }
 
     /**
-     * @param int|null $hostPortStart Starting port number in host port range (null for single ports)
+     * @param int|null $hostPortStart
+     *
+     * @return self
      */
-    public function setHostPortStart(?int $hostPortStart): static
+    public function setHostPortStart($hostPortStart): self
     {
-        if (is_null($hostPortStart)) {
-            $this->openAPINullablesSetToNull[] = 'hostPortStart';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hostPortStart', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['hostPortStart'] = $hostPortStart;
+        $this->hostPortStart = $hostPortStart;
 
         return $this;
     }
     /**
      * @return int|null
      */
-    public function getHostPortEnd(): ?int
+    public function getHostPortEnd()
     {
-        return $this->container['hostPortEnd'];
+        return $this->hostPortEnd;
     }
 
     /**
-     * @param int|null $hostPortEnd Ending port number in host port range (null for single ports)
+     * @param int|null $hostPortEnd
+     *
+     * @return self
      */
-    public function setHostPortEnd(?int $hostPortEnd): static
+    public function setHostPortEnd($hostPortEnd): self
     {
-        if (is_null($hostPortEnd)) {
-            $this->openAPINullablesSetToNull[] = 'hostPortEnd';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hostPortEnd', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['hostPortEnd'] = $hostPortEnd;
+        $this->hostPortEnd = $hostPortEnd;
 
         return $this;
     }
     /**
      * @return int|null
      */
-    public function getContainerPortStart(): ?int
+    public function getContainerPortStart()
     {
-        return $this->container['containerPortStart'];
+        return $this->containerPortStart;
     }
 
     /**
-     * @param int|null $containerPortStart Starting port number in container port range (null for single ports)
+     * @param int|null $containerPortStart
+     *
+     * @return self
      */
-    public function setContainerPortStart(?int $containerPortStart): static
+    public function setContainerPortStart($containerPortStart): self
     {
-        if (is_null($containerPortStart)) {
-            $this->openAPINullablesSetToNull[] = 'containerPortStart';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('containerPortStart', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['containerPortStart'] = $containerPortStart;
+        $this->containerPortStart = $containerPortStart;
 
         return $this;
     }
     /**
      * @return int|null
      */
-    public function getContainerPortEnd(): ?int
+    public function getContainerPortEnd()
     {
-        return $this->container['containerPortEnd'];
+        return $this->containerPortEnd;
     }
 
     /**
-     * @param int|null $containerPortEnd Ending port number in container port range (null for single ports)
+     * @param int|null $containerPortEnd
+     *
+     * @return self
      */
-    public function setContainerPortEnd(?int $containerPortEnd): static
+    public function setContainerPortEnd($containerPortEnd): self
     {
-        if (is_null($containerPortEnd)) {
-            $this->openAPINullablesSetToNull[] = 'containerPortEnd';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('containerPortEnd', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['containerPortEnd'] = $containerPortEnd;
+        $this->containerPortEnd = $containerPortEnd;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

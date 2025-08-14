@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -12,7 +13,6 @@
 
 namespace Hostinger\Api;
 
-use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -20,9 +20,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
-use Hostinger\HeaderSelector;
 use Hostinger\ObjectSerializer;
 
 class DomainsForwardingApi
@@ -31,16 +33,15 @@ class DomainsForwardingApi
 
     protected Configuration $config;
 
-    protected HeaderSelector $headerSelector;
+    protected SerializerInterface $serializer;
 
     public function __construct(
-        ?ClientInterface $client = null,
         ?Configuration $config = null,
-        ?HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
     ) {
-        $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->client = $client ?: new Client();
+        $this->serializer = ObjectSerializer::getSerializer();
     }
 
     public function getConfig(): Configuration
@@ -49,199 +50,104 @@ class DomainsForwardingApi
     }
 
     /**
-     * Operation createDomainForwardingV1
-     *
-     * Create domain forwarding
-     *
-     * @return \Hostinger\Model\DomainsV1ForwardingForwardingResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function createDomainForwardingV1(\Hostinger\Model\DomainsV1ForwardingStoreRequest $domainsV1ForwardingStoreRequest, ): \Hostinger\Model\DomainsV1ForwardingForwardingResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function createDomainForwardingV1(\Hostinger\Model\DomainsV1ForwardingStoreRequest $domainsV1ForwardingStoreRequest): \Hostinger\Model\DomainsV1ForwardingForwardingResource
     {
-        $request = $this->createDomainForwardingV1Request($domainsV1ForwardingStoreRequest, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\DomainsV1ForwardingForwardingResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'createDomainForwardingV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function createDomainForwardingV1Request(\Hostinger\Model\DomainsV1ForwardingStoreRequest $domainsV1ForwardingStoreRequest,): Request
-    {
-        $resourcePath = '/api/domains/v1/forwarding';
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($domainsV1ForwardingStoreRequest));
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation deleteDomainForwardingV1
-     *
-     * Delete domain forwarding
-     *
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function deleteDomainForwardingV1(string $domain, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->deleteDomainForwardingV1Request($domain, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'deleteDomainForwardingV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function deleteDomainForwardingV1Request(string $domain,): Request
-    {
-        $resourcePath = '/api/domains/v1/forwarding/{domain}';
-        $resourcePath = str_replace(
-            '{' . 'domain' . '}',
-            ObjectSerializer::toPathValue((string) $domain),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/domains/v1/forwarding',
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($domainsV1ForwardingStoreRequest, JsonEncoder::FORMAT),
         );
 
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('DELETE', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getDomainForwardingV1
-     *
-     * Get domain forwarding
-     *
-     * @return \Hostinger\Model\DomainsV1ForwardingForwardingResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getDomainForwardingV1(string $domain, ): \Hostinger\Model\DomainsV1ForwardingForwardingResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getDomainForwardingV1Request($domain, );
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\DomainsV1ForwardingForwardingResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1ForwardingForwardingResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getDomainForwardingV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getDomainForwardingV1Request(string $domain,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function deleteDomainForwardingV1(string $domain): \Hostinger\Model\CommonSuccessEmptyResource
     {
-        $resourcePath = '/api/domains/v1/forwarding/{domain}';
-        $resourcePath = str_replace(
-            '{' . 'domain' . '}',
-            ObjectSerializer::toPathValue((string) $domain),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/domains/v1/forwarding/{domain}', $domain),
+            headers: $this->getHeaders(),
         );
 
-        $body = null;
-        $query = [];
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
 
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * @return array<string, mixed>
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getDomainForwardingV1(string $domain): \Hostinger\Model\DomainsV1ForwardingForwardingResource
+    {
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/domains/v1/forwarding/{domain}', $domain),
+            headers: $this->getHeaders(),
+        );
+
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
+
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1ForwardingForwardingResource::class, JsonEncoder::FORMAT);
+    }
+
+    private function buildResourcePath(string $path, ...$values): string
+    {
+        foreach ($values as $value) {
+            if (is_array($value)) {
+                $value = implode(',', $value);
+            }
+
+            $path = str_replace('{' . 'DomainsForwarding' . '}', $value, $path);
+        }
+
+        return $path;
+    }
+
+    /**
+     * @return array<string, string>
      */
-    protected function createHttpClientOption(): array
+    private function getHeaders(): array
+    {
+        return [
+            'Authorization' => 'Bearer ' . $this->config->getAccessToken(),
+            'Content-Type' => 'application/json',
+            'User-Agent' => $this->config->getUserAgent(),
+        ];
+    }
+
+    private function createHttpClientOption(): array
     {
         $options = [];
         if ($this->config->getDebug()) {
@@ -252,37 +158,5 @@ class DomainsForwardingApi
         }
 
         return $options;
-    }
-
-    /**
-     * @param array<string, string> $query
-     */
-    protected function buildRequest(
-        string $httpMethod,
-        string $resourcePath,
-        ?string $body = null,
-        array $query = [],
-        string $contentType = 'application/json',
-    ): Request {
-        $headers = $this->headerSelector->selectHeaders(
-            accept: ['application/json'],
-            contentType: $contentType,
-            isMultipart: false
-        );
-        $headers['User-Agent'] = $this->config->getUserAgent();
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $query = ObjectSerializer::buildQuery($query);
-
-        return new Request(
-            $httpMethod,
-            $this->config->getHost() . $resourcePath . ($query ? "?$query" : ''),
-            $headers,
-            $body
-        );
     }
 }

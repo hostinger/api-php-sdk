@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,240 +24,35 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1VirtualMachineRecoveryStartRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1VirtualMachineRecoveryStartRequest 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.VirtualMachine.Recovery.StartRequest';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'rootPassword' => 'string'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'rootPassword' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'rootPassword' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $rootPassword
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * @return array<string, bool>
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'rootPassword' => 'root_password'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'rootPassword' => 'setRootPassword'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'rootPassword' => 'getRootPassword'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('rootPassword', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['rootPassword'] === null) {
-            $invalidProperties[] = "'rootPassword' can't be null";
-        }
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
+    protected static $openAPIModelName = 'VPSV1VirtualMachineRecoveryStartRequest';
+    public function __construct(
+        private $rootPassword,
+    ) {
     }
 
     /**
      * @return string
      */
-    public function getRootPassword(): string
+    public function getRootPassword()
     {
-        return $this->container['rootPassword'];
+        return $this->rootPassword;
     }
 
     /**
-     * @param string $rootPassword Temporary root password for recovery mode
+     * @param string $rootPassword
+     *
+     * @return self
      */
-    public function setRootPassword(string $rootPassword): static
+    public function setRootPassword($rootPassword): self
     {
-        $this->container['rootPassword'] = $rootPassword;
+        $this->rootPassword = $rootPassword;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

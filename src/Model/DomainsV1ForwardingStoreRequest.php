@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,327 +24,77 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class DomainsV1ForwardingStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class DomainsV1ForwardingStoreRequest 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'Domains.V1.Forwarding.StoreRequest';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'domain' => 'string',
-        'redirectType' => 'string',
-        'redirectUrl' => 'string'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'domain' => null,
-        'redirectType' => null,
-        'redirectUrl' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'domain' => false,
-        'redirectType' => false,
-        'redirectUrl' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $domain
+     * @param string $redirectType
+     * @param string $redirectUrl
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * @return array<string, bool>
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'domain' => 'domain',
-        'redirectType' => 'redirect_type',
-        'redirectUrl' => 'redirect_url'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'domain' => 'setDomain',
-        'redirectType' => 'setRedirectType',
-        'redirectUrl' => 'setRedirectUrl'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'domain' => 'getDomain',
-        'redirectType' => 'getRedirectType',
-        'redirectUrl' => 'getRedirectUrl'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    public const REDIRECT_TYPE__301 = '301';
-    public const REDIRECT_TYPE__302 = '302';
-
-    /**
-     * @return array<string>
-     */
-    public function getRedirectTypeAllowableValues(): array
-    {
-        return [
-            self::REDIRECT_TYPE__301,
-            self::REDIRECT_TYPE__302,
-        ];
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('domain', $data, null);
-        $this->setIfExists('redirectType', $data, null);
-        $this->setIfExists('redirectUrl', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['domain'] === null) {
-            $invalidProperties[] = "'domain' can't be null";
-        }
-        if ($this->container['redirectType'] === null) {
-            $invalidProperties[] = "'redirectType' can't be null";
-        }
-        $allowedValues = $this->getRedirectTypeAllowableValues();
-        if (!is_null($this->container['redirectType']) && !in_array($this->container['redirectType'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'redirectType', must be one of '%s'",
-                $this->container['redirectType'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['redirectUrl'] === null) {
-            $invalidProperties[] = "'redirectUrl' can't be null";
-        }
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
+    protected static $openAPIModelName = 'DomainsV1ForwardingStoreRequest';
+    public function __construct(
+        private $domain,
+        private $redirectType,
+        private $redirectUrl,
+    ) {
     }
 
     /**
      * @return string
      */
-    public function getDomain(): string
+    public function getDomain()
     {
-        return $this->container['domain'];
+        return $this->domain;
     }
 
     /**
-     * @param string $domain Domain name
+     * @param string $domain
+     *
+     * @return self
      */
-    public function setDomain(string $domain): static
+    public function setDomain($domain): self
     {
-        $this->container['domain'] = $domain;
+        $this->domain = $domain;
 
         return $this;
     }
     /**
      * @return string
      */
-    public function getRedirectType(): string
+    public function getRedirectType()
     {
-        return $this->container['redirectType'];
+        return $this->redirectType;
     }
 
     /**
-     * @param string $redirectType Redirect type
+     * @param string $redirectType
+     *
+     * @return self
      */
-    public function setRedirectType(string $redirectType): static
+    public function setRedirectType($redirectType): self
     {
-        $allowedValues = $this->getRedirectTypeAllowableValues();
-        if (!in_array($redirectType, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'redirectType', must be one of '%s'",
-                    $redirectType,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['redirectType'] = $redirectType;
+        $this->redirectType = $redirectType;
 
         return $this;
     }
     /**
      * @return string
      */
-    public function getRedirectUrl(): string
+    public function getRedirectUrl()
     {
-        return $this->container['redirectUrl'];
+        return $this->redirectUrl;
     }
 
     /**
-     * @param string $redirectUrl URL to forward domain to
+     * @param string $redirectUrl
+     *
+     * @return self
      */
-    public function setRedirectUrl(string $redirectUrl): static
+    public function setRedirectUrl($redirectUrl): self
     {
-        $this->container['redirectUrl'] = $redirectUrl;
+        $this->redirectUrl = $redirectUrl;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

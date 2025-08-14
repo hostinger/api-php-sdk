@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,438 +24,182 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class DomainsV1WHOISProfileResource implements ModelInterface, ArrayAccess, JsonSerializable
+class DomainsV1WHOISProfileResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'Domains.V1.WHOIS.ProfileResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'id' => 'int',
-        'tld' => 'string',
-        'country' => 'string',
-        'entityType' => 'string',
-        'whoisDetails' => 'object',
-        'tldDetails' => 'object',
-        'createdAt' => '\DateTime',
-        'updatedAt' => '\DateTime'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'id' => null,
-        'tld' => null,
-        'country' => null,
-        'entityType' => null,
-        'whoisDetails' => null,
-        'tldDetails' => null,
-        'createdAt' => 'date-time',
-        'updatedAt' => 'date-time'
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'id' => false,
-        'tld' => false,
-        'country' => false,
-        'entityType' => false,
-        'whoisDetails' => false,
-        'tldDetails' => false,
-        'createdAt' => false,
-        'updatedAt' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param int $id
+     * @param string $tld
+     * @param string $country
+     * @param string $entityType
+     * @param object $whoisDetails
+     * @param object $tldDetails
+     * @param \DateTime $createdAt
+     * @param \DateTime $updatedAt
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'DomainsV1WHOISProfileResource';
+    public function __construct(
+        private $id,
+        private $tld,
+        private $country,
+        private $entityType,
+        private $whoisDetails,
+        private $tldDetails,
+        private $createdAt,
+        private $updatedAt,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return int
      */
-    public static function openAPIFormats(): array
+    public function getId()
     {
-        return self::$openAPIFormats;
+        return $this->id;
     }
 
     /**
-     * @return array<string, bool>
+     * @param int $id
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setId($id): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'id' => 'id',
-        'tld' => 'tld',
-        'country' => 'country',
-        'entityType' => 'entity_type',
-        'whoisDetails' => 'whois_details',
-        'tldDetails' => 'tld_details',
-        'createdAt' => 'created_at',
-        'updatedAt' => 'updated_at'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'id' => 'setId',
-        'tld' => 'setTld',
-        'country' => 'setCountry',
-        'entityType' => 'setEntityType',
-        'whoisDetails' => 'setWhoisDetails',
-        'tldDetails' => 'setTldDetails',
-        'createdAt' => 'setCreatedAt',
-        'updatedAt' => 'setUpdatedAt'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'id' => 'getId',
-        'tld' => 'getTld',
-        'country' => 'getCountry',
-        'entityType' => 'getEntityType',
-        'whoisDetails' => 'getWhoisDetails',
-        'tldDetails' => 'getTldDetails',
-        'createdAt' => 'getCreatedAt',
-        'updatedAt' => 'getUpdatedAt'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    public const ENTITY_TYPE_INDIVIDUAL = 'individual';
-    public const ENTITY_TYPE_ORGANIZATION = 'organization';
-
-    /**
-     * @return array<string>
-     */
-    public function getEntityTypeAllowableValues(): array
-    {
-        return [
-            self::ENTITY_TYPE_INDIVIDUAL,
-            self::ENTITY_TYPE_ORGANIZATION,
-        ];
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('id', $data, null);
-        $this->setIfExists('tld', $data, null);
-        $this->setIfExists('country', $data, null);
-        $this->setIfExists('entityType', $data, null);
-        $this->setIfExists('whoisDetails', $data, null);
-        $this->setIfExists('tldDetails', $data, null);
-        $this->setIfExists('createdAt', $data, null);
-        $this->setIfExists('updatedAt', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getEntityTypeAllowableValues();
-        if (!is_null($this->container['entityType']) && !in_array($this->container['entityType'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'entityType', must be one of '%s'",
-                $this->container['entityType'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * @param int|null $id WHOIS Profile ID
-     */
-    public function setId(?int $id): static
-    {
-        $this->container['id'] = $id;
+        $this->id = $id;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getTld(): ?string
+    public function getTld()
     {
-        return $this->container['tld'];
+        return $this->tld;
     }
 
     /**
-     * @param string|null $tld TLD to which contact profile can be applied to
+     * @param string $tld
+     *
+     * @return self
      */
-    public function setTld(?string $tld): static
+    public function setTld($tld): self
     {
-        $this->container['tld'] = $tld;
+        $this->tld = $tld;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getCountry(): ?string
+    public function getCountry()
     {
-        return $this->container['country'];
+        return $this->country;
     }
 
     /**
-     * @param string|null $country ISO 3166 2-letter country code
+     * @param string $country
+     *
+     * @return self
      */
-    public function setCountry(?string $country): static
+    public function setCountry($country): self
     {
-        $this->container['country'] = $country;
+        $this->country = $country;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getEntityType(): ?string
+    public function getEntityType()
     {
-        return $this->container['entityType'];
+        return $this->entityType;
     }
 
     /**
-     * @param string|null $entityType WHOIS profile entity type
+     * @param string $entityType
+     *
+     * @return self
      */
-    public function setEntityType(?string $entityType): static
+    public function setEntityType($entityType): self
     {
-        $allowedValues = $this->getEntityTypeAllowableValues();
-        if (!in_array($entityType, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'entityType', must be one of '%s'",
-                    $entityType,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['entityType'] = $entityType;
+        $this->entityType = $entityType;
 
         return $this;
     }
     /**
-     * @return object|null
+     * @return object
      */
-    public function getWhoisDetails(): ?object
+    public function getWhoisDetails()
     {
-        return $this->container['whoisDetails'];
+        return $this->whoisDetails;
     }
 
     /**
-     * @param object|null $whoisDetails WHOIS profile details
+     * @param object $whoisDetails
+     *
+     * @return self
      */
-    public function setWhoisDetails(?object $whoisDetails): static
+    public function setWhoisDetails($whoisDetails): self
     {
-        $this->container['whoisDetails'] = $whoisDetails;
+        $this->whoisDetails = $whoisDetails;
 
         return $this;
     }
     /**
-     * @return object|null
+     * @return object
      */
-    public function getTldDetails(): ?object
+    public function getTldDetails()
     {
-        return $this->container['tldDetails'];
+        return $this->tldDetails;
     }
 
     /**
-     * @param object|null $tldDetails TLD details
+     * @param object $tldDetails
+     *
+     * @return self
      */
-    public function setTldDetails(?object $tldDetails): static
+    public function setTldDetails($tldDetails): self
     {
-        $this->container['tldDetails'] = $tldDetails;
+        $this->tldDetails = $tldDetails;
 
         return $this;
     }
     /**
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt()
     {
-        return $this->container['createdAt'];
+        return $this->createdAt;
     }
 
     /**
-     * @param \DateTime|null $createdAt createdAt
+     * @param \DateTime $createdAt
+     *
+     * @return self
      */
-    public function setCreatedAt(?\DateTime $createdAt): static
+    public function setCreatedAt($createdAt): self
     {
-        $this->container['createdAt'] = $createdAt;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
     /**
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getUpdatedAt(): ?\DateTime
+    public function getUpdatedAt()
     {
-        return $this->container['updatedAt'];
+        return $this->updatedAt;
     }
 
     /**
-     * @param \DateTime|null $updatedAt updatedAt
+     * @param \DateTime $updatedAt
+     *
+     * @return self
      */
-    public function setUpdatedAt(?\DateTime $updatedAt): static
+    public function setUpdatedAt($updatedAt): self
     {
-        $this->container['updatedAt'] = $updatedAt;
+        $this->updatedAt = $updatedAt;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

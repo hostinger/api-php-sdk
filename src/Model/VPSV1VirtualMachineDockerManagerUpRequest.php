@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,290 +24,56 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1VirtualMachineDockerManagerUpRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1VirtualMachineDockerManagerUpRequest 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.VirtualMachine.DockerManager.UpRequest';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'projectName' => 'string',
-        'content' => 'string'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'projectName' => null,
-        'content' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'projectName' => false,
-        'content' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $projectName
+     * @param string $content
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * @return array<string, bool>
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'projectName' => 'project_name',
-        'content' => 'content'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'projectName' => 'setProjectName',
-        'content' => 'setContent'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'projectName' => 'getProjectName',
-        'content' => 'getContent'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('projectName', $data, null);
-        $this->setIfExists('content', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['projectName'] === null) {
-            $invalidProperties[] = "'projectName' can't be null";
-        }
-        if ((mb_strlen($this->container['projectName']) > 64)) {
-            $invalidProperties[] = "invalid value for 'projectName', the character length must be smaller than or equal to 64.";
-        }
-
-        if ((mb_strlen($this->container['projectName']) < 3)) {
-            $invalidProperties[] = "invalid value for 'projectName', the character length must be bigger than or equal to 3.";
-        }
-
-        if ($this->container['content'] === null) {
-            $invalidProperties[] = "'content' can't be null";
-        }
-        if ((mb_strlen($this->container['content']) > 8192)) {
-            $invalidProperties[] = "invalid value for 'content', the character length must be smaller than or equal to 8192.";
-        }
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
+    protected static $openAPIModelName = 'VPSV1VirtualMachineDockerManagerUpRequest';
+    public function __construct(
+        private $projectName,
+        private $content,
+    ) {
     }
 
     /**
      * @return string
      */
-    public function getProjectName(): string
+    public function getProjectName()
     {
-        return $this->container['projectName'];
+        return $this->projectName;
     }
 
     /**
-     * @param string $projectName Docker Compose project name using alphanumeric characters, dashes, and underscores only
+     * @param string $projectName
+     *
+     * @return self
      */
-    public function setProjectName(string $projectName): static
+    public function setProjectName($projectName): self
     {
-        if ((mb_strlen($projectName) > 64)) {
-            throw new InvalidArgumentException('invalid length for $projectName when calling VPSV1VirtualMachineDockerManagerUpRequest., must be smaller than or equal to 64.');
-        }
-        if ((mb_strlen($projectName) < 3)) {
-            throw new InvalidArgumentException('invalid length for $projectName when calling VPSV1VirtualMachineDockerManagerUpRequest., must be bigger than or equal to 3.');
-        }
-
-        $this->container['projectName'] = $projectName;
+        $this->projectName = $projectName;
 
         return $this;
     }
     /**
      * @return string
      */
-    public function getContent(): string
+    public function getContent()
     {
-        return $this->container['content'];
+        return $this->content;
     }
 
     /**
-     * @param string $content URL pointing to docker-compose.yaml file, Github repository or raw YAML content of the compose file
+     * @param string $content
+     *
+     * @return self
      */
-    public function setContent(string $content): static
+    public function setContent($content): self
     {
-        if ((mb_strlen($content) > 8192)) {
-            throw new InvalidArgumentException('invalid length for $content when calling VPSV1VirtualMachineDockerManagerUpRequest., must be smaller than or equal to 8192.');
-        }
-
-        $this->container['content'] = $content;
+        $this->content = $content;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

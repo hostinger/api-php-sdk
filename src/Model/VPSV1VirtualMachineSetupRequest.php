@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,468 +24,224 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1VirtualMachineSetupRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1VirtualMachineSetupRequest 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.VirtualMachine.SetupRequest';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'templateId' => 'int',
-        'dataCenterId' => 'int',
-        'postInstallScriptId' => 'int',
-        'password' => 'string',
-        'hostname' => 'string',
-        'installMonarx' => 'bool',
-        'enableBackups' => 'bool',
-        'ns1' => 'string',
-        'ns2' => 'string',
-        'publicKey' => '\Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'templateId' => null,
-        'dataCenterId' => null,
-        'postInstallScriptId' => null,
-        'password' => 'password',
-        'hostname' => null,
-        'installMonarx' => null,
-        'enableBackups' => null,
-        'ns1' => null,
-        'ns2' => null,
-        'publicKey' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'templateId' => false,
-        'dataCenterId' => false,
-        'postInstallScriptId' => false,
-        'password' => false,
-        'hostname' => false,
-        'installMonarx' => false,
-        'enableBackups' => false,
-        'ns1' => false,
-        'ns2' => false,
-        'publicKey' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param int $templateId
+     * @param int $dataCenterId
+     * @param int $postInstallScriptId
+     * @param string $password
+     * @param string $hostname
+     * @param bool $installMonarx
+     * @param bool $enableBackups
+     * @param string $ns1
+     * @param string $ns2
+     * @param \Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey $publicKey
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * @return array<string, bool>
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'templateId' => 'template_id',
-        'dataCenterId' => 'data_center_id',
-        'postInstallScriptId' => 'post_install_script_id',
-        'password' => 'password',
-        'hostname' => 'hostname',
-        'installMonarx' => 'install_monarx',
-        'enableBackups' => 'enable_backups',
-        'ns1' => 'ns1',
-        'ns2' => 'ns2',
-        'publicKey' => 'public_key'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'templateId' => 'setTemplateId',
-        'dataCenterId' => 'setDataCenterId',
-        'postInstallScriptId' => 'setPostInstallScriptId',
-        'password' => 'setPassword',
-        'hostname' => 'setHostname',
-        'installMonarx' => 'setInstallMonarx',
-        'enableBackups' => 'setEnableBackups',
-        'ns1' => 'setNs1',
-        'ns2' => 'setNs2',
-        'publicKey' => 'setPublicKey'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'templateId' => 'getTemplateId',
-        'dataCenterId' => 'getDataCenterId',
-        'postInstallScriptId' => 'getPostInstallScriptId',
-        'password' => 'getPassword',
-        'hostname' => 'getHostname',
-        'installMonarx' => 'getInstallMonarx',
-        'enableBackups' => 'getEnableBackups',
-        'ns1' => 'getNs1',
-        'ns2' => 'getNs2',
-        'publicKey' => 'getPublicKey'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('templateId', $data, null);
-        $this->setIfExists('dataCenterId', $data, null);
-        $this->setIfExists('postInstallScriptId', $data, null);
-        $this->setIfExists('password', $data, null);
-        $this->setIfExists('hostname', $data, null);
-        $this->setIfExists('installMonarx', $data, false);
-        $this->setIfExists('enableBackups', $data, true);
-        $this->setIfExists('ns1', $data, null);
-        $this->setIfExists('ns2', $data, null);
-        $this->setIfExists('publicKey', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['templateId'] === null) {
-            $invalidProperties[] = "'templateId' can't be null";
-        }
-        if ($this->container['dataCenterId'] === null) {
-            $invalidProperties[] = "'dataCenterId' can't be null";
-        }
-        if (!is_null($this->container['password']) && (mb_strlen($this->container['password']) < 12)) {
-            $invalidProperties[] = "invalid value for 'password', the character length must be bigger than or equal to 12.";
-        }
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
+    protected static $openAPIModelName = 'VPSV1VirtualMachineSetupRequest';
+    public function __construct(
+        private $templateId,
+        private $dataCenterId,
+        private $postInstallScriptId,
+        private $password,
+        private $hostname,
+        private $installMonarx,
+        private $enableBackups,
+        private $ns1,
+        private $ns2,
+        private $publicKey,
+    ) {
     }
 
     /**
      * @return int
      */
-    public function getTemplateId(): int
+    public function getTemplateId()
     {
-        return $this->container['templateId'];
+        return $this->templateId;
     }
 
     /**
-     * @param int $templateId Template ID
+     * @param int $templateId
+     *
+     * @return self
      */
-    public function setTemplateId(int $templateId): static
+    public function setTemplateId($templateId): self
     {
-        $this->container['templateId'] = $templateId;
+        $this->templateId = $templateId;
 
         return $this;
     }
     /**
      * @return int
      */
-    public function getDataCenterId(): int
+    public function getDataCenterId()
     {
-        return $this->container['dataCenterId'];
+        return $this->dataCenterId;
     }
 
     /**
-     * @param int $dataCenterId Data center ID
+     * @param int $dataCenterId
+     *
+     * @return self
      */
-    public function setDataCenterId(int $dataCenterId): static
+    public function setDataCenterId($dataCenterId): self
     {
-        $this->container['dataCenterId'] = $dataCenterId;
+        $this->dataCenterId = $dataCenterId;
 
         return $this;
     }
     /**
-     * @return int|null
+     * @return int
      */
-    public function getPostInstallScriptId(): ?int
+    public function getPostInstallScriptId()
     {
-        return $this->container['postInstallScriptId'];
+        return $this->postInstallScriptId;
     }
 
     /**
-     * @param int|null $postInstallScriptId Post-install script ID
+     * @param int $postInstallScriptId
+     *
+     * @return self
      */
-    public function setPostInstallScriptId(?int $postInstallScriptId): static
+    public function setPostInstallScriptId($postInstallScriptId): self
     {
-        $this->container['postInstallScriptId'] = $postInstallScriptId;
+        $this->postInstallScriptId = $postInstallScriptId;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getPassword(): ?string
+    public function getPassword()
     {
-        return $this->container['password'];
+        return $this->password;
     }
 
     /**
-     * @param string|null $password Password for the virtual machine. If not provided, random password will be generated. Password will not be shown in the response.
+     * @param string $password
+     *
+     * @return self
      */
-    public function setPassword(?string $password): static
+    public function setPassword($password): self
     {
-
-        if ((mb_strlen($password) < 12)) {
-            throw new InvalidArgumentException('invalid length for $password when calling VPSV1VirtualMachineSetupRequest., must be bigger than or equal to 12.');
-        }
-
-        $this->container['password'] = $password;
+        $this->password = $password;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getHostname(): ?string
+    public function getHostname()
     {
-        return $this->container['hostname'];
+        return $this->hostname;
     }
 
     /**
-     * @param string|null $hostname Override default hostname of the virtual machine
+     * @param string $hostname
+     *
+     * @return self
      */
-    public function setHostname(?string $hostname): static
+    public function setHostname($hostname): self
     {
-        $this->container['hostname'] = $hostname;
+        $this->hostname = $hostname;
 
         return $this;
     }
     /**
-     * @return bool|null
+     * @return bool
      */
-    public function getInstallMonarx(): ?bool
+    public function getInstallMonarx()
     {
-        return $this->container['installMonarx'];
+        return $this->installMonarx;
     }
 
     /**
-     * @param bool|null $installMonarx Install Monarx malware scanner (if supported)
+     * @param bool $installMonarx
+     *
+     * @return self
      */
-    public function setInstallMonarx(?bool $installMonarx): static
+    public function setInstallMonarx($installMonarx): self
     {
-        $this->container['installMonarx'] = $installMonarx;
+        $this->installMonarx = $installMonarx;
 
         return $this;
     }
     /**
-     * @return bool|null
+     * @return bool
      */
-    public function getEnableBackups(): ?bool
+    public function getEnableBackups()
     {
-        return $this->container['enableBackups'];
+        return $this->enableBackups;
     }
 
     /**
-     * @param bool|null $enableBackups Enable weekly backup schedule
+     * @param bool $enableBackups
+     *
+     * @return self
      */
-    public function setEnableBackups(?bool $enableBackups): static
+    public function setEnableBackups($enableBackups): self
     {
-        $this->container['enableBackups'] = $enableBackups;
+        $this->enableBackups = $enableBackups;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getNs1(): ?string
+    public function getNs1()
     {
-        return $this->container['ns1'];
+        return $this->ns1;
     }
 
     /**
-     * @param string|null $ns1 Name server 1
+     * @param string $ns1
+     *
+     * @return self
      */
-    public function setNs1(?string $ns1): static
+    public function setNs1($ns1): self
     {
-        $this->container['ns1'] = $ns1;
+        $this->ns1 = $ns1;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getNs2(): ?string
+    public function getNs2()
     {
-        return $this->container['ns2'];
+        return $this->ns2;
     }
 
     /**
-     * @param string|null $ns2 Name server 2
+     * @param string $ns2
+     *
+     * @return self
      */
-    public function setNs2(?string $ns2): static
+    public function setNs2($ns2): self
     {
-        $this->container['ns2'] = $ns2;
+        $this->ns2 = $ns2;
 
         return $this;
     }
     /**
-     * @return \Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey|null
+     * @return \Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey
      */
-    public function getPublicKey(): ?\Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey
+    public function getPublicKey()
     {
-        return $this->container['publicKey'];
+        return $this->publicKey;
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey|null $publicKey publicKey
+     * @param \Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey $publicKey
+     *
+     * @return self
      */
-    public function setPublicKey(?\Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey $publicKey): static
+    public function setPublicKey($publicKey): self
     {
-        $this->container['publicKey'] = $publicKey;
+        $this->publicKey = $publicKey;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

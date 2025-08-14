@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,285 +24,77 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class CommonSchemaPaginationMetaSchema implements ModelInterface, ArrayAccess, JsonSerializable
+class CommonSchemaPaginationMetaSchema 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'Common.Schema.PaginationMetaSchema';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'currentPage' => 'int',
-        'perPage' => 'int',
-        'total' => 'int'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'currentPage' => null,
-        'perPage' => null,
-        'total' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'currentPage' => false,
-        'perPage' => false,
-        'total' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param int $currentPage
+     * @param int $perPage
+     * @param int $total
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'CommonSchemaPaginationMetaSchema';
+    public function __construct(
+        private $currentPage,
+        private $perPage,
+        private $total,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return int
      */
-    public static function openAPIFormats(): array
+    public function getCurrentPage()
     {
-        return self::$openAPIFormats;
+        return $this->currentPage;
     }
 
     /**
-     * @return array<string, bool>
+     * @param int $currentPage
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setCurrentPage($currentPage): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'currentPage' => 'current_page',
-        'perPage' => 'per_page',
-        'total' => 'total'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'currentPage' => 'setCurrentPage',
-        'perPage' => 'setPerPage',
-        'total' => 'setTotal'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'currentPage' => 'getCurrentPage',
-        'perPage' => 'getPerPage',
-        'total' => 'getTotal'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('currentPage', $data, null);
-        $this->setIfExists('perPage', $data, null);
-        $this->setIfExists('total', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getCurrentPage(): ?int
-    {
-        return $this->container['currentPage'];
-    }
-
-    /**
-     * @param int|null $currentPage currentPage
-     */
-    public function setCurrentPage(?int $currentPage): static
-    {
-        $this->container['currentPage'] = $currentPage;
+        $this->currentPage = $currentPage;
 
         return $this;
     }
     /**
-     * @return int|null
+     * @return int
      */
-    public function getPerPage(): ?int
+    public function getPerPage()
     {
-        return $this->container['perPage'];
+        return $this->perPage;
     }
 
     /**
-     * @param int|null $perPage perPage
+     * @param int $perPage
+     *
+     * @return self
      */
-    public function setPerPage(?int $perPage): static
+    public function setPerPage($perPage): self
     {
-        $this->container['perPage'] = $perPage;
+        $this->perPage = $perPage;
 
         return $this;
     }
     /**
-     * @return int|null
+     * @return int
      */
-    public function getTotal(): ?int
+    public function getTotal()
     {
-        return $this->container['total'];
+        return $this->total;
     }
 
     /**
-     * @param int|null $total total
+     * @param int $total
+     *
+     * @return self
      */
-    public function setTotal(?int $total): static
+    public function setTotal($total): self
     {
-        $this->container['total'] = $total;
+        $this->total = $total;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

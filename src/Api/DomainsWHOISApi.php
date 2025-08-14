@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -12,7 +13,6 @@
 
 namespace Hostinger\Api;
 
-use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -20,9 +20,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
-use Hostinger\HeaderSelector;
 use Hostinger\ObjectSerializer;
 
 class DomainsWHOISApi
@@ -31,16 +33,15 @@ class DomainsWHOISApi
 
     protected Configuration $config;
 
-    protected HeaderSelector $headerSelector;
+    protected SerializerInterface $serializer;
 
     public function __construct(
-        ?ClientInterface $client = null,
         ?Configuration $config = null,
-        ?HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
     ) {
-        $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->client = $client ?: new Client();
+        $this->serializer = ObjectSerializer::getSerializer();
     }
 
     public function getConfig(): Configuration
@@ -49,329 +50,158 @@ class DomainsWHOISApi
     }
 
     /**
-     * Operation createWHOISProfileV1
-     *
-     * Create WHOIS profile
-     *
-     * @return \Hostinger\Model\DomainsV1WHOISProfileResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function createWHOISProfileV1(\Hostinger\Model\DomainsV1WHOISStoreRequest $domainsV1WHOISStoreRequest, ): \Hostinger\Model\DomainsV1WHOISProfileResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function createWHOISProfileV1(\Hostinger\Model\DomainsV1WHOISStoreRequest $domainsV1WHOISStoreRequest): \Hostinger\Model\DomainsV1WHOISProfileResource
     {
-        $request = $this->createWHOISProfileV1Request($domainsV1WHOISStoreRequest, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\DomainsV1WHOISProfileResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'createWHOISProfileV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function createWHOISProfileV1Request(\Hostinger\Model\DomainsV1WHOISStoreRequest $domainsV1WHOISStoreRequest,): Request
-    {
-        $resourcePath = '/api/domains/v1/whois';
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($domainsV1WHOISStoreRequest));
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation deleteWHOISProfileV1
-     *
-     * Delete WHOIS profile
-     *
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function deleteWHOISProfileV1(int $whoisId, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->deleteWHOISProfileV1Request($whoisId, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'deleteWHOISProfileV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function deleteWHOISProfileV1Request(int $whoisId,): Request
-    {
-        $resourcePath = '/api/domains/v1/whois/{whoisId}';
-        $resourcePath = str_replace(
-            '{' . 'whoisId' . '}',
-            ObjectSerializer::toPathValue((string) $whoisId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/domains/v1/whois',
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($domainsV1WHOISStoreRequest, JsonEncoder::FORMAT),
         );
 
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('DELETE', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getWHOISProfileListV1
-     *
-     * Get WHOIS profile list
-     *
-     * @return \Hostinger\Model\DomainsV1WHOISProfileCollection|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getWHOISProfileListV1(?string $tld = null, ): \Hostinger\Model\DomainsV1WHOISProfileCollection|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getWHOISProfileListV1Request($tld, );
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\DomainsV1WHOISProfileCollection';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1WHOISProfileResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getWHOISProfileListV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getWHOISProfileListV1Request(?string $tld = null,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function deleteWHOISProfileV1(int $whoisId): \Hostinger\Model\CommonSuccessEmptyResource
     {
-        $resourcePath = '/api/domains/v1/whois';
-
-        $body = null;
-        $query = ObjectSerializer::toQueryValue(
-            $tld,
-            'tld', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/domains/v1/whois/{whoisId}', $whoisId),
+            headers: $this->getHeaders(),
         );
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getWHOISProfileUsageV1
-     *
-     * Get WHOIS profile usage
-     *
-     * @return \Hostinger\Model\DomainsV1WHOISProfileUsageResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getWHOISProfileUsageV1(int $whoisId, ): \Hostinger\Model\DomainsV1WHOISProfileUsageResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getWHOISProfileUsageV1Request($whoisId, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\DomainsV1WHOISProfileUsageResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getWHOISProfileUsageV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getWHOISProfileUsageV1Request(int $whoisId,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getWHOISProfileListV1(?string $tld = null): \Hostinger\Model\DomainsV1WHOISProfileCollection
     {
-        $resourcePath = '/api/domains/v1/whois/{whoisId}/usage';
-        $resourcePath = str_replace(
-            '{' . 'whoisId' . '}',
-            ObjectSerializer::toPathValue((string) $whoisId),
-            $resourcePath
+        $query = http_build_query(
+            array_filter([
+                'tld' => $tld,
+            ])
         );
 
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getWHOISProfileV1
-     *
-     * Get WHOIS profile
-     *
-     * @return \Hostinger\Model\DomainsV1WHOISProfileResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getWHOISProfileV1(int $whoisId, ): \Hostinger\Model\DomainsV1WHOISProfileResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getWHOISProfileV1Request($whoisId, );
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/domains/v1/whois' . $query,
+            headers: $this->getHeaders(),
+        );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\DomainsV1WHOISProfileResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1WHOISProfileCollection::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getWHOISProfileV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getWHOISProfileV1Request(int $whoisId,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getWHOISProfileUsageV1(int $whoisId): \Hostinger\Model\DomainsV1WHOISProfileUsageResource
     {
-        $resourcePath = '/api/domains/v1/whois/{whoisId}';
-        $resourcePath = str_replace(
-            '{' . 'whoisId' . '}',
-            ObjectSerializer::toPathValue((string) $whoisId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/domains/v1/whois/{whoisId}/usage', $whoisId),
+            headers: $this->getHeaders(),
         );
 
-        $body = null;
-        $query = [];
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
 
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1WHOISProfileUsageResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * @return array<string, mixed>
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getWHOISProfileV1(int $whoisId): \Hostinger\Model\DomainsV1WHOISProfileResource
+    {
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/domains/v1/whois/{whoisId}', $whoisId),
+            headers: $this->getHeaders(),
+        );
+
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
+
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1WHOISProfileResource::class, JsonEncoder::FORMAT);
+    }
+
+    private function buildResourcePath(string $path, ...$values): string
+    {
+        foreach ($values as $value) {
+            if (is_array($value)) {
+                $value = implode(',', $value);
+            }
+
+            $path = str_replace('{' . 'DomainsWHOIS' . '}', $value, $path);
+        }
+
+        return $path;
+    }
+
+    /**
+     * @return array<string, string>
      */
-    protected function createHttpClientOption(): array
+    private function getHeaders(): array
+    {
+        return [
+            'Authorization' => 'Bearer ' . $this->config->getAccessToken(),
+            'Content-Type' => 'application/json',
+            'User-Agent' => $this->config->getUserAgent(),
+        ];
+    }
+
+    private function createHttpClientOption(): array
     {
         $options = [];
         if ($this->config->getDebug()) {
@@ -382,37 +212,5 @@ class DomainsWHOISApi
         }
 
         return $options;
-    }
-
-    /**
-     * @param array<string, string> $query
-     */
-    protected function buildRequest(
-        string $httpMethod,
-        string $resourcePath,
-        ?string $body = null,
-        array $query = [],
-        string $contentType = 'application/json',
-    ): Request {
-        $headers = $this->headerSelector->selectHeaders(
-            accept: ['application/json'],
-            contentType: $contentType,
-            isMultipart: false
-        );
-        $headers['User-Agent'] = $this->config->getUserAgent();
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $query = ObjectSerializer::buildQuery($query);
-
-        return new Request(
-            $httpMethod,
-            $this->config->getHost() . $resourcePath . ($query ? "?$query" : ''),
-            $headers,
-            $body
-        );
     }
 }

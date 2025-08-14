@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,343 +24,119 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class BillingV1CatalogCatalogItemResource implements ModelInterface, ArrayAccess, JsonSerializable
+class BillingV1CatalogCatalogItemResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'Billing.V1.Catalog.CatalogItemResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'category' => 'string',
-        'metadata' => 'object',
-        'prices' => '\Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'category' => null,
-        'metadata' => null,
-        'prices' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'category' => false,
-        'metadata' => true,
-        'prices' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $id
+     * @param string $name
+     * @param string $category
+     * @param object|null $metadata
+     * @param \Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection $prices
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'BillingV1CatalogCatalogItemResource';
+    public function __construct(
+        private $id,
+        private $name,
+        private $category,
+        private $metadata = null,
+        private $prices,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return string
      */
-    public static function openAPIFormats(): array
+    public function getId()
     {
-        return self::$openAPIFormats;
+        return $this->id;
     }
 
     /**
-     * @return array<string, bool>
+     * @param string $id
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setId($id): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'category' => 'category',
-        'metadata' => 'metadata',
-        'prices' => 'prices'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'category' => 'setCategory',
-        'metadata' => 'setMetadata',
-        'prices' => 'setPrices'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'category' => 'getCategory',
-        'metadata' => 'getMetadata',
-        'prices' => 'getPrices'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('id', $data, null);
-        $this->setIfExists('name', $data, null);
-        $this->setIfExists('category', $data, null);
-        $this->setIfExists('metadata', $data, null);
-        $this->setIfExists('prices', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getId(): ?string
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * @param string|null $id Catalog item ID
-     */
-    public function setId(?string $id): static
-    {
-        $this->container['id'] = $id;
+        $this->id = $id;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getName(): ?string
+    public function getName()
     {
-        return $this->container['name'];
+        return $this->name;
     }
 
     /**
-     * @param string|null $name name
+     * @param string $name
+     *
+     * @return self
      */
-    public function setName(?string $name): static
+    public function setName($name): self
     {
-        $this->container['name'] = $name;
+        $this->name = $name;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getCategory(): ?string
+    public function getCategory()
     {
-        return $this->container['category'];
+        return $this->category;
     }
 
     /**
-     * @param string|null $category category
+     * @param string $category
+     *
+     * @return self
      */
-    public function setCategory(?string $category): static
+    public function setCategory($category): self
     {
-        $this->container['category'] = $category;
+        $this->category = $category;
 
         return $this;
     }
     /**
      * @return object|null
      */
-    public function getMetadata(): ?object
+    public function getMetadata()
     {
-        return $this->container['metadata'];
+        return $this->metadata;
     }
 
     /**
-     * @param object|null $metadata Flexible key-value storage containing category-specific metadata for the catalog item. The structure and available fields vary depending on the item category.
+     * @param object|null $metadata
+     *
+     * @return self
      */
-    public function setMetadata(?object $metadata): static
+    public function setMetadata($metadata): self
     {
-        if (is_null($metadata)) {
-            $this->openAPINullablesSetToNull[] = 'metadata';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metadata', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['metadata'] = $metadata;
+        $this->metadata = $metadata;
 
         return $this;
     }
     /**
-     * @return \Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection|null
+     * @return \Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection
      */
-    public function getPrices(): ?\Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection
+    public function getPrices()
     {
-        return $this->container['prices'];
+        return $this->prices;
     }
 
     /**
-     * @param \Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection|null $prices prices
+     * @param \Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection $prices
+     *
+     * @return self
      */
-    public function setPrices(?\Hostinger\Model\BillingV1CatalogCatalogItemPriceCollection $prices): static
+    public function setPrices($prices): self
     {
-        $this->container['prices'] = $prices;
+        $this->prices = $prices;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

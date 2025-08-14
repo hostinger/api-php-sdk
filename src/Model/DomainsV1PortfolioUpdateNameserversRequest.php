@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,315 +24,98 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class DomainsV1PortfolioUpdateNameserversRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class DomainsV1PortfolioUpdateNameserversRequest 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'Domains.V1.Portfolio.UpdateNameserversRequest';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'ns1' => 'string',
-        'ns2' => 'string',
-        'ns3' => 'string',
-        'ns4' => 'string'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'ns1' => null,
-        'ns2' => null,
-        'ns3' => null,
-        'ns4' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'ns1' => false,
-        'ns2' => false,
-        'ns3' => false,
-        'ns4' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $ns1
+     * @param string $ns2
+     * @param string $ns3
+     * @param string $ns4
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * @return array<string, bool>
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'ns1' => 'ns1',
-        'ns2' => 'ns2',
-        'ns3' => 'ns3',
-        'ns4' => 'ns4'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'ns1' => 'setNs1',
-        'ns2' => 'setNs2',
-        'ns3' => 'setNs3',
-        'ns4' => 'setNs4'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'ns1' => 'getNs1',
-        'ns2' => 'getNs2',
-        'ns3' => 'getNs3',
-        'ns4' => 'getNs4'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('ns1', $data, null);
-        $this->setIfExists('ns2', $data, null);
-        $this->setIfExists('ns3', $data, null);
-        $this->setIfExists('ns4', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['ns1'] === null) {
-            $invalidProperties[] = "'ns1' can't be null";
-        }
-        if ($this->container['ns2'] === null) {
-            $invalidProperties[] = "'ns2' can't be null";
-        }
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
+    protected static $openAPIModelName = 'DomainsV1PortfolioUpdateNameserversRequest';
+    public function __construct(
+        private $ns1,
+        private $ns2,
+        private $ns3,
+        private $ns4,
+    ) {
     }
 
     /**
      * @return string
      */
-    public function getNs1(): string
+    public function getNs1()
     {
-        return $this->container['ns1'];
+        return $this->ns1;
     }
 
     /**
-     * @param string $ns1 First name server
+     * @param string $ns1
+     *
+     * @return self
      */
-    public function setNs1(string $ns1): static
+    public function setNs1($ns1): self
     {
-        $this->container['ns1'] = $ns1;
+        $this->ns1 = $ns1;
 
         return $this;
     }
     /**
      * @return string
      */
-    public function getNs2(): string
+    public function getNs2()
     {
-        return $this->container['ns2'];
+        return $this->ns2;
     }
 
     /**
-     * @param string $ns2 Second name server
+     * @param string $ns2
+     *
+     * @return self
      */
-    public function setNs2(string $ns2): static
+    public function setNs2($ns2): self
     {
-        $this->container['ns2'] = $ns2;
+        $this->ns2 = $ns2;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getNs3(): ?string
+    public function getNs3()
     {
-        return $this->container['ns3'];
+        return $this->ns3;
     }
 
     /**
-     * @param string|null $ns3 Third name server
+     * @param string $ns3
+     *
+     * @return self
      */
-    public function setNs3(?string $ns3): static
+    public function setNs3($ns3): self
     {
-        $this->container['ns3'] = $ns3;
+        $this->ns3 = $ns3;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getNs4(): ?string
+    public function getNs4()
     {
-        return $this->container['ns4'];
+        return $this->ns4;
     }
 
     /**
-     * @param string|null $ns4 Fourth name server
+     * @param string $ns4
+     *
+     * @return self
      */
-    public function setNs4(?string $ns4): static
+    public function setNs4($ns4): self
     {
-        $this->container['ns4'] = $ns4;
+        $this->ns4 = $ns4;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -12,7 +13,6 @@
 
 namespace Hostinger\Api;
 
-use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -20,9 +20,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
-use Hostinger\HeaderSelector;
 use Hostinger\ObjectSerializer;
 
 class VPSOSTemplatesApi
@@ -31,16 +33,15 @@ class VPSOSTemplatesApi
 
     protected Configuration $config;
 
-    protected HeaderSelector $headerSelector;
+    protected SerializerInterface $serializer;
 
     public function __construct(
-        ?ClientInterface $client = null,
         ?Configuration $config = null,
-        ?HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
     ) {
-        $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->client = $client ?: new Client();
+        $this->serializer = ObjectSerializer::getSerializer();
     }
 
     public function getConfig(): Configuration
@@ -49,132 +50,79 @@ class VPSOSTemplatesApi
     }
 
     /**
-     * Operation getTemplateDetailsV1
-     *
-     * Get template details
-     *
-     * @return \Hostinger\Model\VPSV1TemplateTemplateResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getTemplateDetailsV1(int $templateId, ): \Hostinger\Model\VPSV1TemplateTemplateResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getTemplateDetailsV1(int $templateId): \Hostinger\Model\VPSV1TemplateTemplateResource
     {
-        $request = $this->getTemplateDetailsV1Request($templateId, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1TemplateTemplateResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'getTemplateDetailsV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getTemplateDetailsV1Request(int $templateId,): Request
-    {
-        $resourcePath = '/api/vps/v1/templates/{templateId}';
-        $resourcePath = str_replace(
-            '{' . 'templateId' . '}',
-            ObjectSerializer::toPathValue((string) $templateId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/templates/{templateId}', $templateId),
+            headers: $this->getHeaders(),
         );
 
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getTemplatesV1
-     *
-     * Get templates
-     *
-     * @return \Hostinger\Model\VPSV1TemplateTemplateCollection|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getTemplatesV1(): \Hostinger\Model\VPSV1TemplateTemplateCollection|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getTemplatesV1Request();
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1TemplateTemplateResource::class, JsonEncoder::FORMAT);
+    }
 
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1TemplateTemplateCollection';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
+    /**
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getTemplatesV1(): \Hostinger\Model\VPSV1TemplateTemplateCollection
+    {
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/vps/v1/templates',
+            headers: $this->getHeaders(),
+        );
+
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
         }
 
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1TemplateTemplateCollection::class, JsonEncoder::FORMAT);
     }
 
-    /**
-     * Create request for operation 'getTemplatesV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getTemplatesV1Request(): Request
+    private function buildResourcePath(string $path, ...$values): string
     {
-        $resourcePath = '/api/vps/v1/templates';
+        foreach ($values as $value) {
+            if (is_array($value)) {
+                $value = implode(',', $value);
+            }
 
-        $body = null;
-        $query = [];
+            $path = str_replace('{' . 'VPSOSTemplates' . '}', $value, $path);
+        }
 
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
+        return $path;
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<string, string>
      */
-    protected function createHttpClientOption(): array
+    private function getHeaders(): array
+    {
+        return [
+            'Authorization' => 'Bearer ' . $this->config->getAccessToken(),
+            'Content-Type' => 'application/json',
+            'User-Agent' => $this->config->getUserAgent(),
+        ];
+    }
+
+    private function createHttpClientOption(): array
     {
         $options = [];
         if ($this->config->getDebug()) {
@@ -185,37 +133,5 @@ class VPSOSTemplatesApi
         }
 
         return $options;
-    }
-
-    /**
-     * @param array<string, string> $query
-     */
-    protected function buildRequest(
-        string $httpMethod,
-        string $resourcePath,
-        ?string $body = null,
-        array $query = [],
-        string $contentType = 'application/json',
-    ): Request {
-        $headers = $this->headerSelector->selectHeaders(
-            accept: ['application/json'],
-            contentType: $contentType,
-            isMultipart: false
-        );
-        $headers['User-Agent'] = $this->config->getUserAgent();
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $query = ObjectSerializer::buildQuery($query);
-
-        return new Request(
-            $httpMethod,
-            $this->config->getHost() . $resourcePath . ($query ? "?$query" : ''),
-            $headers,
-            $body
-        );
     }
 }

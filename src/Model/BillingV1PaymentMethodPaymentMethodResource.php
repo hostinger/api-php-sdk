@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,429 +24,203 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class BillingV1PaymentMethodPaymentMethodResource implements ModelInterface, ArrayAccess, JsonSerializable
+class BillingV1PaymentMethodPaymentMethodResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'Billing.V1.PaymentMethod.PaymentMethodResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'id' => 'int',
-        'name' => 'string',
-        'identifier' => 'string',
-        'paymentMethod' => 'string',
-        'isDefault' => 'bool',
-        'isExpired' => 'bool',
-        'isSuspended' => 'bool',
-        'createdAt' => '\DateTime',
-        'expiresAt' => '\DateTime'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'identifier' => null,
-        'paymentMethod' => null,
-        'isDefault' => null,
-        'isExpired' => null,
-        'isSuspended' => null,
-        'createdAt' => 'date-time',
-        'expiresAt' => 'date-time'
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'identifier' => false,
-        'paymentMethod' => false,
-        'isDefault' => false,
-        'isExpired' => false,
-        'isSuspended' => false,
-        'createdAt' => false,
-        'expiresAt' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param int $id
+     * @param string $name
+     * @param string $identifier
+     * @param string $paymentMethod
+     * @param bool $isDefault
+     * @param bool $isExpired
+     * @param bool $isSuspended
+     * @param \DateTime $createdAt
+     * @param \DateTime $expiresAt
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'BillingV1PaymentMethodPaymentMethodResource';
+    public function __construct(
+        private $id,
+        private $name,
+        private $identifier,
+        private $paymentMethod,
+        private $isDefault,
+        private $isExpired,
+        private $isSuspended,
+        private $createdAt,
+        private $expiresAt,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return int
      */
-    public static function openAPIFormats(): array
+    public function getId()
     {
-        return self::$openAPIFormats;
+        return $this->id;
     }
 
     /**
-     * @return array<string, bool>
+     * @param int $id
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setId($id): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'identifier' => 'identifier',
-        'paymentMethod' => 'payment_method',
-        'isDefault' => 'is_default',
-        'isExpired' => 'is_expired',
-        'isSuspended' => 'is_suspended',
-        'createdAt' => 'created_at',
-        'expiresAt' => 'expires_at'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'identifier' => 'setIdentifier',
-        'paymentMethod' => 'setPaymentMethod',
-        'isDefault' => 'setIsDefault',
-        'isExpired' => 'setIsExpired',
-        'isSuspended' => 'setIsSuspended',
-        'createdAt' => 'setCreatedAt',
-        'expiresAt' => 'setExpiresAt'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'identifier' => 'getIdentifier',
-        'paymentMethod' => 'getPaymentMethod',
-        'isDefault' => 'getIsDefault',
-        'isExpired' => 'getIsExpired',
-        'isSuspended' => 'getIsSuspended',
-        'createdAt' => 'getCreatedAt',
-        'expiresAt' => 'getExpiresAt'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('id', $data, null);
-        $this->setIfExists('name', $data, null);
-        $this->setIfExists('identifier', $data, null);
-        $this->setIfExists('paymentMethod', $data, null);
-        $this->setIfExists('isDefault', $data, null);
-        $this->setIfExists('isExpired', $data, null);
-        $this->setIfExists('isSuspended', $data, null);
-        $this->setIfExists('createdAt', $data, null);
-        $this->setIfExists('expiresAt', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * @param int|null $id Payment method ID
-     */
-    public function setId(?int $id): static
-    {
-        $this->container['id'] = $id;
+        $this->id = $id;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getName(): ?string
+    public function getName()
     {
-        return $this->container['name'];
+        return $this->name;
     }
 
     /**
-     * @param string|null $name name
+     * @param string $name
+     *
+     * @return self
      */
-    public function setName(?string $name): static
+    public function setName($name): self
     {
-        $this->container['name'] = $name;
+        $this->name = $name;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getIdentifier(): ?string
+    public function getIdentifier()
     {
-        return $this->container['identifier'];
+        return $this->identifier;
     }
 
     /**
-     * @param string|null $identifier identifier
+     * @param string $identifier
+     *
+     * @return self
      */
-    public function setIdentifier(?string $identifier): static
+    public function setIdentifier($identifier): self
     {
-        $this->container['identifier'] = $identifier;
+        $this->identifier = $identifier;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getPaymentMethod(): ?string
+    public function getPaymentMethod()
     {
-        return $this->container['paymentMethod'];
+        return $this->paymentMethod;
     }
 
     /**
-     * @param string|null $paymentMethod paymentMethod
+     * @param string $paymentMethod
+     *
+     * @return self
      */
-    public function setPaymentMethod(?string $paymentMethod): static
+    public function setPaymentMethod($paymentMethod): self
     {
-        $this->container['paymentMethod'] = $paymentMethod;
+        $this->paymentMethod = $paymentMethod;
 
         return $this;
     }
     /**
-     * @return bool|null
+     * @return bool
      */
-    public function getIsDefault(): ?bool
+    public function getIsDefault()
     {
-        return $this->container['isDefault'];
+        return $this->isDefault;
     }
 
     /**
-     * @param bool|null $isDefault isDefault
+     * @param bool $isDefault
+     *
+     * @return self
      */
-    public function setIsDefault(?bool $isDefault): static
+    public function setIsDefault($isDefault): self
     {
-        $this->container['isDefault'] = $isDefault;
+        $this->isDefault = $isDefault;
 
         return $this;
     }
     /**
-     * @return bool|null
+     * @return bool
      */
-    public function getIsExpired(): ?bool
+    public function getIsExpired()
     {
-        return $this->container['isExpired'];
+        return $this->isExpired;
     }
 
     /**
-     * @param bool|null $isExpired isExpired
+     * @param bool $isExpired
+     *
+     * @return self
      */
-    public function setIsExpired(?bool $isExpired): static
+    public function setIsExpired($isExpired): self
     {
-        $this->container['isExpired'] = $isExpired;
+        $this->isExpired = $isExpired;
 
         return $this;
     }
     /**
-     * @return bool|null
+     * @return bool
      */
-    public function getIsSuspended(): ?bool
+    public function getIsSuspended()
     {
-        return $this->container['isSuspended'];
+        return $this->isSuspended;
     }
 
     /**
-     * @param bool|null $isSuspended isSuspended
+     * @param bool $isSuspended
+     *
+     * @return self
      */
-    public function setIsSuspended(?bool $isSuspended): static
+    public function setIsSuspended($isSuspended): self
     {
-        $this->container['isSuspended'] = $isSuspended;
+        $this->isSuspended = $isSuspended;
 
         return $this;
     }
     /**
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt()
     {
-        return $this->container['createdAt'];
+        return $this->createdAt;
     }
 
     /**
-     * @param \DateTime|null $createdAt createdAt
+     * @param \DateTime $createdAt
+     *
+     * @return self
      */
-    public function setCreatedAt(?\DateTime $createdAt): static
+    public function setCreatedAt($createdAt): self
     {
-        $this->container['createdAt'] = $createdAt;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
     /**
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getExpiresAt(): ?\DateTime
+    public function getExpiresAt()
     {
-        return $this->container['expiresAt'];
+        return $this->expiresAt;
     }
 
     /**
-     * @param \DateTime|null $expiresAt expiresAt
+     * @param \DateTime $expiresAt
+     *
+     * @return self
      */
-    public function setExpiresAt(?\DateTime $expiresAt): static
+    public function setExpiresAt($expiresAt): self
     {
-        $this->container['expiresAt'] = $expiresAt;
+        $this->expiresAt = $expiresAt;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

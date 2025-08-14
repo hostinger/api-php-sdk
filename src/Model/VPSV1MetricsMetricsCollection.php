@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,417 +24,140 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1MetricsMetricsCollection implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1MetricsMetricsCollection 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.Metrics.MetricsCollection';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'cpuUsage' => '\Hostinger\Model\VPSV1MetricsMetricsResource',
-        'ramUsage' => '\Hostinger\Model\VPSV1MetricsMetricsResource',
-        'diskSpace' => '\Hostinger\Model\VPSV1MetricsMetricsResource',
-        'outgoingTraffic' => '\Hostinger\Model\VPSV1MetricsMetricsResource',
-        'incomingTraffic' => '\Hostinger\Model\VPSV1MetricsMetricsResource',
-        'uptime' => '\Hostinger\Model\VPSV1MetricsMetricsResource'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'cpuUsage' => null,
-        'ramUsage' => null,
-        'diskSpace' => null,
-        'outgoingTraffic' => null,
-        'incomingTraffic' => null,
-        'uptime' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'cpuUsage' => true,
-        'ramUsage' => true,
-        'diskSpace' => true,
-        'outgoingTraffic' => true,
-        'incomingTraffic' => true,
-        'uptime' => true
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $cpuUsage
+     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $ramUsage
+     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $diskSpace
+     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $outgoingTraffic
+     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $incomingTraffic
+     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $uptime
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * @return array<string, bool>
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'cpuUsage' => 'cpu_usage',
-        'ramUsage' => 'ram_usage',
-        'diskSpace' => 'disk_space',
-        'outgoingTraffic' => 'outgoing_traffic',
-        'incomingTraffic' => 'incoming_traffic',
-        'uptime' => 'uptime'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'cpuUsage' => 'setCpuUsage',
-        'ramUsage' => 'setRamUsage',
-        'diskSpace' => 'setDiskSpace',
-        'outgoingTraffic' => 'setOutgoingTraffic',
-        'incomingTraffic' => 'setIncomingTraffic',
-        'uptime' => 'setUptime'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'cpuUsage' => 'getCpuUsage',
-        'ramUsage' => 'getRamUsage',
-        'diskSpace' => 'getDiskSpace',
-        'outgoingTraffic' => 'getOutgoingTraffic',
-        'incomingTraffic' => 'getIncomingTraffic',
-        'uptime' => 'getUptime'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('cpuUsage', $data, null);
-        $this->setIfExists('ramUsage', $data, null);
-        $this->setIfExists('diskSpace', $data, null);
-        $this->setIfExists('outgoingTraffic', $data, null);
-        $this->setIfExists('incomingTraffic', $data, null);
-        $this->setIfExists('uptime', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
+    protected static $openAPIModelName = 'VPSV1MetricsMetricsCollection';
+    public function __construct(
+        private $cpuUsage = null,
+        private $ramUsage = null,
+        private $diskSpace = null,
+        private $outgoingTraffic = null,
+        private $incomingTraffic = null,
+        private $uptime = null,
+    ) {
     }
 
     /**
      * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
      */
-    public function getCpuUsage(): ?\Hostinger\Model\VPSV1MetricsMetricsResource
+    public function getCpuUsage()
     {
-        return $this->container['cpuUsage'];
+        return $this->cpuUsage;
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $cpuUsage cpuUsage
+     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $cpuUsage
+     *
+     * @return self
      */
-    public function setCpuUsage(?\Hostinger\Model\VPSV1MetricsMetricsResource $cpuUsage): static
+    public function setCpuUsage($cpuUsage): self
     {
-        if (is_null($cpuUsage)) {
-            $this->openAPINullablesSetToNull[] = 'cpuUsage';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cpuUsage', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['cpuUsage'] = $cpuUsage;
+        $this->cpuUsage = $cpuUsage;
 
         return $this;
     }
     /**
      * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
      */
-    public function getRamUsage(): ?\Hostinger\Model\VPSV1MetricsMetricsResource
+    public function getRamUsage()
     {
-        return $this->container['ramUsage'];
+        return $this->ramUsage;
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $ramUsage ramUsage
+     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $ramUsage
+     *
+     * @return self
      */
-    public function setRamUsage(?\Hostinger\Model\VPSV1MetricsMetricsResource $ramUsage): static
+    public function setRamUsage($ramUsage): self
     {
-        if (is_null($ramUsage)) {
-            $this->openAPINullablesSetToNull[] = 'ramUsage';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ramUsage', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['ramUsage'] = $ramUsage;
+        $this->ramUsage = $ramUsage;
 
         return $this;
     }
     /**
      * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
      */
-    public function getDiskSpace(): ?\Hostinger\Model\VPSV1MetricsMetricsResource
+    public function getDiskSpace()
     {
-        return $this->container['diskSpace'];
+        return $this->diskSpace;
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $diskSpace diskSpace
+     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $diskSpace
+     *
+     * @return self
      */
-    public function setDiskSpace(?\Hostinger\Model\VPSV1MetricsMetricsResource $diskSpace): static
+    public function setDiskSpace($diskSpace): self
     {
-        if (is_null($diskSpace)) {
-            $this->openAPINullablesSetToNull[] = 'diskSpace';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('diskSpace', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['diskSpace'] = $diskSpace;
+        $this->diskSpace = $diskSpace;
 
         return $this;
     }
     /**
      * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
      */
-    public function getOutgoingTraffic(): ?\Hostinger\Model\VPSV1MetricsMetricsResource
+    public function getOutgoingTraffic()
     {
-        return $this->container['outgoingTraffic'];
+        return $this->outgoingTraffic;
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $outgoingTraffic outgoingTraffic
+     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $outgoingTraffic
+     *
+     * @return self
      */
-    public function setOutgoingTraffic(?\Hostinger\Model\VPSV1MetricsMetricsResource $outgoingTraffic): static
+    public function setOutgoingTraffic($outgoingTraffic): self
     {
-        if (is_null($outgoingTraffic)) {
-            $this->openAPINullablesSetToNull[] = 'outgoingTraffic';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('outgoingTraffic', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['outgoingTraffic'] = $outgoingTraffic;
+        $this->outgoingTraffic = $outgoingTraffic;
 
         return $this;
     }
     /**
      * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
      */
-    public function getIncomingTraffic(): ?\Hostinger\Model\VPSV1MetricsMetricsResource
+    public function getIncomingTraffic()
     {
-        return $this->container['incomingTraffic'];
+        return $this->incomingTraffic;
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $incomingTraffic incomingTraffic
+     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $incomingTraffic
+     *
+     * @return self
      */
-    public function setIncomingTraffic(?\Hostinger\Model\VPSV1MetricsMetricsResource $incomingTraffic): static
+    public function setIncomingTraffic($incomingTraffic): self
     {
-        if (is_null($incomingTraffic)) {
-            $this->openAPINullablesSetToNull[] = 'incomingTraffic';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('incomingTraffic', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['incomingTraffic'] = $incomingTraffic;
+        $this->incomingTraffic = $incomingTraffic;
 
         return $this;
     }
     /**
      * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
      */
-    public function getUptime(): ?\Hostinger\Model\VPSV1MetricsMetricsResource
+    public function getUptime()
     {
-        return $this->container['uptime'];
+        return $this->uptime;
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $uptime uptime
+     * @param \Hostinger\Model\VPSV1MetricsMetricsResource|null $uptime
+     *
+     * @return self
      */
-    public function setUptime(?\Hostinger\Model\VPSV1MetricsMetricsResource $uptime): static
+    public function setUptime($uptime): self
     {
-        if (is_null($uptime)) {
-            $this->openAPINullablesSetToNull[] = 'uptime';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('uptime', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['uptime'] = $uptime;
+        $this->uptime = $uptime;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

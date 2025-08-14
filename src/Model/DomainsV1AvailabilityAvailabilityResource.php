@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,329 +24,98 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class DomainsV1AvailabilityAvailabilityResource implements ModelInterface, ArrayAccess, JsonSerializable
+class DomainsV1AvailabilityAvailabilityResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'Domains.V1.Availability.AvailabilityResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'domain' => 'string',
-        'isAvailable' => 'bool',
-        'isAlternative' => 'bool',
-        'restriction' => 'string'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'domain' => null,
-        'isAvailable' => null,
-        'isAlternative' => null,
-        'restriction' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'domain' => true,
-        'isAvailable' => false,
-        'isAlternative' => false,
-        'restriction' => true
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string|null $domain
+     * @param bool $isAvailable
+     * @param bool $isAlternative
+     * @param string|null $restriction
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * @return array<string, bool>
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'domain' => 'domain',
-        'isAvailable' => 'is_available',
-        'isAlternative' => 'is_alternative',
-        'restriction' => 'restriction'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'domain' => 'setDomain',
-        'isAvailable' => 'setIsAvailable',
-        'isAlternative' => 'setIsAlternative',
-        'restriction' => 'setRestriction'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'domain' => 'getDomain',
-        'isAvailable' => 'getIsAvailable',
-        'isAlternative' => 'getIsAlternative',
-        'restriction' => 'getRestriction'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('domain', $data, null);
-        $this->setIfExists('isAvailable', $data, null);
-        $this->setIfExists('isAlternative', $data, null);
-        $this->setIfExists('restriction', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
+    protected static $openAPIModelName = 'DomainsV1AvailabilityAvailabilityResource';
+    public function __construct(
+        private $domain = null,
+        private $isAvailable,
+        private $isAlternative,
+        private $restriction = null,
+    ) {
     }
 
     /**
      * @return string|null
      */
-    public function getDomain(): ?string
+    public function getDomain()
     {
-        return $this->container['domain'];
+        return $this->domain;
     }
 
     /**
-     * @param string|null $domain Domain name, `null` when not claimed free domain
+     * @param string|null $domain
+     *
+     * @return self
      */
-    public function setDomain(?string $domain): static
+    public function setDomain($domain): self
     {
-        if (is_null($domain)) {
-            $this->openAPINullablesSetToNull[] = 'domain';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('domain', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['domain'] = $domain;
+        $this->domain = $domain;
 
         return $this;
     }
     /**
-     * @return bool|null
+     * @return bool
      */
-    public function getIsAvailable(): ?bool
+    public function getIsAvailable()
     {
-        return $this->container['isAvailable'];
+        return $this->isAvailable;
     }
 
     /**
-     * @param bool|null $isAvailable `true` if domain is available for registration
+     * @param bool $isAvailable
+     *
+     * @return self
      */
-    public function setIsAvailable(?bool $isAvailable): static
+    public function setIsAvailable($isAvailable): self
     {
-        $this->container['isAvailable'] = $isAvailable;
+        $this->isAvailable = $isAvailable;
 
         return $this;
     }
     /**
-     * @return bool|null
+     * @return bool
      */
-    public function getIsAlternative(): ?bool
+    public function getIsAlternative()
     {
-        return $this->container['isAlternative'];
+        return $this->isAlternative;
     }
 
     /**
-     * @param bool|null $isAlternative `true` if domain is provided as an alternative
+     * @param bool $isAlternative
+     *
+     * @return self
      */
-    public function setIsAlternative(?bool $isAlternative): static
+    public function setIsAlternative($isAlternative): self
     {
-        $this->container['isAlternative'] = $isAlternative;
+        $this->isAlternative = $isAlternative;
 
         return $this;
     }
     /**
      * @return string|null
      */
-    public function getRestriction(): ?string
+    public function getRestriction()
     {
-        return $this->container['restriction'];
+        return $this->restriction;
     }
 
     /**
-     * @param string|null $restriction Special rules and/or restrictions applied for registering TLD
+     * @param string|null $restriction
+     *
+     * @return self
      */
-    public function setRestriction(?string $restriction): static
+    public function setRestriction($restriction): self
     {
-        if (is_null($restriction)) {
-            $this->openAPINullablesSetToNull[] = 'restriction';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('restriction', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['restriction'] = $restriction;
+        $this->restriction = $restriction;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

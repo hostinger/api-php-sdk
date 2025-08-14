@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -12,7 +13,6 @@
 
 namespace Hostinger\Api;
 
-use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -20,9 +20,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
-use Hostinger\HeaderSelector;
 use Hostinger\ObjectSerializer;
 
 class VPSDockerManagerApi
@@ -31,16 +33,15 @@ class VPSDockerManagerApi
 
     protected Configuration $config;
 
-    protected HeaderSelector $headerSelector;
+    protected SerializerInterface $serializer;
 
     public function __construct(
-        ?ClientInterface $client = null,
         ?Configuration $config = null,
-        ?HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
     ) {
-        $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->client = $client ?: new Client();
+        $this->serializer = ObjectSerializer::getSerializer();
     }
 
     public function getConfig(): Configuration
@@ -49,775 +50,280 @@ class VPSDockerManagerApi
     }
 
     /**
-     * Operation createNewProjectV1
-     *
-     * Create new project
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function createNewProjectV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineDockerManagerUpRequest $vPSV1VirtualMachineDockerManagerUpRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function createNewProjectV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineDockerManagerUpRequest $vPSV1VirtualMachineDockerManagerUpRequest): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $request = $this->createNewProjectV1Request($virtualMachineId, $vPSV1VirtualMachineDockerManagerUpRequest, );
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker', $virtualMachineId),
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($vPSV1VirtualMachineDockerManagerUpRequest, JsonEncoder::FORMAT),
+        );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'createNewProjectV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function createNewProjectV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineDockerManagerUpRequest $vPSV1VirtualMachineDockerManagerUpRequest,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function deleteProjectV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/docker';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/down', $virtualMachineId, $projectName),
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/down', $virtualMachineId, $projectName),
+            headers: $this->getHeaders(),
         );
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineDockerManagerUpRequest));
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation deleteProjectV1
-     *
-     * Delete project
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function deleteProjectV1(int $virtualMachineId, string $projectName, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->deleteProjectV1Request($virtualMachineId, $projectName, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'deleteProjectV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function deleteProjectV1Request(int $virtualMachineId,string $projectName,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getProjectContainersV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1DockerManagerContainerCollection
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/down';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/containers', $virtualMachineId, $projectName),
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/containers', $virtualMachineId, $projectName),
+            headers: $this->getHeaders(),
         );
-        $resourcePath = str_replace(
-            '{' . 'projectName' . '}',
-            ObjectSerializer::toPathValue((string) $projectName),
-            $resourcePath
-        );
-
-        if (strlen($projectName) > 64) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.deleteProjectV1, must be smaller than or equal to 64.');
-        }
-        if (strlen($projectName) < 3) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.deleteProjectV1, must be bigger than or equal to 3.');
-        }
-        
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('DELETE', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getProjectContainersV1
-     *
-     * Get project containers
-     *
-     * @return \Hostinger\Model\VPSV1DockerManagerContainerCollection|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getProjectContainersV1(int $virtualMachineId, string $projectName, ): \Hostinger\Model\VPSV1DockerManagerContainerCollection|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getProjectContainersV1Request($virtualMachineId, $projectName, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1DockerManagerContainerCollection';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1DockerManagerContainerCollection::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getProjectContainersV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getProjectContainersV1Request(int $virtualMachineId,string $projectName,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getProjectContentsV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1DockerManagerContentResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/containers';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}', $virtualMachineId, $projectName),
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}', $virtualMachineId, $projectName),
+            headers: $this->getHeaders(),
         );
-        $resourcePath = str_replace(
-            '{' . 'projectName' . '}',
-            ObjectSerializer::toPathValue((string) $projectName),
-            $resourcePath
-        );
-
-        if (strlen($projectName) > 64) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.getProjectContainersV1, must be smaller than or equal to 64.');
-        }
-        if (strlen($projectName) < 3) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.getProjectContainersV1, must be bigger than or equal to 3.');
-        }
-        
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getProjectContentsV1
-     *
-     * Get project contents
-     *
-     * @return \Hostinger\Model\VPSV1DockerManagerContentResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getProjectContentsV1(int $virtualMachineId, string $projectName, ): \Hostinger\Model\VPSV1DockerManagerContentResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getProjectContentsV1Request($virtualMachineId, $projectName, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1DockerManagerContentResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1DockerManagerContentResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getProjectContentsV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getProjectContentsV1Request(int $virtualMachineId,string $projectName,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getProjectListV1(int $virtualMachineId): \Hostinger\Model\VPSV1DockerManagerProjectCollection
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker', $virtualMachineId),
+            headers: $this->getHeaders(),
         );
-        $resourcePath = str_replace(
-            '{' . 'projectName' . '}',
-            ObjectSerializer::toPathValue((string) $projectName),
-            $resourcePath
-        );
-
-        if (strlen($projectName) > 64) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.getProjectContentsV1, must be smaller than or equal to 64.');
-        }
-        if (strlen($projectName) < 3) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.getProjectContentsV1, must be bigger than or equal to 3.');
-        }
-        
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getProjectListV1
-     *
-     * Get project list
-     *
-     * @return \Hostinger\Model\VPSV1DockerManagerProjectCollection|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getProjectListV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1DockerManagerProjectCollection|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getProjectListV1Request($virtualMachineId, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1DockerManagerProjectCollection';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1DockerManagerProjectCollection::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getProjectListV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getProjectListV1Request(int $virtualMachineId,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getProjectLogsV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1DockerManagerLogsCollection
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/docker';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/logs', $virtualMachineId, $projectName),
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/logs', $virtualMachineId, $projectName),
+            headers: $this->getHeaders(),
         );
-
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getProjectLogsV1
-     *
-     * Get project logs
-     *
-     * @return \Hostinger\Model\VPSV1DockerManagerLogsCollection|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getProjectLogsV1(int $virtualMachineId, string $projectName, ): \Hostinger\Model\VPSV1DockerManagerLogsCollection|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getProjectLogsV1Request($virtualMachineId, $projectName, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1DockerManagerLogsCollection';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1DockerManagerLogsCollection::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getProjectLogsV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getProjectLogsV1Request(int $virtualMachineId,string $projectName,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function restartProjectV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/logs';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/restart', $virtualMachineId, $projectName),
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/restart', $virtualMachineId, $projectName),
+            headers: $this->getHeaders(),
         );
-        $resourcePath = str_replace(
-            '{' . 'projectName' . '}',
-            ObjectSerializer::toPathValue((string) $projectName),
-            $resourcePath
-        );
-
-        if (strlen($projectName) > 64) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.getProjectLogsV1, must be smaller than or equal to 64.');
-        }
-        if (strlen($projectName) < 3) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.getProjectLogsV1, must be bigger than or equal to 3.');
-        }
-        
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation restartProjectV1
-     *
-     * Restart project
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function restartProjectV1(int $virtualMachineId, string $projectName, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->restartProjectV1Request($virtualMachineId, $projectName, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'restartProjectV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function restartProjectV1Request(int $virtualMachineId,string $projectName,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function startProjectV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/restart';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/start', $virtualMachineId, $projectName),
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/start', $virtualMachineId, $projectName),
+            headers: $this->getHeaders(),
         );
-        $resourcePath = str_replace(
-            '{' . 'projectName' . '}',
-            ObjectSerializer::toPathValue((string) $projectName),
-            $resourcePath
-        );
-
-        if (strlen($projectName) > 64) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.restartProjectV1, must be smaller than or equal to 64.');
-        }
-        if (strlen($projectName) < 3) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.restartProjectV1, must be bigger than or equal to 3.');
-        }
-        
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation startProjectV1
-     *
-     * Start project
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function startProjectV1(int $virtualMachineId, string $projectName, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->startProjectV1Request($virtualMachineId, $projectName, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'startProjectV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function startProjectV1Request(int $virtualMachineId,string $projectName,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function stopProjectV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/start';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/stop', $virtualMachineId, $projectName),
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/stop', $virtualMachineId, $projectName),
+            headers: $this->getHeaders(),
         );
-        $resourcePath = str_replace(
-            '{' . 'projectName' . '}',
-            ObjectSerializer::toPathValue((string) $projectName),
-            $resourcePath
-        );
-
-        if (strlen($projectName) > 64) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.startProjectV1, must be smaller than or equal to 64.');
-        }
-        if (strlen($projectName) < 3) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.startProjectV1, must be bigger than or equal to 3.');
-        }
-        
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation stopProjectV1
-     *
-     * Stop project
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function stopProjectV1(int $virtualMachineId, string $projectName, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->stopProjectV1Request($virtualMachineId, $projectName, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'stopProjectV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function stopProjectV1Request(int $virtualMachineId,string $projectName,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function updateProjectV1(int $virtualMachineId, string $projectName): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/stop';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/update', $virtualMachineId, $projectName),
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/update', $virtualMachineId, $projectName),
+            headers: $this->getHeaders(),
         );
-        $resourcePath = str_replace(
-            '{' . 'projectName' . '}',
-            ObjectSerializer::toPathValue((string) $projectName),
-            $resourcePath
-        );
-
-        if (strlen($projectName) > 64) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.stopProjectV1, must be smaller than or equal to 64.');
-        }
-        if (strlen($projectName) < 3) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.stopProjectV1, must be bigger than or equal to 3.');
-        }
-        
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation updateProjectV1
-     *
-     * Update project
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function updateProjectV1(int $virtualMachineId, string $projectName, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->updateProjectV1Request($virtualMachineId, $projectName, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
-    /**
-     * Create request for operation 'updateProjectV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function updateProjectV1Request(int $virtualMachineId,string $projectName,): Request
+    private function buildResourcePath(string $path, ...$values): string
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/docker/{projectName}/update';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
-        );
-        $resourcePath = str_replace(
-            '{' . 'projectName' . '}',
-            ObjectSerializer::toPathValue((string) $projectName),
-            $resourcePath
-        );
+        foreach ($values as $value) {
+            if (is_array($value)) {
+                $value = implode(',', $value);
+            }
 
-        if (strlen($projectName) > 64) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.updateProjectV1, must be smaller than or equal to 64.');
+            $path = str_replace('{' . 'VPSDockerManager' . '}', $value, $path);
         }
-        if (strlen($projectName) < 3) {
-            throw new InvalidArgumentException('invalid length for "$projectName" when calling VPSDockerManagerApi.updateProjectV1, must be bigger than or equal to 3.');
-        }
-        
-        $body = null;
-        $query = [];
 
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
+        return $path;
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<string, string>
      */
-    protected function createHttpClientOption(): array
+    private function getHeaders(): array
+    {
+        return [
+            'Authorization' => 'Bearer ' . $this->config->getAccessToken(),
+            'Content-Type' => 'application/json',
+            'User-Agent' => $this->config->getUserAgent(),
+        ];
+    }
+
+    private function createHttpClientOption(): array
     {
         $options = [];
         if ($this->config->getDebug()) {
@@ -828,37 +334,5 @@ class VPSDockerManagerApi
         }
 
         return $options;
-    }
-
-    /**
-     * @param array<string, string> $query
-     */
-    protected function buildRequest(
-        string $httpMethod,
-        string $resourcePath,
-        ?string $body = null,
-        array $query = [],
-        string $contentType = 'application/json',
-    ): Request {
-        $headers = $this->headerSelector->selectHeaders(
-            accept: ['application/json'],
-            contentType: $contentType,
-            isMultipart: false
-        );
-        $headers['User-Agent'] = $this->config->getUserAgent();
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $query = ObjectSerializer::buildQuery($query);
-
-        return new Request(
-            $httpMethod,
-            $this->config->getHost() . $resourcePath . ($query ? "?$query" : ''),
-            $headers,
-            $body
-        );
     }
 }

@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,373 +24,119 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1DataCenterDataCenterResource implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1DataCenterDataCenterResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.DataCenter.DataCenterResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'id' => 'int',
-        'name' => 'string',
-        'location' => 'string',
-        'city' => 'string',
-        'continent' => 'string'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'location' => null,
-        'city' => null,
-        'continent' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'id' => false,
-        'name' => true,
-        'location' => true,
-        'city' => true,
-        'continent' => true
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param int $id
+     * @param string|null $name
+     * @param string|null $location
+     * @param string|null $city
+     * @param string|null $continent
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'VPSV1DataCenterDataCenterResource';
+    public function __construct(
+        private $id,
+        private $name = null,
+        private $location = null,
+        private $city = null,
+        private $continent = null,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return int
      */
-    public static function openAPIFormats(): array
+    public function getId()
     {
-        return self::$openAPIFormats;
+        return $this->id;
     }
 
     /**
-     * @return array<string, bool>
+     * @param int $id
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setId($id): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'location' => 'location',
-        'city' => 'city',
-        'continent' => 'continent'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'location' => 'setLocation',
-        'city' => 'setCity',
-        'continent' => 'setContinent'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'location' => 'getLocation',
-        'city' => 'getCity',
-        'continent' => 'getContinent'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('id', $data, null);
-        $this->setIfExists('name', $data, null);
-        $this->setIfExists('location', $data, null);
-        $this->setIfExists('city', $data, null);
-        $this->setIfExists('continent', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * @param int|null $id Data center ID
-     */
-    public function setId(?int $id): static
-    {
-        $this->container['id'] = $id;
+        $this->id = $id;
 
         return $this;
     }
     /**
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName()
     {
-        return $this->container['name'];
+        return $this->name;
     }
 
     /**
-     * @param string|null $name Data center name
+     * @param string|null $name
+     *
+     * @return self
      */
-    public function setName(?string $name): static
+    public function setName($name): self
     {
-        if (is_null($name)) {
-            $this->openAPINullablesSetToNull[] = 'name';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['name'] = $name;
+        $this->name = $name;
 
         return $this;
     }
     /**
      * @return string|null
      */
-    public function getLocation(): ?string
+    public function getLocation()
     {
-        return $this->container['location'];
+        return $this->location;
     }
 
     /**
-     * @param string|null $location Data center location country (two letter code)
+     * @param string|null $location
+     *
+     * @return self
      */
-    public function setLocation(?string $location): static
+    public function setLocation($location): self
     {
-        if (is_null($location)) {
-            $this->openAPINullablesSetToNull[] = 'location';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('location', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['location'] = $location;
+        $this->location = $location;
 
         return $this;
     }
     /**
      * @return string|null
      */
-    public function getCity(): ?string
+    public function getCity()
     {
-        return $this->container['city'];
+        return $this->city;
     }
 
     /**
-     * @param string|null $city Data center location city
+     * @param string|null $city
+     *
+     * @return self
      */
-    public function setCity(?string $city): static
+    public function setCity($city): self
     {
-        if (is_null($city)) {
-            $this->openAPINullablesSetToNull[] = 'city';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('city', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['city'] = $city;
+        $this->city = $city;
 
         return $this;
     }
     /**
      * @return string|null
      */
-    public function getContinent(): ?string
+    public function getContinent()
     {
-        return $this->container['continent'];
+        return $this->continent;
     }
 
     /**
-     * @param string|null $continent Data center location continent
+     * @param string|null $continent
+     *
+     * @return self
      */
-    public function setContinent(?string $continent): static
+    public function setContinent($continent): self
     {
-        if (is_null($continent)) {
-            $this->openAPINullablesSetToNull[] = 'continent';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('continent', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['continent'] = $continent;
+        $this->continent = $continent;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

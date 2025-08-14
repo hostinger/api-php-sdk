@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,291 +24,77 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class DomainsV1AvailabilityAvailabilityRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class DomainsV1AvailabilityAvailabilityRequest 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'Domains.V1.Availability.AvailabilityRequest';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'domain' => 'string',
-        'tlds' => 'string[]',
-        'withAlternatives' => 'bool'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'domain' => null,
-        'tlds' => null,
-        'withAlternatives' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'domain' => false,
-        'tlds' => false,
-        'withAlternatives' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $domain
+     * @param string[] $tlds
+     * @param bool $withAlternatives
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * @return array<string, bool>
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'domain' => 'domain',
-        'tlds' => 'tlds',
-        'withAlternatives' => 'with_alternatives'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'domain' => 'setDomain',
-        'tlds' => 'setTlds',
-        'withAlternatives' => 'setWithAlternatives'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'domain' => 'getDomain',
-        'tlds' => 'getTlds',
-        'withAlternatives' => 'getWithAlternatives'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('domain', $data, null);
-        $this->setIfExists('tlds', $data, null);
-        $this->setIfExists('withAlternatives', $data, false);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['domain'] === null) {
-            $invalidProperties[] = "'domain' can't be null";
-        }
-        if ($this->container['tlds'] === null) {
-            $invalidProperties[] = "'tlds' can't be null";
-        }
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
+    protected static $openAPIModelName = 'DomainsV1AvailabilityAvailabilityRequest';
+    public function __construct(
+        private $domain,
+        private $tlds,
+        private $withAlternatives,
+    ) {
     }
 
     /**
      * @return string
      */
-    public function getDomain(): string
+    public function getDomain()
     {
-        return $this->container['domain'];
+        return $this->domain;
     }
 
     /**
-     * @param string $domain Domain name (without TLD)
+     * @param string $domain
+     *
+     * @return self
      */
-    public function setDomain(string $domain): static
+    public function setDomain($domain): self
     {
-        $this->container['domain'] = $domain;
+        $this->domain = $domain;
 
         return $this;
     }
     /**
      * @return string[]
      */
-    public function getTlds(): array
+    public function getTlds()
     {
-        return $this->container['tlds'];
+        return $this->tlds;
     }
 
     /**
-     * @param string[] $tlds TLDs list
+     * @param string[] $tlds
+     *
+     * @return self
      */
-    public function setTlds(array $tlds): static
+    public function setTlds($tlds): self
     {
-        $this->container['tlds'] = $tlds;
+        $this->tlds = $tlds;
 
         return $this;
     }
     /**
-     * @return bool|null
+     * @return bool
      */
-    public function getWithAlternatives(): ?bool
+    public function getWithAlternatives()
     {
-        return $this->container['withAlternatives'];
+        return $this->withAlternatives;
     }
 
     /**
-     * @param bool|null $withAlternatives Should response include alternatives
+     * @param bool $withAlternatives
+     *
+     * @return self
      */
-    public function setWithAlternatives(?bool $withAlternatives): static
+    public function setWithAlternatives($withAlternatives): self
     {
-        $this->container['withAlternatives'] = $withAlternatives;
+        $this->withAlternatives = $withAlternatives;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

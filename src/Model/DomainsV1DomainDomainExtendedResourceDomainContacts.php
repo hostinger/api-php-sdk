@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,309 +24,98 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class DomainsV1DomainDomainExtendedResourceDomainContacts implements ModelInterface, ArrayAccess, JsonSerializable
+class DomainsV1DomainDomainExtendedResourceDomainContacts 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'Domains_V1_Domain_DomainExtendedResource_domain_contacts';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'adminId' => 'int',
-        'ownerId' => 'int',
-        'billingId' => 'int',
-        'techId' => 'int'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'adminId' => null,
-        'ownerId' => null,
-        'billingId' => null,
-        'techId' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'adminId' => false,
-        'ownerId' => false,
-        'billingId' => false,
-        'techId' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param int $adminId
+     * @param int $ownerId
+     * @param int $billingId
+     * @param int $techId
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'DomainsV1DomainDomainExtendedResourceDomainContacts';
+    public function __construct(
+        private $adminId,
+        private $ownerId,
+        private $billingId,
+        private $techId,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return int
      */
-    public static function openAPIFormats(): array
+    public function getAdminId()
     {
-        return self::$openAPIFormats;
+        return $this->adminId;
     }
 
     /**
-     * @return array<string, bool>
+     * @param int $adminId
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setAdminId($adminId): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'adminId' => 'admin_id',
-        'ownerId' => 'owner_id',
-        'billingId' => 'billing_id',
-        'techId' => 'tech_id'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'adminId' => 'setAdminId',
-        'ownerId' => 'setOwnerId',
-        'billingId' => 'setBillingId',
-        'techId' => 'setTechId'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'adminId' => 'getAdminId',
-        'ownerId' => 'getOwnerId',
-        'billingId' => 'getBillingId',
-        'techId' => 'getTechId'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('adminId', $data, null);
-        $this->setIfExists('ownerId', $data, null);
-        $this->setIfExists('billingId', $data, null);
-        $this->setIfExists('techId', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getAdminId(): ?int
-    {
-        return $this->container['adminId'];
-    }
-
-    /**
-     * @param int|null $adminId Admin WHOIS profile ID
-     */
-    public function setAdminId(?int $adminId): static
-    {
-        $this->container['adminId'] = $adminId;
+        $this->adminId = $adminId;
 
         return $this;
     }
     /**
-     * @return int|null
+     * @return int
      */
-    public function getOwnerId(): ?int
+    public function getOwnerId()
     {
-        return $this->container['ownerId'];
+        return $this->ownerId;
     }
 
     /**
-     * @param int|null $ownerId Owner WHOIS profile ID
+     * @param int $ownerId
+     *
+     * @return self
      */
-    public function setOwnerId(?int $ownerId): static
+    public function setOwnerId($ownerId): self
     {
-        $this->container['ownerId'] = $ownerId;
+        $this->ownerId = $ownerId;
 
         return $this;
     }
     /**
-     * @return int|null
+     * @return int
      */
-    public function getBillingId(): ?int
+    public function getBillingId()
     {
-        return $this->container['billingId'];
+        return $this->billingId;
     }
 
     /**
-     * @param int|null $billingId Billing WHOIS profile ID
+     * @param int $billingId
+     *
+     * @return self
      */
-    public function setBillingId(?int $billingId): static
+    public function setBillingId($billingId): self
     {
-        $this->container['billingId'] = $billingId;
+        $this->billingId = $billingId;
 
         return $this;
     }
     /**
-     * @return int|null
+     * @return int
      */
-    public function getTechId(): ?int
+    public function getTechId()
     {
-        return $this->container['techId'];
+        return $this->techId;
     }
 
     /**
-     * @param int|null $techId Technician WHOIS profile ID
+     * @param int $techId
+     *
+     * @return self
      */
-    public function setTechId(?int $techId): static
+    public function setTechId($techId): self
     {
-        $this->container['techId'] = $techId;
+        $this->techId = $techId;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

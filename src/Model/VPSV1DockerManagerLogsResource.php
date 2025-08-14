@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,261 +24,56 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1DockerManagerLogsResource implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1DockerManagerLogsResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.DockerManager.LogsResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'service' => 'string',
-        'entries' => '\Hostinger\Model\VPSV1DockerManagerLogEntryCollection'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'service' => null,
-        'entries' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'service' => false,
-        'entries' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $service
+     * @param \Hostinger\Model\VPSV1DockerManagerLogEntryCollection $entries
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'VPSV1DockerManagerLogsResource';
+    public function __construct(
+        private $service,
+        private $entries,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return string
      */
-    public static function openAPIFormats(): array
+    public function getService()
     {
-        return self::$openAPIFormats;
+        return $this->service;
     }
 
     /**
-     * @return array<string, bool>
+     * @param string $service
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setService($service): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'service' => 'service',
-        'entries' => 'entries'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'service' => 'setService',
-        'entries' => 'setEntries'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'service' => 'getService',
-        'entries' => 'getEntries'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('service', $data, null);
-        $this->setIfExists('entries', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getService(): ?string
-    {
-        return $this->container['service'];
-    }
-
-    /**
-     * @param string|null $service Name of the Docker Compose service that generated these log entries
-     */
-    public function setService(?string $service): static
-    {
-        $this->container['service'] = $service;
+        $this->service = $service;
 
         return $this;
     }
     /**
-     * @return \Hostinger\Model\VPSV1DockerManagerLogEntryCollection|null
+     * @return \Hostinger\Model\VPSV1DockerManagerLogEntryCollection
      */
-    public function getEntries(): ?\Hostinger\Model\VPSV1DockerManagerLogEntryCollection
+    public function getEntries()
     {
-        return $this->container['entries'];
+        return $this->entries;
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1DockerManagerLogEntryCollection|null $entries entries
+     * @param \Hostinger\Model\VPSV1DockerManagerLogEntryCollection $entries
+     *
+     * @return self
      */
-    public function setEntries(?\Hostinger\Model\VPSV1DockerManagerLogEntryCollection $entries): static
+    public function setEntries($entries): self
     {
-        $this->container['entries'] = $entries;
+        $this->entries = $entries;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

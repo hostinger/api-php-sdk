@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -12,7 +13,6 @@
 
 namespace Hostinger\Api;
 
-use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -20,9 +20,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
-use Hostinger\HeaderSelector;
 use Hostinger\ObjectSerializer;
 
 class VPSPublicKeysApi
@@ -31,16 +33,15 @@ class VPSPublicKeysApi
 
     protected Configuration $config;
 
-    protected HeaderSelector $headerSelector;
+    protected SerializerInterface $serializer;
 
     public function __construct(
-        ?ClientInterface $client = null,
         ?Configuration $config = null,
-        ?HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
     ) {
-        $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->client = $client ?: new Client();
+        $this->serializer = ObjectSerializer::getSerializer();
     }
 
     public function getConfig(): Configuration
@@ -49,268 +50,135 @@ class VPSPublicKeysApi
     }
 
     /**
-     * Operation attachPublicKeyV1
-     *
-     * Attach public key
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function attachPublicKeyV1(int $virtualMachineId, \Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function attachPublicKeyV1(int $virtualMachineId, \Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $request = $this->attachPublicKeyV1Request($virtualMachineId, $vPSV1PublicKeyAttachRequest, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'attachPublicKeyV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function attachPublicKeyV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1PublicKeyAttachRequest $vPSV1PublicKeyAttachRequest,): Request
-    {
-        $resourcePath = '/api/vps/v1/public-keys/attach/{virtualMachineId}';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/public-keys/attach/{virtualMachineId}', $virtualMachineId),
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($vPSV1PublicKeyAttachRequest, JsonEncoder::FORMAT),
         );
 
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1PublicKeyAttachRequest));
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation createPublicKeyV1
-     *
-     * Create public key
-     *
-     * @return \Hostinger\Model\VPSV1PublicKeyPublicKeyResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function createPublicKeyV1(\Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest, ): \Hostinger\Model\VPSV1PublicKeyPublicKeyResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->createPublicKeyV1Request($vPSV1PublicKeyStoreRequest, );
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1PublicKeyPublicKeyResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'createPublicKeyV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function createPublicKeyV1Request(\Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function createPublicKeyV1(\Hostinger\Model\VPSV1PublicKeyStoreRequest $vPSV1PublicKeyStoreRequest): \Hostinger\Model\VPSV1PublicKeyPublicKeyResource
     {
-        $resourcePath = '/api/vps/v1/public-keys';
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1PublicKeyStoreRequest));
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation deletePublicKeyV1
-     *
-     * Delete public key
-     *
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function deletePublicKeyV1(int $publicKeyId, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->deletePublicKeyV1Request($publicKeyId, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'deletePublicKeyV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function deletePublicKeyV1Request(int $publicKeyId,): Request
-    {
-        $resourcePath = '/api/vps/v1/public-keys/{publicKeyId}';
-        $resourcePath = str_replace(
-            '{' . 'publicKeyId' . '}',
-            ObjectSerializer::toPathValue((string) $publicKeyId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/vps/v1/public-keys',
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($vPSV1PublicKeyStoreRequest, JsonEncoder::FORMAT),
         );
 
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('DELETE', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getPublicKeysV1
-     *
-     * Get public keys
-     *
-     * @return \Hostinger\Model\VPSV1PublicKeyListResponse|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getPublicKeysV1(?int $page = null, ): \Hostinger\Model\VPSV1PublicKeyListResponse|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getPublicKeysV1Request($page, );
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1PublicKeyListResponse';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PublicKeyPublicKeyResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getPublicKeysV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getPublicKeysV1Request(?int $page = null,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function deletePublicKeyV1(int $publicKeyId): \Hostinger\Model\CommonSuccessEmptyResource
     {
-        $resourcePath = '/api/vps/v1/public-keys';
-
-        $body = null;
-        $query = ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/public-keys/{publicKeyId}', $publicKeyId),
+            headers: $this->getHeaders(),
         );
 
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
+
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * @return array<string, mixed>
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getPublicKeysV1(?int $page = null): \Hostinger\Model\VPSV1PublicKeyListResponse
+    {
+        $query = http_build_query(
+            array_filter([
+                'page' => $page,
+            ])
+        );
+
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/vps/v1/public-keys' . $query,
+            headers: $this->getHeaders(),
+        );
+
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
+
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PublicKeyListResponse::class, JsonEncoder::FORMAT);
+    }
+
+    private function buildResourcePath(string $path, ...$values): string
+    {
+        foreach ($values as $value) {
+            if (is_array($value)) {
+                $value = implode(',', $value);
+            }
+
+            $path = str_replace('{' . 'VPSPublicKeys' . '}', $value, $path);
+        }
+
+        return $path;
+    }
+
+    /**
+     * @return array<string, string>
      */
-    protected function createHttpClientOption(): array
+    private function getHeaders(): array
+    {
+        return [
+            'Authorization' => 'Bearer ' . $this->config->getAccessToken(),
+            'Content-Type' => 'application/json',
+            'User-Agent' => $this->config->getUserAgent(),
+        ];
+    }
+
+    private function createHttpClientOption(): array
     {
         $options = [];
         if ($this->config->getDebug()) {
@@ -321,37 +189,5 @@ class VPSPublicKeysApi
         }
 
         return $options;
-    }
-
-    /**
-     * @param array<string, string> $query
-     */
-    protected function buildRequest(
-        string $httpMethod,
-        string $resourcePath,
-        ?string $body = null,
-        array $query = [],
-        string $contentType = 'application/json',
-    ): Request {
-        $headers = $this->headerSelector->selectHeaders(
-            accept: ['application/json'],
-            contentType: $contentType,
-            isMultipart: false
-        );
-        $headers['User-Agent'] = $this->config->getUserAgent();
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $query = ObjectSerializer::buildQuery($query);
-
-        return new Request(
-            $httpMethod,
-            $this->config->getHost() . $resourcePath . ($query ? "?$query" : ''),
-            $headers,
-            $body
-        );
     }
 }

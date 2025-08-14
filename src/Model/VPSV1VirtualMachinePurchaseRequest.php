@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,315 +24,98 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1VirtualMachinePurchaseRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1VirtualMachinePurchaseRequest 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.VirtualMachine.PurchaseRequest';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'itemId' => 'string',
-        'paymentMethodId' => 'int',
-        'setup' => '\Hostinger\Model\VPSV1VirtualMachineSetupRequest',
-        'coupons' => 'mixed[]'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'itemId' => null,
-        'paymentMethodId' => null,
-        'setup' => null,
-        'coupons' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'itemId' => false,
-        'paymentMethodId' => false,
-        'setup' => false,
-        'coupons' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $itemId
+     * @param int $paymentMethodId
+     * @param \Hostinger\Model\VPSV1VirtualMachineSetupRequest $setup
+     * @param mixed[] $coupons
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * @return array<string, bool>
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'itemId' => 'item_id',
-        'paymentMethodId' => 'payment_method_id',
-        'setup' => 'setup',
-        'coupons' => 'coupons'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'itemId' => 'setItemId',
-        'paymentMethodId' => 'setPaymentMethodId',
-        'setup' => 'setSetup',
-        'coupons' => 'setCoupons'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'itemId' => 'getItemId',
-        'paymentMethodId' => 'getPaymentMethodId',
-        'setup' => 'getSetup',
-        'coupons' => 'getCoupons'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('itemId', $data, null);
-        $this->setIfExists('paymentMethodId', $data, null);
-        $this->setIfExists('setup', $data, null);
-        $this->setIfExists('coupons', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['itemId'] === null) {
-            $invalidProperties[] = "'itemId' can't be null";
-        }
-        if ($this->container['setup'] === null) {
-            $invalidProperties[] = "'setup' can't be null";
-        }
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
+    protected static $openAPIModelName = 'VPSV1VirtualMachinePurchaseRequest';
+    public function __construct(
+        private $itemId,
+        private $paymentMethodId,
+        private $setup,
+        private $coupons,
+    ) {
     }
 
     /**
      * @return string
      */
-    public function getItemId(): string
+    public function getItemId()
     {
-        return $this->container['itemId'];
+        return $this->itemId;
     }
 
     /**
-     * @param string $itemId Catalog price item ID
+     * @param string $itemId
+     *
+     * @return self
      */
-    public function setItemId(string $itemId): static
+    public function setItemId($itemId): self
     {
-        $this->container['itemId'] = $itemId;
+        $this->itemId = $itemId;
 
         return $this;
     }
     /**
-     * @return int|null
+     * @return int
      */
-    public function getPaymentMethodId(): ?int
+    public function getPaymentMethodId()
     {
-        return $this->container['paymentMethodId'];
+        return $this->paymentMethodId;
     }
 
     /**
-     * @param int|null $paymentMethodId Payment method ID, default will be used if not provided
+     * @param int $paymentMethodId
+     *
+     * @return self
      */
-    public function setPaymentMethodId(?int $paymentMethodId): static
+    public function setPaymentMethodId($paymentMethodId): self
     {
-        $this->container['paymentMethodId'] = $paymentMethodId;
+        $this->paymentMethodId = $paymentMethodId;
 
         return $this;
     }
     /**
      * @return \Hostinger\Model\VPSV1VirtualMachineSetupRequest
      */
-    public function getSetup(): \Hostinger\Model\VPSV1VirtualMachineSetupRequest
+    public function getSetup()
     {
-        return $this->container['setup'];
+        return $this->setup;
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1VirtualMachineSetupRequest $setup setup
+     * @param \Hostinger\Model\VPSV1VirtualMachineSetupRequest $setup
+     *
+     * @return self
      */
-    public function setSetup(\Hostinger\Model\VPSV1VirtualMachineSetupRequest $setup): static
+    public function setSetup($setup): self
     {
-        $this->container['setup'] = $setup;
+        $this->setup = $setup;
 
         return $this;
     }
     /**
-     * @return mixed[]|null
+     * @return mixed[]
      */
-    public function getCoupons(): ?array
+    public function getCoupons()
     {
-        return $this->container['coupons'];
+        return $this->coupons;
     }
 
     /**
-     * @param mixed[]|null $coupons Discount coupon codes
+     * @param mixed[] $coupons
+     *
+     * @return self
      */
-    public function setCoupons(?array $coupons): static
+    public function setCoupons($coupons): self
     {
-        $this->container['coupons'] = $coupons;
+        $this->coupons = $coupons;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

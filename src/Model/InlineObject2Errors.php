@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,261 +24,56 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class InlineObject2Errors implements ModelInterface, ArrayAccess, JsonSerializable
+class InlineObject2Errors 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'inline_object_2_errors';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'field1' => 'mixed[]',
-        'field2' => 'mixed[]'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'field1' => null,
-        'field2' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'field1' => false,
-        'field2' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param mixed[] $field1
+     * @param mixed[] $field2
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'InlineObject2Errors';
+    public function __construct(
+        private $field1,
+        private $field2,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return mixed[]
      */
-    public static function openAPIFormats(): array
+    public function getField1()
     {
-        return self::$openAPIFormats;
+        return $this->field1;
     }
 
     /**
-     * @return array<string, bool>
+     * @param mixed[] $field1
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setField1($field1): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'field1' => 'field_1',
-        'field2' => 'field_2'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'field1' => 'setField1',
-        'field2' => 'setField2'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'field1' => 'getField1',
-        'field2' => 'getField2'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('field1', $data, null);
-        $this->setIfExists('field2', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return mixed[]|null
-     */
-    public function getField1(): ?array
-    {
-        return $this->container['field1'];
-    }
-
-    /**
-     * @param mixed[]|null $field1 field1
-     */
-    public function setField1(?array $field1): static
-    {
-        $this->container['field1'] = $field1;
+        $this->field1 = $field1;
 
         return $this;
     }
     /**
-     * @return mixed[]|null
+     * @return mixed[]
      */
-    public function getField2(): ?array
+    public function getField2()
     {
-        return $this->container['field2'];
+        return $this->field2;
     }
 
     /**
-     * @param mixed[]|null $field2 field2
+     * @param mixed[] $field2
+     *
+     * @return self
      */
-    public function setField2(?array $field2): static
+    public function setField2($field2): self
     {
-        $this->container['field2'] = $field2;
+        $this->field2 = $field2;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

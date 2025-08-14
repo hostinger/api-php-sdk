@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,358 +24,98 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class DNSV1ZoneRecordResource implements ModelInterface, ArrayAccess, JsonSerializable
+class DNSV1ZoneRecordResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'DNS.V1.Zone.RecordResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'name' => 'string',
-        'records' => '\Hostinger\Model\DNSV1ZoneNameRecordCollection',
-        'ttl' => 'int',
-        'type' => 'string'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'name' => null,
-        'records' => null,
-        'ttl' => null,
-        'type' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'name' => false,
-        'records' => false,
-        'ttl' => false,
-        'type' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $name
+     * @param \Hostinger\Model\DNSV1ZoneNameRecordCollection $records
+     * @param int $ttl
+     * @param string $type
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'DNSV1ZoneRecordResource';
+    public function __construct(
+        private $name,
+        private $records,
+        private $ttl,
+        private $type,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return string
      */
-    public static function openAPIFormats(): array
+    public function getName()
     {
-        return self::$openAPIFormats;
+        return $this->name;
     }
 
     /**
-     * @return array<string, bool>
+     * @param string $name
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setName($name): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'name' => 'name',
-        'records' => 'records',
-        'ttl' => 'ttl',
-        'type' => 'type'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'name' => 'setName',
-        'records' => 'setRecords',
-        'ttl' => 'setTtl',
-        'type' => 'setType'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'name' => 'getName',
-        'records' => 'getRecords',
-        'ttl' => 'getTtl',
-        'type' => 'getType'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    public const TYPE_A = 'A';
-    public const TYPE_AAAA = 'AAAA';
-    public const TYPE_CNAME = 'CNAME';
-    public const TYPE_ALIAS = 'ALIAS';
-    public const TYPE_MX = 'MX';
-    public const TYPE_TXT = 'TXT';
-    public const TYPE_NS = 'NS';
-    public const TYPE_SOA = 'SOA';
-    public const TYPE_SRV = 'SRV';
-    public const TYPE_CAA = 'CAA';
-
-    /**
-     * @return array<string>
-     */
-    public function getTypeAllowableValues(): array
-    {
-        return [
-            self::TYPE_A,
-            self::TYPE_AAAA,
-            self::TYPE_CNAME,
-            self::TYPE_ALIAS,
-            self::TYPE_MX,
-            self::TYPE_TXT,
-            self::TYPE_NS,
-            self::TYPE_SOA,
-            self::TYPE_SRV,
-            self::TYPE_CAA,
-        ];
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('name', $data, null);
-        $this->setIfExists('records', $data, null);
-        $this->setIfExists('ttl', $data, null);
-        $this->setIfExists('type', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * @param string|null $name Name of the record (use `@` for wildcard name)
-     */
-    public function setName(?string $name): static
-    {
-        $this->container['name'] = $name;
+        $this->name = $name;
 
         return $this;
     }
     /**
-     * @return \Hostinger\Model\DNSV1ZoneNameRecordCollection|null
+     * @return \Hostinger\Model\DNSV1ZoneNameRecordCollection
      */
-    public function getRecords(): ?\Hostinger\Model\DNSV1ZoneNameRecordCollection
+    public function getRecords()
     {
-        return $this->container['records'];
+        return $this->records;
     }
 
     /**
-     * @param \Hostinger\Model\DNSV1ZoneNameRecordCollection|null $records records
+     * @param \Hostinger\Model\DNSV1ZoneNameRecordCollection $records
+     *
+     * @return self
      */
-    public function setRecords(?\Hostinger\Model\DNSV1ZoneNameRecordCollection $records): static
+    public function setRecords($records): self
     {
-        $this->container['records'] = $records;
+        $this->records = $records;
 
         return $this;
     }
     /**
-     * @return int|null
+     * @return int
      */
-    public function getTtl(): ?int
+    public function getTtl()
     {
-        return $this->container['ttl'];
+        return $this->ttl;
     }
 
     /**
-     * @param int|null $ttl TTL (Time-To-Live) of the record
+     * @param int $ttl
+     *
+     * @return self
      */
-    public function setTtl(?int $ttl): static
+    public function setTtl($ttl): self
     {
-        $this->container['ttl'] = $ttl;
+        $this->ttl = $ttl;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getType(): ?string
+    public function getType()
     {
-        return $this->container['type'];
+        return $this->type;
     }
 
     /**
-     * @param string|null $type Type of the record
+     * @param string $type
+     *
+     * @return self
      */
-    public function setType(?string $type): static
+    public function setType($type): self
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->type = $type;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

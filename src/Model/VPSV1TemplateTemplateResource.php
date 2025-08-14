@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,319 +24,98 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1TemplateTemplateResource implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1TemplateTemplateResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.Template.TemplateResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'id' => 'int',
-        'name' => 'string',
-        'description' => 'string',
-        'documentation' => 'string'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'description' => null,
-        'documentation' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'description' => false,
-        'documentation' => true
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param int $id
+     * @param string $name
+     * @param string $description
+     * @param string|null $documentation
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'VPSV1TemplateTemplateResource';
+    public function __construct(
+        private $id,
+        private $name,
+        private $description,
+        private $documentation = null,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return int
      */
-    public static function openAPIFormats(): array
+    public function getId()
     {
-        return self::$openAPIFormats;
+        return $this->id;
     }
 
     /**
-     * @return array<string, bool>
+     * @param int $id
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setId($id): self
     {
-        return self::$openAPINullables;
+        $this->id = $id;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
-     * @return array<string>
+     * @param string $name
+     *
+     * @return self
      */
-    private function getOpenAPINullablesSetToNull(): array
+    public function setName($name): self
     {
-        return $this->openAPINullablesSetToNull;
+        $this->name = $name;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
-     * @param array<string> $openAPINullablesSetToNull
+     * @param string $description
+     *
+     * @return self
      */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    public function setDescription($description): self
     {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'description' => 'description',
-        'documentation' => 'documentation'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'documentation' => 'setDocumentation'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'documentation' => 'getDocumentation'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('id', $data, null);
-        $this->setIfExists('name', $data, null);
-        $this->setIfExists('description', $data, null);
-        $this->setIfExists('documentation', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * @param int|null $id Template ID
-     */
-    public function setId(?int $id): static
-    {
-        $this->container['id'] = $id;
+        $this->description = $description;
 
         return $this;
     }
     /**
      * @return string|null
      */
-    public function getName(): ?string
+    public function getDocumentation()
     {
-        return $this->container['name'];
+        return $this->documentation;
     }
 
     /**
-     * @param string|null $name Template name
+     * @param string|null $documentation
+     *
+     * @return self
      */
-    public function setName(?string $name): static
+    public function setDocumentation($documentation): self
     {
-        $this->container['name'] = $name;
+        $this->documentation = $documentation;
 
         return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getDescription(): ?string
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * @param string|null $description Template description
-     */
-    public function setDescription(?string $description): static
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getDocumentation(): ?string
-    {
-        return $this->container['documentation'];
-    }
-
-    /**
-     * @param string|null $documentation Link to official OS documentation
-     */
-    public function setDocumentation(?string $documentation): static
-    {
-        if (is_null($documentation)) {
-            $this->openAPINullablesSetToNull[] = 'documentation';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('documentation', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['documentation'] = $documentation;
-
-        return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,363 +24,140 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class DomainsV1PortfolioPurchaseRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class DomainsV1PortfolioPurchaseRequest 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'Domains.V1.Portfolio.PurchaseRequest';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'domain' => 'string',
-        'itemId' => 'string',
-        'paymentMethodId' => 'int',
-        'domainContacts' => '\Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts',
-        'additionalDetails' => 'object',
-        'coupons' => 'mixed[]'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'domain' => null,
-        'itemId' => null,
-        'paymentMethodId' => null,
-        'domainContacts' => null,
-        'additionalDetails' => null,
-        'coupons' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'domain' => false,
-        'itemId' => false,
-        'paymentMethodId' => false,
-        'domainContacts' => false,
-        'additionalDetails' => false,
-        'coupons' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $domain
+     * @param string $itemId
+     * @param int $paymentMethodId
+     * @param \Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts $domainContacts
+     * @param object $additionalDetails
+     * @param mixed[] $coupons
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * @return array<string, bool>
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'domain' => 'domain',
-        'itemId' => 'item_id',
-        'paymentMethodId' => 'payment_method_id',
-        'domainContacts' => 'domain_contacts',
-        'additionalDetails' => 'additional_details',
-        'coupons' => 'coupons'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'domain' => 'setDomain',
-        'itemId' => 'setItemId',
-        'paymentMethodId' => 'setPaymentMethodId',
-        'domainContacts' => 'setDomainContacts',
-        'additionalDetails' => 'setAdditionalDetails',
-        'coupons' => 'setCoupons'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'domain' => 'getDomain',
-        'itemId' => 'getItemId',
-        'paymentMethodId' => 'getPaymentMethodId',
-        'domainContacts' => 'getDomainContacts',
-        'additionalDetails' => 'getAdditionalDetails',
-        'coupons' => 'getCoupons'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('domain', $data, null);
-        $this->setIfExists('itemId', $data, null);
-        $this->setIfExists('paymentMethodId', $data, null);
-        $this->setIfExists('domainContacts', $data, null);
-        $this->setIfExists('additionalDetails', $data, null);
-        $this->setIfExists('coupons', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['domain'] === null) {
-            $invalidProperties[] = "'domain' can't be null";
-        }
-        if ($this->container['itemId'] === null) {
-            $invalidProperties[] = "'itemId' can't be null";
-        }
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
+    protected static $openAPIModelName = 'DomainsV1PortfolioPurchaseRequest';
+    public function __construct(
+        private $domain,
+        private $itemId,
+        private $paymentMethodId,
+        private $domainContacts,
+        private $additionalDetails,
+        private $coupons,
+    ) {
     }
 
     /**
      * @return string
      */
-    public function getDomain(): string
+    public function getDomain()
     {
-        return $this->container['domain'];
+        return $this->domain;
     }
 
     /**
-     * @param string $domain Domain name
+     * @param string $domain
+     *
+     * @return self
      */
-    public function setDomain(string $domain): static
+    public function setDomain($domain): self
     {
-        $this->container['domain'] = $domain;
+        $this->domain = $domain;
 
         return $this;
     }
     /**
      * @return string
      */
-    public function getItemId(): string
+    public function getItemId()
     {
-        return $this->container['itemId'];
+        return $this->itemId;
     }
 
     /**
-     * @param string $itemId Catalog price item ID
+     * @param string $itemId
+     *
+     * @return self
      */
-    public function setItemId(string $itemId): static
+    public function setItemId($itemId): self
     {
-        $this->container['itemId'] = $itemId;
+        $this->itemId = $itemId;
 
         return $this;
     }
     /**
-     * @return int|null
+     * @return int
      */
-    public function getPaymentMethodId(): ?int
+    public function getPaymentMethodId()
     {
-        return $this->container['paymentMethodId'];
+        return $this->paymentMethodId;
     }
 
     /**
-     * @param int|null $paymentMethodId Payment method ID, default will be used if not provided
+     * @param int $paymentMethodId
+     *
+     * @return self
      */
-    public function setPaymentMethodId(?int $paymentMethodId): static
+    public function setPaymentMethodId($paymentMethodId): self
     {
-        $this->container['paymentMethodId'] = $paymentMethodId;
+        $this->paymentMethodId = $paymentMethodId;
 
         return $this;
     }
     /**
-     * @return \Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts|null
+     * @return \Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts
      */
-    public function getDomainContacts(): ?\Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts
+    public function getDomainContacts()
     {
-        return $this->container['domainContacts'];
+        return $this->domainContacts;
     }
 
     /**
-     * @param \Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts|null $domainContacts domainContacts
+     * @param \Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts $domainContacts
+     *
+     * @return self
      */
-    public function setDomainContacts(?\Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts $domainContacts): static
+    public function setDomainContacts($domainContacts): self
     {
-        $this->container['domainContacts'] = $domainContacts;
+        $this->domainContacts = $domainContacts;
 
         return $this;
     }
     /**
-     * @return object|null
+     * @return object
      */
-    public function getAdditionalDetails(): ?object
+    public function getAdditionalDetails()
     {
-        return $this->container['additionalDetails'];
+        return $this->additionalDetails;
     }
 
     /**
-     * @param object|null $additionalDetails Additional registration data, possible values depends on TLD
+     * @param object $additionalDetails
+     *
+     * @return self
      */
-    public function setAdditionalDetails(?object $additionalDetails): static
+    public function setAdditionalDetails($additionalDetails): self
     {
-        $this->container['additionalDetails'] = $additionalDetails;
+        $this->additionalDetails = $additionalDetails;
 
         return $this;
     }
     /**
-     * @return mixed[]|null
+     * @return mixed[]
      */
-    public function getCoupons(): ?array
+    public function getCoupons()
     {
-        return $this->container['coupons'];
+        return $this->coupons;
     }
 
     /**
-     * @param mixed[]|null $coupons Discount coupon codes
+     * @param mixed[] $coupons
+     *
+     * @return self
      */
-    public function setCoupons(?array $coupons): static
+    public function setCoupons($coupons): self
     {
-        $this->container['coupons'] = $coupons;
+        $this->coupons = $coupons;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

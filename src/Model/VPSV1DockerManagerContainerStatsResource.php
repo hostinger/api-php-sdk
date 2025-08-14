@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,357 +24,140 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1DockerManagerContainerStatsResource implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1DockerManagerContainerStatsResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.DockerManager.ContainerStatsResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'cpuPercentage' => 'float',
-        'memoryPercentage' => 'float',
-        'memoryUsed' => 'float',
-        'memoryTotal' => 'float',
-        'netIn' => 'int',
-        'netOut' => 'int'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'cpuPercentage' => 'float',
-        'memoryPercentage' => 'float',
-        'memoryUsed' => 'float',
-        'memoryTotal' => 'float',
-        'netIn' => null,
-        'netOut' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'cpuPercentage' => false,
-        'memoryPercentage' => false,
-        'memoryUsed' => false,
-        'memoryTotal' => false,
-        'netIn' => false,
-        'netOut' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param float $cpuPercentage
+     * @param float $memoryPercentage
+     * @param float $memoryUsed
+     * @param float $memoryTotal
+     * @param int $netIn
+     * @param int $netOut
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'VPSV1DockerManagerContainerStatsResource';
+    public function __construct(
+        private $cpuPercentage,
+        private $memoryPercentage,
+        private $memoryUsed,
+        private $memoryTotal,
+        private $netIn,
+        private $netOut,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return float
      */
-    public static function openAPIFormats(): array
+    public function getCpuPercentage()
     {
-        return self::$openAPIFormats;
+        return $this->cpuPercentage;
     }
 
     /**
-     * @return array<string, bool>
+     * @param float $cpuPercentage
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setCpuPercentage($cpuPercentage): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'cpuPercentage' => 'cpu_percentage',
-        'memoryPercentage' => 'memory_percentage',
-        'memoryUsed' => 'memory_used',
-        'memoryTotal' => 'memory_total',
-        'netIn' => 'net_in',
-        'netOut' => 'net_out'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'cpuPercentage' => 'setCpuPercentage',
-        'memoryPercentage' => 'setMemoryPercentage',
-        'memoryUsed' => 'setMemoryUsed',
-        'memoryTotal' => 'setMemoryTotal',
-        'netIn' => 'setNetIn',
-        'netOut' => 'setNetOut'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'cpuPercentage' => 'getCpuPercentage',
-        'memoryPercentage' => 'getMemoryPercentage',
-        'memoryUsed' => 'getMemoryUsed',
-        'memoryTotal' => 'getMemoryTotal',
-        'netIn' => 'getNetIn',
-        'netOut' => 'getNetOut'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('cpuPercentage', $data, null);
-        $this->setIfExists('memoryPercentage', $data, null);
-        $this->setIfExists('memoryUsed', $data, null);
-        $this->setIfExists('memoryTotal', $data, null);
-        $this->setIfExists('netIn', $data, null);
-        $this->setIfExists('netOut', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return float|null
-     */
-    public function getCpuPercentage(): ?float
-    {
-        return $this->container['cpuPercentage'];
-    }
-
-    /**
-     * @param float|null $cpuPercentage CPU usage in percentage
-     */
-    public function setCpuPercentage(?float $cpuPercentage): static
-    {
-        $this->container['cpuPercentage'] = $cpuPercentage;
+        $this->cpuPercentage = $cpuPercentage;
 
         return $this;
     }
     /**
-     * @return float|null
+     * @return float
      */
-    public function getMemoryPercentage(): ?float
+    public function getMemoryPercentage()
     {
-        return $this->container['memoryPercentage'];
+        return $this->memoryPercentage;
     }
 
     /**
-     * @param float|null $memoryPercentage Memory usage in percentage
+     * @param float $memoryPercentage
+     *
+     * @return self
      */
-    public function setMemoryPercentage(?float $memoryPercentage): static
+    public function setMemoryPercentage($memoryPercentage): self
     {
-        $this->container['memoryPercentage'] = $memoryPercentage;
+        $this->memoryPercentage = $memoryPercentage;
 
         return $this;
     }
     /**
-     * @return float|null
+     * @return float
      */
-    public function getMemoryUsed(): ?float
+    public function getMemoryUsed()
     {
-        return $this->container['memoryUsed'];
+        return $this->memoryUsed;
     }
 
     /**
-     * @param float|null $memoryUsed Used memory in bytes
+     * @param float $memoryUsed
+     *
+     * @return self
      */
-    public function setMemoryUsed(?float $memoryUsed): static
+    public function setMemoryUsed($memoryUsed): self
     {
-        $this->container['memoryUsed'] = $memoryUsed;
+        $this->memoryUsed = $memoryUsed;
 
         return $this;
     }
     /**
-     * @return float|null
+     * @return float
      */
-    public function getMemoryTotal(): ?float
+    public function getMemoryTotal()
     {
-        return $this->container['memoryTotal'];
+        return $this->memoryTotal;
     }
 
     /**
-     * @param float|null $memoryTotal Total available memory in bytes
+     * @param float $memoryTotal
+     *
+     * @return self
      */
-    public function setMemoryTotal(?float $memoryTotal): static
+    public function setMemoryTotal($memoryTotal): self
     {
-        $this->container['memoryTotal'] = $memoryTotal;
+        $this->memoryTotal = $memoryTotal;
 
         return $this;
     }
     /**
-     * @return int|null
+     * @return int
      */
-    public function getNetIn(): ?int
+    public function getNetIn()
     {
-        return $this->container['netIn'];
+        return $this->netIn;
     }
 
     /**
-     * @param int|null $netIn Inbound network traffic in bytes
+     * @param int $netIn
+     *
+     * @return self
      */
-    public function setNetIn(?int $netIn): static
+    public function setNetIn($netIn): self
     {
-        $this->container['netIn'] = $netIn;
+        $this->netIn = $netIn;
 
         return $this;
     }
     /**
-     * @return int|null
+     * @return int
      */
-    public function getNetOut(): ?int
+    public function getNetOut()
     {
-        return $this->container['netOut'];
+        return $this->netOut;
     }
 
     /**
-     * @param int|null $netOut Outbound network traffic in bytes
+     * @param int $netOut
+     *
+     * @return self
      */
-    public function setNetOut(?int $netOut): static
+    public function setNetOut($netOut): self
     {
-        $this->container['netOut'] = $netOut;
+        $this->netOut = $netOut;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

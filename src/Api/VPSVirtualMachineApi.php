@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -12,7 +13,6 @@
 
 namespace Hostinger\Api;
 
-use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -20,9 +20,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
-use Hostinger\HeaderSelector;
 use Hostinger\ObjectSerializer;
 
 class VPSVirtualMachineApi
@@ -31,16 +33,15 @@ class VPSVirtualMachineApi
 
     protected Configuration $config;
 
-    protected HeaderSelector $headerSelector;
+    protected SerializerInterface $serializer;
 
     public function __construct(
-        ?ClientInterface $client = null,
         ?Configuration $config = null,
-        ?HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
     ) {
-        $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->client = $client ?: new Client();
+        $this->serializer = ObjectSerializer::getSerializer();
     }
 
     public function getConfig(): Configuration
@@ -49,1005 +50,417 @@ class VPSVirtualMachineApi
     }
 
     /**
-     * Operation getAttachedPublicKeysV1
-     *
-     * Get attached public keys
-     *
-     * @return \Hostinger\Model\VPSV1PublicKeyListResponse|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getAttachedPublicKeysV1(int $virtualMachineId, ?int $page = null, ): \Hostinger\Model\VPSV1PublicKeyListResponse|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getAttachedPublicKeysV1(int $virtualMachineId, ?int $page = null): \Hostinger\Model\VPSV1PublicKeyListResponse
     {
-        $request = $this->getAttachedPublicKeysV1Request($virtualMachineId, $page, );
+        $query = http_build_query(
+            array_filter([
+                'page' => $page,
+            ])
+        );
+
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/public-keys', $virtualMachineId) . $query,
+            headers: $this->getHeaders(),
+        );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1PublicKeyListResponse';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PublicKeyListResponse::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getAttachedPublicKeysV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getAttachedPublicKeysV1Request(int $virtualMachineId,?int $page = null,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getMetricsV1(int $virtualMachineId, \DateTime $dateFrom, \DateTime $dateTo): \Hostinger\Model\VPSV1MetricsMetricsCollection
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/public-keys';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $query = http_build_query(
+            array_filter([
+                'date_from' => $dateFrom,
+            ])
         );
 
-        $body = null;
-        $query = ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
+        $query = http_build_query(
+            array_filter([
+                ', '
+                'date_to' => $dateTo,
+            ])
         );
 
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getMetricsV1
-     *
-     * Get metrics
-     *
-     * @return \Hostinger\Model\VPSV1MetricsMetricsCollection|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getMetricsV1(int $virtualMachineId, \DateTime $dateFrom, \DateTime $dateTo, ): \Hostinger\Model\VPSV1MetricsMetricsCollection|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getMetricsV1Request($virtualMachineId, $dateFrom, $dateTo, );
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/metrics', $virtualMachineId) . $query . $query,
+            headers: $this->getHeaders(),
+        );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1MetricsMetricsCollection';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1MetricsMetricsCollection::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getMetricsV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getMetricsV1Request(int $virtualMachineId,\DateTime $dateFrom,\DateTime $dateTo,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getVirtualMachineDetailsV1(int $virtualMachineId): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/metrics';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}', $virtualMachineId),
+            headers: $this->getHeaders(),
         );
-
-        $body = null;
-        $query = ObjectSerializer::toQueryValue(
-            $dateFrom,
-            'date_from', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            true // required
-        );
-        $query = ObjectSerializer::toQueryValue(
-            $dateTo,
-            'date_to', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            true // required
-        );
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getVirtualMachineDetailsV1
-     *
-     * Get virtual machine details
-     *
-     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getVirtualMachineDetailsV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getVirtualMachineDetailsV1Request($virtualMachineId, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getVirtualMachineDetailsV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getVirtualMachineDetailsV1Request(int $virtualMachineId,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getVirtualMachinesV1(): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/vps/v1/virtual-machines',
+            headers: $this->getHeaders(),
         );
 
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getVirtualMachinesV1
-     *
-     * Get virtual machines
-     *
-     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getVirtualMachinesV1(): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getVirtualMachinesV1Request();
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1VirtualMachineVirtualMachineCollection::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getVirtualMachinesV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getVirtualMachinesV1Request(): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function purchaseNewVirtualMachineV1(\Hostinger\Model\VPSV1VirtualMachinePurchaseRequest $vPSV1VirtualMachinePurchaseRequest): \Hostinger\Model\BillingV1OrderVirtualMachineOrderResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines';
-
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation purchaseNewVirtualMachineV1
-     *
-     * Purchase new virtual machine
-     *
-     * @return \Hostinger\Model\BillingV1OrderVirtualMachineOrderResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function purchaseNewVirtualMachineV1(\Hostinger\Model\VPSV1VirtualMachinePurchaseRequest $vPSV1VirtualMachinePurchaseRequest, ): \Hostinger\Model\BillingV1OrderVirtualMachineOrderResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->purchaseNewVirtualMachineV1Request($vPSV1VirtualMachinePurchaseRequest, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\BillingV1OrderVirtualMachineOrderResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'purchaseNewVirtualMachineV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function purchaseNewVirtualMachineV1Request(\Hostinger\Model\VPSV1VirtualMachinePurchaseRequest $vPSV1VirtualMachinePurchaseRequest,): Request
-    {
-        $resourcePath = '/api/vps/v1/virtual-machines';
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachinePurchaseRequest));
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation recreateVirtualMachineV1
-     *
-     * Recreate virtual machine
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function recreateVirtualMachineV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRecreateRequest $vPSV1VirtualMachineRecreateRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->recreateVirtualMachineV1Request($virtualMachineId, $vPSV1VirtualMachineRecreateRequest, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'recreateVirtualMachineV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function recreateVirtualMachineV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineRecreateRequest $vPSV1VirtualMachineRecreateRequest,): Request
-    {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/recreate';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/vps/v1/virtual-machines',
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($vPSV1VirtualMachinePurchaseRequest, JsonEncoder::FORMAT),
         );
 
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineRecreateRequest));
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation resetHostnameV1
-     *
-     * Reset hostname
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function resetHostnameV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->resetHostnameV1Request($virtualMachineId, );
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\BillingV1OrderVirtualMachineOrderResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'resetHostnameV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function resetHostnameV1Request(int $virtualMachineId,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function recreateVirtualMachineV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRecreateRequest $vPSV1VirtualMachineRecreateRequest): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/hostname';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/recreate', $virtualMachineId),
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($vPSV1VirtualMachineRecreateRequest, JsonEncoder::FORMAT),
         );
-
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('DELETE', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation restartVirtualMachineV1
-     *
-     * Restart virtual machine
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function restartVirtualMachineV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->restartVirtualMachineV1Request($virtualMachineId, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'restartVirtualMachineV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function restartVirtualMachineV1Request(int $virtualMachineId,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function resetHostnameV1(int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/restart';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/hostname', $virtualMachineId),
+            headers: $this->getHeaders(),
         );
-
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation setHostnameV1
-     *
-     * Set hostname
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function setHostnameV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest $vPSV1VirtualMachineHostnameUpdateRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->setHostnameV1Request($virtualMachineId, $vPSV1VirtualMachineHostnameUpdateRequest, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'setHostnameV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function setHostnameV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest $vPSV1VirtualMachineHostnameUpdateRequest,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function restartVirtualMachineV1(int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/hostname';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/restart', $virtualMachineId),
+            headers: $this->getHeaders(),
         );
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineHostnameUpdateRequest));
-        $query = [];
-
-        return $this->buildRequest('PUT', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation setNameserversV1
-     *
-     * Set nameservers
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function setNameserversV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest $vPSV1VirtualMachineNameserversUpdateRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->setNameserversV1Request($virtualMachineId, $vPSV1VirtualMachineNameserversUpdateRequest, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'setNameserversV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function setNameserversV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest $vPSV1VirtualMachineNameserversUpdateRequest,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function setHostnameV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest $vPSV1VirtualMachineHostnameUpdateRequest): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/nameservers';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/hostname', $virtualMachineId),
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($vPSV1VirtualMachineHostnameUpdateRequest, JsonEncoder::FORMAT),
         );
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineNameserversUpdateRequest));
-        $query = [];
-
-        return $this->buildRequest('PUT', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation setPanelPasswordV1
-     *
-     * Set panel password
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function setPanelPasswordV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest $vPSV1VirtualMachinePanelPasswordUpdateRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->setPanelPasswordV1Request($virtualMachineId, $vPSV1VirtualMachinePanelPasswordUpdateRequest, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'setPanelPasswordV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function setPanelPasswordV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest $vPSV1VirtualMachinePanelPasswordUpdateRequest,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function setNameserversV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest $vPSV1VirtualMachineNameserversUpdateRequest): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/panel-password';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/nameservers', $virtualMachineId),
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($vPSV1VirtualMachineNameserversUpdateRequest, JsonEncoder::FORMAT),
         );
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachinePanelPasswordUpdateRequest));
-        $query = [];
-
-        return $this->buildRequest('PUT', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation setRootPasswordV1
-     *
-     * Set root password
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function setRootPasswordV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest $vPSV1VirtualMachineRootPasswordUpdateRequest, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->setRootPasswordV1Request($virtualMachineId, $vPSV1VirtualMachineRootPasswordUpdateRequest, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'setRootPasswordV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function setRootPasswordV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest $vPSV1VirtualMachineRootPasswordUpdateRequest,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function setPanelPasswordV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest $vPSV1VirtualMachinePanelPasswordUpdateRequest): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/root-password';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/panel-password', $virtualMachineId),
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($vPSV1VirtualMachinePanelPasswordUpdateRequest, JsonEncoder::FORMAT),
         );
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineRootPasswordUpdateRequest));
-        $query = [];
-
-        return $this->buildRequest('PUT', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation setupPurchasedVirtualMachineV1
-     *
-     * Setup purchased virtual machine
-     *
-     * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function setupPurchasedVirtualMachineV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineSetupRequest $vPSV1VirtualMachineSetupRequest, ): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->setupPurchasedVirtualMachineV1Request($virtualMachineId, $vPSV1VirtualMachineSetupRequest, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'setupPurchasedVirtualMachineV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function setupPurchasedVirtualMachineV1Request(int $virtualMachineId,\Hostinger\Model\VPSV1VirtualMachineSetupRequest $vPSV1VirtualMachineSetupRequest,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function setRootPasswordV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest $vPSV1VirtualMachineRootPasswordUpdateRequest): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/setup';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/root-password', $virtualMachineId),
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($vPSV1VirtualMachineRootPasswordUpdateRequest, JsonEncoder::FORMAT),
         );
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1VirtualMachineSetupRequest));
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation startVirtualMachineV1
-     *
-     * Start virtual machine
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function startVirtualMachineV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->startVirtualMachineV1Request($virtualMachineId, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'startVirtualMachineV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function startVirtualMachineV1Request(int $virtualMachineId,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function setupPurchasedVirtualMachineV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineSetupRequest $vPSV1VirtualMachineSetupRequest): \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/start';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/setup', $virtualMachineId),
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($vPSV1VirtualMachineSetupRequest, JsonEncoder::FORMAT),
         );
-
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation stopVirtualMachineV1
-     *
-     * Stop virtual machine
-     *
-     * @return \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function stopVirtualMachineV1(int $virtualMachineId, ): \Hostinger\Model\VPSV1ActionActionResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->stopVirtualMachineV1Request($virtualMachineId, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1ActionActionResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'stopVirtualMachineV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function stopVirtualMachineV1Request(int $virtualMachineId,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function startVirtualMachineV1(int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
     {
-        $resourcePath = '/api/vps/v1/virtual-machines/{virtualMachineId}/stop';
-        $resourcePath = str_replace(
-            '{' . 'virtualMachineId' . '}',
-            ObjectSerializer::toPathValue((string) $virtualMachineId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/start', $virtualMachineId),
+            headers: $this->getHeaders(),
         );
 
-        $body = null;
-        $query = [];
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
 
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * @return array<string, mixed>
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function stopVirtualMachineV1(int $virtualMachineId): \Hostinger\Model\VPSV1ActionActionResource
+    {
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/virtual-machines/{virtualMachineId}/stop', $virtualMachineId),
+            headers: $this->getHeaders(),
+        );
+
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
+
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1ActionActionResource::class, JsonEncoder::FORMAT);
+    }
+
+    private function buildResourcePath(string $path, ...$values): string
+    {
+        foreach ($values as $value) {
+            if (is_array($value)) {
+                $value = implode(',', $value);
+            }
+
+            $path = str_replace('{' . 'VPSVirtualMachine' . '}', $value, $path);
+        }
+
+        return $path;
+    }
+
+    /**
+     * @return array<string, string>
      */
-    protected function createHttpClientOption(): array
+    private function getHeaders(): array
+    {
+        return [
+            'Authorization' => 'Bearer ' . $this->config->getAccessToken(),
+            'Content-Type' => 'application/json',
+            'User-Agent' => $this->config->getUserAgent(),
+        ];
+    }
+
+    private function createHttpClientOption(): array
     {
         $options = [];
         if ($this->config->getDebug()) {
@@ -1058,37 +471,5 @@ class VPSVirtualMachineApi
         }
 
         return $options;
-    }
-
-    /**
-     * @param array<string, string> $query
-     */
-    protected function buildRequest(
-        string $httpMethod,
-        string $resourcePath,
-        ?string $body = null,
-        array $query = [],
-        string $contentType = 'application/json',
-    ): Request {
-        $headers = $this->headerSelector->selectHeaders(
-            accept: ['application/json'],
-            contentType: $contentType,
-            isMultipart: false
-        );
-        $headers['User-Agent'] = $this->config->getUserAgent();
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $query = ObjectSerializer::buildQuery($query);
-
-        return new Request(
-            $httpMethod,
-            $this->config->getHost() . $resourcePath . ($query ? "?$query" : ''),
-            $headers,
-            $body
-        );
     }
 }

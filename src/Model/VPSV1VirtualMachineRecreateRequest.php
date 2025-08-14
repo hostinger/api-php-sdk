@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,330 +24,98 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1VirtualMachineRecreateRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1VirtualMachineRecreateRequest 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.VirtualMachine.RecreateRequest';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'templateId' => 'int',
-        'password' => 'string',
-        'panelPassword' => 'string',
-        'postInstallScriptId' => 'int'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'templateId' => null,
-        'password' => 'password',
-        'panelPassword' => 'password',
-        'postInstallScriptId' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'templateId' => false,
-        'password' => false,
-        'panelPassword' => false,
-        'postInstallScriptId' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param int $templateId
+     * @param string $password
+     * @param string $panelPassword
+     * @param int $postInstallScriptId
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * @return array<string, bool>
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'templateId' => 'template_id',
-        'password' => 'password',
-        'panelPassword' => 'panel_password',
-        'postInstallScriptId' => 'post_install_script_id'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'templateId' => 'setTemplateId',
-        'password' => 'setPassword',
-        'panelPassword' => 'setPanelPassword',
-        'postInstallScriptId' => 'setPostInstallScriptId'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'templateId' => 'getTemplateId',
-        'password' => 'getPassword',
-        'panelPassword' => 'getPanelPassword',
-        'postInstallScriptId' => 'getPostInstallScriptId'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('templateId', $data, null);
-        $this->setIfExists('password', $data, null);
-        $this->setIfExists('panelPassword', $data, null);
-        $this->setIfExists('postInstallScriptId', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['templateId'] === null) {
-            $invalidProperties[] = "'templateId' can't be null";
-        }
-        if (!is_null($this->container['password']) && (mb_strlen($this->container['password']) < 12)) {
-            $invalidProperties[] = "invalid value for 'password', the character length must be bigger than or equal to 12.";
-        }
-
-        if (!is_null($this->container['panelPassword']) && (mb_strlen($this->container['panelPassword']) < 12)) {
-            $invalidProperties[] = "invalid value for 'panelPassword', the character length must be bigger than or equal to 12.";
-        }
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
+    protected static $openAPIModelName = 'VPSV1VirtualMachineRecreateRequest';
+    public function __construct(
+        private $templateId,
+        private $password,
+        private $panelPassword,
+        private $postInstallScriptId,
+    ) {
     }
 
     /**
      * @return int
      */
-    public function getTemplateId(): int
+    public function getTemplateId()
     {
-        return $this->container['templateId'];
+        return $this->templateId;
     }
 
     /**
-     * @param int $templateId Template ID
+     * @param int $templateId
+     *
+     * @return self
      */
-    public function setTemplateId(int $templateId): static
+    public function setTemplateId($templateId): self
     {
-        $this->container['templateId'] = $templateId;
+        $this->templateId = $templateId;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getPassword(): ?string
+    public function getPassword()
     {
-        return $this->container['password'];
+        return $this->password;
     }
 
     /**
-     * @param string|null $password Root password for the virtual machine. If not provided, random password will be generated. Password will not be shown in the response.
+     * @param string $password
+     *
+     * @return self
      */
-    public function setPassword(?string $password): static
+    public function setPassword($password): self
     {
-
-        if ((mb_strlen($password) < 12)) {
-            throw new InvalidArgumentException('invalid length for $password when calling VPSV1VirtualMachineRecreateRequest., must be bigger than or equal to 12.');
-        }
-
-        $this->container['password'] = $password;
+        $this->password = $password;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getPanelPassword(): ?string
+    public function getPanelPassword()
     {
-        return $this->container['panelPassword'];
+        return $this->panelPassword;
     }
 
     /**
-     * @param string|null $panelPassword Panel password for the panel-based OS template. If not provided, random password will be generated. If OS does not support panel_password this field will be ignored. Password will not be shown in the response.
+     * @param string $panelPassword
+     *
+     * @return self
      */
-    public function setPanelPassword(?string $panelPassword): static
+    public function setPanelPassword($panelPassword): self
     {
-
-        if ((mb_strlen($panelPassword) < 12)) {
-            throw new InvalidArgumentException('invalid length for $panelPassword when calling VPSV1VirtualMachineRecreateRequest., must be bigger than or equal to 12.');
-        }
-
-        $this->container['panelPassword'] = $panelPassword;
+        $this->panelPassword = $panelPassword;
 
         return $this;
     }
     /**
-     * @return int|null
+     * @return int
      */
-    public function getPostInstallScriptId(): ?int
+    public function getPostInstallScriptId()
     {
-        return $this->container['postInstallScriptId'];
+        return $this->postInstallScriptId;
     }
 
     /**
-     * @param int|null $postInstallScriptId Post-install script to execute after virtual machine was recreated
+     * @param int $postInstallScriptId
+     *
+     * @return self
      */
-    public function setPostInstallScriptId(?int $postInstallScriptId): static
+    public function setPostInstallScriptId($postInstallScriptId): self
     {
-        $this->container['postInstallScriptId'] = $postInstallScriptId;
+        $this->postInstallScriptId = $postInstallScriptId;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

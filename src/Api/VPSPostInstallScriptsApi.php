@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -12,7 +13,6 @@
 
 namespace Hostinger\Api;
 
-use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -20,9 +20,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
-use Hostinger\HeaderSelector;
 use Hostinger\ObjectSerializer;
 
 class VPSPostInstallScriptsApi
@@ -31,16 +33,15 @@ class VPSPostInstallScriptsApi
 
     protected Configuration $config;
 
-    protected HeaderSelector $headerSelector;
+    protected SerializerInterface $serializer;
 
     public function __construct(
-        ?ClientInterface $client = null,
         ?Configuration $config = null,
-        ?HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
     ) {
-        $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->client = $client ?: new Client();
+        $this->serializer = ObjectSerializer::getSerializer();
     }
 
     public function getConfig(): Configuration
@@ -49,332 +50,159 @@ class VPSPostInstallScriptsApi
     }
 
     /**
-     * Operation createPostInstallScriptV1
-     *
-     * Create post-install script
-     *
-     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function createPostInstallScriptV1(\Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest, ): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function createPostInstallScriptV1(\Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
     {
-        $request = $this->createPostInstallScriptV1Request($vPSV1PostInstallScriptStoreRequest, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'createPostInstallScriptV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function createPostInstallScriptV1Request(\Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest,): Request
-    {
-        $resourcePath = '/api/vps/v1/post-install-scripts';
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1PostInstallScriptStoreRequest));
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation deletePostInstallScriptV1
-     *
-     * Delete post-install script
-     *
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function deletePostInstallScriptV1(int $postInstallScriptId, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->deletePostInstallScriptV1Request($postInstallScriptId, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'deletePostInstallScriptV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function deletePostInstallScriptV1Request(int $postInstallScriptId,): Request
-    {
-        $resourcePath = '/api/vps/v1/post-install-scripts/{postInstallScriptId}';
-        $resourcePath = str_replace(
-            '{' . 'postInstallScriptId' . '}',
-            ObjectSerializer::toPathValue((string) $postInstallScriptId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/vps/v1/post-install-scripts',
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($vPSV1PostInstallScriptStoreRequest, JsonEncoder::FORMAT),
         );
 
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('DELETE', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getPostInstallScriptV1
-     *
-     * Get post-install script
-     *
-     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getPostInstallScriptV1(int $postInstallScriptId, ): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getPostInstallScriptV1Request($postInstallScriptId, );
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getPostInstallScriptV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getPostInstallScriptV1Request(int $postInstallScriptId,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function deletePostInstallScriptV1(int $postInstallScriptId): \Hostinger\Model\CommonSuccessEmptyResource
     {
-        $resourcePath = '/api/vps/v1/post-install-scripts/{postInstallScriptId}';
-        $resourcePath = str_replace(
-            '{' . 'postInstallScriptId' . '}',
-            ObjectSerializer::toPathValue((string) $postInstallScriptId),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/post-install-scripts/{postInstallScriptId}', $postInstallScriptId),
+            headers: $this->getHeaders(),
         );
-
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getPostInstallScriptsV1
-     *
-     * Get post-install scripts
-     *
-     * @return \Hostinger\Model\VPSV1PostInstallScriptListResponse|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getPostInstallScriptsV1(?int $page = null, ): \Hostinger\Model\VPSV1PostInstallScriptListResponse|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getPostInstallScriptsV1Request($page, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1PostInstallScriptListResponse';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getPostInstallScriptsV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getPostInstallScriptsV1Request(?int $page = null,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getPostInstallScriptV1(int $postInstallScriptId): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
     {
-        $resourcePath = '/api/vps/v1/post-install-scripts';
-
-        $body = null;
-        $query = ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/post-install-scripts/{postInstallScriptId}', $postInstallScriptId),
+            headers: $this->getHeaders(),
         );
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation updatePostInstallScriptV1
-     *
-     * Update post-install script
-     *
-     * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function updatePostInstallScriptV1(int $postInstallScriptId, \Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest, ): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->updatePostInstallScriptV1Request($postInstallScriptId, $vPSV1PostInstallScriptStoreRequest, );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'updatePostInstallScriptV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function updatePostInstallScriptV1Request(int $postInstallScriptId,\Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getPostInstallScriptsV1(?int $page = null): \Hostinger\Model\VPSV1PostInstallScriptListResponse
     {
-        $resourcePath = '/api/vps/v1/post-install-scripts/{postInstallScriptId}';
-        $resourcePath = str_replace(
-            '{' . 'postInstallScriptId' . '}',
-            ObjectSerializer::toPathValue((string) $postInstallScriptId),
-            $resourcePath
+        $query = http_build_query(
+            array_filter([
+                'page' => $page,
+            ])
         );
 
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($vPSV1PostInstallScriptStoreRequest));
-        $query = [];
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/vps/v1/post-install-scripts' . $query,
+            headers: $this->getHeaders(),
+        );
 
-        return $this->buildRequest('PUT', $resourcePath, $body, $query);
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
+
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PostInstallScriptListResponse::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * @return array<string, mixed>
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function updatePostInstallScriptV1(int $postInstallScriptId, \Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest): \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource
+    {
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/vps/v1/post-install-scripts/{postInstallScriptId}', $postInstallScriptId),
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($vPSV1PostInstallScriptStoreRequest, JsonEncoder::FORMAT),
+        );
+
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
+
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource::class, JsonEncoder::FORMAT);
+    }
+
+    private function buildResourcePath(string $path, ...$values): string
+    {
+        foreach ($values as $value) {
+            if (is_array($value)) {
+                $value = implode(',', $value);
+            }
+
+            $path = str_replace('{' . 'VPSPostInstallScripts' . '}', $value, $path);
+        }
+
+        return $path;
+    }
+
+    /**
+     * @return array<string, string>
      */
-    protected function createHttpClientOption(): array
+    private function getHeaders(): array
+    {
+        return [
+            'Authorization' => 'Bearer ' . $this->config->getAccessToken(),
+            'Content-Type' => 'application/json',
+            'User-Agent' => $this->config->getUserAgent(),
+        ];
+    }
+
+    private function createHttpClientOption(): array
     {
         $options = [];
         if ($this->config->getDebug()) {
@@ -385,37 +213,5 @@ class VPSPostInstallScriptsApi
         }
 
         return $options;
-    }
-
-    /**
-     * @param array<string, string> $query
-     */
-    protected function buildRequest(
-        string $httpMethod,
-        string $resourcePath,
-        ?string $body = null,
-        array $query = [],
-        string $contentType = 'application/json',
-    ): Request {
-        $headers = $this->headerSelector->selectHeaders(
-            accept: ['application/json'],
-            contentType: $contentType,
-            isMultipart: false
-        );
-        $headers['User-Agent'] = $this->config->getUserAgent();
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $query = ObjectSerializer::buildQuery($query);
-
-        return new Request(
-            $httpMethod,
-            $this->config->getHost() . $resourcePath . ($query ? "?$query" : ''),
-            $headers,
-            $body
-        );
     }
 }

@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,378 +24,119 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class DomainsV1WHOISStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class DomainsV1WHOISStoreRequest 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'Domains.V1.WHOIS.StoreRequest';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'tld' => 'string',
-        'country' => 'string',
-        'entityType' => 'string',
-        'tldDetails' => 'object',
-        'whoisDetails' => 'object'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'tld' => null,
-        'country' => null,
-        'entityType' => null,
-        'tldDetails' => null,
-        'whoisDetails' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'tld' => false,
-        'country' => false,
-        'entityType' => false,
-        'tldDetails' => false,
-        'whoisDetails' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $tld
+     * @param string $country
+     * @param string $entityType
+     * @param object $tldDetails
+     * @param object $whoisDetails
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * @return array<string, bool>
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'tld' => 'tld',
-        'country' => 'country',
-        'entityType' => 'entity_type',
-        'tldDetails' => 'tld_details',
-        'whoisDetails' => 'whois_details'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'tld' => 'setTld',
-        'country' => 'setCountry',
-        'entityType' => 'setEntityType',
-        'tldDetails' => 'setTldDetails',
-        'whoisDetails' => 'setWhoisDetails'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'tld' => 'getTld',
-        'country' => 'getCountry',
-        'entityType' => 'getEntityType',
-        'tldDetails' => 'getTldDetails',
-        'whoisDetails' => 'getWhoisDetails'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    public const ENTITY_TYPE_INDIVIDUAL = 'individual';
-    public const ENTITY_TYPE_ORGANIZATION = 'organization';
-
-    /**
-     * @return array<string>
-     */
-    public function getEntityTypeAllowableValues(): array
-    {
-        return [
-            self::ENTITY_TYPE_INDIVIDUAL,
-            self::ENTITY_TYPE_ORGANIZATION,
-        ];
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('tld', $data, null);
-        $this->setIfExists('country', $data, null);
-        $this->setIfExists('entityType', $data, null);
-        $this->setIfExists('tldDetails', $data, null);
-        $this->setIfExists('whoisDetails', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['tld'] === null) {
-            $invalidProperties[] = "'tld' can't be null";
-        }
-        if ($this->container['country'] === null) {
-            $invalidProperties[] = "'country' can't be null";
-        }
-        if ($this->container['entityType'] === null) {
-            $invalidProperties[] = "'entityType' can't be null";
-        }
-        $allowedValues = $this->getEntityTypeAllowableValues();
-        if (!is_null($this->container['entityType']) && !in_array($this->container['entityType'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'entityType', must be one of '%s'",
-                $this->container['entityType'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['whoisDetails'] === null) {
-            $invalidProperties[] = "'whoisDetails' can't be null";
-        }
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
+    protected static $openAPIModelName = 'DomainsV1WHOISStoreRequest';
+    public function __construct(
+        private $tld,
+        private $country,
+        private $entityType,
+        private $tldDetails,
+        private $whoisDetails,
+    ) {
     }
 
     /**
      * @return string
      */
-    public function getTld(): string
+    public function getTld()
     {
-        return $this->container['tld'];
+        return $this->tld;
     }
 
     /**
-     * @param string $tld TLD of the domain (without leading dot)
+     * @param string $tld
+     *
+     * @return self
      */
-    public function setTld(string $tld): static
+    public function setTld($tld): self
     {
-        $this->container['tld'] = $tld;
+        $this->tld = $tld;
 
         return $this;
     }
     /**
      * @return string
      */
-    public function getCountry(): string
+    public function getCountry()
     {
-        return $this->container['country'];
+        return $this->country;
     }
 
     /**
-     * @param string $country ISO 3166 2-letter country code
+     * @param string $country
+     *
+     * @return self
      */
-    public function setCountry(string $country): static
+    public function setCountry($country): self
     {
-        $this->container['country'] = $country;
+        $this->country = $country;
 
         return $this;
     }
     /**
      * @return string
      */
-    public function getEntityType(): string
+    public function getEntityType()
     {
-        return $this->container['entityType'];
+        return $this->entityType;
     }
 
     /**
-     * @param string $entityType Legal entity type
+     * @param string $entityType
+     *
+     * @return self
      */
-    public function setEntityType(string $entityType): static
+    public function setEntityType($entityType): self
     {
-        $allowedValues = $this->getEntityTypeAllowableValues();
-        if (!in_array($entityType, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'entityType', must be one of '%s'",
-                    $entityType,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['entityType'] = $entityType;
-
-        return $this;
-    }
-    /**
-     * @return object|null
-     */
-    public function getTldDetails(): ?object
-    {
-        return $this->container['tldDetails'];
-    }
-
-    /**
-     * @param object|null $tldDetails TLD details
-     */
-    public function setTldDetails(?object $tldDetails): static
-    {
-        $this->container['tldDetails'] = $tldDetails;
+        $this->entityType = $entityType;
 
         return $this;
     }
     /**
      * @return object
      */
-    public function getWhoisDetails(): object
+    public function getTldDetails()
     {
-        return $this->container['whoisDetails'];
+        return $this->tldDetails;
     }
 
     /**
-     * @param object $whoisDetails WHOIS details
+     * @param object $tldDetails
+     *
+     * @return self
      */
-    public function setWhoisDetails(object $whoisDetails): static
+    public function setTldDetails($tldDetails): self
     {
-        $this->container['whoisDetails'] = $whoisDetails;
+        $this->tldDetails = $tldDetails;
 
         return $this;
     }
-    public function offsetExists(mixed $offset): bool
+    /**
+     * @return object
+     */
+    public function getWhoisDetails()
     {
-        return isset($this->container[$offset]);
+        return $this->whoisDetails;
     }
 
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
+    /**
+     * @param object $whoisDetails
+     *
+     * @return self
+     */
+    public function setWhoisDetails($whoisDetails): self
     {
-        return $this->container[$offset] ?? null;
-    }
+        $this->whoisDetails = $whoisDetails;
 
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return $this;
     }
 }
 

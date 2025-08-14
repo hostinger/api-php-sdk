@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,658 +24,329 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class DomainsV1DomainDomainExtendedResource implements ModelInterface, ArrayAccess, JsonSerializable
+class DomainsV1DomainDomainExtendedResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'Domains.V1.Domain.DomainExtendedResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'domain' => 'string',
-        'status' => 'string',
-        'message' => 'string',
-        'isPrivacyProtectionAllowed' => 'bool',
-        'isPrivacyProtected' => 'bool',
-        'isLockable' => 'bool',
-        'isLocked' => 'bool',
-        'nameServers' => '\Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers',
-        'childNameServers' => 'string[][]',
-        'domainContacts' => '\Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts',
-        'createdAt' => '\DateTime',
-        'updatedAt' => '\DateTime',
-        '_60daysLockExpiresAt' => '\DateTime',
-        'registeredAt' => '\DateTime',
-        'expiresAt' => '\DateTime'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'domain' => null,
-        'status' => null,
-        'message' => null,
-        'isPrivacyProtectionAllowed' => null,
-        'isPrivacyProtected' => null,
-        'isLockable' => null,
-        'isLocked' => null,
-        'nameServers' => null,
-        'childNameServers' => null,
-        'domainContacts' => null,
-        'createdAt' => 'date-time',
-        'updatedAt' => 'date-time',
-        '_60daysLockExpiresAt' => 'date-time',
-        'registeredAt' => 'date-time',
-        'expiresAt' => 'date-time'
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'domain' => false,
-        'status' => false,
-        'message' => true,
-        'isPrivacyProtectionAllowed' => false,
-        'isPrivacyProtected' => false,
-        'isLockable' => false,
-        'isLocked' => false,
-        'nameServers' => false,
-        'childNameServers' => false,
-        'domainContacts' => false,
-        'createdAt' => false,
-        'updatedAt' => false,
-        '_60daysLockExpiresAt' => true,
-        'registeredAt' => true,
-        'expiresAt' => true
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $domain
+     * @param string $status
+     * @param string|null $message
+     * @param bool $isPrivacyProtectionAllowed
+     * @param bool $isPrivacyProtected
+     * @param bool $isLockable
+     * @param bool $isLocked
+     * @param \Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers $nameServers
+     * @param string[][] $childNameServers
+     * @param \Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts $domainContacts
+     * @param \DateTime $createdAt
+     * @param \DateTime $updatedAt
+     * @param \DateTime|null $_60daysLockExpiresAt
+     * @param \DateTime|null $registeredAt
+     * @param \DateTime|null $expiresAt
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'DomainsV1DomainDomainExtendedResource';
+    public function __construct(
+        private $domain,
+        private $status,
+        private $message = null,
+        private $isPrivacyProtectionAllowed,
+        private $isPrivacyProtected,
+        private $isLockable,
+        private $isLocked,
+        private $nameServers,
+        private $childNameServers,
+        private $domainContacts,
+        private $createdAt,
+        private $updatedAt,
+        private $_60daysLockExpiresAt = null,
+        private $registeredAt = null,
+        private $expiresAt = null,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return string
      */
-    public static function openAPIFormats(): array
+    public function getDomain()
     {
-        return self::$openAPIFormats;
+        return $this->domain;
     }
 
     /**
-     * @return array<string, bool>
+     * @param string $domain
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setDomain($domain): self
     {
-        return self::$openAPINullables;
+        $this->domain = $domain;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**
-     * @return array<string>
+     * @param string $status
+     *
+     * @return self
      */
-    private function getOpenAPINullablesSetToNull(): array
+    public function setStatus($status): self
     {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'domain' => 'domain',
-        'status' => 'status',
-        'message' => 'message',
-        'isPrivacyProtectionAllowed' => 'is_privacy_protection_allowed',
-        'isPrivacyProtected' => 'is_privacy_protected',
-        'isLockable' => 'is_lockable',
-        'isLocked' => 'is_locked',
-        'nameServers' => 'name_servers',
-        'childNameServers' => 'child_name_servers',
-        'domainContacts' => 'domain_contacts',
-        'createdAt' => 'created_at',
-        'updatedAt' => 'updated_at',
-        '_60daysLockExpiresAt' => '60_days_lock_expires_at',
-        'registeredAt' => 'registered_at',
-        'expiresAt' => 'expires_at'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'domain' => 'setDomain',
-        'status' => 'setStatus',
-        'message' => 'setMessage',
-        'isPrivacyProtectionAllowed' => 'setIsPrivacyProtectionAllowed',
-        'isPrivacyProtected' => 'setIsPrivacyProtected',
-        'isLockable' => 'setIsLockable',
-        'isLocked' => 'setIsLocked',
-        'nameServers' => 'setNameServers',
-        'childNameServers' => 'setChildNameServers',
-        'domainContacts' => 'setDomainContacts',
-        'createdAt' => 'setCreatedAt',
-        'updatedAt' => 'setUpdatedAt',
-        '_60daysLockExpiresAt' => 'set60daysLockExpiresAt',
-        'registeredAt' => 'setRegisteredAt',
-        'expiresAt' => 'setExpiresAt'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'domain' => 'getDomain',
-        'status' => 'getStatus',
-        'message' => 'getMessage',
-        'isPrivacyProtectionAllowed' => 'getIsPrivacyProtectionAllowed',
-        'isPrivacyProtected' => 'getIsPrivacyProtected',
-        'isLockable' => 'getIsLockable',
-        'isLocked' => 'getIsLocked',
-        'nameServers' => 'getNameServers',
-        'childNameServers' => 'getChildNameServers',
-        'domainContacts' => 'getDomainContacts',
-        'createdAt' => 'getCreatedAt',
-        'updatedAt' => 'getUpdatedAt',
-        '_60daysLockExpiresAt' => 'get60daysLockExpiresAt',
-        'registeredAt' => 'getRegisteredAt',
-        'expiresAt' => 'getExpiresAt'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    public const STATUS_ACTIVE = 'active';
-    public const STATUS_PENDING_SETUP = 'pending_setup';
-    public const STATUS_EXPIRED = 'expired';
-    public const STATUS_REQUESTED = 'requested';
-    public const STATUS_PENDING_VERIFICATION = 'pending_verification';
-    public const STATUS_DELETED = 'deleted';
-    public const STATUS_SUSPENDED = 'suspended';
-    public const STATUS_FAILED = 'failed';
-
-    /**
-     * @return array<string>
-     */
-    public function getStatusAllowableValues(): array
-    {
-        return [
-            self::STATUS_ACTIVE,
-            self::STATUS_PENDING_SETUP,
-            self::STATUS_EXPIRED,
-            self::STATUS_REQUESTED,
-            self::STATUS_PENDING_VERIFICATION,
-            self::STATUS_DELETED,
-            self::STATUS_SUSPENDED,
-            self::STATUS_FAILED,
-        ];
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('domain', $data, null);
-        $this->setIfExists('status', $data, null);
-        $this->setIfExists('message', $data, null);
-        $this->setIfExists('isPrivacyProtectionAllowed', $data, null);
-        $this->setIfExists('isPrivacyProtected', $data, null);
-        $this->setIfExists('isLockable', $data, null);
-        $this->setIfExists('isLocked', $data, null);
-        $this->setIfExists('nameServers', $data, null);
-        $this->setIfExists('childNameServers', $data, null);
-        $this->setIfExists('domainContacts', $data, null);
-        $this->setIfExists('createdAt', $data, null);
-        $this->setIfExists('updatedAt', $data, null);
-        $this->setIfExists('_60daysLockExpiresAt', $data, null);
-        $this->setIfExists('registeredAt', $data, null);
-        $this->setIfExists('expiresAt', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getDomain(): ?string
-    {
-        return $this->container['domain'];
-    }
-
-    /**
-     * @param string|null $domain Domain name
-     */
-    public function setDomain(?string $domain): static
-    {
-        $this->container['domain'] = $domain;
+        $this->status = $status;
 
         return $this;
     }
     /**
      * @return string|null
      */
-    public function getStatus(): ?string
+    public function getMessage()
     {
-        return $this->container['status'];
+        return $this->message;
     }
 
     /**
-     * @param string|null $status Status of the domain
+     * @param string|null $message
+     *
+     * @return self
      */
-    public function setStatus(?string $status): static
+    public function setMessage($message): self
     {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
+        $this->message = $message;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return bool
      */
-    public function getMessage(): ?string
+    public function getIsPrivacyProtectionAllowed()
     {
-        return $this->container['message'];
+        return $this->isPrivacyProtectionAllowed;
     }
 
     /**
-     * @param string|null $message message
+     * @param bool $isPrivacyProtectionAllowed
+     *
+     * @return self
      */
-    public function setMessage(?string $message): static
+    public function setIsPrivacyProtectionAllowed($isPrivacyProtectionAllowed): self
     {
-        if (is_null($message)) {
-            $this->openAPINullablesSetToNull[] = 'message';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('message', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['message'] = $message;
+        $this->isPrivacyProtectionAllowed = $isPrivacyProtectionAllowed;
 
         return $this;
     }
     /**
-     * @return bool|null
+     * @return bool
      */
-    public function getIsPrivacyProtectionAllowed(): ?bool
+    public function getIsPrivacyProtected()
     {
-        return $this->container['isPrivacyProtectionAllowed'];
+        return $this->isPrivacyProtected;
     }
 
     /**
-     * @param bool|null $isPrivacyProtectionAllowed Is privacy protection allowed for the domain
+     * @param bool $isPrivacyProtected
+     *
+     * @return self
      */
-    public function setIsPrivacyProtectionAllowed(?bool $isPrivacyProtectionAllowed): static
+    public function setIsPrivacyProtected($isPrivacyProtected): self
     {
-        $this->container['isPrivacyProtectionAllowed'] = $isPrivacyProtectionAllowed;
-
-        return $this;
-    }
-    /**
-     * @return bool|null
-     */
-    public function getIsPrivacyProtected(): ?bool
-    {
-        return $this->container['isPrivacyProtected'];
-    }
-
-    /**
-     * @param bool|null $isPrivacyProtected Is privacy protection enabled for the domain
-     */
-    public function setIsPrivacyProtected(?bool $isPrivacyProtected): static
-    {
-        $this->container['isPrivacyProtected'] = $isPrivacyProtected;
+        $this->isPrivacyProtected = $isPrivacyProtected;
 
         return $this;
     }
     /**
-     * @return bool|null
+     * @return bool
      */
-    public function getIsLockable(): ?bool
+    public function getIsLockable()
     {
-        return $this->container['isLockable'];
+        return $this->isLockable;
     }
 
     /**
-     * @param bool|null $isLockable Is domain allowed to be locked
+     * @param bool $isLockable
+     *
+     * @return self
      */
-    public function setIsLockable(?bool $isLockable): static
+    public function setIsLockable($isLockable): self
     {
-        $this->container['isLockable'] = $isLockable;
-
-        return $this;
-    }
-    /**
-     * @return bool|null
-     */
-    public function getIsLocked(): ?bool
-    {
-        return $this->container['isLocked'];
-    }
-
-    /**
-     * @param bool|null $isLocked Is domain locked
-     */
-    public function setIsLocked(?bool $isLocked): static
-    {
-        $this->container['isLocked'] = $isLocked;
+        $this->isLockable = $isLockable;
 
         return $this;
     }
     /**
-     * @return \Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers|null
+     * @return bool
      */
-    public function getNameServers(): ?\Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers
+    public function getIsLocked()
     {
-        return $this->container['nameServers'];
+        return $this->isLocked;
     }
 
     /**
-     * @param \Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers|null $nameServers nameServers
+     * @param bool $isLocked
+     *
+     * @return self
      */
-    public function setNameServers(?\Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers $nameServers): static
+    public function setIsLocked($isLocked): self
     {
-        $this->container['nameServers'] = $nameServers;
-
-        return $this;
-    }
-    /**
-     * @return string[][]|null
-     */
-    public function getChildNameServers(): ?array
-    {
-        return $this->container['childNameServers'];
-    }
-
-    /**
-     * @param string[][]|null $childNameServers Child name servers
-     */
-    public function setChildNameServers(?array $childNameServers): static
-    {
-        $this->container['childNameServers'] = $childNameServers;
+        $this->isLocked = $isLocked;
 
         return $this;
     }
     /**
-     * @return \Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts|null
+     * @return \Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers
      */
-    public function getDomainContacts(): ?\Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts
+    public function getNameServers()
     {
-        return $this->container['domainContacts'];
+        return $this->nameServers;
     }
 
     /**
-     * @param \Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts|null $domainContacts domainContacts
+     * @param \Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers $nameServers
+     *
+     * @return self
      */
-    public function setDomainContacts(?\Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts $domainContacts): static
+    public function setNameServers($nameServers): self
     {
-        $this->container['domainContacts'] = $domainContacts;
-
-        return $this;
-    }
-    /**
-     * @return \DateTime|null
-     */
-    public function getCreatedAt(): ?\DateTime
-    {
-        return $this->container['createdAt'];
-    }
-
-    /**
-     * @param \DateTime|null $createdAt createdAt
-     */
-    public function setCreatedAt(?\DateTime $createdAt): static
-    {
-        $this->container['createdAt'] = $createdAt;
+        $this->nameServers = $nameServers;
 
         return $this;
     }
     /**
-     * @return \DateTime|null
+     * @return string[][]
      */
-    public function getUpdatedAt(): ?\DateTime
+    public function getChildNameServers()
     {
-        return $this->container['updatedAt'];
+        return $this->childNameServers;
     }
 
     /**
-     * @param \DateTime|null $updatedAt updatedAt
+     * @param string[][] $childNameServers
+     *
+     * @return self
      */
-    public function setUpdatedAt(?\DateTime $updatedAt): static
+    public function setChildNameServers($childNameServers): self
     {
-        $this->container['updatedAt'] = $updatedAt;
+        $this->childNameServers = $childNameServers;
+
+        return $this;
+    }
+    /**
+     * @return \Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts
+     */
+    public function getDomainContacts()
+    {
+        return $this->domainContacts;
+    }
+
+    /**
+     * @param \Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts $domainContacts
+     *
+     * @return self
+     */
+    public function setDomainContacts($domainContacts): self
+    {
+        $this->domainContacts = $domainContacts;
+
+        return $this;
+    }
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     *
+     * @return self
+     */
+    public function setCreatedAt($createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
     /**
      * @return \DateTime|null
      */
-    public function get60daysLockExpiresAt(): ?\DateTime
+    public function get60daysLockExpiresAt()
     {
-        return $this->container['_60daysLockExpiresAt'];
+        return $this->_60daysLockExpiresAt;
     }
 
     /**
-     * @param \DateTime|null $_60daysLockExpiresAt _60daysLockExpiresAt
+     * @param \DateTime|null $_60daysLockExpiresAt
+     *
+     * @return self
      */
-    public function set60daysLockExpiresAt(?\DateTime $_60daysLockExpiresAt): static
+    public function set60daysLockExpiresAt($_60daysLockExpiresAt): self
     {
-        if (is_null($_60daysLockExpiresAt)) {
-            $this->openAPINullablesSetToNull[] = '_60daysLockExpiresAt';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('_60daysLockExpiresAt', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['_60daysLockExpiresAt'] = $_60daysLockExpiresAt;
+        $this->_60daysLockExpiresAt = $_60daysLockExpiresAt;
 
         return $this;
     }
     /**
      * @return \DateTime|null
      */
-    public function getRegisteredAt(): ?\DateTime
+    public function getRegisteredAt()
     {
-        return $this->container['registeredAt'];
+        return $this->registeredAt;
     }
 
     /**
-     * @param \DateTime|null $registeredAt registeredAt
+     * @param \DateTime|null $registeredAt
+     *
+     * @return self
      */
-    public function setRegisteredAt(?\DateTime $registeredAt): static
+    public function setRegisteredAt($registeredAt): self
     {
-        if (is_null($registeredAt)) {
-            $this->openAPINullablesSetToNull[] = 'registeredAt';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('registeredAt', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['registeredAt'] = $registeredAt;
+        $this->registeredAt = $registeredAt;
 
         return $this;
     }
     /**
      * @return \DateTime|null
      */
-    public function getExpiresAt(): ?\DateTime
+    public function getExpiresAt()
     {
-        return $this->container['expiresAt'];
+        return $this->expiresAt;
     }
 
     /**
-     * @param \DateTime|null $expiresAt expiresAt
+     * @param \DateTime|null $expiresAt
+     *
+     * @return self
      */
-    public function setExpiresAt(?\DateTime $expiresAt): static
+    public function setExpiresAt($expiresAt): self
     {
-        if (is_null($expiresAt)) {
-            $this->openAPINullablesSetToNull[] = 'expiresAt';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expiresAt', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['expiresAt'] = $expiresAt;
+        $this->expiresAt = $expiresAt;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

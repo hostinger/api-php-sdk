@@ -21,35 +21,25 @@ class ApiException extends Exception
 {
     /**
      * The HTTP body of the server response either as Json or string.
-     *
-     * @var stdClass|string|null
      */
     protected stdClass|string|null $responseBody;
 
     /**
      * The HTTP header of the server response.
-     *
-     * @var array<array<string>>|null
      */
     protected ?array $responseHeaders;
 
     /**
      * The deserialized response object
-     *
-     * @var mixed
      */
     protected mixed $responseObject = null;
 
-    /**
-     * Constructor
-     *
-     * @param string                $message         Error message
-     * @param int                   $code            HTTP status code
-     * @param array<array<string>>|null       $responseHeaders HTTP response header
-     * @param stdClass|string|null  $responseBody    HTTP decoded body of the server response either as stdClass or string
-     */
-    public function __construct(string $message = "", int $code = 0, ?array $responseHeaders = [], stdClass|string|null $responseBody = null)
-    {
+    public function __construct(
+        string $message = "",
+        int $code = 0,
+        ?array $responseHeaders = [],
+        stdClass|string|null $responseBody = null
+    ) {
         parent::__construct($message, $code);
         $this->responseHeaders = $responseHeaders;
         $this->responseBody = $responseBody;

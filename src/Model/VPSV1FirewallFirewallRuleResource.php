@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,444 +24,140 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1FirewallFirewallRuleResource implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1FirewallFirewallRuleResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.Firewall.FirewallRuleResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'id' => 'int',
-        'action' => 'string',
-        'protocol' => 'string',
-        'port' => 'string',
-        'source' => 'string',
-        'sourceDetail' => 'string'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'id' => null,
-        'action' => null,
-        'protocol' => null,
-        'port' => null,
-        'source' => null,
-        'sourceDetail' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'id' => false,
-        'action' => false,
-        'protocol' => false,
-        'port' => false,
-        'source' => false,
-        'sourceDetail' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param int $id
+     * @param string $action
+     * @param string $protocol
+     * @param string $port
+     * @param string $source
+     * @param string $sourceDetail
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'VPSV1FirewallFirewallRuleResource';
+    public function __construct(
+        private $id,
+        private $action,
+        private $protocol,
+        private $port,
+        private $source,
+        private $sourceDetail,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return int
      */
-    public static function openAPIFormats(): array
+    public function getId()
     {
-        return self::$openAPIFormats;
+        return $this->id;
     }
 
     /**
-     * @return array<string, bool>
+     * @param int $id
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setId($id): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'id' => 'id',
-        'action' => 'action',
-        'protocol' => 'protocol',
-        'port' => 'port',
-        'source' => 'source',
-        'sourceDetail' => 'source_detail'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'id' => 'setId',
-        'action' => 'setAction',
-        'protocol' => 'setProtocol',
-        'port' => 'setPort',
-        'source' => 'setSource',
-        'sourceDetail' => 'setSourceDetail'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'id' => 'getId',
-        'action' => 'getAction',
-        'protocol' => 'getProtocol',
-        'port' => 'getPort',
-        'source' => 'getSource',
-        'sourceDetail' => 'getSourceDetail'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    public const ACTION_ACCEPT = 'accept';
-    public const ACTION_DROP = 'drop';
-    public const PROTOCOL_TCP = 'TCP';
-    public const PROTOCOL_UDP = 'UDP';
-    public const PROTOCOL_ICMP = 'ICMP';
-    public const PROTOCOL_GRE = 'GRE';
-    public const PROTOCOL_ANY = 'any';
-    public const PROTOCOL_ESP = 'ESP';
-    public const PROTOCOL_AH = 'AH';
-    public const PROTOCOL_ICMPV6 = 'ICMPv6';
-    public const PROTOCOL_SSH = 'SSH';
-    public const PROTOCOL_HTTP = 'HTTP';
-    public const PROTOCOL_HTTPS = 'HTTPS';
-    public const PROTOCOL_MY_SQL = 'MySQL';
-    public const PROTOCOL_POSTGRE_SQL = 'PostgreSQL';
-
-    /**
-     * @return array<string>
-     */
-    public function getActionAllowableValues(): array
-    {
-        return [
-            self::ACTION_ACCEPT,
-            self::ACTION_DROP,
-        ];
-    }
-
-    /**
-     * @return array<string>
-     */
-    public function getProtocolAllowableValues(): array
-    {
-        return [
-            self::PROTOCOL_TCP,
-            self::PROTOCOL_UDP,
-            self::PROTOCOL_ICMP,
-            self::PROTOCOL_GRE,
-            self::PROTOCOL_ANY,
-            self::PROTOCOL_ESP,
-            self::PROTOCOL_AH,
-            self::PROTOCOL_ICMPV6,
-            self::PROTOCOL_SSH,
-            self::PROTOCOL_HTTP,
-            self::PROTOCOL_HTTPS,
-            self::PROTOCOL_MY_SQL,
-            self::PROTOCOL_POSTGRE_SQL,
-        ];
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('id', $data, null);
-        $this->setIfExists('action', $data, null);
-        $this->setIfExists('protocol', $data, null);
-        $this->setIfExists('port', $data, null);
-        $this->setIfExists('source', $data, null);
-        $this->setIfExists('sourceDetail', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getActionAllowableValues();
-        if (!is_null($this->container['action']) && !in_array($this->container['action'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'action', must be one of '%s'",
-                $this->container['action'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getProtocolAllowableValues();
-        if (!is_null($this->container['protocol']) && !in_array($this->container['protocol'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'protocol', must be one of '%s'",
-                $this->container['protocol'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * @param int|null $id Firewall rule ID
-     */
-    public function setId(?int $id): static
-    {
-        $this->container['id'] = $id;
+        $this->id = $id;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getAction(): ?string
+    public function getAction()
     {
-        return $this->container['action'];
+        return $this->action;
     }
 
     /**
-     * @param string|null $action Firewall rule action
+     * @param string $action
+     *
+     * @return self
      */
-    public function setAction(?string $action): static
+    public function setAction($action): self
     {
-        $allowedValues = $this->getActionAllowableValues();
-        if (!in_array($action, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'action', must be one of '%s'",
-                    $action,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['action'] = $action;
+        $this->action = $action;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getProtocol(): ?string
+    public function getProtocol()
     {
-        return $this->container['protocol'];
+        return $this->protocol;
     }
 
     /**
-     * @param string|null $protocol Firewall rule protocol
+     * @param string $protocol
+     *
+     * @return self
      */
-    public function setProtocol(?string $protocol): static
+    public function setProtocol($protocol): self
     {
-        $allowedValues = $this->getProtocolAllowableValues();
-        if (!in_array($protocol, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'protocol', must be one of '%s'",
-                    $protocol,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['protocol'] = $protocol;
+        $this->protocol = $protocol;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getPort(): ?string
+    public function getPort()
     {
-        return $this->container['port'];
+        return $this->port;
     }
 
     /**
-     * @param string|null $port Firewall rule destination port: single or port range
+     * @param string $port
+     *
+     * @return self
      */
-    public function setPort(?string $port): static
+    public function setPort($port): self
     {
-        $this->container['port'] = $port;
+        $this->port = $port;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getSource(): ?string
+    public function getSource()
     {
-        return $this->container['source'];
+        return $this->source;
     }
 
     /**
-     * @param string|null $source Firewall rule source. Can be `any` or `custom`
+     * @param string $source
+     *
+     * @return self
      */
-    public function setSource(?string $source): static
+    public function setSource($source): self
     {
-        $this->container['source'] = $source;
+        $this->source = $source;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getSourceDetail(): ?string
+    public function getSourceDetail()
     {
-        return $this->container['sourceDetail'];
+        return $this->sourceDetail;
     }
 
     /**
-     * @param string|null $sourceDetail Firewall rule source detail. Can be `any` or IP address, CIDR or range
+     * @param string $sourceDetail
+     *
+     * @return self
      */
-    public function setSourceDetail(?string $sourceDetail): static
+    public function setSourceDetail($sourceDetail): self
     {
-        $this->container['sourceDetail'] = $sourceDetail;
+        $this->sourceDetail = $sourceDetail;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

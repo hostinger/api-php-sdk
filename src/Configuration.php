@@ -12,63 +12,28 @@
 
 namespace Hostinger;
 
-use InvalidArgumentException;
-
 class Configuration
 {
-    public const BOOLEAN_FORMAT_INT = 'int';
-    public const BOOLEAN_FORMAT_STRING = 'string';
-
     private static ?Configuration $defaultConfiguration = null;
 
-    /**
-     * Throw exceptions on non-2xx responses
-     */
-    protected bool $throwExceptions = false;
-
-    /**
-     * Access token for OAuth/Bearer authentication
-     */
     protected string $accessToken = '';
 
-    /**
-     * Boolean format for query string
-     */
-    protected string $booleanFormatForQueryString = self::BOOLEAN_FORMAT_INT;
-
-    /**
-     * The host
-     */
     protected string $host = 'https://developers.hostinger.com';
 
-    /**
-     * User agent of the HTTP request
-     */
-    protected string $userAgent = 'hostinger-php-sdk/0.0.27';
+    protected string $userAgent = 'hostinger-php-sdk/0.0.28';
 
-    /**
-     * Debug switch (default set to false)
-     */
     protected bool $debug = false;
 
-    /**
-     * Debug file location (log to STDOUT by default)
-     */
     protected string $debugFile = 'php://output';
 
-    /**
-     * Debug file location (log to STDOUT by default)
-     */
     protected string $tempFolderPath;
 
     public function __construct()
     {
         $this->tempFolderPath = sys_get_temp_dir();
+        $this->accessToken = env('HOSTINGER_API_TOKEN');
     }
 
-    /**
-     * Sets the API token
-     */
     public function setAccessToken(string $accessToken): static
     {
         $this->accessToken = $accessToken;
@@ -76,35 +41,11 @@ class Configuration
         return $this;
     }
 
-    /**
-     * Gets the API token
-     */
     public function getAccessToken(): string
     {
         return $this->accessToken;
     }
 
-    /**
-     * Sets boolean format for query string.
-     */
-    public function setBooleanFormatForQueryString(string $booleanFormat): static
-    {
-        $this->booleanFormatForQueryString = $booleanFormat;
-
-        return $this;
-    }
-
-    /**
-     * Gets boolean format for query string.
-     */
-    public function getBooleanFormatForQueryString(): string
-    {
-        return $this->booleanFormatForQueryString;
-    }
-
-    /**
-     * Sets the host
-     */
     public function setHost(string $host): static
     {
         $this->host = $host;
@@ -112,17 +53,11 @@ class Configuration
         return $this;
     }
 
-    /**
-     * Gets the host
-     */
     public function getHost(): string
     {
         return $this->host;
     }
 
-    /**
-     * Sets the user agent of the api client
-     */
     public function setUserAgent(string $userAgent): static
     {
         $this->userAgent = $userAgent;
@@ -130,17 +65,11 @@ class Configuration
         return $this;
     }
 
-    /**
-     * Gets the user agent of the api client
-     */
     public function getUserAgent(): string
     {
         return $this->userAgent;
     }
 
-    /**
-     * Sets debug flag
-     */
     public function setDebug(bool $debug): static
     {
         $this->debug = $debug;
@@ -148,17 +77,11 @@ class Configuration
         return $this;
     }
 
-    /**
-     * Gets the debug flag
-     */
     public function getDebug(): bool
     {
         return $this->debug;
     }
 
-    /**
-     * Sets the debug file
-     */
     public function setDebugFile(string $debugFile): static
     {
         $this->debugFile = $debugFile;
@@ -166,17 +89,11 @@ class Configuration
         return $this;
     }
 
-    /**
-     * Gets the debug file
-     */
     public function getDebugFile(): string
     {
         return $this->debugFile;
     }
 
-    /**
-     * Sets the temp folder path
-     */
     public function setTempFolderPath(string $tempFolderPath): static
     {
         $this->tempFolderPath = $tempFolderPath;
@@ -184,35 +101,11 @@ class Configuration
         return $this;
     }
 
-    /**
-     * Gets the temp folder path
-     */
     public function getTempFolderPath(): string
     {
         return $this->tempFolderPath;
     }
 
-    /**
-     * Sets the throw exceptions flag
-     */
-    public function setThrowExceptions(bool $throwExceptions): static
-    {
-        $this->throwExceptions = $throwExceptions;
-
-        return $this;
-    }
-
-    /**
-     * Gets the throw exceptions flag
-     */
-    public function shouldThrowException(): bool
-    {
-        return $this->throwExceptions;
-    }
-
-    /**
-     * Gets the default configuration instance
-     */
     public static function getDefaultConfiguration(): Configuration
     {
         if (self::$defaultConfiguration === null) {
@@ -222,26 +115,8 @@ class Configuration
         return self::$defaultConfiguration;
     }
 
-    /**
-     * Sets the default configuration instance
-     */
     public static function setDefaultConfiguration(Configuration $config): void
     {
         self::$defaultConfiguration = $config;
-    }
-
-    /**
-     * Gets the essential information for debugging
-     */
-    public static function toDebugReport(): string
-    {
-        $report  = 'PHP SDK (Hostinger) Debug Report:' . PHP_EOL;
-        $report .= '    OS: ' . php_uname() . PHP_EOL;
-        $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
-        $report .= '    The version of the OpenAPI document: 0.0.96' . PHP_EOL;
-        $report .= '    SDK Package Version: 0.0.27' . PHP_EOL;
-        $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
-
-        return $report;
     }
 }

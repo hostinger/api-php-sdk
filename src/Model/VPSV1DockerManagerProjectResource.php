@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,348 +24,98 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1DockerManagerProjectResource implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1DockerManagerProjectResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.DockerManager.ProjectResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'name' => 'string',
-        'status' => 'string',
-        'state' => 'string',
-        'path' => 'string'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'name' => null,
-        'status' => null,
-        'state' => null,
-        'path' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'name' => false,
-        'status' => false,
-        'state' => false,
-        'path' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $name
+     * @param string $status
+     * @param string $state
+     * @param string $path
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'VPSV1DockerManagerProjectResource';
+    public function __construct(
+        private $name,
+        private $status,
+        private $state,
+        private $path,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return string
      */
-    public static function openAPIFormats(): array
+    public function getName()
     {
-        return self::$openAPIFormats;
+        return $this->name;
     }
 
     /**
-     * @return array<string, bool>
+     * @param string $name
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setName($name): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'name' => 'name',
-        'status' => 'status',
-        'state' => 'state',
-        'path' => 'path'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'name' => 'setName',
-        'status' => 'setStatus',
-        'state' => 'setState',
-        'path' => 'setPath'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'name' => 'getName',
-        'status' => 'getStatus',
-        'state' => 'getState',
-        'path' => 'getPath'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    public const STATE_RUNNING = 'running';
-    public const STATE_STOPPED = 'stopped';
-    public const STATE_CREATED = 'created';
-    public const STATE_MIXED = 'mixed';
-    public const STATE_UNKNOWN = 'unknown';
-
-    /**
-     * @return array<string>
-     */
-    public function getStateAllowableValues(): array
-    {
-        return [
-            self::STATE_RUNNING,
-            self::STATE_STOPPED,
-            self::STATE_CREATED,
-            self::STATE_MIXED,
-            self::STATE_UNKNOWN,
-        ];
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('name', $data, null);
-        $this->setIfExists('status', $data, null);
-        $this->setIfExists('state', $data, null);
-        $this->setIfExists('path', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getStateAllowableValues();
-        if (!is_null($this->container['state']) && !in_array($this->container['state'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'state', must be one of '%s'",
-                $this->container['state'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * @param string|null $name Docker Compose project name (derived from directory name or compose file)
-     */
-    public function setName(?string $name): static
-    {
-        $this->container['name'] = $name;
+        $this->name = $name;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getStatus(): ?string
+    public function getStatus()
     {
-        return $this->container['status'];
+        return $this->status;
     }
 
     /**
-     * @param string|null $status Raw output from docker compose ps command showing service count and states
+     * @param string $status
+     *
+     * @return self
      */
-    public function setStatus(?string $status): static
+    public function setStatus($status): self
     {
-        $this->container['status'] = $status;
+        $this->status = $status;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getState(): ?string
+    public function getState()
     {
-        return $this->container['state'];
+        return $this->state;
     }
 
     /**
-     * @param string|null $state Derived project state parsed from the raw docker compose status
+     * @param string $state
+     *
+     * @return self
      */
-    public function setState(?string $state): static
+    public function setState($state): self
     {
-        $allowedValues = $this->getStateAllowableValues();
-        if (!in_array($state, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'state', must be one of '%s'",
-                    $state,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['state'] = $state;
+        $this->state = $state;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getPath(): ?string
+    public function getPath()
     {
-        return $this->container['path'];
+        return $this->path;
     }
 
     /**
-     * @param string|null $path Full filesystem path to the docker-compose.yml file
+     * @param string $path
+     *
+     * @return self
      */
-    public function setPath(?string $path): static
+    public function setPath($path): self
     {
-        $this->container['path'] = $path;
+        $this->path = $path;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

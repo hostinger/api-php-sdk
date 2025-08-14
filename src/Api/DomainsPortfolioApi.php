@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -12,7 +13,6 @@
 
 namespace Hostinger\Api;
 
-use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -20,9 +20,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
-use Hostinger\HeaderSelector;
 use Hostinger\ObjectSerializer;
 
 class DomainsPortfolioApi
@@ -31,16 +33,15 @@ class DomainsPortfolioApi
 
     protected Configuration $config;
 
-    protected HeaderSelector $headerSelector;
+    protected SerializerInterface $serializer;
 
     public function __construct(
-        ?ClientInterface $client = null,
         ?Configuration $config = null,
-        ?HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
     ) {
-        $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->client = $client ?: new Client();
+        $this->serializer = ObjectSerializer::getSerializer();
     }
 
     public function getConfig(): Configuration
@@ -49,517 +50,225 @@ class DomainsPortfolioApi
     }
 
     /**
-     * Operation disableDomainLockV1
-     *
-     * Disable domain lock
-     *
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function disableDomainLockV1(string $domain, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function disableDomainLockV1(string $domain): \Hostinger\Model\CommonSuccessEmptyResource
     {
-        $request = $this->disableDomainLockV1Request($domain, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'disableDomainLockV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function disableDomainLockV1Request(string $domain,): Request
-    {
-        $resourcePath = '/api/domains/v1/portfolio/{domain}/domain-lock';
-        $resourcePath = str_replace(
-            '{' . 'domain' . '}',
-            ObjectSerializer::toPathValue((string) $domain),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/domain-lock', $domain),
+            headers: $this->getHeaders(),
         );
 
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('DELETE', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation disablePrivacyProtectionV1
-     *
-     * Disable privacy protection
-     *
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function disablePrivacyProtectionV1(string $domain, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->disablePrivacyProtectionV1Request($domain, );
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'disablePrivacyProtectionV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function disablePrivacyProtectionV1Request(string $domain,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function disablePrivacyProtectionV1(string $domain): \Hostinger\Model\CommonSuccessEmptyResource
     {
-        $resourcePath = '/api/domains/v1/portfolio/{domain}/privacy-protection';
-        $resourcePath = str_replace(
-            '{' . 'domain' . '}',
-            ObjectSerializer::toPathValue((string) $domain),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/privacy-protection', $domain),
+            headers: $this->getHeaders(),
         );
 
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('DELETE', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation enableDomainLockV1
-     *
-     * Enable domain lock
-     *
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function enableDomainLockV1(string $domain, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->enableDomainLockV1Request($domain, );
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'enableDomainLockV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function enableDomainLockV1Request(string $domain,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function enableDomainLockV1(string $domain): \Hostinger\Model\CommonSuccessEmptyResource
     {
-        $resourcePath = '/api/domains/v1/portfolio/{domain}/domain-lock';
-        $resourcePath = str_replace(
-            '{' . 'domain' . '}',
-            ObjectSerializer::toPathValue((string) $domain),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/domain-lock', $domain),
+            headers: $this->getHeaders(),
         );
 
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('PUT', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation enablePrivacyProtectionV1
-     *
-     * Enable privacy protection
-     *
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function enablePrivacyProtectionV1(string $domain, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->enablePrivacyProtectionV1Request($domain, );
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'enablePrivacyProtectionV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function enablePrivacyProtectionV1Request(string $domain,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function enablePrivacyProtectionV1(string $domain): \Hostinger\Model\CommonSuccessEmptyResource
     {
-        $resourcePath = '/api/domains/v1/portfolio/{domain}/privacy-protection';
-        $resourcePath = str_replace(
-            '{' . 'domain' . '}',
-            ObjectSerializer::toPathValue((string) $domain),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/privacy-protection', $domain),
+            headers: $this->getHeaders(),
         );
 
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('PUT', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getDomainDetailsV1
-     *
-     * Get domain details
-     *
-     * @return \Hostinger\Model\DomainsV1DomainDomainExtendedResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getDomainDetailsV1(string $domain, ): \Hostinger\Model\DomainsV1DomainDomainExtendedResource|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getDomainDetailsV1Request($domain, );
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\DomainsV1DomainDomainExtendedResource';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getDomainDetailsV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getDomainDetailsV1Request(string $domain,): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getDomainDetailsV1(string $domain): \Hostinger\Model\DomainsV1DomainDomainExtendedResource
     {
-        $resourcePath = '/api/domains/v1/portfolio/{domain}';
-        $resourcePath = str_replace(
-            '{' . 'domain' . '}',
-            ObjectSerializer::toPathValue((string) $domain),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}', $domain),
+            headers: $this->getHeaders(),
         );
 
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation getDomainListV1
-     *
-     * Get domain list
-     *
-     * @return \Hostinger\Model\DomainsV1DomainDomainCollection|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function getDomainListV1(): \Hostinger\Model\DomainsV1DomainDomainCollection|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->getDomainListV1Request();
-
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\DomainsV1DomainDomainCollection';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1DomainDomainExtendedResource::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * Create request for operation 'getDomainListV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function getDomainListV1Request(): Request
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function getDomainListV1(): \Hostinger\Model\DomainsV1DomainDomainCollection
     {
-        $resourcePath = '/api/domains/v1/portfolio';
-
-        $body = null;
-        $query = [];
-
-        return $this->buildRequest('GET', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation purchaseNewDomainV1
-     *
-     * Purchase new domain
-     *
-     * @return \Hostinger\Model\BillingV1OrderOrderResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function purchaseNewDomainV1(\Hostinger\Model\DomainsV1PortfolioPurchaseRequest $domainsV1PortfolioPurchaseRequest, ): \Hostinger\Model\BillingV1OrderOrderResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->purchaseNewDomainV1Request($domainsV1PortfolioPurchaseRequest, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\BillingV1OrderOrderResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'purchaseNewDomainV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function purchaseNewDomainV1Request(\Hostinger\Model\DomainsV1PortfolioPurchaseRequest $domainsV1PortfolioPurchaseRequest,): Request
-    {
-        $resourcePath = '/api/domains/v1/portfolio';
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($domainsV1PortfolioPurchaseRequest));
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
-    }
-
-    /**
-     * Operation updateDomainNameserversV1
-     *
-     * Update domain nameservers
-     *
-     * @return \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function updateDomainNameserversV1(string $domain, \Hostinger\Model\DomainsV1PortfolioUpdateNameserversRequest $domainsV1PortfolioUpdateNameserversRequest, ): \Hostinger\Model\CommonSuccessEmptyResource|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-    {
-        $request = $this->updateDomainNameserversV1Request($domain, $domainsV1PortfolioUpdateNameserversRequest, );
-
-        try {
-            $response = $this->client->send($request, $this->createHttpClientOption());
-        } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
-        } catch (ConnectException $e) {
-            throw ApiException::fromConnectException($e);
-        }
-
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
-
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\CommonSuccessEmptyResource';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
-        }
-
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
-    }
-
-    /**
-     * Create request for operation 'updateDomainNameserversV1'
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function updateDomainNameserversV1Request(string $domain,\Hostinger\Model\DomainsV1PortfolioUpdateNameserversRequest $domainsV1PortfolioUpdateNameserversRequest,): Request
-    {
-        $resourcePath = '/api/domains/v1/portfolio/{domain}/nameservers';
-        $resourcePath = str_replace(
-            '{' . 'domain' . '}',
-            ObjectSerializer::toPathValue((string) $domain),
-            $resourcePath
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/domains/v1/portfolio',
+            headers: $this->getHeaders(),
         );
 
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($domainsV1PortfolioUpdateNameserversRequest));
-        $query = [];
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
 
-        return $this->buildRequest('PUT', $resourcePath, $body, $query);
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1DomainDomainCollection::class, JsonEncoder::FORMAT);
     }
 
     /**
-     * @return array<string, mixed>
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function purchaseNewDomainV1(\Hostinger\Model\DomainsV1PortfolioPurchaseRequest $domainsV1PortfolioPurchaseRequest): \Hostinger\Model\BillingV1OrderOrderResource
+    {
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/domains/v1/portfolio',
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($domainsV1PortfolioPurchaseRequest, JsonEncoder::FORMAT),
+        );
+
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
+
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\BillingV1OrderOrderResource::class, JsonEncoder::FORMAT);
+    }
+
+    /**
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function updateDomainNameserversV1(string $domain, \Hostinger\Model\DomainsV1PortfolioUpdateNameserversRequest $domainsV1PortfolioUpdateNameserversRequest): \Hostinger\Model\CommonSuccessEmptyResource
+    {
+        $request = new Request(
+            method: 'GET',
+            uri: $this->buildResourcePath('/api/domains/v1/portfolio/{domain}/nameservers', $domain),
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($domainsV1PortfolioUpdateNameserversRequest, JsonEncoder::FORMAT),
+        );
+
+        try {
+            $response = $this->client->send($request, $this->createHttpClientOption());
+        } catch (RequestException $e) {
+            throw ApiException::fromRequestException($e);
+        } catch (ConnectException $e) {
+            throw ApiException::fromConnectException($e);
+        }
+
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\CommonSuccessEmptyResource::class, JsonEncoder::FORMAT);
+    }
+
+    private function buildResourcePath(string $path, ...$values): string
+    {
+        foreach ($values as $value) {
+            if (is_array($value)) {
+                $value = implode(',', $value);
+            }
+
+            $path = str_replace('{' . 'DomainsPortfolio' . '}', $value, $path);
+        }
+
+        return $path;
+    }
+
+    /**
+     * @return array<string, string>
      */
-    protected function createHttpClientOption(): array
+    private function getHeaders(): array
+    {
+        return [
+            'Authorization' => 'Bearer ' . $this->config->getAccessToken(),
+            'Content-Type' => 'application/json',
+            'User-Agent' => $this->config->getUserAgent(),
+        ];
+    }
+
+    private function createHttpClientOption(): array
     {
         $options = [];
         if ($this->config->getDebug()) {
@@ -570,37 +279,5 @@ class DomainsPortfolioApi
         }
 
         return $options;
-    }
-
-    /**
-     * @param array<string, string> $query
-     */
-    protected function buildRequest(
-        string $httpMethod,
-        string $resourcePath,
-        ?string $body = null,
-        array $query = [],
-        string $contentType = 'application/json',
-    ): Request {
-        $headers = $this->headerSelector->selectHeaders(
-            accept: ['application/json'],
-            contentType: $contentType,
-            isMultipart: false
-        );
-        $headers['User-Agent'] = $this->config->getUserAgent();
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $query = ObjectSerializer::buildQuery($query);
-
-        return new Request(
-            $httpMethod,
-            $this->config->getHost() . $resourcePath . ($query ? "?$query" : ''),
-            $headers,
-            $body
-        );
     }
 }

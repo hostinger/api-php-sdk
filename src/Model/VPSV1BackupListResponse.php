@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,261 +24,56 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1BackupListResponse implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1BackupListResponse 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPSV1BackupListResponse';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'data' => '\Hostinger\Model\VPSV1BackupBackupCollection',
-        'meta' => '\Hostinger\Model\CommonSchemaPaginationMetaSchema'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'data' => null,
-        'meta' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'data' => false,
-        'meta' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param \Hostinger\Model\VPSV1BackupBackupCollection $data
+     * @param \Hostinger\Model\CommonSchemaPaginationMetaSchema $meta
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'VPSV1BackupListResponse';
+    public function __construct(
+        private $data,
+        private $meta,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return \Hostinger\Model\VPSV1BackupBackupCollection
      */
-    public static function openAPIFormats(): array
+    public function getData()
     {
-        return self::$openAPIFormats;
+        return $this->data;
     }
 
     /**
-     * @return array<string, bool>
+     * @param \Hostinger\Model\VPSV1BackupBackupCollection $data
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setData($data): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'data' => 'data',
-        'meta' => 'meta'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'data' => 'setData',
-        'meta' => 'setMeta'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'data' => 'getData',
-        'meta' => 'getMeta'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('data', $data, null);
-        $this->setIfExists('meta', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return \Hostinger\Model\VPSV1BackupBackupCollection|null
-     */
-    public function getData(): ?\Hostinger\Model\VPSV1BackupBackupCollection
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * @param \Hostinger\Model\VPSV1BackupBackupCollection|null $data data
-     */
-    public function setData(?\Hostinger\Model\VPSV1BackupBackupCollection $data): static
-    {
-        $this->container['data'] = $data;
+        $this->data = $data;
 
         return $this;
     }
     /**
-     * @return \Hostinger\Model\CommonSchemaPaginationMetaSchema|null
+     * @return \Hostinger\Model\CommonSchemaPaginationMetaSchema
      */
-    public function getMeta(): ?\Hostinger\Model\CommonSchemaPaginationMetaSchema
+    public function getMeta()
     {
-        return $this->container['meta'];
+        return $this->meta;
     }
 
     /**
-     * @param \Hostinger\Model\CommonSchemaPaginationMetaSchema|null $meta meta
+     * @param \Hostinger\Model\CommonSchemaPaginationMetaSchema $meta
+     *
+     * @return self
      */
-    public function setMeta(?\Hostinger\Model\CommonSchemaPaginationMetaSchema $meta): static
+    public function setMeta($meta): self
     {
-        $this->container['meta'] = $meta;
+        $this->meta = $meta;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

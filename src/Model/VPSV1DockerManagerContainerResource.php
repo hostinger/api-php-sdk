@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,458 +24,182 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class VPSV1DockerManagerContainerResource implements ModelInterface, ArrayAccess, JsonSerializable
+class VPSV1DockerManagerContainerResource 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'VPS.V1.DockerManager.ContainerResource';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'image' => 'string',
-        'command' => 'string',
-        'status' => 'string',
-        'state' => 'string',
-        'ports' => '\Hostinger\Model\VPSV1DockerManagerContainerPortCollection',
-        'stats' => '\Hostinger\Model\VPSV1DockerManagerContainerStatsResource'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'image' => null,
-        'command' => null,
-        'status' => null,
-        'state' => null,
-        'ports' => null,
-        'stats' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'image' => false,
-        'command' => false,
-        'status' => false,
-        'state' => false,
-        'ports' => false,
-        'stats' => true
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param string $id
+     * @param string $name
+     * @param string $image
+     * @param string $command
+     * @param string $status
+     * @param string $state
+     * @param \Hostinger\Model\VPSV1DockerManagerContainerPortCollection $ports
+     * @param \Hostinger\Model\VPSV1DockerManagerContainerStatsResource|null $stats
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'VPSV1DockerManagerContainerResource';
+    public function __construct(
+        private $id,
+        private $name,
+        private $image,
+        private $command,
+        private $status,
+        private $state,
+        private $ports,
+        private $stats = null,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return string
      */
-    public static function openAPIFormats(): array
+    public function getId()
     {
-        return self::$openAPIFormats;
+        return $this->id;
     }
 
     /**
-     * @return array<string, bool>
+     * @param string $id
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setId($id): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'image' => 'image',
-        'command' => 'command',
-        'status' => 'status',
-        'state' => 'state',
-        'ports' => 'ports',
-        'stats' => 'stats'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'image' => 'setImage',
-        'command' => 'setCommand',
-        'status' => 'setStatus',
-        'state' => 'setState',
-        'ports' => 'setPorts',
-        'stats' => 'setStats'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'image' => 'getImage',
-        'command' => 'getCommand',
-        'status' => 'getStatus',
-        'state' => 'getState',
-        'ports' => 'getPorts',
-        'stats' => 'getStats'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    public const STATE_CREATED = 'created';
-    public const STATE_RUNNING = 'running';
-    public const STATE_RESTARTING = 'restarting';
-    public const STATE_EXITED = 'exited';
-    public const STATE_PAUSED = 'paused';
-    public const STATE_DEAD = 'dead';
-    public const STATE_STOPPING = 'stopping';
-
-    /**
-     * @return array<string>
-     */
-    public function getStateAllowableValues(): array
-    {
-        return [
-            self::STATE_CREATED,
-            self::STATE_RUNNING,
-            self::STATE_RESTARTING,
-            self::STATE_EXITED,
-            self::STATE_PAUSED,
-            self::STATE_DEAD,
-            self::STATE_STOPPING,
-        ];
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('id', $data, null);
-        $this->setIfExists('name', $data, null);
-        $this->setIfExists('image', $data, null);
-        $this->setIfExists('command', $data, null);
-        $this->setIfExists('status', $data, null);
-        $this->setIfExists('state', $data, null);
-        $this->setIfExists('ports', $data, null);
-        $this->setIfExists('stats', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        $allowedValues = $this->getStateAllowableValues();
-        if (!is_null($this->container['state']) && !in_array($this->container['state'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'state', must be one of '%s'",
-                $this->container['state'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getId(): ?string
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * @param string|null $id Unique container identifier (short form of Docker container ID)
-     */
-    public function setId(?string $id): static
-    {
-        $this->container['id'] = $id;
+        $this->id = $id;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getName(): ?string
+    public function getName()
     {
-        return $this->container['name'];
+        return $this->name;
     }
 
     /**
-     * @param string|null $name Container name as defined in docker-compose or assigned by Docker
+     * @param string $name
+     *
+     * @return self
      */
-    public function setName(?string $name): static
+    public function setName($name): self
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getImage(): ?string
-    {
-        return $this->container['image'];
-    }
-
-    /**
-     * @param string|null $image Docker image name and tag used to create this container
-     */
-    public function setImage(?string $image): static
-    {
-        $this->container['image'] = $image;
+        $this->name = $name;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getCommand(): ?string
+    public function getImage()
     {
-        return $this->container['command'];
+        return $this->image;
     }
 
     /**
-     * @param string|null $command Command being executed inside the container (may be truncated with ...)
+     * @param string $image
+     *
+     * @return self
      */
-    public function setCommand(?string $command): static
+    public function setImage($image): self
     {
-        $this->container['command'] = $command;
-
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getStatus(): ?string
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * @param string|null $status Human-readable container status including uptime, exit codes, or error information
-     */
-    public function setStatus(?string $status): static
-    {
-        $this->container['status'] = $status;
+        $this->image = $image;
 
         return $this;
     }
     /**
-     * @return string|null
+     * @return string
      */
-    public function getState(): ?string
+    public function getCommand()
     {
-        return $this->container['state'];
+        return $this->command;
     }
 
     /**
-     * @param string|null $state Programmatic container lifecycle state for automated processing
+     * @param string $command
+     *
+     * @return self
      */
-    public function setState(?string $state): static
+    public function setCommand($command): self
     {
-        $allowedValues = $this->getStateAllowableValues();
-        if (!in_array($state, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'state', must be one of '%s'",
-                    $state,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['state'] = $state;
+        $this->command = $command;
 
         return $this;
     }
     /**
-     * @return \Hostinger\Model\VPSV1DockerManagerContainerPortCollection|null
+     * @return string
      */
-    public function getPorts(): ?\Hostinger\Model\VPSV1DockerManagerContainerPortCollection
+    public function getStatus()
     {
-        return $this->container['ports'];
+        return $this->status;
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1DockerManagerContainerPortCollection|null $ports ports
+     * @param string $status
+     *
+     * @return self
      */
-    public function setPorts(?\Hostinger\Model\VPSV1DockerManagerContainerPortCollection $ports): static
+    public function setStatus($status): self
     {
-        $this->container['ports'] = $ports;
+        $this->status = $status;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param string $state
+     *
+     * @return self
+     */
+    public function setState($state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+    /**
+     * @return \Hostinger\Model\VPSV1DockerManagerContainerPortCollection
+     */
+    public function getPorts()
+    {
+        return $this->ports;
+    }
+
+    /**
+     * @param \Hostinger\Model\VPSV1DockerManagerContainerPortCollection $ports
+     *
+     * @return self
+     */
+    public function setPorts($ports): self
+    {
+        $this->ports = $ports;
 
         return $this;
     }
     /**
      * @return \Hostinger\Model\VPSV1DockerManagerContainerStatsResource|null
      */
-    public function getStats(): ?\Hostinger\Model\VPSV1DockerManagerContainerStatsResource
+    public function getStats()
     {
-        return $this->container['stats'];
+        return $this->stats;
     }
 
     /**
-     * @param \Hostinger\Model\VPSV1DockerManagerContainerStatsResource|null $stats stats
+     * @param \Hostinger\Model\VPSV1DockerManagerContainerStatsResource|null $stats
+     *
+     * @return self
      */
-    public function setStats(?\Hostinger\Model\VPSV1DockerManagerContainerStatsResource $stats): static
+    public function setStats($stats): self
     {
-        if (is_null($stats)) {
-            $this->openAPINullablesSetToNull[] = 'stats';
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('stats', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['stats'] = $stats;
+        $this->stats = $stats;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -21,264 +24,56 @@ use Hostinger\ObjectSerializer;
 /**
  * @implements ArrayAccess<string, mixed>
  */
-class DNSV1ZoneUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class DNSV1ZoneUpdateRequest 
 {
-    public const DISCRIMINATOR = null;
-
-    protected static string $openAPIModelName = 'DNS.V1.Zone.UpdateRequest';
-
     /**
-      * @var array<string, string>
-      */
-    protected static array $openAPITypes = [
-        'overwrite' => 'bool',
-        'zone' => '\Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[]'
-    ];
-
-    /**
-      * @var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-        'overwrite' => null,
-        'zone' => null
-    ];
-
-    /**
-      * @var array<string, bool>
-      */
-    protected static array $openAPINullables = [
-        'overwrite' => false,
-        'zone' => false
-    ];
-
-    /**
-      * @var array<string>
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * @return array<string, string>
+     * @param bool $overwrite
+     * @param \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[] $zone
      */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
+    protected static $openAPIModelName = 'DNSV1ZoneUpdateRequest';
+    public function __construct(
+        private $overwrite,
+        private $zone,
+    ) {
     }
 
     /**
-     * @return array<string, string>
+     * @return bool
      */
-    public static function openAPIFormats(): array
+    public function getOverwrite()
     {
-        return self::$openAPIFormats;
+        return $this->overwrite;
     }
 
     /**
-     * @return array<string, bool>
+     * @param bool $overwrite
+     *
+     * @return self
      */
-    protected static function openAPINullables(): array
+    public function setOverwrite($overwrite): self
     {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * @return array<string>
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * @param array<string> $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $attributeMap = [
-        'overwrite' => 'overwrite',
-        'zone' => 'zone'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $setters = [
-        'overwrite' => 'setOverwrite',
-        'zone' => 'setZone'
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected static array $getters = [
-        'overwrite' => 'getOverwrite',
-        'zone' => 'getZone'
-    ];
-
-    /**
-     * @return array<string, string>
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    /**
-     * @var array<string, mixed>
-     */
-    protected array $container = [];
-
-    /**
-     * @param array<string, mixed> $data Associated array of property values initializing the model
-     */
-    public function __construct(?array $data = [])
-    {
-        $this->setIfExists('overwrite', $data, true);
-        $this->setIfExists('zone', $data, null);
-    }
-
-    /**
-    * @param array<string, mixed> $fields
-    */
-    private function setIfExists(string $variableName, array $fields, mixed $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
-     * @return array<string> invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['zone'] === null) {
-            $invalidProperties[] = "'zone' can't be null";
-        }
-        return $invalidProperties;
-    }
-
-    public function valid(): bool
-    {
-        return count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getOverwrite(): ?bool
-    {
-        return $this->container['overwrite'];
-    }
-
-    /**
-     * @param bool|null $overwrite If `true`, resource records (RRs) matching name and type will be deleted and new RRs will be created, otherwise resource records' ttl's are updated and new records are appended. If no matching RRs are found, they are created.
-     */
-    public function setOverwrite(?bool $overwrite): static
-    {
-        $this->container['overwrite'] = $overwrite;
+        $this->overwrite = $overwrite;
 
         return $this;
     }
     /**
      * @return \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[]
      */
-    public function getZone(): array
+    public function getZone()
     {
-        return $this->container['zone'];
+        return $this->zone;
     }
 
     /**
-     * @param \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[] $zone zone
+     * @param \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[] $zone
+     *
+     * @return self
      */
-    public function setZone(array $zone): static
+    public function setZone($zone): self
     {
-        $this->container['zone'] = $zone;
+        $this->zone = $zone;
 
         return $this;
-    }
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->container[$offset] ?? null;
-    }
-
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset(mixed $offset): void
-    {
-        unset($this->container[$offset]);
-    }
-
-    #[ReturnTypeWillChange]
-    public function jsonSerialize(): mixed
-    {
-       return ObjectSerializer::sanitizeForSerialization($this);
-    }
-
-    public function __toString(): string
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    public function toHeaderValue(): string
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

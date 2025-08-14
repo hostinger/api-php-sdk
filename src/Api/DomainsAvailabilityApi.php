@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 /**
  * Hostinger API PHP SDK
@@ -12,7 +13,6 @@
 
 namespace Hostinger\Api;
 
-use InvalidArgumentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -20,9 +20,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
-use Hostinger\HeaderSelector;
 use Hostinger\ObjectSerializer;
 
 class DomainsAvailabilityApi
@@ -31,16 +33,15 @@ class DomainsAvailabilityApi
 
     protected Configuration $config;
 
-    protected HeaderSelector $headerSelector;
+    protected SerializerInterface $serializer;
 
     public function __construct(
-        ?ClientInterface $client = null,
         ?Configuration $config = null,
-        ?HeaderSelector $selector = null,
+        ?ClientInterface $client = null,
     ) {
-        $this->client = $client ?: new Client();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->client = $client ?: new Client();
+        $this->serializer = ObjectSerializer::getSerializer();
     }
 
     public function getConfig(): Configuration
@@ -49,71 +50,56 @@ class DomainsAvailabilityApi
     }
 
     /**
-     * Operation checkDomainAvailabilityV1
-     *
-     * Check domain availability
-     *
-     * @return \Hostinger\Model\DomainsV1AvailabilityAvailabilityCollection|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
-     * @throws ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws InvalidArgumentException
-     * @throws GuzzleException
-     */
-    public function checkDomainAvailabilityV1(\Hostinger\Model\DomainsV1AvailabilityAvailabilityRequest $domainsV1AvailabilityAvailabilityRequest, ): \Hostinger\Model\DomainsV1AvailabilityAvailabilityCollection|\Hostinger\Model\InlineObject2|\Hostinger\Model\InlineObject1|\Hostinger\Model\InlineObject
+    * @throws ExceptionInterface
+    * @throws ApiException
+    * @throws GuzzleException
+    */
+    public function checkDomainAvailabilityV1(\Hostinger\Model\DomainsV1AvailabilityAvailabilityRequest $domainsV1AvailabilityAvailabilityRequest): \Hostinger\Model\DomainsV1AvailabilityAvailabilityCollection
     {
-        $request = $this->checkDomainAvailabilityV1Request($domainsV1AvailabilityAvailabilityRequest, );
+        $request = new Request(
+            method: 'GET',
+            uri: '/api/domains/v1/availability',
+            headers: $this->getHeaders(),
+            body: $this->serializer->serialize($domainsV1AvailabilityAvailabilityRequest, JsonEncoder::FORMAT),
+        );
 
         try {
             $response = $this->client->send($request, $this->createHttpClientOption());
         } catch (RequestException $e) {
-            if ($this->config->shouldThrowException()) {
-                throw ApiException::fromRequestException($e);
-            } else {
-                $response = $e->getResponse();
-            }
+            throw ApiException::fromRequestException($e);
         } catch (ConnectException $e) {
             throw ApiException::fromConnectException($e);
         }
 
-        $statusCode = $response->getStatusCode();
-        $returnType = null;
+        return $this->serializer->deserialize($response->getBody()->getContents(), \Hostinger\Model\DomainsV1AvailabilityAvailabilityCollection::class, JsonEncoder::FORMAT);
+    }
 
-        switch ($statusCode) {
-            case 200:
-                $returnType = '\Hostinger\Model\DomainsV1AvailabilityAvailabilityCollection';
-                break;
-            case 422:
-                $returnType = '\Hostinger\Model\InlineObject2';
-                break;
-            case 401:
-                $returnType = '\Hostinger\Model\InlineObject1';
-                break;
-            case 500:
-                $returnType = '\Hostinger\Model\InlineObject';
-                break;
+    private function buildResourcePath(string $path, ...$values): string
+    {
+        foreach ($values as $value) {
+            if (is_array($value)) {
+                $value = implode(',', $value);
+            }
+
+            $path = str_replace('{' . 'DomainsAvailability' . '}', $value, $path);
         }
 
-        return ObjectSerializer::deserialize($response->getBody()->getContents(), $returnType);
+        return $path;
     }
 
     /**
-     * Create request for operation 'checkDomainAvailabilityV1'
-     *
-     * @throws InvalidArgumentException
+     * @return array<string, string>
      */
-    protected function checkDomainAvailabilityV1Request(\Hostinger\Model\DomainsV1AvailabilityAvailabilityRequest $domainsV1AvailabilityAvailabilityRequest,): Request
+    private function getHeaders(): array
     {
-        $resourcePath = '/api/domains/v1/availability';
-
-        $body = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($domainsV1AvailabilityAvailabilityRequest));
-        $query = [];
-
-        return $this->buildRequest('POST', $resourcePath, $body, $query);
+        return [
+            'Authorization' => 'Bearer ' . $this->config->getAccessToken(),
+            'Content-Type' => 'application/json',
+            'User-Agent' => $this->config->getUserAgent(),
+        ];
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    protected function createHttpClientOption(): array
+    private function createHttpClientOption(): array
     {
         $options = [];
         if ($this->config->getDebug()) {
@@ -124,37 +110,5 @@ class DomainsAvailabilityApi
         }
 
         return $options;
-    }
-
-    /**
-     * @param array<string, string> $query
-     */
-    protected function buildRequest(
-        string $httpMethod,
-        string $resourcePath,
-        ?string $body = null,
-        array $query = [],
-        string $contentType = 'application/json',
-    ): Request {
-        $headers = $this->headerSelector->selectHeaders(
-            accept: ['application/json'],
-            contentType: $contentType,
-            isMultipart: false
-        );
-        $headers['User-Agent'] = $this->config->getUserAgent();
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $query = ObjectSerializer::buildQuery($query);
-
-        return new Request(
-            $httpMethod,
-            $this->config->getHost() . $resourcePath . ($query ? "?$query" : ''),
-            $headers,
-            $body
-        );
     }
 }
