@@ -47,6 +47,10 @@ class ArrayToObjectNormalizer implements DenormalizerInterface, DenormalizerAwar
             $reflection = new \ReflectionClass($type);
 
             foreach ($data as $key => $value) {
+                if (!is_string($key)) {
+                    continue;
+                }
+
                 if (is_array($value) && $this->shouldBeObject($reflection, $key)) {
                     return true;
                 }
