@@ -7,23 +7,53 @@ namespace Hostinger\Normalizers;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ArrayToObjectNormalizer implements DenormalizerInterface, DenormalizerAwareInterface, NormalizerInterface, NormalizerAwareInterface
+class ArrayToObjectNormalizer implements DenormalizerInterface, DenormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        return (object) $data;
+        if (is_array($data) && $type === 'object') {
+            return (object) $data;
+        }
+
+        if (class_exists($type)) {
+            $reflection = new \ReflectionClass($type);
+
+            foreach ($data as $key => $value) {
+                if (is_array($value) && $this->shouldBeObject($reflection, $key)) {
+                    $data[$key] = (object) $value;
+                }
+            }
+
+            return $this->denormalizer->denormalize($data, $type, $format, $context + [__CLASS__ => true]);
+        }
+
+        return $data;
     }
 
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return is_array($data);
+        if (isset($context[__CLASS__])) {
+            return false;
+        }
+
+        if ($type === 'object' && is_array($data)) {
+            return true;
+        }
+
+        if (class_exists($type) && is_array($data)) {
+            $reflection = new \ReflectionClass($type);
+
+            foreach ($data as $key => $value) {
+                if (is_array($value) && $this->shouldBeObject($reflection, $key)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public function getSupportedTypes(?string $format): array
@@ -34,13 +64,20 @@ class ArrayToObjectNormalizer implements DenormalizerInterface, DenormalizerAwar
         ];
     }
 
-    public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    private function shouldBeObject(\ReflectionClass $reflection, string $propertyName): bool
     {
-        return (array) $object;
-    }
+        try {
+            $property = $reflection->getProperty($propertyName);
+            $type = $property->getType();
 
-    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-    {
-        return true;
+            if ($type instanceof \ReflectionNamedType) {
+                return $type->getName() === 'object';
+            }
+        } catch (\ReflectionException $e) {
+            // Property doesn't exist
+            return false;
+        }
+
+        return false;
     }
 }
