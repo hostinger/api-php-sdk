@@ -19,24 +19,33 @@ namespace Hostinger\Model;
 
 class DomainsV1ForwardingStoreRequest 
 {
-    public const string REDIRECT_TYPE__301 = '301';
-    public const string REDIRECT_TYPE__302 = '302';
+    /**
+     * @var string
+     */
+    public const REDIRECT_TYPE__301 = '301';
+    /**
+     * @var string
+     */
+    public const REDIRECT_TYPE__302 = '302';
 
     /**
-     * @var string $domain
+     * @var string|null $domain
      */
     private string $domain;
 
     /**
-     * @var string $redirectType
+     * @var string|null $redirectType
      */
     private string $redirectType;
 
     /**
-     * @var string $redirectUrl
+     * @var string|null $redirectUrl
      */
     private string $redirectUrl;
 
+    /**
+    * @return string
+    */
     public function getDomain(): string
     {
         return $this->domain;
@@ -51,6 +60,9 @@ class DomainsV1ForwardingStoreRequest
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getRedirectType(): string
     {
         return $this->redirectType;
@@ -65,6 +77,9 @@ class DomainsV1ForwardingStoreRequest
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getRedirectUrl(): string
     {
         return $this->redirectUrl;

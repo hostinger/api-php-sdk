@@ -19,8 +19,9 @@ namespace Hostinger\Model;
 
 class VPSV1DockerManagerContentResource 
 {
+
     /**
-     * @var string $content
+     * @var string|null $content
      */
     private ?string $content;
 
@@ -29,6 +30,9 @@ class VPSV1DockerManagerContentResource
      */
     private ?string $environment = null;
 
+    /**
+    * @return string|null
+    */
     public function getContent(): ?string
     {
         return $this->content;
@@ -43,6 +47,9 @@ class VPSV1DockerManagerContentResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getEnvironment(): ?string
     {
         return $this->environment;

@@ -19,61 +19,91 @@ namespace Hostinger\Model;
 
 class BillingV1OrderOrderResource 
 {
-    public const string STATUS_COMPLETED = 'completed';
-    public const string STATUS_PENDING = 'pending';
-    public const string STATUS_PROCESSING = 'processing';
-    public const string STATUS_FAILED = 'failed';
-    public const string STATUS_REFUNDED = 'refunded';
-    public const string STATUS_CANCELLED = 'cancelled';
-    public const string STATUS_AWAITING_PAYMENT = 'awaiting_payment';
-    public const string STATUS_PAYMENT_INITIATED = 'payment_initiated';
-    public const string STATUS_FRAUD_REFUND = 'fraud_refund';
+    /**
+     * @var string
+     */
+    public const STATUS_COMPLETED = 'completed';
+    /**
+     * @var string
+     */
+    public const STATUS_PENDING = 'pending';
+    /**
+     * @var string
+     */
+    public const STATUS_PROCESSING = 'processing';
+    /**
+     * @var string
+     */
+    public const STATUS_FAILED = 'failed';
+    /**
+     * @var string
+     */
+    public const STATUS_REFUNDED = 'refunded';
+    /**
+     * @var string
+     */
+    public const STATUS_CANCELLED = 'cancelled';
+    /**
+     * @var string
+     */
+    public const STATUS_AWAITING_PAYMENT = 'awaiting_payment';
+    /**
+     * @var string
+     */
+    public const STATUS_PAYMENT_INITIATED = 'payment_initiated';
+    /**
+     * @var string
+     */
+    public const STATUS_FRAUD_REFUND = 'fraud_refund';
 
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
     /**
-     * @var string $subscriptionId
+     * @var string|null $subscriptionId
      */
     private ?string $subscriptionId;
 
     /**
-     * @var string $status
+     * @var string|null $status
      */
     private ?string $status;
 
     /**
-     * @var string $currency
+     * @var string|null $currency
      */
     private ?string $currency;
 
     /**
-     * @var int $subtotal
+     * @var int|null $subtotal
      */
     private ?int $subtotal;
 
     /**
-     * @var int $total
+     * @var int|null $total
      */
     private ?int $total;
 
     /**
-     * @var \Hostinger\Model\BillingV1OrderOrderBillingAddressResource $billingAddress
+     * @var \Hostinger\Model\BillingV1OrderOrderBillingAddressResource|null $billingAddress
      */
     private ?\Hostinger\Model\BillingV1OrderOrderBillingAddressResource $billingAddress;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
     /**
-     * @var \DateTime $updatedAt
+     * @var \DateTime|null $updatedAt
      */
     private ?\DateTime $updatedAt;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -88,6 +118,9 @@ class BillingV1OrderOrderResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getSubscriptionId(): ?string
     {
         return $this->subscriptionId;
@@ -102,6 +135,9 @@ class BillingV1OrderOrderResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getStatus(): ?string
     {
         return $this->status;
@@ -116,6 +152,9 @@ class BillingV1OrderOrderResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getCurrency(): ?string
     {
         return $this->currency;
@@ -130,6 +169,9 @@ class BillingV1OrderOrderResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getSubtotal(): ?int
     {
         return $this->subtotal;
@@ -144,6 +186,9 @@ class BillingV1OrderOrderResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getTotal(): ?int
     {
         return $this->total;
@@ -158,6 +203,9 @@ class BillingV1OrderOrderResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\BillingV1OrderOrderBillingAddressResource|null
+    */
     public function getBillingAddress(): ?\Hostinger\Model\BillingV1OrderOrderBillingAddressResource
     {
         return $this->billingAddress;
@@ -172,6 +220,9 @@ class BillingV1OrderOrderResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
@@ -186,6 +237,9 @@ class BillingV1OrderOrderResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;

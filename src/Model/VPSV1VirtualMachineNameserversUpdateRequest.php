@@ -19,8 +19,9 @@ namespace Hostinger\Model;
 
 class VPSV1VirtualMachineNameserversUpdateRequest 
 {
+
     /**
-     * @var string $ns1
+     * @var string|null $ns1
      */
     private string $ns1;
 
@@ -34,6 +35,9 @@ class VPSV1VirtualMachineNameserversUpdateRequest
      */
     private ?string $ns3 = null;
 
+    /**
+    * @return string
+    */
     public function getNs1(): string
     {
         return $this->ns1;
@@ -48,6 +52,9 @@ class VPSV1VirtualMachineNameserversUpdateRequest
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getNs2(): ?string
     {
         return $this->ns2;
@@ -62,6 +69,9 @@ class VPSV1VirtualMachineNameserversUpdateRequest
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getNs3(): ?string
     {
         return $this->ns3;

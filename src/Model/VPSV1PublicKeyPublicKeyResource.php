@@ -19,21 +19,25 @@ namespace Hostinger\Model;
 
 class VPSV1PublicKeyPublicKeyResource 
 {
+
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private ?string $name;
 
     /**
-     * @var string $key
+     * @var string|null $key
      */
     private ?string $key;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -48,6 +52,9 @@ class VPSV1PublicKeyPublicKeyResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -62,6 +69,9 @@ class VPSV1PublicKeyPublicKeyResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getKey(): ?string
     {
         return $this->key;

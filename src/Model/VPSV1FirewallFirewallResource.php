@@ -19,36 +19,40 @@ namespace Hostinger\Model;
 
 class VPSV1FirewallFirewallResource 
 {
+
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private ?string $name;
 
     /**
-     * @var bool $isSynced
+     * @var bool|null $isSynced
      */
     private ?bool $isSynced;
 
     /**
-     * @var \Hostinger\Model\VPSV1FirewallFirewallRuleResource[] $rules
+     * @var \Hostinger\Model\VPSV1FirewallFirewallRuleResource[]|null $rules
      */
     private ?array $rules;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
     /**
-     * @var \DateTime $updatedAt
+     * @var \DateTime|null $updatedAt
      */
     private ?\DateTime $updatedAt;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -63,6 +67,9 @@ class VPSV1FirewallFirewallResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -77,6 +84,9 @@ class VPSV1FirewallFirewallResource
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getIsSynced(): ?bool
     {
         return $this->isSynced;
@@ -91,6 +101,9 @@ class VPSV1FirewallFirewallResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1FirewallFirewallRuleResource[]|null
+    */
     public function getRules(): ?array
     {
         return $this->rules;
@@ -105,6 +118,9 @@ class VPSV1FirewallFirewallResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
@@ -119,6 +135,9 @@ class VPSV1FirewallFirewallResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;

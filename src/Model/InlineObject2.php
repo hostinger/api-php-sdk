@@ -19,21 +19,25 @@ namespace Hostinger\Model;
 
 class InlineObject2 
 {
+
     /**
-     * @var string $message
+     * @var string|null $message
      */
     private ?string $message;
 
     /**
-     * @var \Hostinger\Model\InlineObject2Errors $errors
+     * @var \Hostinger\Model\InlineObject2Errors|null $errors
      */
     private ?\Hostinger\Model\InlineObject2Errors $errors;
 
     /**
-     * @var string $correlationId
+     * @var string|null $correlationId
      */
     private ?string $correlationId;
 
+    /**
+    * @return string|null
+    */
     public function getMessage(): ?string
     {
         return $this->message;
@@ -48,6 +52,9 @@ class InlineObject2
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\InlineObject2Errors|null
+    */
     public function getErrors(): ?\Hostinger\Model\InlineObject2Errors
     {
         return $this->errors;
@@ -62,6 +69,9 @@ class InlineObject2
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getCorrelationId(): ?string
     {
         return $this->correlationId;

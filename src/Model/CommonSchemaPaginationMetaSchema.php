@@ -19,21 +19,25 @@ namespace Hostinger\Model;
 
 class CommonSchemaPaginationMetaSchema 
 {
+
     /**
-     * @var int $currentPage
+     * @var int|null $currentPage
      */
     private ?int $currentPage;
 
     /**
-     * @var int $perPage
+     * @var int|null $perPage
      */
     private ?int $perPage;
 
     /**
-     * @var int $total
+     * @var int|null $total
      */
     private ?int $total;
 
+    /**
+    * @return int|null
+    */
     public function getCurrentPage(): ?int
     {
         return $this->currentPage;
@@ -48,6 +52,9 @@ class CommonSchemaPaginationMetaSchema
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getPerPage(): ?int
     {
         return $this->perPage;
@@ -62,6 +69,9 @@ class CommonSchemaPaginationMetaSchema
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getTotal(): ?int
     {
         return $this->total;

@@ -19,21 +19,25 @@ namespace Hostinger\Model;
 
 class BillingV1OrderStoreRequest 
 {
+
     /**
-     * @var int $paymentMethodId
+     * @var int|null $paymentMethodId
      */
     private int $paymentMethodId;
 
     /**
-     * @var \Hostinger\Model\BillingV1OrderStoreRequestItemsInner[] $items
+     * @var \Hostinger\Model\BillingV1OrderStoreRequestItemsInner[]|null $items
      */
     private array $items;
 
     /**
-     * @var mixed[] $coupons
+     * @var mixed[]|null $coupons
      */
     private ?array $coupons;
 
+    /**
+    * @return int
+    */
     public function getPaymentMethodId(): int
     {
         return $this->paymentMethodId;
@@ -48,6 +52,9 @@ class BillingV1OrderStoreRequest
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\BillingV1OrderStoreRequestItemsInner[]
+    */
     public function getItems(): array
     {
         return $this->items;
@@ -62,6 +69,9 @@ class BillingV1OrderStoreRequest
 
         return $this;
     }
+    /**
+    * @return mixed[]|null
+    */
     public function getCoupons(): ?array
     {
         return $this->coupons;

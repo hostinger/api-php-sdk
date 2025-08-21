@@ -19,11 +19,15 @@ namespace Hostinger\Model;
 
 class VPSV1FirewallStoreRequest 
 {
+
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private string $name;
 
+    /**
+    * @return string
+    */
     public function getName(): string
     {
         return $this->name;

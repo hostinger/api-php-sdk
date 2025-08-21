@@ -19,11 +19,15 @@ namespace Hostinger\Model;
 
 class DNSV1ZoneDestroyRequest 
 {
+
     /**
-     * @var \Hostinger\Model\DNSV1ZoneDestroyRequestFiltersInner[] $filters
+     * @var \Hostinger\Model\DNSV1ZoneDestroyRequestFiltersInner[]|null $filters
      */
     private array $filters;
 
+    /**
+    * @return \Hostinger\Model\DNSV1ZoneDestroyRequestFiltersInner[]
+    */
     public function getFilters(): array
     {
         return $this->filters;

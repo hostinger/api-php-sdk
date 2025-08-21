@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class DNSV1ZoneUpdateRequest 
 {
+
     /**
-     * @var bool $overwrite
+     * @var bool|null $overwrite
      */
     private ?bool $overwrite;
 
     /**
-     * @var \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[] $zone
+     * @var \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[]|null $zone
      */
     private array $zone;
 
+    /**
+    * @return bool|null
+    */
     public function getOverwrite(): ?bool
     {
         return $this->overwrite;
@@ -43,6 +47,9 @@ class DNSV1ZoneUpdateRequest
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[]
+    */
     public function getZone(): array
     {
         return $this->zone;

@@ -19,11 +19,15 @@ namespace Hostinger\Model;
 
 class VPSV1PublicKeyAttachRequest 
 {
+
     /**
-     * @var int[] $ids
+     * @var int[]|null $ids
      */
     private array $ids;
 
+    /**
+    * @return int[]
+    */
     public function getIds(): array
     {
         return $this->ids;

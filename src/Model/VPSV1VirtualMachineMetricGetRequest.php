@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class VPSV1VirtualMachineMetricGetRequest 
 {
+
     /**
-     * @var \DateTime $dateFrom
+     * @var \DateTime|null $dateFrom
      */
     private \DateTime $dateFrom;
 
     /**
-     * @var \DateTime $dateTo
+     * @var \DateTime|null $dateTo
      */
     private \DateTime $dateTo;
 
+    /**
+    * @return \DateTime
+    */
     public function getDateFrom(): \DateTime
     {
         return $this->dateFrom;
@@ -43,6 +47,9 @@ class VPSV1VirtualMachineMetricGetRequest
 
         return $this;
     }
+    /**
+    * @return \DateTime
+    */
     public function getDateTo(): \DateTime
     {
         return $this->dateTo;

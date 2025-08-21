@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class VPSV1DockerManagerLogsResource 
 {
+
     /**
-     * @var string $service
+     * @var string|null $service
      */
     private ?string $service;
 
     /**
-     * @var \Hostinger\Model\VPSV1DockerManagerLogEntryResource[] $entries
+     * @var \Hostinger\Model\VPSV1DockerManagerLogEntryResource[]|null $entries
      */
     private ?array $entries;
 
+    /**
+    * @return string|null
+    */
     public function getService(): ?string
     {
         return $this->service;
@@ -43,6 +47,9 @@ class VPSV1DockerManagerLogsResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1DockerManagerLogEntryResource[]|null
+    */
     public function getEntries(): ?array
     {
         return $this->entries;

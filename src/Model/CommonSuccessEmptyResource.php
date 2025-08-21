@@ -19,11 +19,15 @@ namespace Hostinger\Model;
 
 class CommonSuccessEmptyResource 
 {
+
     /**
-     * @var string $message
+     * @var string|null $message
      */
     private ?string $message;
 
+    /**
+    * @return string|null
+    */
     public function getMessage(): ?string
     {
         return $this->message;

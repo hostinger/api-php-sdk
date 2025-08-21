@@ -19,21 +19,25 @@ namespace Hostinger\Model;
 
 class VPSV1SnapshotSnapshotResource 
 {
+
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
     /**
-     * @var \DateTime $expiresAt
+     * @var \DateTime|null $expiresAt
      */
     private ?\DateTime $expiresAt;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -48,6 +52,9 @@ class VPSV1SnapshotSnapshotResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
@@ -62,6 +69,9 @@ class VPSV1SnapshotSnapshotResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getExpiresAt(): ?\DateTime
     {
         return $this->expiresAt;

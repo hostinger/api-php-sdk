@@ -19,13 +19,14 @@ namespace Hostinger\Model;
 
 class VPSV1VirtualMachineDockerManagerUpRequest 
 {
+
     /**
-     * @var string $projectName
+     * @var string|null $projectName
      */
     private string $projectName;
 
     /**
-     * @var string $content
+     * @var string|null $content
      */
     private string $content;
 
@@ -34,6 +35,9 @@ class VPSV1VirtualMachineDockerManagerUpRequest
      */
     private ?string $environment = null;
 
+    /**
+    * @return string
+    */
     public function getProjectName(): string
     {
         return $this->projectName;
@@ -48,6 +52,9 @@ class VPSV1VirtualMachineDockerManagerUpRequest
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getContent(): string
     {
         return $this->content;
@@ -62,6 +69,9 @@ class VPSV1VirtualMachineDockerManagerUpRequest
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getEnvironment(): ?string
     {
         return $this->environment;

@@ -19,26 +19,30 @@ namespace Hostinger\Model;
 
 class DomainsV1PortfolioUpdateNameserversRequest 
 {
+
     /**
-     * @var string $ns1
+     * @var string|null $ns1
      */
     private string $ns1;
 
     /**
-     * @var string $ns2
+     * @var string|null $ns2
      */
     private string $ns2;
 
     /**
-     * @var string $ns3
+     * @var string|null $ns3
      */
     private ?string $ns3;
 
     /**
-     * @var string $ns4
+     * @var string|null $ns4
      */
     private ?string $ns4;
 
+    /**
+    * @return string
+    */
     public function getNs1(): string
     {
         return $this->ns1;
@@ -53,6 +57,9 @@ class DomainsV1PortfolioUpdateNameserversRequest
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getNs2(): string
     {
         return $this->ns2;
@@ -67,6 +74,9 @@ class DomainsV1PortfolioUpdateNameserversRequest
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getNs3(): ?string
     {
         return $this->ns3;
@@ -81,6 +91,9 @@ class DomainsV1PortfolioUpdateNameserversRequest
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getNs4(): ?string
     {
         return $this->ns4;

@@ -19,26 +19,30 @@ namespace Hostinger\Model;
 
 class DomainsV1DomainDomainExtendedResourceDomainContacts 
 {
+
     /**
-     * @var int $adminId
+     * @var int|null $adminId
      */
     private ?int $adminId;
 
     /**
-     * @var int $ownerId
+     * @var int|null $ownerId
      */
     private ?int $ownerId;
 
     /**
-     * @var int $billingId
+     * @var int|null $billingId
      */
     private ?int $billingId;
 
     /**
-     * @var int $techId
+     * @var int|null $techId
      */
     private ?int $techId;
 
+    /**
+    * @return int|null
+    */
     public function getAdminId(): ?int
     {
         return $this->adminId;
@@ -53,6 +57,9 @@ class DomainsV1DomainDomainExtendedResourceDomainContacts
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getOwnerId(): ?int
     {
         return $this->ownerId;
@@ -67,6 +74,9 @@ class DomainsV1DomainDomainExtendedResourceDomainContacts
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getBillingId(): ?int
     {
         return $this->billingId;
@@ -81,6 +91,9 @@ class DomainsV1DomainDomainExtendedResourceDomainContacts
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getTechId(): ?int
     {
         return $this->techId;

@@ -19,11 +19,15 @@ namespace Hostinger\Model;
 
 class VPSV1VirtualMachineRecoveryStartRequest 
 {
+
     /**
-     * @var string $rootPassword
+     * @var string|null $rootPassword
      */
     private string $rootPassword;
 
+    /**
+    * @return string
+    */
     public function getRootPassword(): string
     {
         return $this->rootPassword;

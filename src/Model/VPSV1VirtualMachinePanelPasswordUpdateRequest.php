@@ -19,11 +19,15 @@ namespace Hostinger\Model;
 
 class VPSV1VirtualMachinePanelPasswordUpdateRequest 
 {
+
     /**
-     * @var string $password
+     * @var string|null $password
      */
     private string $password;
 
+    /**
+    * @return string
+    */
     public function getPassword(): string
     {
         return $this->password;

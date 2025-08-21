@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class VPSV1VirtualMachineSetupRequestPublicKey 
 {
+
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private ?string $name;
 
     /**
-     * @var string $key
+     * @var string|null $key
      */
     private ?string $key;
 
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -43,6 +47,9 @@ class VPSV1VirtualMachineSetupRequestPublicKey
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getKey(): ?string
     {
         return $this->key;

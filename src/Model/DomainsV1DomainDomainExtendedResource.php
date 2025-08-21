@@ -19,22 +19,46 @@ namespace Hostinger\Model;
 
 class DomainsV1DomainDomainExtendedResource 
 {
-    public const string STATUS_ACTIVE = 'active';
-    public const string STATUS_PENDING_SETUP = 'pending_setup';
-    public const string STATUS_EXPIRED = 'expired';
-    public const string STATUS_REQUESTED = 'requested';
-    public const string STATUS_PENDING_VERIFICATION = 'pending_verification';
-    public const string STATUS_DELETED = 'deleted';
-    public const string STATUS_SUSPENDED = 'suspended';
-    public const string STATUS_FAILED = 'failed';
+    /**
+     * @var string
+     */
+    public const STATUS_ACTIVE = 'active';
+    /**
+     * @var string
+     */
+    public const STATUS_PENDING_SETUP = 'pending_setup';
+    /**
+     * @var string
+     */
+    public const STATUS_EXPIRED = 'expired';
+    /**
+     * @var string
+     */
+    public const STATUS_REQUESTED = 'requested';
+    /**
+     * @var string
+     */
+    public const STATUS_PENDING_VERIFICATION = 'pending_verification';
+    /**
+     * @var string
+     */
+    public const STATUS_DELETED = 'deleted';
+    /**
+     * @var string
+     */
+    public const STATUS_SUSPENDED = 'suspended';
+    /**
+     * @var string
+     */
+    public const STATUS_FAILED = 'failed';
 
     /**
-     * @var string $domain
+     * @var string|null $domain
      */
     private ?string $domain;
 
     /**
-     * @var string $status
+     * @var string|null $status
      */
     private ?string $status;
 
@@ -44,47 +68,47 @@ class DomainsV1DomainDomainExtendedResource
     private ?string $message = null;
 
     /**
-     * @var bool $isPrivacyProtectionAllowed
+     * @var bool|null $isPrivacyProtectionAllowed
      */
     private ?bool $isPrivacyProtectionAllowed;
 
     /**
-     * @var bool $isPrivacyProtected
+     * @var bool|null $isPrivacyProtected
      */
     private ?bool $isPrivacyProtected;
 
     /**
-     * @var bool $isLockable
+     * @var bool|null $isLockable
      */
     private ?bool $isLockable;
 
     /**
-     * @var bool $isLocked
+     * @var bool|null $isLocked
      */
     private ?bool $isLocked;
 
     /**
-     * @var \Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers $nameServers
+     * @var \Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers|null $nameServers
      */
     private ?\Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers $nameServers;
 
     /**
-     * @var string[][] $childNameServers
+     * @var string[][]|null $childNameServers
      */
     private ?array $childNameServers;
 
     /**
-     * @var \Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts $domainContacts
+     * @var \Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts|null $domainContacts
      */
     private ?\Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts $domainContacts;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
     /**
-     * @var \DateTime $updatedAt
+     * @var \DateTime|null $updatedAt
      */
     private ?\DateTime $updatedAt;
 
@@ -103,6 +127,9 @@ class DomainsV1DomainDomainExtendedResource
      */
     private ?\DateTime $expiresAt = null;
 
+    /**
+    * @return string|null
+    */
     public function getDomain(): ?string
     {
         return $this->domain;
@@ -117,6 +144,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getStatus(): ?string
     {
         return $this->status;
@@ -131,6 +161,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getMessage(): ?string
     {
         return $this->message;
@@ -145,6 +178,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getIsPrivacyProtectionAllowed(): ?bool
     {
         return $this->isPrivacyProtectionAllowed;
@@ -159,6 +195,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getIsPrivacyProtected(): ?bool
     {
         return $this->isPrivacyProtected;
@@ -173,6 +212,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getIsLockable(): ?bool
     {
         return $this->isLockable;
@@ -187,6 +229,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getIsLocked(): ?bool
     {
         return $this->isLocked;
@@ -201,6 +246,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers|null
+    */
     public function getNameServers(): ?\Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers
     {
         return $this->nameServers;
@@ -215,6 +263,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return string[][]|null
+    */
     public function getChildNameServers(): ?array
     {
         return $this->childNameServers;
@@ -229,6 +280,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts|null
+    */
     public function getDomainContacts(): ?\Hostinger\Model\DomainsV1DomainDomainExtendedResourceDomainContacts
     {
         return $this->domainContacts;
@@ -243,6 +297,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
@@ -257,6 +314,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
@@ -271,6 +331,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function get60daysLockExpiresAt(): ?\DateTime
     {
         return $this->_60daysLockExpiresAt;
@@ -285,6 +348,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getRegisteredAt(): ?\DateTime
     {
         return $this->registeredAt;
@@ -299,6 +365,9 @@ class DomainsV1DomainDomainExtendedResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getExpiresAt(): ?\DateTime
     {
         return $this->expiresAt;

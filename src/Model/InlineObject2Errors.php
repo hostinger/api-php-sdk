@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class InlineObject2Errors 
 {
+
     /**
-     * @var mixed[] $field1
+     * @var mixed[]|null $field1
      */
     private ?array $field1;
 
     /**
-     * @var mixed[] $field2
+     * @var mixed[]|null $field2
      */
     private ?array $field2;
 
+    /**
+    * @return mixed[]|null
+    */
     public function getField1(): ?array
     {
         return $this->field1;
@@ -43,6 +47,9 @@ class InlineObject2Errors
 
         return $this;
     }
+    /**
+    * @return mixed[]|null
+    */
     public function getField2(): ?array
     {
         return $this->field2;

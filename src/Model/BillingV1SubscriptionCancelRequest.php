@@ -19,9 +19,15 @@ namespace Hostinger\Model;
 
 class BillingV1SubscriptionCancelRequest 
 {
-    public const string REASON_CODE_OTHER = 'other';
+    /**
+     * @var string
+     */
+    public const REASON_CODE_OTHER = 'other';
 
-    public const string CANCEL_OPTION_IMMEDIATELY = 'immediately';
+    /**
+     * @var string
+     */
+    public const CANCEL_OPTION_IMMEDIATELY = 'immediately';
 
     /**
      * @var string|null $reasonCode
@@ -33,6 +39,9 @@ class BillingV1SubscriptionCancelRequest
      */
     private ?string $cancelOption = null;
 
+    /**
+    * @return string|null
+    */
     public function getReasonCode(): ?string
     {
         return $this->reasonCode;
@@ -47,6 +56,9 @@ class BillingV1SubscriptionCancelRequest
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getCancelOption(): ?string
     {
         return $this->cancelOption;

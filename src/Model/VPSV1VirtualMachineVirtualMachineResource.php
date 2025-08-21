@@ -19,28 +19,82 @@ namespace Hostinger\Model;
 
 class VPSV1VirtualMachineVirtualMachineResource 
 {
-    public const string STATE_RUNNING = 'running';
-    public const string STATE_STARTING = 'starting';
-    public const string STATE_STOPPING = 'stopping';
-    public const string STATE_STOPPED = 'stopped';
-    public const string STATE_CREATING = 'creating';
-    public const string STATE_INITIAL = 'initial';
-    public const string STATE_ERROR = 'error';
-    public const string STATE_SUSPENDING = 'suspending';
-    public const string STATE_UNSUSPENDING = 'unsuspending';
-    public const string STATE_SUSPENDED = 'suspended';
-    public const string STATE_DESTROYING = 'destroying';
-    public const string STATE_DESTROYED = 'destroyed';
-    public const string STATE_RECREATING = 'recreating';
-    public const string STATE_RESTORING = 'restoring';
-    public const string STATE_RECOVERY = 'recovery';
-    public const string STATE_STOPPING_RECOVERY = 'stopping_recovery';
-
-    public const string ACTIONS_LOCK_UNLOCKED = 'unlocked';
-    public const string ACTIONS_LOCK_LOCKED = 'locked';
+    /**
+     * @var string
+     */
+    public const STATE_RUNNING = 'running';
+    /**
+     * @var string
+     */
+    public const STATE_STARTING = 'starting';
+    /**
+     * @var string
+     */
+    public const STATE_STOPPING = 'stopping';
+    /**
+     * @var string
+     */
+    public const STATE_STOPPED = 'stopped';
+    /**
+     * @var string
+     */
+    public const STATE_CREATING = 'creating';
+    /**
+     * @var string
+     */
+    public const STATE_INITIAL = 'initial';
+    /**
+     * @var string
+     */
+    public const STATE_ERROR = 'error';
+    /**
+     * @var string
+     */
+    public const STATE_SUSPENDING = 'suspending';
+    /**
+     * @var string
+     */
+    public const STATE_UNSUSPENDING = 'unsuspending';
+    /**
+     * @var string
+     */
+    public const STATE_SUSPENDED = 'suspended';
+    /**
+     * @var string
+     */
+    public const STATE_DESTROYING = 'destroying';
+    /**
+     * @var string
+     */
+    public const STATE_DESTROYED = 'destroyed';
+    /**
+     * @var string
+     */
+    public const STATE_RECREATING = 'recreating';
+    /**
+     * @var string
+     */
+    public const STATE_RESTORING = 'restoring';
+    /**
+     * @var string
+     */
+    public const STATE_RECOVERY = 'recovery';
+    /**
+     * @var string
+     */
+    public const STATE_STOPPING_RECOVERY = 'stopping_recovery';
 
     /**
-     * @var int $id
+     * @var string
+     */
+    public const ACTIONS_LOCK_UNLOCKED = 'unlocked';
+    /**
+     * @var string
+     */
+    public const ACTIONS_LOCK_LOCKED = 'locked';
+
+    /**
+     * @var int|null $id
      */
     private ?int $id;
 
@@ -60,37 +114,37 @@ class VPSV1VirtualMachineVirtualMachineResource
     private ?string $plan = null;
 
     /**
-     * @var string $hostname
+     * @var string|null $hostname
      */
     private ?string $hostname;
 
     /**
-     * @var string $state
+     * @var string|null $state
      */
     private ?string $state;
 
     /**
-     * @var string $actionsLock
+     * @var string|null $actionsLock
      */
     private ?string $actionsLock;
 
     /**
-     * @var int $cpus
+     * @var int|null $cpus
      */
     private ?int $cpus;
 
     /**
-     * @var int $memory
+     * @var int|null $memory
      */
     private ?int $memory;
 
     /**
-     * @var int $disk
+     * @var int|null $disk
      */
     private ?int $disk;
 
     /**
-     * @var int $bandwidth
+     * @var int|null $bandwidth
      */
     private ?int $bandwidth;
 
@@ -105,12 +159,12 @@ class VPSV1VirtualMachineVirtualMachineResource
     private ?string $ns2 = null;
 
     /**
-     * @var \Hostinger\Model\VPSV1IPAddressIPAddressResource[] $ipv4
+     * @var \Hostinger\Model\VPSV1IPAddressIPAddressResource[]|null $ipv4
      */
     private ?array $ipv4;
 
     /**
-     * @var \Hostinger\Model\VPSV1IPAddressIPAddressResource[] $ipv6
+     * @var \Hostinger\Model\VPSV1IPAddressIPAddressResource[]|null $ipv6
      */
     private ?array $ipv6;
 
@@ -120,10 +174,13 @@ class VPSV1VirtualMachineVirtualMachineResource
     private ?\Hostinger\Model\VPSV1TemplateTemplateResource $template = null;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -138,6 +195,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getFirewallGroupId(): ?int
     {
         return $this->firewallGroupId;
@@ -152,6 +212,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getSubscriptionId(): ?string
     {
         return $this->subscriptionId;
@@ -166,6 +229,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getPlan(): ?string
     {
         return $this->plan;
@@ -180,6 +246,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getHostname(): ?string
     {
         return $this->hostname;
@@ -194,6 +263,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getState(): ?string
     {
         return $this->state;
@@ -208,6 +280,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getActionsLock(): ?string
     {
         return $this->actionsLock;
@@ -222,6 +297,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getCpus(): ?int
     {
         return $this->cpus;
@@ -236,6 +314,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getMemory(): ?int
     {
         return $this->memory;
@@ -250,6 +331,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getDisk(): ?int
     {
         return $this->disk;
@@ -264,6 +348,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getBandwidth(): ?int
     {
         return $this->bandwidth;
@@ -278,6 +365,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getNs1(): ?string
     {
         return $this->ns1;
@@ -292,6 +382,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getNs2(): ?string
     {
         return $this->ns2;
@@ -306,6 +399,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1IPAddressIPAddressResource[]|null
+    */
     public function getIpv4(): ?array
     {
         return $this->ipv4;
@@ -320,6 +416,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1IPAddressIPAddressResource[]|null
+    */
     public function getIpv6(): ?array
     {
         return $this->ipv6;
@@ -334,6 +433,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1TemplateTemplateResource|null
+    */
     public function getTemplate(): ?\Hostinger\Model\VPSV1TemplateTemplateResource
     {
         return $this->template;
@@ -348,6 +450,9 @@ class VPSV1VirtualMachineVirtualMachineResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;

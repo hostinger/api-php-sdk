@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class VPSV1PostInstallScriptListResponse 
 {
+
     /**
-     * @var \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource[] $data
+     * @var \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource[]|null $data
      */
     private ?array $data;
 
     /**
-     * @var \Hostinger\Model\CommonSchemaPaginationMetaSchema $meta
+     * @var \Hostinger\Model\CommonSchemaPaginationMetaSchema|null $meta
      */
     private ?\Hostinger\Model\CommonSchemaPaginationMetaSchema $meta;
 
+    /**
+    * @return \Hostinger\Model\VPSV1PostInstallScriptPostInstallScriptResource[]|null
+    */
     public function getData(): ?array
     {
         return $this->data;
@@ -43,6 +47,9 @@ class VPSV1PostInstallScriptListResponse
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\CommonSchemaPaginationMetaSchema|null
+    */
     public function getMeta(): ?\Hostinger\Model\CommonSchemaPaginationMetaSchema
     {
         return $this->meta;

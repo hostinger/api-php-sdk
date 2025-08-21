@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class VPSV1PostInstallScriptStoreRequest 
 {
+
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private string $name;
 
     /**
-     * @var string $content
+     * @var string|null $content
      */
     private string $content;
 
+    /**
+    * @return string
+    */
     public function getName(): string
     {
         return $this->name;
@@ -43,6 +47,9 @@ class VPSV1PostInstallScriptStoreRequest
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getContent(): string
     {
         return $this->content;

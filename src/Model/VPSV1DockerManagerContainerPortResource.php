@@ -19,21 +19,39 @@ namespace Hostinger\Model;
 
 class VPSV1DockerManagerContainerPortResource 
 {
-    public const string TYPE_PUBLISHED = 'published';
-    public const string TYPE_PUBLISHED_RANGE = 'published_range';
-    public const string TYPE_EXPOSED = 'exposed';
-    public const string TYPE_EXPOSED_RANGE = 'exposed_range';
-
-    public const string PROTOCOL_TCP = 'tcp';
-    public const string PROTOCOL_UDP = 'udp';
+    /**
+     * @var string
+     */
+    public const TYPE_PUBLISHED = 'published';
+    /**
+     * @var string
+     */
+    public const TYPE_PUBLISHED_RANGE = 'published_range';
+    /**
+     * @var string
+     */
+    public const TYPE_EXPOSED = 'exposed';
+    /**
+     * @var string
+     */
+    public const TYPE_EXPOSED_RANGE = 'exposed_range';
 
     /**
-     * @var string $type
+     * @var string
+     */
+    public const PROTOCOL_TCP = 'tcp';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_UDP = 'udp';
+
+    /**
+     * @var string|null $type
      */
     private ?string $type;
 
     /**
-     * @var string $protocol
+     * @var string|null $protocol
      */
     private ?string $protocol;
 
@@ -72,6 +90,9 @@ class VPSV1DockerManagerContainerPortResource
      */
     private ?int $containerPortEnd = null;
 
+    /**
+    * @return string|null
+    */
     public function getType(): ?string
     {
         return $this->type;
@@ -86,6 +107,9 @@ class VPSV1DockerManagerContainerPortResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getProtocol(): ?string
     {
         return $this->protocol;
@@ -100,6 +124,9 @@ class VPSV1DockerManagerContainerPortResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getHostIp(): ?string
     {
         return $this->hostIp;
@@ -114,6 +141,9 @@ class VPSV1DockerManagerContainerPortResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getHostPort(): ?int
     {
         return $this->hostPort;
@@ -128,6 +158,9 @@ class VPSV1DockerManagerContainerPortResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getContainerPort(): ?int
     {
         return $this->containerPort;
@@ -142,6 +175,9 @@ class VPSV1DockerManagerContainerPortResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getHostPortStart(): ?int
     {
         return $this->hostPortStart;
@@ -156,6 +192,9 @@ class VPSV1DockerManagerContainerPortResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getHostPortEnd(): ?int
     {
         return $this->hostPortEnd;
@@ -170,6 +209,9 @@ class VPSV1DockerManagerContainerPortResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getContainerPortStart(): ?int
     {
         return $this->containerPortStart;
@@ -184,6 +226,9 @@ class VPSV1DockerManagerContainerPortResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getContainerPortEnd(): ?int
     {
         return $this->containerPortEnd;

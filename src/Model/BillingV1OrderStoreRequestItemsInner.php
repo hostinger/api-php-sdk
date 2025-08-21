@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class BillingV1OrderStoreRequestItemsInner 
 {
+
     /**
-     * @var string $itemId
+     * @var string|null $itemId
      */
     private string $itemId;
 
     /**
-     * @var int $quantity
+     * @var int|null $quantity
      */
     private int $quantity;
 
+    /**
+    * @return string
+    */
     public function getItemId(): string
     {
         return $this->itemId;
@@ -43,6 +47,9 @@ class BillingV1OrderStoreRequestItemsInner
 
         return $this;
     }
+    /**
+    * @return int
+    */
     public function getQuantity(): int
     {
         return $this->quantity;

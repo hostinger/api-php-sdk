@@ -19,6 +19,7 @@ namespace Hostinger\Model;
 
 class VPSV1MetricsMetricsCollection 
 {
+
     /**
      * @var \Hostinger\Model\VPSV1MetricsMetricsResource|null $cpuUsage
      */
@@ -49,6 +50,9 @@ class VPSV1MetricsMetricsCollection
      */
     private ?\Hostinger\Model\VPSV1MetricsMetricsResource $uptime = null;
 
+    /**
+    * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
+    */
     public function getCpuUsage(): ?\Hostinger\Model\VPSV1MetricsMetricsResource
     {
         return $this->cpuUsage;
@@ -63,6 +67,9 @@ class VPSV1MetricsMetricsCollection
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
+    */
     public function getRamUsage(): ?\Hostinger\Model\VPSV1MetricsMetricsResource
     {
         return $this->ramUsage;
@@ -77,6 +84,9 @@ class VPSV1MetricsMetricsCollection
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
+    */
     public function getDiskSpace(): ?\Hostinger\Model\VPSV1MetricsMetricsResource
     {
         return $this->diskSpace;
@@ -91,6 +101,9 @@ class VPSV1MetricsMetricsCollection
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
+    */
     public function getOutgoingTraffic(): ?\Hostinger\Model\VPSV1MetricsMetricsResource
     {
         return $this->outgoingTraffic;
@@ -105,6 +118,9 @@ class VPSV1MetricsMetricsCollection
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
+    */
     public function getIncomingTraffic(): ?\Hostinger\Model\VPSV1MetricsMetricsResource
     {
         return $this->incomingTraffic;
@@ -119,6 +135,9 @@ class VPSV1MetricsMetricsCollection
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1MetricsMetricsResource|null
+    */
     public function getUptime(): ?\Hostinger\Model\VPSV1MetricsMetricsResource
     {
         return $this->uptime;

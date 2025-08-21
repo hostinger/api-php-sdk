@@ -19,8 +19,14 @@ namespace Hostinger\Model;
 
 class DomainsV1ForwardingForwardingResource 
 {
-    public const string REDIRECT_TYPE__301 = '301';
-    public const string REDIRECT_TYPE__302 = '302';
+    /**
+     * @var string
+     */
+    public const REDIRECT_TYPE__301 = '301';
+    /**
+     * @var string
+     */
+    public const REDIRECT_TYPE__302 = '302';
 
     /**
      * @var string|null $domain
@@ -28,17 +34,17 @@ class DomainsV1ForwardingForwardingResource
     private ?string $domain = null;
 
     /**
-     * @var string $redirectType
+     * @var string|null $redirectType
      */
     private ?string $redirectType;
 
     /**
-     * @var string $redirectUrl
+     * @var string|null $redirectUrl
      */
     private ?string $redirectUrl;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
@@ -47,6 +53,9 @@ class DomainsV1ForwardingForwardingResource
      */
     private ?\DateTime $updatedAt = null;
 
+    /**
+    * @return string|null
+    */
     public function getDomain(): ?string
     {
         return $this->domain;
@@ -61,6 +70,9 @@ class DomainsV1ForwardingForwardingResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getRedirectType(): ?string
     {
         return $this->redirectType;
@@ -75,6 +87,9 @@ class DomainsV1ForwardingForwardingResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getRedirectUrl(): ?string
     {
         return $this->redirectUrl;
@@ -89,6 +104,9 @@ class DomainsV1ForwardingForwardingResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
@@ -103,6 +121,9 @@ class DomainsV1ForwardingForwardingResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;

@@ -19,37 +19,55 @@ namespace Hostinger\Model;
 
 class VPSV1DockerManagerProjectResource 
 {
-    public const string STATE_RUNNING = 'running';
-    public const string STATE_STOPPED = 'stopped';
-    public const string STATE_CREATED = 'created';
-    public const string STATE_MIXED = 'mixed';
-    public const string STATE_UNKNOWN = 'unknown';
+    /**
+     * @var string
+     */
+    public const STATE_RUNNING = 'running';
+    /**
+     * @var string
+     */
+    public const STATE_STOPPED = 'stopped';
+    /**
+     * @var string
+     */
+    public const STATE_CREATED = 'created';
+    /**
+     * @var string
+     */
+    public const STATE_MIXED = 'mixed';
+    /**
+     * @var string
+     */
+    public const STATE_UNKNOWN = 'unknown';
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private ?string $name;
 
     /**
-     * @var string $status
+     * @var string|null $status
      */
     private ?string $status;
 
     /**
-     * @var string $state
+     * @var string|null $state
      */
     private ?string $state;
 
     /**
-     * @var string $path
+     * @var string|null $path
      */
     private ?string $path;
 
     /**
-     * @var \Hostinger\Model\VPSV1DockerManagerContainerResource[] $containers
+     * @var \Hostinger\Model\VPSV1DockerManagerContainerResource[]|null $containers
      */
     private ?array $containers;
 
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -64,6 +82,9 @@ class VPSV1DockerManagerProjectResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getStatus(): ?string
     {
         return $this->status;
@@ -78,6 +99,9 @@ class VPSV1DockerManagerProjectResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getState(): ?string
     {
         return $this->state;
@@ -92,6 +116,9 @@ class VPSV1DockerManagerProjectResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getPath(): ?string
     {
         return $this->path;
@@ -106,6 +133,9 @@ class VPSV1DockerManagerProjectResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1DockerManagerContainerResource[]|null
+    */
     public function getContainers(): ?array
     {
         return $this->containers;

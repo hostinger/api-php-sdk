@@ -19,21 +19,25 @@ namespace Hostinger\Model;
 
 class VPSV1BackupBackupResource 
 {
+
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
     /**
-     * @var string $location
+     * @var string|null $location
      */
     private ?string $location;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -48,6 +52,9 @@ class VPSV1BackupBackupResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getLocation(): ?string
     {
         return $this->location;
@@ -62,6 +69,9 @@ class VPSV1BackupBackupResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;

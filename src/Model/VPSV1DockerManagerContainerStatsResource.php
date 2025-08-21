@@ -19,36 +19,40 @@ namespace Hostinger\Model;
 
 class VPSV1DockerManagerContainerStatsResource 
 {
+
     /**
-     * @var float $cpuPercentage
+     * @var float|null $cpuPercentage
      */
     private ?float $cpuPercentage;
 
     /**
-     * @var float $memoryPercentage
+     * @var float|null $memoryPercentage
      */
     private ?float $memoryPercentage;
 
     /**
-     * @var float $memoryUsed
+     * @var float|null $memoryUsed
      */
     private ?float $memoryUsed;
 
     /**
-     * @var float $memoryTotal
+     * @var float|null $memoryTotal
      */
     private ?float $memoryTotal;
 
     /**
-     * @var int $netIn
+     * @var int|null $netIn
      */
     private ?int $netIn;
 
     /**
-     * @var int $netOut
+     * @var int|null $netOut
      */
     private ?int $netOut;
 
+    /**
+    * @return float|null
+    */
     public function getCpuPercentage(): ?float
     {
         return $this->cpuPercentage;
@@ -63,6 +67,9 @@ class VPSV1DockerManagerContainerStatsResource
 
         return $this;
     }
+    /**
+    * @return float|null
+    */
     public function getMemoryPercentage(): ?float
     {
         return $this->memoryPercentage;
@@ -77,6 +84,9 @@ class VPSV1DockerManagerContainerStatsResource
 
         return $this;
     }
+    /**
+    * @return float|null
+    */
     public function getMemoryUsed(): ?float
     {
         return $this->memoryUsed;
@@ -91,6 +101,9 @@ class VPSV1DockerManagerContainerStatsResource
 
         return $this;
     }
+    /**
+    * @return float|null
+    */
     public function getMemoryTotal(): ?float
     {
         return $this->memoryTotal;
@@ -105,6 +118,9 @@ class VPSV1DockerManagerContainerStatsResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getNetIn(): ?int
     {
         return $this->netIn;
@@ -119,6 +135,9 @@ class VPSV1DockerManagerContainerStatsResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getNetOut(): ?int
     {
         return $this->netOut;

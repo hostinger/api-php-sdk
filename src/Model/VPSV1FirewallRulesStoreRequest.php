@@ -19,43 +19,91 @@ namespace Hostinger\Model;
 
 class VPSV1FirewallRulesStoreRequest 
 {
-    public const string PROTOCOL_TCP = 'TCP';
-    public const string PROTOCOL_UDP = 'UDP';
-    public const string PROTOCOL_ICMP = 'ICMP';
-    public const string PROTOCOL_GRE = 'GRE';
-    public const string PROTOCOL_ANY = 'any';
-    public const string PROTOCOL_ESP = 'ESP';
-    public const string PROTOCOL_AH = 'AH';
-    public const string PROTOCOL_ICMPV6 = 'ICMPv6';
-    public const string PROTOCOL_SSH = 'SSH';
-    public const string PROTOCOL_HTTP = 'HTTP';
-    public const string PROTOCOL_HTTPS = 'HTTPS';
-    public const string PROTOCOL_MY_SQL = 'MySQL';
-    public const string PROTOCOL_POSTGRE_SQL = 'PostgreSQL';
-
-    public const string SOURCE_ANY = 'any';
-    public const string SOURCE_CUSTOM = 'custom';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_TCP = 'TCP';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_UDP = 'UDP';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_ICMP = 'ICMP';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_GRE = 'GRE';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_ANY = 'any';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_ESP = 'ESP';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_AH = 'AH';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_ICMPV6 = 'ICMPv6';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_SSH = 'SSH';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_HTTP = 'HTTP';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_HTTPS = 'HTTPS';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_MY_SQL = 'MySQL';
+    /**
+     * @var string
+     */
+    public const PROTOCOL_POSTGRE_SQL = 'PostgreSQL';
 
     /**
-     * @var string $protocol
+     * @var string
+     */
+    public const SOURCE_ANY = 'any';
+    /**
+     * @var string
+     */
+    public const SOURCE_CUSTOM = 'custom';
+
+    /**
+     * @var string|null $protocol
      */
     private string $protocol;
 
     /**
-     * @var string $port
+     * @var string|null $port
      */
     private string $port;
 
     /**
-     * @var string $source
+     * @var string|null $source
      */
     private string $source;
 
     /**
-     * @var string $sourceDetail
+     * @var string|null $sourceDetail
      */
     private string $sourceDetail;
 
+    /**
+    * @return string
+    */
     public function getProtocol(): string
     {
         return $this->protocol;
@@ -70,6 +118,9 @@ class VPSV1FirewallRulesStoreRequest
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getPort(): string
     {
         return $this->port;
@@ -84,6 +135,9 @@ class VPSV1FirewallRulesStoreRequest
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getSource(): string
     {
         return $this->source;
@@ -98,6 +152,9 @@ class VPSV1FirewallRulesStoreRequest
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getSourceDetail(): string
     {
         return $this->sourceDetail;

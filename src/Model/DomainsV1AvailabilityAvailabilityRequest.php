@@ -19,21 +19,25 @@ namespace Hostinger\Model;
 
 class DomainsV1AvailabilityAvailabilityRequest 
 {
+
     /**
-     * @var string $domain
+     * @var string|null $domain
      */
     private string $domain;
 
     /**
-     * @var string[] $tlds
+     * @var string[]|null $tlds
      */
     private array $tlds;
 
     /**
-     * @var bool $withAlternatives
+     * @var bool|null $withAlternatives
      */
     private ?bool $withAlternatives;
 
+    /**
+    * @return string
+    */
     public function getDomain(): string
     {
         return $this->domain;
@@ -48,6 +52,9 @@ class DomainsV1AvailabilityAvailabilityRequest
 
         return $this;
     }
+    /**
+    * @return string[]
+    */
     public function getTlds(): array
     {
         return $this->tlds;
@@ -62,6 +69,9 @@ class DomainsV1AvailabilityAvailabilityRequest
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getWithAlternatives(): ?bool
     {
         return $this->withAlternatives;

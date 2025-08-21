@@ -19,18 +19,19 @@ namespace Hostinger\Model;
 
 class BillingV1CatalogCatalogItemResource 
 {
+
     /**
-     * @var string $id
+     * @var string|null $id
      */
     private ?string $id;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private ?string $name;
 
     /**
-     * @var string $category
+     * @var string|null $category
      */
     private ?string $category;
 
@@ -40,10 +41,13 @@ class BillingV1CatalogCatalogItemResource
     private ?object $metadata = null;
 
     /**
-     * @var \Hostinger\Model\BillingV1CatalogCatalogItemPriceResource[] $prices
+     * @var \Hostinger\Model\BillingV1CatalogCatalogItemPriceResource[]|null $prices
      */
     private ?array $prices;
 
+    /**
+    * @return string|null
+    */
     public function getId(): ?string
     {
         return $this->id;
@@ -58,6 +62,9 @@ class BillingV1CatalogCatalogItemResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -72,6 +79,9 @@ class BillingV1CatalogCatalogItemResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getCategory(): ?string
     {
         return $this->category;
@@ -86,6 +96,9 @@ class BillingV1CatalogCatalogItemResource
 
         return $this;
     }
+    /**
+    * @return object|null
+    */
     public function getMetadata(): ?object
     {
         return $this->metadata;
@@ -100,6 +113,9 @@ class BillingV1CatalogCatalogItemResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\BillingV1CatalogCatalogItemPriceResource[]|null
+    */
     public function getPrices(): ?array
     {
         return $this->prices;

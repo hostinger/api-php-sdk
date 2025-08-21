@@ -19,56 +19,89 @@ namespace Hostinger\Model;
 
 class VPSV1DockerManagerContainerResource 
 {
-    public const string STATE_CREATED = 'created';
-    public const string STATE_RUNNING = 'running';
-    public const string STATE_RESTARTING = 'restarting';
-    public const string STATE_EXITED = 'exited';
-    public const string STATE_PAUSED = 'paused';
-    public const string STATE_DEAD = 'dead';
-    public const string STATE_STOPPING = 'stopping';
-
-    public const string HEALTH_STARTING = 'starting';
-    public const string HEALTH_HEALTHY = 'healthy';
-    public const string HEALTH_UNHEALTHY = 'unhealthy';
-    public const string HEALTH_EMPTY = '';
+    /**
+     * @var string
+     */
+    public const STATE_CREATED = 'created';
+    /**
+     * @var string
+     */
+    public const STATE_RUNNING = 'running';
+    /**
+     * @var string
+     */
+    public const STATE_RESTARTING = 'restarting';
+    /**
+     * @var string
+     */
+    public const STATE_EXITED = 'exited';
+    /**
+     * @var string
+     */
+    public const STATE_PAUSED = 'paused';
+    /**
+     * @var string
+     */
+    public const STATE_DEAD = 'dead';
+    /**
+     * @var string
+     */
+    public const STATE_STOPPING = 'stopping';
 
     /**
-     * @var string $id
+     * @var string
+     */
+    public const HEALTH_STARTING = 'starting';
+    /**
+     * @var string
+     */
+    public const HEALTH_HEALTHY = 'healthy';
+    /**
+     * @var string
+     */
+    public const HEALTH_UNHEALTHY = 'unhealthy';
+    /**
+     * @var string
+     */
+    public const HEALTH_EMPTY = '';
+
+    /**
+     * @var string|null $id
      */
     private ?string $id;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private ?string $name;
 
     /**
-     * @var string $image
+     * @var string|null $image
      */
     private ?string $image;
 
     /**
-     * @var string $command
+     * @var string|null $command
      */
     private ?string $command;
 
     /**
-     * @var string $status
+     * @var string|null $status
      */
     private ?string $status;
 
     /**
-     * @var string $state
+     * @var string|null $state
      */
     private ?string $state;
 
     /**
-     * @var string $health
+     * @var string|null $health
      */
     private ?string $health;
 
     /**
-     * @var \Hostinger\Model\VPSV1DockerManagerContainerPortResource[] $ports
+     * @var \Hostinger\Model\VPSV1DockerManagerContainerPortResource[]|null $ports
      */
     private ?array $ports;
 
@@ -77,6 +110,9 @@ class VPSV1DockerManagerContainerResource
      */
     private ?\Hostinger\Model\VPSV1DockerManagerContainerStatsResource $stats = null;
 
+    /**
+    * @return string|null
+    */
     public function getId(): ?string
     {
         return $this->id;
@@ -91,6 +127,9 @@ class VPSV1DockerManagerContainerResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -105,6 +144,9 @@ class VPSV1DockerManagerContainerResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getImage(): ?string
     {
         return $this->image;
@@ -119,6 +161,9 @@ class VPSV1DockerManagerContainerResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getCommand(): ?string
     {
         return $this->command;
@@ -133,6 +178,9 @@ class VPSV1DockerManagerContainerResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getStatus(): ?string
     {
         return $this->status;
@@ -147,6 +195,9 @@ class VPSV1DockerManagerContainerResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getState(): ?string
     {
         return $this->state;
@@ -161,6 +212,9 @@ class VPSV1DockerManagerContainerResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getHealth(): ?string
     {
         return $this->health;
@@ -175,6 +229,9 @@ class VPSV1DockerManagerContainerResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1DockerManagerContainerPortResource[]|null
+    */
     public function getPorts(): ?array
     {
         return $this->ports;
@@ -189,6 +246,9 @@ class VPSV1DockerManagerContainerResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1DockerManagerContainerStatsResource|null
+    */
     public function getStats(): ?\Hostinger\Model\VPSV1DockerManagerContainerStatsResource
     {
         return $this->stats;

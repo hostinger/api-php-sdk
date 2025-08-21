@@ -19,56 +19,60 @@ namespace Hostinger\Model;
 
 class VPSV1VirtualMachineSetupRequest 
 {
+
     /**
-     * @var int $templateId
+     * @var int|null $templateId
      */
     private int $templateId;
 
     /**
-     * @var int $dataCenterId
+     * @var int|null $dataCenterId
      */
     private int $dataCenterId;
 
     /**
-     * @var int $postInstallScriptId
+     * @var int|null $postInstallScriptId
      */
     private ?int $postInstallScriptId;
 
     /**
-     * @var string $password
+     * @var string|null $password
      */
     private ?string $password;
 
     /**
-     * @var string $hostname
+     * @var string|null $hostname
      */
     private ?string $hostname;
 
     /**
-     * @var bool $installMonarx
+     * @var bool|null $installMonarx
      */
     private ?bool $installMonarx;
 
     /**
-     * @var bool $enableBackups
+     * @var bool|null $enableBackups
      */
     private ?bool $enableBackups;
 
     /**
-     * @var string $ns1
+     * @var string|null $ns1
      */
     private ?string $ns1;
 
     /**
-     * @var string $ns2
+     * @var string|null $ns2
      */
     private ?string $ns2;
 
     /**
-     * @var \Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey $publicKey
+     * @var \Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey|null $publicKey
      */
     private ?\Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey $publicKey;
 
+    /**
+    * @return int
+    */
     public function getTemplateId(): int
     {
         return $this->templateId;
@@ -83,6 +87,9 @@ class VPSV1VirtualMachineSetupRequest
 
         return $this;
     }
+    /**
+    * @return int
+    */
     public function getDataCenterId(): int
     {
         return $this->dataCenterId;
@@ -97,6 +104,9 @@ class VPSV1VirtualMachineSetupRequest
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getPostInstallScriptId(): ?int
     {
         return $this->postInstallScriptId;
@@ -111,6 +121,9 @@ class VPSV1VirtualMachineSetupRequest
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getPassword(): ?string
     {
         return $this->password;
@@ -125,6 +138,9 @@ class VPSV1VirtualMachineSetupRequest
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getHostname(): ?string
     {
         return $this->hostname;
@@ -139,6 +155,9 @@ class VPSV1VirtualMachineSetupRequest
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getInstallMonarx(): ?bool
     {
         return $this->installMonarx;
@@ -153,6 +172,9 @@ class VPSV1VirtualMachineSetupRequest
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getEnableBackups(): ?bool
     {
         return $this->enableBackups;
@@ -167,6 +189,9 @@ class VPSV1VirtualMachineSetupRequest
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getNs1(): ?string
     {
         return $this->ns1;
@@ -181,6 +206,9 @@ class VPSV1VirtualMachineSetupRequest
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getNs2(): ?string
     {
         return $this->ns2;
@@ -195,6 +223,9 @@ class VPSV1VirtualMachineSetupRequest
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey|null
+    */
     public function getPublicKey(): ?\Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey
     {
         return $this->publicKey;

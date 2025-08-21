@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class VPSV1PublicKeyStoreRequest 
 {
+
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private string $name;
 
     /**
-     * @var string $key
+     * @var string|null $key
      */
     private string $key;
 
+    /**
+    * @return string
+    */
     public function getName(): string
     {
         return $this->name;
@@ -43,6 +47,9 @@ class VPSV1PublicKeyStoreRequest
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getKey(): string
     {
         return $this->key;

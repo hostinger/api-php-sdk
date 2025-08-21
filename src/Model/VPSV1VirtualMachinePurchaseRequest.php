@@ -19,26 +19,30 @@ namespace Hostinger\Model;
 
 class VPSV1VirtualMachinePurchaseRequest 
 {
+
     /**
-     * @var string $itemId
+     * @var string|null $itemId
      */
     private string $itemId;
 
     /**
-     * @var int $paymentMethodId
+     * @var int|null $paymentMethodId
      */
     private ?int $paymentMethodId;
 
     /**
-     * @var \Hostinger\Model\VPSV1VirtualMachineSetupRequest $setup
+     * @var \Hostinger\Model\VPSV1VirtualMachineSetupRequest|null $setup
      */
     private \Hostinger\Model\VPSV1VirtualMachineSetupRequest $setup;
 
     /**
-     * @var mixed[] $coupons
+     * @var mixed[]|null $coupons
      */
     private ?array $coupons;
 
+    /**
+    * @return string
+    */
     public function getItemId(): string
     {
         return $this->itemId;
@@ -53,6 +57,9 @@ class VPSV1VirtualMachinePurchaseRequest
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getPaymentMethodId(): ?int
     {
         return $this->paymentMethodId;
@@ -67,6 +74,9 @@ class VPSV1VirtualMachinePurchaseRequest
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1VirtualMachineSetupRequest
+    */
     public function getSetup(): \Hostinger\Model\VPSV1VirtualMachineSetupRequest
     {
         return $this->setup;
@@ -81,6 +91,9 @@ class VPSV1VirtualMachinePurchaseRequest
 
         return $this;
     }
+    /**
+    * @return mixed[]|null
+    */
     public function getCoupons(): ?array
     {
         return $this->coupons;

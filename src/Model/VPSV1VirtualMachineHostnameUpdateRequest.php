@@ -19,11 +19,15 @@ namespace Hostinger\Model;
 
 class VPSV1VirtualMachineHostnameUpdateRequest 
 {
+
     /**
-     * @var string $hostname
+     * @var string|null $hostname
      */
     private string $hostname;
 
+    /**
+    * @return string
+    */
     public function getHostname(): string
     {
         return $this->hostname;

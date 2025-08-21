@@ -19,49 +19,58 @@ namespace Hostinger\Model;
 
 class DomainsV1WHOISProfileResource 
 {
-    public const string ENTITY_TYPE_INDIVIDUAL = 'individual';
-    public const string ENTITY_TYPE_ORGANIZATION = 'organization';
+    /**
+     * @var string
+     */
+    public const ENTITY_TYPE_INDIVIDUAL = 'individual';
+    /**
+     * @var string
+     */
+    public const ENTITY_TYPE_ORGANIZATION = 'organization';
 
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
     /**
-     * @var string $tld
+     * @var string|null $tld
      */
     private ?string $tld;
 
     /**
-     * @var string $country
+     * @var string|null $country
      */
     private ?string $country;
 
     /**
-     * @var string $entityType
+     * @var string|null $entityType
      */
     private ?string $entityType;
 
     /**
-     * @var object $whoisDetails
+     * @var object|null $whoisDetails
      */
     private ?object $whoisDetails;
 
     /**
-     * @var object $tldDetails
+     * @var object|null $tldDetails
      */
     private ?object $tldDetails;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
     /**
-     * @var \DateTime $updatedAt
+     * @var \DateTime|null $updatedAt
      */
     private ?\DateTime $updatedAt;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +85,9 @@ class DomainsV1WHOISProfileResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getTld(): ?string
     {
         return $this->tld;
@@ -90,6 +102,9 @@ class DomainsV1WHOISProfileResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getCountry(): ?string
     {
         return $this->country;
@@ -104,6 +119,9 @@ class DomainsV1WHOISProfileResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getEntityType(): ?string
     {
         return $this->entityType;
@@ -118,6 +136,9 @@ class DomainsV1WHOISProfileResource
 
         return $this;
     }
+    /**
+    * @return object|null
+    */
     public function getWhoisDetails(): ?object
     {
         return $this->whoisDetails;
@@ -132,6 +153,9 @@ class DomainsV1WHOISProfileResource
 
         return $this;
     }
+    /**
+    * @return object|null
+    */
     public function getTldDetails(): ?object
     {
         return $this->tldDetails;
@@ -146,6 +170,9 @@ class DomainsV1WHOISProfileResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
@@ -160,6 +187,9 @@ class DomainsV1WHOISProfileResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;

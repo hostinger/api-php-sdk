@@ -19,37 +19,55 @@ namespace Hostinger\Model;
 
 class VPSV1ActionActionResource 
 {
-    public const string STATE_SUCCESS = 'success';
-    public const string STATE_ERROR = 'error';
-    public const string STATE_DELAYED = 'delayed';
-    public const string STATE_SENT = 'sent';
-    public const string STATE_CREATED = 'created';
+    /**
+     * @var string
+     */
+    public const STATE_SUCCESS = 'success';
+    /**
+     * @var string
+     */
+    public const STATE_ERROR = 'error';
+    /**
+     * @var string
+     */
+    public const STATE_DELAYED = 'delayed';
+    /**
+     * @var string
+     */
+    public const STATE_SENT = 'sent';
+    /**
+     * @var string
+     */
+    public const STATE_CREATED = 'created';
 
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private ?string $name;
 
     /**
-     * @var string $state
+     * @var string|null $state
      */
     private ?string $state;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
     /**
-     * @var \DateTime $updatedAt
+     * @var \DateTime|null $updatedAt
      */
     private ?\DateTime $updatedAt;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -64,6 +82,9 @@ class VPSV1ActionActionResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -78,6 +99,9 @@ class VPSV1ActionActionResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getState(): ?string
     {
         return $this->state;
@@ -92,6 +116,9 @@ class VPSV1ActionActionResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
@@ -106,6 +133,9 @@ class VPSV1ActionActionResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;

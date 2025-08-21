@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class VPSV1MetricsMetricsResource 
 {
+
     /**
-     * @var string $unit
+     * @var string|null $unit
      */
     private ?string $unit;
 
     /**
-     * @var object $usage
+     * @var object|null $usage
      */
     private ?object $usage;
 
+    /**
+    * @return string|null
+    */
     public function getUnit(): ?string
     {
         return $this->unit;
@@ -43,6 +47,9 @@ class VPSV1MetricsMetricsResource
 
         return $this;
     }
+    /**
+    * @return object|null
+    */
     public function getUsage(): ?object
     {
         return $this->usage;

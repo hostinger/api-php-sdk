@@ -19,11 +19,15 @@ namespace Hostinger\Model;
 
 class DNSV1ZoneUpdateRequestZoneInnerRecordsInner 
 {
+
     /**
-     * @var string $content
+     * @var string|null $content
      */
     private string $content;
 
+    /**
+    * @return string
+    */
     public function getContent(): string
     {
         return $this->content;

@@ -19,26 +19,30 @@ namespace Hostinger\Model;
 
 class VPSV1VirtualMachineRecreateRequest 
 {
+
     /**
-     * @var int $templateId
+     * @var int|null $templateId
      */
     private int $templateId;
 
     /**
-     * @var string $password
+     * @var string|null $password
      */
     private ?string $password;
 
     /**
-     * @var string $panelPassword
+     * @var string|null $panelPassword
      */
     private ?string $panelPassword;
 
     /**
-     * @var int $postInstallScriptId
+     * @var int|null $postInstallScriptId
      */
     private ?int $postInstallScriptId;
 
+    /**
+    * @return int
+    */
     public function getTemplateId(): int
     {
         return $this->templateId;
@@ -53,6 +57,9 @@ class VPSV1VirtualMachineRecreateRequest
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getPassword(): ?string
     {
         return $this->password;
@@ -67,6 +74,9 @@ class VPSV1VirtualMachineRecreateRequest
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getPanelPassword(): ?string
     {
         return $this->panelPassword;
@@ -81,6 +91,9 @@ class VPSV1VirtualMachineRecreateRequest
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getPostInstallScriptId(): ?int
     {
         return $this->postInstallScriptId;

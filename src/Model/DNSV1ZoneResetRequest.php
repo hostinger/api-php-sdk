@@ -19,21 +19,25 @@ namespace Hostinger\Model;
 
 class DNSV1ZoneResetRequest 
 {
+
     /**
-     * @var bool $sync
+     * @var bool|null $sync
      */
     private ?bool $sync;
 
     /**
-     * @var bool $resetEmailRecords
+     * @var bool|null $resetEmailRecords
      */
     private ?bool $resetEmailRecords;
 
     /**
-     * @var string[] $whitelistedRecordTypes
+     * @var string[]|null $whitelistedRecordTypes
      */
     private ?array $whitelistedRecordTypes;
 
+    /**
+    * @return bool|null
+    */
     public function getSync(): ?bool
     {
         return $this->sync;
@@ -48,6 +52,9 @@ class DNSV1ZoneResetRequest
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getResetEmailRecords(): ?bool
     {
         return $this->resetEmailRecords;
@@ -62,6 +69,9 @@ class DNSV1ZoneResetRequest
 
         return $this;
     }
+    /**
+    * @return string[]|null
+    */
     public function getWhitelistedRecordTypes(): ?array
     {
         return $this->whitelistedRecordTypes;

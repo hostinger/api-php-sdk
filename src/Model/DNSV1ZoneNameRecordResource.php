@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class DNSV1ZoneNameRecordResource 
 {
+
     /**
-     * @var string $content
+     * @var string|null $content
      */
     private ?string $content;
 
     /**
-     * @var bool $isDisabled
+     * @var bool|null $isDisabled
      */
     private ?bool $isDisabled;
 
+    /**
+    * @return string|null
+    */
     public function getContent(): ?string
     {
         return $this->content;
@@ -43,6 +47,9 @@ class DNSV1ZoneNameRecordResource
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getIsDisabled(): ?bool
     {
         return $this->isDisabled;

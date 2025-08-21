@@ -19,31 +19,35 @@ namespace Hostinger\Model;
 
 class VPSV1PostInstallScriptPostInstallScriptResource 
 {
+
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private ?string $name;
 
     /**
-     * @var string $content
+     * @var string|null $content
      */
     private ?string $content;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
     /**
-     * @var \DateTime $updatedAt
+     * @var \DateTime|null $updatedAt
      */
     private ?\DateTime $updatedAt;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -58,6 +62,9 @@ class VPSV1PostInstallScriptPostInstallScriptResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -72,6 +79,9 @@ class VPSV1PostInstallScriptPostInstallScriptResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getContent(): ?string
     {
         return $this->content;
@@ -86,6 +96,9 @@ class VPSV1PostInstallScriptPostInstallScriptResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
@@ -100,6 +113,9 @@ class VPSV1PostInstallScriptPostInstallScriptResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;

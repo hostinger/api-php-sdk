@@ -19,36 +19,40 @@ namespace Hostinger\Model;
 
 class DomainsV1PortfolioPurchaseRequest 
 {
+
     /**
-     * @var string $domain
+     * @var string|null $domain
      */
     private string $domain;
 
     /**
-     * @var string $itemId
+     * @var string|null $itemId
      */
     private string $itemId;
 
     /**
-     * @var int $paymentMethodId
+     * @var int|null $paymentMethodId
      */
     private ?int $paymentMethodId;
 
     /**
-     * @var \Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts $domainContacts
+     * @var \Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts|null $domainContacts
      */
     private ?\Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts $domainContacts;
 
     /**
-     * @var object $additionalDetails
+     * @var object|null $additionalDetails
      */
     private ?object $additionalDetails;
 
     /**
-     * @var mixed[] $coupons
+     * @var mixed[]|null $coupons
      */
     private ?array $coupons;
 
+    /**
+    * @return string
+    */
     public function getDomain(): string
     {
         return $this->domain;
@@ -63,6 +67,9 @@ class DomainsV1PortfolioPurchaseRequest
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getItemId(): string
     {
         return $this->itemId;
@@ -77,6 +84,9 @@ class DomainsV1PortfolioPurchaseRequest
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getPaymentMethodId(): ?int
     {
         return $this->paymentMethodId;
@@ -91,6 +101,9 @@ class DomainsV1PortfolioPurchaseRequest
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts|null
+    */
     public function getDomainContacts(): ?\Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts
     {
         return $this->domainContacts;
@@ -105,6 +118,9 @@ class DomainsV1PortfolioPurchaseRequest
 
         return $this;
     }
+    /**
+    * @return object|null
+    */
     public function getAdditionalDetails(): ?object
     {
         return $this->additionalDetails;
@@ -119,6 +135,9 @@ class DomainsV1PortfolioPurchaseRequest
 
         return $this;
     }
+    /**
+    * @return mixed[]|null
+    */
     public function getCoupons(): ?array
     {
         return $this->coupons;

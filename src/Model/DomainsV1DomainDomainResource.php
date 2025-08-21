@@ -19,22 +19,58 @@ namespace Hostinger\Model;
 
 class DomainsV1DomainDomainResource 
 {
-    public const string TYPE_DOMAIN = 'domain';
-    public const string TYPE_FREE_DOMAIN = 'free_domain';
-    public const string TYPE_DOMAIN_TRANSFER = 'domain_transfer';
-    public const string TYPE_FREE_DOMAIN_TRANSFER = 'free_domain_transfer';
-
-    public const string STATUS_ACTIVE = 'active';
-    public const string STATUS_PENDING_SETUP = 'pending_setup';
-    public const string STATUS_EXPIRED = 'expired';
-    public const string STATUS_REQUESTED = 'requested';
-    public const string STATUS_PENDING_VERIFICATION = 'pending_verification';
-    public const string STATUS_DELETED = 'deleted';
-    public const string STATUS_SUSPENDED = 'suspended';
-    public const string STATUS_FAILED = 'failed';
+    /**
+     * @var string
+     */
+    public const TYPE_DOMAIN = 'domain';
+    /**
+     * @var string
+     */
+    public const TYPE_FREE_DOMAIN = 'free_domain';
+    /**
+     * @var string
+     */
+    public const TYPE_DOMAIN_TRANSFER = 'domain_transfer';
+    /**
+     * @var string
+     */
+    public const TYPE_FREE_DOMAIN_TRANSFER = 'free_domain_transfer';
 
     /**
-     * @var int $id
+     * @var string
+     */
+    public const STATUS_ACTIVE = 'active';
+    /**
+     * @var string
+     */
+    public const STATUS_PENDING_SETUP = 'pending_setup';
+    /**
+     * @var string
+     */
+    public const STATUS_EXPIRED = 'expired';
+    /**
+     * @var string
+     */
+    public const STATUS_REQUESTED = 'requested';
+    /**
+     * @var string
+     */
+    public const STATUS_PENDING_VERIFICATION = 'pending_verification';
+    /**
+     * @var string
+     */
+    public const STATUS_DELETED = 'deleted';
+    /**
+     * @var string
+     */
+    public const STATUS_SUSPENDED = 'suspended';
+    /**
+     * @var string
+     */
+    public const STATUS_FAILED = 'failed';
+
+    /**
+     * @var int|null $id
      */
     private ?int $id;
 
@@ -44,17 +80,17 @@ class DomainsV1DomainDomainResource
     private ?string $domain = null;
 
     /**
-     * @var string $type
+     * @var string|null $type
      */
     private ?string $type;
 
     /**
-     * @var string $status
+     * @var string|null $status
      */
     private ?string $status;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
@@ -63,6 +99,9 @@ class DomainsV1DomainDomainResource
      */
     private ?\DateTime $expiresAt = null;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -77,6 +116,9 @@ class DomainsV1DomainDomainResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getDomain(): ?string
     {
         return $this->domain;
@@ -91,6 +133,9 @@ class DomainsV1DomainDomainResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getType(): ?string
     {
         return $this->type;
@@ -105,6 +150,9 @@ class DomainsV1DomainDomainResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getStatus(): ?string
     {
         return $this->status;
@@ -119,6 +167,9 @@ class DomainsV1DomainDomainResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
@@ -133,6 +184,9 @@ class DomainsV1DomainDomainResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getExpiresAt(): ?\DateTime
     {
         return $this->expiresAt;

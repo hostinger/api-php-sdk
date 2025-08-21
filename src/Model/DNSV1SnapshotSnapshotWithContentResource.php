@@ -19,26 +19,30 @@ namespace Hostinger\Model;
 
 class DNSV1SnapshotSnapshotWithContentResource 
 {
+
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
     /**
-     * @var string $reason
+     * @var string|null $reason
      */
     private ?string $reason;
 
     /**
-     * @var \Hostinger\Model\DNSV1ZoneRecordResource[] $snapshot
+     * @var \Hostinger\Model\DNSV1ZoneRecordResource[]|null $snapshot
      */
     private ?array $snapshot;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +57,9 @@ class DNSV1SnapshotSnapshotWithContentResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getReason(): ?string
     {
         return $this->reason;
@@ -67,6 +74,9 @@ class DNSV1SnapshotSnapshotWithContentResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\DNSV1ZoneRecordResource[]|null
+    */
     public function getSnapshot(): ?array
     {
         return $this->snapshot;
@@ -81,6 +91,9 @@ class DNSV1SnapshotSnapshotWithContentResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;

@@ -19,18 +19,19 @@ namespace Hostinger\Model;
 
 class VPSV1TemplateTemplateResource 
 {
+
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private ?string $name;
 
     /**
-     * @var string $description
+     * @var string|null $description
      */
     private ?string $description;
 
@@ -39,6 +40,9 @@ class VPSV1TemplateTemplateResource
      */
     private ?string $documentation = null;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +57,9 @@ class VPSV1TemplateTemplateResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -67,6 +74,9 @@ class VPSV1TemplateTemplateResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getDescription(): ?string
     {
         return $this->description;
@@ -81,6 +91,9 @@ class VPSV1TemplateTemplateResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getDocumentation(): ?string
     {
         return $this->documentation;

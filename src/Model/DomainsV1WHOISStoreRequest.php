@@ -19,34 +19,43 @@ namespace Hostinger\Model;
 
 class DomainsV1WHOISStoreRequest 
 {
-    public const string ENTITY_TYPE_INDIVIDUAL = 'individual';
-    public const string ENTITY_TYPE_ORGANIZATION = 'organization';
+    /**
+     * @var string
+     */
+    public const ENTITY_TYPE_INDIVIDUAL = 'individual';
+    /**
+     * @var string
+     */
+    public const ENTITY_TYPE_ORGANIZATION = 'organization';
 
     /**
-     * @var string $tld
+     * @var string|null $tld
      */
     private string $tld;
 
     /**
-     * @var string $country
+     * @var string|null $country
      */
     private string $country;
 
     /**
-     * @var string $entityType
+     * @var string|null $entityType
      */
     private string $entityType;
 
     /**
-     * @var object $tldDetails
+     * @var object|null $tldDetails
      */
     private ?object $tldDetails;
 
     /**
-     * @var object $whoisDetails
+     * @var object|null $whoisDetails
      */
     private object $whoisDetails;
 
+    /**
+    * @return string
+    */
     public function getTld(): string
     {
         return $this->tld;
@@ -61,6 +70,9 @@ class DomainsV1WHOISStoreRequest
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getCountry(): string
     {
         return $this->country;
@@ -75,6 +87,9 @@ class DomainsV1WHOISStoreRequest
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getEntityType(): string
     {
         return $this->entityType;
@@ -89,6 +104,9 @@ class DomainsV1WHOISStoreRequest
 
         return $this;
     }
+    /**
+    * @return object|null
+    */
     public function getTldDetails(): ?object
     {
         return $this->tldDetails;
@@ -103,6 +121,9 @@ class DomainsV1WHOISStoreRequest
 
         return $this;
     }
+    /**
+    * @return object
+    */
     public function getWhoisDetails(): object
     {
         return $this->whoisDetails;

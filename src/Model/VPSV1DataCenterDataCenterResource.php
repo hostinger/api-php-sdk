@@ -19,8 +19,9 @@ namespace Hostinger\Model;
 
 class VPSV1DataCenterDataCenterResource 
 {
+
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
@@ -44,6 +45,9 @@ class VPSV1DataCenterDataCenterResource
      */
     private ?string $continent = null;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -58,6 +62,9 @@ class VPSV1DataCenterDataCenterResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -72,6 +79,9 @@ class VPSV1DataCenterDataCenterResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getLocation(): ?string
     {
         return $this->location;
@@ -86,6 +96,9 @@ class VPSV1DataCenterDataCenterResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getCity(): ?string
     {
         return $this->city;
@@ -100,6 +113,9 @@ class VPSV1DataCenterDataCenterResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getContinent(): ?string
     {
         return $this->continent;

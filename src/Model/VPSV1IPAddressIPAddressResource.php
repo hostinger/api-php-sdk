@@ -19,13 +19,14 @@ namespace Hostinger\Model;
 
 class VPSV1IPAddressIPAddressResource 
 {
+
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
     /**
-     * @var string $address
+     * @var string|null $address
      */
     private ?string $address;
 
@@ -34,6 +35,9 @@ class VPSV1IPAddressIPAddressResource
      */
     private ?string $ptr = null;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -48,6 +52,9 @@ class VPSV1IPAddressIPAddressResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getAddress(): ?string
     {
         return $this->address;
@@ -62,6 +69,9 @@ class VPSV1IPAddressIPAddressResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getPtr(): ?string
     {
         return $this->ptr;

@@ -19,51 +19,55 @@ namespace Hostinger\Model;
 
 class BillingV1PaymentMethodPaymentMethodResource 
 {
+
     /**
-     * @var int $id
+     * @var int|null $id
      */
     private ?int $id;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private ?string $name;
 
     /**
-     * @var string $identifier
+     * @var string|null $identifier
      */
     private ?string $identifier;
 
     /**
-     * @var string $paymentMethod
+     * @var string|null $paymentMethod
      */
     private ?string $paymentMethod;
 
     /**
-     * @var bool $isDefault
+     * @var bool|null $isDefault
      */
     private ?bool $isDefault;
 
     /**
-     * @var bool $isExpired
+     * @var bool|null $isExpired
      */
     private ?bool $isExpired;
 
     /**
-     * @var bool $isSuspended
+     * @var bool|null $isSuspended
      */
     private ?bool $isSuspended;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
     /**
-     * @var \DateTime $expiresAt
+     * @var \DateTime|null $expiresAt
      */
     private ?\DateTime $expiresAt;
 
+    /**
+    * @return int|null
+    */
     public function getId(): ?int
     {
         return $this->id;
@@ -78,6 +82,9 @@ class BillingV1PaymentMethodPaymentMethodResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -92,6 +99,9 @@ class BillingV1PaymentMethodPaymentMethodResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getIdentifier(): ?string
     {
         return $this->identifier;
@@ -106,6 +116,9 @@ class BillingV1PaymentMethodPaymentMethodResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getPaymentMethod(): ?string
     {
         return $this->paymentMethod;
@@ -120,6 +133,9 @@ class BillingV1PaymentMethodPaymentMethodResource
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getIsDefault(): ?bool
     {
         return $this->isDefault;
@@ -134,6 +150,9 @@ class BillingV1PaymentMethodPaymentMethodResource
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getIsExpired(): ?bool
     {
         return $this->isExpired;
@@ -148,6 +167,9 @@ class BillingV1PaymentMethodPaymentMethodResource
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getIsSuspended(): ?bool
     {
         return $this->isSuspended;
@@ -162,6 +184,9 @@ class BillingV1PaymentMethodPaymentMethodResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
@@ -176,6 +201,9 @@ class BillingV1PaymentMethodPaymentMethodResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getExpiresAt(): ?\DateTime
     {
         return $this->expiresAt;

@@ -19,61 +19,82 @@ namespace Hostinger\Model;
 
 class BillingV1SubscriptionSubscriptionResource 
 {
-    public const string STATUS_ACTIVE = 'active';
-    public const string STATUS_PAUSED = 'paused';
-    public const string STATUS_CANCELLED = 'cancelled';
-    public const string STATUS_NOT_RENEWING = 'not_renewing';
-    public const string STATUS_TRANSFERRED = 'transferred';
-    public const string STATUS_IN_TRIAL = 'in_trial';
-    public const string STATUS_FUTURE = 'future';
+    /**
+     * @var string
+     */
+    public const STATUS_ACTIVE = 'active';
+    /**
+     * @var string
+     */
+    public const STATUS_PAUSED = 'paused';
+    /**
+     * @var string
+     */
+    public const STATUS_CANCELLED = 'cancelled';
+    /**
+     * @var string
+     */
+    public const STATUS_NOT_RENEWING = 'not_renewing';
+    /**
+     * @var string
+     */
+    public const STATUS_TRANSFERRED = 'transferred';
+    /**
+     * @var string
+     */
+    public const STATUS_IN_TRIAL = 'in_trial';
+    /**
+     * @var string
+     */
+    public const STATUS_FUTURE = 'future';
 
     /**
-     * @var string $id
+     * @var string|null $id
      */
     private ?string $id;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private ?string $name;
 
     /**
-     * @var string $status
+     * @var string|null $status
      */
     private ?string $status;
 
     /**
-     * @var int $billingPeriod
+     * @var int|null $billingPeriod
      */
     private ?int $billingPeriod;
 
     /**
-     * @var string $billingPeriodUnit
+     * @var string|null $billingPeriodUnit
      */
     private ?string $billingPeriodUnit;
 
     /**
-     * @var string $currencyCode
+     * @var string|null $currencyCode
      */
     private ?string $currencyCode;
 
     /**
-     * @var int $totalPrice
+     * @var int|null $totalPrice
      */
     private ?int $totalPrice;
 
     /**
-     * @var int $renewalPrice
+     * @var int|null $renewalPrice
      */
     private ?int $renewalPrice;
 
     /**
-     * @var bool $isAutoRenewed
+     * @var bool|null $isAutoRenewed
      */
     private ?bool $isAutoRenewed;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime|null $createdAt
      */
     private ?\DateTime $createdAt;
 
@@ -87,6 +108,9 @@ class BillingV1SubscriptionSubscriptionResource
      */
     private ?\DateTime $nextBillingAt = null;
 
+    /**
+    * @return string|null
+    */
     public function getId(): ?string
     {
         return $this->id;
@@ -101,6 +125,9 @@ class BillingV1SubscriptionSubscriptionResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -115,6 +142,9 @@ class BillingV1SubscriptionSubscriptionResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getStatus(): ?string
     {
         return $this->status;
@@ -129,6 +159,9 @@ class BillingV1SubscriptionSubscriptionResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getBillingPeriod(): ?int
     {
         return $this->billingPeriod;
@@ -143,6 +176,9 @@ class BillingV1SubscriptionSubscriptionResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getBillingPeriodUnit(): ?string
     {
         return $this->billingPeriodUnit;
@@ -157,6 +193,9 @@ class BillingV1SubscriptionSubscriptionResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getCurrencyCode(): ?string
     {
         return $this->currencyCode;
@@ -171,6 +210,9 @@ class BillingV1SubscriptionSubscriptionResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getTotalPrice(): ?int
     {
         return $this->totalPrice;
@@ -185,6 +227,9 @@ class BillingV1SubscriptionSubscriptionResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getRenewalPrice(): ?int
     {
         return $this->renewalPrice;
@@ -199,6 +244,9 @@ class BillingV1SubscriptionSubscriptionResource
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getIsAutoRenewed(): ?bool
     {
         return $this->isAutoRenewed;
@@ -213,6 +261,9 @@ class BillingV1SubscriptionSubscriptionResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
@@ -227,6 +278,9 @@ class BillingV1SubscriptionSubscriptionResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getExpiresAt(): ?\DateTime
     {
         return $this->expiresAt;
@@ -241,6 +295,9 @@ class BillingV1SubscriptionSubscriptionResource
 
         return $this;
     }
+    /**
+    * @return \DateTime|null
+    */
     public function getNextBillingAt(): ?\DateTime
     {
         return $this->nextBillingAt;

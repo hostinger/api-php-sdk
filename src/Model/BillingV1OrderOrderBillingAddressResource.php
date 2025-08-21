@@ -19,13 +19,14 @@ namespace Hostinger\Model;
 
 class BillingV1OrderOrderBillingAddressResource 
 {
+
     /**
-     * @var string $firstName
+     * @var string|null $firstName
      */
     private ?string $firstName;
 
     /**
-     * @var string $lastName
+     * @var string|null $lastName
      */
     private ?string $lastName;
 
@@ -70,10 +71,13 @@ class BillingV1OrderOrderBillingAddressResource
     private ?string $phone = null;
 
     /**
-     * @var string $email
+     * @var string|null $email
      */
     private ?string $email;
 
+    /**
+    * @return string|null
+    */
     public function getFirstName(): ?string
     {
         return $this->firstName;
@@ -88,6 +92,9 @@ class BillingV1OrderOrderBillingAddressResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getLastName(): ?string
     {
         return $this->lastName;
@@ -102,6 +109,9 @@ class BillingV1OrderOrderBillingAddressResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getCompany(): ?string
     {
         return $this->company;
@@ -116,6 +126,9 @@ class BillingV1OrderOrderBillingAddressResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getAddress1(): ?string
     {
         return $this->address1;
@@ -130,6 +143,9 @@ class BillingV1OrderOrderBillingAddressResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getAddress2(): ?string
     {
         return $this->address2;
@@ -144,6 +160,9 @@ class BillingV1OrderOrderBillingAddressResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getCity(): ?string
     {
         return $this->city;
@@ -158,6 +177,9 @@ class BillingV1OrderOrderBillingAddressResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getState(): ?string
     {
         return $this->state;
@@ -172,6 +194,9 @@ class BillingV1OrderOrderBillingAddressResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getZip(): ?string
     {
         return $this->zip;
@@ -186,6 +211,9 @@ class BillingV1OrderOrderBillingAddressResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getCountry(): ?string
     {
         return $this->country;
@@ -200,6 +228,9 @@ class BillingV1OrderOrderBillingAddressResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getPhone(): ?string
     {
         return $this->phone;
@@ -214,6 +245,9 @@ class BillingV1OrderOrderBillingAddressResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getEmail(): ?string
     {
         return $this->email;

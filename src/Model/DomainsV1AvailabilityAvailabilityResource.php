@@ -19,18 +19,19 @@ namespace Hostinger\Model;
 
 class DomainsV1AvailabilityAvailabilityResource 
 {
+
     /**
      * @var string|null $domain
      */
     private ?string $domain = null;
 
     /**
-     * @var bool $isAvailable
+     * @var bool|null $isAvailable
      */
     private ?bool $isAvailable;
 
     /**
-     * @var bool $isAlternative
+     * @var bool|null $isAlternative
      */
     private ?bool $isAlternative;
 
@@ -39,6 +40,9 @@ class DomainsV1AvailabilityAvailabilityResource
      */
     private ?string $restriction = null;
 
+    /**
+    * @return string|null
+    */
     public function getDomain(): ?string
     {
         return $this->domain;
@@ -53,6 +57,9 @@ class DomainsV1AvailabilityAvailabilityResource
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getIsAvailable(): ?bool
     {
         return $this->isAvailable;
@@ -67,6 +74,9 @@ class DomainsV1AvailabilityAvailabilityResource
 
         return $this;
     }
+    /**
+    * @return bool|null
+    */
     public function getIsAlternative(): ?bool
     {
         return $this->isAlternative;
@@ -81,6 +91,9 @@ class DomainsV1AvailabilityAvailabilityResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getRestriction(): ?string
     {
         return $this->restriction;

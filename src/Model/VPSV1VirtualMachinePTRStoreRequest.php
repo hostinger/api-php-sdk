@@ -19,11 +19,15 @@ namespace Hostinger\Model;
 
 class VPSV1VirtualMachinePTRStoreRequest 
 {
+
     /**
-     * @var string $domain
+     * @var string|null $domain
      */
     private string $domain;
 
+    /**
+    * @return string
+    */
     public function getDomain(): string
     {
         return $this->domain;

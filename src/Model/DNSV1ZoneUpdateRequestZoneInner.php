@@ -19,37 +19,70 @@ namespace Hostinger\Model;
 
 class DNSV1ZoneUpdateRequestZoneInner 
 {
-    public const string TYPE_A = 'A';
-    public const string TYPE_AAAA = 'AAAA';
-    public const string TYPE_CNAME = 'CNAME';
-    public const string TYPE_ALIAS = 'ALIAS';
-    public const string TYPE_MX = 'MX';
-    public const string TYPE_TXT = 'TXT';
-    public const string TYPE_NS = 'NS';
-    public const string TYPE_SOA = 'SOA';
-    public const string TYPE_SRV = 'SRV';
-    public const string TYPE_CAA = 'CAA';
+    /**
+     * @var string
+     */
+    public const TYPE_A = 'A';
+    /**
+     * @var string
+     */
+    public const TYPE_AAAA = 'AAAA';
+    /**
+     * @var string
+     */
+    public const TYPE_CNAME = 'CNAME';
+    /**
+     * @var string
+     */
+    public const TYPE_ALIAS = 'ALIAS';
+    /**
+     * @var string
+     */
+    public const TYPE_MX = 'MX';
+    /**
+     * @var string
+     */
+    public const TYPE_TXT = 'TXT';
+    /**
+     * @var string
+     */
+    public const TYPE_NS = 'NS';
+    /**
+     * @var string
+     */
+    public const TYPE_SOA = 'SOA';
+    /**
+     * @var string
+     */
+    public const TYPE_SRV = 'SRV';
+    /**
+     * @var string
+     */
+    public const TYPE_CAA = 'CAA';
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private string $name;
 
     /**
-     * @var \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInnerRecordsInner[] $records
+     * @var \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInnerRecordsInner[]|null $records
      */
     private array $records;
 
     /**
-     * @var int $ttl
+     * @var int|null $ttl
      */
     private ?int $ttl;
 
     /**
-     * @var string $type
+     * @var string|null $type
      */
     private string $type;
 
+    /**
+    * @return string
+    */
     public function getName(): string
     {
         return $this->name;
@@ -64,6 +97,9 @@ class DNSV1ZoneUpdateRequestZoneInner
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInnerRecordsInner[]
+    */
     public function getRecords(): array
     {
         return $this->records;
@@ -78,6 +114,9 @@ class DNSV1ZoneUpdateRequestZoneInner
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getTtl(): ?int
     {
         return $this->ttl;
@@ -92,6 +131,9 @@ class DNSV1ZoneUpdateRequestZoneInner
 
         return $this;
     }
+    /**
+    * @return string
+    */
     public function getType(): string
     {
         return $this->type;

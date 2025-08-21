@@ -19,47 +19,65 @@ namespace Hostinger\Model;
 
 class BillingV1CatalogCatalogItemPriceResource 
 {
-    public const string PERIOD_UNIT_DAY = 'day';
-    public const string PERIOD_UNIT_WEEK = 'week';
-    public const string PERIOD_UNIT_MONTH = 'month';
-    public const string PERIOD_UNIT_YEAR = 'year';
-    public const string PERIOD_UNIT_NONE = 'none';
+    /**
+     * @var string
+     */
+    public const PERIOD_UNIT_DAY = 'day';
+    /**
+     * @var string
+     */
+    public const PERIOD_UNIT_WEEK = 'week';
+    /**
+     * @var string
+     */
+    public const PERIOD_UNIT_MONTH = 'month';
+    /**
+     * @var string
+     */
+    public const PERIOD_UNIT_YEAR = 'year';
+    /**
+     * @var string
+     */
+    public const PERIOD_UNIT_NONE = 'none';
 
     /**
-     * @var string $id
+     * @var string|null $id
      */
     private ?string $id;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private ?string $name;
 
     /**
-     * @var string $currency
+     * @var string|null $currency
      */
     private ?string $currency;
 
     /**
-     * @var int $price
+     * @var int|null $price
      */
     private ?int $price;
 
     /**
-     * @var int $firstPeriodPrice
+     * @var int|null $firstPeriodPrice
      */
     private ?int $firstPeriodPrice;
 
     /**
-     * @var int $period
+     * @var int|null $period
      */
     private ?int $period;
 
     /**
-     * @var string $periodUnit
+     * @var string|null $periodUnit
      */
     private ?string $periodUnit;
 
+    /**
+    * @return string|null
+    */
     public function getId(): ?string
     {
         return $this->id;
@@ -74,6 +92,9 @@ class BillingV1CatalogCatalogItemPriceResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getName(): ?string
     {
         return $this->name;
@@ -88,6 +109,9 @@ class BillingV1CatalogCatalogItemPriceResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getCurrency(): ?string
     {
         return $this->currency;
@@ -102,6 +126,9 @@ class BillingV1CatalogCatalogItemPriceResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getPrice(): ?int
     {
         return $this->price;
@@ -116,6 +143,9 @@ class BillingV1CatalogCatalogItemPriceResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getFirstPeriodPrice(): ?int
     {
         return $this->firstPeriodPrice;
@@ -130,6 +160,9 @@ class BillingV1CatalogCatalogItemPriceResource
 
         return $this;
     }
+    /**
+    * @return int|null
+    */
     public function getPeriod(): ?int
     {
         return $this->period;
@@ -144,6 +177,9 @@ class BillingV1CatalogCatalogItemPriceResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getPeriodUnit(): ?string
     {
         return $this->periodUnit;

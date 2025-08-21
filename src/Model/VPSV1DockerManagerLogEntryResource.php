@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class VPSV1DockerManagerLogEntryResource 
 {
+
     /**
-     * @var string $timestamp
+     * @var string|null $timestamp
      */
     private ?string $timestamp;
 
     /**
-     * @var string $line
+     * @var string|null $line
      */
     private ?string $line;
 
+    /**
+    * @return string|null
+    */
     public function getTimestamp(): ?string
     {
         return $this->timestamp;
@@ -43,6 +47,9 @@ class VPSV1DockerManagerLogEntryResource
 
         return $this;
     }
+    /**
+    * @return string|null
+    */
     public function getLine(): ?string
     {
         return $this->line;

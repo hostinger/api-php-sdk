@@ -19,16 +19,20 @@ namespace Hostinger\Model;
 
 class BillingV1OrderVirtualMachineOrderResource 
 {
+
     /**
-     * @var \Hostinger\Model\BillingV1OrderOrderResource $order
+     * @var \Hostinger\Model\BillingV1OrderOrderResource|null $order
      */
     private ?\Hostinger\Model\BillingV1OrderOrderResource $order;
 
     /**
-     * @var \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource $virtualMachine
+     * @var \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource|null $virtualMachine
      */
     private ?\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource $virtualMachine;
 
+    /**
+    * @return \Hostinger\Model\BillingV1OrderOrderResource|null
+    */
     public function getOrder(): ?\Hostinger\Model\BillingV1OrderOrderResource
     {
         return $this->order;
@@ -43,6 +47,9 @@ class BillingV1OrderVirtualMachineOrderResource
 
         return $this;
     }
+    /**
+    * @return \Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource|null
+    */
     public function getVirtualMachine(): ?\Hostinger\Model\VPSV1VirtualMachineVirtualMachineResource
     {
         return $this->virtualMachine;
