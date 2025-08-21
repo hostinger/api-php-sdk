@@ -12,6 +12,7 @@
 
 namespace Hostinger;
 
+use Hostinger\Normalizers\ArrayToObjectNormalizer;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
@@ -59,6 +60,7 @@ class ObjectSerializer
 
         // Configure normalizers
         $normalizers = [
+            new ArrayToObjectNormalizer(),
             new DateTimeNormalizer([
                 DateTimeNormalizer::FORMAT_KEY => \DateTime::RFC3339,
                 DateTimeNormalizer::TIMEZONE_KEY => 'UTC',
