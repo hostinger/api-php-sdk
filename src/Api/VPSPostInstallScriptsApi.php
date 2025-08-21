@@ -23,7 +23,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
 use Hostinger\ObjectSerializer;
@@ -34,7 +34,7 @@ class VPSPostInstallScriptsApi
 
     protected Configuration $config;
 
-    protected SerializerInterface $serializer;
+    protected Serializer $serializer;
 
     public function __construct(
         ?Configuration $config = null,
@@ -57,6 +57,7 @@ class VPSPostInstallScriptsApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function createPostInstallScriptV1(\Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest)
     {
@@ -83,6 +84,7 @@ class VPSPostInstallScriptsApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function deletePostInstallScriptV1(int $postInstallScriptId)
     {
@@ -110,6 +112,7 @@ class VPSPostInstallScriptsApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getPostInstallScriptV1(int $postInstallScriptId)
     {
@@ -137,6 +140,7 @@ class VPSPostInstallScriptsApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getPostInstallScriptsV1(?int $page = null)
     {
@@ -170,6 +174,7 @@ class VPSPostInstallScriptsApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function updatePostInstallScriptV1(int $postInstallScriptId, \Hostinger\Model\VPSV1PostInstallScriptStoreRequest $vPSV1PostInstallScriptStoreRequest)
     {

@@ -23,7 +23,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
 use Hostinger\ObjectSerializer;
@@ -34,7 +34,7 @@ class DNSZoneApi
 
     protected Configuration $config;
 
-    protected SerializerInterface $serializer;
+    protected Serializer $serializer;
 
     public function __construct(
         ?Configuration $config = null,
@@ -57,6 +57,7 @@ class DNSZoneApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function deleteDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneDestroyRequest $dNSV1ZoneDestroyRequest)
     {
@@ -85,6 +86,7 @@ class DNSZoneApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getDNSRecordsV1(string $domain)
     {
@@ -112,6 +114,7 @@ class DNSZoneApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function resetDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneResetRequest $dNSV1ZoneResetRequest)
     {
@@ -140,6 +143,7 @@ class DNSZoneApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function updateDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneUpdateRequest $dNSV1ZoneUpdateRequest)
     {
@@ -168,6 +172,7 @@ class DNSZoneApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function validateDNSRecordsV1(string $domain, \Hostinger\Model\DNSV1ZoneUpdateRequest $dNSV1ZoneUpdateRequest)
     {

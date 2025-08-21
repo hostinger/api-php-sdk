@@ -23,7 +23,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
 use Hostinger\ObjectSerializer;
@@ -34,7 +34,7 @@ class VPSVirtualMachineApi
 
     protected Configuration $config;
 
-    protected SerializerInterface $serializer;
+    protected Serializer $serializer;
 
     public function __construct(
         ?Configuration $config = null,
@@ -57,6 +57,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getAttachedPublicKeysV1(int $virtualMachineId, ?int $page = null)
     {
@@ -92,6 +93,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getMetricsV1(int $virtualMachineId, \DateTime $dateFrom, \DateTime $dateTo)
     {
@@ -128,6 +130,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getVirtualMachineDetailsV1(int $virtualMachineId)
     {
@@ -155,6 +158,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getVirtualMachinesV1()
     {
@@ -180,6 +184,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function purchaseNewVirtualMachineV1(\Hostinger\Model\VPSV1VirtualMachinePurchaseRequest $vPSV1VirtualMachinePurchaseRequest)
     {
@@ -206,6 +211,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function recreateVirtualMachineV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRecreateRequest $vPSV1VirtualMachineRecreateRequest)
     {
@@ -234,6 +240,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function resetHostnameV1(int $virtualMachineId)
     {
@@ -261,6 +268,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function restartVirtualMachineV1(int $virtualMachineId)
     {
@@ -288,6 +296,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function setHostnameV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineHostnameUpdateRequest $vPSV1VirtualMachineHostnameUpdateRequest)
     {
@@ -316,6 +325,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function setNameserversV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineNameserversUpdateRequest $vPSV1VirtualMachineNameserversUpdateRequest)
     {
@@ -344,6 +354,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function setPanelPasswordV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachinePanelPasswordUpdateRequest $vPSV1VirtualMachinePanelPasswordUpdateRequest)
     {
@@ -372,6 +383,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function setRootPasswordV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineRootPasswordUpdateRequest $vPSV1VirtualMachineRootPasswordUpdateRequest)
     {
@@ -400,6 +412,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function setupPurchasedVirtualMachineV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineSetupRequest $vPSV1VirtualMachineSetupRequest)
     {
@@ -428,6 +441,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function startVirtualMachineV1(int $virtualMachineId)
     {
@@ -455,6 +469,7 @@ class VPSVirtualMachineApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function stopVirtualMachineV1(int $virtualMachineId)
     {

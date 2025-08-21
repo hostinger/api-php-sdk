@@ -23,7 +23,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
 use Hostinger\ObjectSerializer;
@@ -34,7 +34,7 @@ class VPSSnapshotsApi
 
     protected Configuration $config;
 
-    protected SerializerInterface $serializer;
+    protected Serializer $serializer;
 
     public function __construct(
         ?Configuration $config = null,
@@ -57,6 +57,7 @@ class VPSSnapshotsApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function createSnapshotV1(int $virtualMachineId)
     {
@@ -84,6 +85,7 @@ class VPSSnapshotsApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function deleteSnapshotV1(int $virtualMachineId)
     {
@@ -111,6 +113,7 @@ class VPSSnapshotsApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getSnapshotV1(int $virtualMachineId)
     {
@@ -138,6 +141,7 @@ class VPSSnapshotsApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function restoreSnapshotV1(int $virtualMachineId)
     {

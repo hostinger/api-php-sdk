@@ -23,7 +23,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
 use Hostinger\ObjectSerializer;
@@ -34,7 +34,7 @@ class DomainsAvailabilityApi
 
     protected Configuration $config;
 
-    protected SerializerInterface $serializer;
+    protected Serializer $serializer;
 
     public function __construct(
         ?Configuration $config = null,
@@ -57,6 +57,7 @@ class DomainsAvailabilityApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function checkDomainAvailabilityV1(\Hostinger\Model\DomainsV1AvailabilityAvailabilityRequest $domainsV1AvailabilityAvailabilityRequest)
     {

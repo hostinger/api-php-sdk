@@ -23,7 +23,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
 use Hostinger\ObjectSerializer;
@@ -34,7 +34,7 @@ class VPSDockerManagerApi
 
     protected Configuration $config;
 
-    protected SerializerInterface $serializer;
+    protected Serializer $serializer;
 
     public function __construct(
         ?Configuration $config = null,
@@ -57,6 +57,7 @@ class VPSDockerManagerApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function createNewProjectV1(int $virtualMachineId, \Hostinger\Model\VPSV1VirtualMachineDockerManagerUpRequest $vPSV1VirtualMachineDockerManagerUpRequest)
     {
@@ -85,6 +86,7 @@ class VPSDockerManagerApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function deleteProjectV1(int $virtualMachineId, string $projectName)
     {
@@ -112,6 +114,7 @@ class VPSDockerManagerApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getProjectContainersV1(int $virtualMachineId, string $projectName)
     {
@@ -139,6 +142,7 @@ class VPSDockerManagerApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getProjectContentsV1(int $virtualMachineId, string $projectName)
     {
@@ -166,6 +170,7 @@ class VPSDockerManagerApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getProjectListV1(int $virtualMachineId)
     {
@@ -193,6 +198,7 @@ class VPSDockerManagerApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getProjectLogsV1(int $virtualMachineId, string $projectName)
     {
@@ -220,6 +226,7 @@ class VPSDockerManagerApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function restartProjectV1(int $virtualMachineId, string $projectName)
     {
@@ -247,6 +254,7 @@ class VPSDockerManagerApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function startProjectV1(int $virtualMachineId, string $projectName)
     {
@@ -274,6 +282,7 @@ class VPSDockerManagerApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function stopProjectV1(int $virtualMachineId, string $projectName)
     {
@@ -301,6 +310,7 @@ class VPSDockerManagerApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function updateProjectV1(int $virtualMachineId, string $projectName)
     {

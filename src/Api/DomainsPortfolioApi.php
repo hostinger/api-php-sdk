@@ -23,7 +23,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
 use Hostinger\ObjectSerializer;
@@ -34,7 +34,7 @@ class DomainsPortfolioApi
 
     protected Configuration $config;
 
-    protected SerializerInterface $serializer;
+    protected Serializer $serializer;
 
     public function __construct(
         ?Configuration $config = null,
@@ -57,6 +57,7 @@ class DomainsPortfolioApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function disableDomainLockV1(string $domain)
     {
@@ -84,6 +85,7 @@ class DomainsPortfolioApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function disablePrivacyProtectionV1(string $domain)
     {
@@ -111,6 +113,7 @@ class DomainsPortfolioApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function enableDomainLockV1(string $domain)
     {
@@ -138,6 +141,7 @@ class DomainsPortfolioApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function enablePrivacyProtectionV1(string $domain)
     {
@@ -165,6 +169,7 @@ class DomainsPortfolioApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getDomainDetailsV1(string $domain)
     {
@@ -192,6 +197,7 @@ class DomainsPortfolioApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getDomainListV1()
     {
@@ -217,6 +223,7 @@ class DomainsPortfolioApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function purchaseNewDomainV1(\Hostinger\Model\DomainsV1PortfolioPurchaseRequest $domainsV1PortfolioPurchaseRequest)
     {
@@ -243,6 +250,7 @@ class DomainsPortfolioApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function updateDomainNameserversV1(string $domain, \Hostinger\Model\DomainsV1PortfolioUpdateNameserversRequest $domainsV1PortfolioUpdateNameserversRequest)
     {

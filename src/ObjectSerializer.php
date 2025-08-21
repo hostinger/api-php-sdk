@@ -25,17 +25,16 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Serializer\SerializerInterface;
 
 class ObjectSerializer
 {
-    private static ?SerializerInterface $serializer = null;
+    private static ?Serializer $serializer = null;
 
     private function __construct()
     {
     }
 
-    public static function getSerializer(): SerializerInterface
+    public static function getSerializer(): Serializer
     {
         if (self::$serializer === null) {
             self::$serializer = self::createSerializer();
@@ -44,7 +43,7 @@ class ObjectSerializer
         return self::$serializer;
     }
 
-    private static function createSerializer(): SerializerInterface
+    private static function createSerializer(): Serializer
     {
         // Setup property info extractors for better type handling
         $phpDocExtractor = new PhpDocExtractor();

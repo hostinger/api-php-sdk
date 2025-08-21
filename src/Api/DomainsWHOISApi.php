@@ -23,7 +23,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
 use Hostinger\ObjectSerializer;
@@ -34,7 +34,7 @@ class DomainsWHOISApi
 
     protected Configuration $config;
 
-    protected SerializerInterface $serializer;
+    protected Serializer $serializer;
 
     public function __construct(
         ?Configuration $config = null,
@@ -57,6 +57,7 @@ class DomainsWHOISApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function createWHOISProfileV1(\Hostinger\Model\DomainsV1WHOISStoreRequest $domainsV1WHOISStoreRequest)
     {
@@ -83,6 +84,7 @@ class DomainsWHOISApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function deleteWHOISProfileV1(int $whoisId)
     {
@@ -110,6 +112,7 @@ class DomainsWHOISApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getWHOISProfileListV1(?string $tld = null)
     {
@@ -143,6 +146,7 @@ class DomainsWHOISApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getWHOISProfileUsageV1(int $whoisId)
     {
@@ -170,6 +174,7 @@ class DomainsWHOISApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getWHOISProfileV1(int $whoisId)
     {

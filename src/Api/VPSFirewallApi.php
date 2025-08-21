@@ -23,7 +23,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
 use Hostinger\ApiException;
 use Hostinger\Configuration;
 use Hostinger\ObjectSerializer;
@@ -34,7 +34,7 @@ class VPSFirewallApi
 
     protected Configuration $config;
 
-    protected SerializerInterface $serializer;
+    protected Serializer $serializer;
 
     public function __construct(
         ?Configuration $config = null,
@@ -57,6 +57,7 @@ class VPSFirewallApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function activateFirewallV1(int $firewallId, int $virtualMachineId)
     {
@@ -84,6 +85,7 @@ class VPSFirewallApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function createFirewallRuleV1(int $firewallId, \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest)
     {
@@ -112,6 +114,7 @@ class VPSFirewallApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function createNewFirewallV1(\Hostinger\Model\VPSV1FirewallStoreRequest $vPSV1FirewallStoreRequest)
     {
@@ -138,6 +141,7 @@ class VPSFirewallApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function deactivateFirewallV1(int $firewallId, int $virtualMachineId)
     {
@@ -165,6 +169,7 @@ class VPSFirewallApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function deleteFirewallRuleV1(int $firewallId, int $ruleId)
     {
@@ -192,6 +197,7 @@ class VPSFirewallApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function deleteFirewallV1(int $firewallId)
     {
@@ -219,6 +225,7 @@ class VPSFirewallApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getFirewallDetailsV1(int $firewallId)
     {
@@ -246,6 +253,7 @@ class VPSFirewallApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function getFirewallListV1(?int $page = null)
     {
@@ -279,6 +287,7 @@ class VPSFirewallApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function syncFirewallV1(int $firewallId, int $virtualMachineId)
     {
@@ -306,6 +315,7 @@ class VPSFirewallApi
      *
      * @throws ApiException
      * @throws GuzzleException
+     * @throws ExceptionInterface
      */
     public function updateFirewallRuleV1(int $firewallId, int $ruleId, \Hostinger\Model\VPSV1FirewallRulesStoreRequest $vPSV1FirewallRulesStoreRequest)
     {
