@@ -155,7 +155,7 @@ class VPSPublicKeysApi
 
         $request = new Request(
             method: 'GET',
-            uri: '/api/vps/v1/public-keys' . $query,
+            uri: '/api/vps/v1/public-keys' . '?' . $query,
             headers: $this->getHeaders(),
         );
 

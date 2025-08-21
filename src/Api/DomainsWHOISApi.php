@@ -126,7 +126,7 @@ class DomainsWHOISApi
 
         $request = new Request(
             method: 'GET',
-            uri: '/api/domains/v1/whois' . $query,
+            uri: '/api/domains/v1/whois' . '?' . $query,
             headers: $this->getHeaders(),
         );
 

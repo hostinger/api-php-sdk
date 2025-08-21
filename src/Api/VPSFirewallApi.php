@@ -267,7 +267,7 @@ class VPSFirewallApi
 
         $request = new Request(
             method: 'GET',
-            uri: '/api/vps/v1/firewall' . $query,
+            uri: '/api/vps/v1/firewall' . '?' . $query,
             headers: $this->getHeaders(),
         );
 

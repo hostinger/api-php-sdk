@@ -72,7 +72,7 @@ class BillingCatalogApi
 
         $request = new Request(
             method: 'GET',
-            uri: '/api/billing/v1/catalog' . $query,
+            uri: '/api/billing/v1/catalog' . '?' . $query,
             headers: $this->getHeaders(),
         );
 

@@ -154,7 +154,7 @@ class VPSPostInstallScriptsApi
 
         $request = new Request(
             method: 'GET',
-            uri: '/api/vps/v1/post-install-scripts' . $query,
+            uri: '/api/vps/v1/post-install-scripts' . '?' . $query,
             headers: $this->getHeaders(),
         );
 
