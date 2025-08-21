@@ -21,7 +21,7 @@ class VPSV1VirtualMachineRootPasswordUpdateRequest
 {
 
     /**
-     * @var string|null $password
+     * @var string $password
      */
     private string $password;
 

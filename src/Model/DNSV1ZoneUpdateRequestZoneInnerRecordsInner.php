@@ -21,7 +21,7 @@ class DNSV1ZoneUpdateRequestZoneInnerRecordsInner
 {
 
     /**
-     * @var string|null $content
+     * @var string $content
      */
     private string $content;
 

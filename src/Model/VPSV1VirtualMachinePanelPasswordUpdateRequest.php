@@ -21,7 +21,7 @@ class VPSV1VirtualMachinePanelPasswordUpdateRequest
 {
 
     /**
-     * @var string|null $password
+     * @var string $password
      */
     private string $password;
 

@@ -21,7 +21,7 @@ class DNSV1ZoneDestroyRequest
 {
 
     /**
-     * @var \Hostinger\Model\DNSV1ZoneDestroyRequestFiltersInner[]|null $filters
+     * @var \Hostinger\Model\DNSV1ZoneDestroyRequestFiltersInner[] $filters
      */
     private array $filters;
 

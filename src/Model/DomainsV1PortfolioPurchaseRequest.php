@@ -21,12 +21,12 @@ class DomainsV1PortfolioPurchaseRequest
 {
 
     /**
-     * @var string|null $domain
+     * @var string $domain
      */
     private string $domain;
 
     /**
-     * @var string|null $itemId
+     * @var string $itemId
      */
     private string $itemId;
 

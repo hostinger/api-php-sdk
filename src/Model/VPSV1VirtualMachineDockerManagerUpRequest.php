@@ -21,12 +21,12 @@ class VPSV1VirtualMachineDockerManagerUpRequest
 {
 
     /**
-     * @var string|null $projectName
+     * @var string $projectName
      */
     private string $projectName;
 
     /**
-     * @var string|null $content
+     * @var string $content
      */
     private string $content;
 

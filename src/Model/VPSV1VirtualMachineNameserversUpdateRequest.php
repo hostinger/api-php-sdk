@@ -21,7 +21,7 @@ class VPSV1VirtualMachineNameserversUpdateRequest
 {
 
     /**
-     * @var string|null $ns1
+     * @var string $ns1
      */
     private string $ns1;
 

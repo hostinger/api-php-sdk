@@ -21,7 +21,7 @@ class VPSV1VirtualMachinePTRStoreRequest
 {
 
     /**
-     * @var string|null $domain
+     * @var string $domain
      */
     private string $domain;
 

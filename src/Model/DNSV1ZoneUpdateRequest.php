@@ -26,7 +26,7 @@ class DNSV1ZoneUpdateRequest
     private ?bool $overwrite;
 
     /**
-     * @var \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[]|null $zone
+     * @var \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInner[] $zone
      */
     private array $zone;
 

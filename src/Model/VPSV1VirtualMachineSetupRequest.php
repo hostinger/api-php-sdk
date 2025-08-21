@@ -21,12 +21,12 @@ class VPSV1VirtualMachineSetupRequest
 {
 
     /**
-     * @var int|null $templateId
+     * @var int $templateId
      */
     private int $templateId;
 
     /**
-     * @var int|null $dataCenterId
+     * @var int $dataCenterId
      */
     private int $dataCenterId;
 

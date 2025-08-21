@@ -21,12 +21,12 @@ class DomainsV1PortfolioUpdateNameserversRequest
 {
 
     /**
-     * @var string|null $ns1
+     * @var string $ns1
      */
     private string $ns1;
 
     /**
-     * @var string|null $ns2
+     * @var string $ns2
      */
     private string $ns2;
 

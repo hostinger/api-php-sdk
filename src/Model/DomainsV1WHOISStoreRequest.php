@@ -29,17 +29,17 @@ class DomainsV1WHOISStoreRequest
     public const ENTITY_TYPE_ORGANIZATION = 'organization';
 
     /**
-     * @var string|null $tld
+     * @var string $tld
      */
     private string $tld;
 
     /**
-     * @var string|null $country
+     * @var string $country
      */
     private string $country;
 
     /**
-     * @var string|null $entityType
+     * @var string $entityType
      */
     private string $entityType;
 
@@ -49,7 +49,7 @@ class DomainsV1WHOISStoreRequest
     private ?object $tldDetails;
 
     /**
-     * @var object|null $whoisDetails
+     * @var object $whoisDetails
      */
     private object $whoisDetails;
 

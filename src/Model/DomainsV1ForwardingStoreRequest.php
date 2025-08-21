@@ -29,17 +29,17 @@ class DomainsV1ForwardingStoreRequest
     public const REDIRECT_TYPE__302 = '302';
 
     /**
-     * @var string|null $domain
+     * @var string $domain
      */
     private string $domain;
 
     /**
-     * @var string|null $redirectType
+     * @var string $redirectType
      */
     private string $redirectType;
 
     /**
-     * @var string|null $redirectUrl
+     * @var string $redirectUrl
      */
     private string $redirectUrl;
 

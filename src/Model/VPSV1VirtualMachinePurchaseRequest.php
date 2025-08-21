@@ -21,7 +21,7 @@ class VPSV1VirtualMachinePurchaseRequest
 {
 
     /**
-     * @var string|null $itemId
+     * @var string $itemId
      */
     private string $itemId;
 
@@ -31,7 +31,7 @@ class VPSV1VirtualMachinePurchaseRequest
     private ?int $paymentMethodId;
 
     /**
-     * @var \Hostinger\Model\VPSV1VirtualMachineSetupRequest|null $setup
+     * @var \Hostinger\Model\VPSV1VirtualMachineSetupRequest $setup
      */
     private \Hostinger\Model\VPSV1VirtualMachineSetupRequest $setup;
 

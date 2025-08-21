@@ -21,7 +21,7 @@ class VPSV1FirewallStoreRequest
 {
 
     /**
-     * @var string|null $name
+     * @var string $name
      */
     private string $name;
 

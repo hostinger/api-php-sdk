@@ -21,12 +21,12 @@ class VPSV1PublicKeyStoreRequest
 {
 
     /**
-     * @var string|null $name
+     * @var string $name
      */
     private string $name;
 
     /**
-     * @var string|null $key
+     * @var string $key
      */
     private string $key;
 

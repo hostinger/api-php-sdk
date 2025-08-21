@@ -21,12 +21,12 @@ class VPSV1PostInstallScriptStoreRequest
 {
 
     /**
-     * @var string|null $name
+     * @var string $name
      */
     private string $name;
 
     /**
-     * @var string|null $content
+     * @var string $content
      */
     private string $content;
 

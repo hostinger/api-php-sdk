@@ -21,7 +21,7 @@ class VPSV1PublicKeyAttachRequest
 {
 
     /**
-     * @var int[]|null $ids
+     * @var int[] $ids
      */
     private array $ids;
 

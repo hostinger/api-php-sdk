@@ -61,12 +61,12 @@ class DNSV1ZoneUpdateRequestZoneInner
     public const TYPE_CAA = 'CAA';
 
     /**
-     * @var string|null $name
+     * @var string $name
      */
     private string $name;
 
     /**
-     * @var \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInnerRecordsInner[]|null $records
+     * @var \Hostinger\Model\DNSV1ZoneUpdateRequestZoneInnerRecordsInner[] $records
      */
     private array $records;
 
@@ -76,7 +76,7 @@ class DNSV1ZoneUpdateRequestZoneInner
     private ?int $ttl;
 
     /**
-     * @var string|null $type
+     * @var string $type
      */
     private string $type;
 

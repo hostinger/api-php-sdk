@@ -82,22 +82,22 @@ class VPSV1FirewallRulesStoreRequest
     public const SOURCE_CUSTOM = 'custom';
 
     /**
-     * @var string|null $protocol
+     * @var string $protocol
      */
     private string $protocol;
 
     /**
-     * @var string|null $port
+     * @var string $port
      */
     private string $port;
 
     /**
-     * @var string|null $source
+     * @var string $source
      */
     private string $source;
 
     /**
-     * @var string|null $sourceDetail
+     * @var string $sourceDetail
      */
     private string $sourceDetail;
 

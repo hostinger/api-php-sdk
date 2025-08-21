@@ -21,12 +21,12 @@ class VPSV1VirtualMachineMetricGetRequest
 {
 
     /**
-     * @var \DateTime|null $dateFrom
+     * @var \DateTime $dateFrom
      */
     private \DateTime $dateFrom;
 
     /**
-     * @var \DateTime|null $dateTo
+     * @var \DateTime $dateTo
      */
     private \DateTime $dateTo;
 

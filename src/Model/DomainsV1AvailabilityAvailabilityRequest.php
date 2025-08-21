@@ -21,12 +21,12 @@ class DomainsV1AvailabilityAvailabilityRequest
 {
 
     /**
-     * @var string|null $domain
+     * @var string $domain
      */
     private string $domain;
 
     /**
-     * @var string[]|null $tlds
+     * @var string[] $tlds
      */
     private array $tlds;
 

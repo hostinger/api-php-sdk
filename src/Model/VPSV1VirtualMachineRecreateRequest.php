@@ -21,7 +21,7 @@ class VPSV1VirtualMachineRecreateRequest
 {
 
     /**
-     * @var int|null $templateId
+     * @var int $templateId
      */
     private int $templateId;
 

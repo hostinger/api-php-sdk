@@ -21,7 +21,7 @@ class VPSV1VirtualMachineHostnameUpdateRequest
 {
 
     /**
-     * @var string|null $hostname
+     * @var string $hostname
      */
     private string $hostname;
 

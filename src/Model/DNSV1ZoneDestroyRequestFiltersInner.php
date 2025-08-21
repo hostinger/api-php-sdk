@@ -61,12 +61,12 @@ class DNSV1ZoneDestroyRequestFiltersInner
     public const TYPE_CAA = 'CAA';
 
     /**
-     * @var string|null $name
+     * @var string $name
      */
     private string $name;
 
     /**
-     * @var string|null $type
+     * @var string $type
      */
     private string $type;
 

@@ -21,12 +21,12 @@ class BillingV1OrderStoreRequestItemsInner
 {
 
     /**
-     * @var string|null $itemId
+     * @var string $itemId
      */
     private string $itemId;
 
     /**
-     * @var int|null $quantity
+     * @var int $quantity
      */
     private int $quantity;
 

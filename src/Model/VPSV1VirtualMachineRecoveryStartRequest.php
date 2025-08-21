@@ -21,7 +21,7 @@ class VPSV1VirtualMachineRecoveryStartRequest
 {
 
     /**
-     * @var string|null $rootPassword
+     * @var string $rootPassword
      */
     private string $rootPassword;
 

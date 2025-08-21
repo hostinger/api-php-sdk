@@ -21,12 +21,12 @@ class BillingV1OrderStoreRequest
 {
 
     /**
-     * @var int|null $paymentMethodId
+     * @var int $paymentMethodId
      */
     private int $paymentMethodId;
 
     /**
-     * @var \Hostinger\Model\BillingV1OrderStoreRequestItemsInner[]|null $items
+     * @var \Hostinger\Model\BillingV1OrderStoreRequestItemsInner[] $items
      */
     private array $items;
 
