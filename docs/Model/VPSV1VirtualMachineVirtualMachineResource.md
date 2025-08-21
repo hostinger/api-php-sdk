@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | **int** | Virtual machine ID |
 **firewallGroupId** | **int** | Active firewall ID, &#x60;null&#x60; if disabled |
 **subscriptionId** | **string** | Subscription ID |
+**dataCenterId** | **int** | Data center ID |
 **plan** | **string** | VPS plan name |
 **hostname** | **string** |  |
 **state** | **string** |  |
