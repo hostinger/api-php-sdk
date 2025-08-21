@@ -7,7 +7,3 @@ parameters:
             identifier: method.unused
             paths:
                 - src/Api/*
-        -
-            identifier: arrayFilter.same
-            paths:
-                - src/Api/*
