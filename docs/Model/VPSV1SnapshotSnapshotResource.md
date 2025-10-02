@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Snapshot ID |
+**restoreTime** | **int** | Estimated snapshot restore time in seconds |
 **createdAt** | **\DateTime** |  |
 **expiresAt** | **\DateTime** |  |
 

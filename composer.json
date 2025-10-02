@@ -1,6 +1,6 @@
 {
     "name": "hostinger/api-php-sdk",
-    "version": "0.0.41",
+    "version": "0.0.44",
     "description": "Hostinger API PHP SDK",
     "keywords": [
         "hostinger",

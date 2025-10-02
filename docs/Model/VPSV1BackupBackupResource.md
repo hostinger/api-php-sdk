@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Backup ID |
+**size** | **int** | Backup size in kilobytes |
+**restoreTime** | **int** | Estimated backup restore time in seconds |
 **location** | **string** | Location of the backup |
 **createdAt** | **\DateTime** |  |
 

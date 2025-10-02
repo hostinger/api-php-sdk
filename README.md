@@ -70,6 +70,8 @@ Class | Method | HTTP request | Description
 *BillingPaymentMethodsApi* | [**getPaymentMethodListV1**](docs/Api/BillingPaymentMethodsApi.md#getpaymentmethodlistv1) | **GET** /api/billing/v1/payment-methods | Get payment method list
 *BillingPaymentMethodsApi* | [**setDefaultPaymentMethodV1**](docs/Api/BillingPaymentMethodsApi.md#setdefaultpaymentmethodv1) | **POST** /api/billing/v1/payment-methods/{paymentMethodId} | Set default payment method
 *BillingSubscriptionsApi* | [**cancelSubscriptionV1**](docs/Api/BillingSubscriptionsApi.md#cancelsubscriptionv1) | **DELETE** /api/billing/v1/subscriptions/{subscriptionId} | Cancel subscription
+*BillingSubscriptionsApi* | [**disableAutoRenewalV1**](docs/Api/BillingSubscriptionsApi.md#disableautorenewalv1) | **DELETE** /api/billing/v1/subscriptions/{subscriptionId}/auto-renewal/disable | Disable auto-renewal
+*BillingSubscriptionsApi* | [**enableAutoRenewalV1**](docs/Api/BillingSubscriptionsApi.md#enableautorenewalv1) | **PATCH** /api/billing/v1/subscriptions/{subscriptionId}/auto-renewal/enable | Enable auto-renewal
 *BillingSubscriptionsApi* | [**getSubscriptionListV1**](docs/Api/BillingSubscriptionsApi.md#getsubscriptionlistv1) | **GET** /api/billing/v1/subscriptions | Get subscription list
 *DNSSnapshotApi* | [**getDNSSnapshotListV1**](docs/Api/DNSSnapshotApi.md#getdnssnapshotlistv1) | **GET** /api/dns/v1/snapshots/{domain} | Get DNS snapshot list
 *DNSSnapshotApi* | [**getDNSSnapshotV1**](docs/Api/DNSSnapshotApi.md#getdnssnapshotv1) | **GET** /api/dns/v1/snapshots/{domain}/{snapshotId} | Get DNS snapshot
@@ -96,6 +98,10 @@ Class | Method | HTTP request | Description
 *DomainsWHOISApi* | [**getWHOISProfileListV1**](docs/Api/DomainsWHOISApi.md#getwhoisprofilelistv1) | **GET** /api/domains/v1/whois | Get WHOIS profile list
 *DomainsWHOISApi* | [**getWHOISProfileUsageV1**](docs/Api/DomainsWHOISApi.md#getwhoisprofileusagev1) | **GET** /api/domains/v1/whois/{whoisId}/usage | Get WHOIS profile usage
 *DomainsWHOISApi* | [**getWHOISProfileV1**](docs/Api/DomainsWHOISApi.md#getwhoisprofilev1) | **GET** /api/domains/v1/whois/{whoisId} | Get WHOIS profile
+*ReachContactsApi* | [**createANewContactV1**](docs/Api/ReachContactsApi.md#createanewcontactv1) | **POST** /api/reach/v1/contacts | Create a new contact
+*ReachContactsApi* | [**deleteAContactV1**](docs/Api/ReachContactsApi.md#deleteacontactv1) | **DELETE** /api/reach/v1/contacts/{uuid} | Delete a contact
+*ReachContactsApi* | [**listContactGroupsV1**](docs/Api/ReachContactsApi.md#listcontactgroupsv1) | **GET** /api/reach/v1/contacts/groups | List contact groups
+*ReachContactsApi* | [**listContactsV1**](docs/Api/ReachContactsApi.md#listcontactsv1) | **GET** /api/reach/v1/contacts | List contacts
 *VPSActionsApi* | [**getActionDetailsV1**](docs/Api/VPSActionsApi.md#getactiondetailsv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/actions/{actionId} | Get action details
 *VPSActionsApi* | [**getActionsV1**](docs/Api/VPSActionsApi.md#getactionsv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/actions | Get actions
 *VPSBackupsApi* | [**getBackupsV1**](docs/Api/VPSBackupsApi.md#getbackupsv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/backups | Get backups
@@ -200,6 +206,10 @@ Class | Method | HTTP request | Description
 - [InlineObject1](docs/Model/InlineObject1.md)
 - [InlineObject2](docs/Model/InlineObject2.md)
 - [InlineObject2Errors](docs/Model/InlineObject2Errors.md)
+- [ReachListContactsV1200Response](docs/Model/ReachListContactsV1200Response.md)
+- [ReachV1ContactsContactResource](docs/Model/ReachV1ContactsContactResource.md)
+- [ReachV1ContactsGroupsContactGroupResource](docs/Model/ReachV1ContactsGroupsContactGroupResource.md)
+- [ReachV1ContactsStoreRequest](docs/Model/ReachV1ContactsStoreRequest.md)
 - [VPSV1ActionActionResource](docs/Model/VPSV1ActionActionResource.md)
 - [VPSV1ActionListResponse](docs/Model/VPSV1ActionListResponse.md)
 - [VPSV1BackupBackupResource](docs/Model/VPSV1BackupBackupResource.md)
