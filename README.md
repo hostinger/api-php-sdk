@@ -65,11 +65,9 @@ All URIs are relative to *https://developers.hostinger.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BillingCatalogApi* | [**getCatalogItemListV1**](docs/Api/BillingCatalogApi.md#getcatalogitemlistv1) | **GET** /api/billing/v1/catalog | Get catalog item list
-*BillingOrdersApi* | [**createServiceOrderV1**](docs/Api/BillingOrdersApi.md#createserviceorderv1) | **POST** /api/billing/v1/orders | Create service order
 *BillingPaymentMethodsApi* | [**deletePaymentMethodV1**](docs/Api/BillingPaymentMethodsApi.md#deletepaymentmethodv1) | **DELETE** /api/billing/v1/payment-methods/{paymentMethodId} | Delete payment method
 *BillingPaymentMethodsApi* | [**getPaymentMethodListV1**](docs/Api/BillingPaymentMethodsApi.md#getpaymentmethodlistv1) | **GET** /api/billing/v1/payment-methods | Get payment method list
 *BillingPaymentMethodsApi* | [**setDefaultPaymentMethodV1**](docs/Api/BillingPaymentMethodsApi.md#setdefaultpaymentmethodv1) | **POST** /api/billing/v1/payment-methods/{paymentMethodId} | Set default payment method
-*BillingSubscriptionsApi* | [**cancelSubscriptionV1**](docs/Api/BillingSubscriptionsApi.md#cancelsubscriptionv1) | **DELETE** /api/billing/v1/subscriptions/{subscriptionId} | Cancel subscription
 *BillingSubscriptionsApi* | [**disableAutoRenewalV1**](docs/Api/BillingSubscriptionsApi.md#disableautorenewalv1) | **DELETE** /api/billing/v1/subscriptions/{subscriptionId}/auto-renewal/disable | Disable auto-renewal
 *BillingSubscriptionsApi* | [**enableAutoRenewalV1**](docs/Api/BillingSubscriptionsApi.md#enableautorenewalv1) | **PATCH** /api/billing/v1/subscriptions/{subscriptionId}/auto-renewal/enable | Enable auto-renewal
 *BillingSubscriptionsApi* | [**getSubscriptionListV1**](docs/Api/BillingSubscriptionsApi.md#getsubscriptionlistv1) | **GET** /api/billing/v1/subscriptions | Get subscription list
@@ -81,6 +79,7 @@ Class | Method | HTTP request | Description
 *DNSZoneApi* | [**resetDNSRecordsV1**](docs/Api/DNSZoneApi.md#resetdnsrecordsv1) | **POST** /api/dns/v1/zones/{domain}/reset | Reset DNS records
 *DNSZoneApi* | [**updateDNSRecordsV1**](docs/Api/DNSZoneApi.md#updatednsrecordsv1) | **PUT** /api/dns/v1/zones/{domain} | Update DNS records
 *DNSZoneApi* | [**validateDNSRecordsV1**](docs/Api/DNSZoneApi.md#validatednsrecordsv1) | **POST** /api/dns/v1/zones/{domain}/validate | Validate DNS records
+*DomainAccessVerifierVerificationsApi* | [**getDomainVerificationsDIRECT**](docs/Api/DomainAccessVerifierVerificationsApi.md#getdomainverificationsdirect) | **GET** /api/v2/direct/verifications/active | Get domain verifications
 *DomainsAvailabilityApi* | [**checkDomainAvailabilityV1**](docs/Api/DomainsAvailabilityApi.md#checkdomainavailabilityv1) | **POST** /api/domains/v1/availability | Check domain availability
 *DomainsForwardingApi* | [**createDomainForwardingV1**](docs/Api/DomainsForwardingApi.md#createdomainforwardingv1) | **POST** /api/domains/v1/forwarding | Create domain forwarding
 *DomainsForwardingApi* | [**deleteDomainForwardingV1**](docs/Api/DomainsForwardingApi.md#deletedomainforwardingv1) | **DELETE** /api/domains/v1/forwarding/{domain} | Delete domain forwarding
@@ -98,10 +97,49 @@ Class | Method | HTTP request | Description
 *DomainsWHOISApi* | [**getWHOISProfileListV1**](docs/Api/DomainsWHOISApi.md#getwhoisprofilelistv1) | **GET** /api/domains/v1/whois | Get WHOIS profile list
 *DomainsWHOISApi* | [**getWHOISProfileUsageV1**](docs/Api/DomainsWHOISApi.md#getwhoisprofileusagev1) | **GET** /api/domains/v1/whois/{whoisId}/usage | Get WHOIS profile usage
 *DomainsWHOISApi* | [**getWHOISProfileV1**](docs/Api/DomainsWHOISApi.md#getwhoisprofilev1) | **GET** /api/domains/v1/whois/{whoisId} | Get WHOIS profile
+*EcommercePaymentsApi* | [**enableManualPaymentMethodV1**](docs/Api/EcommercePaymentsApi.md#enablemanualpaymentmethodv1) | **POST** /api/ecommerce/v1/stores/{store_id}/payment-methods/manual | Enable manual payment method
+*EcommerceProductsApi* | [**createDigitalProductV1**](docs/Api/EcommerceProductsApi.md#createdigitalproductv1) | **POST** /api/ecommerce/v1/stores/{store_id}/products/digital | Create digital product
+*EcommerceProductsApi* | [**createPhysicalProductV1**](docs/Api/EcommerceProductsApi.md#createphysicalproductv1) | **POST** /api/ecommerce/v1/stores/{store_id}/products/physical | Create physical product
+*EcommerceShippingApi* | [**setStoreShippingV1**](docs/Api/EcommerceShippingApi.md#setstoreshippingv1) | **POST** /api/ecommerce/v1/stores/{store_id}/shipping | Set store shipping
+*EcommerceStoresApi* | [**createStoreV1**](docs/Api/EcommerceStoresApi.md#createstorev1) | **POST** /api/ecommerce/v1/stores | Create store
+*EcommerceStoresApi* | [**deleteStoreV1**](docs/Api/EcommerceStoresApi.md#deletestorev1) | **DELETE** /api/ecommerce/v1/stores/{store_id} | Delete store
+*EcommerceStoresApi* | [**getStoresV1**](docs/Api/EcommerceStoresApi.md#getstoresv1) | **GET** /api/ecommerce/v1/stores | Get stores
+*HorizonsWebsitesApi* | [**createWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#createwebsitev1) | **POST** /api/horizons/v1/websites | Create website
+*HorizonsWebsitesApi* | [**getWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#getwebsitev1) | **GET** /api/horizons/v1/websites/{websiteId} | Get website
+*HostingDatabasesApi* | [**changeDatabasePasswordV1**](docs/Api/HostingDatabasesApi.md#changedatabasepasswordv1) | **PATCH** /api/hosting/v1/accounts/{username}/databases/{name}/change-password | Change database password
+*HostingDatabasesApi* | [**createAccountDatabaseV1**](docs/Api/HostingDatabasesApi.md#createaccountdatabasev1) | **POST** /api/hosting/v1/accounts/{username}/databases | Create account database
+*HostingDatabasesApi* | [**deleteAccountDatabaseV1**](docs/Api/HostingDatabasesApi.md#deleteaccountdatabasev1) | **DELETE** /api/hosting/v1/accounts/{username}/databases/{name} | Delete account database
+*HostingDatabasesApi* | [**getPhpMyAdminLinkV1**](docs/Api/HostingDatabasesApi.md#getphpmyadminlinkv1) | **GET** /api/hosting/v1/accounts/{username}/databases/{name}/phpmyadmin-link | Get phpMyAdmin link
+*HostingDatabasesApi* | [**listAccountDatabasesV1**](docs/Api/HostingDatabasesApi.md#listaccountdatabasesv1) | **GET** /api/hosting/v1/accounts/{username}/databases | List account databases
+*HostingDatabasesApi* | [**repairDatabaseV1**](docs/Api/HostingDatabasesApi.md#repairdatabasev1) | **PATCH** /api/hosting/v1/accounts/{username}/databases/{name}/repair | Repair database
+*HostingDatacentersApi* | [**listAvailableDatacentersV1**](docs/Api/HostingDatacentersApi.md#listavailabledatacentersv1) | **GET** /api/hosting/v1/datacenters | List available datacenters
+*HostingDomainsApi* | [**createWebsiteParkedDomainV1**](docs/Api/HostingDomainsApi.md#createwebsiteparkeddomainv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/parked-domains | Create website parked domain
+*HostingDomainsApi* | [**createWebsiteSubdomainV1**](docs/Api/HostingDomainsApi.md#createwebsitesubdomainv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/subdomains | Create website subdomain
+*HostingDomainsApi* | [**deleteWebsiteParkedDomainV1**](docs/Api/HostingDomainsApi.md#deletewebsiteparkeddomainv1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/parked-domains/{parkedDomain} | Delete website parked domain
+*HostingDomainsApi* | [**deleteWebsiteSubdomainV1**](docs/Api/HostingDomainsApi.md#deletewebsitesubdomainv1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/subdomains/{subdomain} | Delete website subdomain
+*HostingDomainsApi* | [**generateAFreeSubdomainV1**](docs/Api/HostingDomainsApi.md#generateafreesubdomainv1) | **POST** /api/hosting/v1/domains/free-subdomains | Generate a free subdomain
+*HostingDomainsApi* | [**listWebsiteParkedDomainsV1**](docs/Api/HostingDomainsApi.md#listwebsiteparkeddomainsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/parked-domains | List website parked domains
+*HostingDomainsApi* | [**listWebsiteSubdomainsV1**](docs/Api/HostingDomainsApi.md#listwebsitesubdomainsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/subdomains | List website subdomains
+*HostingDomainsApi* | [**verifyDomainOwnershipV1**](docs/Api/HostingDomainsApi.md#verifydomainownershipv1) | **POST** /api/hosting/v1/domains/verify-ownership | Verify domain ownership
+*HostingNodeJSApi* | [**createNodeJSBuildFromArchiveV1**](docs/Api/HostingNodeJSApi.md#createnodejsbuildfromarchivev1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/from-archive | Create NodeJS build from archive
+*HostingNodeJSApi* | [**getNodeJSBuildLogsV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildlogsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs
+*HostingNodeJSApi* | [**listNodeJSBuildsV1**](docs/Api/HostingNodeJSApi.md#listnodejsbuildsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds
+*HostingOrdersApi* | [**listOrdersV1**](docs/Api/HostingOrdersApi.md#listordersv1) | **GET** /api/hosting/v1/orders | List orders
+*HostingWebsitesApi* | [**createWebsiteV1**](docs/Api/HostingWebsitesApi.md#createwebsitev1) | **POST** /api/hosting/v1/websites | Create website
+*HostingWebsitesApi* | [**listWebsitesV1**](docs/Api/HostingWebsitesApi.md#listwebsitesv1) | **GET** /api/hosting/v1/websites | List websites
+*HostingWordpressApi* | [**installWordPressV1**](docs/Api/HostingWordpressApi.md#installwordpressv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/installations | Install WordPress
+*HostingWordpressApi* | [**listWordPressInstallationsV1**](docs/Api/HostingWordpressApi.md#listwordpressinstallationsv1) | **GET** /api/hosting/v1/wordpress/installations | List WordPress installations
 *ReachContactsApi* | [**createANewContactV1**](docs/Api/ReachContactsApi.md#createanewcontactv1) | **POST** /api/reach/v1/contacts | Create a new contact
+*ReachContactsApi* | [**createNewContactsV1**](docs/Api/ReachContactsApi.md#createnewcontactsv1) | **POST** /api/reach/v1/profiles/{profileUuid}/contacts | Create new contacts
 *ReachContactsApi* | [**deleteAContactV1**](docs/Api/ReachContactsApi.md#deleteacontactv1) | **DELETE** /api/reach/v1/contacts/{uuid} | Delete a contact
 *ReachContactsApi* | [**listContactGroupsV1**](docs/Api/ReachContactsApi.md#listcontactgroupsv1) | **GET** /api/reach/v1/contacts/groups | List contact groups
 *ReachContactsApi* | [**listContactsV1**](docs/Api/ReachContactsApi.md#listcontactsv1) | **GET** /api/reach/v1/contacts | List contacts
+*ReachProfilesApi* | [**listProfilesV1**](docs/Api/ReachProfilesApi.md#listprofilesv1) | **GET** /api/reach/v1/profiles | List Profiles
+*ReachSegmentsApi* | [**createANewContactSegmentV1**](docs/Api/ReachSegmentsApi.md#createanewcontactsegmentv1) | **POST** /api/reach/v1/segmentation/segments | Create a new contact segment
+*ReachSegmentsApi* | [**getSegmentDetailsV1**](docs/Api/ReachSegmentsApi.md#getsegmentdetailsv1) | **GET** /api/reach/v1/segmentation/segments/{segmentUuid} | Get segment details
+*ReachSegmentsApi* | [**listProfileSegmentContactsV1**](docs/Api/ReachSegmentsApi.md#listprofilesegmentcontactsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/segmentation/segments/{segmentUuid}/contacts | List profile segment contacts
+*ReachSegmentsApi* | [**listSegmentContactsV1**](docs/Api/ReachSegmentsApi.md#listsegmentcontactsv1) | **GET** /api/reach/v1/segmentation/segments/{segmentUuid}/contacts | List segment contacts
+*ReachSegmentsApi* | [**listSegmentsV1**](docs/Api/ReachSegmentsApi.md#listsegmentsv1) | **GET** /api/reach/v1/segmentation/segments | List segments
 *VPSActionsApi* | [**getActionDetailsV1**](docs/Api/VPSActionsApi.md#getactiondetailsv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/actions/{actionId} | Get action details
 *VPSActionsApi* | [**getActionsV1**](docs/Api/VPSActionsApi.md#getactionsv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/actions | Get actions
 *VPSBackupsApi* | [**getBackupsV1**](docs/Api/VPSBackupsApi.md#getbackupsv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/backups | Get backups
@@ -171,8 +209,6 @@ Class | Method | HTTP request | Description
 - [BillingV1CatalogCatalogItemResource](docs/Model/BillingV1CatalogCatalogItemResource.md)
 - [BillingV1OrderOrderBillingAddressResource](docs/Model/BillingV1OrderOrderBillingAddressResource.md)
 - [BillingV1OrderOrderResource](docs/Model/BillingV1OrderOrderResource.md)
-- [BillingV1OrderStoreRequest](docs/Model/BillingV1OrderStoreRequest.md)
-- [BillingV1OrderStoreRequestItemsInner](docs/Model/BillingV1OrderStoreRequestItemsInner.md)
 - [BillingV1OrderVirtualMachineOrderResource](docs/Model/BillingV1OrderVirtualMachineOrderResource.md)
 - [BillingV1PaymentMethodPaymentMethodResource](docs/Model/BillingV1PaymentMethodPaymentMethodResource.md)
 - [BillingV1SubscriptionCancelRequest](docs/Model/BillingV1SubscriptionCancelRequest.md)
@@ -189,6 +225,15 @@ Class | Method | HTTP request | Description
 - [DNSV1ZoneUpdateRequest](docs/Model/DNSV1ZoneUpdateRequest.md)
 - [DNSV1ZoneUpdateRequestZoneInner](docs/Model/DNSV1ZoneUpdateRequestZoneInner.md)
 - [DNSV1ZoneUpdateRequestZoneInnerRecordsInner](docs/Model/DNSV1ZoneUpdateRequestZoneInnerRecordsInner.md)
+- [DomainAccessVerifierV2VerificationsActiveVerificationsCollection](docs/Model/DomainAccessVerifierV2VerificationsActiveVerificationsCollection.md)
+- [DomainAccessVerifierV2VerificationsActiveVerificationsCollectionData](docs/Model/DomainAccessVerifierV2VerificationsActiveVerificationsCollectionData.md)
+- [DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDING](docs/Model/DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDING.md)
+- [DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLD](docs/Model/DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLD.md)
+- [DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPE](docs/Model/DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPE.md)
+- [DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIED](docs/Model/DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIED.md)
+- [DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLD](docs/Model/DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLD.md)
+- [DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPE](docs/Model/DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPE.md)
+- [DomainAccessVerifierV2VerificationsListRequest](docs/Model/DomainAccessVerifierV2VerificationsListRequest.md)
 - [DomainsV1AvailabilityAvailabilityRequest](docs/Model/DomainsV1AvailabilityAvailabilityRequest.md)
 - [DomainsV1AvailabilityAvailabilityResource](docs/Model/DomainsV1AvailabilityAvailabilityResource.md)
 - [DomainsV1DomainDomainExtendedResource](docs/Model/DomainsV1DomainDomainExtendedResource.md)
@@ -202,14 +247,77 @@ Class | Method | HTTP request | Description
 - [DomainsV1PortfolioUpdateNameserversRequest](docs/Model/DomainsV1PortfolioUpdateNameserversRequest.md)
 - [DomainsV1WHOISProfileResource](docs/Model/DomainsV1WHOISProfileResource.md)
 - [DomainsV1WHOISStoreRequest](docs/Model/DomainsV1WHOISStoreRequest.md)
+- [EcommerceGetStoresV1200Response](docs/Model/EcommerceGetStoresV1200Response.md)
+- [EcommerceV1PaymentEnableManualPaymentRequest](docs/Model/EcommerceV1PaymentEnableManualPaymentRequest.md)
+- [EcommerceV1PaymentManualPaymentResource](docs/Model/EcommerceV1PaymentManualPaymentResource.md)
+- [EcommerceV1PaymentManualPaymentResourcePaymentMethod](docs/Model/EcommerceV1PaymentManualPaymentResourcePaymentMethod.md)
+- [EcommerceV1ProductCreateDigitalProductRequest](docs/Model/EcommerceV1ProductCreateDigitalProductRequest.md)
+- [EcommerceV1ProductCreatePhysicalProductRequest](docs/Model/EcommerceV1ProductCreatePhysicalProductRequest.md)
+- [EcommerceV1ProductProductCreationResource](docs/Model/EcommerceV1ProductProductCreationResource.md)
+- [EcommerceV1ProductProductCreationResourceProduct](docs/Model/EcommerceV1ProductProductCreationResourceProduct.md)
+- [EcommerceV1ShippingSetShippingRequest](docs/Model/EcommerceV1ShippingSetShippingRequest.md)
+- [EcommerceV1ShippingShippingResource](docs/Model/EcommerceV1ShippingShippingResource.md)
+- [EcommerceV1ShippingShippingResourceShippingOption](docs/Model/EcommerceV1ShippingShippingResourceShippingOption.md)
+- [EcommerceV1StoreStoreCreationResource](docs/Model/EcommerceV1StoreStoreCreationResource.md)
+- [EcommerceV1StoreStoreCreationResourceSalesChannel](docs/Model/EcommerceV1StoreStoreCreationResourceSalesChannel.md)
+- [EcommerceV1StoreStoreCreationResourceStore](docs/Model/EcommerceV1StoreStoreCreationResourceStore.md)
+- [EcommerceV1StoreStoreDeleteResource](docs/Model/EcommerceV1StoreStoreDeleteResource.md)
+- [EcommerceV1StoreStoreRequest](docs/Model/EcommerceV1StoreStoreRequest.md)
+- [EcommerceV1StoreStoreRequestSalesChannel](docs/Model/EcommerceV1StoreStoreRequestSalesChannel.md)
+- [EcommerceV1StoreStoreResource](docs/Model/EcommerceV1StoreStoreResource.md)
+- [HorizonsV1WebsitesCreateWebsiteRequest](docs/Model/HorizonsV1WebsitesCreateWebsiteRequest.md)
+- [HorizonsV1WebsitesCreateWebsiteRequestMessageInner](docs/Model/HorizonsV1WebsitesCreateWebsiteRequestMessageInner.md)
+- [HorizonsV1WebsitesCreatedWebsiteResource](docs/Model/HorizonsV1WebsitesCreatedWebsiteResource.md)
+- [HorizonsV1WebsitesWebsiteUrlResource](docs/Model/HorizonsV1WebsitesWebsiteUrlResource.md)
+- [HostingListAccountDatabasesV1200Response](docs/Model/HostingListAccountDatabasesV1200Response.md)
+- [HostingListNodeJSBuildsV1200Response](docs/Model/HostingListNodeJSBuildsV1200Response.md)
+- [HostingListOrdersV1200Response](docs/Model/HostingListOrdersV1200Response.md)
+- [HostingListWebsitesV1200Response](docs/Model/HostingListWebsitesV1200Response.md)
+- [HostingV1DatabasesChangeDatabasePasswordRequest](docs/Model/HostingV1DatabasesChangeDatabasePasswordRequest.md)
+- [HostingV1DatabasesCreateDatabaseRequest](docs/Model/HostingV1DatabasesCreateDatabaseRequest.md)
+- [HostingV1DatabasesDatabaseResource](docs/Model/HostingV1DatabasesDatabaseResource.md)
+- [HostingV1DatabasesPhpMyAdminLinkResource](docs/Model/HostingV1DatabasesPhpMyAdminLinkResource.md)
+- [HostingV1DatacenterCoordinatesResource](docs/Model/HostingV1DatacenterCoordinatesResource.md)
+- [HostingV1DatacenterDatacenterResource](docs/Model/HostingV1DatacenterDatacenterResource.md)
+- [HostingV1DatacentersListRequest](docs/Model/HostingV1DatacentersListRequest.md)
+- [HostingV1DomainsCreateParkedDomainRequest](docs/Model/HostingV1DomainsCreateParkedDomainRequest.md)
+- [HostingV1DomainsCreateSubdomainRequest](docs/Model/HostingV1DomainsCreateSubdomainRequest.md)
+- [HostingV1DomainsDomainAccessResource](docs/Model/HostingV1DomainsDomainAccessResource.md)
+- [HostingV1DomainsFreeSubdomainResource](docs/Model/HostingV1DomainsFreeSubdomainResource.md)
+- [HostingV1DomainsParkedDomainResource](docs/Model/HostingV1DomainsParkedDomainResource.md)
+- [HostingV1DomainsSubdomainResource](docs/Model/HostingV1DomainsSubdomainResource.md)
+- [HostingV1DomainsVerifyOwnershipRequest](docs/Model/HostingV1DomainsVerifyOwnershipRequest.md)
+- [HostingV1NodeJsBuildLogsResource](docs/Model/HostingV1NodeJsBuildLogsResource.md)
+- [HostingV1NodeJsBuildOptionsResource](docs/Model/HostingV1NodeJsBuildOptionsResource.md)
+- [HostingV1NodeJsBuildResource](docs/Model/HostingV1NodeJsBuildResource.md)
+- [HostingV1NodeJsCreateFromArchiveRequest](docs/Model/HostingV1NodeJsCreateFromArchiveRequest.md)
+- [HostingV1NodeJsSourceOptionsResource](docs/Model/HostingV1NodeJsSourceOptionsResource.md)
+- [HostingV1OrdersOrderResource](docs/Model/HostingV1OrdersOrderResource.md)
+- [HostingV1OrdersPlanResource](docs/Model/HostingV1OrdersPlanResource.md)
+- [HostingV1WebsitesCreateWebsiteRequest](docs/Model/HostingV1WebsitesCreateWebsiteRequest.md)
+- [HostingV1WebsitesWebsiteResource](docs/Model/HostingV1WebsitesWebsiteResource.md)
+- [HostingV1WordpressInstallWordpressRequest](docs/Model/HostingV1WordpressInstallWordpressRequest.md)
+- [HostingV1WordpressInstallWordpressRequestCredentials](docs/Model/HostingV1WordpressInstallWordpressRequestCredentials.md)
+- [HostingV1WordpressInstallWordpressRequestDatabase](docs/Model/HostingV1WordpressInstallWordpressRequestDatabase.md)
+- [HostingV1WordpressWordpressInstallationResource](docs/Model/HostingV1WordpressWordpressInstallationResource.md)
 - [InlineObject](docs/Model/InlineObject.md)
 - [InlineObject1](docs/Model/InlineObject1.md)
 - [InlineObject2](docs/Model/InlineObject2.md)
 - [InlineObject2Errors](docs/Model/InlineObject2Errors.md)
 - [ReachListContactsV1200Response](docs/Model/ReachListContactsV1200Response.md)
+- [ReachListProfileSegmentContactsV1200Response](docs/Model/ReachListProfileSegmentContactsV1200Response.md)
 - [ReachV1ContactsContactResource](docs/Model/ReachV1ContactsContactResource.md)
 - [ReachV1ContactsGroupsContactGroupResource](docs/Model/ReachV1ContactsGroupsContactGroupResource.md)
+- [ReachV1ContactsSegmentsContactSegmentResource](docs/Model/ReachV1ContactsSegmentsContactSegmentResource.md)
+- [ReachV1ContactsSegmentsSegmentResource](docs/Model/ReachV1ContactsSegmentsSegmentResource.md)
+- [ReachV1ContactsSegmentsSegmentationContactResource](docs/Model/ReachV1ContactsSegmentsSegmentationContactResource.md)
+- [ReachV1ContactsSegmentsStoreRequest](docs/Model/ReachV1ContactsSegmentsStoreRequest.md)
+- [ReachV1ContactsSegmentsStoreRequestConditionsInner](docs/Model/ReachV1ContactsSegmentsStoreRequestConditionsInner.md)
+- [ReachV1ContactsSegmentsStoreRequestConditionsInnerValue](docs/Model/ReachV1ContactsSegmentsStoreRequestConditionsInnerValue.md)
 - [ReachV1ContactsStoreRequest](docs/Model/ReachV1ContactsStoreRequest.md)
+- [ReachV1ProfilesProfileResource](docs/Model/ReachV1ProfilesProfileResource.md)
+- [ReachV1ProfilesProfileResourceLimits](docs/Model/ReachV1ProfilesProfileResourceLimits.md)
+- [ReachV1ProfilesProfileResourceProfilesInner](docs/Model/ReachV1ProfilesProfileResourceProfilesInner.md)
 - [VPSV1ActionActionResource](docs/Model/VPSV1ActionActionResource.md)
 - [VPSV1ActionListResponse](docs/Model/VPSV1ActionListResponse.md)
 - [VPSV1BackupBackupResource](docs/Model/VPSV1BackupBackupResource.md)

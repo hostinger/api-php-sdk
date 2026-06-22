@@ -24,7 +24,7 @@ createNewProjectV1($virtualMachineId, $vPSV1VirtualMachineDockerManagerUpRequest
 
 Create new project
 
-Deploy new project from docker-compose.yaml contents or download contents from URL.   URL can be Github repository url in format https://github.com/[user]/[repo] and it will be automatically resolved to  docker-compose.yaml file in master branch. Any other URL provided must return docker-compose.yaml file contents.  If project with the same name already exists, existing project will be replaced.
+Deploy new project from docker-compose.yaml contents or download contents from URL.   URL can be Github repository url in format https://github.com/[user]/[repo] and it will be automatically resolved to docker-compose.yaml file in master branch. Any other URL provided must return docker-compose.yaml file contents.  If project with the same name already exists, existing project will be replaced.
 
 ### Example
 
@@ -120,7 +120,7 @@ getProjectContainersV1($virtualMachineId, $projectName): \Hostinger\Model\VPSV1D
 
 Get project containers
 
-Retrieves a list of all containers belonging to a specific Docker Compose project on the virtual machine.   This endpoint returns detailed information about each container including their current status, port mappings, and runtime configuration.   Use this to monitor the health and state of all services within your Docker Compose project.
+Retrieves a list of all containers belonging to a specific Docker Compose project on the virtual machine.   This endpoint returns detailed information about each container including their current status, port mappings, and runtime configuration.  Use this to monitor the health and state of all services within your Docker Compose project.
 
 ### Example
 
@@ -168,7 +168,7 @@ getProjectContentsV1($virtualMachineId, $projectName): \Hostinger\Model\VPSV1Doc
 
 Get project contents
 
-Retrieves the complete project information including the docker-compose.yml file contents, project metadata, and current deployment status.   This endpoint provides the full configuration and state details of a specific Docker Compose project.   Use this to inspect project settings, review the compose file, or check the overall project health.
+Retrieves the complete project information including the docker-compose.yml file contents, project metadata, and current deployment status.  This endpoint provides the full configuration and state details of a specific Docker Compose project.   Use this to inspect project settings, review the compose file, or check the overall project health.
 
 ### Example
 
@@ -216,7 +216,7 @@ getProjectListV1($virtualMachineId): \Hostinger\Model\VPSV1DockerManagerProjectR
 
 Get project list
 
-Retrieves a list of all Docker Compose projects currently deployed on the virtual machine.   This endpoint returns basic information about each project including name, status, file path and list of containers with  details about their names, image, status, health and ports. Container stats are omitted in this endpoint. If you need to get detailed information about container with stats included, use the `Get project containers` endpoint.   Use this to get an overview of all Docker projects on your VPS instance.
+Retrieves a list of all Docker Compose projects currently deployed on the virtual machine.   This endpoint returns basic information about each project including name, status, file path and list of containers with details about their names, image, status, health and ports. Container stats are omitted in this endpoint. If you need to get detailed information about container with stats included, use the `Get project containers` endpoint.  Use this to get an overview of all Docker projects on your VPS instance.
 
 ### Example
 
@@ -310,7 +310,7 @@ restartProjectV1($virtualMachineId, $projectName): \Hostinger\Model\VPSV1ActionA
 
 Restart project
 
-Restarts all services in a Docker Compose project by stopping and starting containers in the correct dependency order.   This operation preserves data volumes and network configurations while refreshing the running containers.   Use this to apply configuration changes or recover from service failures.
+Restarts all services in a Docker Compose project by stopping and starting containers in the correct dependency order.  This operation preserves data volumes and network configurations while refreshing the running containers.   Use this to apply configuration changes or recover from service failures.
 
 ### Example
 
@@ -406,7 +406,7 @@ stopProjectV1($virtualMachineId, $projectName): \Hostinger\Model\VPSV1ActionActi
 
 Stop project
 
-Stops all running services in a Docker Compose project while preserving container configurations and data volumes.   This operation gracefully shuts down containers in reverse dependency order.   Use this to temporarily halt a project without removing data or configurations.
+Stops all running services in a Docker Compose project while preserving container configurations and data volumes.  This operation gracefully shuts down containers in reverse dependency order.   Use this to temporarily halt a project without removing data or configurations.
 
 ### Example
 
@@ -454,7 +454,7 @@ updateProjectV1($virtualMachineId, $projectName): \Hostinger\Model\VPSV1ActionAc
 
 Update project
 
-Updates a Docker Compose project by pulling the latest image versions and recreating containers with new configurations.   This operation preserves data volumes while applying changes from the compose file.   Use this to deploy application updates, apply configuration changes, or refresh container images to their latest versions.
+Updates a Docker Compose project by pulling the latest image versions and recreating containers with new configurations.  This operation preserves data volumes while applying changes from the compose file.   Use this to deploy application updates, apply configuration changes, or refresh container images to their latest versions.
 
 ### Example
 

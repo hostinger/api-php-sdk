@@ -5,6 +5,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createANewContactV1()**](ReachContactsApi.md#createANewContactV1) | **POST** /api/reach/v1/contacts | Create a new contact |
+| [**createNewContactsV1()**](ReachContactsApi.md#createNewContactsV1) | **POST** /api/reach/v1/profiles/{profileUuid}/contacts | Create new contacts |
 | [**deleteAContactV1()**](ReachContactsApi.md#deleteAContactV1) | **DELETE** /api/reach/v1/contacts/{uuid} | Delete a contact |
 | [**listContactGroupsV1()**](ReachContactsApi.md#listContactGroupsV1) | **GET** /api/reach/v1/contacts/groups | List contact groups |
 | [**listContactsV1()**](ReachContactsApi.md#listContactsV1) | **GET** /api/reach/v1/contacts | List contacts |
@@ -13,12 +14,12 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `createANewContactV1()`
 
 ```php
-createANewContactV1($reachV1ContactsStoreRequest): \Hostinger\Model\ReachV1ContactsContactResource
+createANewContactV1($reachV1ContactsStoreRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
 Create a new contact
 
-Create a new contact in the email marketing system.  This endpoint allows you to create a new contact with basic information like name, email, and surname. You can optionally assign the contact to specific groups and add notes.  The contact will be automatically subscribed to email communications.
+Create a new contact in the email marketing system.  This endpoint allows you to create a new contact with basic information like name, email, and surname.  If double opt-in is enabled, the contact will be created with a pending status and a confirmation email will be sent.
 
 ### Example
 
@@ -50,7 +51,55 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\ReachV1ContactsContactResource**](../Model/ReachV1ContactsContactResource.md)
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createNewContactsV1()`
+
+```php
+createNewContactsV1($profileUuid, $reachV1ContactsStoreRequest): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Create new contacts
+
+Create a new contact in the email marketing system.  This endpoint allows you to create a new contact with basic information like name, email, and surname.  If double opt-in is enabled, the contact will be created with a pending status and a confirmation email will be sent.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachContactsApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+$reachV1ContactsStoreRequest = new \Hostinger\Model\ReachV1ContactsStoreRequest(); // \Hostinger\Model\ReachV1ContactsStoreRequest
+
+try {
+    $result = $apiInstance->createNewContactsV1($profileUuid, $reachV1ContactsStoreRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachContactsApi->createNewContactsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+| **reachV1ContactsStoreRequest** | [**\Hostinger\Model\ReachV1ContactsStoreRequest**](../Model/ReachV1ContactsStoreRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

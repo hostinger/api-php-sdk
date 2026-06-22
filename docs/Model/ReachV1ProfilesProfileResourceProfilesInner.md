@@ -1,0 +1,12 @@
+# # ReachV1ProfilesProfileResourceProfilesInner
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**uuid** | **string** |  |
+**domain** | **string** |  |
+**createdAt** | **\DateTime** |  |
+**updatedAt** | **\DateTime** |  |
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -214,7 +214,7 @@ deleteFirewallRuleV1($firewallId, $ruleId): \Hostinger\Model\CommonSuccessEmptyR
 
 Delete firewall rule
 
-Delete a specific firewall rule from a specified firewall.  Any virtual machine that has this firewall activated will lose sync with the firewall and will have to be synced again manually.         Use this endpoint to remove specific firewall rules.
+Delete a specific firewall rule from a specified firewall.  Any virtual machine that has this firewall activated will lose sync with the firewall and will have to be synced again manually.  Use this endpoint to remove specific firewall rules.
 
 ### Example
 

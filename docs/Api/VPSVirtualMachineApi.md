@@ -262,7 +262,7 @@ recreateVirtualMachineV1($virtualMachineId, $vPSV1VirtualMachineRecreateRequest)
 
 Recreate virtual machine
 
-Recreate a virtual machine from scratch.  The recreation process involves reinstalling the operating system and resetting the virtual machine to its initial state. Snapshots, if there are any, will be deleted.  ## Password Requirements Password will be checked against leaked password databases.  Requirements for the password are: - At least 8 characters long - At least one uppercase letter - At least one lowercase letter - At least one number - Is not leaked publicly  **This operation is irreversible and will result in the loss of all data stored on the virtual machine!**  Use this endpoint to completely rebuild VPS instances with fresh OS installation.
+Recreate a virtual machine from scratch.  The recreation process involves reinstalling the operating system and resetting the virtual machine to its initial state. Snapshots, if there are any, will be deleted.  ## Password Requirements Password will be checked against leaked password databases.  Requirements for the password are: - At least 12 characters long - At least one uppercase letter - At least one lowercase letter - At least one number - Is not leaked publicly  **This operation is irreversible and will result in the loss of all data stored on the virtual machine!**  Use this endpoint to completely rebuild VPS instances with fresh OS installation.
 
 ### Example
 
