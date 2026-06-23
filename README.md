@@ -134,6 +134,7 @@ Class | Method | HTTP request | Description
 *ReachContactsApi* | [**deleteAContactV1**](docs/Api/ReachContactsApi.md#deleteacontactv1) | **DELETE** /api/reach/v1/contacts/{uuid} | Delete a contact
 *ReachContactsApi* | [**listContactGroupsV1**](docs/Api/ReachContactsApi.md#listcontactgroupsv1) | **GET** /api/reach/v1/contacts/groups | List contact groups
 *ReachContactsApi* | [**listContactsV1**](docs/Api/ReachContactsApi.md#listcontactsv1) | **GET** /api/reach/v1/contacts | List contacts
+*ReachProfilesApi* | [**getProfileDomainDNSStatusV1**](docs/Api/ReachProfilesApi.md#getprofiledomaindnsstatusv1) | **GET** /api/reach/v1/profiles/{profileUuid}/domains/dns-status | Get profile domain DNS status
 *ReachProfilesApi* | [**listProfilesV1**](docs/Api/ReachProfilesApi.md#listprofilesv1) | **GET** /api/reach/v1/profiles | List Profiles
 *ReachSegmentsApi* | [**createANewContactSegmentV1**](docs/Api/ReachSegmentsApi.md#createanewcontactsegmentv1) | **POST** /api/reach/v1/segmentation/segments | Create a new contact segment
 *ReachSegmentsApi* | [**getSegmentDetailsV1**](docs/Api/ReachSegmentsApi.md#getsegmentdetailsv1) | **GET** /api/reach/v1/segmentation/segments/{segmentUuid} | Get segment details
@@ -315,6 +316,10 @@ Class | Method | HTTP request | Description
 - [ReachV1ContactsSegmentsStoreRequestConditionsInner](docs/Model/ReachV1ContactsSegmentsStoreRequestConditionsInner.md)
 - [ReachV1ContactsSegmentsStoreRequestConditionsInnerValue](docs/Model/ReachV1ContactsSegmentsStoreRequestConditionsInnerValue.md)
 - [ReachV1ContactsStoreRequest](docs/Model/ReachV1ContactsStoreRequest.md)
+- [ReachV1ProfilesDomainsDnsRecordStatus](docs/Model/ReachV1ProfilesDomainsDnsRecordStatus.md)
+- [ReachV1ProfilesDomainsDnsRecordStatusActualInner](docs/Model/ReachV1ProfilesDomainsDnsRecordStatusActualInner.md)
+- [ReachV1ProfilesDomainsDnsRecordStatusSuggestedInner](docs/Model/ReachV1ProfilesDomainsDnsRecordStatusSuggestedInner.md)
+- [ReachV1ProfilesDomainsDnsStatusResource](docs/Model/ReachV1ProfilesDomainsDnsStatusResource.md)
 - [ReachV1ProfilesProfileResource](docs/Model/ReachV1ProfilesProfileResource.md)
 - [ReachV1ProfilesProfileResourceLimits](docs/Model/ReachV1ProfilesProfileResourceLimits.md)
 - [ReachV1ProfilesProfileResourceProfilesInner](docs/Model/ReachV1ProfilesProfileResourceProfilesInner.md)
