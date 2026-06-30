@@ -107,9 +107,12 @@ Class | Method | HTTP request | Description
 *HorizonsWebsitesApi* | [**createWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#createwebsitev1) | **POST** /api/horizons/v1/websites | Create website
 *HorizonsWebsitesApi* | [**getWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#getwebsitev1) | **GET** /api/horizons/v1/websites/{websiteId} | Get website
 *HostingDatabasesApi* | [**changeDatabasePasswordV1**](docs/Api/HostingDatabasesApi.md#changedatabasepasswordv1) | **PATCH** /api/hosting/v1/accounts/{username}/databases/{name}/change-password | Change database password
+*HostingDatabasesApi* | [**createAccountDatabaseRemoteConnectionV1**](docs/Api/HostingDatabasesApi.md#createaccountdatabaseremoteconnectionv1) | **POST** /api/hosting/v1/accounts/{username}/databases/{name}/remote-connections | Create account database remote connection
 *HostingDatabasesApi* | [**createAccountDatabaseV1**](docs/Api/HostingDatabasesApi.md#createaccountdatabasev1) | **POST** /api/hosting/v1/accounts/{username}/databases | Create account database
+*HostingDatabasesApi* | [**deleteAccountDatabaseRemoteConnectionV1**](docs/Api/HostingDatabasesApi.md#deleteaccountdatabaseremoteconnectionv1) | **DELETE** /api/hosting/v1/accounts/{username}/databases/{name}/remote-connections | Delete account database remote connection
 *HostingDatabasesApi* | [**deleteAccountDatabaseV1**](docs/Api/HostingDatabasesApi.md#deleteaccountdatabasev1) | **DELETE** /api/hosting/v1/accounts/{username}/databases/{name} | Delete account database
 *HostingDatabasesApi* | [**getPhpMyAdminLinkV1**](docs/Api/HostingDatabasesApi.md#getphpmyadminlinkv1) | **GET** /api/hosting/v1/accounts/{username}/databases/{name}/phpmyadmin-link | Get phpMyAdmin link
+*HostingDatabasesApi* | [**listAccountDatabaseRemoteConnectionsV1**](docs/Api/HostingDatabasesApi.md#listaccountdatabaseremoteconnectionsv1) | **GET** /api/hosting/v1/accounts/{username}/databases/remote-connections | List account database remote connections
 *HostingDatabasesApi* | [**listAccountDatabasesV1**](docs/Api/HostingDatabasesApi.md#listaccountdatabasesv1) | **GET** /api/hosting/v1/accounts/{username}/databases | List account databases
 *HostingDatabasesApi* | [**repairDatabaseV1**](docs/Api/HostingDatabasesApi.md#repairdatabasev1) | **PATCH** /api/hosting/v1/accounts/{username}/databases/{name}/repair | Repair database
 *HostingDatacentersApi* | [**listAvailableDatacentersV1**](docs/Api/HostingDatacentersApi.md#listavailabledatacentersv1) | **GET** /api/hosting/v1/datacenters | List available datacenters
@@ -278,6 +281,8 @@ Class | Method | HTTP request | Description
 - [HostingV1DatabasesCreateDatabaseRequest](docs/Model/HostingV1DatabasesCreateDatabaseRequest.md)
 - [HostingV1DatabasesDatabaseResource](docs/Model/HostingV1DatabasesDatabaseResource.md)
 - [HostingV1DatabasesPhpMyAdminLinkResource](docs/Model/HostingV1DatabasesPhpMyAdminLinkResource.md)
+- [HostingV1DatabasesRemoteConnectionsCreateRemoteConnectionRequest](docs/Model/HostingV1DatabasesRemoteConnectionsCreateRemoteConnectionRequest.md)
+- [HostingV1DatabasesRemoteConnectionsRemoteConnectionResource](docs/Model/HostingV1DatabasesRemoteConnectionsRemoteConnectionResource.md)
 - [HostingV1DatacenterCoordinatesResource](docs/Model/HostingV1DatacenterCoordinatesResource.md)
 - [HostingV1DatacenterDatacenterResource](docs/Model/HostingV1DatacenterDatacenterResource.md)
 - [HostingV1DatacentersListRequest](docs/Model/HostingV1DatacentersListRequest.md)
