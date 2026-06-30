@@ -106,6 +106,10 @@ Class | Method | HTTP request | Description
 *EcommerceStoresApi* | [**getStoresV1**](docs/Api/EcommerceStoresApi.md#getstoresv1) | **GET** /api/ecommerce/v1/stores | Get stores
 *HorizonsWebsitesApi* | [**createWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#createwebsitev1) | **POST** /api/horizons/v1/websites | Create website
 *HorizonsWebsitesApi* | [**getWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#getwebsitev1) | **GET** /api/horizons/v1/websites/{websiteId} | Get website
+*HostingCronJobsApi* | [**createAccountCronJobV1**](docs/Api/HostingCronJobsApi.md#createaccountcronjobv1) | **POST** /api/hosting/v1/accounts/{username}/cron-jobs | Create account cron job
+*HostingCronJobsApi* | [**deleteAccountCronJobV1**](docs/Api/HostingCronJobsApi.md#deleteaccountcronjobv1) | **DELETE** /api/hosting/v1/accounts/{username}/cron-jobs/{uid} | Delete account cron job
+*HostingCronJobsApi* | [**getCronJobOutputV1**](docs/Api/HostingCronJobsApi.md#getcronjoboutputv1) | **GET** /api/hosting/v1/accounts/{username}/cron-jobs/{uid}/output | Get cron job output
+*HostingCronJobsApi* | [**listAccountCronJobsV1**](docs/Api/HostingCronJobsApi.md#listaccountcronjobsv1) | **GET** /api/hosting/v1/accounts/{username}/cron-jobs | List account cron jobs
 *HostingDatabasesApi* | [**changeDatabasePasswordV1**](docs/Api/HostingDatabasesApi.md#changedatabasepasswordv1) | **PATCH** /api/hosting/v1/accounts/{username}/databases/{name}/change-password | Change database password
 *HostingDatabasesApi* | [**createAccountDatabaseRemoteConnectionV1**](docs/Api/HostingDatabasesApi.md#createaccountdatabaseremoteconnectionv1) | **POST** /api/hosting/v1/accounts/{username}/databases/{name}/remote-connections | Create account database remote connection
 *HostingDatabasesApi* | [**createAccountDatabaseV1**](docs/Api/HostingDatabasesApi.md#createaccountdatabasev1) | **POST** /api/hosting/v1/accounts/{username}/databases | Create account database
@@ -277,6 +281,9 @@ Class | Method | HTTP request | Description
 - [HostingListNodeJSBuildsV1200Response](docs/Model/HostingListNodeJSBuildsV1200Response.md)
 - [HostingListOrdersV1200Response](docs/Model/HostingListOrdersV1200Response.md)
 - [HostingListWebsitesV1200Response](docs/Model/HostingListWebsitesV1200Response.md)
+- [HostingV1CronJobsCreateCronJobRequest](docs/Model/HostingV1CronJobsCreateCronJobRequest.md)
+- [HostingV1CronJobsCronJobOutputResource](docs/Model/HostingV1CronJobsCronJobOutputResource.md)
+- [HostingV1CronJobsCronJobResource](docs/Model/HostingV1CronJobsCronJobResource.md)
 - [HostingV1DatabasesChangeDatabasePasswordRequest](docs/Model/HostingV1DatabasesChangeDatabasePasswordRequest.md)
 - [HostingV1DatabasesCreateDatabaseRequest](docs/Model/HostingV1DatabasesCreateDatabaseRequest.md)
 - [HostingV1DatabasesDatabaseResource](docs/Model/HostingV1DatabasesDatabaseResource.md)
