@@ -134,8 +134,6 @@ Class | Method | HTTP request | Description
 *HostingOrdersApi* | [**listOrdersV1**](docs/Api/HostingOrdersApi.md#listordersv1) | **GET** /api/hosting/v1/orders | List orders
 *HostingWebsitesApi* | [**createWebsiteV1**](docs/Api/HostingWebsitesApi.md#createwebsitev1) | **POST** /api/hosting/v1/websites | Create website
 *HostingWebsitesApi* | [**listWebsitesV1**](docs/Api/HostingWebsitesApi.md#listwebsitesv1) | **GET** /api/hosting/v1/websites | List websites
-*HostingWordpressApi* | [**installWordPressV1**](docs/Api/HostingWordpressApi.md#installwordpressv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/installations | Install WordPress
-*HostingWordpressApi* | [**listWordPressInstallationsV1**](docs/Api/HostingWordpressApi.md#listwordpressinstallationsv1) | **GET** /api/hosting/v1/wordpress/installations | List WordPress installations
 *ReachContactsApi* | [**createANewContactV1**](docs/Api/ReachContactsApi.md#createanewcontactv1) | **POST** /api/reach/v1/contacts | Create a new contact
 *ReachContactsApi* | [**createNewContactsV1**](docs/Api/ReachContactsApi.md#createnewcontactsv1) | **POST** /api/reach/v1/profiles/{profileUuid}/contacts | Create new contacts
 *ReachContactsApi* | [**deleteAContactV1**](docs/Api/ReachContactsApi.md#deleteacontactv1) | **DELETE** /api/reach/v1/contacts/{uuid} | Delete a contact
@@ -210,6 +208,10 @@ Class | Method | HTTP request | Description
 *VPSVirtualMachineApi* | [**setupPurchasedVirtualMachineV1**](docs/Api/VPSVirtualMachineApi.md#setuppurchasedvirtualmachinev1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/setup | Setup purchased virtual machine
 *VPSVirtualMachineApi* | [**startVirtualMachineV1**](docs/Api/VPSVirtualMachineApi.md#startvirtualmachinev1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/start | Start virtual machine
 *VPSVirtualMachineApi* | [**stopVirtualMachineV1**](docs/Api/VPSVirtualMachineApi.md#stopvirtualmachinev1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/stop | Stop virtual machine
+*WordPressInstallationsApi* | [**installWordPressV1**](docs/Api/WordPressInstallationsApi.md#installwordpressv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/installations | Install WordPress
+*WordPressInstallationsApi* | [**listWordPressInstallationsV1**](docs/Api/WordPressInstallationsApi.md#listwordpressinstallationsv1) | **GET** /api/hosting/v1/wordpress/installations | List WordPress installations
+*WordPressPluginsApi* | [**installWordPressPluginsV1**](docs/Api/WordPressPluginsApi.md#installwordpresspluginsv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/install | Install WordPress plugins
+*WordPressThemesApi* | [**installWordPressThemeV1**](docs/Api/WordPressThemesApi.md#installwordpressthemev1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/themes/install | Install WordPress theme
 
 ## Models
 
@@ -309,10 +311,6 @@ Class | Method | HTTP request | Description
 - [HostingV1OrdersPlanResource](docs/Model/HostingV1OrdersPlanResource.md)
 - [HostingV1WebsitesCreateWebsiteRequest](docs/Model/HostingV1WebsitesCreateWebsiteRequest.md)
 - [HostingV1WebsitesWebsiteResource](docs/Model/HostingV1WebsitesWebsiteResource.md)
-- [HostingV1WordpressInstallWordpressRequest](docs/Model/HostingV1WordpressInstallWordpressRequest.md)
-- [HostingV1WordpressInstallWordpressRequestCredentials](docs/Model/HostingV1WordpressInstallWordpressRequestCredentials.md)
-- [HostingV1WordpressInstallWordpressRequestDatabase](docs/Model/HostingV1WordpressInstallWordpressRequestDatabase.md)
-- [HostingV1WordpressWordpressInstallationResource](docs/Model/HostingV1WordpressWordpressInstallationResource.md)
 - [InlineObject](docs/Model/InlineObject.md)
 - [InlineObject1](docs/Model/InlineObject1.md)
 - [InlineObject2](docs/Model/InlineObject2.md)
@@ -378,3 +376,9 @@ Class | Method | HTTP request | Description
 - [VPSV1VirtualMachineSetupRequest](docs/Model/VPSV1VirtualMachineSetupRequest.md)
 - [VPSV1VirtualMachineSetupRequestPublicKey](docs/Model/VPSV1VirtualMachineSetupRequestPublicKey.md)
 - [VPSV1VirtualMachineVirtualMachineResource](docs/Model/VPSV1VirtualMachineVirtualMachineResource.md)
+- [WordPressV1InstallationsInstallWordPressRequest](docs/Model/WordPressV1InstallationsInstallWordPressRequest.md)
+- [WordPressV1InstallationsInstallWordPressRequestCredentials](docs/Model/WordPressV1InstallationsInstallWordPressRequestCredentials.md)
+- [WordPressV1InstallationsInstallWordPressRequestDatabase](docs/Model/WordPressV1InstallationsInstallWordPressRequestDatabase.md)
+- [WordPressV1InstallationsWordPressInstallationResource](docs/Model/WordPressV1InstallationsWordPressInstallationResource.md)
+- [WordPressV1PluginsInstallPluginsRequest](docs/Model/WordPressV1PluginsInstallPluginsRequest.md)
+- [WordPressV1ThemesInstallThemeRequest](docs/Model/WordPressV1ThemesInstallThemeRequest.md)

@@ -1,4 +1,4 @@
-# # HostingV1WordpressInstallWordpressRequestCredentials
+# # WordPressV1InstallationsInstallWordPressRequestCredentials
 
 ## Properties
 

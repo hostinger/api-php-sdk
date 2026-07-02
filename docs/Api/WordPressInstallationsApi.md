@@ -1,17 +1,17 @@
-# Hostinger\HostingWordpressApi
+# Hostinger\WordPressInstallationsApi
 
 All URIs are relative to https://developers.hostinger.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**installWordPressV1()**](HostingWordpressApi.md#installWordPressV1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/installations | Install WordPress |
-| [**listWordPressInstallationsV1()**](HostingWordpressApi.md#listWordPressInstallationsV1) | **GET** /api/hosting/v1/wordpress/installations | List WordPress installations |
+| [**installWordPressV1()**](WordPressInstallationsApi.md#installWordPressV1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/installations | Install WordPress |
+| [**listWordPressInstallationsV1()**](WordPressInstallationsApi.md#listWordPressInstallationsV1) | **GET** /api/hosting/v1/wordpress/installations | List WordPress installations |
 
 
 ## `installWordPressV1()`
 
 ```php
-installWordPressV1($username, $hostingV1WordpressInstallWordpressRequest): \Hostinger\Model\CommonSuccessEmptyResource
+installWordPressV1($username, $wordPressV1InstallationsInstallWordPressRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
 Install WordPress
@@ -29,15 +29,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\HostingWordpressApi(config: $config);
+$apiInstance = new Hostinger\Api\WordPressInstallationsApi(config: $config);
 $username = u123456789; // string
-$hostingV1WordpressInstallWordpressRequest = new \Hostinger\Model\HostingV1WordpressInstallWordpressRequest(); // \Hostinger\Model\HostingV1WordpressInstallWordpressRequest
+$wordPressV1InstallationsInstallWordPressRequest = new \Hostinger\Model\WordPressV1InstallationsInstallWordPressRequest(); // \Hostinger\Model\WordPressV1InstallationsInstallWordPressRequest
 
 try {
-    $result = $apiInstance->installWordPressV1($username, $hostingV1WordpressInstallWordpressRequest);
+    $result = $apiInstance->installWordPressV1($username, $wordPressV1InstallationsInstallWordPressRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling HostingWordpressApi->installWordPressV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling WordPressInstallationsApi->installWordPressV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -46,7 +46,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **username** | **string**|  | |
-| **hostingV1WordpressInstallWordpressRequest** | [**\Hostinger\Model\HostingV1WordpressInstallWordpressRequest**](../Model/HostingV1WordpressInstallWordpressRequest.md)|  | |
+| **wordPressV1InstallationsInstallWordPressRequest** | [**\Hostinger\Model\WordPressV1InstallationsInstallWordPressRequest**](../Model/WordPressV1InstallationsInstallWordPressRequest.md)|  | |
 
 ### Return type
 
@@ -59,7 +59,7 @@ try {
 ## `listWordPressInstallationsV1()`
 
 ```php
-listWordPressInstallationsV1($username, $domain, $ownership): \Hostinger\Model\HostingV1WordpressWordpressInstallationResource[]
+listWordPressInstallationsV1($username, $domain, $ownership): \Hostinger\Model\WordPressV1InstallationsWordPressInstallationResource[]
 ```
 
 List WordPress installations
@@ -77,7 +77,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\HostingWordpressApi(config: $config);
+$apiInstance = new Hostinger\Api\WordPressInstallationsApi(config: $config);
 $username = cl_user123; // string | Filter by specific username
 $domain = example.com; // string | Filter by domain name (exact match)
 $ownership = owned; // string | Filter by ownership type. Defaults to \"owned\". Use \"all\" to include both owned and managed installations.
@@ -86,7 +86,7 @@ try {
     $result = $apiInstance->listWordPressInstallationsV1($username, $domain, $ownership);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling HostingWordpressApi->listWordPressInstallationsV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling WordPressInstallationsApi->listWordPressInstallationsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -100,7 +100,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\HostingV1WordpressWordpressInstallationResource[]**](../Model/HostingV1WordpressWordpressInstallationResource.md)
+[**\Hostinger\Model\WordPressV1InstallationsWordPressInstallationResource[]**](../Model/WordPressV1InstallationsWordPressInstallationResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

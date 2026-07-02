@@ -1,4 +1,4 @@
-# # HostingV1WordpressWordpressInstallationResource
+# # WordPressV1InstallationsWordPressInstallationResource
 
 ## Properties
 
