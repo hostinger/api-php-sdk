@@ -210,8 +210,23 @@ Class | Method | HTTP request | Description
 *VPSVirtualMachineApi* | [**stopVirtualMachineV1**](docs/Api/VPSVirtualMachineApi.md#stopvirtualmachinev1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/stop | Stop virtual machine
 *WordPressInstallationsApi* | [**installWordPressV1**](docs/Api/WordPressInstallationsApi.md#installwordpressv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/installations | Install WordPress
 *WordPressInstallationsApi* | [**listWordPressInstallationsV1**](docs/Api/WordPressInstallationsApi.md#listwordpressinstallationsv1) | **GET** /api/hosting/v1/wordpress/installations | List WordPress installations
+*WordPressPluginsApi* | [**activateWordPressPluginV1**](docs/Api/WordPressPluginsApi.md#activatewordpresspluginv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/activate | Activate WordPress plugin
+*WordPressPluginsApi* | [**checkIfWooCommerceIsInstalledV1**](docs/Api/WordPressPluginsApi.md#checkifwoocommerceisinstalledv1) | **GET** /api/hosting/v1/wordpress/plugins/is-woocommerce-installed | Check if WooCommerce is installed
+*WordPressPluginsApi* | [**deactivateWordPressPluginV1**](docs/Api/WordPressPluginsApi.md#deactivatewordpresspluginv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/deactivate | Deactivate WordPress plugin
 *WordPressPluginsApi* | [**installWordPressPluginsV1**](docs/Api/WordPressPluginsApi.md#installwordpresspluginsv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/install | Install WordPress plugins
+*WordPressPluginsApi* | [**listAvailableWordPressPluginsV1**](docs/Api/WordPressPluginsApi.md#listavailablewordpresspluginsv1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/available | List available WordPress plugins
+*WordPressPluginsApi* | [**listInstalledWordPressPluginsV1**](docs/Api/WordPressPluginsApi.md#listinstalledwordpresspluginsv1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/plugins | List installed WordPress plugins
+*WordPressPluginsApi* | [**listSuggestedWordPressPluginsV1**](docs/Api/WordPressPluginsApi.md#listsuggestedwordpresspluginsv1) | **GET** /api/hosting/v1/wordpress/plugins/suggested | List suggested WordPress plugins
+*WordPressPluginsApi* | [**searchWordPressPluginsV1**](docs/Api/WordPressPluginsApi.md#searchwordpresspluginsv1) | **GET** /api/hosting/v1/wordpress/plugins | Search WordPress plugins
+*WordPressPluginsApi* | [**uninstallWordPressPluginsV1**](docs/Api/WordPressPluginsApi.md#uninstallwordpresspluginsv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/uninstall | Uninstall WordPress plugins
+*WordPressPluginsApi* | [**updateHostingerWordPressPluginV1**](docs/Api/WordPressPluginsApi.md#updatehostingerwordpresspluginv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/hostinger/update | Update Hostinger WordPress plugin
+*WordPressPluginsApi* | [**updateWordPressPluginsV1**](docs/Api/WordPressPluginsApi.md#updatewordpresspluginsv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/update | Update WordPress plugins
+*WordPressThemesApi* | [**activateWordPressThemeV1**](docs/Api/WordPressThemesApi.md#activatewordpressthemev1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/themes/activate | Activate WordPress theme
 *WordPressThemesApi* | [**installWordPressThemeV1**](docs/Api/WordPressThemesApi.md#installwordpressthemev1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/themes/install | Install WordPress theme
+*WordPressThemesApi* | [**listInstalledWordPressThemesV1**](docs/Api/WordPressThemesApi.md#listinstalledwordpressthemesv1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/themes | List installed WordPress themes
+*WordPressThemesApi* | [**listWordPressThemesV1**](docs/Api/WordPressThemesApi.md#listwordpressthemesv1) | **GET** /api/hosting/v1/wordpress/themes | List WordPress themes
+*WordPressThemesApi* | [**uninstallWordPressThemesV1**](docs/Api/WordPressThemesApi.md#uninstallwordpressthemesv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/themes/uninstall | Uninstall WordPress themes
+*WordPressThemesApi* | [**updateWordPressThemesV1**](docs/Api/WordPressThemesApi.md#updatewordpressthemesv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/themes/update | Update WordPress themes
 
 ## Models
 
@@ -376,9 +391,27 @@ Class | Method | HTTP request | Description
 - [VPSV1VirtualMachineSetupRequest](docs/Model/VPSV1VirtualMachineSetupRequest.md)
 - [VPSV1VirtualMachineSetupRequestPublicKey](docs/Model/VPSV1VirtualMachineSetupRequestPublicKey.md)
 - [VPSV1VirtualMachineVirtualMachineResource](docs/Model/VPSV1VirtualMachineVirtualMachineResource.md)
+- [WordPressV1CommonVulnerabilityResource](docs/Model/WordPressV1CommonVulnerabilityResource.md)
 - [WordPressV1InstallationsInstallWordPressRequest](docs/Model/WordPressV1InstallationsInstallWordPressRequest.md)
 - [WordPressV1InstallationsInstallWordPressRequestCredentials](docs/Model/WordPressV1InstallationsInstallWordPressRequestCredentials.md)
 - [WordPressV1InstallationsInstallWordPressRequestDatabase](docs/Model/WordPressV1InstallationsInstallWordPressRequestDatabase.md)
 - [WordPressV1InstallationsWordPressInstallationResource](docs/Model/WordPressV1InstallationsWordPressInstallationResource.md)
+- [WordPressV1PluginsActivatePluginRequest](docs/Model/WordPressV1PluginsActivatePluginRequest.md)
+- [WordPressV1PluginsAvailablePluginResource](docs/Model/WordPressV1PluginsAvailablePluginResource.md)
+- [WordPressV1PluginsDeactivatePluginRequest](docs/Model/WordPressV1PluginsDeactivatePluginRequest.md)
 - [WordPressV1PluginsInstallPluginsRequest](docs/Model/WordPressV1PluginsInstallPluginsRequest.md)
+- [WordPressV1PluginsInstalledPluginResource](docs/Model/WordPressV1PluginsInstalledPluginResource.md)
+- [WordPressV1PluginsPluginResource](docs/Model/WordPressV1PluginsPluginResource.md)
+- [WordPressV1PluginsPluginResourceIcons](docs/Model/WordPressV1PluginsPluginResourceIcons.md)
+- [WordPressV1PluginsSuggestedPluginGroupResource](docs/Model/WordPressV1PluginsSuggestedPluginGroupResource.md)
+- [WordPressV1PluginsSuggestedPluginResource](docs/Model/WordPressV1PluginsSuggestedPluginResource.md)
+- [WordPressV1PluginsUninstallPluginsRequest](docs/Model/WordPressV1PluginsUninstallPluginsRequest.md)
+- [WordPressV1PluginsUpdateHostingerPluginRequest](docs/Model/WordPressV1PluginsUpdateHostingerPluginRequest.md)
+- [WordPressV1PluginsUpdatePluginsRequest](docs/Model/WordPressV1PluginsUpdatePluginsRequest.md)
+- [WordPressV1PluginsWoocommerceInstalledResource](docs/Model/WordPressV1PluginsWoocommerceInstalledResource.md)
+- [WordPressV1ThemesActivateThemeRequest](docs/Model/WordPressV1ThemesActivateThemeRequest.md)
 - [WordPressV1ThemesInstallThemeRequest](docs/Model/WordPressV1ThemesInstallThemeRequest.md)
+- [WordPressV1ThemesInstalledThemeResource](docs/Model/WordPressV1ThemesInstalledThemeResource.md)
+- [WordPressV1ThemesThemeResource](docs/Model/WordPressV1ThemesThemeResource.md)
+- [WordPressV1ThemesUninstallThemesRequest](docs/Model/WordPressV1ThemesUninstallThemesRequest.md)
+- [WordPressV1ThemesUpdateThemesRequest](docs/Model/WordPressV1ThemesUpdateThemesRequest.md)
