@@ -135,6 +135,12 @@ Class | Method | HTTP request | Description
 *HostingNodeJSApi* | [**getNodeJSBuildLogsV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildlogsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs
 *HostingNodeJSApi* | [**listNodeJSBuildsV1**](docs/Api/HostingNodeJSApi.md#listnodejsbuildsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds
 *HostingOrdersApi* | [**listOrdersV1**](docs/Api/HostingOrdersApi.md#listordersv1) | **GET** /api/hosting/v1/orders | List orders
+*HostingPHPApi* | [**getPHPDetailsV1**](docs/Api/HostingPHPApi.md#getphpdetailsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/php/details | Get PHP details
+*HostingPHPApi* | [**getPHPInfoV1**](docs/Api/HostingPHPApi.md#getphpinfov1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/php/php-info | Get PHP info
+*HostingPHPApi* | [**resetPHPExtensionsV1**](docs/Api/HostingPHPApi.md#resetphpextensionsv1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/php/extensions/reset | Reset PHP extensions
+*HostingPHPApi* | [**updatePHPExtensionsV1**](docs/Api/HostingPHPApi.md#updatephpextensionsv1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/php/extensions | Update PHP extensions
+*HostingPHPApi* | [**updatePHPOptionsV1**](docs/Api/HostingPHPApi.md#updatephpoptionsv1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/php/options | Update PHP options
+*HostingPHPApi* | [**updatePHPVersionV1**](docs/Api/HostingPHPApi.md#updatephpversionv1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/php/version | Update PHP version
 *HostingWebsitesApi* | [**createWebsiteV1**](docs/Api/HostingWebsitesApi.md#createwebsitev1) | **POST** /api/hosting/v1/websites | Create website
 *HostingWebsitesApi* | [**listWebsitesV1**](docs/Api/HostingWebsitesApi.md#listwebsitesv1) | **GET** /api/hosting/v1/websites | List websites
 *ReachContactsApi* | [**createANewContactV1**](docs/Api/ReachContactsApi.md#createanewcontactv1) | **POST** /api/reach/v1/contacts | Create a new contact
@@ -333,6 +339,14 @@ Class | Method | HTTP request | Description
 - [HostingV1NodeJsSourceOptionsResource](docs/Model/HostingV1NodeJsSourceOptionsResource.md)
 - [HostingV1OrdersOrderResource](docs/Model/HostingV1OrdersOrderResource.md)
 - [HostingV1OrdersPlanResource](docs/Model/HostingV1OrdersPlanResource.md)
+- [HostingV1PhpPhpDetailsResource](docs/Model/HostingV1PhpPhpDetailsResource.md)
+- [HostingV1PhpPhpInfoResource](docs/Model/HostingV1PhpPhpInfoResource.md)
+- [HostingV1PhpPhpOptionResource](docs/Model/HostingV1PhpPhpOptionResource.md)
+- [HostingV1PhpPhpVersionsResource](docs/Model/HostingV1PhpPhpVersionsResource.md)
+- [HostingV1PhpUpdatePhpExtensionsRequest](docs/Model/HostingV1PhpUpdatePhpExtensionsRequest.md)
+- [HostingV1PhpUpdatePhpOptionsRequest](docs/Model/HostingV1PhpUpdatePhpOptionsRequest.md)
+- [HostingV1PhpUpdatePhpOptionsRequestOptionsValue](docs/Model/HostingV1PhpUpdatePhpOptionsRequestOptionsValue.md)
+- [HostingV1PhpUpdatePhpVersionRequest](docs/Model/HostingV1PhpUpdatePhpVersionRequest.md)
 - [HostingV1WebsitesCreateWebsiteRequest](docs/Model/HostingV1WebsitesCreateWebsiteRequest.md)
 - [HostingV1WebsitesWebsiteResource](docs/Model/HostingV1WebsitesWebsiteResource.md)
 - [InlineObject](docs/Model/InlineObject.md)
