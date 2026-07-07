@@ -219,8 +219,24 @@ Class | Method | HTTP request | Description
 *VPSVirtualMachineApi* | [**setupPurchasedVirtualMachineV1**](docs/Api/VPSVirtualMachineApi.md#setuppurchasedvirtualmachinev1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/setup | Setup purchased virtual machine
 *VPSVirtualMachineApi* | [**startVirtualMachineV1**](docs/Api/VPSVirtualMachineApi.md#startvirtualmachinev1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/start | Start virtual machine
 *VPSVirtualMachineApi* | [**stopVirtualMachineV1**](docs/Api/VPSVirtualMachineApi.md#stopvirtualmachinev1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/stop | Stop virtual machine
+*WordPressAIToolsApi* | [**setAIOptionStatusV1**](docs/Api/WordPressAIToolsApi.md#setaioptionstatusv1) | **PATCH** /api/hosting/v1/accounts/{username}/wordpress/{software}/hostinger-plugins/ai-option/status | Set AI option status
+*WordPressAIToolsApi* | [**showAIOptionStatusV1**](docs/Api/WordPressAIToolsApi.md#showaioptionstatusv1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/hostinger-plugins/ai-option/status | Show AI option status
+*WordPressInstallationsApi* | [**checkIfWordPressInstallationsAreValidV1**](docs/Api/WordPressInstallationsApi.md#checkifwordpressinstallationsarevalidv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/installations/check-is-valid | Check if WordPress installations are valid
+*WordPressInstallationsApi* | [**deleteWordPressInstallationV1**](docs/Api/WordPressInstallationsApi.md#deletewordpressinstallationv1) | **DELETE** /api/hosting/v1/accounts/{username}/wordpress/{software} | Delete WordPress installation
+*WordPressInstallationsApi* | [**detectWordPressInstallationsV1**](docs/Api/WordPressInstallationsApi.md#detectwordpressinstallationsv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/installations/detect | Detect WordPress installations
+*WordPressInstallationsApi* | [**getInstallationJWTTokenV1**](docs/Api/WordPressInstallationsApi.md#getinstallationjwttokenv1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/jwt-token | Get installation JWT token
 *WordPressInstallationsApi* | [**installWordPressV1**](docs/Api/WordPressInstallationsApi.md#installwordpressv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/installations | Install WordPress
+*WordPressInstallationsApi* | [**listAvailableWordPressCoreUpdatesV1**](docs/Api/WordPressInstallationsApi.md#listavailablewordpresscoreupdatesv1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/updates | List available WordPress core updates
 *WordPressInstallationsApi* | [**listWordPressInstallationsV1**](docs/Api/WordPressInstallationsApi.md#listwordpressinstallationsv1) | **GET** /api/hosting/v1/wordpress/installations | List WordPress installations
+*WordPressInstallationsApi* | [**showWordPressCoreVersionV1**](docs/Api/WordPressInstallationsApi.md#showwordpresscoreversionv1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/version | Show WordPress core version
+*WordPressInstallationsApi* | [**updateWordPressCoreV1**](docs/Api/WordPressInstallationsApi.md#updatewordpresscorev1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/update | Update WordPress core
+*WordPressLiteSpeedCacheApi* | [**purgeLiteSpeedCacheV1**](docs/Api/WordPressLiteSpeedCacheApi.md#purgelitespeedcachev1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/litespeed-cache/purge | Purge LiteSpeed Cache
+*WordPressLiteSpeedCacheApi* | [**showLiteSpeedCacheStatusV1**](docs/Api/WordPressLiteSpeedCacheApi.md#showlitespeedcachestatusv1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/litespeed-cache/status | Show LiteSpeed Cache status
+*WordPressLoginApi* | [**createLoginLinksV1**](docs/Api/WordPressLoginApi.md#createloginlinksv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/login/links | Create login links
+*WordPressMaintenanceApi* | [**showMaintenanceStatusV1**](docs/Api/WordPressMaintenanceApi.md#showmaintenancestatusv1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/maintenance/status | Show maintenance status
+*WordPressMaintenanceApi* | [**toggleMaintenanceModeV1**](docs/Api/WordPressMaintenanceApi.md#togglemaintenancemodev1) | **PATCH** /api/hosting/v1/accounts/{username}/wordpress/{software}/maintenance/toggle | Toggle maintenance mode
+*WordPressObjectCacheApi* | [**showMemcachedObjectCacheStatusV1**](docs/Api/WordPressObjectCacheApi.md#showmemcachedobjectcachestatusv1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/memcached/status | Show Memcached object cache status
+*WordPressObjectCacheApi* | [**toggleMemcachedObjectCacheV1**](docs/Api/WordPressObjectCacheApi.md#togglememcachedobjectcachev1) | **PATCH** /api/hosting/v1/accounts/{username}/wordpress/{software}/memcached/toggle | Toggle Memcached object cache
 *WordPressPluginsApi* | [**activateWordPressPluginV1**](docs/Api/WordPressPluginsApi.md#activatewordpresspluginv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/activate | Activate WordPress plugin
 *WordPressPluginsApi* | [**checkIfWooCommerceIsInstalledV1**](docs/Api/WordPressPluginsApi.md#checkifwoocommerceisinstalledv1) | **GET** /api/hosting/v1/wordpress/plugins/is-woocommerce-installed | Check if WooCommerce is installed
 *WordPressPluginsApi* | [**deactivateWordPressPluginV1**](docs/Api/WordPressPluginsApi.md#deactivatewordpresspluginv1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/plugins/deactivate | Deactivate WordPress plugin
@@ -422,10 +438,25 @@ Class | Method | HTTP request | Description
 - [VPSV1VirtualMachineSetupRequestPublicKey](docs/Model/VPSV1VirtualMachineSetupRequestPublicKey.md)
 - [VPSV1VirtualMachineVirtualMachineResource](docs/Model/VPSV1VirtualMachineVirtualMachineResource.md)
 - [WordPressV1CommonVulnerabilityResource](docs/Model/WordPressV1CommonVulnerabilityResource.md)
+- [WordPressV1HostingerPluginsAiOptionStatusResource](docs/Model/WordPressV1HostingerPluginsAiOptionStatusResource.md)
+- [WordPressV1HostingerPluginsUpdateAiOptionStatusRequest](docs/Model/WordPressV1HostingerPluginsUpdateAiOptionStatusRequest.md)
+- [WordPressV1InstallationsCheckIsValidRequest](docs/Model/WordPressV1InstallationsCheckIsValidRequest.md)
+- [WordPressV1InstallationsCheckIsValidResultResource](docs/Model/WordPressV1InstallationsCheckIsValidResultResource.md)
+- [WordPressV1InstallationsDeleteInstallationRequest](docs/Model/WordPressV1InstallationsDeleteInstallationRequest.md)
 - [WordPressV1InstallationsInstallWordPressRequest](docs/Model/WordPressV1InstallationsInstallWordPressRequest.md)
 - [WordPressV1InstallationsInstallWordPressRequestCredentials](docs/Model/WordPressV1InstallationsInstallWordPressRequestCredentials.md)
 - [WordPressV1InstallationsInstallWordPressRequestDatabase](docs/Model/WordPressV1InstallationsInstallWordPressRequestDatabase.md)
+- [WordPressV1InstallationsJwtTokenResource](docs/Model/WordPressV1InstallationsJwtTokenResource.md)
+- [WordPressV1InstallationsUpdateInstallationRequest](docs/Model/WordPressV1InstallationsUpdateInstallationRequest.md)
+- [WordPressV1InstallationsUpdateResource](docs/Model/WordPressV1InstallationsUpdateResource.md)
+- [WordPressV1InstallationsVersionResource](docs/Model/WordPressV1InstallationsVersionResource.md)
 - [WordPressV1InstallationsWordPressInstallationResource](docs/Model/WordPressV1InstallationsWordPressInstallationResource.md)
+- [WordPressV1LitespeedLitespeedCacheStatusResource](docs/Model/WordPressV1LitespeedLitespeedCacheStatusResource.md)
+- [WordPressV1LoginLoginLinksResource](docs/Model/WordPressV1LoginLoginLinksResource.md)
+- [WordPressV1MaintenanceMaintenanceStatusResource](docs/Model/WordPressV1MaintenanceMaintenanceStatusResource.md)
+- [WordPressV1MaintenanceToggleMaintenanceRequest](docs/Model/WordPressV1MaintenanceToggleMaintenanceRequest.md)
+- [WordPressV1MemcachedMemcachedStatusResource](docs/Model/WordPressV1MemcachedMemcachedStatusResource.md)
+- [WordPressV1MemcachedToggleMemcachedRequest](docs/Model/WordPressV1MemcachedToggleMemcachedRequest.md)
 - [WordPressV1PluginsActivatePluginRequest](docs/Model/WordPressV1PluginsActivatePluginRequest.md)
 - [WordPressV1PluginsAvailablePluginResource](docs/Model/WordPressV1PluginsAvailablePluginResource.md)
 - [WordPressV1PluginsDeactivatePluginRequest](docs/Model/WordPressV1PluginsDeactivatePluginRequest.md)
