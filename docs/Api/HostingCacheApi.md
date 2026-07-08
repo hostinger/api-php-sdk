@@ -5,10 +5,8 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**clearWebsiteCacheV1()**](HostingCacheApi.md#clearWebsiteCacheV1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/clear | Clear website cache |
-| [**disableCachelessModeV1()**](HostingCacheApi.md#disableCachelessModeV1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cacheless-mode/disable | Disable cacheless mode |
-| [**disableWebsiteCacheV1()**](HostingCacheApi.md#disableWebsiteCacheV1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/disable | Disable website cache |
-| [**enableCachelessModeV1()**](HostingCacheApi.md#enableCachelessModeV1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cacheless-mode/enable | Enable cacheless mode |
-| [**enableWebsiteCacheV1()**](HostingCacheApi.md#enableWebsiteCacheV1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/enable | Enable website cache |
+| [**toggleCachelessModeV1()**](HostingCacheApi.md#toggleCachelessModeV1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cacheless-mode/toggle | Toggle cacheless mode |
+| [**toggleWebsiteCacheV1()**](HostingCacheApi.md#toggleWebsiteCacheV1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/toggle | Toggle website cache |
 
 
 ## `clearWebsiteCacheV1()`
@@ -61,15 +59,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `disableCachelessModeV1()`
+## `toggleCachelessModeV1()`
 
 ```php
-disableCachelessModeV1($username, $domain): \Hostinger\Model\CommonSuccessEmptyResource
+toggleCachelessModeV1($username, $domain, $hostingV1CacheToggleCachelessModeRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Disable cacheless mode
+Toggle cacheless mode
 
-Turns off development (cacheless) mode and returns the website to normal caching. Use it after finishing development work to restore the performance benefits of caching.
+Turns development (cacheless) mode on or off, based on the enabled flag. When enabled, nothing is cached, effectively turning off all caching for the website; use it while actively developing, testing changes, debugging issues, or when real-time updates must be visible. Disable it after finishing development work to restore the performance benefits of caching.
 
 ### Example
 
@@ -85,12 +83,13 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 $apiInstance = new Hostinger\Api\HostingCacheApi(config: $config);
 $username = u123456789; // string
 $domain = mydomain.tld; // string | Domain name
+$hostingV1CacheToggleCachelessModeRequest = new \Hostinger\Model\HostingV1CacheToggleCachelessModeRequest(); // \Hostinger\Model\HostingV1CacheToggleCachelessModeRequest
 
 try {
-    $result = $apiInstance->disableCachelessModeV1($username, $domain);
+    $result = $apiInstance->toggleCachelessModeV1($username, $domain, $hostingV1CacheToggleCachelessModeRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling HostingCacheApi->disableCachelessModeV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling HostingCacheApi->toggleCachelessModeV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -100,6 +99,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **username** | **string**|  | |
 | **domain** | **string**| Domain name | |
+| **hostingV1CacheToggleCachelessModeRequest** | [**\Hostinger\Model\HostingV1CacheToggleCachelessModeRequest**](../Model/HostingV1CacheToggleCachelessModeRequest.md)|  | |
 
 ### Return type
 
@@ -109,15 +109,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `disableWebsiteCacheV1()`
+## `toggleWebsiteCacheV1()`
 
 ```php
-disableWebsiteCacheV1($username, $domain): \Hostinger\Model\CommonSuccessEmptyResource
+toggleWebsiteCacheV1($username, $domain, $hostingV1CacheToggleCacheRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Disable website cache
+Toggle website cache
 
-Turns off server-side caching for the website until it is enabled again. May impact performance. Use it when experiencing cache-related issues; to temporarily bypass caching while developing or debugging, prefer enabling cacheless mode instead.  Does nothing if caching is already disabled.
+Turns server-side caching for the website on or off, based on the enabled flag. Enable it for faster page loads, reduced server load, and improved user experience; recommended for production websites. Disabling may impact performance; to temporarily bypass caching while developing or debugging, prefer toggling cacheless mode instead.  Does nothing if caching is already in the requested state.
 
 ### Example
 
@@ -133,12 +133,13 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 $apiInstance = new Hostinger\Api\HostingCacheApi(config: $config);
 $username = u123456789; // string
 $domain = mydomain.tld; // string | Domain name
+$hostingV1CacheToggleCacheRequest = new \Hostinger\Model\HostingV1CacheToggleCacheRequest(); // \Hostinger\Model\HostingV1CacheToggleCacheRequest
 
 try {
-    $result = $apiInstance->disableWebsiteCacheV1($username, $domain);
+    $result = $apiInstance->toggleWebsiteCacheV1($username, $domain, $hostingV1CacheToggleCacheRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling HostingCacheApi->disableWebsiteCacheV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling HostingCacheApi->toggleWebsiteCacheV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -148,102 +149,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **username** | **string**|  | |
 | **domain** | **string**| Domain name | |
-
-### Return type
-
-[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `enableCachelessModeV1()`
-
-```php
-enableCachelessModeV1($username, $domain): \Hostinger\Model\CommonSuccessEmptyResource
-```
-
-Enable cacheless mode
-
-Enables development (cacheless) mode where nothing is cached, effectively turning off all caching for the website. Use it while actively developing, testing changes, debugging issues, or when real-time updates must be visible. Disable cacheless mode afterwards to restore normal caching.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer authorization: apiToken
-$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Hostinger\Api\HostingCacheApi(config: $config);
-$username = u123456789; // string
-$domain = mydomain.tld; // string | Domain name
-
-try {
-    $result = $apiInstance->enableCachelessModeV1($username, $domain);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling HostingCacheApi->enableCachelessModeV1: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **username** | **string**|  | |
-| **domain** | **string**| Domain name | |
-
-### Return type
-
-[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `enableWebsiteCacheV1()`
-
-```php
-enableWebsiteCacheV1($username, $domain): \Hostinger\Model\CommonSuccessEmptyResource
-```
-
-Enable website cache
-
-Turns on server-side caching for the website for better performance. Use it for faster page loads, reduced server load, or improved user experience. Recommended for production websites.  Does nothing if caching is already enabled.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer authorization: apiToken
-$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Hostinger\Api\HostingCacheApi(config: $config);
-$username = u123456789; // string
-$domain = mydomain.tld; // string | Domain name
-
-try {
-    $result = $apiInstance->enableWebsiteCacheV1($username, $domain);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling HostingCacheApi->enableWebsiteCacheV1: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **username** | **string**|  | |
-| **domain** | **string**| Domain name | |
+| **hostingV1CacheToggleCacheRequest** | [**\Hostinger\Model\HostingV1CacheToggleCacheRequest**](../Model/HostingV1CacheToggleCacheRequest.md)|  | |
 
 ### Return type
 

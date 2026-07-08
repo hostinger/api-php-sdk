@@ -112,10 +112,8 @@ Class | Method | HTTP request | Description
 *HorizonsWebsitesApi* | [**createWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#createwebsitev1) | **POST** /api/horizons/v1/websites | Create website
 *HorizonsWebsitesApi* | [**getWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#getwebsitev1) | **GET** /api/horizons/v1/websites/{websiteId} | Get website
 *HostingCacheApi* | [**clearWebsiteCacheV1**](docs/Api/HostingCacheApi.md#clearwebsitecachev1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/clear | Clear website cache
-*HostingCacheApi* | [**disableCachelessModeV1**](docs/Api/HostingCacheApi.md#disablecachelessmodev1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cacheless-mode/disable | Disable cacheless mode
-*HostingCacheApi* | [**disableWebsiteCacheV1**](docs/Api/HostingCacheApi.md#disablewebsitecachev1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/disable | Disable website cache
-*HostingCacheApi* | [**enableCachelessModeV1**](docs/Api/HostingCacheApi.md#enablecachelessmodev1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cacheless-mode/enable | Enable cacheless mode
-*HostingCacheApi* | [**enableWebsiteCacheV1**](docs/Api/HostingCacheApi.md#enablewebsitecachev1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/enable | Enable website cache
+*HostingCacheApi* | [**toggleCachelessModeV1**](docs/Api/HostingCacheApi.md#togglecachelessmodev1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cacheless-mode/toggle | Toggle cacheless mode
+*HostingCacheApi* | [**toggleWebsiteCacheV1**](docs/Api/HostingCacheApi.md#togglewebsitecachev1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/toggle | Toggle website cache
 *HostingCronJobsApi* | [**createAccountCronJobV1**](docs/Api/HostingCronJobsApi.md#createaccountcronjobv1) | **POST** /api/hosting/v1/accounts/{username}/cron-jobs | Create account cron job
 *HostingCronJobsApi* | [**deleteAccountCronJobV1**](docs/Api/HostingCronJobsApi.md#deleteaccountcronjobv1) | **DELETE** /api/hosting/v1/accounts/{username}/cron-jobs/{uid} | Delete account cron job
 *HostingCronJobsApi* | [**getCronJobOutputV1**](docs/Api/HostingCronJobsApi.md#getcronjoboutputv1) | **GET** /api/hosting/v1/accounts/{username}/cron-jobs/{uid}/output | Get cron job output
@@ -342,6 +340,8 @@ Class | Method | HTTP request | Description
 - [HostingListNodeJSBuildsV1200Response](docs/Model/HostingListNodeJSBuildsV1200Response.md)
 - [HostingListOrdersV1200Response](docs/Model/HostingListOrdersV1200Response.md)
 - [HostingListWebsitesV1200Response](docs/Model/HostingListWebsitesV1200Response.md)
+- [HostingV1CacheToggleCacheRequest](docs/Model/HostingV1CacheToggleCacheRequest.md)
+- [HostingV1CacheToggleCachelessModeRequest](docs/Model/HostingV1CacheToggleCachelessModeRequest.md)
 - [HostingV1CronJobsCreateCronJobRequest](docs/Model/HostingV1CronJobsCreateCronJobRequest.md)
 - [HostingV1CronJobsCronJobOutputResource](docs/Model/HostingV1CronJobsCronJobOutputResource.md)
 - [HostingV1CronJobsCronJobResource](docs/Model/HostingV1CronJobsCronJobResource.md)
