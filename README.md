@@ -68,6 +68,7 @@ Class | Method | HTTP request | Description
 *AgencyHostingDomainsApi* | [**linkDomainToAgencyPlanWebsiteV1**](docs/Api/AgencyHostingDomainsApi.md#linkdomaintoagencyplanwebsitev1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/domains | Link domain to Agency Plan website
 *AgencyHostingDomainsApi* | [**listAgencyPlanDomainsV1**](docs/Api/AgencyHostingDomainsApi.md#listagencyplandomainsv1) | **GET** /api/agency-hosting/v1/domains | List Agency Plan domains
 *AgencyHostingDomainsApi* | [**unlinkDomainFromAgencyPlanWebsiteV1**](docs/Api/AgencyHostingDomainsApi.md#unlinkdomainfromagencyplanwebsitev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/domains/{domain} | Unlink domain from Agency Plan website
+*AgencyHostingFilesApi* | [**importAgencyPlanWebsiteFromArchiveV1**](docs/Api/AgencyHostingFilesApi.md#importagencyplanwebsitefromarchivev1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/files/import-archive | Import Agency Plan website from archive
 *AgencyHostingWebsiteSetupsApi* | [**getAgencyPlanWebsiteSetupStatusV1**](docs/Api/AgencyHostingWebsiteSetupsApi.md#getagencyplanwebsitesetupstatusv1) | **GET** /api/agency-hosting/v1/orders/{order_id}/websites/setups/{setup_uuid} | Get Agency Plan website setup status
 *AgencyHostingWebsiteSetupsApi* | [**provisionANewAgencyPlanWebsiteV1**](docs/Api/AgencyHostingWebsiteSetupsApi.md#provisionanewagencyplanwebsitev1) | **POST** /api/agency-hosting/v1/orders/{order_id}/websites/setups | Provision a new Agency Plan website
 *AgencyHostingWebsitesApi* | [**buildAgencyPlanWebsiteNodeJSAssetsV1**](docs/Api/AgencyHostingWebsitesApi.md#buildagencyplanwebsitenodejsassetsv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/build-assets | Build Agency Plan website NodeJS assets
@@ -277,6 +278,8 @@ Class | Method | HTTP request | Description
 - [AgencyHostingV1DomainsChangeDomainRequest](docs/Model/AgencyHostingV1DomainsChangeDomainRequest.md)
 - [AgencyHostingV1DomainsDomainResource](docs/Model/AgencyHostingV1DomainsDomainResource.md)
 - [AgencyHostingV1DomainsLinkDomainRequest](docs/Model/AgencyHostingV1DomainsLinkDomainRequest.md)
+- [AgencyHostingV1FilesImportArchiveRequest](docs/Model/AgencyHostingV1FilesImportArchiveRequest.md)
+- [AgencyHostingV1FilesUploadUrlResource](docs/Model/AgencyHostingV1FilesUploadUrlResource.md)
 - [AgencyHostingV1SetupsCreateSetupRequest](docs/Model/AgencyHostingV1SetupsCreateSetupRequest.md)
 - [AgencyHostingV1SetupsCreateSetupRequestClone](docs/Model/AgencyHostingV1SetupsCreateSetupRequestClone.md)
 - [AgencyHostingV1SetupsCreateSetupRequestDeriveDomain](docs/Model/AgencyHostingV1SetupsCreateSetupRequestDeriveDomain.md)
