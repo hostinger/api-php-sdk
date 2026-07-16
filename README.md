@@ -151,6 +151,8 @@ Class | Method | HTTP request | Description
 *HostingNodeJSApi* | [**createNodeJSBuildFromArchiveV1**](docs/Api/HostingNodeJSApi.md#createnodejsbuildfromarchivev1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/from-archive | Create NodeJS build from archive
 *HostingNodeJSApi* | [**getNodeJSBuildLogsV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildlogsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs
 *HostingNodeJSApi* | [**listNodeJSBuildsV1**](docs/Api/HostingNodeJSApi.md#listnodejsbuildsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds
+*HostingNodeJSApi* | [**listNodeJsVulnerabilitiesV1**](docs/Api/HostingNodeJSApi.md#listnodejsvulnerabilitiesv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/vulnerabilities | List Node.js vulnerabilities
+*HostingNodeJSApi* | [**patchNodeJsVulnerabilitiesV1**](docs/Api/HostingNodeJSApi.md#patchnodejsvulnerabilitiesv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/vulnerabilities/patch | Patch Node.js vulnerabilities
 *HostingNodeJSApi* | [**restartNodeJsApplicationV1**](docs/Api/HostingNodeJSApi.md#restartnodejsapplicationv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/server/restart | Restart Node.js application
 *HostingOrdersApi* | [**listOrdersV1**](docs/Api/HostingOrdersApi.md#listordersv1) | **GET** /api/hosting/v1/orders | List orders
 *HostingPHPApi* | [**getPHPDetailsV1**](docs/Api/HostingPHPApi.md#getphpdetailsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/php/details | Get PHP details
@@ -417,7 +419,10 @@ Class | Method | HTTP request | Description
 - [HostingV1NodeJsBuildOptionsResource](docs/Model/HostingV1NodeJsBuildOptionsResource.md)
 - [HostingV1NodeJsBuildResource](docs/Model/HostingV1NodeJsBuildResource.md)
 - [HostingV1NodeJsCreateFromArchiveRequest](docs/Model/HostingV1NodeJsCreateFromArchiveRequest.md)
+- [HostingV1NodeJsPatchResultResource](docs/Model/HostingV1NodeJsPatchResultResource.md)
+- [HostingV1NodeJsPatchVulnerabilitiesRequest](docs/Model/HostingV1NodeJsPatchVulnerabilitiesRequest.md)
 - [HostingV1NodeJsSourceOptionsResource](docs/Model/HostingV1NodeJsSourceOptionsResource.md)
+- [HostingV1NodeJsVulnerabilityResource](docs/Model/HostingV1NodeJsVulnerabilityResource.md)
 - [HostingV1OrdersOrderResource](docs/Model/HostingV1OrdersOrderResource.md)
 - [HostingV1OrdersPlanResource](docs/Model/HostingV1OrdersPlanResource.md)
 - [HostingV1PhpPhpDetailsResource](docs/Model/HostingV1PhpPhpDetailsResource.md)

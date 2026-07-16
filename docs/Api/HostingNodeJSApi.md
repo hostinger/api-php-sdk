@@ -7,6 +7,8 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**createNodeJSBuildFromArchiveV1()**](HostingNodeJSApi.md#createNodeJSBuildFromArchiveV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/from-archive | Create NodeJS build from archive |
 | [**getNodeJSBuildLogsV1()**](HostingNodeJSApi.md#getNodeJSBuildLogsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs |
 | [**listNodeJSBuildsV1()**](HostingNodeJSApi.md#listNodeJSBuildsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds |
+| [**listNodeJsVulnerabilitiesV1()**](HostingNodeJSApi.md#listNodeJsVulnerabilitiesV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/vulnerabilities | List Node.js vulnerabilities |
+| [**patchNodeJsVulnerabilitiesV1()**](HostingNodeJSApi.md#patchNodeJsVulnerabilitiesV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/vulnerabilities/patch | Patch Node.js vulnerabilities |
 | [**restartNodeJsApplicationV1()**](HostingNodeJSApi.md#restartNodeJsApplicationV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/server/restart | Restart Node.js application |
 
 
@@ -161,6 +163,106 @@ try {
 ### Return type
 
 [**\Hostinger\Model\HostingListNodeJSBuildsV1200Response**](../Model/HostingListNodeJSBuildsV1200Response.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listNodeJsVulnerabilitiesV1()`
+
+```php
+listNodeJsVulnerabilitiesV1($username, $domain, $severities): \Hostinger\Model\HostingV1NodeJsVulnerabilityResource[]
+```
+
+List Node.js vulnerabilities
+
+Lists known npm package vulnerabilities detected on a Node.js website, enriched with advisory metadata (severity, CVSS score, CVE, advisory URL). Results are sorted from the most severe to the least severe, then by publish date (newest first). Use the `severities` query parameter to filter.  Vulnerabilities with `is_patchable` set to `true` can be auto-fixed via the `Patch Node.js Vulnerabilities` endpoint, which opens a GitHub pull request with updated package versions. Auto-fix is only available for websites deployed from a connected GitHub repository. Vulnerabilities with `is_patching_in_progress` set to `true` are already included in an open patch pull request; while any patch pull request is open, new patch requests for this website are rejected until it is merged or closed.  Data comes from periodic dependency scans, so it may lag behind the latest deployment. An empty list means the most recent scan found no vulnerabilities; it does not guarantee the current deployment is vulnerability-free. Available on Business and Cloud Hosting plans.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$severities = array('severities_example'); // string[] | Severities to filter by
+
+try {
+    $result = $apiInstance->listNodeJsVulnerabilitiesV1($username, $domain, $severities);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->listNodeJsVulnerabilitiesV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **severities** | [**string[]**](../Model/string.md)| Severities to filter by | [optional] |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1NodeJsVulnerabilityResource[]**](../Model/HostingV1NodeJsVulnerabilityResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `patchNodeJsVulnerabilitiesV1()`
+
+```php
+patchNodeJsVulnerabilitiesV1($username, $domain, $hostingV1NodeJsPatchVulnerabilitiesRequest): \Hostinger\Model\HostingV1NodeJsPatchResultResource
+```
+
+Patch Node.js vulnerabilities
+
+Patches the selected Node.js vulnerabilities by updating the affected package versions in `package.json` and opening a GitHub pull request in the connected repository. The customer reviews and merges the pull request; merging triggers the automatic deployment.  Auto-fix is only available for websites deployed from a connected GitHub repository. Websites deployed from an archive have no auto-fix path and return a 404. The Hostinger GitHub App needs write access to the repository; without it the request fails with a 403 explaining the missing permission.  Only vulnerabilities with `is_patchable` set to `true` can be patched. Non-patchable IDs in the selection are skipped; the pull request covers the patchable subset, listed in `patched_vulnerability_ids`. Selections without any patchable vulnerability are rejected with a 422. Only one patch pull request can be open at a time per website; close or merge it before patching again. Available on Business and Cloud Hosting plans.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$hostingV1NodeJsPatchVulnerabilitiesRequest = new \Hostinger\Model\HostingV1NodeJsPatchVulnerabilitiesRequest(); // \Hostinger\Model\HostingV1NodeJsPatchVulnerabilitiesRequest
+
+try {
+    $result = $apiInstance->patchNodeJsVulnerabilitiesV1($username, $domain, $hostingV1NodeJsPatchVulnerabilitiesRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->patchNodeJsVulnerabilitiesV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **hostingV1NodeJsPatchVulnerabilitiesRequest** | [**\Hostinger\Model\HostingV1NodeJsPatchVulnerabilitiesRequest**](../Model/HostingV1NodeJsPatchVulnerabilitiesRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1NodeJsPatchResultResource**](../Model/HostingV1NodeJsPatchResultResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
