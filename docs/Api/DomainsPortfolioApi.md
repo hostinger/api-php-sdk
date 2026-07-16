@@ -10,6 +10,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**enablePrivacyProtectionV1()**](DomainsPortfolioApi.md#enablePrivacyProtectionV1) | **PUT** /api/domains/v1/portfolio/{domain}/privacy-protection | Enable privacy protection |
 | [**getDomainDetailsV1()**](DomainsPortfolioApi.md#getDomainDetailsV1) | **GET** /api/domains/v1/portfolio/{domain} | Get domain details |
 | [**getDomainListV1()**](DomainsPortfolioApi.md#getDomainListV1) | **GET** /api/domains/v1/portfolio | Get domain list |
+| [**getDomainRenewalInformationV1()**](DomainsPortfolioApi.md#getDomainRenewalInformationV1) | **GET** /api/domains/v1/portfolio/{domain}/renewal | Get domain renewal information |
 | [**purchaseNewDomainV1()**](DomainsPortfolioApi.md#purchaseNewDomainV1) | **POST** /api/domains/v1/portfolio | Purchase new domain |
 | [**updateDomainNameserversV1()**](DomainsPortfolioApi.md#updateDomainNameserversV1) | **PUT** /api/domains/v1/portfolio/{domain}/nameservers | Update domain nameservers |
 
@@ -282,6 +283,52 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**\Hostinger\Model\DomainsV1DomainDomainResource[]**](../Model/DomainsV1DomainDomainResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getDomainRenewalInformationV1()`
+
+```php
+getDomainRenewalInformationV1($domain): \Hostinger\Model\DomainsV1PortfolioRenewalRenewalInformationResource
+```
+
+Get domain renewal information
+
+Retrieve renewal information for a specified domain, including its status and current expiration date.  Use this endpoint to build renewal automation and expiry monitoring for a single domain.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\DomainsPortfolioApi(config: $config);
+$domain = mydomain.tld; // string | Domain name
+
+try {
+    $result = $apiInstance->getDomainRenewalInformationV1($domain);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DomainsPortfolioApi->getDomainRenewalInformationV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Domain name | |
+
+### Return type
+
+[**\Hostinger\Model\DomainsV1PortfolioRenewalRenewalInformationResource**](../Model/DomainsV1PortfolioRenewalRenewalInformationResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

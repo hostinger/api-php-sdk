@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 *DomainsPortfolioApi* | [**enablePrivacyProtectionV1**](docs/Api/DomainsPortfolioApi.md#enableprivacyprotectionv1) | **PUT** /api/domains/v1/portfolio/{domain}/privacy-protection | Enable privacy protection
 *DomainsPortfolioApi* | [**getDomainDetailsV1**](docs/Api/DomainsPortfolioApi.md#getdomaindetailsv1) | **GET** /api/domains/v1/portfolio/{domain} | Get domain details
 *DomainsPortfolioApi* | [**getDomainListV1**](docs/Api/DomainsPortfolioApi.md#getdomainlistv1) | **GET** /api/domains/v1/portfolio | Get domain list
+*DomainsPortfolioApi* | [**getDomainRenewalInformationV1**](docs/Api/DomainsPortfolioApi.md#getdomainrenewalinformationv1) | **GET** /api/domains/v1/portfolio/{domain}/renewal | Get domain renewal information
 *DomainsPortfolioApi* | [**purchaseNewDomainV1**](docs/Api/DomainsPortfolioApi.md#purchasenewdomainv1) | **POST** /api/domains/v1/portfolio | Purchase new domain
 *DomainsPortfolioApi* | [**updateDomainNameserversV1**](docs/Api/DomainsPortfolioApi.md#updatedomainnameserversv1) | **PUT** /api/domains/v1/portfolio/{domain}/nameservers | Update domain nameservers
 *DomainsWHOISApi* | [**createWHOISProfileV1**](docs/Api/DomainsWHOISApi.md#createwhoisprofilev1) | **POST** /api/domains/v1/whois | Create WHOIS profile
@@ -350,6 +351,7 @@ Class | Method | HTTP request | Description
 - [DomainsV1ForwardingStoreRequest](docs/Model/DomainsV1ForwardingStoreRequest.md)
 - [DomainsV1PortfolioPurchaseRequest](docs/Model/DomainsV1PortfolioPurchaseRequest.md)
 - [DomainsV1PortfolioPurchaseRequestDomainContacts](docs/Model/DomainsV1PortfolioPurchaseRequestDomainContacts.md)
+- [DomainsV1PortfolioRenewalRenewalInformationResource](docs/Model/DomainsV1PortfolioRenewalRenewalInformationResource.md)
 - [DomainsV1PortfolioUpdateNameserversRequest](docs/Model/DomainsV1PortfolioUpdateNameserversRequest.md)
 - [DomainsV1WHOISProfileResource](docs/Model/DomainsV1WHOISProfileResource.md)
 - [DomainsV1WHOISStoreRequest](docs/Model/DomainsV1WHOISStoreRequest.md)
