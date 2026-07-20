@@ -40,20 +40,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Hostinger\Api\AgencyHostingCronJobsApi(
+$apiInstance = new Hostinger\Api\AgencyHostingCacheApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     client: new GuzzleHttp\Client(),
     config: $config
 );
 $websiteUid = zpwlGlp19; // string | Agency Plan website UID
-$agencyHostingV1WebsitesCronJobsCreateCronJobRequest = new \Hostinger\Model\AgencyHostingV1WebsitesCronJobsCreateCronJobRequest(); // \Hostinger\Model\AgencyHostingV1WebsitesCronJobsCreateCronJobRequest
 
 try {
-    $result = $apiInstance->createAgencyPlanWebsiteCronJobV1($websiteUid, $agencyHostingV1WebsitesCronJobsCreateCronJobRequest);
+    $result = $apiInstance->clearAgencyPlanWebsiteCacheV1($websiteUid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingCronJobsApi->createAgencyPlanWebsiteCronJobV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingCacheApi->clearAgencyPlanWebsiteCacheV1: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
@@ -64,6 +63,7 @@ All URIs are relative to *https://developers.hostinger.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AgencyHostingCacheApi* | [**clearAgencyPlanWebsiteCacheV1**](docs/Api/AgencyHostingCacheApi.md#clearagencyplanwebsitecachev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/cache | Clear Agency Plan website cache
 *AgencyHostingCronJobsApi* | [**createAgencyPlanWebsiteCronJobV1**](docs/Api/AgencyHostingCronJobsApi.md#createagencyplanwebsitecronjobv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/cron-jobs | Create Agency Plan website cron job
 *AgencyHostingCronJobsApi* | [**deleteAgencyPlanWebsiteCronJobV1**](docs/Api/AgencyHostingCronJobsApi.md#deleteagencyplanwebsitecronjobv1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/cron-jobs/{uuid} | Delete Agency Plan website cron job
 *AgencyHostingCronJobsApi* | [**listAgencyPlanWebsiteCronJobsV1**](docs/Api/AgencyHostingCronJobsApi.md#listagencyplanwebsitecronjobsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/cron-jobs | List Agency Plan website cron jobs
