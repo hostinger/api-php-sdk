@@ -67,6 +67,11 @@ Class | Method | HTTP request | Description
 *AgencyHostingCronJobsApi* | [**createAgencyPlanWebsiteCronJobV1**](docs/Api/AgencyHostingCronJobsApi.md#createagencyplanwebsitecronjobv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/cron-jobs | Create Agency Plan website cron job
 *AgencyHostingCronJobsApi* | [**deleteAgencyPlanWebsiteCronJobV1**](docs/Api/AgencyHostingCronJobsApi.md#deleteagencyplanwebsitecronjobv1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/cron-jobs/{uuid} | Delete Agency Plan website cron job
 *AgencyHostingCronJobsApi* | [**listAgencyPlanWebsiteCronJobsV1**](docs/Api/AgencyHostingCronJobsApi.md#listagencyplanwebsitecronjobsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/cron-jobs | List Agency Plan website cron jobs
+*AgencyHostingDatabasesApi* | [**createAgencyPlanWebsiteDatabaseUserV1**](docs/Api/AgencyHostingDatabasesApi.md#createagencyplanwebsitedatabaseuserv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/databases/{database_name}/users | Create Agency Plan website database user
+*AgencyHostingDatabasesApi* | [**createAgencyPlanWebsiteDatabaseV1**](docs/Api/AgencyHostingDatabasesApi.md#createagencyplanwebsitedatabasev1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/databases | Create Agency Plan website database
+*AgencyHostingDatabasesApi* | [**deleteAgencyPlanWebsiteDatabaseUserV1**](docs/Api/AgencyHostingDatabasesApi.md#deleteagencyplanwebsitedatabaseuserv1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/databases/{database_name}/users/{database_user_name} | Delete Agency Plan website database user
+*AgencyHostingDatabasesApi* | [**deleteAgencyPlanWebsiteDatabaseV1**](docs/Api/AgencyHostingDatabasesApi.md#deleteagencyplanwebsitedatabasev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/databases/{database_name} | Delete Agency Plan website database
+*AgencyHostingDatabasesApi* | [**listAgencyPlanWebsiteDatabasesV1**](docs/Api/AgencyHostingDatabasesApi.md#listagencyplanwebsitedatabasesv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/databases | List Agency Plan website databases
 *AgencyHostingDatacentersApi* | [**listAvailableDatacentersForAnAgencyPlanOrderV1**](docs/Api/AgencyHostingDatacentersApi.md#listavailabledatacentersforanagencyplanorderv1) | **GET** /api/agency-hosting/v1/orders/{order_id}/datacenters | List available datacenters for an Agency Plan order
 *AgencyHostingDomainsApi* | [**changeAgencyPlanWebsiteDomainV1**](docs/Api/AgencyHostingDomainsApi.md#changeagencyplanwebsitedomainv1) | **PUT** /api/agency-hosting/v1/websites/{website_uid}/domains/{from_domain} | Change Agency Plan website domain
 *AgencyHostingDomainsApi* | [**linkDomainToAgencyPlanWebsiteV1**](docs/Api/AgencyHostingDomainsApi.md#linkdomaintoagencyplanwebsitev1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/domains | Link domain to Agency Plan website
@@ -287,6 +292,7 @@ Class | Method | HTTP request | Description
 
 - [AgencyHostingListAgencyPlanDomainsV1200Response](docs/Model/AgencyHostingListAgencyPlanDomainsV1200Response.md)
 - [AgencyHostingListAgencyPlanWebsiteCronJobsV1200Response](docs/Model/AgencyHostingListAgencyPlanWebsiteCronJobsV1200Response.md)
+- [AgencyHostingListAgencyPlanWebsiteDatabasesV1200Response](docs/Model/AgencyHostingListAgencyPlanWebsiteDatabasesV1200Response.md)
 - [AgencyHostingV1DatacentersCoordinatesResource](docs/Model/AgencyHostingV1DatacentersCoordinatesResource.md)
 - [AgencyHostingV1DatacentersDatacenterResource](docs/Model/AgencyHostingV1DatacentersDatacenterResource.md)
 - [AgencyHostingV1DomainsChangeDomainRequest](docs/Model/AgencyHostingV1DomainsChangeDomainRequest.md)
@@ -308,6 +314,10 @@ Class | Method | HTTP request | Description
 - [AgencyHostingV1WebsitesCronJobsCreateCronJobRequest](docs/Model/AgencyHostingV1WebsitesCronJobsCreateCronJobRequest.md)
 - [AgencyHostingV1WebsitesCronJobsCronJobResource](docs/Model/AgencyHostingV1WebsitesCronJobsCronJobResource.md)
 - [AgencyHostingV1WebsitesCustomSslCertResource](docs/Model/AgencyHostingV1WebsitesCustomSslCertResource.md)
+- [AgencyHostingV1WebsitesDatabasesCreateDatabaseRequest](docs/Model/AgencyHostingV1WebsitesDatabasesCreateDatabaseRequest.md)
+- [AgencyHostingV1WebsitesDatabasesDatabaseResource](docs/Model/AgencyHostingV1WebsitesDatabasesDatabaseResource.md)
+- [AgencyHostingV1WebsitesDatabasesDatabaseUserResource](docs/Model/AgencyHostingV1WebsitesDatabasesDatabaseUserResource.md)
+- [AgencyHostingV1WebsitesDatabasesUsersCreateDatabaseUserRequest](docs/Model/AgencyHostingV1WebsitesDatabasesUsersCreateDatabaseUserRequest.md)
 - [AgencyHostingV1WebsitesSslCertResource](docs/Model/AgencyHostingV1WebsitesSslCertResource.md)
 - [AgencyHostingV1WebsitesWebsiteDeletionResource](docs/Model/AgencyHostingV1WebsitesWebsiteDeletionResource.md)
 - [AgencyHostingV1WebsitesWebsiteDomainDetailsResource](docs/Model/AgencyHostingV1WebsitesWebsiteDomainDetailsResource.md)
