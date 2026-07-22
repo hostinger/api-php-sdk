@@ -8,6 +8,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**disablePrivacyProtectionV1()**](DomainsPortfolioApi.md#disablePrivacyProtectionV1) | **DELETE** /api/domains/v1/portfolio/{domain}/privacy-protection | Disable privacy protection |
 | [**enableDomainLockV1()**](DomainsPortfolioApi.md#enableDomainLockV1) | **PUT** /api/domains/v1/portfolio/{domain}/domain-lock | Enable domain lock |
 | [**enablePrivacyProtectionV1()**](DomainsPortfolioApi.md#enablePrivacyProtectionV1) | **PUT** /api/domains/v1/portfolio/{domain}/privacy-protection | Enable privacy protection |
+| [**getDomainAuthorizationCodeV1()**](DomainsPortfolioApi.md#getDomainAuthorizationCodeV1) | **GET** /api/domains/v1/portfolio/{domain}/auth-code | Get domain authorization code |
 | [**getDomainDetailsV1()**](DomainsPortfolioApi.md#getDomainDetailsV1) | **GET** /api/domains/v1/portfolio/{domain} | Get domain details |
 | [**getDomainListV1()**](DomainsPortfolioApi.md#getDomainListV1) | **GET** /api/domains/v1/portfolio | Get domain list |
 | [**getDomainRenewalInformationV1()**](DomainsPortfolioApi.md#getDomainRenewalInformationV1) | **GET** /api/domains/v1/portfolio/{domain}/renewal | Get domain renewal information |
@@ -194,6 +195,52 @@ try {
 ### Return type
 
 [**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getDomainAuthorizationCodeV1()`
+
+```php
+getDomainAuthorizationCodeV1($domain): \Hostinger\Model\DomainsV1PortfolioAuthCodeAuthCodeResource
+```
+
+Get domain authorization code
+
+Retrieve the authorization (EPP) code for a specified domain so it can be transferred away from Hostinger to another registrar.  Requesting a new code invalidates any code retrieved previously.  Use this endpoint to obtain the code required to transfer a domain to another registrar.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\DomainsPortfolioApi(config: $config);
+$domain = mydomain.tld; // string | Domain name
+
+try {
+    $result = $apiInstance->getDomainAuthorizationCodeV1($domain);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DomainsPortfolioApi->getDomainAuthorizationCodeV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Domain name | |
+
+### Return type
+
+[**\Hostinger\Model\DomainsV1PortfolioAuthCodeAuthCodeResource**](../Model/DomainsV1PortfolioAuthCodeAuthCodeResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
