@@ -99,6 +99,7 @@ Class | Method | HTTP request | Description
 *DomainsForwardingApi* | [**createDomainForwardingV1**](docs/Api/DomainsForwardingApi.md#createdomainforwardingv1) | **POST** /api/domains/v1/forwarding | Create domain forwarding
 *DomainsForwardingApi* | [**deleteDomainForwardingV1**](docs/Api/DomainsForwardingApi.md#deletedomainforwardingv1) | **DELETE** /api/domains/v1/forwarding/{domain} | Delete domain forwarding
 *DomainsForwardingApi* | [**getDomainForwardingV1**](docs/Api/DomainsForwardingApi.md#getdomainforwardingv1) | **GET** /api/domains/v1/forwarding/{domain} | Get domain forwarding
+*DomainsForwardingApi* | [**updateDomainForwardingV1**](docs/Api/DomainsForwardingApi.md#updatedomainforwardingv1) | **PUT** /api/domains/v1/forwarding/{domain} | Update domain forwarding
 *DomainsPortfolioApi* | [**disableDomainLockV1**](docs/Api/DomainsPortfolioApi.md#disabledomainlockv1) | **DELETE** /api/domains/v1/portfolio/{domain}/domain-lock | Disable domain lock
 *DomainsPortfolioApi* | [**disablePrivacyProtectionV1**](docs/Api/DomainsPortfolioApi.md#disableprivacyprotectionv1) | **DELETE** /api/domains/v1/portfolio/{domain}/privacy-protection | Disable privacy protection
 *DomainsPortfolioApi* | [**enableDomainLockV1**](docs/Api/DomainsPortfolioApi.md#enabledomainlockv1) | **PUT** /api/domains/v1/portfolio/{domain}/domain-lock | Enable domain lock
@@ -359,6 +360,7 @@ Class | Method | HTTP request | Description
 - [DomainsV1DomainDomainResource](docs/Model/DomainsV1DomainDomainResource.md)
 - [DomainsV1ForwardingForwardingResource](docs/Model/DomainsV1ForwardingForwardingResource.md)
 - [DomainsV1ForwardingStoreRequest](docs/Model/DomainsV1ForwardingStoreRequest.md)
+- [DomainsV1ForwardingUpdateRequest](docs/Model/DomainsV1ForwardingUpdateRequest.md)
 - [DomainsV1PortfolioPurchaseRequest](docs/Model/DomainsV1PortfolioPurchaseRequest.md)
 - [DomainsV1PortfolioPurchaseRequestDomainContacts](docs/Model/DomainsV1PortfolioPurchaseRequestDomainContacts.md)
 - [DomainsV1PortfolioRenewalRenewalInformationResource](docs/Model/DomainsV1PortfolioRenewalRenewalInformationResource.md)
