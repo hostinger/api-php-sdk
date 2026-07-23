@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 *AgencyHostingWebsitesApi* | [**getAgencyPlanWebsiteDetailsV1**](docs/Api/AgencyHostingWebsitesApi.md#getagencyplanwebsitedetailsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid} | Get Agency Plan website details
 *AgencyHostingWebsitesApi* | [**listRunningAgencyPlanWebsiteProcessesV1**](docs/Api/AgencyHostingWebsitesApi.md#listrunningagencyplanwebsiteprocessesv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/processes | List running Agency Plan website processes
 *BillingCatalogApi* | [**getCatalogItemListV1**](docs/Api/BillingCatalogApi.md#getcatalogitemlistv1) | **GET** /api/billing/v1/catalog | Get catalog item list
+*BillingOrdersApi* | [**createPurchaseOrderV1**](docs/Api/BillingOrdersApi.md#createpurchaseorderv1) | **POST** /api/billing/v1/orders | Create purchase order
 *BillingPaymentMethodsApi* | [**deletePaymentMethodV1**](docs/Api/BillingPaymentMethodsApi.md#deletepaymentmethodv1) | **DELETE** /api/billing/v1/payment-methods/{paymentMethodId} | Delete payment method
 *BillingPaymentMethodsApi* | [**getPaymentMethodListV1**](docs/Api/BillingPaymentMethodsApi.md#getpaymentmethodlistv1) | **GET** /api/billing/v1/payment-methods | Get payment method list
 *BillingPaymentMethodsApi* | [**setDefaultPaymentMethodV1**](docs/Api/BillingPaymentMethodsApi.md#setdefaultpaymentmethodv1) | **POST** /api/billing/v1/payment-methods/{paymentMethodId} | Set default payment method
@@ -341,6 +342,8 @@ Class | Method | HTTP request | Description
 - [BillingV1CatalogCatalogItemResource](docs/Model/BillingV1CatalogCatalogItemResource.md)
 - [BillingV1OrderOrderBillingAddressResource](docs/Model/BillingV1OrderOrderBillingAddressResource.md)
 - [BillingV1OrderOrderResource](docs/Model/BillingV1OrderOrderResource.md)
+- [BillingV1OrderPurchaseRequest](docs/Model/BillingV1OrderPurchaseRequest.md)
+- [BillingV1OrderPurchaseRequestItemsInner](docs/Model/BillingV1OrderPurchaseRequestItemsInner.md)
 - [BillingV1OrderVirtualMachineOrderResource](docs/Model/BillingV1OrderVirtualMachineOrderResource.md)
 - [BillingV1PaymentMethodPaymentMethodResource](docs/Model/BillingV1PaymentMethodPaymentMethodResource.md)
 - [BillingV1SubscriptionCancelRequest](docs/Model/BillingV1SubscriptionCancelRequest.md)
