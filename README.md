@@ -181,6 +181,9 @@ Class | Method | HTTP request | Description
 *HostingWebsitesApi* | [**createWebsiteV1**](docs/Api/HostingWebsitesApi.md#createwebsitev1) | **POST** /api/hosting/v1/websites | Create website
 *HostingWebsitesApi* | [**deleteWebsiteV1**](docs/Api/HostingWebsitesApi.md#deletewebsitev1) | **DELETE** /api/hosting/v1/websites/{domain} | Delete website
 *HostingWebsitesApi* | [**listWebsitesV1**](docs/Api/HostingWebsitesApi.md#listwebsitesv1) | **GET** /api/hosting/v1/websites | List websites
+*MailAPITokensApi* | [**createAPITokenV1**](docs/Api/MailAPITokensApi.md#createapitokenv1) | **POST** /api/mail/v1/orders/{orderId}/api-tokens | Create API token
+*MailAPITokensApi* | [**listAPITokensV1**](docs/Api/MailAPITokensApi.md#listapitokensv1) | **GET** /api/mail/v1/api-tokens | List API tokens
+*MailAPITokensApi* | [**revokeAPITokenV1**](docs/Api/MailAPITokensApi.md#revokeapitokenv1) | **DELETE** /api/mail/v1/api-tokens/{tokenId} | Revoke API token
 *MailLogsApi* | [**listAccessLogsV1**](docs/Api/MailLogsApi.md#listaccesslogsv1) | **GET** /api/mail/v1/orders/{orderId}/logs/access | List access logs
 *MailLogsApi* | [**listActionLogsV1**](docs/Api/MailLogsApi.md#listactionlogsv1) | **GET** /api/mail/v1/orders/{orderId}/logs/action | List action logs
 *MailLogsApi* | [**listInboundLogsV1**](docs/Api/MailLogsApi.md#listinboundlogsv1) | **GET** /api/mail/v1/orders/{orderId}/logs/inbound | List inbound logs
@@ -492,6 +495,7 @@ Class | Method | HTTP request | Description
 - [InlineObject1](docs/Model/InlineObject1.md)
 - [InlineObject2](docs/Model/InlineObject2.md)
 - [InlineObject2Errors](docs/Model/InlineObject2Errors.md)
+- [MailListAPITokensV1200Response](docs/Model/MailListAPITokensV1200Response.md)
 - [MailListAccessLogsV1200Response](docs/Model/MailListAccessLogsV1200Response.md)
 - [MailListActionLogsV1200Response](docs/Model/MailListActionLogsV1200Response.md)
 - [MailListInboundLogsV1200Response](docs/Model/MailListInboundLogsV1200Response.md)
@@ -500,6 +504,10 @@ Class | Method | HTTP request | Description
 - [MailListOrdersV1200Response](docs/Model/MailListOrdersV1200Response.md)
 - [MailListWebhookDeliveryLogsV1200Response](docs/Model/MailListWebhookDeliveryLogsV1200Response.md)
 - [MailListWebhooksV1200Response](docs/Model/MailListWebhooksV1200Response.md)
+- [MailV1ApiTokensApiTokenCreatedResource](docs/Model/MailV1ApiTokensApiTokenCreatedResource.md)
+- [MailV1ApiTokensApiTokenMailboxResource](docs/Model/MailV1ApiTokensApiTokenMailboxResource.md)
+- [MailV1ApiTokensApiTokenResource](docs/Model/MailV1ApiTokensApiTokenResource.md)
+- [MailV1ApiTokensApiTokenScopeResource](docs/Model/MailV1ApiTokensApiTokenScopeResource.md)
 - [MailV1LogsAccessAccessLogResource](docs/Model/MailV1LogsAccessAccessLogResource.md)
 - [MailV1LogsActionActionLogResource](docs/Model/MailV1LogsActionActionLogResource.md)
 - [MailV1LogsCommonDeliveryLogRelayEventResource](docs/Model/MailV1LogsCommonDeliveryLogRelayEventResource.md)
@@ -516,6 +524,8 @@ Class | Method | HTTP request | Description
 - [MailV1OrdersPlanMailboxResource](docs/Model/MailV1OrdersPlanMailboxResource.md)
 - [MailV1OrdersPlanResource](docs/Model/MailV1OrdersPlanResource.md)
 - [MailV1SchemaChangeMailboxPasswordRequestSchema](docs/Model/MailV1SchemaChangeMailboxPasswordRequestSchema.md)
+- [MailV1SchemaCreateApiTokenRequestSchema](docs/Model/MailV1SchemaCreateApiTokenRequestSchema.md)
+- [MailV1SchemaCreateApiTokenRequestSchemaScope](docs/Model/MailV1SchemaCreateApiTokenRequestSchemaScope.md)
 - [MailV1SchemaCreateMailboxRequestSchema](docs/Model/MailV1SchemaCreateMailboxRequestSchema.md)
 - [MailV1SchemaCreateWebhookRequestSchema](docs/Model/MailV1SchemaCreateWebhookRequestSchema.md)
 - [MailV1SchemaUpdateWebhookRequestSchema](docs/Model/MailV1SchemaUpdateWebhookRequestSchema.md)
