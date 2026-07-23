@@ -4,8 +4,55 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**getOrderPlanV1()**](MailOrdersApi.md#getOrderPlanV1) | **GET** /api/mail/v1/orders/{orderId}/plan | Get order plan |
 | [**listOrdersV1()**](MailOrdersApi.md#listOrdersV1) | **GET** /api/mail/v1/orders | List orders |
 
+
+## `getOrderPlanV1()`
+
+```php
+getOrderPlanV1($orderId): \Hostinger\Model\MailV1OrdersPlanResource
+```
+
+Get order plan
+
+Retrieve the plan the given mail order was purchased with, including domain-level and mailbox-level quotas, limits, and protocol availability.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\MailOrdersApi(config: $config);
+$orderId = OR1a2b3c4d5e6f7g; // string | Order resource ID
+
+try {
+    $result = $apiInstance->getOrderPlanV1($orderId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MailOrdersApi->getOrderPlanV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **orderId** | **string**| Order resource ID | |
+
+### Return type
+
+[**\Hostinger\Model\MailV1OrdersPlanResource**](../Model/MailV1OrdersPlanResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `listOrdersV1()`
 

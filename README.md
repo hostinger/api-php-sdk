@@ -190,7 +190,9 @@ Class | Method | HTTP request | Description
 *MailMailboxesApi* | [**createMailboxV1**](docs/Api/MailMailboxesApi.md#createmailboxv1) | **POST** /api/mail/v1/orders/{orderId}/mailboxes | Create mailbox
 *MailMailboxesApi* | [**deleteMailboxV1**](docs/Api/MailMailboxesApi.md#deletemailboxv1) | **DELETE** /api/mail/v1/mailboxes/{mailboxId} | Delete mailbox
 *MailMailboxesApi* | [**listMailboxesV1**](docs/Api/MailMailboxesApi.md#listmailboxesv1) | **GET** /api/mail/v1/orders/{orderId}/mailboxes | List mailboxes
+*MailOrdersApi* | [**getOrderPlanV1**](docs/Api/MailOrdersApi.md#getorderplanv1) | **GET** /api/mail/v1/orders/{orderId}/plan | Get order plan
 *MailOrdersApi* | [**listOrdersV1**](docs/Api/MailOrdersApi.md#listordersv1) | **GET** /api/mail/v1/orders | List orders
+*MailWebhooksApi* | [**createWebhookV1**](docs/Api/MailWebhooksApi.md#createwebhookv1) | **POST** /api/mail/v1/mailboxes/{mailboxId}/webhooks | Create webhook
 *ReachContactsApi* | [**createANewContactV1**](docs/Api/ReachContactsApi.md#createanewcontactv1) | **POST** /api/reach/v1/contacts | Create a new contact
 *ReachContactsApi* | [**createNewContactsV1**](docs/Api/ReachContactsApi.md#createnewcontactsv1) | **POST** /api/reach/v1/profiles/{profileUuid}/contacts | Create new contacts
 *ReachContactsApi* | [**deleteAContactV1**](docs/Api/ReachContactsApi.md#deleteacontactv1) | **DELETE** /api/reach/v1/contacts/{uuid} | Delete a contact
@@ -501,8 +503,14 @@ Class | Method | HTTP request | Description
 - [MailV1OrdersOrderDomainResource](docs/Model/MailV1OrdersOrderDomainResource.md)
 - [MailV1OrdersOrderPlanResource](docs/Model/MailV1OrdersOrderPlanResource.md)
 - [MailV1OrdersOrderResource](docs/Model/MailV1OrdersOrderResource.md)
+- [MailV1OrdersPlanDomainResource](docs/Model/MailV1OrdersPlanDomainResource.md)
+- [MailV1OrdersPlanMailboxResource](docs/Model/MailV1OrdersPlanMailboxResource.md)
+- [MailV1OrdersPlanResource](docs/Model/MailV1OrdersPlanResource.md)
 - [MailV1SchemaChangeMailboxPasswordRequestSchema](docs/Model/MailV1SchemaChangeMailboxPasswordRequestSchema.md)
 - [MailV1SchemaCreateMailboxRequestSchema](docs/Model/MailV1SchemaCreateMailboxRequestSchema.md)
+- [MailV1SchemaCreateWebhookRequestSchema](docs/Model/MailV1SchemaCreateWebhookRequestSchema.md)
+- [MailV1WebhooksWebhookMailboxResource](docs/Model/MailV1WebhooksWebhookMailboxResource.md)
+- [MailV1WebhooksWebhookResource](docs/Model/MailV1WebhooksWebhookResource.md)
 - [ReachListContactsV1200Response](docs/Model/ReachListContactsV1200Response.md)
 - [ReachListProfileSegmentContactsV1200Response](docs/Model/ReachListProfileSegmentContactsV1200Response.md)
 - [ReachV1ContactsContactResource](docs/Model/ReachV1ContactsContactResource.md)
