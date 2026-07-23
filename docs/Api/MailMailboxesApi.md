@@ -7,7 +7,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**changeMailboxPasswordV1()**](MailMailboxesApi.md#changeMailboxPasswordV1) | **PATCH** /api/mail/v1/mailboxes/{mailboxId}/password | Change mailbox password |
 | [**createMailboxV1()**](MailMailboxesApi.md#createMailboxV1) | **POST** /api/mail/v1/orders/{orderId}/mailboxes | Create mailbox |
 | [**deleteMailboxV1()**](MailMailboxesApi.md#deleteMailboxV1) | **DELETE** /api/mail/v1/mailboxes/{mailboxId} | Delete mailbox |
-| [**getMailboxListV1()**](MailMailboxesApi.md#getMailboxListV1) | **GET** /api/mail/v1/orders/{orderId}/mailboxes | Get mailbox list |
+| [**listMailboxesV1()**](MailMailboxesApi.md#listMailboxesV1) | **GET** /api/mail/v1/orders/{orderId}/mailboxes | List mailboxes |
 
 
 ## `changeMailboxPasswordV1()`
@@ -152,13 +152,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getMailboxListV1()`
+## `listMailboxesV1()`
 
 ```php
-getMailboxListV1($orderId, $search, $sort, $page, $perPage): \Hostinger\Model\MailGetMailboxListV1200Response
+listMailboxesV1($orderId, $search, $sort, $page, $perPage): \Hostinger\Model\MailListMailboxesV1200Response
 ```
 
-Get mailbox list
+List mailboxes
 
 Retrieve a paginated list of mailboxes belonging to a mail order.  Use this endpoint to monitor mailboxes of your mail service, including their status, enabled protocols, attached resource counts, and periodically synced usage numbers (usage may lag behind live values).
 
@@ -181,10 +181,10 @@ $page = 1; // int | Page number
 $perPage = 25; // int | Number of items per page
 
 try {
-    $result = $apiInstance->getMailboxListV1($orderId, $search, $sort, $page, $perPage);
+    $result = $apiInstance->listMailboxesV1($orderId, $search, $sort, $page, $perPage);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MailMailboxesApi->getMailboxListV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling MailMailboxesApi->listMailboxesV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -200,7 +200,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\MailGetMailboxListV1200Response**](../Model/MailGetMailboxListV1200Response.md)
+[**\Hostinger\Model\MailListMailboxesV1200Response**](../Model/MailListMailboxesV1200Response.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

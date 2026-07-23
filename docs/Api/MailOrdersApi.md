@@ -4,16 +4,16 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getMailOrderListV1()**](MailOrdersApi.md#getMailOrderListV1) | **GET** /api/mail/v1/orders | Get mail order list |
+| [**listOrdersV1()**](MailOrdersApi.md#listOrdersV1) | **GET** /api/mail/v1/orders | List orders |
 
 
-## `getMailOrderListV1()`
+## `listOrdersV1()`
 
 ```php
-getMailOrderListV1($domain, $status, $isTrial, $sort, $page, $perPage): \Hostinger\Model\MailGetMailOrderListV1200Response
+listOrdersV1($domain, $status, $isTrial, $sort, $page, $perPage): \Hostinger\Model\MailListOrdersV1200Response
 ```
 
-Get mail order list
+List orders
 
 Retrieve a paginated list of mail orders associated with your account.  Use this endpoint to monitor your mail services, including their status, plan, attached domain, and expiration details.
 
@@ -37,10 +37,10 @@ $page = 1; // int | Page number
 $perPage = 25; // int | Number of items per page
 
 try {
-    $result = $apiInstance->getMailOrderListV1($domain, $status, $isTrial, $sort, $page, $perPage);
+    $result = $apiInstance->listOrdersV1($domain, $status, $isTrial, $sort, $page, $perPage);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MailOrdersApi->getMailOrderListV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling MailOrdersApi->listOrdersV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -57,7 +57,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\MailGetMailOrderListV1200Response**](../Model/MailGetMailOrderListV1200Response.md)
+[**\Hostinger\Model\MailListOrdersV1200Response**](../Model/MailListOrdersV1200Response.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
