@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **events** | **string[]** | Events that trigger this webhook |
 **status** | **string** | Current status of the webhook |
 **url** | **string** | URL that receives webhook POST requests |
-**secret** | **string** | One-time webhook secret, returned only on creation. Sent as &#x60;Authorization: Bearer &lt;secret&gt;&#x60; with every delivery. |
 **createdAt** | **\DateTime** |  |
 **updatedAt** | **\DateTime** |  |
 

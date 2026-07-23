@@ -193,6 +193,13 @@ Class | Method | HTTP request | Description
 *MailOrdersApi* | [**getOrderPlanV1**](docs/Api/MailOrdersApi.md#getorderplanv1) | **GET** /api/mail/v1/orders/{orderId}/plan | Get order plan
 *MailOrdersApi* | [**listOrdersV1**](docs/Api/MailOrdersApi.md#listordersv1) | **GET** /api/mail/v1/orders | List orders
 *MailWebhooksApi* | [**createWebhookV1**](docs/Api/MailWebhooksApi.md#createwebhookv1) | **POST** /api/mail/v1/mailboxes/{mailboxId}/webhooks | Create webhook
+*MailWebhooksApi* | [**deleteWebhookV1**](docs/Api/MailWebhooksApi.md#deletewebhookv1) | **DELETE** /api/mail/v1/webhooks/{webhookId} | Delete webhook
+*MailWebhooksApi* | [**getWebhookV1**](docs/Api/MailWebhooksApi.md#getwebhookv1) | **GET** /api/mail/v1/webhooks/{webhookId} | Get webhook
+*MailWebhooksApi* | [**listWebhookDeliveryLogsV1**](docs/Api/MailWebhooksApi.md#listwebhookdeliverylogsv1) | **GET** /api/mail/v1/orders/{orderId}/webhooks/delivery-logs | List webhook delivery logs
+*MailWebhooksApi* | [**listWebhooksV1**](docs/Api/MailWebhooksApi.md#listwebhooksv1) | **GET** /api/mail/v1/orders/{orderId}/webhooks | List webhooks
+*MailWebhooksApi* | [**regenerateWebhookSecretV1**](docs/Api/MailWebhooksApi.md#regeneratewebhooksecretv1) | **POST** /api/mail/v1/webhooks/{webhookId}/regenerate-secret | Regenerate webhook secret
+*MailWebhooksApi* | [**testWebhookV1**](docs/Api/MailWebhooksApi.md#testwebhookv1) | **POST** /api/mail/v1/webhooks/{webhookId}/test | Test webhook
+*MailWebhooksApi* | [**updateWebhookV1**](docs/Api/MailWebhooksApi.md#updatewebhookv1) | **PATCH** /api/mail/v1/webhooks/{webhookId} | Update webhook
 *ReachContactsApi* | [**createANewContactV1**](docs/Api/ReachContactsApi.md#createanewcontactv1) | **POST** /api/reach/v1/contacts | Create a new contact
 *ReachContactsApi* | [**createNewContactsV1**](docs/Api/ReachContactsApi.md#createnewcontactsv1) | **POST** /api/reach/v1/profiles/{profileUuid}/contacts | Create new contacts
 *ReachContactsApi* | [**deleteAContactV1**](docs/Api/ReachContactsApi.md#deleteacontactv1) | **DELETE** /api/reach/v1/contacts/{uuid} | Delete a contact
@@ -491,6 +498,8 @@ Class | Method | HTTP request | Description
 - [MailListMailboxActionLogsV1200Response](docs/Model/MailListMailboxActionLogsV1200Response.md)
 - [MailListMailboxesV1200Response](docs/Model/MailListMailboxesV1200Response.md)
 - [MailListOrdersV1200Response](docs/Model/MailListOrdersV1200Response.md)
+- [MailListWebhookDeliveryLogsV1200Response](docs/Model/MailListWebhookDeliveryLogsV1200Response.md)
+- [MailListWebhooksV1200Response](docs/Model/MailListWebhooksV1200Response.md)
 - [MailV1LogsAccessAccessLogResource](docs/Model/MailV1LogsAccessAccessLogResource.md)
 - [MailV1LogsActionActionLogResource](docs/Model/MailV1LogsActionActionLogResource.md)
 - [MailV1LogsCommonDeliveryLogRelayEventResource](docs/Model/MailV1LogsCommonDeliveryLogRelayEventResource.md)
@@ -509,8 +518,13 @@ Class | Method | HTTP request | Description
 - [MailV1SchemaChangeMailboxPasswordRequestSchema](docs/Model/MailV1SchemaChangeMailboxPasswordRequestSchema.md)
 - [MailV1SchemaCreateMailboxRequestSchema](docs/Model/MailV1SchemaCreateMailboxRequestSchema.md)
 - [MailV1SchemaCreateWebhookRequestSchema](docs/Model/MailV1SchemaCreateWebhookRequestSchema.md)
+- [MailV1SchemaUpdateWebhookRequestSchema](docs/Model/MailV1SchemaUpdateWebhookRequestSchema.md)
+- [MailV1WebhooksWebhookCreatedResource](docs/Model/MailV1WebhooksWebhookCreatedResource.md)
+- [MailV1WebhooksWebhookDeliveryLogResource](docs/Model/MailV1WebhooksWebhookDeliveryLogResource.md)
 - [MailV1WebhooksWebhookMailboxResource](docs/Model/MailV1WebhooksWebhookMailboxResource.md)
 - [MailV1WebhooksWebhookResource](docs/Model/MailV1WebhooksWebhookResource.md)
+- [MailV1WebhooksWebhookSecretResource](docs/Model/MailV1WebhooksWebhookSecretResource.md)
+- [MailV1WebhooksWebhookTestResultResource](docs/Model/MailV1WebhooksWebhookTestResultResource.md)
 - [ReachListContactsV1200Response](docs/Model/ReachListContactsV1200Response.md)
 - [ReachListProfileSegmentContactsV1200Response](docs/Model/ReachListProfileSegmentContactsV1200Response.md)
 - [ReachV1ContactsContactResource](docs/Model/ReachV1ContactsContactResource.md)
