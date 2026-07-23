@@ -84,6 +84,9 @@ Class | Method | HTTP request | Description
 *AgencyHostingWebsitesApi* | [**deleteAgencyPlanWebsiteV1**](docs/Api/AgencyHostingWebsitesApi.md#deleteagencyplanwebsitev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid} | Delete Agency Plan website
 *AgencyHostingWebsitesApi* | [**getAgencyPlanWebsiteDetailsV1**](docs/Api/AgencyHostingWebsitesApi.md#getagencyplanwebsitedetailsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid} | Get Agency Plan website details
 *AgencyHostingWebsitesApi* | [**listRunningAgencyPlanWebsiteProcessesV1**](docs/Api/AgencyHostingWebsitesApi.md#listrunningagencyplanwebsiteprocessesv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/processes | List running Agency Plan website processes
+*AgencyHostingWordPressApi* | [**changeAgencyPlanWebsiteWordPressCoreVersionV1**](docs/Api/AgencyHostingWordPressApi.md#changeagencyplanwebsitewordpresscoreversionv1) | **PATCH** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/version | Change Agency Plan website WordPress core version
+*AgencyHostingWordPressApi* | [**getAgencyPlanWebsiteWordPressSettingsV1**](docs/Api/AgencyHostingWordPressApi.md#getagencyplanwebsitewordpresssettingsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings | Get Agency Plan website WordPress settings
+*AgencyHostingWordPressApi* | [**listAvailableWordPressVersionsForAnAgencyPlanWebsiteV1**](docs/Api/AgencyHostingWordPressApi.md#listavailablewordpressversionsforanagencyplanwebsitev1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/versions | List available WordPress versions for an Agency Plan website
 *BillingCatalogApi* | [**getCatalogItemListV1**](docs/Api/BillingCatalogApi.md#getcatalogitemlistv1) | **GET** /api/billing/v1/catalog | Get catalog item list
 *BillingOrdersApi* | [**createPurchaseOrderV1**](docs/Api/BillingOrdersApi.md#createpurchaseorderv1) | **POST** /api/billing/v1/orders | Create purchase order
 *BillingPaymentMethodsApi* | [**deletePaymentMethodV1**](docs/Api/BillingPaymentMethodsApi.md#deletepaymentmethodv1) | **DELETE** /api/billing/v1/payment-methods/{paymentMethodId} | Delete payment method
@@ -341,6 +344,9 @@ Class | Method | HTTP request | Description
 - [AgencyHostingV1WebsitesWebsiteStagingRootResource](docs/Model/AgencyHostingV1WebsitesWebsiteStagingRootResource.md)
 - [AgencyHostingV1WebsitesWebsiteUserResource](docs/Model/AgencyHostingV1WebsitesWebsiteUserResource.md)
 - [AgencyHostingV1WebsitesWordPressInstallResource](docs/Model/AgencyHostingV1WebsitesWordPressInstallResource.md)
+- [AgencyHostingV1WordPressChangeVersionRequest](docs/Model/AgencyHostingV1WordPressChangeVersionRequest.md)
+- [AgencyHostingV1WordPressSettingsResource](docs/Model/AgencyHostingV1WordPressSettingsResource.md)
+- [AgencyHostingV1WordPressVersionResource](docs/Model/AgencyHostingV1WordPressVersionResource.md)
 - [BillingV1CatalogCatalogItemPriceResource](docs/Model/BillingV1CatalogCatalogItemPriceResource.md)
 - [BillingV1CatalogCatalogItemResource](docs/Model/BillingV1CatalogCatalogItemResource.md)
 - [BillingV1OrderOrderBillingAddressResource](docs/Model/BillingV1OrderOrderBillingAddressResource.md)
