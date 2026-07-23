@@ -4,9 +4,59 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**changeMailboxPasswordV1()**](MailMailboxesApi.md#changeMailboxPasswordV1) | **PATCH** /api/mail/v1/mailboxes/{mailboxId}/password | Change mailbox password |
 | [**createMailboxV1()**](MailMailboxesApi.md#createMailboxV1) | **POST** /api/mail/v1/orders/{orderId}/mailboxes | Create mailbox |
+| [**deleteMailboxV1()**](MailMailboxesApi.md#deleteMailboxV1) | **DELETE** /api/mail/v1/mailboxes/{mailboxId} | Delete mailbox |
 | [**getMailboxListV1()**](MailMailboxesApi.md#getMailboxListV1) | **GET** /api/mail/v1/orders/{orderId}/mailboxes | Get mailbox list |
 
+
+## `changeMailboxPasswordV1()`
+
+```php
+changeMailboxPasswordV1($mailboxId, $mailV1SchemaChangeMailboxPasswordRequestSchema): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Change mailbox password
+
+Change the password of a mailbox.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\MailMailboxesApi(config: $config);
+$mailboxId = AC1a2b3c4d5e6f7g; // string | Mailbox resource ID
+$mailV1SchemaChangeMailboxPasswordRequestSchema = new \Hostinger\Model\MailV1SchemaChangeMailboxPasswordRequestSchema(); // \Hostinger\Model\MailV1SchemaChangeMailboxPasswordRequestSchema
+
+try {
+    $result = $apiInstance->changeMailboxPasswordV1($mailboxId, $mailV1SchemaChangeMailboxPasswordRequestSchema);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MailMailboxesApi->changeMailboxPasswordV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **mailboxId** | **string**| Mailbox resource ID | |
+| **mailV1SchemaChangeMailboxPasswordRequestSchema** | [**\Hostinger\Model\MailV1SchemaChangeMailboxPasswordRequestSchema**](../Model/MailV1SchemaChangeMailboxPasswordRequestSchema.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `createMailboxV1()`
 
@@ -51,6 +101,52 @@ try {
 ### Return type
 
 [**\Hostinger\Model\MailV1MailboxesMailboxResource**](../Model/MailV1MailboxesMailboxResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteMailboxV1()`
+
+```php
+deleteMailboxV1($mailboxId): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Delete mailbox
+
+Delete a mailbox. The mailbox is soft-deleted and stays restorable for a limited period before it is permanently removed.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\MailMailboxesApi(config: $config);
+$mailboxId = AC1a2b3c4d5e6f7g; // string | Mailbox resource ID
+
+try {
+    $result = $apiInstance->deleteMailboxV1($mailboxId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MailMailboxesApi->deleteMailboxV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **mailboxId** | **string**| Mailbox resource ID | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
