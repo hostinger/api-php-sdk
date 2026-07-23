@@ -178,6 +178,7 @@ Class | Method | HTTP request | Description
 *HostingWebsitesApi* | [**createWebsiteV1**](docs/Api/HostingWebsitesApi.md#createwebsitev1) | **POST** /api/hosting/v1/websites | Create website
 *HostingWebsitesApi* | [**deleteWebsiteV1**](docs/Api/HostingWebsitesApi.md#deletewebsitev1) | **DELETE** /api/hosting/v1/websites/{domain} | Delete website
 *HostingWebsitesApi* | [**listWebsitesV1**](docs/Api/HostingWebsitesApi.md#listwebsitesv1) | **GET** /api/hosting/v1/websites | List websites
+*MailMailboxesApi* | [**createMailboxV1**](docs/Api/MailMailboxesApi.md#createmailboxv1) | **POST** /api/mail/v1/orders/{orderId}/mailboxes | Create mailbox
 *MailMailboxesApi* | [**getMailboxListV1**](docs/Api/MailMailboxesApi.md#getmailboxlistv1) | **GET** /api/mail/v1/orders/{orderId}/mailboxes | Get mailbox list
 *MailOrdersApi* | [**getMailOrderListV1**](docs/Api/MailOrdersApi.md#getmailorderlistv1) | **GET** /api/mail/v1/orders | Get mail order list
 *ReachContactsApi* | [**createANewContactV1**](docs/Api/ReachContactsApi.md#createanewcontactv1) | **POST** /api/reach/v1/contacts | Create a new contact
@@ -478,6 +479,7 @@ Class | Method | HTTP request | Description
 - [MailV1OrdersOrderDomainResource](docs/Model/MailV1OrdersOrderDomainResource.md)
 - [MailV1OrdersOrderPlanResource](docs/Model/MailV1OrdersOrderPlanResource.md)
 - [MailV1OrdersOrderResource](docs/Model/MailV1OrdersOrderResource.md)
+- [MailV1SchemaCreateMailboxRequestSchema](docs/Model/MailV1SchemaCreateMailboxRequestSchema.md)
 - [ReachListContactsV1200Response](docs/Model/ReachListContactsV1200Response.md)
 - [ReachListProfileSegmentContactsV1200Response](docs/Model/ReachListProfileSegmentContactsV1200Response.md)
 - [ReachV1ContactsContactResource](docs/Model/ReachV1ContactsContactResource.md)

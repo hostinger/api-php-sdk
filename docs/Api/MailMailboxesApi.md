@@ -4,8 +4,57 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**createMailboxV1()**](MailMailboxesApi.md#createMailboxV1) | **POST** /api/mail/v1/orders/{orderId}/mailboxes | Create mailbox |
 | [**getMailboxListV1()**](MailMailboxesApi.md#getMailboxListV1) | **GET** /api/mail/v1/orders/{orderId}/mailboxes | Get mailbox list |
 
+
+## `createMailboxV1()`
+
+```php
+createMailboxV1($orderId, $mailV1SchemaCreateMailboxRequestSchema): \Hostinger\Model\MailV1MailboxesMailboxResource
+```
+
+Create mailbox
+
+Create a mailbox under the given mail order. The full email address is composed from the given local part and the domain of the order.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\MailMailboxesApi(config: $config);
+$orderId = OR1a2b3c4d5e6f7g; // string | Order resource ID
+$mailV1SchemaCreateMailboxRequestSchema = new \Hostinger\Model\MailV1SchemaCreateMailboxRequestSchema(); // \Hostinger\Model\MailV1SchemaCreateMailboxRequestSchema
+
+try {
+    $result = $apiInstance->createMailboxV1($orderId, $mailV1SchemaCreateMailboxRequestSchema);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MailMailboxesApi->createMailboxV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **orderId** | **string**| Order resource ID | |
+| **mailV1SchemaCreateMailboxRequestSchema** | [**\Hostinger\Model\MailV1SchemaCreateMailboxRequestSchema**](../Model/MailV1SchemaCreateMailboxRequestSchema.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\MailV1MailboxesMailboxResource**](../Model/MailV1MailboxesMailboxResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getMailboxListV1()`
 
