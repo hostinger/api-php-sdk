@@ -610,6 +610,7 @@ Class | Method | HTTP request | Description
 - [WordPressV1InstallationsUpdateResource](docs/Model/WordPressV1InstallationsUpdateResource.md)
 - [WordPressV1InstallationsVersionResource](docs/Model/WordPressV1InstallationsVersionResource.md)
 - [WordPressV1InstallationsWordPressInstallationResource](docs/Model/WordPressV1InstallationsWordPressInstallationResource.md)
+- [WordPressV1InstallationsWordPressMcpDetailsResource](docs/Model/WordPressV1InstallationsWordPressMcpDetailsResource.md)
 - [WordPressV1InstallationsWordPressMcpInstallationResource](docs/Model/WordPressV1InstallationsWordPressMcpInstallationResource.md)
 - [WordPressV1LitespeedLitespeedCacheStatusResource](docs/Model/WordPressV1LitespeedLitespeedCacheStatusResource.md)
 - [WordPressV1LoginLoginLinksResource](docs/Model/WordPressV1LoginLoginLinksResource.md)
