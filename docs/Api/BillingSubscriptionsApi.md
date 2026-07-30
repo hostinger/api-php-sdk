@@ -7,6 +7,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**disableAutoRenewalV1()**](BillingSubscriptionsApi.md#disableAutoRenewalV1) | **DELETE** /api/billing/v1/subscriptions/{subscriptionId}/auto-renewal/disable | Disable auto-renewal |
 | [**enableAutoRenewalV1()**](BillingSubscriptionsApi.md#enableAutoRenewalV1) | **PATCH** /api/billing/v1/subscriptions/{subscriptionId}/auto-renewal/enable | Enable auto-renewal |
 | [**getSubscriptionListV1()**](BillingSubscriptionsApi.md#getSubscriptionListV1) | **GET** /api/billing/v1/subscriptions | Get subscription list |
+| [**renewSubscriptionV1()**](BillingSubscriptionsApi.md#renewSubscriptionV1) | **POST** /api/billing/v1/subscriptions/{subscriptionId}/renew | Renew subscription |
 
 
 ## `disableAutoRenewalV1()`
@@ -139,6 +140,54 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**\Hostinger\Model\BillingV1SubscriptionSubscriptionResource[]**](../Model/BillingV1SubscriptionSubscriptionResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `renewSubscriptionV1()`
+
+```php
+renewSubscriptionV1($subscriptionId, $billingV1SubscriptionRenewalRenewRequest): \Hostinger\Model\BillingV1OrderOrderResource
+```
+
+Renew subscription
+
+Create a renewal order for an existing Hostinger subscription.  This endpoint places a renewal order for a single subscription, leveraging the existing billing infrastructure. Use the [subscriptions endpoint](#tag/billing-subscriptions) to look up the `subscriptionId` values available for renewal.  If no payment method is provided, your default payment method will be used automatically.  Use this endpoint to renew any subscription available in your account.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\BillingSubscriptionsApi(config: $config);
+$subscriptionId = Cxy353Uhl1xC54pG6; // string | Subscription ID
+$billingV1SubscriptionRenewalRenewRequest = new \Hostinger\Model\BillingV1SubscriptionRenewalRenewRequest(); // \Hostinger\Model\BillingV1SubscriptionRenewalRenewRequest
+
+try {
+    $result = $apiInstance->renewSubscriptionV1($subscriptionId, $billingV1SubscriptionRenewalRenewRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BillingSubscriptionsApi->renewSubscriptionV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **subscriptionId** | **string**| Subscription ID | |
+| **billingV1SubscriptionRenewalRenewRequest** | [**\Hostinger\Model\BillingV1SubscriptionRenewalRenewRequest**](../Model/BillingV1SubscriptionRenewalRenewRequest.md)|  | [optional] |
+
+### Return type
+
+[**\Hostinger\Model\BillingV1OrderOrderResource**](../Model/BillingV1OrderOrderResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

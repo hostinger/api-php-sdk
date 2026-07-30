@@ -96,6 +96,7 @@ Class | Method | HTTP request | Description
 *BillingSubscriptionsApi* | [**disableAutoRenewalV1**](docs/Api/BillingSubscriptionsApi.md#disableautorenewalv1) | **DELETE** /api/billing/v1/subscriptions/{subscriptionId}/auto-renewal/disable | Disable auto-renewal
 *BillingSubscriptionsApi* | [**enableAutoRenewalV1**](docs/Api/BillingSubscriptionsApi.md#enableautorenewalv1) | **PATCH** /api/billing/v1/subscriptions/{subscriptionId}/auto-renewal/enable | Enable auto-renewal
 *BillingSubscriptionsApi* | [**getSubscriptionListV1**](docs/Api/BillingSubscriptionsApi.md#getsubscriptionlistv1) | **GET** /api/billing/v1/subscriptions | Get subscription list
+*BillingSubscriptionsApi* | [**renewSubscriptionV1**](docs/Api/BillingSubscriptionsApi.md#renewsubscriptionv1) | **POST** /api/billing/v1/subscriptions/{subscriptionId}/renew | Renew subscription
 *DNSSnapshotApi* | [**getDNSSnapshotListV1**](docs/Api/DNSSnapshotApi.md#getdnssnapshotlistv1) | **GET** /api/dns/v1/snapshots/{domain} | Get DNS snapshot list
 *DNSSnapshotApi* | [**getDNSSnapshotV1**](docs/Api/DNSSnapshotApi.md#getdnssnapshotv1) | **GET** /api/dns/v1/snapshots/{domain}/{snapshotId} | Get DNS snapshot
 *DNSSnapshotApi* | [**restoreDNSSnapshotV1**](docs/Api/DNSSnapshotApi.md#restorednssnapshotv1) | **POST** /api/dns/v1/snapshots/{domain}/{snapshotId}/restore | Restore DNS snapshot
@@ -394,6 +395,7 @@ Class | Method | HTTP request | Description
 - [BillingV1OrderVirtualMachineOrderResource](docs/Model/BillingV1OrderVirtualMachineOrderResource.md)
 - [BillingV1PaymentMethodPaymentMethodResource](docs/Model/BillingV1PaymentMethodPaymentMethodResource.md)
 - [BillingV1SubscriptionCancelRequest](docs/Model/BillingV1SubscriptionCancelRequest.md)
+- [BillingV1SubscriptionRenewalRenewRequest](docs/Model/BillingV1SubscriptionRenewalRenewRequest.md)
 - [BillingV1SubscriptionSubscriptionResource](docs/Model/BillingV1SubscriptionSubscriptionResource.md)
 - [CommonSchemaPaginationMetaSchema](docs/Model/CommonSchemaPaginationMetaSchema.md)
 - [CommonSuccessEmptyResource](docs/Model/CommonSuccessEmptyResource.md)
