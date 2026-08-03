@@ -9,6 +9,8 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**getWHOISProfileListV1()**](DomainsWHOISApi.md#getWHOISProfileListV1) | **GET** /api/domains/v1/whois | Get WHOIS profile list |
 | [**getWHOISProfileUsageV1()**](DomainsWHOISApi.md#getWHOISProfileUsageV1) | **GET** /api/domains/v1/whois/{whoisId}/usage | Get WHOIS profile usage |
 | [**getWHOISProfileV1()**](DomainsWHOISApi.md#getWHOISProfileV1) | **GET** /api/domains/v1/whois/{whoisId} | Get WHOIS profile |
+| [**setWHOISProfileAsDefaultV1()**](DomainsWHOISApi.md#setWHOISProfileAsDefaultV1) | **PATCH** /api/domains/v1/whois/default/{whoisId} | Set WHOIS profile as default |
+| [**unsetDefaultWHOISProfileV1()**](DomainsWHOISApi.md#unsetDefaultWHOISProfileV1) | **DELETE** /api/domains/v1/whois/default/{whoisId} | Unset default WHOIS profile |
 
 
 ## `createWHOISProfileV1()`
@@ -236,6 +238,98 @@ try {
 ### Return type
 
 [**\Hostinger\Model\DomainsV1WHOISProfileResource**](../Model/DomainsV1WHOISProfileResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setWHOISProfileAsDefaultV1()`
+
+```php
+setWHOISProfileAsDefaultV1($whoisId): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Set WHOIS profile as default
+
+Set WHOIS contact profile as default.  The default profile is pre-selected for the TLD it belongs to when registering new domains.  Use this endpoint to avoid picking contact information for every registration.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\DomainsWHOISApi(config: $config);
+$whoisId = 564651; // int | WHOIS ID
+
+try {
+    $result = $apiInstance->setWHOISProfileAsDefaultV1($whoisId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DomainsWHOISApi->setWHOISProfileAsDefaultV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **whoisId** | **int**| WHOIS ID | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `unsetDefaultWHOISProfileV1()`
+
+```php
+unsetDefaultWHOISProfileV1($whoisId): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Unset default WHOIS profile
+
+Unset WHOIS contact profile as default.  The profile itself is kept, it is only no longer pre-selected for its TLD.  Use this endpoint to stop reusing contact information for new registrations.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\DomainsWHOISApi(config: $config);
+$whoisId = 564651; // int | WHOIS ID
+
+try {
+    $result = $apiInstance->unsetDefaultWHOISProfileV1($whoisId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DomainsWHOISApi->unsetDefaultWHOISProfileV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **whoisId** | **int**| WHOIS ID | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -688,7 +688,7 @@ stopVirtualMachineV1($virtualMachineId): \Hostinger\Model\VPSV1ActionActionResou
 
 Stop virtual machine
 
-Stop a specified virtual machine.  If the virtual machine is already stopped, the request will still be processed without any effect.  Use this endpoint to power off running VPS instances.
+Stop a specified virtual machine.  If the virtual machine is already stopped, the request will still be processed without any effect.  This is a compute-only power state change and does not affect billing. To stop future charges, disable auto-renewal on the owning subscription.  Use this endpoint to power off running VPS instances.
 
 ### Example
 
