@@ -111,6 +111,14 @@ Class | Method | HTTP request | Description
 *DomainsForwardingApi* | [**deleteDomainForwardingV1**](docs/Api/DomainsForwardingApi.md#deletedomainforwardingv1) | **DELETE** /api/domains/v1/forwarding/{domain} | Delete domain forwarding
 *DomainsForwardingApi* | [**getDomainForwardingV1**](docs/Api/DomainsForwardingApi.md#getdomainforwardingv1) | **GET** /api/domains/v1/forwarding/{domain} | Get domain forwarding
 *DomainsForwardingApi* | [**updateDomainForwardingV1**](docs/Api/DomainsForwardingApi.md#updatedomainforwardingv1) | **PUT** /api/domains/v1/forwarding/{domain} | Update domain forwarding
+*DomainsMoveApi* | [**acceptIncomingDomainMoveV1**](docs/Api/DomainsMoveApi.md#acceptincomingdomainmovev1) | **PUT** /api/domains/v1/move/incoming/{domain} | Accept incoming domain move
+*DomainsMoveApi* | [**cancelOutgoingDomainMoveV1**](docs/Api/DomainsMoveApi.md#canceloutgoingdomainmovev1) | **DELETE** /api/domains/v1/move/outgoing/{domain} | Cancel outgoing domain move
+*DomainsMoveApi* | [**getIncomingDomainMoveListV1**](docs/Api/DomainsMoveApi.md#getincomingdomainmovelistv1) | **GET** /api/domains/v1/move/incoming | Get incoming domain move list
+*DomainsMoveApi* | [**getIncomingDomainMoveV1**](docs/Api/DomainsMoveApi.md#getincomingdomainmovev1) | **GET** /api/domains/v1/move/incoming/{domain} | Get incoming domain move
+*DomainsMoveApi* | [**getOutgoingDomainMoveListV1**](docs/Api/DomainsMoveApi.md#getoutgoingdomainmovelistv1) | **GET** /api/domains/v1/move/outgoing | Get outgoing domain move list
+*DomainsMoveApi* | [**getOutgoingDomainMoveV1**](docs/Api/DomainsMoveApi.md#getoutgoingdomainmovev1) | **GET** /api/domains/v1/move/outgoing/{domain} | Get outgoing domain move
+*DomainsMoveApi* | [**rejectIncomingDomainMoveV1**](docs/Api/DomainsMoveApi.md#rejectincomingdomainmovev1) | **DELETE** /api/domains/v1/move/incoming/{domain} | Reject incoming domain move
+*DomainsMoveApi* | [**startOutgoingDomainMoveV1**](docs/Api/DomainsMoveApi.md#startoutgoingdomainmovev1) | **POST** /api/domains/v1/move/outgoing/{domain} | Start outgoing domain move
 *DomainsPortfolioApi* | [**disableDomainLockV1**](docs/Api/DomainsPortfolioApi.md#disabledomainlockv1) | **DELETE** /api/domains/v1/portfolio/{domain}/domain-lock | Disable domain lock
 *DomainsPortfolioApi* | [**disablePrivacyProtectionV1**](docs/Api/DomainsPortfolioApi.md#disableprivacyprotectionv1) | **DELETE** /api/domains/v1/portfolio/{domain}/privacy-protection | Disable privacy protection
 *DomainsPortfolioApi* | [**enableDomainLockV1**](docs/Api/DomainsPortfolioApi.md#enabledomainlockv1) | **PUT** /api/domains/v1/portfolio/{domain}/domain-lock | Enable domain lock
@@ -433,6 +441,10 @@ Class | Method | HTTP request | Description
 - [DomainsV1ForwardingStoreRequest](docs/Model/DomainsV1ForwardingStoreRequest.md)
 - [DomainsV1ForwardingUpdateRequest](docs/Model/DomainsV1ForwardingUpdateRequest.md)
 - [DomainsV1IRTPVerificationResource](docs/Model/DomainsV1IRTPVerificationResource.md)
+- [DomainsV1MoveIncomingUpdateRequest](docs/Model/DomainsV1MoveIncomingUpdateRequest.md)
+- [DomainsV1MoveIncomingUpdateRequestDomainContacts](docs/Model/DomainsV1MoveIncomingUpdateRequestDomainContacts.md)
+- [DomainsV1MoveMoveResource](docs/Model/DomainsV1MoveMoveResource.md)
+- [DomainsV1MoveOutgoingStoreRequest](docs/Model/DomainsV1MoveOutgoingStoreRequest.md)
 - [DomainsV1PortfolioAuthCodeAuthCodeResource](docs/Model/DomainsV1PortfolioAuthCodeAuthCodeResource.md)
 - [DomainsV1PortfolioPurchaseRequest](docs/Model/DomainsV1PortfolioPurchaseRequest.md)
 - [DomainsV1PortfolioPurchaseRequestDomainContacts](docs/Model/DomainsV1PortfolioPurchaseRequestDomainContacts.md)
