@@ -5,10 +5,15 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createANewContactV1()**](ReachContactsApi.md#createANewContactV1) | **POST** /api/reach/v1/contacts | Create a new contact |
+| [**createContactsInBulkV1()**](ReachContactsApi.md#createContactsInBulkV1) | **POST** /api/reach/v1/profiles/{profileUuid}/contacts/bulk | Create contacts in bulk |
 | [**createNewContactsV1()**](ReachContactsApi.md#createNewContactsV1) | **POST** /api/reach/v1/profiles/{profileUuid}/contacts | Create new contacts |
 | [**deleteAContactV1()**](ReachContactsApi.md#deleteAContactV1) | **DELETE** /api/reach/v1/contacts/{uuid} | Delete a contact |
+| [**deleteAProfileContactV1()**](ReachContactsApi.md#deleteAProfileContactV1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/contacts/{contactUuid} | Delete a profile contact |
+| [**getContactDetailsV1()**](ReachContactsApi.md#getContactDetailsV1) | **GET** /api/reach/v1/profiles/{profileUuid}/contacts/{contactUuid} | Get contact details |
 | [**listContactGroupsV1()**](ReachContactsApi.md#listContactGroupsV1) | **GET** /api/reach/v1/contacts/groups | List contact groups |
 | [**listContactsV1()**](ReachContactsApi.md#listContactsV1) | **GET** /api/reach/v1/contacts | List contacts |
+| [**listProfileContactsV1()**](ReachContactsApi.md#listProfileContactsV1) | **GET** /api/reach/v1/profiles/{profileUuid}/contacts | List profile contacts |
+| [**updateAContactV1()**](ReachContactsApi.md#updateAContactV1) | **PATCH** /api/reach/v1/profiles/{profileUuid}/contacts/{contactUuid} | Update a contact |
 
 
 ## `createANewContactV1()`
@@ -48,6 +53,54 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **reachV1ContactsStoreRequest** | [**\Hostinger\Model\ReachV1ContactsStoreRequest**](../Model/ReachV1ContactsStoreRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createContactsInBulkV1()`
+
+```php
+createContactsInBulkV1($profileUuid, $reachV1ContactsBulkStoreRequest): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Create contacts in bulk
+
+Create many contacts in a profile in a single call.  The contacts are imported in the background, so a success response means the import was accepted rather than finished. Contacts whose email already exists in the profile are left as they are. If double opt-in is enabled, new contacts start off pending and are sent a confirmation email.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachContactsApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+$reachV1ContactsBulkStoreRequest = new \Hostinger\Model\ReachV1ContactsBulkStoreRequest(); // \Hostinger\Model\ReachV1ContactsBulkStoreRequest
+
+try {
+    $result = $apiInstance->createContactsInBulkV1($profileUuid, $reachV1ContactsBulkStoreRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachContactsApi->createContactsInBulkV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+| **reachV1ContactsBulkStoreRequest** | [**\Hostinger\Model\ReachV1ContactsBulkStoreRequest**](../Model/ReachV1ContactsBulkStoreRequest.md)|  | |
 
 ### Return type
 
@@ -113,7 +166,7 @@ deleteAContactV1($uuid): \Hostinger\Model\CommonSuccessEmptyResource
 
 Delete a contact
 
-Delete a contact with the specified UUID.  This endpoint permanently removes a contact from the email marketing system.
+Delete a contact with the specified UUID.  This endpoint permanently removes a contact from the email marketing system.  **Deprecated.** This endpoint cannot target a profile, so it always falls back to the client's default profile and cannot delete contacts of any other profile. Use `DELETE /api/reach/v1/profiles/{profileUuid}/contacts/{contactUuid}` instead.
 
 ### Example
 
@@ -146,6 +199,102 @@ try {
 ### Return type
 
 [**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteAProfileContactV1()`
+
+```php
+deleteAProfileContactV1($profileUuid, $contactUuid): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Delete a profile contact
+
+Permanently delete a contact from a profile.  The contact is removed together with its custom field values and tag assignments.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachContactsApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+$contactUuid = 550e8400-e29b-41d4-a716-446655440000; // string | Contact uuid parameter
+
+try {
+    $result = $apiInstance->deleteAProfileContactV1($profileUuid, $contactUuid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachContactsApi->deleteAProfileContactV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+| **contactUuid** | **string**| Contact uuid parameter | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getContactDetailsV1()`
+
+```php
+getContactDetailsV1($profileUuid, $contactUuid): \Hostinger\Model\ReachV1ContactsContactDetailsResource
+```
+
+Get contact details
+
+Get the full details of a single contact.  Alongside the contact's own attributes this returns the tags assigned to it and the values it holds for the profile's custom contact fields.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachContactsApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+$contactUuid = 550e8400-e29b-41d4-a716-446655440000; // string | Contact uuid parameter
+
+try {
+    $result = $apiInstance->getContactDetailsV1($profileUuid, $contactUuid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachContactsApi->getContactDetailsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+| **contactUuid** | **string**| Contact uuid parameter | |
+
+### Return type
+
+[**\Hostinger\Model\ReachV1ContactsContactDetailsResource**](../Model/ReachV1ContactsContactDetailsResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -202,7 +351,7 @@ listContactsV1($groupUuid, $subscriptionStatus, $page): \Hostinger\Model\ReachLi
 
 List contacts
 
-Get a list of contacts, optionally filtered by group and subscription status.  This endpoint returns a paginated list of contacts with their basic information. You can filter contacts by group UUID and subscription status.
+Get a list of contacts, optionally filtered by group and subscription status.  This endpoint returns a paginated list of contacts with their basic information. You can filter contacts by group UUID and subscription status.  **Deprecated.** This endpoint cannot target a profile, so it always falls back to the client's default profile and cannot list contacts of any other profile. Use `GET /api/reach/v1/profiles/{profileUuid}/contacts` instead, which also replaces the group filter with a tag filter.
 
 ### Example
 
@@ -239,6 +388,112 @@ try {
 ### Return type
 
 [**\Hostinger\Model\ReachListContactsV1200Response**](../Model/ReachListContactsV1200Response.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listProfileContactsV1()`
+
+```php
+listProfileContactsV1($profileUuid, $subscriptionStatus, $tagUuid, $search, $page, $perPage): \Hostinger\Model\ReachListProfileContactsV1200Response
+```
+
+List profile contacts
+
+Get a paginated list of contacts belonging to a profile.  Contacts can be filtered by subscription status, by tag, and by an email search term. The `meta.total` field of the response is the number of contacts matching the filters, so calling this endpoint without filters gives the profile's total contact count.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachContactsApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+$subscriptionStatus = subscribed; // string | Filter contacts by subscription status
+$tagUuid = 550e8400-e29b-41d4-a716-446655440000; // string | Filter contacts by tag UUID
+$search = john.doe@example.com; // string | Search contacts by email
+$page = 1; // int | Page number
+$perPage = 25; // int | Number of items per page
+
+try {
+    $result = $apiInstance->listProfileContactsV1($profileUuid, $subscriptionStatus, $tagUuid, $search, $page, $perPage);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachContactsApi->listProfileContactsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+| **subscriptionStatus** | **string**| Filter contacts by subscription status | [optional] |
+| **tagUuid** | **string**| Filter contacts by tag UUID | [optional] |
+| **search** | **string**| Search contacts by email | [optional] |
+| **page** | **int**| Page number | [optional] |
+| **perPage** | **int**| Number of items per page | [optional] [default to 25] |
+
+### Return type
+
+[**\Hostinger\Model\ReachListProfileContactsV1200Response**](../Model/ReachListProfileContactsV1200Response.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAContactV1()`
+
+```php
+updateAContactV1($profileUuid, $contactUuid, $reachV1ContactsUpdateRequest): \Hostinger\Model\ReachV1ContactsProfileContactUpdateResource
+```
+
+Update a contact
+
+Update a contact's attributes and custom field values.  Only the properties present in the request body are changed, so a partial body is enough to change a single attribute. Sending a property as `null` clears it.  The response carries the contact's core attributes. Read back its tags, custom field values, source and note with `GET /api/reach/v1/profiles/{profileUuid}/contacts/{contactUuid}`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachContactsApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+$contactUuid = 550e8400-e29b-41d4-a716-446655440000; // string | Contact uuid parameter
+$reachV1ContactsUpdateRequest = new \Hostinger\Model\ReachV1ContactsUpdateRequest(); // \Hostinger\Model\ReachV1ContactsUpdateRequest
+
+try {
+    $result = $apiInstance->updateAContactV1($profileUuid, $contactUuid, $reachV1ContactsUpdateRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachContactsApi->updateAContactV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+| **contactUuid** | **string**| Contact uuid parameter | |
+| **reachV1ContactsUpdateRequest** | [**\Hostinger\Model\ReachV1ContactsUpdateRequest**](../Model/ReachV1ContactsUpdateRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\ReachV1ContactsProfileContactUpdateResource**](../Model/ReachV1ContactsProfileContactUpdateResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

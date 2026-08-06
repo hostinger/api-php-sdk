@@ -236,11 +236,20 @@ Class | Method | HTTP request | Description
 *MailWebhooksApi* | [**regenerateWebhookSecretV1**](docs/Api/MailWebhooksApi.md#regeneratewebhooksecretv1) | **POST** /api/mail/v1/webhooks/{webhookId}/regenerate-secret | Regenerate webhook secret
 *MailWebhooksApi* | [**testWebhookV1**](docs/Api/MailWebhooksApi.md#testwebhookv1) | **POST** /api/mail/v1/webhooks/{webhookId}/test | Test webhook
 *MailWebhooksApi* | [**updateWebhookV1**](docs/Api/MailWebhooksApi.md#updatewebhookv1) | **PATCH** /api/mail/v1/webhooks/{webhookId} | Update webhook
+*ReachContactFieldsApi* | [**createAContactFieldV1**](docs/Api/ReachContactFieldsApi.md#createacontactfieldv1) | **POST** /api/reach/v1/profiles/{profileUuid}/contacts/fields | Create a contact field
+*ReachContactFieldsApi* | [**deleteAContactFieldV1**](docs/Api/ReachContactFieldsApi.md#deleteacontactfieldv1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/contacts/fields/{fieldUuid} | Delete a contact field
+*ReachContactFieldsApi* | [**listContactFieldsV1**](docs/Api/ReachContactFieldsApi.md#listcontactfieldsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/contacts/fields | List contact fields
+*ReachContactFieldsApi* | [**updateAContactFieldV1**](docs/Api/ReachContactFieldsApi.md#updateacontactfieldv1) | **PATCH** /api/reach/v1/profiles/{profileUuid}/contacts/fields/{fieldUuid} | Update a contact field
 *ReachContactsApi* | [**createANewContactV1**](docs/Api/ReachContactsApi.md#createanewcontactv1) | **POST** /api/reach/v1/contacts | Create a new contact
+*ReachContactsApi* | [**createContactsInBulkV1**](docs/Api/ReachContactsApi.md#createcontactsinbulkv1) | **POST** /api/reach/v1/profiles/{profileUuid}/contacts/bulk | Create contacts in bulk
 *ReachContactsApi* | [**createNewContactsV1**](docs/Api/ReachContactsApi.md#createnewcontactsv1) | **POST** /api/reach/v1/profiles/{profileUuid}/contacts | Create new contacts
 *ReachContactsApi* | [**deleteAContactV1**](docs/Api/ReachContactsApi.md#deleteacontactv1) | **DELETE** /api/reach/v1/contacts/{uuid} | Delete a contact
+*ReachContactsApi* | [**deleteAProfileContactV1**](docs/Api/ReachContactsApi.md#deleteaprofilecontactv1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/contacts/{contactUuid} | Delete a profile contact
+*ReachContactsApi* | [**getContactDetailsV1**](docs/Api/ReachContactsApi.md#getcontactdetailsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/contacts/{contactUuid} | Get contact details
 *ReachContactsApi* | [**listContactGroupsV1**](docs/Api/ReachContactsApi.md#listcontactgroupsv1) | **GET** /api/reach/v1/contacts/groups | List contact groups
 *ReachContactsApi* | [**listContactsV1**](docs/Api/ReachContactsApi.md#listcontactsv1) | **GET** /api/reach/v1/contacts | List contacts
+*ReachContactsApi* | [**listProfileContactsV1**](docs/Api/ReachContactsApi.md#listprofilecontactsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/contacts | List profile contacts
+*ReachContactsApi* | [**updateAContactV1**](docs/Api/ReachContactsApi.md#updateacontactv1) | **PATCH** /api/reach/v1/profiles/{profileUuid}/contacts/{contactUuid} | Update a contact
 *ReachProfilesApi* | [**getProfileDomainDNSStatusV1**](docs/Api/ReachProfilesApi.md#getprofiledomaindnsstatusv1) | **GET** /api/reach/v1/profiles/{profileUuid}/domains/dns-status | Get profile domain DNS status
 *ReachProfilesApi* | [**listProfilesV1**](docs/Api/ReachProfilesApi.md#listprofilesv1) | **GET** /api/reach/v1/profiles | List Profiles
 *ReachSegmentsApi* | [**createANewContactSegmentV1**](docs/Api/ReachSegmentsApi.md#createanewcontactsegmentv1) | **POST** /api/reach/v1/segmentation/segments | Create a new contact segment
@@ -599,9 +608,21 @@ Class | Method | HTTP request | Description
 - [MailV1WebhooksWebhookSecretResource](docs/Model/MailV1WebhooksWebhookSecretResource.md)
 - [MailV1WebhooksWebhookTestResultResource](docs/Model/MailV1WebhooksWebhookTestResultResource.md)
 - [ReachListContactsV1200Response](docs/Model/ReachListContactsV1200Response.md)
+- [ReachListProfileContactsV1200Response](docs/Model/ReachListProfileContactsV1200Response.md)
 - [ReachListProfileSegmentContactsV1200Response](docs/Model/ReachListProfileSegmentContactsV1200Response.md)
+- [ReachV1ContactsBulkStoreRequest](docs/Model/ReachV1ContactsBulkStoreRequest.md)
+- [ReachV1ContactsBulkStoreRequestContactsInner](docs/Model/ReachV1ContactsBulkStoreRequestContactsInner.md)
+- [ReachV1ContactsContactDetailsResource](docs/Model/ReachV1ContactsContactDetailsResource.md)
 - [ReachV1ContactsContactResource](docs/Model/ReachV1ContactsContactResource.md)
+- [ReachV1ContactsFieldsContactFieldOptionResource](docs/Model/ReachV1ContactsFieldsContactFieldOptionResource.md)
+- [ReachV1ContactsFieldsContactFieldResource](docs/Model/ReachV1ContactsFieldsContactFieldResource.md)
+- [ReachV1ContactsFieldsContactFieldValueResource](docs/Model/ReachV1ContactsFieldsContactFieldValueResource.md)
+- [ReachV1ContactsFieldsStoreRequest](docs/Model/ReachV1ContactsFieldsStoreRequest.md)
+- [ReachV1ContactsFieldsUpdateRequest](docs/Model/ReachV1ContactsFieldsUpdateRequest.md)
+- [ReachV1ContactsFieldsUpdateRequestOptionsInner](docs/Model/ReachV1ContactsFieldsUpdateRequestOptionsInner.md)
 - [ReachV1ContactsGroupsContactGroupResource](docs/Model/ReachV1ContactsGroupsContactGroupResource.md)
+- [ReachV1ContactsProfileContactResource](docs/Model/ReachV1ContactsProfileContactResource.md)
+- [ReachV1ContactsProfileContactUpdateResource](docs/Model/ReachV1ContactsProfileContactUpdateResource.md)
 - [ReachV1ContactsSegmentsContactSegmentResource](docs/Model/ReachV1ContactsSegmentsContactSegmentResource.md)
 - [ReachV1ContactsSegmentsSegmentResource](docs/Model/ReachV1ContactsSegmentsSegmentResource.md)
 - [ReachV1ContactsSegmentsSegmentationContactResource](docs/Model/ReachV1ContactsSegmentsSegmentationContactResource.md)
@@ -609,6 +630,9 @@ Class | Method | HTTP request | Description
 - [ReachV1ContactsSegmentsStoreRequestConditionsInner](docs/Model/ReachV1ContactsSegmentsStoreRequestConditionsInner.md)
 - [ReachV1ContactsSegmentsStoreRequestConditionsInnerValue](docs/Model/ReachV1ContactsSegmentsStoreRequestConditionsInnerValue.md)
 - [ReachV1ContactsStoreRequest](docs/Model/ReachV1ContactsStoreRequest.md)
+- [ReachV1ContactsTagsTagResource](docs/Model/ReachV1ContactsTagsTagResource.md)
+- [ReachV1ContactsUpdateRequest](docs/Model/ReachV1ContactsUpdateRequest.md)
+- [ReachV1ContactsUpdateRequestFieldsInner](docs/Model/ReachV1ContactsUpdateRequestFieldsInner.md)
 - [ReachV1ProfilesDomainsDnsRecordStatus](docs/Model/ReachV1ProfilesDomainsDnsRecordStatus.md)
 - [ReachV1ProfilesDomainsDnsRecordStatusActualInner](docs/Model/ReachV1ProfilesDomainsDnsRecordStatusActualInner.md)
 - [ReachV1ProfilesDomainsDnsRecordStatusSuggestedInner](docs/Model/ReachV1ProfilesDomainsDnsRecordStatusSuggestedInner.md)
