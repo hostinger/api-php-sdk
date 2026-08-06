@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *DomainsMoveApi* | [**getOutgoingDomainMoveV1**](docs/Api/DomainsMoveApi.md#getoutgoingdomainmovev1) | **GET** /api/domains/v1/move/outgoing/{domain} | Get outgoing domain move
 *DomainsMoveApi* | [**rejectIncomingDomainMoveV1**](docs/Api/DomainsMoveApi.md#rejectincomingdomainmovev1) | **DELETE** /api/domains/v1/move/incoming/{domain} | Reject incoming domain move
 *DomainsMoveApi* | [**startOutgoingDomainMoveV1**](docs/Api/DomainsMoveApi.md#startoutgoingdomainmovev1) | **POST** /api/domains/v1/move/outgoing/{domain} | Start outgoing domain move
+*DomainsPortfolioApi* | [**claimFreeDomainV1**](docs/Api/DomainsPortfolioApi.md#claimfreedomainv1) | **POST** /api/domains/v1/portfolio/claim | Claim free domain
 *DomainsPortfolioApi* | [**disableDomainLockV1**](docs/Api/DomainsPortfolioApi.md#disabledomainlockv1) | **DELETE** /api/domains/v1/portfolio/{domain}/domain-lock | Disable domain lock
 *DomainsPortfolioApi* | [**disablePrivacyProtectionV1**](docs/Api/DomainsPortfolioApi.md#disableprivacyprotectionv1) | **DELETE** /api/domains/v1/portfolio/{domain}/privacy-protection | Disable privacy protection
 *DomainsPortfolioApi* | [**enableDomainLockV1**](docs/Api/DomainsPortfolioApi.md#enabledomainlockv1) | **PUT** /api/domains/v1/portfolio/{domain}/domain-lock | Enable domain lock
@@ -129,6 +130,7 @@ Class | Method | HTTP request | Description
 *DomainsPortfolioApi* | [**getDomainRenewalInformationV1**](docs/Api/DomainsPortfolioApi.md#getdomainrenewalinformationv1) | **GET** /api/domains/v1/portfolio/{domain}/renewal | Get domain renewal information
 *DomainsPortfolioApi* | [**purchaseNewDomainV1**](docs/Api/DomainsPortfolioApi.md#purchasenewdomainv1) | **POST** /api/domains/v1/portfolio | Purchase new domain
 *DomainsPortfolioApi* | [**updateDomainNameserversV1**](docs/Api/DomainsPortfolioApi.md#updatedomainnameserversv1) | **PUT** /api/domains/v1/portfolio/{domain}/nameservers | Update domain nameservers
+*DomainsTransferApi* | [**claimFreeDomainTransferV1**](docs/Api/DomainsTransferApi.md#claimfreedomaintransferv1) | **POST** /api/domains/v1/transfers/claim | Claim free domain transfer
 *DomainsTransferApi* | [**getTransferListV1**](docs/Api/DomainsTransferApi.md#gettransferlistv1) | **GET** /api/domains/v1/transfers | Get transfer list
 *DomainsTransferApi* | [**getTransferV1**](docs/Api/DomainsTransferApi.md#gettransferv1) | **GET** /api/domains/v1/transfers/{domain} | Get transfer
 *DomainsWHOISApi* | [**cancelPendingIRTPVerificationV1**](docs/Api/DomainsWHOISApi.md#cancelpendingirtpverificationv1) | **DELETE** /api/domains/v1/irtp/{domain} | Cancel pending IRTP verification
@@ -446,10 +448,13 @@ Class | Method | HTTP request | Description
 - [DomainsV1MoveMoveResource](docs/Model/DomainsV1MoveMoveResource.md)
 - [DomainsV1MoveOutgoingStoreRequest](docs/Model/DomainsV1MoveOutgoingStoreRequest.md)
 - [DomainsV1PortfolioAuthCodeAuthCodeResource](docs/Model/DomainsV1PortfolioAuthCodeAuthCodeResource.md)
+- [DomainsV1PortfolioClaimRequest](docs/Model/DomainsV1PortfolioClaimRequest.md)
+- [DomainsV1PortfolioClaimRequestDomainContacts](docs/Model/DomainsV1PortfolioClaimRequestDomainContacts.md)
+- [DomainsV1PortfolioClaimResource](docs/Model/DomainsV1PortfolioClaimResource.md)
 - [DomainsV1PortfolioPurchaseRequest](docs/Model/DomainsV1PortfolioPurchaseRequest.md)
-- [DomainsV1PortfolioPurchaseRequestDomainContacts](docs/Model/DomainsV1PortfolioPurchaseRequestDomainContacts.md)
 - [DomainsV1PortfolioRenewalRenewalInformationResource](docs/Model/DomainsV1PortfolioRenewalRenewalInformationResource.md)
 - [DomainsV1PortfolioUpdateNameserversRequest](docs/Model/DomainsV1PortfolioUpdateNameserversRequest.md)
+- [DomainsV1TransferClaimRequest](docs/Model/DomainsV1TransferClaimRequest.md)
 - [DomainsV1TransferTransferResource](docs/Model/DomainsV1TransferTransferResource.md)
 - [DomainsV1WHOISChangeUpdateRequest](docs/Model/DomainsV1WHOISChangeUpdateRequest.md)
 - [DomainsV1WHOISProfileResource](docs/Model/DomainsV1WHOISProfileResource.md)

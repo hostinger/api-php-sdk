@@ -1,4 +1,4 @@
-# # DomainsV1PortfolioPurchaseRequestDomainContacts
+# # DomainsV1PortfolioClaimRequestDomainContacts
 
 ## Properties
 

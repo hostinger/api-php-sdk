@@ -4,6 +4,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**claimFreeDomainV1()**](DomainsPortfolioApi.md#claimFreeDomainV1) | **POST** /api/domains/v1/portfolio/claim | Claim free domain |
 | [**disableDomainLockV1()**](DomainsPortfolioApi.md#disableDomainLockV1) | **DELETE** /api/domains/v1/portfolio/{domain}/domain-lock | Disable domain lock |
 | [**disablePrivacyProtectionV1()**](DomainsPortfolioApi.md#disablePrivacyProtectionV1) | **DELETE** /api/domains/v1/portfolio/{domain}/privacy-protection | Disable privacy protection |
 | [**enableDomainLockV1()**](DomainsPortfolioApi.md#enableDomainLockV1) | **PUT** /api/domains/v1/portfolio/{domain}/domain-lock | Enable domain lock |
@@ -15,6 +16,52 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**purchaseNewDomainV1()**](DomainsPortfolioApi.md#purchaseNewDomainV1) | **POST** /api/domains/v1/portfolio | Purchase new domain |
 | [**updateDomainNameserversV1()**](DomainsPortfolioApi.md#updateDomainNameserversV1) | **PUT** /api/domains/v1/portfolio/{domain}/nameservers | Update domain nameservers |
 
+
+## `claimFreeDomainV1()`
+
+```php
+claimFreeDomainV1($domainsV1PortfolioClaimRequest): \Hostinger\Model\DomainsV1PortfolioClaimResource
+```
+
+Claim free domain
+
+Claim a free domain available on your account and register it.  Unlike purchasing a domain, this consumes a free domain you already have, so no payment method is required.  A successful response means the domain is registered. If registration fails, login to [hPanel](https://hpanel.hostinger.com/) and check domain registration status.  If no WHOIS information is provided, default contact information for that TLD will be used. Before making request, ensure WHOIS information for desired TLD exists in your account.  Some TLDs require `additional_details` to be provided and these will be validated before claiming.  Requests which cannot be fulfilled are rejected with an error code in the response body, for example `2037` when no free domain is available.  Use this endpoint to register a domain using a free domain from your account.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\DomainsPortfolioApi(config: $config);
+$domainsV1PortfolioClaimRequest = new \Hostinger\Model\DomainsV1PortfolioClaimRequest(); // \Hostinger\Model\DomainsV1PortfolioClaimRequest
+
+try {
+    $result = $apiInstance->claimFreeDomainV1($domainsV1PortfolioClaimRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DomainsPortfolioApi->claimFreeDomainV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domainsV1PortfolioClaimRequest** | [**\Hostinger\Model\DomainsV1PortfolioClaimRequest**](../Model/DomainsV1PortfolioClaimRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\DomainsV1PortfolioClaimResource**](../Model/DomainsV1PortfolioClaimResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `disableDomainLockV1()`
 

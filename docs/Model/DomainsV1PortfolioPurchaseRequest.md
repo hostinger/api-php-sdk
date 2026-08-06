@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **domain** | **string** | Domain name |
 **itemId** | **string** | Catalog price item ID |
 **paymentMethodId** | **int** | Payment method ID, default will be used if not provided |
-**domainContacts** | [**\Hostinger\Model\DomainsV1PortfolioPurchaseRequestDomainContacts**](DomainsV1PortfolioPurchaseRequestDomainContacts.md) |  |
+**domainContacts** | [**\Hostinger\Model\DomainsV1PortfolioClaimRequestDomainContacts**](DomainsV1PortfolioClaimRequestDomainContacts.md) |  |
 **additionalDetails** | **object** | Additional registration data, possible values depends on TLD |
 **coupons** | **mixed[]** | Discount coupon codes |
 
