@@ -90,7 +90,7 @@ $directory = blog; // string | Directory path to check
 $maxDepth = 5; // int | How many directory levels deep to recurse.
 $maxItems = 500; // int | Max number of entries to return in this page.
 $offset = 0; // int | Number of entries to skip. Page with offset + item count until reaching total_items.
-$fileTypes = new \Hostinger\Model\\Hostinger\Model\HostingListWebsiteFilesAndDirectoriesV1FileTypesParameter(); // \Hostinger\Model\HostingListWebsiteFilesAndDirectoriesV1FileTypesParameter | Filter by entry type, e.g. file,directory. Array or comma-separated. Omit for all types.
+$fileTypes = ["file","directory"]; // string[] | Filter by entry type, e.g. file,directory. Omit for all types.
 
 try {
     $result = $apiInstance->listWebsiteFilesAndDirectoriesV1($username, $domain, $directory, $maxDepth, $maxItems, $offset, $fileTypes);
@@ -110,7 +110,7 @@ try {
 | **maxDepth** | **int**| How many directory levels deep to recurse. | [optional] [default to 5] |
 | **maxItems** | **int**| Max number of entries to return in this page. | [optional] [default to 1000] |
 | **offset** | **int**| Number of entries to skip. Page with offset + item count until reaching total_items. | [optional] [default to 0] |
-| **fileTypes** | [**\Hostinger\Model\HostingListWebsiteFilesAndDirectoriesV1FileTypesParameter**](../Model/.md)| Filter by entry type, e.g. file,directory. Array or comma-separated. Omit for all types. | [optional] |
+| **fileTypes** | [**string[]**](../Model/string.md)| Filter by entry type, e.g. file,directory. Omit for all types. | [optional] |
 
 ### Return type
 

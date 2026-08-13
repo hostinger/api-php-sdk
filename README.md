@@ -526,7 +526,6 @@ Class | Method | HTTP request | Description
 - [HostingListAccountDatabasesV1200Response](docs/Model/HostingListAccountDatabasesV1200Response.md)
 - [HostingListNodeJSBuildsV1200Response](docs/Model/HostingListNodeJSBuildsV1200Response.md)
 - [HostingListOrdersV1200Response](docs/Model/HostingListOrdersV1200Response.md)
-- [HostingListWebsiteFilesAndDirectoriesV1FileTypesParameter](docs/Model/HostingListWebsiteFilesAndDirectoriesV1FileTypesParameter.md)
 - [HostingListWebsitesV1200Response](docs/Model/HostingListWebsitesV1200Response.md)
 - [HostingV1CacheToggleCacheRequest](docs/Model/HostingV1CacheToggleCacheRequest.md)
 - [HostingV1CacheToggleCachelessModeRequest](docs/Model/HostingV1CacheToggleCachelessModeRequest.md)
