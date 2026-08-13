@@ -404,7 +404,6 @@ Class | Method | HTTP request | Description
 - [AgencyHostingV1WebsitesDatabasesDatabaseUserResource](docs/Model/AgencyHostingV1WebsitesDatabasesDatabaseUserResource.md)
 - [AgencyHostingV1WebsitesDatabasesUsersCreateDatabaseUserRequest](docs/Model/AgencyHostingV1WebsitesDatabasesUsersCreateDatabaseUserRequest.md)
 - [AgencyHostingV1WebsitesSslCertResource](docs/Model/AgencyHostingV1WebsitesSslCertResource.md)
-- [AgencyHostingV1WebsitesWebsiteDeletionResource](docs/Model/AgencyHostingV1WebsitesWebsiteDeletionResource.md)
 - [AgencyHostingV1WebsitesWebsiteDomainDetailsResource](docs/Model/AgencyHostingV1WebsitesWebsiteDomainDetailsResource.md)
 - [AgencyHostingV1WebsitesWebsiteOrderPlanResource](docs/Model/AgencyHostingV1WebsitesWebsiteOrderPlanResource.md)
 - [AgencyHostingV1WebsitesWebsiteOrderPlanResourceParameters](docs/Model/AgencyHostingV1WebsitesWebsiteOrderPlanResourceParameters.md)

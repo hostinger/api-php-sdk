@@ -61,12 +61,12 @@ try {
 ## `deleteAgencyPlanWebsiteV1()`
 
 ```php
-deleteAgencyPlanWebsiteV1($websiteUid): \Hostinger\Model\AgencyHostingV1WebsitesWebsiteDeletionResource
+deleteAgencyPlanWebsiteV1($websiteUid): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
 Delete Agency Plan website
 
-Deletes an Agency Plan website and schedules cleanup of its resources.  This action is irreversible. Website files, databases, and linked domains are removed.
+Permanently deletes an Agency Plan website. Deletion is processed asynchronously: the website is immediately transitioned to a deleting state and the underlying server resources are removed in the background.
 
 ### Example
 
@@ -98,7 +98,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\AgencyHostingV1WebsitesWebsiteDeletionResource**](../Model/AgencyHostingV1WebsitesWebsiteDeletionResource.md)
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
