@@ -58,12 +58,12 @@ try {
 ## `deleteWebsiteV1()`
 
 ```php
-deleteWebsiteV1($domain, $hostingV1WebsitesDeleteWebsiteRequest): \Hostinger\Model\CommonSuccessEmptyResource
+deleteWebsiteV1($domain): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
 Delete website
 
-Permanently deletes a website and all of its data. This action is destructive and cannot be undone. Always ask the user for explicit confirmation before calling this endpoint.  All website files, databases and related configuration will be removed. The hosting plan itself is kept, so a new website can be created on it afterwards.  The confirm field must be boolean true, otherwise the request is rejected.  Supported websites: main and addon domain websites on web hosting plans, and Website Builder websites. Parked domains and subdomains cannot be deleted with this endpoint. The domain must be the exact website domain, not a preview domain or an alias.  Returns 404 when the domain does not exist or does not belong to the authenticated client.  Website removal is processed asynchronously and can take a few minutes to complete. The response returns before the removal finishes.
+This endpoint permanently removes a website and all of its data. This action cannot be undone. Before calling it, make sure the user understands the consequences and explicitly confirms that they want to proceed.  All website files, databases and related configuration will be removed. The hosting plan itself is kept, so a new website can be created on it afterwards.  Supported websites: main and addon domain websites on web hosting plans, and Website Builder websites. Parked domains and subdomains cannot be deleted with this endpoint. The domain must be the exact website domain, not a preview domain or an alias.  Returns 404 when the domain does not exist or does not belong to the authenticated client.  Website removal is processed asynchronously and can take a few minutes to complete. The response returns before the removal finishes.
 
 ### Example
 
@@ -78,10 +78,9 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 $apiInstance = new Hostinger\Api\HostingWebsitesApi(config: $config);
 $domain = mydomain.tld; // string | Domain name
-$hostingV1WebsitesDeleteWebsiteRequest = new \Hostinger\Model\HostingV1WebsitesDeleteWebsiteRequest(); // \Hostinger\Model\HostingV1WebsitesDeleteWebsiteRequest
 
 try {
-    $result = $apiInstance->deleteWebsiteV1($domain, $hostingV1WebsitesDeleteWebsiteRequest);
+    $result = $apiInstance->deleteWebsiteV1($domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HostingWebsitesApi->deleteWebsiteV1: ', $e->getMessage(), PHP_EOL;
@@ -93,7 +92,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **domain** | **string**| Domain name | |
-| **hostingV1WebsitesDeleteWebsiteRequest** | [**\Hostinger\Model\HostingV1WebsitesDeleteWebsiteRequest**](../Model/HostingV1WebsitesDeleteWebsiteRequest.md)|  | |
 
 ### Return type
 

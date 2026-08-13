@@ -107,6 +107,8 @@ Class | Method | HTTP request | Description
 *DNSZoneApi* | [**validateDNSRecordsV1**](docs/Api/DNSZoneApi.md#validatednsrecordsv1) | **POST** /api/dns/v1/zones/{domain}/validate | Validate DNS records
 *DomainAccessVerifierVerificationsApi* | [**getDomainVerificationsDIRECT**](docs/Api/DomainAccessVerifierVerificationsApi.md#getdomainverificationsdirect) | **GET** /api/v2/direct/verifications/active | Get domain verifications
 *DomainsAvailabilityApi* | [**checkDomainAvailabilityV1**](docs/Api/DomainsAvailabilityApi.md#checkdomainavailabilityv1) | **POST** /api/domains/v1/availability | Check domain availability
+*DomainsAvailabilityApi* | [**suggestDomainNamesFromADescriptionV1**](docs/Api/DomainsAvailabilityApi.md#suggestdomainnamesfromadescriptionv1) | **POST** /api/domains/v1/availability/alternatives-from-description | Suggest domain names from a description
+*DomainsAvailabilityApi* | [**suggestDomainNamesFromADomainV1**](docs/Api/DomainsAvailabilityApi.md#suggestdomainnamesfromadomainv1) | **POST** /api/domains/v1/availability/alternatives-from-domain | Suggest domain names from a domain
 *DomainsForwardingApi* | [**createDomainForwardingV1**](docs/Api/DomainsForwardingApi.md#createdomainforwardingv1) | **POST** /api/domains/v1/forwarding | Create domain forwarding
 *DomainsForwardingApi* | [**deleteDomainForwardingV1**](docs/Api/DomainsForwardingApi.md#deletedomainforwardingv1) | **DELETE** /api/domains/v1/forwarding/{domain} | Delete domain forwarding
 *DomainsForwardingApi* | [**getDomainForwardingV1**](docs/Api/DomainsForwardingApi.md#getdomainforwardingv1) | **GET** /api/domains/v1/forwarding/{domain} | Get domain forwarding
@@ -182,6 +184,8 @@ Class | Method | HTTP request | Description
 *HostingDomainsApi* | [**listWebsiteParkedDomainsV1**](docs/Api/HostingDomainsApi.md#listwebsiteparkeddomainsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/parked-domains | List website parked domains
 *HostingDomainsApi* | [**listWebsiteSubdomainsV1**](docs/Api/HostingDomainsApi.md#listwebsitesubdomainsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/subdomains | List website subdomains
 *HostingDomainsApi* | [**verifyDomainOwnershipV1**](docs/Api/HostingDomainsApi.md#verifydomainownershipv1) | **POST** /api/hosting/v1/domains/verify-ownership | Verify domain ownership
+*HostingFilesApi* | [**getWebsiteFileContentV1**](docs/Api/HostingFilesApi.md#getwebsitefilecontentv1) | **GET** /api/hosting/v1/accounts/{username}/domains/{domain}/files/content | Get website file content
+*HostingFilesApi* | [**listWebsiteFilesAndDirectoriesV1**](docs/Api/HostingFilesApi.md#listwebsitefilesanddirectoriesv1) | **GET** /api/hosting/v1/accounts/{username}/domains/{domain}/files | List website files and directories
 *HostingNodeJSApi* | [**createNodeJSBuildFromArchiveV1**](docs/Api/HostingNodeJSApi.md#createnodejsbuildfromarchivev1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/from-archive | Create NodeJS build from archive
 *HostingNodeJSApi* | [**getNodeJSBuildLogsV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildlogsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs
 *HostingNodeJSApi* | [**listNodeJSBuildsV1**](docs/Api/HostingNodeJSApi.md#listnodejsbuildsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds
@@ -455,6 +459,8 @@ Class | Method | HTTP request | Description
 - [DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLD](docs/Model/DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLD.md)
 - [DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPE](docs/Model/DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPE.md)
 - [DomainAccessVerifierV2VerificationsListRequest](docs/Model/DomainAccessVerifierV2VerificationsListRequest.md)
+- [DomainsV1AvailabilityAlternativesFromDescriptionRequest](docs/Model/DomainsV1AvailabilityAlternativesFromDescriptionRequest.md)
+- [DomainsV1AvailabilityAlternativesFromDomainRequest](docs/Model/DomainsV1AvailabilityAlternativesFromDomainRequest.md)
 - [DomainsV1AvailabilityAvailabilityRequest](docs/Model/DomainsV1AvailabilityAvailabilityRequest.md)
 - [DomainsV1AvailabilityAvailabilityResource](docs/Model/DomainsV1AvailabilityAvailabilityResource.md)
 - [DomainsV1DomainDomainExtendedResource](docs/Model/DomainsV1DomainDomainExtendedResource.md)
@@ -517,6 +523,7 @@ Class | Method | HTTP request | Description
 - [HostingListAccountDatabasesV1200Response](docs/Model/HostingListAccountDatabasesV1200Response.md)
 - [HostingListNodeJSBuildsV1200Response](docs/Model/HostingListNodeJSBuildsV1200Response.md)
 - [HostingListOrdersV1200Response](docs/Model/HostingListOrdersV1200Response.md)
+- [HostingListWebsiteFilesAndDirectoriesV1FileTypesParameter](docs/Model/HostingListWebsiteFilesAndDirectoriesV1FileTypesParameter.md)
 - [HostingListWebsitesV1200Response](docs/Model/HostingListWebsitesV1200Response.md)
 - [HostingV1CacheToggleCacheRequest](docs/Model/HostingV1CacheToggleCacheRequest.md)
 - [HostingV1CacheToggleCachelessModeRequest](docs/Model/HostingV1CacheToggleCachelessModeRequest.md)
@@ -539,6 +546,9 @@ Class | Method | HTTP request | Description
 - [HostingV1DomainsParkedDomainResource](docs/Model/HostingV1DomainsParkedDomainResource.md)
 - [HostingV1DomainsSubdomainResource](docs/Model/HostingV1DomainsSubdomainResource.md)
 - [HostingV1DomainsVerifyOwnershipRequest](docs/Model/HostingV1DomainsVerifyOwnershipRequest.md)
+- [HostingV1FilesFileContentResource](docs/Model/HostingV1FilesFileContentResource.md)
+- [HostingV1FilesFilesResource](docs/Model/HostingV1FilesFilesResource.md)
+- [HostingV1FilesFilesResourceItemsInner](docs/Model/HostingV1FilesFilesResourceItemsInner.md)
 - [HostingV1NodeJsBuildLogsResource](docs/Model/HostingV1NodeJsBuildLogsResource.md)
 - [HostingV1NodeJsBuildOptionsResource](docs/Model/HostingV1NodeJsBuildOptionsResource.md)
 - [HostingV1NodeJsBuildResource](docs/Model/HostingV1NodeJsBuildResource.md)
@@ -558,7 +568,6 @@ Class | Method | HTTP request | Description
 - [HostingV1PhpUpdatePhpOptionsRequestOptionsValue](docs/Model/HostingV1PhpUpdatePhpOptionsRequestOptionsValue.md)
 - [HostingV1PhpUpdatePhpVersionRequest](docs/Model/HostingV1PhpUpdatePhpVersionRequest.md)
 - [HostingV1WebsitesCreateWebsiteRequest](docs/Model/HostingV1WebsitesCreateWebsiteRequest.md)
-- [HostingV1WebsitesDeleteWebsiteRequest](docs/Model/HostingV1WebsitesDeleteWebsiteRequest.md)
 - [HostingV1WebsitesWebsiteResource](docs/Model/HostingV1WebsitesWebsiteResource.md)
 - [InlineObject](docs/Model/InlineObject.md)
 - [InlineObject1](docs/Model/InlineObject1.md)
