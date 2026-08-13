@@ -1,4 +1,4 @@
-# # AgencyHostingListAgencyPlanDomainsV1200Response
+# # AgencyHostingListDomainsV1200Response
 
 ## Properties
 

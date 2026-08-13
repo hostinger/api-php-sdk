@@ -4,19 +4,19 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**buildAgencyPlanWebsiteNodeJSAssetsV1()**](AgencyHostingWebsitesApi.md#buildAgencyPlanWebsiteNodeJSAssetsV1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/build-assets | Build Agency Plan website NodeJS assets |
-| [**deleteAgencyPlanWebsiteV1()**](AgencyHostingWebsitesApi.md#deleteAgencyPlanWebsiteV1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid} | Delete Agency Plan website |
-| [**getAgencyPlanWebsiteDetailsV1()**](AgencyHostingWebsitesApi.md#getAgencyPlanWebsiteDetailsV1) | **GET** /api/agency-hosting/v1/websites/{website_uid} | Get Agency Plan website details |
-| [**listRunningAgencyPlanWebsiteProcessesV1()**](AgencyHostingWebsitesApi.md#listRunningAgencyPlanWebsiteProcessesV1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/processes | List running Agency Plan website processes |
+| [**buildWebsiteNodeJSAssetsV1()**](AgencyHostingWebsitesApi.md#buildWebsiteNodeJSAssetsV1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/build-assets | Build website NodeJS assets |
+| [**deleteWebsiteV1()**](AgencyHostingWebsitesApi.md#deleteWebsiteV1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid} | Delete website |
+| [**getWebsiteDetailsV1()**](AgencyHostingWebsitesApi.md#getWebsiteDetailsV1) | **GET** /api/agency-hosting/v1/websites/{website_uid} | Get website details |
+| [**listWebsiteProcessesV1()**](AgencyHostingWebsitesApi.md#listWebsiteProcessesV1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/processes | List website processes |
 
 
-## `buildAgencyPlanWebsiteNodeJSAssetsV1()`
+## `buildWebsiteNodeJSAssetsV1()`
 
 ```php
-buildAgencyPlanWebsiteNodeJSAssetsV1($websiteUid, $agencyHostingV1WebsitesBuildAssetsRequest): \Hostinger\Model\CommonSuccessEmptyResource
+buildWebsiteNodeJSAssetsV1($websiteUid, $agencyHostingV1WebsitesBuildAssetsRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Build Agency Plan website NodeJS assets
+Build website NodeJS assets
 
 Builds and deploys a Node.js application for an Agency Plan website from an already-uploaded archive.  Upload the archive to file browser first, then provide its relative path from document root in this request. Website contents are overwritten by the build result, which is deployed to public_html.
 
@@ -36,10 +36,10 @@ $websiteUid = zpwlGlp19; // string | Agency Plan website UID
 $agencyHostingV1WebsitesBuildAssetsRequest = new \Hostinger\Model\AgencyHostingV1WebsitesBuildAssetsRequest(); // \Hostinger\Model\AgencyHostingV1WebsitesBuildAssetsRequest
 
 try {
-    $result = $apiInstance->buildAgencyPlanWebsiteNodeJSAssetsV1($websiteUid, $agencyHostingV1WebsitesBuildAssetsRequest);
+    $result = $apiInstance->buildWebsiteNodeJSAssetsV1($websiteUid, $agencyHostingV1WebsitesBuildAssetsRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingWebsitesApi->buildAgencyPlanWebsiteNodeJSAssetsV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingWebsitesApi->buildWebsiteNodeJSAssetsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -58,13 +58,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteAgencyPlanWebsiteV1()`
+## `deleteWebsiteV1()`
 
 ```php
-deleteAgencyPlanWebsiteV1($websiteUid): \Hostinger\Model\CommonSuccessEmptyResource
+deleteWebsiteV1($websiteUid): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Delete Agency Plan website
+Delete website
 
 Permanently deletes an Agency Plan website. Deletion is processed asynchronously: the website is immediately transitioned to a deleting state and the underlying server resources are removed in the background.
 
@@ -83,10 +83,10 @@ $apiInstance = new Hostinger\Api\AgencyHostingWebsitesApi(config: $config);
 $websiteUid = zpwlGlp19; // string | Agency Plan website UID
 
 try {
-    $result = $apiInstance->deleteAgencyPlanWebsiteV1($websiteUid);
+    $result = $apiInstance->deleteWebsiteV1($websiteUid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingWebsitesApi->deleteAgencyPlanWebsiteV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingWebsitesApi->deleteWebsiteV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -104,13 +104,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getAgencyPlanWebsiteDetailsV1()`
+## `getWebsiteDetailsV1()`
 
 ```php
-getAgencyPlanWebsiteDetailsV1($websiteUid): \Hostinger\Model\AgencyHostingV1WebsitesWebsiteResource
+getWebsiteDetailsV1($websiteUid): \Hostinger\Model\AgencyHostingV1WebsitesWebsiteResource
 ```
 
-Get Agency Plan website details
+Get website details
 
 Retrieves detailed information about a specific Agency Plan website, including configuration, status, metadata, hosting plan details, and resource quotas.
 
@@ -129,10 +129,10 @@ $apiInstance = new Hostinger\Api\AgencyHostingWebsitesApi(config: $config);
 $websiteUid = zpwlGlp19; // string | Agency Plan website UID
 
 try {
-    $result = $apiInstance->getAgencyPlanWebsiteDetailsV1($websiteUid);
+    $result = $apiInstance->getWebsiteDetailsV1($websiteUid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingWebsitesApi->getAgencyPlanWebsiteDetailsV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingWebsitesApi->getWebsiteDetailsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -150,13 +150,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listRunningAgencyPlanWebsiteProcessesV1()`
+## `listWebsiteProcessesV1()`
 
 ```php
-listRunningAgencyPlanWebsiteProcessesV1($websiteUid): \Hostinger\Model\AgencyHostingV1WebsitesWebsiteProcessResource[]
+listWebsiteProcessesV1($websiteUid): \Hostinger\Model\AgencyHostingV1WebsitesWebsiteProcessResource[]
 ```
 
-List running Agency Plan website processes
+List website processes
 
 Lists active and recently completed asynchronous processes for an Agency Plan website.  Each process has a unique ID (for tracking), a type, and a status (running, completed, failed). Poll this endpoint after initiating async operations (SSL setup, backups, cloning) to track progress.
 
@@ -175,10 +175,10 @@ $apiInstance = new Hostinger\Api\AgencyHostingWebsitesApi(config: $config);
 $websiteUid = zpwlGlp19; // string | Agency Plan website UID
 
 try {
-    $result = $apiInstance->listRunningAgencyPlanWebsiteProcessesV1($websiteUid);
+    $result = $apiInstance->listWebsiteProcessesV1($websiteUid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingWebsitesApi->listRunningAgencyPlanWebsiteProcessesV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingWebsitesApi->listWebsiteProcessesV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

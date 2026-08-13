@@ -4,16 +4,16 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**listAgencyPlanOrdersV1()**](AgencyHostingOrdersApi.md#listAgencyPlanOrdersV1) | **GET** /api/agency-hosting/v1/orders | List Agency Plan orders |
+| [**listOrdersV1()**](AgencyHostingOrdersApi.md#listOrdersV1) | **GET** /api/agency-hosting/v1/orders | List orders |
 
 
-## `listAgencyPlanOrdersV1()`
+## `listOrdersV1()`
 
 ```php
-listAgencyPlanOrdersV1($page, $perPage): \Hostinger\Model\AgencyHostingListAgencyPlanOrdersV1200Response
+listOrdersV1($page, $perPage): \Hostinger\Model\AgencyHostingListOrdersV1200Response
 ```
 
-List Agency Plan orders
+List orders
 
 Returns a paginated list of Agency Plan orders accessible to the authenticated client.
 
@@ -33,10 +33,10 @@ $page = 1; // int | Page number
 $perPage = 25; // int | Number of items per page
 
 try {
-    $result = $apiInstance->listAgencyPlanOrdersV1($page, $perPage);
+    $result = $apiInstance->listOrdersV1($page, $perPage);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingOrdersApi->listAgencyPlanOrdersV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingOrdersApi->listOrdersV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -49,7 +49,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\AgencyHostingListAgencyPlanOrdersV1200Response**](../Model/AgencyHostingListAgencyPlanOrdersV1200Response.md)
+[**\Hostinger\Model\AgencyHostingListOrdersV1200Response**](../Model/AgencyHostingListOrdersV1200Response.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

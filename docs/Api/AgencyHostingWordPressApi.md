@@ -4,18 +4,18 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**changeAgencyPlanWebsiteWordPressCoreVersionV1()**](AgencyHostingWordPressApi.md#changeAgencyPlanWebsiteWordPressCoreVersionV1) | **PATCH** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/version | Change Agency Plan website WordPress core version |
-| [**getAgencyPlanWebsiteWordPressSettingsV1()**](AgencyHostingWordPressApi.md#getAgencyPlanWebsiteWordPressSettingsV1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings | Get Agency Plan website WordPress settings |
-| [**listAvailableWordPressVersionsForAnAgencyPlanWebsiteV1()**](AgencyHostingWordPressApi.md#listAvailableWordPressVersionsForAnAgencyPlanWebsiteV1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/versions | List available WordPress versions for an Agency Plan website |
+| [**changeWordPressVersionV1()**](AgencyHostingWordPressApi.md#changeWordPressVersionV1) | **PATCH** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/version | Change WordPress version |
+| [**getWordPressSettingsV1()**](AgencyHostingWordPressApi.md#getWordPressSettingsV1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings | Get WordPress settings |
+| [**listAvailableWordPressVersionsV1()**](AgencyHostingWordPressApi.md#listAvailableWordPressVersionsV1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/versions | List available WordPress versions |
 
 
-## `changeAgencyPlanWebsiteWordPressCoreVersionV1()`
+## `changeWordPressVersionV1()`
 
 ```php
-changeAgencyPlanWebsiteWordPressCoreVersionV1($websiteUid, $agencyHostingV1WordPressChangeVersionRequest): \Hostinger\Model\CommonSuccessEmptyResource
+changeWordPressVersionV1($websiteUid, $agencyHostingV1WordPressChangeVersionRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Change Agency Plan website WordPress core version
+Change WordPress version
 
 Changes the installed WordPress core version on an Agency Plan website to one of the versions available for installation.
 
@@ -35,10 +35,10 @@ $websiteUid = zpwlGlp19; // string | Agency Plan website UID
 $agencyHostingV1WordPressChangeVersionRequest = new \Hostinger\Model\AgencyHostingV1WordPressChangeVersionRequest(); // \Hostinger\Model\AgencyHostingV1WordPressChangeVersionRequest
 
 try {
-    $result = $apiInstance->changeAgencyPlanWebsiteWordPressCoreVersionV1($websiteUid, $agencyHostingV1WordPressChangeVersionRequest);
+    $result = $apiInstance->changeWordPressVersionV1($websiteUid, $agencyHostingV1WordPressChangeVersionRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingWordPressApi->changeAgencyPlanWebsiteWordPressCoreVersionV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingWordPressApi->changeWordPressVersionV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -57,13 +57,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getAgencyPlanWebsiteWordPressSettingsV1()`
+## `getWordPressSettingsV1()`
 
 ```php
-getAgencyPlanWebsiteWordPressSettingsV1($websiteUid): \Hostinger\Model\AgencyHostingV1WordPressSettingsResource
+getWordPressSettingsV1($websiteUid): \Hostinger\Model\AgencyHostingV1WordPressSettingsResource
 ```
 
-Get Agency Plan website WordPress settings
+Get WordPress settings
 
 Returns the current WordPress settings for an Agency Plan website: installed core version, LiteSpeed Cache plugin status, object cache status, and maintenance mode status.
 
@@ -82,10 +82,10 @@ $apiInstance = new Hostinger\Api\AgencyHostingWordPressApi(config: $config);
 $websiteUid = zpwlGlp19; // string | Agency Plan website UID
 
 try {
-    $result = $apiInstance->getAgencyPlanWebsiteWordPressSettingsV1($websiteUid);
+    $result = $apiInstance->getWordPressSettingsV1($websiteUid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingWordPressApi->getAgencyPlanWebsiteWordPressSettingsV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingWordPressApi->getWordPressSettingsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -103,13 +103,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listAvailableWordPressVersionsForAnAgencyPlanWebsiteV1()`
+## `listAvailableWordPressVersionsV1()`
 
 ```php
-listAvailableWordPressVersionsForAnAgencyPlanWebsiteV1($websiteUid): \Hostinger\Model\AgencyHostingV1WordPressVersionResource[]
+listAvailableWordPressVersionsV1($websiteUid): \Hostinger\Model\AgencyHostingV1WordPressVersionResource[]
 ```
 
-List available WordPress versions for an Agency Plan website
+List available WordPress versions
 
 Lists the WordPress core versions available for installation on an Agency Plan website.
 
@@ -128,10 +128,10 @@ $apiInstance = new Hostinger\Api\AgencyHostingWordPressApi(config: $config);
 $websiteUid = zpwlGlp19; // string | Agency Plan website UID
 
 try {
-    $result = $apiInstance->listAvailableWordPressVersionsForAnAgencyPlanWebsiteV1($websiteUid);
+    $result = $apiInstance->listAvailableWordPressVersionsV1($websiteUid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingWordPressApi->listAvailableWordPressVersionsForAnAgencyPlanWebsiteV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingWordPressApi->listAvailableWordPressVersionsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

@@ -4,16 +4,16 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**clearAgencyPlanWebsiteCacheV1()**](AgencyHostingCacheApi.md#clearAgencyPlanWebsiteCacheV1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/cache | Clear Agency Plan website cache |
+| [**clearWebsiteCacheV1()**](AgencyHostingCacheApi.md#clearWebsiteCacheV1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/cache | Clear website cache |
 
 
-## `clearAgencyPlanWebsiteCacheV1()`
+## `clearWebsiteCacheV1()`
 
 ```php
-clearAgencyPlanWebsiteCacheV1($websiteUid): \Hostinger\Model\CommonSuccessEmptyResource
+clearWebsiteCacheV1($websiteUid): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Clear Agency Plan website cache
+Clear website cache
 
 Clears cache for all domains associated with an Agency Plan website, including its preview domain.  This operation clears all cache types for the website.
 
@@ -32,10 +32,10 @@ $apiInstance = new Hostinger\Api\AgencyHostingCacheApi(config: $config);
 $websiteUid = zpwlGlp19; // string | Agency Plan website UID
 
 try {
-    $result = $apiInstance->clearAgencyPlanWebsiteCacheV1($websiteUid);
+    $result = $apiInstance->clearWebsiteCacheV1($websiteUid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingCacheApi->clearAgencyPlanWebsiteCacheV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingCacheApi->clearWebsiteCacheV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

@@ -49,10 +49,10 @@ $apiInstance = new Hostinger\Api\AgencyHostingCacheApi(
 $websiteUid = zpwlGlp19; // string | Agency Plan website UID
 
 try {
-    $result = $apiInstance->clearAgencyPlanWebsiteCacheV1($websiteUid);
+    $result = $apiInstance->clearWebsiteCacheV1($websiteUid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingCacheApi->clearAgencyPlanWebsiteCacheV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingCacheApi->clearWebsiteCacheV1: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
@@ -63,31 +63,31 @@ All URIs are relative to *https://developers.hostinger.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AgencyHostingCacheApi* | [**clearAgencyPlanWebsiteCacheV1**](docs/Api/AgencyHostingCacheApi.md#clearagencyplanwebsitecachev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/cache | Clear Agency Plan website cache
-*AgencyHostingCronJobsApi* | [**createAgencyPlanWebsiteCronJobV1**](docs/Api/AgencyHostingCronJobsApi.md#createagencyplanwebsitecronjobv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/cron-jobs | Create Agency Plan website cron job
-*AgencyHostingCronJobsApi* | [**deleteAgencyPlanWebsiteCronJobV1**](docs/Api/AgencyHostingCronJobsApi.md#deleteagencyplanwebsitecronjobv1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/cron-jobs/{uuid} | Delete Agency Plan website cron job
-*AgencyHostingCronJobsApi* | [**listAgencyPlanWebsiteCronJobsV1**](docs/Api/AgencyHostingCronJobsApi.md#listagencyplanwebsitecronjobsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/cron-jobs | List Agency Plan website cron jobs
-*AgencyHostingDatabasesApi* | [**createAgencyPlanWebsiteDatabaseUserV1**](docs/Api/AgencyHostingDatabasesApi.md#createagencyplanwebsitedatabaseuserv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/databases/{database_name}/users | Create Agency Plan website database user
-*AgencyHostingDatabasesApi* | [**createAgencyPlanWebsiteDatabaseV1**](docs/Api/AgencyHostingDatabasesApi.md#createagencyplanwebsitedatabasev1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/databases | Create Agency Plan website database
-*AgencyHostingDatabasesApi* | [**deleteAgencyPlanWebsiteDatabaseUserV1**](docs/Api/AgencyHostingDatabasesApi.md#deleteagencyplanwebsitedatabaseuserv1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/databases/{database_name}/users/{database_user_name} | Delete Agency Plan website database user
-*AgencyHostingDatabasesApi* | [**deleteAgencyPlanWebsiteDatabaseV1**](docs/Api/AgencyHostingDatabasesApi.md#deleteagencyplanwebsitedatabasev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/databases/{database_name} | Delete Agency Plan website database
-*AgencyHostingDatabasesApi* | [**listAgencyPlanWebsiteDatabasesV1**](docs/Api/AgencyHostingDatabasesApi.md#listagencyplanwebsitedatabasesv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/databases | List Agency Plan website databases
-*AgencyHostingDatacentersApi* | [**listAvailableDatacentersForAnAgencyPlanOrderV1**](docs/Api/AgencyHostingDatacentersApi.md#listavailabledatacentersforanagencyplanorderv1) | **GET** /api/agency-hosting/v1/orders/{order_id}/datacenters | List available datacenters for an Agency Plan order
-*AgencyHostingDomainsApi* | [**changeAgencyPlanWebsiteDomainV1**](docs/Api/AgencyHostingDomainsApi.md#changeagencyplanwebsitedomainv1) | **PUT** /api/agency-hosting/v1/websites/{website_uid}/domains/{from_domain} | Change Agency Plan website domain
-*AgencyHostingDomainsApi* | [**linkDomainToAgencyPlanWebsiteV1**](docs/Api/AgencyHostingDomainsApi.md#linkdomaintoagencyplanwebsitev1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/domains | Link domain to Agency Plan website
-*AgencyHostingDomainsApi* | [**listAgencyPlanDomainsV1**](docs/Api/AgencyHostingDomainsApi.md#listagencyplandomainsv1) | **GET** /api/agency-hosting/v1/domains | List Agency Plan domains
-*AgencyHostingDomainsApi* | [**unlinkDomainFromAgencyPlanWebsiteV1**](docs/Api/AgencyHostingDomainsApi.md#unlinkdomainfromagencyplanwebsitev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/domains/{domain} | Unlink domain from Agency Plan website
-*AgencyHostingFilesApi* | [**importAgencyPlanWebsiteFromArchiveV1**](docs/Api/AgencyHostingFilesApi.md#importagencyplanwebsitefromarchivev1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/files/import-archive | Import Agency Plan website from archive
-*AgencyHostingOrdersApi* | [**listAgencyPlanOrdersV1**](docs/Api/AgencyHostingOrdersApi.md#listagencyplanordersv1) | **GET** /api/agency-hosting/v1/orders | List Agency Plan orders
-*AgencyHostingWebsiteSetupsApi* | [**getAgencyPlanWebsiteSetupStatusV1**](docs/Api/AgencyHostingWebsiteSetupsApi.md#getagencyplanwebsitesetupstatusv1) | **GET** /api/agency-hosting/v1/orders/{order_id}/websites/setups/{setup_uuid} | Get Agency Plan website setup status
-*AgencyHostingWebsiteSetupsApi* | [**provisionANewAgencyPlanWebsiteV1**](docs/Api/AgencyHostingWebsiteSetupsApi.md#provisionanewagencyplanwebsitev1) | **POST** /api/agency-hosting/v1/orders/{order_id}/websites/setups | Provision a new Agency Plan website
-*AgencyHostingWebsitesApi* | [**buildAgencyPlanWebsiteNodeJSAssetsV1**](docs/Api/AgencyHostingWebsitesApi.md#buildagencyplanwebsitenodejsassetsv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/build-assets | Build Agency Plan website NodeJS assets
-*AgencyHostingWebsitesApi* | [**deleteAgencyPlanWebsiteV1**](docs/Api/AgencyHostingWebsitesApi.md#deleteagencyplanwebsitev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid} | Delete Agency Plan website
-*AgencyHostingWebsitesApi* | [**getAgencyPlanWebsiteDetailsV1**](docs/Api/AgencyHostingWebsitesApi.md#getagencyplanwebsitedetailsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid} | Get Agency Plan website details
-*AgencyHostingWebsitesApi* | [**listRunningAgencyPlanWebsiteProcessesV1**](docs/Api/AgencyHostingWebsitesApi.md#listrunningagencyplanwebsiteprocessesv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/processes | List running Agency Plan website processes
-*AgencyHostingWordPressApi* | [**changeAgencyPlanWebsiteWordPressCoreVersionV1**](docs/Api/AgencyHostingWordPressApi.md#changeagencyplanwebsitewordpresscoreversionv1) | **PATCH** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/version | Change Agency Plan website WordPress core version
-*AgencyHostingWordPressApi* | [**getAgencyPlanWebsiteWordPressSettingsV1**](docs/Api/AgencyHostingWordPressApi.md#getagencyplanwebsitewordpresssettingsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings | Get Agency Plan website WordPress settings
-*AgencyHostingWordPressApi* | [**listAvailableWordPressVersionsForAnAgencyPlanWebsiteV1**](docs/Api/AgencyHostingWordPressApi.md#listavailablewordpressversionsforanagencyplanwebsitev1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/versions | List available WordPress versions for an Agency Plan website
+*AgencyHostingCacheApi* | [**clearWebsiteCacheV1**](docs/Api/AgencyHostingCacheApi.md#clearwebsitecachev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/cache | Clear website cache
+*AgencyHostingCronJobsApi* | [**createWebsiteCronJobV1**](docs/Api/AgencyHostingCronJobsApi.md#createwebsitecronjobv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/cron-jobs | Create website cron job
+*AgencyHostingCronJobsApi* | [**deleteWebsiteCronJobV1**](docs/Api/AgencyHostingCronJobsApi.md#deletewebsitecronjobv1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/cron-jobs/{uuid} | Delete website cron job
+*AgencyHostingCronJobsApi* | [**listWebsiteCronJobsV1**](docs/Api/AgencyHostingCronJobsApi.md#listwebsitecronjobsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/cron-jobs | List website cron jobs
+*AgencyHostingDatabasesApi* | [**createWebsiteDatabaseUserV1**](docs/Api/AgencyHostingDatabasesApi.md#createwebsitedatabaseuserv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/databases/{database_name}/users | Create website database user
+*AgencyHostingDatabasesApi* | [**createWebsiteDatabaseV1**](docs/Api/AgencyHostingDatabasesApi.md#createwebsitedatabasev1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/databases | Create website database
+*AgencyHostingDatabasesApi* | [**deleteWebsiteDatabaseUserV1**](docs/Api/AgencyHostingDatabasesApi.md#deletewebsitedatabaseuserv1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/databases/{database_name}/users/{database_user_name} | Delete website database user
+*AgencyHostingDatabasesApi* | [**deleteWebsiteDatabaseV1**](docs/Api/AgencyHostingDatabasesApi.md#deletewebsitedatabasev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/databases/{database_name} | Delete website database
+*AgencyHostingDatabasesApi* | [**listWebsiteDatabasesV1**](docs/Api/AgencyHostingDatabasesApi.md#listwebsitedatabasesv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/databases | List website databases
+*AgencyHostingDatacentersApi* | [**listAvailableDatacentersV1**](docs/Api/AgencyHostingDatacentersApi.md#listavailabledatacentersv1) | **GET** /api/agency-hosting/v1/orders/{order_id}/datacenters | List available datacenters
+*AgencyHostingDomainsApi* | [**changeWebsiteDomainV1**](docs/Api/AgencyHostingDomainsApi.md#changewebsitedomainv1) | **PUT** /api/agency-hosting/v1/websites/{website_uid}/domains/{from_domain} | Change website domain
+*AgencyHostingDomainsApi* | [**linkDomainToWebsiteV1**](docs/Api/AgencyHostingDomainsApi.md#linkdomaintowebsitev1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/domains | Link domain to website
+*AgencyHostingDomainsApi* | [**listDomainsV1**](docs/Api/AgencyHostingDomainsApi.md#listdomainsv1) | **GET** /api/agency-hosting/v1/domains | List domains
+*AgencyHostingDomainsApi* | [**unlinkDomainFromWebsiteV1**](docs/Api/AgencyHostingDomainsApi.md#unlinkdomainfromwebsitev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/domains/{domain} | Unlink domain from website
+*AgencyHostingFilesApi* | [**importWebsiteFromArchiveV1**](docs/Api/AgencyHostingFilesApi.md#importwebsitefromarchivev1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/files/import-archive | Import website from archive
+*AgencyHostingOrdersApi* | [**listOrdersV1**](docs/Api/AgencyHostingOrdersApi.md#listordersv1) | **GET** /api/agency-hosting/v1/orders | List orders
+*AgencyHostingWebsiteSetupsApi* | [**createANewWebsiteV1**](docs/Api/AgencyHostingWebsiteSetupsApi.md#createanewwebsitev1) | **POST** /api/agency-hosting/v1/orders/{order_id}/websites/setups | Create a new website
+*AgencyHostingWebsiteSetupsApi* | [**getWebsiteSetupStatusV1**](docs/Api/AgencyHostingWebsiteSetupsApi.md#getwebsitesetupstatusv1) | **GET** /api/agency-hosting/v1/orders/{order_id}/websites/setups/{setup_uuid} | Get website setup status
+*AgencyHostingWebsitesApi* | [**buildWebsiteNodeJSAssetsV1**](docs/Api/AgencyHostingWebsitesApi.md#buildwebsitenodejsassetsv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/build-assets | Build website NodeJS assets
+*AgencyHostingWebsitesApi* | [**deleteWebsiteV1**](docs/Api/AgencyHostingWebsitesApi.md#deletewebsitev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid} | Delete website
+*AgencyHostingWebsitesApi* | [**getWebsiteDetailsV1**](docs/Api/AgencyHostingWebsitesApi.md#getwebsitedetailsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid} | Get website details
+*AgencyHostingWebsitesApi* | [**listWebsiteProcessesV1**](docs/Api/AgencyHostingWebsitesApi.md#listwebsiteprocessesv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/processes | List website processes
+*AgencyHostingWordPressApi* | [**changeWordPressVersionV1**](docs/Api/AgencyHostingWordPressApi.md#changewordpressversionv1) | **PATCH** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/version | Change WordPress version
+*AgencyHostingWordPressApi* | [**getWordPressSettingsV1**](docs/Api/AgencyHostingWordPressApi.md#getwordpresssettingsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings | Get WordPress settings
+*AgencyHostingWordPressApi* | [**listAvailableWordPressVersionsV1**](docs/Api/AgencyHostingWordPressApi.md#listavailablewordpressversionsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/versions | List available WordPress versions
 *BillingCatalogApi* | [**getCatalogItemListV1**](docs/Api/BillingCatalogApi.md#getcatalogitemlistv1) | **GET** /api/billing/v1/catalog | Get catalog item list
 *BillingOrdersApi* | [**createPurchaseOrderV1**](docs/Api/BillingOrdersApi.md#createpurchaseorderv1) | **POST** /api/billing/v1/orders | Create purchase order
 *BillingPaymentMethodsApi* | [**deletePaymentMethodV1**](docs/Api/BillingPaymentMethodsApi.md#deletepaymentmethodv1) | **DELETE** /api/billing/v1/payment-methods/{paymentMethodId} | Delete payment method
@@ -376,10 +376,10 @@ Class | Method | HTTP request | Description
 
 ## Models
 
-- [AgencyHostingListAgencyPlanDomainsV1200Response](docs/Model/AgencyHostingListAgencyPlanDomainsV1200Response.md)
-- [AgencyHostingListAgencyPlanOrdersV1200Response](docs/Model/AgencyHostingListAgencyPlanOrdersV1200Response.md)
-- [AgencyHostingListAgencyPlanWebsiteCronJobsV1200Response](docs/Model/AgencyHostingListAgencyPlanWebsiteCronJobsV1200Response.md)
-- [AgencyHostingListAgencyPlanWebsiteDatabasesV1200Response](docs/Model/AgencyHostingListAgencyPlanWebsiteDatabasesV1200Response.md)
+- [AgencyHostingListDomainsV1200Response](docs/Model/AgencyHostingListDomainsV1200Response.md)
+- [AgencyHostingListOrdersV1200Response](docs/Model/AgencyHostingListOrdersV1200Response.md)
+- [AgencyHostingListWebsiteCronJobsV1200Response](docs/Model/AgencyHostingListWebsiteCronJobsV1200Response.md)
+- [AgencyHostingListWebsiteDatabasesV1200Response](docs/Model/AgencyHostingListWebsiteDatabasesV1200Response.md)
 - [AgencyHostingV1DatacentersCoordinatesResource](docs/Model/AgencyHostingV1DatacentersCoordinatesResource.md)
 - [AgencyHostingV1DatacentersDatacenterResource](docs/Model/AgencyHostingV1DatacentersDatacenterResource.md)
 - [AgencyHostingV1DomainsChangeDomainRequest](docs/Model/AgencyHostingV1DomainsChangeDomainRequest.md)

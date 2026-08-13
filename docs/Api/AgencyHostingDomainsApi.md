@@ -4,19 +4,19 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**changeAgencyPlanWebsiteDomainV1()**](AgencyHostingDomainsApi.md#changeAgencyPlanWebsiteDomainV1) | **PUT** /api/agency-hosting/v1/websites/{website_uid}/domains/{from_domain} | Change Agency Plan website domain |
-| [**linkDomainToAgencyPlanWebsiteV1()**](AgencyHostingDomainsApi.md#linkDomainToAgencyPlanWebsiteV1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/domains | Link domain to Agency Plan website |
-| [**listAgencyPlanDomainsV1()**](AgencyHostingDomainsApi.md#listAgencyPlanDomainsV1) | **GET** /api/agency-hosting/v1/domains | List Agency Plan domains |
-| [**unlinkDomainFromAgencyPlanWebsiteV1()**](AgencyHostingDomainsApi.md#unlinkDomainFromAgencyPlanWebsiteV1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/domains/{domain} | Unlink domain from Agency Plan website |
+| [**changeWebsiteDomainV1()**](AgencyHostingDomainsApi.md#changeWebsiteDomainV1) | **PUT** /api/agency-hosting/v1/websites/{website_uid}/domains/{from_domain} | Change website domain |
+| [**linkDomainToWebsiteV1()**](AgencyHostingDomainsApi.md#linkDomainToWebsiteV1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/domains | Link domain to website |
+| [**listDomainsV1()**](AgencyHostingDomainsApi.md#listDomainsV1) | **GET** /api/agency-hosting/v1/domains | List domains |
+| [**unlinkDomainFromWebsiteV1()**](AgencyHostingDomainsApi.md#unlinkDomainFromWebsiteV1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/domains/{domain} | Unlink domain from website |
 
 
-## `changeAgencyPlanWebsiteDomainV1()`
+## `changeWebsiteDomainV1()`
 
 ```php
-changeAgencyPlanWebsiteDomainV1($websiteUid, $fromDomain, $agencyHostingV1DomainsChangeDomainRequest): \Hostinger\Model\CommonSuccessEmptyResource
+changeWebsiteDomainV1($websiteUid, $fromDomain, $agencyHostingV1DomainsChangeDomainRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Change Agency Plan website domain
+Change website domain
 
 Changes the primary domain for an Agency Plan website.  Provide the current domain in the path and the new domain in the request body. Set domain to null to revert to the temporary domain.
 
@@ -37,10 +37,10 @@ $fromDomain = old.example.com; // string | Current domain name to change from
 $agencyHostingV1DomainsChangeDomainRequest = new \Hostinger\Model\AgencyHostingV1DomainsChangeDomainRequest(); // \Hostinger\Model\AgencyHostingV1DomainsChangeDomainRequest
 
 try {
-    $result = $apiInstance->changeAgencyPlanWebsiteDomainV1($websiteUid, $fromDomain, $agencyHostingV1DomainsChangeDomainRequest);
+    $result = $apiInstance->changeWebsiteDomainV1($websiteUid, $fromDomain, $agencyHostingV1DomainsChangeDomainRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingDomainsApi->changeAgencyPlanWebsiteDomainV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingDomainsApi->changeWebsiteDomainV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -60,13 +60,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `linkDomainToAgencyPlanWebsiteV1()`
+## `linkDomainToWebsiteV1()`
 
 ```php
-linkDomainToAgencyPlanWebsiteV1($websiteUid, $agencyHostingV1DomainsLinkDomainRequest): \Hostinger\Model\CommonSuccessEmptyResource
+linkDomainToWebsiteV1($websiteUid, $agencyHostingV1DomainsLinkDomainRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Link domain to Agency Plan website
+Link domain to website
 
 Links a domain to the specified Agency Plan website so it can serve traffic for that domain.
 
@@ -86,10 +86,10 @@ $websiteUid = zpwlGlp19; // string | Agency Plan website UID
 $agencyHostingV1DomainsLinkDomainRequest = new \Hostinger\Model\AgencyHostingV1DomainsLinkDomainRequest(); // \Hostinger\Model\AgencyHostingV1DomainsLinkDomainRequest
 
 try {
-    $result = $apiInstance->linkDomainToAgencyPlanWebsiteV1($websiteUid, $agencyHostingV1DomainsLinkDomainRequest);
+    $result = $apiInstance->linkDomainToWebsiteV1($websiteUid, $agencyHostingV1DomainsLinkDomainRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingDomainsApi->linkDomainToAgencyPlanWebsiteV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingDomainsApi->linkDomainToWebsiteV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -108,13 +108,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listAgencyPlanDomainsV1()`
+## `listDomainsV1()`
 
 ```php
-listAgencyPlanDomainsV1($page, $perPage, $websiteUuids): \Hostinger\Model\AgencyHostingListAgencyPlanDomainsV1200Response
+listDomainsV1($page, $perPage, $websiteUuids): \Hostinger\Model\AgencyHostingListDomainsV1200Response
 ```
 
-List Agency Plan domains
+List domains
 
 Returns a paginated list of domains associated with Agency Plan websites accessible to the authenticated client.  Use the website_uuids filter to narrow results to specific websites.
 
@@ -135,10 +135,10 @@ $perPage = 25; // int | Number of items per page
 $websiteUuids = ["zpwlGlp19"]; // string[] | Filter by website UIDs
 
 try {
-    $result = $apiInstance->listAgencyPlanDomainsV1($page, $perPage, $websiteUuids);
+    $result = $apiInstance->listDomainsV1($page, $perPage, $websiteUuids);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingDomainsApi->listAgencyPlanDomainsV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingDomainsApi->listDomainsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -152,19 +152,19 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\AgencyHostingListAgencyPlanDomainsV1200Response**](../Model/AgencyHostingListAgencyPlanDomainsV1200Response.md)
+[**\Hostinger\Model\AgencyHostingListDomainsV1200Response**](../Model/AgencyHostingListDomainsV1200Response.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `unlinkDomainFromAgencyPlanWebsiteV1()`
+## `unlinkDomainFromWebsiteV1()`
 
 ```php
-unlinkDomainFromAgencyPlanWebsiteV1($websiteUid, $domain): \Hostinger\Model\CommonSuccessEmptyResource
+unlinkDomainFromWebsiteV1($websiteUid, $domain): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Unlink domain from Agency Plan website
+Unlink domain from website
 
 Unlinks a domain from the specified Agency Plan website.  The website stops serving traffic on this domain immediately.  Website files and database are preserved, and any other linked domains remain accessible.  If this is the only domain on the website, unlinking leaves the website without an accessible domain.
 
@@ -184,10 +184,10 @@ $websiteUid = zpwlGlp19; // string | Agency Plan website UID
 $domain = mydomain.tld; // string | Domain name
 
 try {
-    $result = $apiInstance->unlinkDomainFromAgencyPlanWebsiteV1($websiteUid, $domain);
+    $result = $apiInstance->unlinkDomainFromWebsiteV1($websiteUid, $domain);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingDomainsApi->unlinkDomainFromAgencyPlanWebsiteV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingDomainsApi->unlinkDomainFromWebsiteV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

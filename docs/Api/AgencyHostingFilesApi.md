@@ -4,16 +4,16 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**importAgencyPlanWebsiteFromArchiveV1()**](AgencyHostingFilesApi.md#importAgencyPlanWebsiteFromArchiveV1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/files/import-archive | Import Agency Plan website from archive |
+| [**importWebsiteFromArchiveV1()**](AgencyHostingFilesApi.md#importWebsiteFromArchiveV1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/files/import-archive | Import website from archive |
 
 
-## `importAgencyPlanWebsiteFromArchiveV1()`
+## `importWebsiteFromArchiveV1()`
 
 ```php
-importAgencyPlanWebsiteFromArchiveV1($websiteUid, $agencyHostingV1FilesImportArchiveRequest): \Hostinger\Model\CommonSuccessEmptyResource
+importWebsiteFromArchiveV1($websiteUid, $agencyHostingV1FilesImportArchiveRequest): \Hostinger\Model\CommonSuccessEmptyResource
 ```
 
-Import Agency Plan website from archive
+Import website from archive
 
 Imports an Agency Plan website from an already-uploaded archive.  Upload the archive to the website's root directory via file browser first, then provide its filename in this request. Website contents are overwritten by the archive contents. Supported archive types: .zip, .tar, .tar.gz, .tgz.
 
@@ -33,10 +33,10 @@ $websiteUid = zpwlGlp19; // string | Agency Plan website UID
 $agencyHostingV1FilesImportArchiveRequest = new \Hostinger\Model\AgencyHostingV1FilesImportArchiveRequest(); // \Hostinger\Model\AgencyHostingV1FilesImportArchiveRequest
 
 try {
-    $result = $apiInstance->importAgencyPlanWebsiteFromArchiveV1($websiteUid, $agencyHostingV1FilesImportArchiveRequest);
+    $result = $apiInstance->importWebsiteFromArchiveV1($websiteUid, $agencyHostingV1FilesImportArchiveRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AgencyHostingFilesApi->importAgencyPlanWebsiteFromArchiveV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AgencyHostingFilesApi->importWebsiteFromArchiveV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
