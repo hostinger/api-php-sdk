@@ -4,10 +4,59 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**createAProductImageUploadURLV1()**](EcommerceProductsApi.md#createAProductImageUploadURLV1) | **POST** /api/ecommerce/v1/stores/{store_id}/products/{product_id}/images/upload-url | Create a product image upload URL |
 | [**createDigitalProductV1()**](EcommerceProductsApi.md#createDigitalProductV1) | **POST** /api/ecommerce/v1/stores/{store_id}/products/digital | Create digital product |
 | [**createPhysicalProductV1()**](EcommerceProductsApi.md#createPhysicalProductV1) | **POST** /api/ecommerce/v1/stores/{store_id}/products/physical | Create physical product |
 | [**uploadAndAttachAProductImageV1()**](EcommerceProductsApi.md#uploadAndAttachAProductImageV1) | **POST** /api/ecommerce/v1/stores/{store_id}/products/{product_id}/images | Upload and attach a product image |
 
+
+## `createAProductImageUploadURLV1()`
+
+```php
+createAProductImageUploadURLV1($storeId, $productId): \Hostinger\Model\EcommerceV1ProductProductImageUploadUrlResource
+```
+
+Create a product image upload URL
+
+Returns a signed URL to upload a product image to (multipart/form-data POST). Then call the attach-image endpoint with the returned object_name to scan and attach it to the product.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\EcommerceProductsApi(config: $config);
+$storeId = store_01J8Z5F8W9K8M4A7B3C2D1E0FG; // string | The ID of the store the product belongs to.
+$productId = prod_01J8Z5F8W9K8M4A7B3C2D1E0FG; // string | The ID of the product the image will be attached to.
+
+try {
+    $result = $apiInstance->createAProductImageUploadURLV1($storeId, $productId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EcommerceProductsApi->createAProductImageUploadURLV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **storeId** | **string**| The ID of the store the product belongs to. | |
+| **productId** | **string**| The ID of the product the image will be attached to. | |
+
+### Return type
+
+[**\Hostinger\Model\EcommerceV1ProductProductImageUploadUrlResource**](../Model/EcommerceV1ProductProductImageUploadUrlResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `createDigitalProductV1()`
 
