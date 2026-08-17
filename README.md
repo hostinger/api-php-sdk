@@ -245,6 +245,9 @@ Class | Method | HTTP request | Description
 *ReachAutomationsApi* | [**getAutomationDetailsV1**](docs/Api/ReachAutomationsApi.md#getautomationdetailsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/automations/{automationUuid} | Get automation details
 *ReachAutomationsApi* | [**listAutomationStepsV1**](docs/Api/ReachAutomationsApi.md#listautomationstepsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/automations/{automationUuid}/steps | List automation steps
 *ReachAutomationsApi* | [**listAutomationsV1**](docs/Api/ReachAutomationsApi.md#listautomationsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/automations | List automations
+*ReachCampaignsApi* | [**getCampaignDetailsV1**](docs/Api/ReachCampaignsApi.md#getcampaigndetailsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/campaigns/{campaignUuid} | Get campaign details
+*ReachCampaignsApi* | [**getCampaignPerformanceV1**](docs/Api/ReachCampaignsApi.md#getcampaignperformancev1) | **GET** /api/reach/v1/profiles/{profileUuid}/campaigns/{campaignUuid}/statistics | Get campaign performance
+*ReachCampaignsApi* | [**listCampaignsV1**](docs/Api/ReachCampaignsApi.md#listcampaignsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/campaigns | List campaigns
 *ReachContactFieldsApi* | [**createAContactFieldV1**](docs/Api/ReachContactFieldsApi.md#createacontactfieldv1) | **POST** /api/reach/v1/profiles/{profileUuid}/contacts/fields | Create a contact field
 *ReachContactFieldsApi* | [**deleteAContactFieldV1**](docs/Api/ReachContactFieldsApi.md#deleteacontactfieldv1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/contacts/fields/{fieldUuid} | Delete a contact field
 *ReachContactFieldsApi* | [**listContactFieldsV1**](docs/Api/ReachContactFieldsApi.md#listcontactfieldsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/contacts/fields | List contact fields
@@ -637,6 +640,7 @@ Class | Method | HTTP request | Description
 - [MailV1WebhooksWebhookSecretResource](docs/Model/MailV1WebhooksWebhookSecretResource.md)
 - [MailV1WebhooksWebhookTestResultResource](docs/Model/MailV1WebhooksWebhookTestResultResource.md)
 - [ReachListAutomationsV1200Response](docs/Model/ReachListAutomationsV1200Response.md)
+- [ReachListCampaignsV1200Response](docs/Model/ReachListCampaignsV1200Response.md)
 - [ReachListContactsV1200Response](docs/Model/ReachListContactsV1200Response.md)
 - [ReachListProfileContactsV1200Response](docs/Model/ReachListProfileContactsV1200Response.md)
 - [ReachListProfileSegmentContactsV1200Response](docs/Model/ReachListProfileSegmentContactsV1200Response.md)
@@ -644,6 +648,11 @@ Class | Method | HTTP request | Description
 - [ReachV1AutomationsAutomationEventsResource](docs/Model/ReachV1AutomationsAutomationEventsResource.md)
 - [ReachV1AutomationsAutomationResource](docs/Model/ReachV1AutomationsAutomationResource.md)
 - [ReachV1AutomationsStepsAutomationStepResource](docs/Model/ReachV1AutomationsStepsAutomationStepResource.md)
+- [ReachV1CampaignsCampaignDeliveryResource](docs/Model/ReachV1CampaignsCampaignDeliveryResource.md)
+- [ReachV1CampaignsCampaignDetailsResource](docs/Model/ReachV1CampaignsCampaignDetailsResource.md)
+- [ReachV1CampaignsCampaignResource](docs/Model/ReachV1CampaignsCampaignResource.md)
+- [ReachV1CampaignsCampaignStatisticsResource](docs/Model/ReachV1CampaignsCampaignStatisticsResource.md)
+- [ReachV1CampaignsCampaignSummaryStatisticsResource](docs/Model/ReachV1CampaignsCampaignSummaryStatisticsResource.md)
 - [ReachV1ContactsBulkStoreRequest](docs/Model/ReachV1ContactsBulkStoreRequest.md)
 - [ReachV1ContactsBulkStoreRequestContactsInner](docs/Model/ReachV1ContactsBulkStoreRequestContactsInner.md)
 - [ReachV1ContactsContactDetailsResource](docs/Model/ReachV1ContactsContactDetailsResource.md)
