@@ -78,6 +78,8 @@ Class | Method | HTTP request | Description
 *AgencyHostingDomainsApi* | [**listDomainsV1**](docs/Api/AgencyHostingDomainsApi.md#listdomainsv1) | **GET** /api/agency-hosting/v1/domains | List domains
 *AgencyHostingDomainsApi* | [**unlinkDomainFromWebsiteV1**](docs/Api/AgencyHostingDomainsApi.md#unlinkdomainfromwebsitev1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/domains/{domain} | Unlink domain from website
 *AgencyHostingFilesApi* | [**importWebsiteFromArchiveV1**](docs/Api/AgencyHostingFilesApi.md#importwebsitefromarchivev1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/files/import-archive | Import website from archive
+*AgencyHostingMetricsApi* | [**listAgencyPlanOrderDiskUsageMetricsV1**](docs/Api/AgencyHostingMetricsApi.md#listagencyplanorderdiskusagemetricsv1) | **GET** /api/agency-hosting/v1/orders/{order_id}/disk-usage-metrics | List Agency Plan order disk usage metrics
+*AgencyHostingMetricsApi* | [**listOrderResourceUsageMetricsV1**](docs/Api/AgencyHostingMetricsApi.md#listorderresourceusagemetricsv1) | **GET** /api/agency-hosting/v1/orders/{order_id}/resource-usage-metrics | List order resource usage metrics
 *AgencyHostingOrdersApi* | [**listOrdersV1**](docs/Api/AgencyHostingOrdersApi.md#listordersv1) | **GET** /api/agency-hosting/v1/orders | List orders
 *AgencyHostingPHPApi* | [**listAvailablePHPVersionsForAWebsiteV1**](docs/Api/AgencyHostingPHPApi.md#listavailablephpversionsforawebsitev1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/php-settings/versions | List available PHP versions for a website
 *AgencyHostingPHPApi* | [**listAvailablePHPVersionsForAnOrderV1**](docs/Api/AgencyHostingPHPApi.md#listavailablephpversionsforanorderv1) | **GET** /api/agency-hosting/v1/orders/{order_id}/websites/php-settings/versions | List available PHP versions for an order
@@ -409,8 +411,15 @@ Class | Method | HTTP request | Description
 - [AgencyHostingV1FilesImportArchiveRequest](docs/Model/AgencyHostingV1FilesImportArchiveRequest.md)
 - [AgencyHostingV1FilesUploadUrlResource](docs/Model/AgencyHostingV1FilesUploadUrlResource.md)
 - [AgencyHostingV1OrdersDatacenterResource](docs/Model/AgencyHostingV1OrdersDatacenterResource.md)
+- [AgencyHostingV1OrdersDiskUsageMetricsLimitsResource](docs/Model/AgencyHostingV1OrdersDiskUsageMetricsLimitsResource.md)
+- [AgencyHostingV1OrdersDiskUsageMetricsMetricResource](docs/Model/AgencyHostingV1OrdersDiskUsageMetricsMetricResource.md)
+- [AgencyHostingV1OrdersDiskUsageMetricsMetricsResource](docs/Model/AgencyHostingV1OrdersDiskUsageMetricsMetricsResource.md)
 - [AgencyHostingV1OrdersOrderResource](docs/Model/AgencyHostingV1OrdersOrderResource.md)
 - [AgencyHostingV1OrdersPlanResource](docs/Model/AgencyHostingV1OrdersPlanResource.md)
+- [AgencyHostingV1OrdersResourceUsageMetricsLimitsResource](docs/Model/AgencyHostingV1OrdersResourceUsageMetricsLimitsResource.md)
+- [AgencyHostingV1OrdersResourceUsageMetricsMetricResource](docs/Model/AgencyHostingV1OrdersResourceUsageMetricsMetricResource.md)
+- [AgencyHostingV1OrdersResourceUsageMetricsMetricsResource](docs/Model/AgencyHostingV1OrdersResourceUsageMetricsMetricsResource.md)
+- [AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource](docs/Model/AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource.md)
 - [AgencyHostingV1PhpExtensionResource](docs/Model/AgencyHostingV1PhpExtensionResource.md)
 - [AgencyHostingV1PhpOptionResource](docs/Model/AgencyHostingV1PhpOptionResource.md)
 - [AgencyHostingV1PhpUpdateExtensionsRequest](docs/Model/AgencyHostingV1PhpUpdateExtensionsRequest.md)
