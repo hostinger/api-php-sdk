@@ -208,6 +208,9 @@ Class | Method | HTTP request | Description
 *HostingPHPApi* | [**updatePHPExtensionsV1**](docs/Api/HostingPHPApi.md#updatephpextensionsv1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/php/extensions | Update PHP extensions
 *HostingPHPApi* | [**updatePHPOptionsV1**](docs/Api/HostingPHPApi.md#updatephpoptionsv1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/php/options | Update PHP options
 *HostingPHPApi* | [**updatePHPVersionV1**](docs/Api/HostingPHPApi.md#updatephpversionv1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/php/version | Update PHP version
+*HostingRedirectsApi* | [**createWebsiteRedirectV1**](docs/Api/HostingRedirectsApi.md#createwebsiteredirectv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/redirects | Create website redirect
+*HostingRedirectsApi* | [**deleteWebsiteRedirectV1**](docs/Api/HostingRedirectsApi.md#deletewebsiteredirectv1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/redirects | Delete website redirect
+*HostingRedirectsApi* | [**listWebsiteRedirectsV1**](docs/Api/HostingRedirectsApi.md#listwebsiteredirectsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/redirects | List website redirects
 *HostingWebsitesApi* | [**createWebsiteV1**](docs/Api/HostingWebsitesApi.md#createwebsitev1) | **POST** /api/hosting/v1/websites | Create website
 *HostingWebsitesApi* | [**deleteWebsiteV1**](docs/Api/HostingWebsitesApi.md#deletewebsitev1) | **DELETE** /api/hosting/v1/websites/{domain} | Delete website
 *HostingWebsitesApi* | [**listWebsitesV1**](docs/Api/HostingWebsitesApi.md#listwebsitesv1) | **GET** /api/hosting/v1/websites | List websites
@@ -552,6 +555,7 @@ Class | Method | HTTP request | Description
 - [HostingListAccountDatabasesV1200Response](docs/Model/HostingListAccountDatabasesV1200Response.md)
 - [HostingListNodeJSBuildsV1200Response](docs/Model/HostingListNodeJSBuildsV1200Response.md)
 - [HostingListOrdersV1200Response](docs/Model/HostingListOrdersV1200Response.md)
+- [HostingListWebsiteRedirectsV1200Response](docs/Model/HostingListWebsiteRedirectsV1200Response.md)
 - [HostingListWebsitesV1200Response](docs/Model/HostingListWebsitesV1200Response.md)
 - [HostingV1CacheToggleCacheRequest](docs/Model/HostingV1CacheToggleCacheRequest.md)
 - [HostingV1CacheToggleCachelessModeRequest](docs/Model/HostingV1CacheToggleCachelessModeRequest.md)
@@ -595,6 +599,9 @@ Class | Method | HTTP request | Description
 - [HostingV1PhpUpdatePhpOptionsRequest](docs/Model/HostingV1PhpUpdatePhpOptionsRequest.md)
 - [HostingV1PhpUpdatePhpOptionsRequestOptionsValue](docs/Model/HostingV1PhpUpdatePhpOptionsRequestOptionsValue.md)
 - [HostingV1PhpUpdatePhpVersionRequest](docs/Model/HostingV1PhpUpdatePhpVersionRequest.md)
+- [HostingV1RedirectsCreateRedirectRequest](docs/Model/HostingV1RedirectsCreateRedirectRequest.md)
+- [HostingV1RedirectsDeleteRedirectRequest](docs/Model/HostingV1RedirectsDeleteRedirectRequest.md)
+- [HostingV1RedirectsRedirectResource](docs/Model/HostingV1RedirectsRedirectResource.md)
 - [HostingV1WebsitesCreateWebsiteRequest](docs/Model/HostingV1WebsitesCreateWebsiteRequest.md)
 - [HostingV1WebsitesWebsiteResource](docs/Model/HostingV1WebsitesWebsiteResource.md)
 - [InlineObject](docs/Model/InlineObject.md)
