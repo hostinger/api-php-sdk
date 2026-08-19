@@ -8,6 +8,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**deleteWordPressInstallationV1()**](WordPressInstallationsApi.md#deleteWordPressInstallationV1) | **DELETE** /api/hosting/v1/accounts/{username}/wordpress/{software} | Delete WordPress installation |
 | [**detectWordPressInstallationsV1()**](WordPressInstallationsApi.md#detectWordPressInstallationsV1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/installations/detect | Detect WordPress installations |
 | [**getInstallationJWTTokenV1()**](WordPressInstallationsApi.md#getInstallationJWTTokenV1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/jwt-token | Get installation JWT token |
+| [**importWordPressWebsiteV1()**](WordPressInstallationsApi.md#importWordPressWebsiteV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/wordpress/import | Import WordPress website |
 | [**installWordPressV1()**](WordPressInstallationsApi.md#installWordPressV1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/installations | Install WordPress |
 | [**listAvailableWordPressCoreUpdatesV1()**](WordPressInstallationsApi.md#listAvailableWordPressCoreUpdatesV1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/updates | List available WordPress core updates |
 | [**listWordPressInstallationsV1()**](WordPressInstallationsApi.md#listWordPressInstallationsV1) | **GET** /api/hosting/v1/wordpress/installations | List WordPress installations |
@@ -202,6 +203,56 @@ try {
 ### Return type
 
 [**\Hostinger\Model\WordPressV1InstallationsJwtTokenResource**](../Model/WordPressV1InstallationsJwtTokenResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `importWordPressWebsiteV1()`
+
+```php
+importWordPressWebsiteV1($username, $domain, $wordPressV1InstallationsImportWordPressRequest): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Import WordPress website
+
+Import WordPress website to the specified domain.  WARNING: this overwrites the website's existing contents and cannot be undone — verify this is intended before calling this endpoint.  This endpoint allows you to import a WordPress website from archive and database files that have been uploaded to the website's directory.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\WordPressInstallationsApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$wordPressV1InstallationsImportWordPressRequest = new \Hostinger\Model\WordPressV1InstallationsImportWordPressRequest(); // \Hostinger\Model\WordPressV1InstallationsImportWordPressRequest
+
+try {
+    $result = $apiInstance->importWordPressWebsiteV1($username, $domain, $wordPressV1InstallationsImportWordPressRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WordPressInstallationsApi->importWordPressWebsiteV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **wordPressV1InstallationsImportWordPressRequest** | [**\Hostinger\Model\WordPressV1InstallationsImportWordPressRequest**](../Model/WordPressV1InstallationsImportWordPressRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

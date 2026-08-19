@@ -5,6 +5,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**activateWordPressThemeV1()**](WordPressThemesApi.md#activateWordPressThemeV1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/themes/activate | Activate WordPress theme |
+| [**deployWordPressThemeV1()**](WordPressThemesApi.md#deployWordPressThemeV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/wordpress/themes/deploy | Deploy WordPress theme |
 | [**installWordPressThemeV1()**](WordPressThemesApi.md#installWordPressThemeV1) | **POST** /api/hosting/v1/accounts/{username}/wordpress/{software}/themes/install | Install WordPress theme |
 | [**listInstalledWordPressThemesV1()**](WordPressThemesApi.md#listInstalledWordPressThemesV1) | **GET** /api/hosting/v1/accounts/{username}/wordpress/{software}/themes | List installed WordPress themes |
 | [**listWordPressThemesV1()**](WordPressThemesApi.md#listWordPressThemesV1) | **GET** /api/hosting/v1/wordpress/themes | List WordPress themes |
@@ -53,6 +54,56 @@ try {
 | **username** | **string**|  | |
 | **software** | **string**| WordPress installation (software) identifier | |
 | **wordPressV1ThemesActivateThemeRequest** | [**\Hostinger\Model\WordPressV1ThemesActivateThemeRequest**](../Model/WordPressV1ThemesActivateThemeRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deployWordPressThemeV1()`
+
+```php
+deployWordPressThemeV1($username, $domain, $wordPressV1ThemesDeployThemeRequest): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Deploy WordPress theme
+
+Deploy a WordPress theme from an already uploaded directory.  This endpoint allows you to deploy a WordPress theme that has been uploaded to the website's directory. The theme can be optionally activated after deployment.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\WordPressThemesApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$wordPressV1ThemesDeployThemeRequest = new \Hostinger\Model\WordPressV1ThemesDeployThemeRequest(); // \Hostinger\Model\WordPressV1ThemesDeployThemeRequest
+
+try {
+    $result = $apiInstance->deployWordPressThemeV1($username, $domain, $wordPressV1ThemesDeployThemeRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WordPressThemesApi->deployWordPressThemeV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **wordPressV1ThemesDeployThemeRequest** | [**\Hostinger\Model\WordPressV1ThemesDeployThemeRequest**](../Model/WordPressV1ThemesDeployThemeRequest.md)|  | |
 
 ### Return type
 

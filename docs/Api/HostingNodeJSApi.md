@@ -6,10 +6,12 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | ------------- | ------------- | ------------- |
 | [**createNodeJSBuildFromArchiveV1()**](HostingNodeJSApi.md#createNodeJSBuildFromArchiveV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/from-archive | Create NodeJS build from archive |
 | [**getNodeJSBuildLogsV1()**](HostingNodeJSApi.md#getNodeJSBuildLogsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs |
+| [**getNodeJsBuildSettingsFromArchiveV1()**](HostingNodeJSApi.md#getNodeJsBuildSettingsFromArchiveV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/from-archive | Get Node.js build settings from archive |
 | [**listNodeJSBuildsV1()**](HostingNodeJSApi.md#listNodeJSBuildsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds |
 | [**listNodeJsVulnerabilitiesV1()**](HostingNodeJSApi.md#listNodeJsVulnerabilitiesV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/vulnerabilities | List Node.js vulnerabilities |
 | [**patchNodeJsVulnerabilitiesV1()**](HostingNodeJSApi.md#patchNodeJsVulnerabilitiesV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/vulnerabilities/patch | Patch Node.js vulnerabilities |
 | [**restartNodeJsApplicationV1()**](HostingNodeJSApi.md#restartNodeJsApplicationV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/server/restart | Restart Node.js application |
+| [**startNodeJsBuildV1()**](HostingNodeJSApi.md#startNodeJsBuildV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | Start Node.js build |
 
 
 ## `createNodeJSBuildFromArchiveV1()`
@@ -20,7 +22,7 @@ createNodeJSBuildFromArchiveV1($username, $domain, $hostingV1NodeJsCreateFromArc
 
 Create NodeJS build from archive
 
-Upload a project archive, auto-detect build settings, and immediately start a Node.js build.  This is the recommended single-step approach for deploying a Node.js application. The archive is uploaded to the website's file storage, build settings are auto-detected from the package.json inside the archive, and the build process starts automatically. Optional override fields take precedence over auto-detected values. Maximum archive size is 50MB.  Before archiving, exclude `node_modules/` and any build output directories (e.g. `dist/`, `.next/`, `build/`) — they are not needed because the build process runs the install step automatically, and including them unnecessarily increases the archive size. This also helps keep the archive well under the 50MB limit.  Example (zip): ``` zip -r archive.zip . --exclude \"node_modules/_*\" --exclude \"dist/_*\" ```  The returned build `uuid` can be used to poll progress and retrieve logs via the `Get Node.js Build Logs` endpoint.
+Upload a project archive, auto-detect build settings, and immediately start a Node.js build.  WARNING: on success this overwrites the website's existing contents and cannot be undone — verify this is intended before calling this endpoint.  This is the recommended single-step approach for deploying a Node.js application. The archive is uploaded to the website's file storage, build settings are auto-detected from the package.json inside the archive, and the build process starts automatically. Optional override fields take precedence over auto-detected values. Maximum archive size is 50MB.  Before archiving, exclude `node_modules/` and any build output directories (e.g. `dist/`, `.next/`, `build/`) — they are not needed because the build process runs the install step automatically, and including them unnecessarily increases the archive size. This also helps keep the archive well under the 50MB limit.  Example (zip): ``` zip -r archive.zip . --exclude \"node_modules/_*\" --exclude \"dist/_*\" ```  The returned build `uuid` can be used to poll progress and retrieve logs via the `Get Node.js Build Logs` endpoint.
 
 ### Example
 
@@ -109,6 +111,56 @@ try {
 ### Return type
 
 [**\Hostinger\Model\HostingV1NodeJsBuildLogsResource**](../Model/HostingV1NodeJsBuildLogsResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getNodeJsBuildSettingsFromArchiveV1()`
+
+```php
+getNodeJsBuildSettingsFromArchiveV1($username, $domain, $archivePath): \Hostinger\Model\HostingV1NodeJsBuildSettingsResource
+```
+
+Get Node.js build settings from archive
+
+Auto-detect Node.js build settings from a package.json inside an archive already on the server.  Use this before calling `Start Node.js Build` to preview what settings will be used, or to let the user review and override values (framework, node version, root directory, output directory, build script) before committing to a build.  The archive must already be present on the website's file storage. Use the `Generate Upload URL` endpoint to obtain credentials and upload the archive first. To upload an archive and start a build in one step without inspecting settings first, use the `Create Node.js Build from Archive` endpoint instead.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$archivePath = example.zip; // string | The path to the archive file relative to the document root of the vhost
+
+try {
+    $result = $apiInstance->getNodeJsBuildSettingsFromArchiveV1($username, $domain, $archivePath);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->getNodeJsBuildSettingsFromArchiveV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **archivePath** | **string**| The path to the archive file relative to the document root of the vhost | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1NodeJsBuildSettingsResource**](../Model/HostingV1NodeJsBuildSettingsResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -311,6 +363,56 @@ try {
 ### Return type
 
 [**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `startNodeJsBuildV1()`
+
+```php
+startNodeJsBuildV1($username, $domain, $hostingV1NodeJsStartBuildRequest): \Hostinger\Model\HostingV1NodeJsBuildResource
+```
+
+Start Node.js build
+
+Start a Node.js build process using files already present on the website's file storage.  WARNING: on success this overwrites the website's existing contents and cannot be undone — verify this is intended before calling this endpoint.  The `source_type` must be `archive` and `source_options.archive_path` must point to an existing archive file on the server (relative to the website document root). Use the `Generate Upload URL` endpoint to obtain credentials and upload the archive first.  To auto-detect build settings from an archive before starting, first call the `Get Node.js Build Settings from Archive` endpoint. To upload an archive and start a build in one step, use the `Create Node.js Build from Archive` endpoint instead.  The returned build `uuid` can be used to poll progress and retrieve logs via the `Get Node.js Build Logs` endpoint.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$hostingV1NodeJsStartBuildRequest = new \Hostinger\Model\HostingV1NodeJsStartBuildRequest(); // \Hostinger\Model\HostingV1NodeJsStartBuildRequest
+
+try {
+    $result = $apiInstance->startNodeJsBuildV1($username, $domain, $hostingV1NodeJsStartBuildRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->startNodeJsBuildV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **hostingV1NodeJsStartBuildRequest** | [**\Hostinger\Model\HostingV1NodeJsStartBuildRequest**](../Model/HostingV1NodeJsStartBuildRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1NodeJsBuildResource**](../Model/HostingV1NodeJsBuildResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

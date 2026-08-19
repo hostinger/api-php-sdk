@@ -6,6 +6,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | ------------- | ------------- | ------------- |
 | [**createWebsiteV1()**](HostingWebsitesApi.md#createWebsiteV1) | **POST** /api/hosting/v1/websites | Create website |
 | [**deleteWebsiteV1()**](HostingWebsitesApi.md#deleteWebsiteV1) | **DELETE** /api/hosting/v1/websites/{domain} | Delete website |
+| [**deployStaticSiteArchiveV1()**](HostingWebsitesApi.md#deployStaticSiteArchiveV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/deploy | Deploy static site archive |
 | [**listWebsitesV1()**](HostingWebsitesApi.md#listWebsitesV1) | **GET** /api/hosting/v1/websites | List websites |
 
 
@@ -92,6 +93,56 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **domain** | **string**| Domain name | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deployStaticSiteArchiveV1()`
+
+```php
+deployStaticSiteArchiveV1($username, $domain, $hostingV1WebsitesDeployArchiveRequest): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Deploy static site archive
+
+Deploy a static application from an archive file.  WARNING: this overwrites the website's existing contents and cannot be undone — verify this is intended before calling this endpoint.  This endpoint allows you to deploy a static application from an archive file that has been uploaded to the website's directory.  This only works for static sites (pre-built HTML/CSS/JS with no build step). For Node.js applications, use `Create NodeJS build from archive` instead, or `Start Node.js build` if the archive is already uploaded. For WordPress sites, use `Import WordPress website`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingWebsitesApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$hostingV1WebsitesDeployArchiveRequest = new \Hostinger\Model\HostingV1WebsitesDeployArchiveRequest(); // \Hostinger\Model\HostingV1WebsitesDeployArchiveRequest
+
+try {
+    $result = $apiInstance->deployStaticSiteArchiveV1($username, $domain, $hostingV1WebsitesDeployArchiveRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingWebsitesApi->deployStaticSiteArchiveV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **hostingV1WebsitesDeployArchiveRequest** | [**\Hostinger\Model\HostingV1WebsitesDeployArchiveRequest**](../Model/HostingV1WebsitesDeployArchiveRequest.md)|  | |
 
 ### Return type
 
