@@ -4,20 +4,20 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createCustomSalesChannelV1()**](EcommerceSalesChannelsApi.md#createCustomSalesChannelV1) | **POST** /api/ecommerce/v1/stores/{store_id}/sales-channels | Create custom sales channel |
+| [**createASalesChannelV1()**](EcommerceSalesChannelsApi.md#createASalesChannelV1) | **POST** /api/ecommerce/v1/stores/{store_id}/sales-channels | Create a sales channel |
 | [**listSalesChannelsV1()**](EcommerceSalesChannelsApi.md#listSalesChannelsV1) | **GET** /api/ecommerce/v1/stores/{store_id}/sales-channels | List sales channels |
 | [**updateSalesChannelV1()**](EcommerceSalesChannelsApi.md#updateSalesChannelV1) | **PATCH** /api/ecommerce/v1/stores/{store_id}/sales-channels/{sales_channel_id} | Update sales channel |
 
 
-## `createCustomSalesChannelV1()`
+## `createASalesChannelV1()`
 
 ```php
-createCustomSalesChannelV1($storeId, $ecommerceV1SalesChannelStoreRequest): \Hostinger\Model\EcommerceV1SalesChannelSalesChannelCreationResource
+createASalesChannelV1($storeId, $ecommerceV1SalesChannelStoreRequest): \Hostinger\Model\EcommerceV1SalesChannelSalesChannelCreationResource
 ```
 
-Create custom sales channel
+Create a sales channel
 
-Create a custom sales channel for a store. Build your own frontend and keep your catalog, orders, shipping and payments in sync through the Ecommerce API.
+Create a sales channel for a store. A \"custom\" channel is headless: build your own frontend and keep your catalog, orders, shipping and payments in sync through the Ecommerce API. A \"quick-link\" channel is a hosted one-page store whose handle is auto-generated.
 
 ### Example
 
@@ -35,10 +35,10 @@ $storeId = store_01J8Z5F8W9K8M4A7B3C2D1E0FG; // string | The ID of the store to 
 $ecommerceV1SalesChannelStoreRequest = new \Hostinger\Model\EcommerceV1SalesChannelStoreRequest(); // \Hostinger\Model\EcommerceV1SalesChannelStoreRequest
 
 try {
-    $result = $apiInstance->createCustomSalesChannelV1($storeId, $ecommerceV1SalesChannelStoreRequest);
+    $result = $apiInstance->createASalesChannelV1($storeId, $ecommerceV1SalesChannelStoreRequest);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling EcommerceSalesChannelsApi->createCustomSalesChannelV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EcommerceSalesChannelsApi->createASalesChannelV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
