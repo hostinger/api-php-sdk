@@ -377,7 +377,7 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 $apiInstance = new Hostinger\Api\WordPressInstallationsApi(config: $config);
 $username = cl_user123; // string | Filter by specific username
-$domain = example.com; // string | Filter by domain name (exact match)
+$domain = example.com; // string | Filter by domain name (case-insensitive substring match)
 $ownership = owned; // string | Filter by ownership type. Defaults to \"owned\". Use \"all\" to include both owned and managed installations.
 
 try {
@@ -393,7 +393,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **username** | **string**| Filter by specific username | [optional] |
-| **domain** | **string**| Filter by domain name (exact match) | [optional] |
+| **domain** | **string**| Filter by domain name (case-insensitive substring match) | [optional] |
 | **ownership** | **string**| Filter by ownership type. Defaults to \&quot;owned\&quot;. Use \&quot;all\&quot; to include both owned and managed installations. | [optional] |
 
 ### Return type

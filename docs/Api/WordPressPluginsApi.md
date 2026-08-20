@@ -90,7 +90,7 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 
 $apiInstance = new Hostinger\Api\WordPressPluginsApi(config: $config);
-$domain = example.com; // string | Filter by domain name (exact match)
+$domain = example.com; // string | Filter by domain name (case-insensitive substring match)
 
 try {
     $result = $apiInstance->checkIfWooCommerceIsInstalledV1($domain);
@@ -104,7 +104,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain** | **string**| Filter by domain name (exact match) | [optional] |
+| **domain** | **string**| Filter by domain name (case-insensitive substring match) | [optional] |
 
 ### Return type
 

@@ -7,6 +7,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**buildWebsiteNodeJSAssetsV1()**](AgencyHostingWebsitesApi.md#buildWebsiteNodeJSAssetsV1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/build-assets | Build website NodeJS assets |
 | [**deleteWebsiteV1()**](AgencyHostingWebsitesApi.md#deleteWebsiteV1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid} | Delete website |
 | [**getWebsiteDetailsV1()**](AgencyHostingWebsitesApi.md#getWebsiteDetailsV1) | **GET** /api/agency-hosting/v1/websites/{website_uid} | Get website details |
+| [**listAgencyPlanWebsitesV1()**](AgencyHostingWebsitesApi.md#listAgencyPlanWebsitesV1) | **GET** /api/agency-hosting/v1/websites | List Agency Plan websites |
 | [**listWebsiteProcessesV1()**](AgencyHostingWebsitesApi.md#listWebsiteProcessesV1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/processes | List website processes |
 
 
@@ -145,6 +146,62 @@ try {
 ### Return type
 
 [**\Hostinger\Model\AgencyHostingV1WebsitesWebsiteResource**](../Model/AgencyHostingV1WebsitesWebsiteResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAgencyPlanWebsitesV1()`
+
+```php
+listAgencyPlanWebsitesV1($page, $perPage, $orderIds, $states, $websiteTypes, $domain): \Hostinger\Model\AgencyHostingListAgencyPlanWebsitesV1200Response
+```
+
+List Agency Plan websites
+
+Retrieve a paginated list of Agency Plan websites (H5G, Builder, and Horizons) accessible to the authenticated client.  This endpoint returns websites from your hosting accounts as well as websites from other client hosting accounts that have shared access with you.  The response shape differs per platform — see the `platform` field on each item.  Use `website_types` to list only websites of a given detected type, e.g. only WordPress websites (`website_types=wordpress`) or only Node.js websites (`website_types=nodejs`). Combine with `order_ids`, `states`, or `domain` for more targeted results.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\AgencyHostingWebsitesApi(config: $config);
+$page = 1; // int | Page number
+$perPage = 25; // int | Number of items per page
+$orderIds = [12345,67890]; // int[] | Filter by order IDs. Accepts a comma-separated list.
+$states = ["active"]; // string[] | Filter by website state. Accepts a comma-separated list.
+$websiteTypes = ["wordpress","nodejs"]; // string[] | Filter by detected website type, e.g. wordpress,nodejs. Accepts a comma-separated list.
+$domain = example.com; // string | Filter by domain name (case-insensitive substring match)
+
+try {
+    $result = $apiInstance->listAgencyPlanWebsitesV1($page, $perPage, $orderIds, $states, $websiteTypes, $domain);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AgencyHostingWebsitesApi->listAgencyPlanWebsitesV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **page** | **int**| Page number | [optional] |
+| **perPage** | **int**| Number of items per page | [optional] [default to 25] |
+| **orderIds** | [**int[]**](../Model/int.md)| Filter by order IDs. Accepts a comma-separated list. | [optional] |
+| **states** | [**string[]**](../Model/string.md)| Filter by website state. Accepts a comma-separated list. | [optional] |
+| **websiteTypes** | [**string[]**](../Model/string.md)| Filter by detected website type, e.g. wordpress,nodejs. Accepts a comma-separated list. | [optional] |
+| **domain** | **string**| Filter by domain name (case-insensitive substring match) | [optional] |
+
+### Return type
+
+[**\Hostinger\Model\AgencyHostingListAgencyPlanWebsitesV1200Response**](../Model/AgencyHostingListAgencyPlanWebsitesV1200Response.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

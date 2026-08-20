@@ -155,12 +155,12 @@ try {
 ## `listWebsitesV1()`
 
 ```php
-listWebsitesV1($page, $perPage, $username, $orderId, $isEnabled, $domain): \Hostinger\Model\HostingListWebsitesV1200Response
+listWebsitesV1($page, $perPage, $username, $orderId, $isEnabled, $domain, $websiteTypes): \Hostinger\Model\HostingListWebsitesV1200Response
 ```
 
 List websites
 
-Retrieve a paginated list of websites (CloudLinux, Builder, and Horizons) accessible to the authenticated client.  This endpoint returns websites from your hosting accounts as well as websites from other client hosting accounts that have shared access with you.  Each website includes a `website_type` field describing the type of website detected on the underlying platform (`wordpress`, `builder`, `horizons`, `nodejs`, or `other`). Some fields, such as `vhost_type`, `username`, and `root_directory`, only apply to CloudLinux websites and are null for other platforms.  Use the available query parameters to filter results by username, order ID, enabled status, or domain name for more targeted results.
+Retrieve a paginated list of websites (CloudLinux, Builder, and Horizons) accessible to the authenticated client.  This endpoint returns websites from your hosting accounts as well as websites from other client hosting accounts that have shared access with you.  Each website includes a `website_type` field describing the type of website detected on the underlying platform (`wordpress`, `builder`, `horizons`, `nodejs`, or `other`). Some fields, such as `vhost_type`, `username`, and `root_directory`, only apply to CloudLinux websites and are null for other platforms.  Use `website_types` to list only websites of a given detected type, e.g. only WordPress websites (`website_types=wordpress`) or only Node.js websites (`website_types=nodejs`). Combine with the other available query parameters to filter by username, order ID, enabled status, or domain name for more targeted results.
 
 ### Example
 
@@ -179,10 +179,11 @@ $perPage = 25; // int | Number of items per page
 $username = cl_user123; // string | Filter by specific username
 $orderId = 123; // int | Order ID
 $isEnabled = true; // bool | Filter by enabled status
-$domain = example.com; // string | Filter by domain name (exact match)
+$domain = example.com; // string | Filter by domain name (case-insensitive substring match)
+$websiteTypes = ["wordpress","nodejs"]; // string[] | Filter by detected website type, e.g. wordpress,nodejs. Accepts a comma-separated list.
 
 try {
-    $result = $apiInstance->listWebsitesV1($page, $perPage, $username, $orderId, $isEnabled, $domain);
+    $result = $apiInstance->listWebsitesV1($page, $perPage, $username, $orderId, $isEnabled, $domain, $websiteTypes);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HostingWebsitesApi->listWebsitesV1: ', $e->getMessage(), PHP_EOL;
@@ -198,7 +199,8 @@ try {
 | **username** | **string**| Filter by specific username | [optional] |
 | **orderId** | **int**| Order ID | [optional] |
 | **isEnabled** | **bool**| Filter by enabled status | [optional] |
-| **domain** | **string**| Filter by domain name (exact match) | [optional] |
+| **domain** | **string**| Filter by domain name (case-insensitive substring match) | [optional] |
+| **websiteTypes** | [**string[]**](../Model/string.md)| Filter by detected website type, e.g. wordpress,nodejs. Accepts a comma-separated list. | [optional] |
 
 ### Return type
 

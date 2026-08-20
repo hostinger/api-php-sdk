@@ -334,7 +334,7 @@ $apiInstance = new Hostinger\Api\HostingDatabasesApi(config: $config);
 $username = u123456789; // string
 $page = 1; // int | Page number
 $perPage = 25; // int | Number of items per page
-$domain = example.com; // string | Filter by domain name (exact match)
+$domain = example.com; // string | Filter by domain name (case-insensitive substring match)
 $isAssigned = true; // bool | When used with domain, return only databases assigned to that domain.
 $search = test_db; // string | Search databases by name, user, or creation date.
 
@@ -353,7 +353,7 @@ try {
 | **username** | **string**|  | |
 | **page** | **int**| Page number | [optional] |
 | **perPage** | **int**| Number of items per page | [optional] [default to 25] |
-| **domain** | **string**| Filter by domain name (exact match) | [optional] |
+| **domain** | **string**| Filter by domain name (case-insensitive substring match) | [optional] |
 | **isAssigned** | **bool**| When used with domain, return only databases assigned to that domain. | [optional] |
 | **search** | **string**| Search databases by name, user, or creation date. | [optional] |
 
