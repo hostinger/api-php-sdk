@@ -73,7 +73,7 @@ getNodeJsBuildSettingsFromArchiveV1($username, $domain, $archivePath): \Hostinge
 
 Get Node.js build settings from archive
 
-Auto-detect Node.js build settings from a package.json inside an archive already on the server.  Use this before calling `Start Node.js Build` to preview what settings will be used, or to let the user review and override values (framework, node version, root directory, output directory, build script) before committing to a build.  The archive must already be present on the website's file storage. Use the `Generate Upload URL` endpoint to obtain credentials and upload the archive first. To upload an archive and start a build in one step without inspecting settings first, use the `Create Node.js Build from Archive` endpoint instead.
+Auto-detect Node.js build settings from a package.json inside an archive already on the server.  Use this before calling `Start Node.js Build` to preview what settings will be used, or to let the user review and override values (framework, node version, root directory, output directory, build script) before committing to a build.  The archive must already be present on the website's file storage. Use the `Generate Upload URL` endpoint to obtain credentials and upload the archive first.
 
 ### Example
 
@@ -325,7 +325,7 @@ startNodeJsBuildV1($username, $domain, $hostingV1NodeJsStartBuildRequest): \Host
 
 Start Node.js build
 
-Start a Node.js build process using files already present on the website's file storage.  WARNING: on success this overwrites the website's existing contents and cannot be undone — verify this is intended before calling this endpoint.  The `source_type` must be `archive` and `source_options.archive_path` must point to an existing archive file on the server (relative to the website document root). Use the `Generate Upload URL` endpoint to obtain credentials and upload the archive first.  To auto-detect build settings from an archive before starting, first call the `Get Node.js Build Settings from Archive` endpoint. To upload an archive and start a build in one step, use the `Create Node.js Build from Archive` endpoint instead.  The returned build `uuid` can be used to poll progress and retrieve logs via the `Get Node.js Build Logs` endpoint.
+Start a Node.js build process using files already present on the website's file storage.  WARNING: on success this overwrites the website's existing contents and cannot be undone — verify this is intended before calling this endpoint.  The `source_type` must be `archive` and `source_options.archive_path` must point to an existing archive file on the server (relative to the website document root). Use the `Generate Upload URL` endpoint to obtain credentials and upload the archive first.  To auto-detect build settings from an archive before starting, first call the `Get Node.js Build Settings from Archive` endpoint.  The returned build `uuid` can be used to poll progress and retrieve logs via the `Get Node.js Build Logs` endpoint.
 
 ### Example
 
