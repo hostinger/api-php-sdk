@@ -4,7 +4,6 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createNodeJSBuildFromArchiveV1()**](HostingNodeJSApi.md#createNodeJSBuildFromArchiveV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/from-archive | Create NodeJS build from archive |
 | [**getNodeJSBuildLogsV1()**](HostingNodeJSApi.md#getNodeJSBuildLogsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs |
 | [**getNodeJsBuildSettingsFromArchiveV1()**](HostingNodeJSApi.md#getNodeJsBuildSettingsFromArchiveV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/from-archive | Get Node.js build settings from archive |
 | [**listNodeJSBuildsV1()**](HostingNodeJSApi.md#listNodeJSBuildsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds |
@@ -13,56 +12,6 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**restartNodeJsApplicationV1()**](HostingNodeJSApi.md#restartNodeJsApplicationV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/server/restart | Restart Node.js application |
 | [**startNodeJsBuildV1()**](HostingNodeJSApi.md#startNodeJsBuildV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | Start Node.js build |
 
-
-## `createNodeJSBuildFromArchiveV1()`
-
-```php
-createNodeJSBuildFromArchiveV1($username, $domain, $hostingV1NodeJsCreateFromArchiveRequest): \Hostinger\Model\HostingV1NodeJsBuildResource
-```
-
-Create NodeJS build from archive
-
-Upload a project archive, auto-detect build settings, and immediately start a Node.js build.  WARNING: on success this overwrites the website's existing contents and cannot be undone — verify this is intended before calling this endpoint.  This is the recommended single-step approach for deploying a Node.js application. The archive is uploaded to the website's file storage, build settings are auto-detected from the package.json inside the archive, and the build process starts automatically. Optional override fields take precedence over auto-detected values. Maximum archive size is 50MB.  Before archiving, exclude `node_modules/` and any build output directories (e.g. `dist/`, `.next/`, `build/`) — they are not needed because the build process runs the install step automatically, and including them unnecessarily increases the archive size. This also helps keep the archive well under the 50MB limit.  Example (zip): ``` zip -r archive.zip . --exclude \"node_modules/_*\" --exclude \"dist/_*\" ```  The returned build `uuid` can be used to poll progress and retrieve logs via the `Get Node.js Build Logs` endpoint.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer authorization: apiToken
-$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
-$username = u123456789; // string
-$domain = mydomain.tld; // string | Domain name
-$hostingV1NodeJsCreateFromArchiveRequest = new \Hostinger\Model\HostingV1NodeJsCreateFromArchiveRequest(); // \Hostinger\Model\HostingV1NodeJsCreateFromArchiveRequest
-
-try {
-    $result = $apiInstance->createNodeJSBuildFromArchiveV1($username, $domain, $hostingV1NodeJsCreateFromArchiveRequest);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling HostingNodeJSApi->createNodeJSBuildFromArchiveV1: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **username** | **string**|  | |
-| **domain** | **string**| Domain name | |
-| **hostingV1NodeJsCreateFromArchiveRequest** | [**\Hostinger\Model\HostingV1NodeJsCreateFromArchiveRequest**](../Model/HostingV1NodeJsCreateFromArchiveRequest.md)|  | |
-
-### Return type
-
-[**\Hostinger\Model\HostingV1NodeJsBuildResource**](../Model/HostingV1NodeJsBuildResource.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `getNodeJSBuildLogsV1()`
 
