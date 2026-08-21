@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **surname** | **string** |  |
 **phone** | **string** | Phone number in E.164 format (leading \&quot;+\&quot; then 7-15 digits) |
 **note** | **string** |  |
+**tagUuids** | **string[]** | Existing tags to attach to the created contact |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
