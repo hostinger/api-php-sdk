@@ -297,8 +297,10 @@ Class | Method | HTTP request | Description
 *ReachFormsApi* | [**deleteFormV1**](docs/Api/ReachFormsApi.md#deleteformv1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/forms/{formUuid} | Delete form
 *ReachFormsApi* | [**getFormDetailsV1**](docs/Api/ReachFormsApi.md#getformdetailsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/forms/{formUuid} | Get form details
 *ReachFormsApi* | [**listFormsV1**](docs/Api/ReachFormsApi.md#listformsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/forms | List forms
+*ReachProfilesApi* | [**getConnectedSendingDomainV1**](docs/Api/ReachProfilesApi.md#getconnectedsendingdomainv1) | **GET** /api/reach/v1/profiles/{profileUuid}/domains | Get connected sending domain
 *ReachProfilesApi* | [**getProfileDomainDNSStatusV1**](docs/Api/ReachProfilesApi.md#getprofiledomaindnsstatusv1) | **GET** /api/reach/v1/profiles/{profileUuid}/domains/dns-status | Get profile domain DNS status
 *ReachProfilesApi* | [**getRemainingPlanLimitsV1**](docs/Api/ReachProfilesApi.md#getremainingplanlimitsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/limits | Get remaining plan limits
+*ReachProfilesApi* | [**listPlanFeatureAccessV1**](docs/Api/ReachProfilesApi.md#listplanfeatureaccessv1) | **GET** /api/reach/v1/profiles/{profileUuid}/features | List plan feature access
 *ReachProfilesApi* | [**listProfilesV1**](docs/Api/ReachProfilesApi.md#listprofilesv1) | **GET** /api/reach/v1/profiles | List Profiles
 *ReachSegmentsApi* | [**countProfileSegmentContactsV1**](docs/Api/ReachSegmentsApi.md#countprofilesegmentcontactsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/segmentation/segments/{segmentUuid}/count | Count profile segment contacts
 *ReachSegmentsApi* | [**createANewContactSegmentV1**](docs/Api/ReachSegmentsApi.md#createanewcontactsegmentv1) | **POST** /api/reach/v1/segmentation/segments | Create a new contact segment
@@ -309,7 +311,9 @@ Class | Method | HTTP request | Description
 *ReachSegmentsApi* | [**listProfileSegmentContactsV1**](docs/Api/ReachSegmentsApi.md#listprofilesegmentcontactsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/segmentation/segments/{segmentUuid}/contacts | List profile segment contacts
 *ReachSegmentsApi* | [**listProfileSegmentsV1**](docs/Api/ReachSegmentsApi.md#listprofilesegmentsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/segmentation/segments | List profile segments
 *ReachSegmentsApi* | [**listSegmentContactsV1**](docs/Api/ReachSegmentsApi.md#listsegmentcontactsv1) | **GET** /api/reach/v1/segmentation/segments/{segmentUuid}/contacts | List segment contacts
+*ReachSegmentsApi* | [**listSegmentFilterAttributesV1**](docs/Api/ReachSegmentsApi.md#listsegmentfilterattributesv1) | **GET** /api/reach/v1/profiles/{profileUuid}/segmentation/filters/attributes | List segment filter attributes
 *ReachSegmentsApi* | [**listSegmentsV1**](docs/Api/ReachSegmentsApi.md#listsegmentsv1) | **GET** /api/reach/v1/segmentation/segments | List segments
+*ReachSegmentsApi* | [**previewContactsMatchingConditionsV1**](docs/Api/ReachSegmentsApi.md#previewcontactsmatchingconditionsv1) | **POST** /api/reach/v1/profiles/{profileUuid}/segmentation/filters/contacts | Preview contacts matching conditions
 *ReachSegmentsApi* | [**updateAProfileSegmentV1**](docs/Api/ReachSegmentsApi.md#updateaprofilesegmentv1) | **PUT** /api/reach/v1/profiles/{profileUuid}/segmentation/segments/{segmentUuid} | Update a profile segment
 *ReachTagsApi* | [**assignAContactToATagV1**](docs/Api/ReachTagsApi.md#assignacontacttoatagv1) | **POST** /api/reach/v1/profiles/{profileUuid}/tags/{tagUuid}/contacts/{contactUuid} | Assign a contact to a tag
 *ReachTagsApi* | [**assignContactsToATagV1**](docs/Api/ReachTagsApi.md#assigncontactstoatagv1) | **POST** /api/reach/v1/profiles/{profileUuid}/tags/{tagUuid}/contacts | Assign contacts to a tag
@@ -786,10 +790,15 @@ Class | Method | HTTP request | Description
 - [ReachV1ContactsProfileContactResource](docs/Model/ReachV1ContactsProfileContactResource.md)
 - [ReachV1ContactsProfileContactUpdateResource](docs/Model/ReachV1ContactsProfileContactUpdateResource.md)
 - [ReachV1ContactsSegmentsContactSegmentResource](docs/Model/ReachV1ContactsSegmentsContactSegmentResource.md)
+- [ReachV1ContactsSegmentsProfileFilterContactsRequest](docs/Model/ReachV1ContactsSegmentsProfileFilterContactsRequest.md)
+- [ReachV1ContactsSegmentsProfileFilterContactsRequestConditionsInner](docs/Model/ReachV1ContactsSegmentsProfileFilterContactsRequestConditionsInner.md)
 - [ReachV1ContactsSegmentsProfileStoreRequest](docs/Model/ReachV1ContactsSegmentsProfileStoreRequest.md)
 - [ReachV1ContactsSegmentsProfileStoreRequestConditionsInner](docs/Model/ReachV1ContactsSegmentsProfileStoreRequestConditionsInner.md)
 - [ReachV1ContactsSegmentsProfileUpdateRequest](docs/Model/ReachV1ContactsSegmentsProfileUpdateRequest.md)
 - [ReachV1ContactsSegmentsSegmentContactsCountResource](docs/Model/ReachV1ContactsSegmentsSegmentContactsCountResource.md)
+- [ReachV1ContactsSegmentsSegmentFilterAttributeResource](docs/Model/ReachV1ContactsSegmentsSegmentFilterAttributeResource.md)
+- [ReachV1ContactsSegmentsSegmentFilterAttributesResource](docs/Model/ReachV1ContactsSegmentsSegmentFilterAttributesResource.md)
+- [ReachV1ContactsSegmentsSegmentFilterOperatorResource](docs/Model/ReachV1ContactsSegmentsSegmentFilterOperatorResource.md)
 - [ReachV1ContactsSegmentsSegmentListItemResource](docs/Model/ReachV1ContactsSegmentsSegmentListItemResource.md)
 - [ReachV1ContactsSegmentsSegmentResource](docs/Model/ReachV1ContactsSegmentsSegmentResource.md)
 - [ReachV1ContactsSegmentsSegmentationContactResource](docs/Model/ReachV1ContactsSegmentsSegmentationContactResource.md)
@@ -812,6 +821,9 @@ Class | Method | HTTP request | Description
 - [ReachV1ProfilesDomainsDnsRecordStatusActualInner](docs/Model/ReachV1ProfilesDomainsDnsRecordStatusActualInner.md)
 - [ReachV1ProfilesDomainsDnsRecordStatusSuggestedInner](docs/Model/ReachV1ProfilesDomainsDnsRecordStatusSuggestedInner.md)
 - [ReachV1ProfilesDomainsDnsStatusResource](docs/Model/ReachV1ProfilesDomainsDnsStatusResource.md)
+- [ReachV1ProfilesDomainsSendingDomainResource](docs/Model/ReachV1ProfilesDomainsSendingDomainResource.md)
+- [ReachV1ProfilesDomainsSuspendedSenderEmailResource](docs/Model/ReachV1ProfilesDomainsSuspendedSenderEmailResource.md)
+- [ReachV1ProfilesFeaturesPlanFeatureResource](docs/Model/ReachV1ProfilesFeaturesPlanFeatureResource.md)
 - [ReachV1ProfilesPlanLimitUsageResource](docs/Model/ReachV1ProfilesPlanLimitUsageResource.md)
 - [ReachV1ProfilesPlanLimitsResource](docs/Model/ReachV1ProfilesPlanLimitsResource.md)
 - [ReachV1ProfilesProfileResource](docs/Model/ReachV1ProfilesProfileResource.md)

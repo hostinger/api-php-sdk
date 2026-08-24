@@ -4,10 +4,58 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**getConnectedSendingDomainV1()**](ReachProfilesApi.md#getConnectedSendingDomainV1) | **GET** /api/reach/v1/profiles/{profileUuid}/domains | Get connected sending domain |
 | [**getProfileDomainDNSStatusV1()**](ReachProfilesApi.md#getProfileDomainDNSStatusV1) | **GET** /api/reach/v1/profiles/{profileUuid}/domains/dns-status | Get profile domain DNS status |
 | [**getRemainingPlanLimitsV1()**](ReachProfilesApi.md#getRemainingPlanLimitsV1) | **GET** /api/reach/v1/profiles/{profileUuid}/limits | Get remaining plan limits |
+| [**listPlanFeatureAccessV1()**](ReachProfilesApi.md#listPlanFeatureAccessV1) | **GET** /api/reach/v1/profiles/{profileUuid}/features | List plan feature access |
 | [**listProfilesV1()**](ReachProfilesApi.md#listProfilesV1) | **GET** /api/reach/v1/profiles | List Profiles |
 
+
+## `getConnectedSendingDomainV1()`
+
+```php
+getConnectedSendingDomainV1($profileUuid): \Hostinger\Model\ReachV1ProfilesDomainsSendingDomainResource
+```
+
+Get connected sending domain
+
+Get the sending domain connected to the profile, its verification status and any suspended sender addresses.  Campaigns only go out once a domain is connected and active, so this is the cheapest way to check that precondition before building one. A profile with no domain connected returns the same shape with every field set to `null`. For the individual MX, SPF, DKIM and DMARC records behind the status, use the DNS status endpoint.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachProfilesApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+
+try {
+    $result = $apiInstance->getConnectedSendingDomainV1($profileUuid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachProfilesApi->getConnectedSendingDomainV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+
+### Return type
+
+[**\Hostinger\Model\ReachV1ProfilesDomainsSendingDomainResource**](../Model/ReachV1ProfilesDomainsSendingDomainResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getProfileDomainDNSStatusV1()`
 
@@ -96,6 +144,52 @@ try {
 ### Return type
 
 [**\Hostinger\Model\ReachV1ProfilesPlanLimitsResource**](../Model/ReachV1ProfilesPlanLimitsResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listPlanFeatureAccessV1()`
+
+```php
+listPlanFeatureAccessV1($profileUuid): \Hostinger\Model\ReachV1ProfilesFeaturesPlanFeatureResource[]
+```
+
+List plan feature access
+
+List which plan features the profile can use.  This is the feature lock matrix, not a usage quota. `available` means the feature can be used right now and `locked` means it is not part of the base plan, so an upgrade is needed. For remaining emails, recipients and AI credits use the limits endpoint instead.  Worth checking before building something that cannot be activated afterwards, such as an automation on a plan without automation activation.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachProfilesApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+
+try {
+    $result = $apiInstance->listPlanFeatureAccessV1($profileUuid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachProfilesApi->listPlanFeatureAccessV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+
+### Return type
+
+[**\Hostinger\Model\ReachV1ProfilesFeaturesPlanFeatureResource[]**](../Model/ReachV1ProfilesFeaturesPlanFeatureResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

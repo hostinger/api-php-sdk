@@ -13,7 +13,9 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**listProfileSegmentContactsV1()**](ReachSegmentsApi.md#listProfileSegmentContactsV1) | **GET** /api/reach/v1/profiles/{profileUuid}/segmentation/segments/{segmentUuid}/contacts | List profile segment contacts |
 | [**listProfileSegmentsV1()**](ReachSegmentsApi.md#listProfileSegmentsV1) | **GET** /api/reach/v1/profiles/{profileUuid}/segmentation/segments | List profile segments |
 | [**listSegmentContactsV1()**](ReachSegmentsApi.md#listSegmentContactsV1) | **GET** /api/reach/v1/segmentation/segments/{segmentUuid}/contacts | List segment contacts |
+| [**listSegmentFilterAttributesV1()**](ReachSegmentsApi.md#listSegmentFilterAttributesV1) | **GET** /api/reach/v1/profiles/{profileUuid}/segmentation/filters/attributes | List segment filter attributes |
 | [**listSegmentsV1()**](ReachSegmentsApi.md#listSegmentsV1) | **GET** /api/reach/v1/segmentation/segments | List segments |
+| [**previewContactsMatchingConditionsV1()**](ReachSegmentsApi.md#previewContactsMatchingConditionsV1) | **POST** /api/reach/v1/profiles/{profileUuid}/segmentation/filters/contacts | Preview contacts matching conditions |
 | [**updateAProfileSegmentV1()**](ReachSegmentsApi.md#updateAProfileSegmentV1) | **PUT** /api/reach/v1/profiles/{profileUuid}/segmentation/segments/{segmentUuid} | Update a profile segment |
 
 
@@ -455,6 +457,52 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listSegmentFilterAttributesV1()`
+
+```php
+listSegmentFilterAttributesV1($profileUuid): \Hostinger\Model\ReachV1ContactsSegmentsSegmentFilterAttributesResource
+```
+
+List segment filter attributes
+
+List every attribute a segment condition can filter on, with the operators each attribute accepts, the value format they expect and, where the value is constrained, the allowed values.  The list is profile specific: it includes the profile's custom contact fields, its tags and its 20 most recently published campaigns, so the valid attributes cannot be hardcoded. Read it before creating or updating a segment to discover the valid `attribute`, `operator` and `value` combinations.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachSegmentsApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+
+try {
+    $result = $apiInstance->listSegmentFilterAttributesV1($profileUuid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachSegmentsApi->listSegmentFilterAttributesV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+
+### Return type
+
+[**\Hostinger\Model\ReachV1ContactsSegmentsSegmentFilterAttributesResource**](../Model/ReachV1ContactsSegmentsSegmentFilterAttributesResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listSegmentsV1()`
 
 ```php
@@ -493,6 +541,54 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**\Hostinger\Model\ReachV1ContactsSegmentsContactSegmentResource[]**](../Model/ReachV1ContactsSegmentsContactSegmentResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `previewContactsMatchingConditionsV1()`
+
+```php
+previewContactsMatchingConditionsV1($profileUuid, $reachV1ContactsSegmentsProfileFilterContactsRequest): \Hostinger\Model\ReachListProfileContactsV1200Response
+```
+
+Preview contacts matching conditions
+
+Preview the contacts matching a set of conditions without saving a segment.  The body is the same set of conditions accepted when creating or updating a segment, so this is how to check who a filter reaches, and how many, before persisting it. Nothing is stored and no contact is modified.  Call the segment filter attributes endpoint first to discover the valid `attribute`, `operator` and `value` combinations.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachSegmentsApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+$reachV1ContactsSegmentsProfileFilterContactsRequest = new \Hostinger\Model\ReachV1ContactsSegmentsProfileFilterContactsRequest(); // \Hostinger\Model\ReachV1ContactsSegmentsProfileFilterContactsRequest
+
+try {
+    $result = $apiInstance->previewContactsMatchingConditionsV1($profileUuid, $reachV1ContactsSegmentsProfileFilterContactsRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachSegmentsApi->previewContactsMatchingConditionsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+| **reachV1ContactsSegmentsProfileFilterContactsRequest** | [**\Hostinger\Model\ReachV1ContactsSegmentsProfileFilterContactsRequest**](../Model/ReachV1ContactsSegmentsProfileFilterContactsRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\ReachListProfileContactsV1200Response**](../Model/ReachListProfileContactsV1200Response.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
