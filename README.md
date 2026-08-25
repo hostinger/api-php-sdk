@@ -161,7 +161,7 @@ Class | Method | HTTP request | Description
 *EcommerceMiscellaneousApi* | [**getCustomStorefrontSetupInstructionsV1**](docs/Api/EcommerceMiscellaneousApi.md#getcustomstorefrontsetupinstructionsv1) | **GET** /api/ecommerce/v1/miscellaneous/custom-storefront-instructions | Get custom storefront setup instructions
 *EcommerceOrdersApi* | [**cancelAnOrderV1**](docs/Api/EcommerceOrdersApi.md#cancelanorderv1) | **POST** /api/ecommerce/v1/stores/{store_id}/orders/{order_id}/cancel | Cancel an order
 *EcommerceOrdersApi* | [**fulfilAnOrderV1**](docs/Api/EcommerceOrdersApi.md#fulfilanorderv1) | **POST** /api/ecommerce/v1/stores/{store_id}/orders/{order_id}/fulfill | Fulfil an order
-*EcommerceOrdersApi* | [**listOrdersV1**](docs/Api/EcommerceOrdersApi.md#listordersv1) | **GET** /api/ecommerce/v1/stores/{store_id}/orders | List orders
+*EcommerceOrdersApi* | [**listStoreOrdersV1**](docs/Api/EcommerceOrdersApi.md#liststoreordersv1) | **GET** /api/ecommerce/v1/stores/{store_id}/orders | List store orders
 *EcommerceOrdersApi* | [**retrieveAnOrderV1**](docs/Api/EcommerceOrdersApi.md#retrieveanorderv1) | **GET** /api/ecommerce/v1/stores/{store_id}/orders/{order_id} | Retrieve an order
 *EcommercePaymentsApi* | [**createAPaymentProviderConnectLinkV1**](docs/Api/EcommercePaymentsApi.md#createapaymentproviderconnectlinkv1) | **POST** /api/ecommerce/v1/stores/{store_id}/payment-providers/{provider_id}/connect-link | Create a payment provider connect link
 *EcommercePaymentsApi* | [**enableManualPaymentMethodV1**](docs/Api/EcommercePaymentsApi.md#enablemanualpaymentmethodv1) | **POST** /api/ecommerce/v1/stores/{store_id}/payment-methods/manual | Enable manual payment method
@@ -561,9 +561,9 @@ Class | Method | HTTP request | Description
 - [DomainsV1WHOISStoreRequest](docs/Model/DomainsV1WHOISStoreRequest.md)
 - [EcommerceGetStoresV1200Response](docs/Model/EcommerceGetStoresV1200Response.md)
 - [EcommerceListDiscountsV1200Response](docs/Model/EcommerceListDiscountsV1200Response.md)
-- [EcommerceListOrdersV1200Response](docs/Model/EcommerceListOrdersV1200Response.md)
 - [EcommerceListProductVariantsV1200Response](docs/Model/EcommerceListProductVariantsV1200Response.md)
 - [EcommerceListProductsV1200Response](docs/Model/EcommerceListProductsV1200Response.md)
+- [EcommerceListStoreOrdersV1200Response](docs/Model/EcommerceListStoreOrdersV1200Response.md)
 - [EcommerceV1DiscountCreateDiscountRequest](docs/Model/EcommerceV1DiscountCreateDiscountRequest.md)
 - [EcommerceV1DiscountDiscountResource](docs/Model/EcommerceV1DiscountDiscountResource.md)
 - [EcommerceV1DiscountDiscountResponseResource](docs/Model/EcommerceV1DiscountDiscountResponseResource.md)

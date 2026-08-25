@@ -6,7 +6,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | ------------- | ------------- | ------------- |
 | [**cancelAnOrderV1()**](EcommerceOrdersApi.md#cancelAnOrderV1) | **POST** /api/ecommerce/v1/stores/{store_id}/orders/{order_id}/cancel | Cancel an order |
 | [**fulfilAnOrderV1()**](EcommerceOrdersApi.md#fulfilAnOrderV1) | **POST** /api/ecommerce/v1/stores/{store_id}/orders/{order_id}/fulfill | Fulfil an order |
-| [**listOrdersV1()**](EcommerceOrdersApi.md#listOrdersV1) | **GET** /api/ecommerce/v1/stores/{store_id}/orders | List orders |
+| [**listStoreOrdersV1()**](EcommerceOrdersApi.md#listStoreOrdersV1) | **GET** /api/ecommerce/v1/stores/{store_id}/orders | List store orders |
 | [**retrieveAnOrderV1()**](EcommerceOrdersApi.md#retrieveAnOrderV1) | **GET** /api/ecommerce/v1/stores/{store_id}/orders/{order_id} | Retrieve an order |
 
 
@@ -110,13 +110,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listOrdersV1()`
+## `listStoreOrdersV1()`
 
 ```php
-listOrdersV1($storeId, $status, $paymentStatus, $fulfillmentStatus, $email, $displayId, $q, $createdAtFrom, $createdAtTo, $page): \Hostinger\Model\EcommerceListOrdersV1200Response
+listStoreOrdersV1($storeId, $status, $paymentStatus, $fulfillmentStatus, $email, $displayId, $q, $createdAtFrom, $createdAtTo, $page): \Hostinger\Model\EcommerceListStoreOrdersV1200Response
 ```
 
-List orders
+List store orders
 
 List a store's orders newest first as summaries. Filter by status, payment or fulfilment status, customer email, order number or a free-text query. Amounts are in the smallest currency unit. Retrieve a single order for its line items, addresses and fulfilments.
 
@@ -144,10 +144,10 @@ $createdAtTo = 2026-01-31; // string | Latest creation time to include, inclusiv
 $page = 1; // int | Page number
 
 try {
-    $result = $apiInstance->listOrdersV1($storeId, $status, $paymentStatus, $fulfillmentStatus, $email, $displayId, $q, $createdAtFrom, $createdAtTo, $page);
+    $result = $apiInstance->listStoreOrdersV1($storeId, $status, $paymentStatus, $fulfillmentStatus, $email, $displayId, $q, $createdAtFrom, $createdAtTo, $page);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling EcommerceOrdersApi->listOrdersV1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EcommerceOrdersApi->listStoreOrdersV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -168,7 +168,7 @@ try {
 
 ### Return type
 
-[**\Hostinger\Model\EcommerceListOrdersV1200Response**](../Model/EcommerceListOrdersV1200Response.md)
+[**\Hostinger\Model\EcommerceListStoreOrdersV1200Response**](../Model/EcommerceListStoreOrdersV1200Response.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -1,4 +1,4 @@
-# # EcommerceListOrdersV1200Response
+# # EcommerceListStoreOrdersV1200Response
 
 ## Properties
 
