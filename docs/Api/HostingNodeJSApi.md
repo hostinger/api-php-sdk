@@ -7,8 +7,10 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**getNodeJSBuildLogsV1()**](HostingNodeJSApi.md#getNodeJSBuildLogsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs |
 | [**getNodeJsBuildSettingsFromArchiveV1()**](HostingNodeJSApi.md#getNodeJsBuildSettingsFromArchiveV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/from-archive | Get Node.js build settings from archive |
 | [**listNodeJSBuildsV1()**](HostingNodeJSApi.md#listNodeJSBuildsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds |
+| [**listNodeJsEnvironmentVariablesV1()**](HostingNodeJSApi.md#listNodeJsEnvironmentVariablesV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/env | List Node.js environment variables |
 | [**listNodeJsVulnerabilitiesV1()**](HostingNodeJSApi.md#listNodeJsVulnerabilitiesV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/vulnerabilities | List Node.js vulnerabilities |
 | [**patchNodeJsVulnerabilitiesV1()**](HostingNodeJSApi.md#patchNodeJsVulnerabilitiesV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/vulnerabilities/patch | Patch Node.js vulnerabilities |
+| [**replaceNodeJsEnvironmentVariablesV1()**](HostingNodeJSApi.md#replaceNodeJsEnvironmentVariablesV1) | **PUT** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/env | Replace Node.js environment variables |
 | [**restartNodeJsApplicationV1()**](HostingNodeJSApi.md#restartNodeJsApplicationV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/server/restart | Restart Node.js application |
 | [**startNodeJsBuildV1()**](HostingNodeJSApi.md#startNodeJsBuildV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | Start Node.js build |
 
@@ -169,6 +171,54 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listNodeJsEnvironmentVariablesV1()`
+
+```php
+listNodeJsEnvironmentVariablesV1($username, $domain): \Hostinger\Model\HostingV1NodeJsEnvVarResource[]
+```
+
+List Node.js environment variables
+
+Lists the Node.js environment variables currently set for the website. Values are always masked as `********` and cannot be read back through this API. Use this endpoint to see which keys are configured or to verify a change, not to read values.  To change variables, use the `Replace Node.js environment variables` endpoint. It replaces the whole set, so never copy the masked values from this response into that request; send the full desired set with real values taken from the project `.env` file or the user prompt instead.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+
+try {
+    $result = $apiInstance->listNodeJsEnvironmentVariablesV1($username, $domain);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->listNodeJsEnvironmentVariablesV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1NodeJsEnvVarResource[]**](../Model/HostingV1NodeJsEnvVarResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listNodeJsVulnerabilitiesV1()`
 
 ```php
@@ -264,6 +314,56 @@ try {
 ### Return type
 
 [**\Hostinger\Model\HostingV1NodeJsPatchResultResource**](../Model/HostingV1NodeJsPatchResultResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `replaceNodeJsEnvironmentVariablesV1()`
+
+```php
+replaceNodeJsEnvironmentVariablesV1($username, $domain, $hostingV1NodeJsSetBuildEnvVarsRequest): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Replace Node.js environment variables
+
+Replaces the website's Node.js environment variables with the ones provided. This is a full replace: any variable not in the request is deleted, and sending an empty `env_vars` array deletes every variable. Saving writes the values and restarts the running Node.js process.  A restart is enough for apps that read environment variables at process start, such as Express or NestJS. It is not enough for frameworks that bake variables into the build. Next.js standalone is one of those: build-time values (including `NEXT_PUBLIC_*`) need a fresh build. After this call, use the `Start Node.js build` endpoint so those apps pick up the new values.  The `List Node.js environment variables` endpoint returns masked values (`********`), so never copy values from it into this request. Always send the full desired set with real values taken from the project `.env` file or the user prompt.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$hostingV1NodeJsSetBuildEnvVarsRequest = new \Hostinger\Model\HostingV1NodeJsSetBuildEnvVarsRequest(); // \Hostinger\Model\HostingV1NodeJsSetBuildEnvVarsRequest
+
+try {
+    $result = $apiInstance->replaceNodeJsEnvironmentVariablesV1($username, $domain, $hostingV1NodeJsSetBuildEnvVarsRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->replaceNodeJsEnvironmentVariablesV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **hostingV1NodeJsSetBuildEnvVarsRequest** | [**\Hostinger\Model\HostingV1NodeJsSetBuildEnvVarsRequest**](../Model/HostingV1NodeJsSetBuildEnvVarsRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

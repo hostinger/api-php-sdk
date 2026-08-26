@@ -218,8 +218,10 @@ Class | Method | HTTP request | Description
 *HostingNodeJSApi* | [**getNodeJSBuildLogsV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildlogsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs
 *HostingNodeJSApi* | [**getNodeJsBuildSettingsFromArchiveV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildsettingsfromarchivev1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/from-archive | Get Node.js build settings from archive
 *HostingNodeJSApi* | [**listNodeJSBuildsV1**](docs/Api/HostingNodeJSApi.md#listnodejsbuildsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds
+*HostingNodeJSApi* | [**listNodeJsEnvironmentVariablesV1**](docs/Api/HostingNodeJSApi.md#listnodejsenvironmentvariablesv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/env | List Node.js environment variables
 *HostingNodeJSApi* | [**listNodeJsVulnerabilitiesV1**](docs/Api/HostingNodeJSApi.md#listnodejsvulnerabilitiesv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/vulnerabilities | List Node.js vulnerabilities
 *HostingNodeJSApi* | [**patchNodeJsVulnerabilitiesV1**](docs/Api/HostingNodeJSApi.md#patchnodejsvulnerabilitiesv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/vulnerabilities/patch | Patch Node.js vulnerabilities
+*HostingNodeJSApi* | [**replaceNodeJsEnvironmentVariablesV1**](docs/Api/HostingNodeJSApi.md#replacenodejsenvironmentvariablesv1) | **PUT** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/env | Replace Node.js environment variables
 *HostingNodeJSApi* | [**restartNodeJsApplicationV1**](docs/Api/HostingNodeJSApi.md#restartnodejsapplicationv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/server/restart | Restart Node.js application
 *HostingNodeJSApi* | [**startNodeJsBuildV1**](docs/Api/HostingNodeJSApi.md#startnodejsbuildv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | Start Node.js build
 *HostingOrdersApi* | [**listOrdersV1**](docs/Api/HostingOrdersApi.md#listordersv1) | **GET** /api/hosting/v1/orders | List orders
@@ -678,9 +680,12 @@ Class | Method | HTTP request | Description
 - [HostingV1NodeJsBuildResource](docs/Model/HostingV1NodeJsBuildResource.md)
 - [HostingV1NodeJsBuildSettingsResource](docs/Model/HostingV1NodeJsBuildSettingsResource.md)
 - [HostingV1NodeJsCreateFromArchiveRequest](docs/Model/HostingV1NodeJsCreateFromArchiveRequest.md)
+- [HostingV1NodeJsEnvVarResource](docs/Model/HostingV1NodeJsEnvVarResource.md)
 - [HostingV1NodeJsGetBuildSettingsRequest](docs/Model/HostingV1NodeJsGetBuildSettingsRequest.md)
 - [HostingV1NodeJsPatchResultResource](docs/Model/HostingV1NodeJsPatchResultResource.md)
 - [HostingV1NodeJsPatchVulnerabilitiesRequest](docs/Model/HostingV1NodeJsPatchVulnerabilitiesRequest.md)
+- [HostingV1NodeJsSetBuildEnvVarsRequest](docs/Model/HostingV1NodeJsSetBuildEnvVarsRequest.md)
+- [HostingV1NodeJsSetBuildEnvVarsRequestEnvVarsInner](docs/Model/HostingV1NodeJsSetBuildEnvVarsRequestEnvVarsInner.md)
 - [HostingV1NodeJsSourceOptionsResource](docs/Model/HostingV1NodeJsSourceOptionsResource.md)
 - [HostingV1NodeJsStartBuildRequest](docs/Model/HostingV1NodeJsStartBuildRequest.md)
 - [HostingV1NodeJsStartBuildRequestSourceOptions](docs/Model/HostingV1NodeJsStartBuildRequestSourceOptions.md)
