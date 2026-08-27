@@ -12,6 +12,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**deleteFirewallV1()**](VPSFirewallApi.md#deleteFirewallV1) | **DELETE** /api/vps/v1/firewall/{firewallId} | Delete firewall |
 | [**getFirewallDetailsV1()**](VPSFirewallApi.md#getFirewallDetailsV1) | **GET** /api/vps/v1/firewall/{firewallId} | Get firewall details |
 | [**getFirewallListV1()**](VPSFirewallApi.md#getFirewallListV1) | **GET** /api/vps/v1/firewall | Get firewall list |
+| [**replaceAllFirewallRulesInGroupV1()**](VPSFirewallApi.md#replaceAllFirewallRulesInGroupV1) | **PUT** /api/vps/v1/firewall/{firewallId}/rules | Replace all firewall rules in group |
 | [**syncFirewallV1()**](VPSFirewallApi.md#syncFirewallV1) | **POST** /api/vps/v1/firewall/{firewallId}/sync/{virtualMachineId} | Sync firewall |
 | [**updateFirewallRuleV1()**](VPSFirewallApi.md#updateFirewallRuleV1) | **PUT** /api/vps/v1/firewall/{firewallId}/rules/{ruleId} | Update firewall rule |
 
@@ -387,6 +388,56 @@ try {
 ### Return type
 
 [**\Hostinger\Model\VPSV1FirewallListResponse**](../Model/VPSV1FirewallListResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `replaceAllFirewallRulesInGroupV1()`
+
+```php
+replaceAllFirewallRulesInGroupV1($firewallId, $vPSV1FirewallRulesReplaceRequest, $sync): \Hostinger\Model\VPSV1FirewallFirewallResource
+```
+
+Replace all firewall rules in group
+
+Replaces all firewall rules within a specified firewall group with the provided set of rules in a single atomic operation, instead of creating or deleting rules one by one.  Any virtual machine using this firewall group will need to be synchronized after replacing rules; pass the \"sync\" query parameter to trigger synchronization immediately.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
+$firewallId = 9449049; // int | Firewall ID
+$vPSV1FirewallRulesReplaceRequest = new \Hostinger\Model\VPSV1FirewallRulesReplaceRequest(); // \Hostinger\Model\VPSV1FirewallRulesReplaceRequest
+$sync = True; // bool | Synchronize the firewall group to all its virtual machines after replacing the rules
+
+try {
+    $result = $apiInstance->replaceAllFirewallRulesInGroupV1($firewallId, $vPSV1FirewallRulesReplaceRequest, $sync);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling VPSFirewallApi->replaceAllFirewallRulesInGroupV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **firewallId** | **int**| Firewall ID | |
+| **vPSV1FirewallRulesReplaceRequest** | [**\Hostinger\Model\VPSV1FirewallRulesReplaceRequest**](../Model/VPSV1FirewallRulesReplaceRequest.md)|  | |
+| **sync** | **bool**| Synchronize the firewall group to all its virtual machines after replacing the rules | [optional] |
+
+### Return type
+
+[**\Hostinger\Model\VPSV1FirewallFirewallResource**](../Model/VPSV1FirewallFirewallResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

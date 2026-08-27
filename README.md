@@ -348,6 +348,7 @@ Class | Method | HTTP request | Description
 *VPSFirewallApi* | [**deleteFirewallV1**](docs/Api/VPSFirewallApi.md#deletefirewallv1) | **DELETE** /api/vps/v1/firewall/{firewallId} | Delete firewall
 *VPSFirewallApi* | [**getFirewallDetailsV1**](docs/Api/VPSFirewallApi.md#getfirewalldetailsv1) | **GET** /api/vps/v1/firewall/{firewallId} | Get firewall details
 *VPSFirewallApi* | [**getFirewallListV1**](docs/Api/VPSFirewallApi.md#getfirewalllistv1) | **GET** /api/vps/v1/firewall | Get firewall list
+*VPSFirewallApi* | [**replaceAllFirewallRulesInGroupV1**](docs/Api/VPSFirewallApi.md#replaceallfirewallrulesingroupv1) | **PUT** /api/vps/v1/firewall/{firewallId}/rules | Replace all firewall rules in group
 *VPSFirewallApi* | [**syncFirewallV1**](docs/Api/VPSFirewallApi.md#syncfirewallv1) | **POST** /api/vps/v1/firewall/{firewallId}/sync/{virtualMachineId} | Sync firewall
 *VPSFirewallApi* | [**updateFirewallRuleV1**](docs/Api/VPSFirewallApi.md#updatefirewallrulev1) | **PUT** /api/vps/v1/firewall/{firewallId}/rules/{ruleId} | Update firewall rule
 *VPSMalwareScannerApi* | [**getScanMetricsV1**](docs/Api/VPSMalwareScannerApi.md#getscanmetricsv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/monarx | Get scan metrics
@@ -849,6 +850,7 @@ Class | Method | HTTP request | Description
 - [VPSV1FirewallFirewallResource](docs/Model/VPSV1FirewallFirewallResource.md)
 - [VPSV1FirewallFirewallRuleResource](docs/Model/VPSV1FirewallFirewallRuleResource.md)
 - [VPSV1FirewallListResponse](docs/Model/VPSV1FirewallListResponse.md)
+- [VPSV1FirewallRulesReplaceRequest](docs/Model/VPSV1FirewallRulesReplaceRequest.md)
 - [VPSV1FirewallRulesStoreRequest](docs/Model/VPSV1FirewallRulesStoreRequest.md)
 - [VPSV1FirewallStoreRequest](docs/Model/VPSV1FirewallStoreRequest.md)
 - [VPSV1IPAddressIPAddressResource](docs/Model/VPSV1IPAddressIPAddressResource.md)
