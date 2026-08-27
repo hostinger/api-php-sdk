@@ -396,12 +396,12 @@ try {
 ## `replaceAllFirewallRulesInGroupV1()`
 
 ```php
-replaceAllFirewallRulesInGroupV1($firewallId, $vPSV1FirewallRulesReplaceRequest, $sync): \Hostinger\Model\VPSV1FirewallFirewallResource
+replaceAllFirewallRulesInGroupV1($firewallId, $vPSV1FirewallRulesReplaceRequest): \Hostinger\Model\VPSV1FirewallFirewallResource
 ```
 
 Replace all firewall rules in group
 
-Replaces all firewall rules within a specified firewall group with the provided set of rules in a single atomic operation, instead of creating or deleting rules one by one.  Any virtual machine using this firewall group will need to be synchronized after replacing rules; pass the \"sync\" query parameter to trigger synchronization immediately.
+Replaces all firewall rules within a specified firewall group with the provided set of rules in a single atomic operation, instead of creating or deleting rules one by one.  Any virtual machine using this firewall group will need to be synchronized after replacing rules; pass the \"sync\" parameter to trigger synchronization immediately.
 
 ### Example
 
@@ -417,10 +417,9 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 $apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
 $firewallId = 9449049; // int | Firewall ID
 $vPSV1FirewallRulesReplaceRequest = new \Hostinger\Model\VPSV1FirewallRulesReplaceRequest(); // \Hostinger\Model\VPSV1FirewallRulesReplaceRequest
-$sync = True; // bool | Synchronize the firewall group to all its virtual machines after replacing the rules
 
 try {
-    $result = $apiInstance->replaceAllFirewallRulesInGroupV1($firewallId, $vPSV1FirewallRulesReplaceRequest, $sync);
+    $result = $apiInstance->replaceAllFirewallRulesInGroupV1($firewallId, $vPSV1FirewallRulesReplaceRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSFirewallApi->replaceAllFirewallRulesInGroupV1: ', $e->getMessage(), PHP_EOL;
@@ -433,7 +432,6 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **firewallId** | **int**| Firewall ID | |
 | **vPSV1FirewallRulesReplaceRequest** | [**\Hostinger\Model\VPSV1FirewallRulesReplaceRequest**](../Model/VPSV1FirewallRulesReplaceRequest.md)|  | |
-| **sync** | **bool**| Synchronize the firewall group to all its virtual machines after replacing the rules | [optional] |
 
 ### Return type
 
