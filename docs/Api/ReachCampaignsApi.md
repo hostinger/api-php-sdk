@@ -4,10 +4,59 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**createADraftCampaignV1()**](ReachCampaignsApi.md#createADraftCampaignV1) | **POST** /api/reach/v1/profiles/{profileUuid}/campaigns | Create a draft campaign |
 | [**getCampaignDetailsV1()**](ReachCampaignsApi.md#getCampaignDetailsV1) | **GET** /api/reach/v1/profiles/{profileUuid}/campaigns/{campaignUuid} | Get campaign details |
 | [**getCampaignPerformanceV1()**](ReachCampaignsApi.md#getCampaignPerformanceV1) | **GET** /api/reach/v1/profiles/{profileUuid}/campaigns/{campaignUuid}/statistics | Get campaign performance |
 | [**listCampaignsV1()**](ReachCampaignsApi.md#listCampaignsV1) | **GET** /api/reach/v1/profiles/{profileUuid}/campaigns | List campaigns |
 
+
+## `createADraftCampaignV1()`
+
+```php
+createADraftCampaignV1($profileUuid, $reachV1CampaignsStoreRequest): \Hostinger\Model\ReachV1CampaignsCreatedCampaignResource
+```
+
+Create a draft campaign
+
+Create a campaign in a profile.  The campaign is created as a draft, so nothing is sent and no contact is touched. It has no audience yet either - targeting and scheduling are not part of this request, the draft is finished and sent from the Reach interface.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachCampaignsApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+$reachV1CampaignsStoreRequest = new \Hostinger\Model\ReachV1CampaignsStoreRequest(); // \Hostinger\Model\ReachV1CampaignsStoreRequest
+
+try {
+    $result = $apiInstance->createADraftCampaignV1($profileUuid, $reachV1CampaignsStoreRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachCampaignsApi->createADraftCampaignV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+| **reachV1CampaignsStoreRequest** | [**\Hostinger\Model\ReachV1CampaignsStoreRequest**](../Model/ReachV1CampaignsStoreRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\ReachV1CampaignsCreatedCampaignResource**](../Model/ReachV1CampaignsCreatedCampaignResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getCampaignDetailsV1()`
 
