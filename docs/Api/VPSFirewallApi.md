@@ -13,6 +13,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**getFirewallDetailsV1()**](VPSFirewallApi.md#getFirewallDetailsV1) | **GET** /api/vps/v1/firewall/{firewallId} | Get firewall details |
 | [**getFirewallListV1()**](VPSFirewallApi.md#getFirewallListV1) | **GET** /api/vps/v1/firewall | Get firewall list |
 | [**replaceAllFirewallRulesInGroupV1()**](VPSFirewallApi.md#replaceAllFirewallRulesInGroupV1) | **PUT** /api/vps/v1/firewall/{firewallId}/rules | Replace all firewall rules in group |
+| [**syncFirewallToAllAssignedVMsV1()**](VPSFirewallApi.md#syncFirewallToAllAssignedVMsV1) | **POST** /api/vps/v1/firewall/{firewallId}/sync | Sync firewall to all assigned VMs |
 | [**syncFirewallV1()**](VPSFirewallApi.md#syncFirewallV1) | **POST** /api/vps/v1/firewall/{firewallId}/sync/{virtualMachineId} | Sync firewall |
 | [**updateFirewallRuleV1()**](VPSFirewallApi.md#updateFirewallRuleV1) | **PUT** /api/vps/v1/firewall/{firewallId}/rules/{ruleId} | Update firewall rule |
 
@@ -441,6 +442,52 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `syncFirewallToAllAssignedVMsV1()`
+
+```php
+syncFirewallToAllAssignedVMsV1($firewallId): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Sync firewall to all assigned VMs
+
+Sync a firewall's rules to every virtual machine it's assigned to.  Firewall can lose sync with a virtual machine if the firewall has new rules added, removed or updated.  Use this endpoint to apply updated firewall rules to all VPS instances assigned to the firewall.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\VPSFirewallApi(config: $config);
+$firewallId = 9449049; // int | Firewall ID
+
+try {
+    $result = $apiInstance->syncFirewallToAllAssignedVMsV1($firewallId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling VPSFirewallApi->syncFirewallToAllAssignedVMsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **firewallId** | **int**| Firewall ID | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `syncFirewallV1()`
 
 ```php
@@ -449,7 +496,7 @@ syncFirewallV1($firewallId, $virtualMachineId): \Hostinger\Model\VPSV1ActionActi
 
 Sync firewall
 
-Sync a firewall for a specified virtual machine.  Firewall can lose sync with virtual machine if the firewall has new rules added, removed or updated.  Use this endpoint to apply updated firewall rules to VPS instances.
+Deprecated: use `POST /api/vps/v1/firewall/{firewallId}/sync` instead, which syncs the firewall to all virtual machines assigned to it.  Sync a firewall for a specified virtual machine.  Firewall can lose sync with virtual machine if the firewall has new rules added, removed or updated.  Use this endpoint to apply updated firewall rules to VPS instances.
 
 ### Example
 

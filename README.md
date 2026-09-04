@@ -352,6 +352,7 @@ Class | Method | HTTP request | Description
 *VPSFirewallApi* | [**getFirewallDetailsV1**](docs/Api/VPSFirewallApi.md#getfirewalldetailsv1) | **GET** /api/vps/v1/firewall/{firewallId} | Get firewall details
 *VPSFirewallApi* | [**getFirewallListV1**](docs/Api/VPSFirewallApi.md#getfirewalllistv1) | **GET** /api/vps/v1/firewall | Get firewall list
 *VPSFirewallApi* | [**replaceAllFirewallRulesInGroupV1**](docs/Api/VPSFirewallApi.md#replaceallfirewallrulesingroupv1) | **PUT** /api/vps/v1/firewall/{firewallId}/rules | Replace all firewall rules in group
+*VPSFirewallApi* | [**syncFirewallToAllAssignedVMsV1**](docs/Api/VPSFirewallApi.md#syncfirewalltoallassignedvmsv1) | **POST** /api/vps/v1/firewall/{firewallId}/sync | Sync firewall to all assigned VMs
 *VPSFirewallApi* | [**syncFirewallV1**](docs/Api/VPSFirewallApi.md#syncfirewallv1) | **POST** /api/vps/v1/firewall/{firewallId}/sync/{virtualMachineId} | Sync firewall
 *VPSFirewallApi* | [**updateFirewallRuleV1**](docs/Api/VPSFirewallApi.md#updatefirewallrulev1) | **PUT** /api/vps/v1/firewall/{firewallId}/rules/{ruleId} | Update firewall rule
 *VPSMalwareScannerApi* | [**getScanMetricsV1**](docs/Api/VPSMalwareScannerApi.md#getscanmetricsv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/monarx | Get scan metrics
