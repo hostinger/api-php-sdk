@@ -4,8 +4,13 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**analyseFailedNodeJsBuildV1()**](HostingNodeJSApi.md#analyseFailedNodeJsBuildV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/analysis | Analyse failed Node.js build |
+| [**clearNodeJsRuntimeLogsV1()**](HostingNodeJSApi.md#clearNodeJsRuntimeLogsV1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/runtime-logs | Clear Node.js runtime logs |
 | [**getNodeJSBuildLogsV1()**](HostingNodeJSApi.md#getNodeJSBuildLogsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs |
+| [**getNodeJsBuildDetailsV1()**](HostingNodeJSApi.md#getNodeJsBuildDetailsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid} | Get Node.js build details |
 | [**getNodeJsBuildSettingsFromArchiveV1()**](HostingNodeJSApi.md#getNodeJsBuildSettingsFromArchiveV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/from-archive | Get Node.js build settings from archive |
+| [**getNodeJsBuildSettingsV1()**](HostingNodeJSApi.md#getNodeJsBuildSettingsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings | Get Node.js build settings |
+| [**getNodeJsRuntimeLogsV1()**](HostingNodeJSApi.md#getNodeJsRuntimeLogsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/runtime-logs | Get Node.js runtime logs |
 | [**listNodeJSBuildsV1()**](HostingNodeJSApi.md#listNodeJSBuildsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds |
 | [**listNodeJsEnvironmentVariablesV1()**](HostingNodeJSApi.md#listNodeJsEnvironmentVariablesV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/env | List Node.js environment variables |
 | [**listNodeJsVulnerabilitiesV1()**](HostingNodeJSApi.md#listNodeJsVulnerabilitiesV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/vulnerabilities | List Node.js vulnerabilities |
@@ -13,7 +18,106 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**replaceNodeJsEnvironmentVariablesV1()**](HostingNodeJSApi.md#replaceNodeJsEnvironmentVariablesV1) | **PUT** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/env | Replace Node.js environment variables |
 | [**restartNodeJsApplicationV1()**](HostingNodeJSApi.md#restartNodeJsApplicationV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/server/restart | Restart Node.js application |
 | [**startNodeJsBuildV1()**](HostingNodeJSApi.md#startNodeJsBuildV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | Start Node.js build |
+| [**updateNodeJsBuildSettingsV1()**](HostingNodeJSApi.md#updateNodeJsBuildSettingsV1) | **PUT** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings | Update Node.js build settings |
 
+
+## `analyseFailedNodeJsBuildV1()`
+
+```php
+analyseFailedNodeJsBuildV1($username, $domain, $uuid): \Hostinger\Model\HostingV1NodeJsBuildAnalysisResource
+```
+
+Analyse failed Node.js build
+
+Returns an AI analysis of why a build failed and how to fix it, based on the build logs, the project file list and package.json. Only builds in the `failed` state can be analysed; any other state returns 422. When no analysis could be produced both `analysis` and `solution` are null, in which case read `Get NodeJS build logs` instead.  Each call runs the analysis again, so call it once per failed build and keep the result. Limited to 5 calls per minute per API client (429 above that).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$uuid = 123e4567-e89b-12d3-a456-426614174000; // string | Build UUID
+
+try {
+    $result = $apiInstance->analyseFailedNodeJsBuildV1($username, $domain, $uuid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->analyseFailedNodeJsBuildV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **uuid** | **string**| Build UUID | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1NodeJsBuildAnalysisResource**](../Model/HostingV1NodeJsBuildAnalysisResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `clearNodeJsRuntimeLogsV1()`
+
+```php
+clearNodeJsRuntimeLogsV1($username, $domain): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Clear Node.js runtime logs
+
+Empties the Node.js application's runtime log file. This cannot be undone, so confirm with the user before calling it. Returns success even when no log file exists yet.  Use it before reproducing a problem so the next `Get Node.js runtime logs` call returns only fresh entries; start that call with `period` again instead of reusing a `from_line` from before the clear.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+
+try {
+    $result = $apiInstance->clearNodeJsRuntimeLogsV1($username, $domain);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->clearNodeJsRuntimeLogsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getNodeJSBuildLogsV1()`
 
@@ -67,6 +171,56 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getNodeJsBuildDetailsV1()`
+
+```php
+getNodeJsBuildDetailsV1($username, $domain, $uuid): \Hostinger\Model\HostingV1NodeJsBuildResource
+```
+
+Get Node.js build details
+
+Returns one build by UUID: its state (`pending`, `running`, `completed`, `failed`), the options it ran with and timestamps. Poll this while a build is pending or running. When it is failed, read `Get NodeJS build logs` and `Analyse failed Node.js build` for the cause. Returns 404 when the UUID does not belong to a build of this website.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$uuid = 123e4567-e89b-12d3-a456-426614174000; // string | Build UUID
+
+try {
+    $result = $apiInstance->getNodeJsBuildDetailsV1($username, $domain, $uuid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->getNodeJsBuildDetailsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **uuid** | **string**| Build UUID | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1NodeJsBuildResource**](../Model/HostingV1NodeJsBuildResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getNodeJsBuildSettingsFromArchiveV1()`
 
 ```php
@@ -112,6 +266,110 @@ try {
 ### Return type
 
 [**\Hostinger\Model\HostingV1NodeJsBuildSettingsResource**](../Model/HostingV1NodeJsBuildSettingsResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getNodeJsBuildSettingsV1()`
+
+```php
+getNodeJsBuildSettingsV1($username, $domain): \Hostinger\Model\HostingV1NodeJsStoredBuildSettingsResource
+```
+
+Get Node.js build settings
+
+Returns the build settings stored for the website: framework (`app_type`), Node.js version, root and output directory, build script, entry file and package manager. Stored settings drive Git auto-deployment builds. A build started through the API uses the values sent in that request and saves them here only when no settings exist yet.  Returns 404 until the first build or the first settings update stores them. Use this after a failed build to check whether the framework or the entry file were detected wrong, then fix them with the `Update Node.js build settings` endpoint.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+
+try {
+    $result = $apiInstance->getNodeJsBuildSettingsV1($username, $domain);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->getNodeJsBuildSettingsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1NodeJsStoredBuildSettingsResource**](../Model/HostingV1NodeJsStoredBuildSettingsResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getNodeJsRuntimeLogsV1()`
+
+```php
+getNodeJsRuntimeLogsV1($username, $domain, $period, $fromLine, $limit, $levels): \Hostinger\Model\HostingV1NodeJsRuntimeLogsResource
+```
+
+Get Node.js runtime logs
+
+Returns the Node.js application's runtime console log entries, oldest first, each with timestamp, level and message. On the first call send `period` (`1h`, `1d`, `1w` or `1m`) and optionally `levels` and `limit` (1-5000, default 1000); when more entries match than `limit`, the newest are kept.  To poll for new entries send `total_lines + 1` from the previous response as `from_line` and omit `period`; `period` and `from_line` cannot be combined. Lines that are not JSON with a timestamp, level and message are skipped, so `logs` may hold fewer than `limit` entries while `total_lines` counts every raw line. Entries with a timestamp before `last_deployed_at` belong to the previous deployment. Returns an empty `logs` list when the application has not written a log file yet.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$period = 1h; // string | Time window for the first fetch. Required when `from_line` is not sent.
+$fromLine = 5042; // int | 1-based line of the log file to start from. For polling send `total_lines + 1` from the previous response. Cannot be combined with `period`.
+$limit = 200; // int | Maximum number of log entries to return. When more entries match, the newest are kept.
+$levels = ["ERROR","WARN"]; // string[] | Return only entries with these log levels, sent as a comma-separated list, e.g. ERROR,WARN. Matching runs on the raw log line, so entries written with numeric levels (for example by pino) are excluded while this filter is set.
+
+try {
+    $result = $apiInstance->getNodeJsRuntimeLogsV1($username, $domain, $period, $fromLine, $limit, $levels);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->getNodeJsRuntimeLogsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **period** | **string**| Time window for the first fetch. Required when &#x60;from_line&#x60; is not sent. | [optional] |
+| **fromLine** | **int**| 1-based line of the log file to start from. For polling send &#x60;total_lines + 1&#x60; from the previous response. Cannot be combined with &#x60;period&#x60;. | [optional] |
+| **limit** | **int**| Maximum number of log entries to return. When more entries match, the newest are kept. | [optional] [default to 1000] |
+| **levels** | [**string[]**](../Model/string.md)| Return only entries with these log levels, sent as a comma-separated list, e.g. ERROR,WARN. Matching runs on the raw log line, so entries written with numeric levels (for example by pino) are excluded while this filter is set. | [optional] |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1NodeJsRuntimeLogsResource**](../Model/HostingV1NodeJsRuntimeLogsResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -462,6 +720,56 @@ try {
 ### Return type
 
 [**\Hostinger\Model\HostingV1NodeJsBuildResource**](../Model/HostingV1NodeJsBuildResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateNodeJsBuildSettingsV1()`
+
+```php
+updateNodeJsBuildSettingsV1($username, $domain, $hostingV1NodeJsUpdateBuildSettingsRequest): \Hostinger\Model\HostingV1NodeJsStoredBuildSettingsResource
+```
+
+Update Node.js build settings
+
+Replaces the build settings stored for the website. Send the full set: `node_version` is required and every nullable field you omit is stored as null. Creates the settings when none exist yet.  This does not start a build. Stored settings drive Git auto-deployment builds; a build started through the API uses the values sent in that request, so to rebuild with corrected settings call `Start Node.js build` with the same values. Typical fixes: a wrong `app_type` after auto-detection, or a missing `entry_file` for express, fastify, nest, nuxt and hono apps.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$hostingV1NodeJsUpdateBuildSettingsRequest = new \Hostinger\Model\HostingV1NodeJsUpdateBuildSettingsRequest(); // \Hostinger\Model\HostingV1NodeJsUpdateBuildSettingsRequest
+
+try {
+    $result = $apiInstance->updateNodeJsBuildSettingsV1($username, $domain, $hostingV1NodeJsUpdateBuildSettingsRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->updateNodeJsBuildSettingsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **hostingV1NodeJsUpdateBuildSettingsRequest** | [**\Hostinger\Model\HostingV1NodeJsUpdateBuildSettingsRequest**](../Model/HostingV1NodeJsUpdateBuildSettingsRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1NodeJsStoredBuildSettingsResource**](../Model/HostingV1NodeJsStoredBuildSettingsResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

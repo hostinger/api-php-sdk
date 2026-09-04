@@ -215,8 +215,13 @@ Class | Method | HTTP request | Description
 *HostingFilesApi* | [**generateUploadURLV1**](docs/Api/HostingFilesApi.md#generateuploadurlv1) | **POST** /api/hosting/v1/files/upload-urls | Generate upload URL
 *HostingFilesApi* | [**getWebsiteFileContentV1**](docs/Api/HostingFilesApi.md#getwebsitefilecontentv1) | **GET** /api/hosting/v1/accounts/{username}/domains/{domain}/files/content | Get website file content
 *HostingFilesApi* | [**listWebsiteFilesAndDirectoriesV1**](docs/Api/HostingFilesApi.md#listwebsitefilesanddirectoriesv1) | **GET** /api/hosting/v1/accounts/{username}/domains/{domain}/files | List website files and directories
+*HostingNodeJSApi* | [**analyseFailedNodeJsBuildV1**](docs/Api/HostingNodeJSApi.md#analysefailednodejsbuildv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/analysis | Analyse failed Node.js build
+*HostingNodeJSApi* | [**clearNodeJsRuntimeLogsV1**](docs/Api/HostingNodeJSApi.md#clearnodejsruntimelogsv1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/runtime-logs | Clear Node.js runtime logs
 *HostingNodeJSApi* | [**getNodeJSBuildLogsV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildlogsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs
+*HostingNodeJSApi* | [**getNodeJsBuildDetailsV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuilddetailsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid} | Get Node.js build details
 *HostingNodeJSApi* | [**getNodeJsBuildSettingsFromArchiveV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildsettingsfromarchivev1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/from-archive | Get Node.js build settings from archive
+*HostingNodeJSApi* | [**getNodeJsBuildSettingsV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildsettingsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings | Get Node.js build settings
+*HostingNodeJSApi* | [**getNodeJsRuntimeLogsV1**](docs/Api/HostingNodeJSApi.md#getnodejsruntimelogsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/runtime-logs | Get Node.js runtime logs
 *HostingNodeJSApi* | [**listNodeJSBuildsV1**](docs/Api/HostingNodeJSApi.md#listnodejsbuildsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds
 *HostingNodeJSApi* | [**listNodeJsEnvironmentVariablesV1**](docs/Api/HostingNodeJSApi.md#listnodejsenvironmentvariablesv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/env | List Node.js environment variables
 *HostingNodeJSApi* | [**listNodeJsVulnerabilitiesV1**](docs/Api/HostingNodeJSApi.md#listnodejsvulnerabilitiesv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/vulnerabilities | List Node.js vulnerabilities
@@ -224,6 +229,7 @@ Class | Method | HTTP request | Description
 *HostingNodeJSApi* | [**replaceNodeJsEnvironmentVariablesV1**](docs/Api/HostingNodeJSApi.md#replacenodejsenvironmentvariablesv1) | **PUT** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/env | Replace Node.js environment variables
 *HostingNodeJSApi* | [**restartNodeJsApplicationV1**](docs/Api/HostingNodeJSApi.md#restartnodejsapplicationv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/server/restart | Restart Node.js application
 *HostingNodeJSApi* | [**startNodeJsBuildV1**](docs/Api/HostingNodeJSApi.md#startnodejsbuildv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | Start Node.js build
+*HostingNodeJSApi* | [**updateNodeJsBuildSettingsV1**](docs/Api/HostingNodeJSApi.md#updatenodejsbuildsettingsv1) | **PUT** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings | Update Node.js build settings
 *HostingOrdersApi* | [**listOrdersV1**](docs/Api/HostingOrdersApi.md#listordersv1) | **GET** /api/hosting/v1/orders | List orders
 *HostingPHPApi* | [**getPHPDetailsV1**](docs/Api/HostingPHPApi.md#getphpdetailsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/php/details | Get PHP details
 *HostingPHPApi* | [**getPHPInfoV1**](docs/Api/HostingPHPApi.md#getphpinfov1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/php/php-info | Get PHP info
@@ -677,6 +683,7 @@ Class | Method | HTTP request | Description
 - [HostingV1FilesFilesResourceItemsInner](docs/Model/HostingV1FilesFilesResourceItemsInner.md)
 - [HostingV1FilesGenerateUploadUrlRequest](docs/Model/HostingV1FilesGenerateUploadUrlRequest.md)
 - [HostingV1FilesUploadUrlResource](docs/Model/HostingV1FilesUploadUrlResource.md)
+- [HostingV1NodeJsBuildAnalysisResource](docs/Model/HostingV1NodeJsBuildAnalysisResource.md)
 - [HostingV1NodeJsBuildLogsResource](docs/Model/HostingV1NodeJsBuildLogsResource.md)
 - [HostingV1NodeJsBuildOptionsResource](docs/Model/HostingV1NodeJsBuildOptionsResource.md)
 - [HostingV1NodeJsBuildResource](docs/Model/HostingV1NodeJsBuildResource.md)
@@ -684,13 +691,17 @@ Class | Method | HTTP request | Description
 - [HostingV1NodeJsCreateFromArchiveRequest](docs/Model/HostingV1NodeJsCreateFromArchiveRequest.md)
 - [HostingV1NodeJsEnvVarResource](docs/Model/HostingV1NodeJsEnvVarResource.md)
 - [HostingV1NodeJsGetBuildSettingsRequest](docs/Model/HostingV1NodeJsGetBuildSettingsRequest.md)
+- [HostingV1NodeJsLogEntryResource](docs/Model/HostingV1NodeJsLogEntryResource.md)
 - [HostingV1NodeJsPatchResultResource](docs/Model/HostingV1NodeJsPatchResultResource.md)
 - [HostingV1NodeJsPatchVulnerabilitiesRequest](docs/Model/HostingV1NodeJsPatchVulnerabilitiesRequest.md)
+- [HostingV1NodeJsRuntimeLogsResource](docs/Model/HostingV1NodeJsRuntimeLogsResource.md)
 - [HostingV1NodeJsSetBuildEnvVarsRequest](docs/Model/HostingV1NodeJsSetBuildEnvVarsRequest.md)
 - [HostingV1NodeJsSetBuildEnvVarsRequestEnvVarsInner](docs/Model/HostingV1NodeJsSetBuildEnvVarsRequestEnvVarsInner.md)
 - [HostingV1NodeJsSourceOptionsResource](docs/Model/HostingV1NodeJsSourceOptionsResource.md)
 - [HostingV1NodeJsStartBuildRequest](docs/Model/HostingV1NodeJsStartBuildRequest.md)
 - [HostingV1NodeJsStartBuildRequestSourceOptions](docs/Model/HostingV1NodeJsStartBuildRequestSourceOptions.md)
+- [HostingV1NodeJsStoredBuildSettingsResource](docs/Model/HostingV1NodeJsStoredBuildSettingsResource.md)
+- [HostingV1NodeJsUpdateBuildSettingsRequest](docs/Model/HostingV1NodeJsUpdateBuildSettingsRequest.md)
 - [HostingV1NodeJsVulnerabilityResource](docs/Model/HostingV1NodeJsVulnerabilityResource.md)
 - [HostingV1OrdersOrderResource](docs/Model/HostingV1OrdersOrderResource.md)
 - [HostingV1OrdersPlanResource](docs/Model/HostingV1OrdersPlanResource.md)
