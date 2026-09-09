@@ -216,7 +216,7 @@ purchaseNewVirtualMachineV1($vPSV1VirtualMachinePurchaseRequest): \Hostinger\Mod
 
 Purchase new virtual machine
 
-Purchase and setup a new virtual machine.  If virtual machine setup fails for any reason, login to [hPanel](https://hpanel.hostinger.com/) and complete the setup manually.  If no payment method is provided, your default payment method will be used automatically.  Use this endpoint to create new VPS instances.
+Purchase and setup a new virtual machine.  If virtual machine setup fails for any reason, login to [hPanel](https://hpanel.hostinger.com/) and complete the setup manually.  If no payment method is provided, your default payment method will be used automatically.  If the response is `202 Accepted`, the payment is still being processed and the virtual machine was not set up. Login to [hPanel](https://hpanel.hostinger.com/) and complete the setup manually.  Use this endpoint to create new VPS instances.
 
 ### Example
 

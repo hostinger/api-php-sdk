@@ -517,6 +517,7 @@ Class | Method | HTTP request | Description
 - [BillingV1CatalogCatalogItemResource](docs/Model/BillingV1CatalogCatalogItemResource.md)
 - [BillingV1OrderOrderBillingAddressResource](docs/Model/BillingV1OrderOrderBillingAddressResource.md)
 - [BillingV1OrderOrderResource](docs/Model/BillingV1OrderOrderResource.md)
+- [BillingV1OrderPaymentProcessingResource](docs/Model/BillingV1OrderPaymentProcessingResource.md)
 - [BillingV1OrderPurchaseRequest](docs/Model/BillingV1OrderPurchaseRequest.md)
 - [BillingV1OrderPurchaseRequestItemsInner](docs/Model/BillingV1OrderPurchaseRequestItemsInner.md)
 - [BillingV1OrderVirtualMachineOrderResource](docs/Model/BillingV1OrderVirtualMachineOrderResource.md)
