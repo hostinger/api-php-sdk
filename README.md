@@ -185,8 +185,12 @@ Class | Method | HTTP request | Description
 *EcommerceStoresApi* | [**deleteStoreV1**](docs/Api/EcommerceStoresApi.md#deletestorev1) | **DELETE** /api/ecommerce/v1/stores/{store_id} | Delete store
 *EcommerceStoresApi* | [**getStoreMetadataV1**](docs/Api/EcommerceStoresApi.md#getstoremetadatav1) | **GET** /api/ecommerce/v1/stores/{store_id}/metadata | Get store metadata
 *EcommerceStoresApi* | [**getStoresV1**](docs/Api/EcommerceStoresApi.md#getstoresv1) | **GET** /api/ecommerce/v1/stores | Get stores
+*HorizonsWebsitesApi* | [**cloneWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#clonewebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/clone | Clone website
 *HorizonsWebsitesApi* | [**createWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#createwebsitev1) | **POST** /api/horizons/v1/websites | Create website
+*HorizonsWebsitesApi* | [**editWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#editwebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/messages | Edit website
+*HorizonsWebsitesApi* | [**getWebsiteListV1**](docs/Api/HorizonsWebsitesApi.md#getwebsitelistv1) | **GET** /api/horizons/v1/websites | Get website list
 *HorizonsWebsitesApi* | [**getWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#getwebsitev1) | **GET** /api/horizons/v1/websites/{websiteId} | Get website
+*HorizonsWebsitesApi* | [**publishWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#publishwebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/publish | Publish website
 *HostingCacheApi* | [**clearWebsiteCacheV1**](docs/Api/HostingCacheApi.md#clearwebsitecachev1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/clear | Clear website cache
 *HostingCacheApi* | [**toggleCachelessModeV1**](docs/Api/HostingCacheApi.md#togglecachelessmodev1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cacheless-mode/toggle | Toggle cacheless mode
 *HostingCacheApi* | [**toggleWebsiteCacheV1**](docs/Api/HostingCacheApi.md#togglewebsitecachev1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/toggle | Toggle website cache
@@ -651,6 +655,10 @@ Class | Method | HTTP request | Description
 - [HorizonsV1WebsitesCreateWebsiteRequest](docs/Model/HorizonsV1WebsitesCreateWebsiteRequest.md)
 - [HorizonsV1WebsitesCreateWebsiteRequestMessageInner](docs/Model/HorizonsV1WebsitesCreateWebsiteRequestMessageInner.md)
 - [HorizonsV1WebsitesCreatedWebsiteResource](docs/Model/HorizonsV1WebsitesCreatedWebsiteResource.md)
+- [HorizonsV1WebsitesEditWebsiteRequest](docs/Model/HorizonsV1WebsitesEditWebsiteRequest.md)
+- [HorizonsV1WebsitesEditWebsiteRequestMessageInner](docs/Model/HorizonsV1WebsitesEditWebsiteRequestMessageInner.md)
+- [HorizonsV1WebsitesPublishedWebsiteResource](docs/Model/HorizonsV1WebsitesPublishedWebsiteResource.md)
+- [HorizonsV1WebsitesWebsiteResource](docs/Model/HorizonsV1WebsitesWebsiteResource.md)
 - [HorizonsV1WebsitesWebsiteUrlResource](docs/Model/HorizonsV1WebsitesWebsiteUrlResource.md)
 - [HostingListAccountDatabasesV1200Response](docs/Model/HostingListAccountDatabasesV1200Response.md)
 - [HostingListNodeJSBuildsV1200Response](docs/Model/HostingListNodeJSBuildsV1200Response.md)
