@@ -319,7 +319,7 @@ uploadAndAttachAProductImageV1($storeId, $productId, $ecommerceV1ProductUploadPr
 
 Upload and attach a product image
 
-Fetch a raster image (JPEG, PNG, GIF or WebP, max 15MB) from a URL and attach it to a product in a single call. The image is virus-scanned and validated by content, then stored on the CDN. Set is_thumbnail to make it the product's primary image.
+Fetch a raster image (JPEG, PNG, GIF or WebP, max 15MB) from a URL and attach it to a product in a single call. Image downloads require HTTPS on port 443 without embedded credentials. At most one redirect is allowed, and its destination must meet the same requirements. Private or reserved network destinations, unsupported URLs and longer redirect chains are rejected. The image is virus-scanned and validated by content, then stored on the CDN. Set is_thumbnail to make it the product's primary image.
 
 ### Example
 
