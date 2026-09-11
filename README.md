@@ -133,6 +133,7 @@ Class | Method | HTTP request | Description
 *DomainsMoveApi* | [**rejectIncomingDomainMoveV1**](docs/Api/DomainsMoveApi.md#rejectincomingdomainmovev1) | **DELETE** /api/domains/v1/move/incoming/{domain} | Reject incoming domain move
 *DomainsMoveApi* | [**startOutgoingDomainMoveV1**](docs/Api/DomainsMoveApi.md#startoutgoingdomainmovev1) | **POST** /api/domains/v1/move/outgoing/{domain} | Start outgoing domain move
 *DomainsPortfolioApi* | [**claimFreeDomainV1**](docs/Api/DomainsPortfolioApi.md#claimfreedomainv1) | **POST** /api/domains/v1/portfolio/claim | Claim free domain
+*DomainsPortfolioApi* | [**completeDomainSetupV1**](docs/Api/DomainsPortfolioApi.md#completedomainsetupv1) | **POST** /api/domains/v1/portfolio/{domain}/setup | Complete domain setup
 *DomainsPortfolioApi* | [**disableDomainLockV1**](docs/Api/DomainsPortfolioApi.md#disabledomainlockv1) | **DELETE** /api/domains/v1/portfolio/{domain}/domain-lock | Disable domain lock
 *DomainsPortfolioApi* | [**disablePrivacyProtectionV1**](docs/Api/DomainsPortfolioApi.md#disableprivacyprotectionv1) | **DELETE** /api/domains/v1/portfolio/{domain}/privacy-protection | Disable privacy protection
 *DomainsPortfolioApi* | [**enableDomainLockV1**](docs/Api/DomainsPortfolioApi.md#enabledomainlockv1) | **PUT** /api/domains/v1/portfolio/{domain}/domain-lock | Enable domain lock
@@ -568,6 +569,7 @@ Class | Method | HTTP request | Description
 - [DomainsV1PortfolioClaimResource](docs/Model/DomainsV1PortfolioClaimResource.md)
 - [DomainsV1PortfolioPurchaseRequest](docs/Model/DomainsV1PortfolioPurchaseRequest.md)
 - [DomainsV1PortfolioRenewalRenewalInformationResource](docs/Model/DomainsV1PortfolioRenewalRenewalInformationResource.md)
+- [DomainsV1PortfolioSetupRequest](docs/Model/DomainsV1PortfolioSetupRequest.md)
 - [DomainsV1PortfolioUpdateNameserversRequest](docs/Model/DomainsV1PortfolioUpdateNameserversRequest.md)
 - [DomainsV1TransferClaimRequest](docs/Model/DomainsV1TransferClaimRequest.md)
 - [DomainsV1TransferTransferResource](docs/Model/DomainsV1TransferTransferResource.md)
