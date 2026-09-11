@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **tld** | **string** | TLD to which contact profile can be applied to |
 **country** | **string** | ISO 3166 2-letter country code |
 **entityType** | **string** | WHOIS profile entity type |
+**isDefault** | **bool** | Whether the profile is pre-selected when registering new domains of its TLD |
 **whoisDetails** | **object** | WHOIS profile details |
 **tldDetails** | **object** | TLD details |
 **createdAt** | **\DateTime** |  |
