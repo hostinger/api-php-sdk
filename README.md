@@ -220,6 +220,8 @@ Class | Method | HTTP request | Description
 *HostingFilesApi* | [**generateUploadURLV1**](docs/Api/HostingFilesApi.md#generateuploadurlv1) | **POST** /api/hosting/v1/files/upload-urls | Generate upload URL
 *HostingFilesApi* | [**getWebsiteFileContentV1**](docs/Api/HostingFilesApi.md#getwebsitefilecontentv1) | **GET** /api/hosting/v1/accounts/{username}/domains/{domain}/files/content | Get website file content
 *HostingFilesApi* | [**listWebsiteFilesAndDirectoriesV1**](docs/Api/HostingFilesApi.md#listwebsitefilesanddirectoriesv1) | **GET** /api/hosting/v1/accounts/{username}/domains/{domain}/files | List website files and directories
+*HostingGitApi* | [**listGitInstallationRepositoriesV1**](docs/Api/HostingGitApi.md#listgitinstallationrepositoriesv1) | **GET** /api/hosting/v1/git/installations/{uuid}/repositories | List Git installation repositories
+*HostingGitApi* | [**listGitInstallationsV1**](docs/Api/HostingGitApi.md#listgitinstallationsv1) | **GET** /api/hosting/v1/git/installations | List Git installations
 *HostingNodeJSApi* | [**analyseFailedNodeJsBuildV1**](docs/Api/HostingNodeJSApi.md#analysefailednodejsbuildv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/analysis | Analyse failed Node.js build
 *HostingNodeJSApi* | [**clearNodeJsRuntimeLogsV1**](docs/Api/HostingNodeJSApi.md#clearnodejsruntimelogsv1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/runtime-logs | Clear Node.js runtime logs
 *HostingNodeJSApi* | [**getNodeJSBuildLogsV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildlogsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs
@@ -694,6 +696,8 @@ Class | Method | HTTP request | Description
 - [HostingV1FilesFilesResourceItemsInner](docs/Model/HostingV1FilesFilesResourceItemsInner.md)
 - [HostingV1FilesGenerateUploadUrlRequest](docs/Model/HostingV1FilesGenerateUploadUrlRequest.md)
 - [HostingV1FilesUploadUrlResource](docs/Model/HostingV1FilesUploadUrlResource.md)
+- [HostingV1GitGitInstallationResource](docs/Model/HostingV1GitGitInstallationResource.md)
+- [HostingV1GitGitRepositoryResource](docs/Model/HostingV1GitGitRepositoryResource.md)
 - [HostingV1NodeJsBuildAnalysisResource](docs/Model/HostingV1NodeJsBuildAnalysisResource.md)
 - [HostingV1NodeJsBuildLogsResource](docs/Model/HostingV1NodeJsBuildLogsResource.md)
 - [HostingV1NodeJsBuildOptionsResource](docs/Model/HostingV1NodeJsBuildOptionsResource.md)
