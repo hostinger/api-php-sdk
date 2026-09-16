@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **buildScript** | **string** | Build script that will be ran to build the application |
 **entryFile** | **string** | The main entry point file for the application |
 **packageManager** | **string** | Package manager |
-**sourceType** | **string** | The source type of the files |
+**sourceType** | **string** | Where the files come from: &#x60;archive&#x60; (an uploaded archive on the website) or &#x60;git&#x60; (a branch of a repository reachable through a Git installation). |
 **sourceOptions** | [**\Hostinger\Model\HostingV1NodeJsStartBuildRequestSourceOptions**](HostingV1NodeJsStartBuildRequestSourceOptions.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
