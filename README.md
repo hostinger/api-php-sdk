@@ -250,6 +250,10 @@ Class | Method | HTTP request | Description
 *HostingRedirectsApi* | [**createWebsiteRedirectV1**](docs/Api/HostingRedirectsApi.md#createwebsiteredirectv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/redirects | Create website redirect
 *HostingRedirectsApi* | [**deleteWebsiteRedirectV1**](docs/Api/HostingRedirectsApi.md#deletewebsiteredirectv1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/redirects | Delete website redirect
 *HostingRedirectsApi* | [**listWebsiteRedirectsV1**](docs/Api/HostingRedirectsApi.md#listwebsiteredirectsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/redirects | List website redirects
+*HostingSSLApi* | [**getSSLStatusV1**](docs/Api/HostingSSLApi.md#getsslstatusv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/ssl/status | Get SSL status
+*HostingSSLApi* | [**installSSLV1**](docs/Api/HostingSSLApi.md#installsslv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/ssl/setup | Install SSL
+*HostingSSLApi* | [**toggleHTTPSRedirectV1**](docs/Api/HostingSSLApi.md#togglehttpsredirectv1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/ssl/https-redirect/toggle | Toggle HTTPS redirect
+*HostingSSLApi* | [**uninstallSSLV1**](docs/Api/HostingSSLApi.md#uninstallsslv1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/ssl | Uninstall SSL
 *HostingWebsitesApi* | [**createWebsiteV1**](docs/Api/HostingWebsitesApi.md#createwebsitev1) | **POST** /api/hosting/v1/websites | Create website
 *HostingWebsitesApi* | [**deleteWebsiteV1**](docs/Api/HostingWebsitesApi.md#deletewebsitev1) | **DELETE** /api/hosting/v1/websites/{domain} | Delete website
 *HostingWebsitesApi* | [**deployStaticSiteArchiveV1**](docs/Api/HostingWebsitesApi.md#deploystaticsitearchivev1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/deploy | Deploy static site archive
@@ -738,6 +742,8 @@ Class | Method | HTTP request | Description
 - [HostingV1RedirectsCreateRedirectRequest](docs/Model/HostingV1RedirectsCreateRedirectRequest.md)
 - [HostingV1RedirectsDeleteRedirectRequest](docs/Model/HostingV1RedirectsDeleteRedirectRequest.md)
 - [HostingV1RedirectsRedirectResource](docs/Model/HostingV1RedirectsRedirectResource.md)
+- [HostingV1SslSslStatusResource](docs/Model/HostingV1SslSslStatusResource.md)
+- [HostingV1SslToggleHttpsRedirectRequest](docs/Model/HostingV1SslToggleHttpsRedirectRequest.md)
 - [HostingV1WebsitesCreateWebsiteRequest](docs/Model/HostingV1WebsitesCreateWebsiteRequest.md)
 - [HostingV1WebsitesDeployArchiveRequest](docs/Model/HostingV1WebsitesDeployArchiveRequest.md)
 - [HostingV1WebsitesWebsiteResource](docs/Model/HostingV1WebsitesWebsiteResource.md)
