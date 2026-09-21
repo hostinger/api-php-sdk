@@ -212,6 +212,7 @@ Class | Method | HTTP request | Description
 *HostingDatabasesApi* | [**listAccountDatabasesV1**](docs/Api/HostingDatabasesApi.md#listaccountdatabasesv1) | **GET** /api/hosting/v1/accounts/{username}/databases | List account databases
 *HostingDatabasesApi* | [**listDatabaseRemoteConnectionsV1**](docs/Api/HostingDatabasesApi.md#listdatabaseremoteconnectionsv1) | **GET** /api/hosting/v1/accounts/{username}/databases/remote-connections | List database remote connections
 *HostingDatabasesApi* | [**repairDatabaseV1**](docs/Api/HostingDatabasesApi.md#repairdatabasev1) | **PATCH** /api/hosting/v1/accounts/{username}/databases/{name}/repair | Repair database
+*HostingDatabasesApi* | [**setupWebsiteDatabaseV1**](docs/Api/HostingDatabasesApi.md#setupwebsitedatabasev1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/databases/setup | Setup website database
 *HostingDatacentersApi* | [**listAvailableDatacentersV1**](docs/Api/HostingDatacentersApi.md#listavailabledatacentersv1) | **GET** /api/hosting/v1/datacenters | List available datacenters
 *HostingDomainsApi* | [**createWebsiteParkedDomainV1**](docs/Api/HostingDomainsApi.md#createwebsiteparkeddomainv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/parked-domains | Create website parked domain
 *HostingDomainsApi* | [**createWebsiteSubdomainV1**](docs/Api/HostingDomainsApi.md#createwebsitesubdomainv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/subdomains | Create website subdomain
@@ -693,6 +694,9 @@ Class | Method | HTTP request | Description
 - [HostingV1DatabasesPhpMyAdminLinkResource](docs/Model/HostingV1DatabasesPhpMyAdminLinkResource.md)
 - [HostingV1DatabasesRemoteConnectionsCreateRemoteConnectionRequest](docs/Model/HostingV1DatabasesRemoteConnectionsCreateRemoteConnectionRequest.md)
 - [HostingV1DatabasesRemoteConnectionsRemoteConnectionResource](docs/Model/HostingV1DatabasesRemoteConnectionsRemoteConnectionResource.md)
+- [HostingV1DatabasesSetupDatabaseRequest](docs/Model/HostingV1DatabasesSetupDatabaseRequest.md)
+- [HostingV1DatabasesWebsiteDatabaseConnectionResource](docs/Model/HostingV1DatabasesWebsiteDatabaseConnectionResource.md)
+- [HostingV1DatabasesWebsiteDatabaseResource](docs/Model/HostingV1DatabasesWebsiteDatabaseResource.md)
 - [HostingV1DatacenterCoordinatesResource](docs/Model/HostingV1DatacenterCoordinatesResource.md)
 - [HostingV1DatacenterDatacenterResource](docs/Model/HostingV1DatacenterDatacenterResource.md)
 - [HostingV1DatacentersListRequest](docs/Model/HostingV1DatacentersListRequest.md)

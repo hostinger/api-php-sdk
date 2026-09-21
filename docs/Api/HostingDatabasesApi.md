@@ -13,6 +13,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**listAccountDatabasesV1()**](HostingDatabasesApi.md#listAccountDatabasesV1) | **GET** /api/hosting/v1/accounts/{username}/databases | List account databases |
 | [**listDatabaseRemoteConnectionsV1()**](HostingDatabasesApi.md#listDatabaseRemoteConnectionsV1) | **GET** /api/hosting/v1/accounts/{username}/databases/remote-connections | List database remote connections |
 | [**repairDatabaseV1()**](HostingDatabasesApi.md#repairDatabaseV1) | **PATCH** /api/hosting/v1/accounts/{username}/databases/{name}/repair | Repair database |
+| [**setupWebsiteDatabaseV1()**](HostingDatabasesApi.md#setupWebsiteDatabaseV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/databases/setup | Setup website database |
 
 
 ## `changeDatabasePasswordV1()`
@@ -456,6 +457,56 @@ try {
 ### Return type
 
 [**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setupWebsiteDatabaseV1()`
+
+```php
+setupWebsiteDatabaseV1($username, $domain, $hostingV1DatabasesSetupDatabaseRequest): \Hostinger\Model\HostingV1DatabasesWebsiteDatabaseResource
+```
+
+Setup website database
+
+Creates a new MySQL database for the website and writes its connection details into the website's environment variables, then restarts the application. The platform generates the password (and the database name and user, unless supplied). The password is never returned; the application reads it from the environment.  Written variables: `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD` and `DATABASE_URL` (`mysql://user:password@host:port/name`, user and password percent-encoded). Existing variables are kept. If the website already has any variable with one of these names the call fails with 422 and nothing is created; the `Replace Node.js environment variables` endpoint removes them.  After this call the variables are ordinary environment variables: the `Replace Node.js environment variables` endpoint changes or removes them like any other.  A restart is enough for apps that read environment variables at process start, such as Express or NestJS. Frameworks that bake variables into the build output (Next.js, `NEXT_PUBLIC_*`) see the new values only after a fresh build (`Start Node.js build` endpoint).  A password in the request is ignored; the platform always generates it. The optional `name` and `user` are identifiers, not secrets.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingDatabasesApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$hostingV1DatabasesSetupDatabaseRequest = new \Hostinger\Model\HostingV1DatabasesSetupDatabaseRequest(); // \Hostinger\Model\HostingV1DatabasesSetupDatabaseRequest
+
+try {
+    $result = $apiInstance->setupWebsiteDatabaseV1($username, $domain, $hostingV1DatabasesSetupDatabaseRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingDatabasesApi->setupWebsiteDatabaseV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **hostingV1DatabasesSetupDatabaseRequest** | [**\Hostinger\Model\HostingV1DatabasesSetupDatabaseRequest**](../Model/HostingV1DatabasesSetupDatabaseRequest.md)|  | [optional] |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1DatabasesWebsiteDatabaseResource**](../Model/HostingV1DatabasesWebsiteDatabaseResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
