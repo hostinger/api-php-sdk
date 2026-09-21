@@ -89,6 +89,10 @@ Class | Method | HTTP request | Description
 *AgencyHostingPHPApi* | [**replaceWebsitePHPExtensionsV1**](docs/Api/AgencyHostingPHPApi.md#replacewebsitephpextensionsv1) | **PUT** /api/agency-hosting/v1/websites/{website_uid}/php-settings/extensions | Replace website PHP extensions
 *AgencyHostingPHPApi* | [**replaceWebsitePHPOptionsV1**](docs/Api/AgencyHostingPHPApi.md#replacewebsitephpoptionsv1) | **PUT** /api/agency-hosting/v1/websites/{website_uid}/php-settings/options | Replace website PHP options
 *AgencyHostingPHPApi* | [**updateWebsitePHPVersionV1**](docs/Api/AgencyHostingPHPApi.md#updatewebsitephpversionv1) | **PATCH** /api/agency-hosting/v1/websites/{website_uid}/php-settings/version | Update website PHP version
+*AgencyHostingSSLApi* | [**getWebsiteSSLStatusV1**](docs/Api/AgencyHostingSSLApi.md#getwebsitesslstatusv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/domains/{domain}/ssl/status | Get website SSL status
+*AgencyHostingSSLApi* | [**installWebsiteSSLV1**](docs/Api/AgencyHostingSSLApi.md#installwebsitesslv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/domains/{domain}/ssl/setup | Install website SSL
+*AgencyHostingSSLApi* | [**reinstallWebsiteSSLV1**](docs/Api/AgencyHostingSSLApi.md#reinstallwebsitesslv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/domains/{domain}/ssl/reinstall | Reinstall website SSL
+*AgencyHostingSSLApi* | [**uninstallWebsiteSSLV1**](docs/Api/AgencyHostingSSLApi.md#uninstallwebsitesslv1) | **DELETE** /api/agency-hosting/v1/websites/{website_uid}/domains/{domain}/ssl | Uninstall website SSL
 *AgencyHostingWebsiteSetupsApi* | [**createANewWebsiteV1**](docs/Api/AgencyHostingWebsiteSetupsApi.md#createanewwebsitev1) | **POST** /api/agency-hosting/v1/orders/{order_id}/websites/setups | Create a new website
 *AgencyHostingWebsiteSetupsApi* | [**getWebsiteSetupStatusV1**](docs/Api/AgencyHostingWebsiteSetupsApi.md#getwebsitesetupstatusv1) | **GET** /api/agency-hosting/v1/orders/{order_id}/websites/setups/{setup_uuid} | Get website setup status
 *AgencyHostingWebsitesApi* | [**buildWebsiteNodeJSAssetsV1**](docs/Api/AgencyHostingWebsitesApi.md#buildwebsitenodejsassetsv1) | **POST** /api/agency-hosting/v1/websites/{website_uid}/build-assets | Build website NodeJS assets
@@ -489,6 +493,7 @@ Class | Method | HTTP request | Description
 - [AgencyHostingV1SetupsCreateSetupRequestWordpressAdmin](docs/Model/AgencyHostingV1SetupsCreateSetupRequestWordpressAdmin.md)
 - [AgencyHostingV1SetupsWebsiteSetupResource](docs/Model/AgencyHostingV1SetupsWebsiteSetupResource.md)
 - [AgencyHostingV1SetupsWebsiteSetupStatusResource](docs/Model/AgencyHostingV1SetupsWebsiteSetupStatusResource.md)
+- [AgencyHostingV1SslSslStatusResource](docs/Model/AgencyHostingV1SslSslStatusResource.md)
 - [AgencyHostingV1WebsitesBuildAssetsRequest](docs/Model/AgencyHostingV1WebsitesBuildAssetsRequest.md)
 - [AgencyHostingV1WebsitesBuilderWebsiteDetailsResource](docs/Model/AgencyHostingV1WebsitesBuilderWebsiteDetailsResource.md)
 - [AgencyHostingV1WebsitesCronJobsCreateCronJobRequest](docs/Model/AgencyHostingV1WebsitesCronJobsCreateCronJobRequest.md)
