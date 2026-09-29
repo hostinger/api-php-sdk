@@ -7,6 +7,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**claimFreeDomainTransferV1()**](DomainsTransferApi.md#claimFreeDomainTransferV1) | **POST** /api/domains/v1/transfers/claim | Claim free domain transfer |
 | [**getTransferListV1()**](DomainsTransferApi.md#getTransferListV1) | **GET** /api/domains/v1/transfers | Get transfer list |
 | [**getTransferV1()**](DomainsTransferApi.md#getTransferV1) | **GET** /api/domains/v1/transfers/{domain} | Get transfer |
+| [**startDomainTransferV1()**](DomainsTransferApi.md#startDomainTransferV1) | **POST** /api/domains/v1/transfers | Start domain transfer |
 
 
 ## `claimFreeDomainTransferV1()`
@@ -139,6 +140,52 @@ try {
 ### Return type
 
 [**\Hostinger\Model\DomainsV1TransferTransferResource**](../Model/DomainsV1TransferTransferResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `startDomainTransferV1()`
+
+```php
+startDomainTransferV1($domainsV1TransferTransferRequest): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Start domain transfer
+
+Transfer a domain from another registrar to your account.  The transfer runs on a domain transfer service you have already purchased.  Before making request, unlock the domain at the current registrar and get its authorization code.  A successful response means the transfer has been started. Completion depends on the current registrar and can be followed with the [transfer list endpoint](#tag/domains-transfer).  If no WHOIS information is provided, default contact information for that TLD will be used. Before making request, ensure WHOIS information for desired TLD exists in your account.  Use this endpoint to bring domains registered elsewhere into your account.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\DomainsTransferApi(config: $config);
+$domainsV1TransferTransferRequest = new \Hostinger\Model\DomainsV1TransferTransferRequest(); // \Hostinger\Model\DomainsV1TransferTransferRequest
+
+try {
+    $result = $apiInstance->startDomainTransferV1($domainsV1TransferTransferRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DomainsTransferApi->startDomainTransferV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domainsV1TransferTransferRequest** | [**\Hostinger\Model\DomainsV1TransferTransferRequest**](../Model/DomainsV1TransferTransferRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

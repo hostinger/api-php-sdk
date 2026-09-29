@@ -151,6 +151,7 @@ Class | Method | HTTP request | Description
 *DomainsTransferApi* | [**claimFreeDomainTransferV1**](docs/Api/DomainsTransferApi.md#claimfreedomaintransferv1) | **POST** /api/domains/v1/transfers/claim | Claim free domain transfer
 *DomainsTransferApi* | [**getTransferListV1**](docs/Api/DomainsTransferApi.md#gettransferlistv1) | **GET** /api/domains/v1/transfers | Get transfer list
 *DomainsTransferApi* | [**getTransferV1**](docs/Api/DomainsTransferApi.md#gettransferv1) | **GET** /api/domains/v1/transfers/{domain} | Get transfer
+*DomainsTransferApi* | [**startDomainTransferV1**](docs/Api/DomainsTransferApi.md#startdomaintransferv1) | **POST** /api/domains/v1/transfers | Start domain transfer
 *DomainsWHOISApi* | [**cancelPendingIRTPVerificationV1**](docs/Api/DomainsWHOISApi.md#cancelpendingirtpverificationv1) | **DELETE** /api/domains/v1/irtp/{domain} | Cancel pending IRTP verification
 *DomainsWHOISApi* | [**changeWHOISProfileForDomainV1**](docs/Api/DomainsWHOISApi.md#changewhoisprofilefordomainv1) | **PUT** /api/domains/v1/whois/change | Change WHOIS profile for domain
 *DomainsWHOISApi* | [**createWHOISProfileV1**](docs/Api/DomainsWHOISApi.md#createwhoisprofilev1) | **POST** /api/domains/v1/whois | Create WHOIS profile
@@ -588,6 +589,7 @@ Class | Method | HTTP request | Description
 - [DomainsV1PortfolioSetupRequest](docs/Model/DomainsV1PortfolioSetupRequest.md)
 - [DomainsV1PortfolioUpdateNameserversRequest](docs/Model/DomainsV1PortfolioUpdateNameserversRequest.md)
 - [DomainsV1TransferClaimRequest](docs/Model/DomainsV1TransferClaimRequest.md)
+- [DomainsV1TransferTransferRequest](docs/Model/DomainsV1TransferTransferRequest.md)
 - [DomainsV1TransferTransferResource](docs/Model/DomainsV1TransferTransferResource.md)
 - [DomainsV1WHOISChangeUpdateRequest](docs/Model/DomainsV1WHOISChangeUpdateRequest.md)
 - [DomainsV1WHOISProfileResource](docs/Model/DomainsV1WHOISProfileResource.md)
