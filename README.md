@@ -958,6 +958,7 @@ Class | Method | HTTP request | Description
 - [WordPressV1LoginLoginLinksResource](docs/Model/WordPressV1LoginLoginLinksResource.md)
 - [WordPressV1MaintenanceMaintenanceStatusResource](docs/Model/WordPressV1MaintenanceMaintenanceStatusResource.md)
 - [WordPressV1MaintenanceToggleMaintenanceRequest](docs/Model/WordPressV1MaintenanceToggleMaintenanceRequest.md)
+- [WordPressV1McpExecuteMcpToolRequest](docs/Model/WordPressV1McpExecuteMcpToolRequest.md)
 - [WordPressV1MemcachedMemcachedStatusResource](docs/Model/WordPressV1MemcachedMemcachedStatusResource.md)
 - [WordPressV1MemcachedToggleMemcachedRequest](docs/Model/WordPressV1MemcachedToggleMemcachedRequest.md)
 - [WordPressV1PluginsActivatePluginRequest](docs/Model/WordPressV1PluginsActivatePluginRequest.md)
