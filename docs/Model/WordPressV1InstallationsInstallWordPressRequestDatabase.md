@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Database name (username prefix added if missing) |
-**password** | **string** |  |
+**password** | **string** | Password for a new database. Random when omitted or null. Ignored when the named database already exists. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
