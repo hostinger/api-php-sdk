@@ -227,9 +227,13 @@ Class | Method | HTTP request | Description
 *HostingFilesApi* | [**getWebsiteFileContentV1**](docs/Api/HostingFilesApi.md#getwebsitefilecontentv1) | **GET** /api/hosting/v1/accounts/{username}/domains/{domain}/files/content | Get website file content
 *HostingFilesApi* | [**listWebsiteFilesAndDirectoriesV1**](docs/Api/HostingFilesApi.md#listwebsitefilesanddirectoriesv1) | **GET** /api/hosting/v1/accounts/{username}/domains/{domain}/files | List website files and directories
 *HostingGitApi* | [**deleteGitAutoDeploymentSettingsV1**](docs/Api/HostingGitApi.md#deletegitautodeploymentsettingsv1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/git/auto-deployments/settings | Delete Git auto-deployment settings
+*HostingGitApi* | [**deployWebsiteGitRepositoryV1**](docs/Api/HostingGitApi.md#deploywebsitegitrepositoryv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/git/repositories/deploy | Deploy website Git repository
+*HostingGitApi* | [**generateGitSSHKeyV1**](docs/Api/HostingGitApi.md#generategitsshkeyv1) | **POST** /api/hosting/v1/accounts/{username}/git/ssh-key | Generate Git SSH key
 *HostingGitApi* | [**getGitAutoDeploymentSettingsV1**](docs/Api/HostingGitApi.md#getgitautodeploymentsettingsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/git/auto-deployments/settings | Get Git auto-deployment settings
+*HostingGitApi* | [**getGitSSHPublicKeyV1**](docs/Api/HostingGitApi.md#getgitsshpublickeyv1) | **GET** /api/hosting/v1/accounts/{username}/git/ssh-key | Get Git SSH public key
 *HostingGitApi* | [**listGitInstallationRepositoriesV1**](docs/Api/HostingGitApi.md#listgitinstallationrepositoriesv1) | **GET** /api/hosting/v1/git/installations/{uuid}/repositories | List Git installation repositories
 *HostingGitApi* | [**listGitInstallationsV1**](docs/Api/HostingGitApi.md#listgitinstallationsv1) | **GET** /api/hosting/v1/git/installations | List Git installations
+*HostingGitApi* | [**listWebsiteGitRepositoriesV1**](docs/Api/HostingGitApi.md#listwebsitegitrepositoriesv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/git/repositories | List website Git repositories
 *HostingGitApi* | [**updateGitAutoDeploymentSettingsV1**](docs/Api/HostingGitApi.md#updategitautodeploymentsettingsv1) | **PUT** /api/hosting/v1/accounts/{username}/websites/{domain}/git/auto-deployments/settings | Update Git auto-deployment settings
 *HostingNodeJSApi* | [**analyseFailedNodeJsBuildV1**](docs/Api/HostingNodeJSApi.md#analysefailednodejsbuildv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/analysis | Analyse failed Node.js build
 *HostingNodeJSApi* | [**clearNodeJsRuntimeLogsV1**](docs/Api/HostingNodeJSApi.md#clearnodejsruntimelogsv1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/runtime-logs | Clear Node.js runtime logs
@@ -715,12 +719,17 @@ Class | Method | HTTP request | Description
 - [HostingV1FilesFilesResourceItemsInner](docs/Model/HostingV1FilesFilesResourceItemsInner.md)
 - [HostingV1FilesGenerateUploadUrlRequest](docs/Model/HostingV1FilesGenerateUploadUrlRequest.md)
 - [HostingV1FilesUploadUrlResource](docs/Model/HostingV1FilesUploadUrlResource.md)
+- [HostingV1GitDeployWebsiteGitRepositoryRequest](docs/Model/HostingV1GitDeployWebsiteGitRepositoryRequest.md)
 - [HostingV1GitGitAutoDeploymentSettingsResource](docs/Model/HostingV1GitGitAutoDeploymentSettingsResource.md)
 - [HostingV1GitGitCommitAuthorResource](docs/Model/HostingV1GitGitCommitAuthorResource.md)
 - [HostingV1GitGitCommitResource](docs/Model/HostingV1GitGitCommitResource.md)
+- [HostingV1GitGitDeployOutputResource](docs/Model/HostingV1GitGitDeployOutputResource.md)
 - [HostingV1GitGitInstallationResource](docs/Model/HostingV1GitGitInstallationResource.md)
 - [HostingV1GitGitRepositoryResource](docs/Model/HostingV1GitGitRepositoryResource.md)
+- [HostingV1GitGitSshKeyResource](docs/Model/HostingV1GitGitSshKeyResource.md)
 - [HostingV1GitUpdateGitAutoDeploymentSettingsRequest](docs/Model/HostingV1GitUpdateGitAutoDeploymentSettingsRequest.md)
+- [HostingV1GitWebsiteGitRepositoryResource](docs/Model/HostingV1GitWebsiteGitRepositoryResource.md)
+- [HostingV1GitWebsiteGitRepositoryWebhookResource](docs/Model/HostingV1GitWebsiteGitRepositoryWebhookResource.md)
 - [HostingV1NodeJsBuildAnalysisResource](docs/Model/HostingV1NodeJsBuildAnalysisResource.md)
 - [HostingV1NodeJsBuildLogsResource](docs/Model/HostingV1NodeJsBuildLogsResource.md)
 - [HostingV1NodeJsBuildOptionsResource](docs/Model/HostingV1NodeJsBuildOptionsResource.md)

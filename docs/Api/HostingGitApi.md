@@ -5,9 +5,13 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**deleteGitAutoDeploymentSettingsV1()**](HostingGitApi.md#deleteGitAutoDeploymentSettingsV1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/git/auto-deployments/settings | Delete Git auto-deployment settings |
+| [**deployWebsiteGitRepositoryV1()**](HostingGitApi.md#deployWebsiteGitRepositoryV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/git/repositories/deploy | Deploy website Git repository |
+| [**generateGitSSHKeyV1()**](HostingGitApi.md#generateGitSSHKeyV1) | **POST** /api/hosting/v1/accounts/{username}/git/ssh-key | Generate Git SSH key |
 | [**getGitAutoDeploymentSettingsV1()**](HostingGitApi.md#getGitAutoDeploymentSettingsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/git/auto-deployments/settings | Get Git auto-deployment settings |
+| [**getGitSSHPublicKeyV1()**](HostingGitApi.md#getGitSSHPublicKeyV1) | **GET** /api/hosting/v1/accounts/{username}/git/ssh-key | Get Git SSH public key |
 | [**listGitInstallationRepositoriesV1()**](HostingGitApi.md#listGitInstallationRepositoriesV1) | **GET** /api/hosting/v1/git/installations/{uuid}/repositories | List Git installation repositories |
 | [**listGitInstallationsV1()**](HostingGitApi.md#listGitInstallationsV1) | **GET** /api/hosting/v1/git/installations | List Git installations |
+| [**listWebsiteGitRepositoriesV1()**](HostingGitApi.md#listWebsiteGitRepositoriesV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/git/repositories | List website Git repositories |
 | [**updateGitAutoDeploymentSettingsV1()**](HostingGitApi.md#updateGitAutoDeploymentSettingsV1) | **PUT** /api/hosting/v1/accounts/{username}/websites/{domain}/git/auto-deployments/settings | Update Git auto-deployment settings |
 
 
@@ -59,6 +63,102 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deployWebsiteGitRepositoryV1()`
+
+```php
+deployWebsiteGitRepositoryV1($username, $domain, $hostingV1GitDeployWebsiteGitRepositoryRequest): \Hostinger\Model\HostingV1GitGitDeployOutputResource
+```
+
+Deploy website Git repository
+
+Clones a Git repository into a directory of the website, or pulls it again. An empty or missing directory gets a clone of the branch. A directory that already holds this repository and branch is reset to its last commit and pulled: changes made on the server to files the repository tracks are discarded, files it does not track stay. A directory that holds other files, including another repository or another branch of this one, is rejected. `composer install` runs after the clone or pull when the repository has a `composer.json`.  The call waits for the deployment and returns its log. `is_success` false means Git or composer failed and the log says why. A second call for the same directory is rejected while the first is still waiting for the server. If the request times out, the deployment may still finish on the server; calling again later with the same repository and branch pulls.  Private repositories need an SSH URL and the account's Git SSH key from `Generate Git SSH key`, added to the repository as a deploy key.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingGitApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$hostingV1GitDeployWebsiteGitRepositoryRequest = new \Hostinger\Model\HostingV1GitDeployWebsiteGitRepositoryRequest(); // \Hostinger\Model\HostingV1GitDeployWebsiteGitRepositoryRequest
+
+try {
+    $result = $apiInstance->deployWebsiteGitRepositoryV1($username, $domain, $hostingV1GitDeployWebsiteGitRepositoryRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingGitApi->deployWebsiteGitRepositoryV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **hostingV1GitDeployWebsiteGitRepositoryRequest** | [**\Hostinger\Model\HostingV1GitDeployWebsiteGitRepositoryRequest**](../Model/HostingV1GitDeployWebsiteGitRepositoryRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1GitGitDeployOutputResource**](../Model/HostingV1GitGitDeployOutputResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `generateGitSSHKeyV1()`
+
+```php
+generateGitSSHKeyV1($username): \Hostinger\Model\HostingV1GitGitSshKeyResource
+```
+
+Generate Git SSH key
+
+Creates the SSH key pair of the hosting account and returns the public key. When the account already has a key, returns that key unchanged. One key serves every website of the account; add the public key to a private repository as a deploy key before deploying it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingGitApi(config: $config);
+$username = u123456789; // string
+
+try {
+    $result = $apiInstance->generateGitSSHKeyV1($username);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingGitApi->generateGitSSHKeyV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1GitGitSshKeyResource**](../Model/HostingV1GitGitSshKeyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getGitAutoDeploymentSettingsV1()`
 
 ```php
@@ -102,6 +202,52 @@ try {
 ### Return type
 
 [**\Hostinger\Model\HostingV1GitGitAutoDeploymentSettingsResource**](../Model/HostingV1GitGitAutoDeploymentSettingsResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getGitSSHPublicKeyV1()`
+
+```php
+getGitSSHPublicKeyV1($username): \Hostinger\Model\HostingV1GitGitSshKeyResource
+```
+
+Get Git SSH public key
+
+Returns the public SSH key of the hosting account. `Deploy website Git repository` uses this key to clone and pull over SSH, so a private repository works once the key is added to it as a deploy key on the Git host. `public_key` is null when the account has no key yet.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingGitApi(config: $config);
+$username = u123456789; // string
+
+try {
+    $result = $apiInstance->getGitSSHPublicKeyV1($username);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingGitApi->getGitSSHPublicKeyV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1GitGitSshKeyResource**](../Model/HostingV1GitGitSshKeyResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -196,6 +342,54 @@ try {
 ### Return type
 
 [**\Hostinger\Model\HostingV1GitGitInstallationResource[]**](../Model/HostingV1GitGitInstallationResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listWebsiteGitRepositoriesV1()`
+
+```php
+listWebsiteGitRepositoriesV1($username, $domain): \Hostinger\Model\HostingV1GitWebsiteGitRepositoryResource[]
+```
+
+List website Git repositories
+
+Lists the Git repositories linked to directories of the website, with `Deploy website Git repository` or in the Git section of hPanel: clone URL, branch and directory of each one. A repository whose clone failed stays listed; deploying it again retries the clone. GitHub and GitLab auto-deployments are not listed here; see `Get Git auto-deployment settings`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingGitApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+
+try {
+    $result = $apiInstance->listWebsiteGitRepositoriesV1($username, $domain);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingGitApi->listWebsiteGitRepositoriesV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1GitWebsiteGitRepositoryResource[]**](../Model/HostingV1GitWebsiteGitRepositoryResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
