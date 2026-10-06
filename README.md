@@ -269,6 +269,7 @@ Class | Method | HTTP request | Description
 *HostingWebsitesApi* | [**deployStaticSiteArchiveV1**](docs/Api/HostingWebsitesApi.md#deploystaticsitearchivev1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/deploy | Deploy static site archive
 *HostingWebsitesApi* | [**listWebsiteSetupsV1**](docs/Api/HostingWebsitesApi.md#listwebsitesetupsv1) | **GET** /api/hosting/v1/onboardings | List website setups
 *HostingWebsitesApi* | [**listWebsitesV1**](docs/Api/HostingWebsitesApi.md#listwebsitesv1) | **GET** /api/hosting/v1/websites | List websites
+*HostingWebsitesApi* | [**startWebsiteSetupV1**](docs/Api/HostingWebsitesApi.md#startwebsitesetupv1) | **POST** /api/hosting/v1/orders/{order_id}/onboardings | Start website setup
 *MailAPITokensApi* | [**createAPITokenV1**](docs/Api/MailAPITokensApi.md#createapitokenv1) | **POST** /api/mail/v1/orders/{orderId}/api-tokens | Create API token
 *MailAPITokensApi* | [**listAPITokensV1**](docs/Api/MailAPITokensApi.md#listapitokensv1) | **GET** /api/mail/v1/api-tokens | List API tokens
 *MailAPITokensApi* | [**revokeAPITokenV1**](docs/Api/MailAPITokensApi.md#revokeapitokenv1) | **DELETE** /api/mail/v1/api-tokens/{tokenId} | Revoke API token
@@ -751,6 +752,9 @@ Class | Method | HTTP request | Description
 - [HostingV1NodeJsUpdateBuildSettingsRequest](docs/Model/HostingV1NodeJsUpdateBuildSettingsRequest.md)
 - [HostingV1NodeJsVulnerabilityResource](docs/Model/HostingV1NodeJsVulnerabilityResource.md)
 - [HostingV1OnboardingsOnboardingResource](docs/Model/HostingV1OnboardingsOnboardingResource.md)
+- [HostingV1OnboardingsStartOnboardingRequest](docs/Model/HostingV1OnboardingsStartOnboardingRequest.md)
+- [HostingV1OnboardingsStartOnboardingRequestWordpress](docs/Model/HostingV1OnboardingsStartOnboardingRequestWordpress.md)
+- [HostingV1OnboardingsStartOnboardingRequestWordpressAdmin](docs/Model/HostingV1OnboardingsStartOnboardingRequestWordpressAdmin.md)
 - [HostingV1OrdersOrderResource](docs/Model/HostingV1OrdersOrderResource.md)
 - [HostingV1OrdersPlanResource](docs/Model/HostingV1OrdersPlanResource.md)
 - [HostingV1PhpPhpDetailsResource](docs/Model/HostingV1PhpPhpDetailsResource.md)

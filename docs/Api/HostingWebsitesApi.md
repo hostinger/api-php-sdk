@@ -9,6 +9,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**deployStaticSiteArchiveV1()**](HostingWebsitesApi.md#deployStaticSiteArchiveV1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/deploy | Deploy static site archive |
 | [**listWebsiteSetupsV1()**](HostingWebsitesApi.md#listWebsiteSetupsV1) | **GET** /api/hosting/v1/onboardings | List website setups |
 | [**listWebsitesV1()**](HostingWebsitesApi.md#listWebsitesV1) | **GET** /api/hosting/v1/websites | List websites |
+| [**startWebsiteSetupV1()**](HostingWebsitesApi.md#startWebsiteSetupV1) | **POST** /api/hosting/v1/orders/{order_id}/onboardings | Start website setup |
 
 
 ## `createWebsiteV1()`
@@ -156,12 +157,12 @@ try {
 ## `listWebsiteSetupsV1()`
 
 ```php
-listWebsiteSetupsV1($domain): \Hostinger\Model\HostingV1OnboardingsOnboardingResource[]
+listWebsiteSetupsV1($orderId, $subscriptionId, $domain): \Hostinger\Model\HostingV1OnboardingsOnboardingResource[]
 ```
 
 List website setups
 
-Returns the website setups started in the last 24 hours for the hosting accounts accessible to the authenticated client, newest first.  Meant for polling right after creating a website: the website shows up in the websites list before its server-side setup has finished, and while the setup is `running` endpoints that operate on that website may respond with `404` or `409`. Poll this endpoint with the `domain` filter every 10 to 15 seconds and wait for `status: completed` before uploading files, deploying or creating databases. `failed` means the setup stopped before finishing or has not reported progress for over an hour. Setups older than 24 hours are not listed.
+Returns the website setups started in the last 24 hours for the hosting accounts accessible to the authenticated client, newest first. Narrow the list with the `order_id`, `subscription_id` or `domain` filters.  Meant for polling right after creating a website or starting a website setup: the website shows up in the websites list before its server-side setup has finished, and while the setup is `running` endpoints that operate on that website may respond with `404` or `409`. Poll this endpoint with the `domain` filter every 10 to 15 seconds and wait for `status: completed` before uploading files, deploying or creating databases. `failed` means the setup stopped before finishing or has not reported progress for over an hour. Setups older than 24 hours are not listed.  `type` is the website type the setup was started with (`wordpress`, `headless_wordpress`, `headless_ecommerce`, `headless_pocketbase`), or `null` for an empty website.
 
 ### Example
 
@@ -175,10 +176,12 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 
 $apiInstance = new Hostinger\Api\HostingWebsitesApi(config: $config);
+$orderId = 123; // int | Order ID
+$subscriptionId = sub_abc123; // string | Filter by hosting order subscription ID
 $domain = example.com; // string | Filter by domain name (exact match)
 
 try {
-    $result = $apiInstance->listWebsiteSetupsV1($domain);
+    $result = $apiInstance->listWebsiteSetupsV1($orderId, $subscriptionId, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HostingWebsitesApi->listWebsiteSetupsV1: ', $e->getMessage(), PHP_EOL;
@@ -189,6 +192,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **orderId** | **int**| Order ID | [optional] |
+| **subscriptionId** | **string**| Filter by hosting order subscription ID | [optional] |
 | **domain** | **string**| Filter by domain name (exact match) | [optional] |
 
 ### Return type
@@ -252,6 +257,54 @@ try {
 ### Return type
 
 [**\Hostinger\Model\HostingListWebsitesV1200Response**](../Model/HostingListWebsitesV1200Response.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `startWebsiteSetupV1()`
+
+```php
+startWebsiteSetupV1($orderId, $hostingV1OnboardingsStartOnboardingRequest): \Hostinger\Model\HostingV1OnboardingsOnboardingResource
+```
+
+Start website setup
+
+Starts a website setup on a Web or Cloud hosting order and returns the created setup right away; the website itself is provisioned asynchronously. Poll the list website setups endpoint with the `domain` filter every 10 to 15 seconds and wait for `status: completed` before uploading files, deploying or creating databases.  Omit `type` for an empty website. `type: wordpress` installs WordPress in the website root with the admin user, email and password from `wordpress`, the domain as the site title, and `en_US` when `wordpress.language` is omitted. The headless types (`headless_wordpress`, `headless_ecommerce`, `headless_pocketbase`) create a headless website; `headless_wordpress` additionally installs WordPress into the `cms` directory of the website root with generated credentials.  Omit `domain` to set the website up on a generated temporary free subdomain.  The order must already have a hosting account: to create the first website on a new hosting plan use the create website endpoint, which takes the `datacenter_code`. Returns 404 when the order does not exist or is not accessible to the authenticated client, and 409 with a `Retry-After` header while a setup for the same domain is still running.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingWebsitesApi(config: $config);
+$orderId = 12345; // int | Hosting order ID. List orders to find available IDs.
+$hostingV1OnboardingsStartOnboardingRequest = new \Hostinger\Model\HostingV1OnboardingsStartOnboardingRequest(); // \Hostinger\Model\HostingV1OnboardingsStartOnboardingRequest
+
+try {
+    $result = $apiInstance->startWebsiteSetupV1($orderId, $hostingV1OnboardingsStartOnboardingRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingWebsitesApi->startWebsiteSetupV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **orderId** | **int**| Hosting order ID. List orders to find available IDs. | |
+| **hostingV1OnboardingsStartOnboardingRequest** | [**\Hostinger\Model\HostingV1OnboardingsStartOnboardingRequest**](../Model/HostingV1OnboardingsStartOnboardingRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1OnboardingsOnboardingResource**](../Model/HostingV1OnboardingsOnboardingResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
