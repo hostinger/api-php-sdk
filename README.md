@@ -683,6 +683,7 @@ Class | Method | HTTP request | Description
 - [HorizonsV1WebsitesCreatedWebsiteResource](docs/Model/HorizonsV1WebsitesCreatedWebsiteResource.md)
 - [HorizonsV1WebsitesEditWebsiteRequest](docs/Model/HorizonsV1WebsitesEditWebsiteRequest.md)
 - [HorizonsV1WebsitesEditWebsiteRequestMessageInner](docs/Model/HorizonsV1WebsitesEditWebsiteRequestMessageInner.md)
+- [HorizonsV1WebsitesPublishWebsiteRequest](docs/Model/HorizonsV1WebsitesPublishWebsiteRequest.md)
 - [HorizonsV1WebsitesPublishedWebsiteResource](docs/Model/HorizonsV1WebsitesPublishedWebsiteResource.md)
 - [HorizonsV1WebsitesWebsiteResource](docs/Model/HorizonsV1WebsitesWebsiteResource.md)
 - [HorizonsV1WebsitesWebsiteUrlResource](docs/Model/HorizonsV1WebsitesWebsiteUrlResource.md)
