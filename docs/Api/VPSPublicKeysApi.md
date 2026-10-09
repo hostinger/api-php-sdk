@@ -18,7 +18,7 @@ attachPublicKeyV1($virtualMachineId, $vPSV1PublicKeyAttachRequest): \Hostinger\M
 
 Attach public key
 
-Attach existing public keys from your account to a specified virtual machine.  Multiple keys can be attached to a single virtual machine.  Use this endpoint to enable SSH key authentication for VPS instances.
+Deprecated: use `POST /api/vps/v1/virtual-machines/{virtualMachineId}/ssh-keys` instead.  Attach existing public keys from your account to a specified virtual machine.  Multiple keys can be attached to a single virtual machine.  Use this endpoint to enable SSH key authentication for VPS instances.
 
 ### Example
 
@@ -66,7 +66,7 @@ createPublicKeyV1($vPSV1PublicKeyStoreRequest): \Hostinger\Model\VPSV1PublicKeyP
 
 Create public key
 
-Add a new public key to your account.  Use this endpoint to register SSH keys for VPS authentication.
+Deprecated: account-level public keys have no direct replacement. Root SSH keys are now managed per virtual machine via `POST /api/vps/v1/virtual-machines/{virtualMachineId}/ssh-keys`.  Add a new public key to your account.  Use this endpoint to register SSH keys for VPS authentication.
 
 ### Example
 
@@ -112,7 +112,7 @@ deletePublicKeyV1($publicKeyId): \Hostinger\Model\CommonSuccessEmptyResource
 
 Delete public key
 
-Delete a public key from your account.   **Deleting public key from account does not remove it from virtual machine**          Use this endpoint to remove unused SSH keys from account.
+Deprecated: account-level public keys have no direct replacement. Root SSH keys are now managed per virtual machine via `DELETE /api/vps/v1/virtual-machines/{virtualMachineId}/ssh-keys`.  Delete a public key from your account.   **Deleting public key from account does not remove it from virtual machine**          Use this endpoint to remove unused SSH keys from account.
 
 ### Example
 
@@ -158,7 +158,7 @@ getPublicKeysV1($page): \Hostinger\Model\VPSV1PublicKeyListResponse
 
 Get public keys
 
-Retrieve public keys associated with your account.  Use this endpoint to view available SSH keys for VPS authentication.
+Deprecated: account-level public keys have no direct replacement. Root SSH keys are now managed per virtual machine via `GET /api/vps/v1/virtual-machines/{virtualMachineId}/ssh-keys`.  Retrieve public keys associated with your account.  Use this endpoint to view available SSH keys for VPS authentication.
 
 ### Example
 

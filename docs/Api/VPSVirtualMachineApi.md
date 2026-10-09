@@ -29,7 +29,7 @@ getAttachedPublicKeysV1($virtualMachineId, $page): \Hostinger\Model\VPSV1PublicK
 
 Get attached public keys
 
-Retrieve public keys attached to a specified virtual machine.  Use this endpoint to view SSH keys configured for specific VPS instances.
+Deprecated: use `GET /api/vps/v1/virtual-machines/{virtualMachineId}/ssh-keys` instead.  Retrieve public keys attached to a specified virtual machine.  Use this endpoint to view SSH keys configured for specific VPS instances.
 
 ### Example
 
