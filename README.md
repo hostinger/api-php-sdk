@@ -332,11 +332,15 @@ Class | Method | HTTP request | Description
 *ReachFormsApi* | [**deleteFormV1**](docs/Api/ReachFormsApi.md#deleteformv1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/forms/{formUuid} | Delete form
 *ReachFormsApi* | [**getFormDetailsV1**](docs/Api/ReachFormsApi.md#getformdetailsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/forms/{formUuid} | Get form details
 *ReachFormsApi* | [**listFormsV1**](docs/Api/ReachFormsApi.md#listformsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/forms | List forms
+*ReachProfilesApi* | [**connectSendingDomainV1**](docs/Api/ReachProfilesApi.md#connectsendingdomainv1) | **POST** /api/reach/v1/profiles/{profileUuid}/domains | Connect sending domain
+*ReachProfilesApi* | [**deleteSendingDomainV1**](docs/Api/ReachProfilesApi.md#deletesendingdomainv1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/domains | Delete sending domain
 *ReachProfilesApi* | [**getConnectedSendingDomainV1**](docs/Api/ReachProfilesApi.md#getconnectedsendingdomainv1) | **GET** /api/reach/v1/profiles/{profileUuid}/domains | Get connected sending domain
 *ReachProfilesApi* | [**getProfileDomainDNSStatusV1**](docs/Api/ReachProfilesApi.md#getprofiledomaindnsstatusv1) | **GET** /api/reach/v1/profiles/{profileUuid}/domains/dns-status | Get profile domain DNS status
+*ReachProfilesApi* | [**getProfileSettingsV1**](docs/Api/ReachProfilesApi.md#getprofilesettingsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/settings | Get profile settings
 *ReachProfilesApi* | [**getRemainingPlanLimitsV1**](docs/Api/ReachProfilesApi.md#getremainingplanlimitsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/limits | Get remaining plan limits
 *ReachProfilesApi* | [**listPlanFeatureAccessV1**](docs/Api/ReachProfilesApi.md#listplanfeatureaccessv1) | **GET** /api/reach/v1/profiles/{profileUuid}/features | List plan feature access
 *ReachProfilesApi* | [**listProfilesV1**](docs/Api/ReachProfilesApi.md#listprofilesv1) | **GET** /api/reach/v1/profiles | List Profiles
+*ReachProfilesApi* | [**updateProfileSettingsV1**](docs/Api/ReachProfilesApi.md#updateprofilesettingsv1) | **PATCH** /api/reach/v1/profiles/{profileUuid}/settings | Update profile settings
 *ReachSegmentsApi* | [**countProfileSegmentContactsV1**](docs/Api/ReachSegmentsApi.md#countprofilesegmentcontactsv1) | **GET** /api/reach/v1/profiles/{profileUuid}/segmentation/segments/{segmentUuid}/count | Count profile segment contacts
 *ReachSegmentsApi* | [**createANewContactSegmentV1**](docs/Api/ReachSegmentsApi.md#createanewcontactsegmentv1) | **POST** /api/reach/v1/segmentation/segments | Create a new contact segment
 *ReachSegmentsApi* | [**createAProfileSegmentV1**](docs/Api/ReachSegmentsApi.md#createaprofilesegmentv1) | **POST** /api/reach/v1/profiles/{profileUuid}/segmentation/segments | Create a profile segment
@@ -896,6 +900,8 @@ Class | Method | HTTP request | Description
 - [ReachV1FormsFormTagResource](docs/Model/ReachV1FormsFormTagResource.md)
 - [ReachV1FormsFormTemplateDetailsResource](docs/Model/ReachV1FormsFormTemplateDetailsResource.md)
 - [ReachV1FormsFormTemplateResource](docs/Model/ReachV1FormsFormTemplateResource.md)
+- [ReachV1ProfilesDomainsConnectRequest](docs/Model/ReachV1ProfilesDomainsConnectRequest.md)
+- [ReachV1ProfilesDomainsDisconnectRequest](docs/Model/ReachV1ProfilesDomainsDisconnectRequest.md)
 - [ReachV1ProfilesDomainsDnsRecordStatus](docs/Model/ReachV1ProfilesDomainsDnsRecordStatus.md)
 - [ReachV1ProfilesDomainsDnsRecordStatusActualInner](docs/Model/ReachV1ProfilesDomainsDnsRecordStatusActualInner.md)
 - [ReachV1ProfilesDomainsDnsRecordStatusSuggestedInner](docs/Model/ReachV1ProfilesDomainsDnsRecordStatusSuggestedInner.md)
@@ -908,6 +914,8 @@ Class | Method | HTTP request | Description
 - [ReachV1ProfilesProfileResource](docs/Model/ReachV1ProfilesProfileResource.md)
 - [ReachV1ProfilesProfileResourceLimits](docs/Model/ReachV1ProfilesProfileResourceLimits.md)
 - [ReachV1ProfilesProfileResourceProfilesInner](docs/Model/ReachV1ProfilesProfileResourceProfilesInner.md)
+- [ReachV1ProfilesSettingsSettingsResource](docs/Model/ReachV1ProfilesSettingsSettingsResource.md)
+- [ReachV1ProfilesSettingsUpdateRequest](docs/Model/ReachV1ProfilesSettingsUpdateRequest.md)
 - [ReachV1TemplatesStoreRequest](docs/Model/ReachV1TemplatesStoreRequest.md)
 - [ReachV1TemplatesTemplateResource](docs/Model/ReachV1TemplatesTemplateResource.md)
 - [VPSV1ActionActionResource](docs/Model/VPSV1ActionActionResource.md)
