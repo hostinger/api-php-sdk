@@ -362,7 +362,7 @@ listWordPressInstallationsV1($username, $domain, $ownership): \Hostinger\Model\W
 
 List WordPress installations
 
-List WordPress installations accessible to the authenticated client.  Use this endpoint to discover existing WordPress installations and to poll for installation status after calling the install endpoint. When a newly requested installation appears in this list, WordPress is ready. Filter by username and domain to narrow results to a specific website.  Each installation includes a `valid` flag and, when invalid, a `validationError` describing why.
+List WordPress installations on shared and cloud web hosting accounts (the `/api/hosting/v1` family, identified by `username`) accessible to the authenticated client.  Agency Plan websites are not included. To work with WordPress on an Agency Plan website, list them with GET /api/agency-hosting/v1/websites?website_types=wordpress and read their details with GET /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings. An account that only has Agency Plan websites receives an empty list from this endpoint.  Use this endpoint to discover existing WordPress installations and to poll for installation status after calling the install endpoint. When a newly requested installation appears in this list, WordPress is ready. Filter by username and domain to narrow results to a specific website.  Each installation includes a `valid` flag and, when invalid, a `validationError` describing why.
 
 ### Example
 
