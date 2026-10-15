@@ -104,8 +104,8 @@ Class | Method | HTTP request | Description
 *AgencyHostingWordPressApi* | [**getWordPressSettingsV1**](docs/Api/AgencyHostingWordPressApi.md#getwordpresssettingsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings | Get WordPress settings
 *AgencyHostingWordPressApi* | [**listAvailableWordPressVersionsV1**](docs/Api/AgencyHostingWordPressApi.md#listavailablewordpressversionsv1) | **GET** /api/agency-hosting/v1/websites/{website_uid}/wordpress/settings/versions | List available WordPress versions
 *AgentReadinessChecksApi* | [**listChecksV1**](docs/Api/AgentReadinessChecksApi.md#listchecksv1) | **GET** /api/agent-readiness/v1/checks | List checks
-*AgentReadinessScansApi* | [**getWebsiteScanV1**](docs/Api/AgentReadinessScansApi.md#getwebsitescanv1) | **GET** /api/agent-readiness/v1/scans/{domain} | Get website scan
-*AgentReadinessScansApi* | [**runWebsiteScanV1**](docs/Api/AgentReadinessScansApi.md#runwebsitescanv1) | **POST** /api/agent-readiness/v1/scans | Run website scan
+*AgentReadinessScansApi* | [**getAgentReadinessScanV1**](docs/Api/AgentReadinessScansApi.md#getagentreadinessscanv1) | **GET** /api/agent-readiness/v1/scans/{domain} | Get agent readiness scan
+*AgentReadinessScansApi* | [**runAgentReadinessScanV1**](docs/Api/AgentReadinessScansApi.md#runagentreadinessscanv1) | **POST** /api/agent-readiness/v1/scans | Run agent readiness scan
 *BillingCatalogApi* | [**getCatalogItemListV1**](docs/Api/BillingCatalogApi.md#getcatalogitemlistv1) | **GET** /api/billing/v1/catalog | Get catalog item list
 *BillingOrdersApi* | [**createPurchaseOrderV1**](docs/Api/BillingOrdersApi.md#createpurchaseorderv1) | **POST** /api/billing/v1/orders | Create purchase order
 *BillingPaymentMethodsApi* | [**deletePaymentMethodV1**](docs/Api/BillingPaymentMethodsApi.md#deletepaymentmethodv1) | **DELETE** /api/billing/v1/payment-methods/{paymentMethodId} | Delete payment method
