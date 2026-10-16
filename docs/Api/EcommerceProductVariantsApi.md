@@ -168,7 +168,7 @@ updateProductVariantsInBatchV1($storeId, $productId, $ecommerceV1VariantBatchUpd
 
 Update product variants in batch
 
-Update up to 100 existing variants in place by id — title, inventory, stock tracking and prices. Variants omitted from the request are left untouched. Prices replace the variant's existing prices in full. Returns the updated variants.
+Update up to 100 existing variants in place by id — title, SKU, inventory, stock tracking and prices. Variants omitted from the request are left untouched. Prices replace the variant's existing prices in full. Returns the updated variants.
 
 ### Example
 

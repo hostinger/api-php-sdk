@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **price** | **int** | Price in the smallest currency unit (e.g. cents). Must be positive. |
 **description** | **string** | The product description. |
 **currency** | **string** | ISO 4217 currency code. Defaults to the store&#39;s default currency when omitted. |
+**seoSettings** | [**\Hostinger\Model\EcommerceV1ProductCreatePhysicalProductRequestSeoSettings**](EcommerceV1ProductCreatePhysicalProductRequestSeoSettings.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
