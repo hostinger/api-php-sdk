@@ -9,6 +9,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**getNodeJSBuildLogsV1()**](HostingNodeJSApi.md#getNodeJSBuildLogsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs |
 | [**getNodeJsBuildDetailsV1()**](HostingNodeJSApi.md#getNodeJsBuildDetailsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid} | Get Node.js build details |
 | [**getNodeJsBuildSettingsFromArchiveV1()**](HostingNodeJSApi.md#getNodeJsBuildSettingsFromArchiveV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/from-archive | Get Node.js build settings from archive |
+| [**getNodeJsBuildSettingsFromRepositoryV1()**](HostingNodeJSApi.md#getNodeJsBuildSettingsFromRepositoryV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/from-repository | Get Node.js build settings from repository |
 | [**getNodeJsBuildSettingsV1()**](HostingNodeJSApi.md#getNodeJsBuildSettingsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings | Get Node.js build settings |
 | [**getNodeJsRuntimeLogsV1()**](HostingNodeJSApi.md#getNodeJsRuntimeLogsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/runtime-logs | Get Node.js runtime logs |
 | [**listNodeJSBuildsV1()**](HostingNodeJSApi.md#listNodeJSBuildsV1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds |
@@ -262,6 +263,62 @@ try {
 | **username** | **string**|  | |
 | **domain** | **string**| Domain name | |
 | **archivePath** | **string**| The path to the archive file relative to the document root of the vhost | |
+
+### Return type
+
+[**\Hostinger\Model\HostingV1NodeJsBuildSettingsResource**](../Model/HostingV1NodeJsBuildSettingsResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getNodeJsBuildSettingsFromRepositoryV1()`
+
+```php
+getNodeJsBuildSettingsFromRepositoryV1($username, $domain, $owner, $repository, $branch, $installationUuid): \Hostinger\Model\HostingV1NodeJsBuildSettingsResource
+```
+
+Get Node.js build settings from repository
+
+Determine the build settings for a Node.js application from the package.json file of a branch in a Git repository. Use before starting a Git-source build to find out the auto-detected settings instead of guessing them.  The repository is read through a Git installation: take `installation_uuid` from `List Git installations` and `owner` and `repository` from `List Git installation repositories`.  Returns 422 when the installation is not found, the repository or branch is not found, or the branch has no package.json.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\HostingNodeJSApi(config: $config);
+$username = u123456789; // string
+$domain = mydomain.tld; // string | Domain name
+$owner = octocat; // string | Repository owner login. GitLab group paths use slashes.
+$repository = my-site; // string | Repository name without the .git suffix
+$branch = main; // string | Branch whose package.json is inspected
+$installationUuid = 018f5e2a-1234-7890-abcd-1234567890ab; // string | Git installation used to access the repository, taken from `List Git installations`
+
+try {
+    $result = $apiInstance->getNodeJsBuildSettingsFromRepositoryV1($username, $domain, $owner, $repository, $branch, $installationUuid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingNodeJSApi->getNodeJsBuildSettingsFromRepositoryV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **username** | **string**|  | |
+| **domain** | **string**| Domain name | |
+| **owner** | **string**| Repository owner login. GitLab group paths use slashes. | |
+| **repository** | **string**| Repository name without the .git suffix | |
+| **branch** | **string**| Branch whose package.json is inspected | |
+| **installationUuid** | **string**| Git installation used to access the repository, taken from &#x60;List Git installations&#x60; | |
 
 ### Return type
 

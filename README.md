@@ -248,6 +248,7 @@ Class | Method | HTTP request | Description
 *HostingNodeJSApi* | [**getNodeJSBuildLogsV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildlogsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid}/logs | Get NodeJS build logs
 *HostingNodeJSApi* | [**getNodeJsBuildDetailsV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuilddetailsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/{uuid} | Get Node.js build details
 *HostingNodeJSApi* | [**getNodeJsBuildSettingsFromArchiveV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildsettingsfromarchivev1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/from-archive | Get Node.js build settings from archive
+*HostingNodeJSApi* | [**getNodeJsBuildSettingsFromRepositoryV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildsettingsfromrepositoryv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings/from-repository | Get Node.js build settings from repository
 *HostingNodeJSApi* | [**getNodeJsBuildSettingsV1**](docs/Api/HostingNodeJSApi.md#getnodejsbuildsettingsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds/settings | Get Node.js build settings
 *HostingNodeJSApi* | [**getNodeJsRuntimeLogsV1**](docs/Api/HostingNodeJSApi.md#getnodejsruntimelogsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/runtime-logs | Get Node.js runtime logs
 *HostingNodeJSApi* | [**listNodeJSBuildsV1**](docs/Api/HostingNodeJSApi.md#listnodejsbuildsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/nodejs/builds | List NodeJS builds
@@ -779,6 +780,7 @@ Class | Method | HTTP request | Description
 - [HostingV1NodeJsBuildSettingsResource](docs/Model/HostingV1NodeJsBuildSettingsResource.md)
 - [HostingV1NodeJsCreateFromArchiveRequest](docs/Model/HostingV1NodeJsCreateFromArchiveRequest.md)
 - [HostingV1NodeJsEnvVarResource](docs/Model/HostingV1NodeJsEnvVarResource.md)
+- [HostingV1NodeJsGetBuildSettingsFromRepositoryRequest](docs/Model/HostingV1NodeJsGetBuildSettingsFromRepositoryRequest.md)
 - [HostingV1NodeJsGetBuildSettingsRequest](docs/Model/HostingV1NodeJsGetBuildSettingsRequest.md)
 - [HostingV1NodeJsLogEntryResource](docs/Model/HostingV1NodeJsLogEntryResource.md)
 - [HostingV1NodeJsPatchResultResource](docs/Model/HostingV1NodeJsPatchResultResource.md)
