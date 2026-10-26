@@ -1,4 +1,4 @@
-# # ReachV1ContactsUpdateRequestFieldsInner
+# # ReachV1ContactsBulkStoreRequestContactsInnerFieldsInner
 
 ## Properties
 
