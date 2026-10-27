@@ -205,6 +205,7 @@ Class | Method | HTTP request | Description
 *HostingCDNApi* | [**getCDNStatusV1**](docs/Api/HostingCDNApi.md#getcdnstatusv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/cdn/status | Get CDN status
 *HostingCDNApi* | [**purgeCDNCacheV1**](docs/Api/HostingCDNApi.md#purgecdncachev1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/cdn/purge | Purge CDN cache
 *HostingCacheApi* | [**clearWebsiteCacheV1**](docs/Api/HostingCacheApi.md#clearwebsitecachev1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/clear | Clear website cache
+*HostingCacheApi* | [**getCacheStatusV1**](docs/Api/HostingCacheApi.md#getcachestatusv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/status | Get cache status
 *HostingCacheApi* | [**toggleCachelessModeV1**](docs/Api/HostingCacheApi.md#togglecachelessmodev1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cacheless-mode/toggle | Toggle cacheless mode
 *HostingCacheApi* | [**toggleWebsiteCacheV1**](docs/Api/HostingCacheApi.md#togglewebsitecachev1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/cache/toggle | Toggle website cache
 *HostingCronJobsApi* | [**createAccountCronJobV1**](docs/Api/HostingCronJobsApi.md#createaccountcronjobv1) | **POST** /api/hosting/v1/accounts/{username}/cron-jobs | Create account cron job
@@ -733,6 +734,7 @@ Class | Method | HTTP request | Description
 - [HostingListOrdersV1200Response](docs/Model/HostingListOrdersV1200Response.md)
 - [HostingListWebsiteRedirectsV1200Response](docs/Model/HostingListWebsiteRedirectsV1200Response.md)
 - [HostingListWebsitesV1200Response](docs/Model/HostingListWebsitesV1200Response.md)
+- [HostingV1CacheCacheStatusResource](docs/Model/HostingV1CacheCacheStatusResource.md)
 - [HostingV1CacheToggleCacheRequest](docs/Model/HostingV1CacheToggleCacheRequest.md)
 - [HostingV1CacheToggleCachelessModeRequest](docs/Model/HostingV1CacheToggleCachelessModeRequest.md)
 - [HostingV1CdnCdnStatusResource](docs/Model/HostingV1CdnCdnStatusResource.md)
