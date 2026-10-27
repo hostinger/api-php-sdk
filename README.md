@@ -347,6 +347,12 @@ Class | Method | HTTP request | Description
 *ReachFormsApi* | [**removeFormSubmitterTagV1**](docs/Api/ReachFormsApi.md#removeformsubmittertagv1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/forms/{formUuid}/tags | Remove form submitter tag
 *ReachFormsApi* | [**updateFormTemplateV1**](docs/Api/ReachFormsApi.md#updateformtemplatev1) | **PATCH** /api/reach/v1/profiles/{profileUuid}/forms/{formUuid}/template | Update form template
 *ReachFormsApi* | [**updateFormV1**](docs/Api/ReachFormsApi.md#updateformv1) | **PATCH** /api/reach/v1/profiles/{profileUuid}/forms/{formUuid} | Update form
+*ReachIntegrationsApi* | [**connectAIWebsiteBuilderSiteV1**](docs/Api/ReachIntegrationsApi.md#connectaiwebsitebuildersitev1) | **POST** /api/reach/v1/profiles/{profileUuid}/websites/website-builder | Connect AI Website Builder site
+*ReachIntegrationsApi* | [**disconnectAIWebsiteBuilderSiteV1**](docs/Api/ReachIntegrationsApi.md#disconnectaiwebsitebuildersitev1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/websites/website-builder | Disconnect AI Website Builder site
+*ReachIntegrationsApi* | [**disconnectEcommerceStoreV1**](docs/Api/ReachIntegrationsApi.md#disconnectecommercestorev1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/ecommerce/stores/{storeId} | Disconnect Ecommerce store
+*ReachIntegrationsApi* | [**disconnectWordPressSiteV1**](docs/Api/ReachIntegrationsApi.md#disconnectwordpresssitev1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/websites/wordpress | Disconnect WordPress site
+*ReachIntegrationsApi* | [**listConnectedWebsitesV1**](docs/Api/ReachIntegrationsApi.md#listconnectedwebsitesv1) | **GET** /api/reach/v1/profiles/{profileUuid}/websites | List connected websites
+*ReachIntegrationsApi* | [**listEcommerceStoresV1**](docs/Api/ReachIntegrationsApi.md#listecommercestoresv1) | **GET** /api/reach/v1/profiles/{profileUuid}/ecommerce/stores | List Ecommerce stores
 *ReachProfilesApi* | [**connectSendingDomainV1**](docs/Api/ReachProfilesApi.md#connectsendingdomainv1) | **POST** /api/reach/v1/profiles/{profileUuid}/domains | Connect sending domain
 *ReachProfilesApi* | [**deleteSendingDomainV1**](docs/Api/ReachProfilesApi.md#deletesendingdomainv1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/domains | Delete sending domain
 *ReachProfilesApi* | [**getConnectedSendingDomainV1**](docs/Api/ReachProfilesApi.md#getconnectedsendingdomainv1) | **GET** /api/reach/v1/profiles/{profileUuid}/domains | Get connected sending domain
@@ -378,6 +384,7 @@ Class | Method | HTTP request | Description
 *ReachTagsApi* | [**removeContactsFromATagV1**](docs/Api/ReachTagsApi.md#removecontactsfromatagv1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/tags/{tagUuid}/contacts | Remove contacts from a tag
 *ReachTagsApi* | [**renameATagV1**](docs/Api/ReachTagsApi.md#renameatagv1) | **PATCH** /api/reach/v1/profiles/{profileUuid}/tags/{tagUuid} | Rename a tag
 *ReachTemplatesApi* | [**createAnEmailTemplateV1**](docs/Api/ReachTemplatesApi.md#createanemailtemplatev1) | **POST** /api/reach/v1/profiles/{profileUuid}/templates | Create an email template
+*ReachTemplatesApi* | [**getEmailTemplateV1**](docs/Api/ReachTemplatesApi.md#getemailtemplatev1) | **GET** /api/reach/v1/profiles/{profileUuid}/templates/{templateUuid} | Get email template
 *ReachTemplatesApi* | [**listEmailTemplatesV1**](docs/Api/ReachTemplatesApi.md#listemailtemplatesv1) | **GET** /api/reach/v1/profiles/{profileUuid}/templates | List email templates
 *VPSActionsApi* | [**getActionDetailsV1**](docs/Api/VPSActionsApi.md#getactiondetailsv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/actions/{actionId} | Get action details
 *VPSActionsApi* | [**getActionsV1**](docs/Api/VPSActionsApi.md#getactionsv1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/actions | Get actions
@@ -957,8 +964,15 @@ Class | Method | HTTP request | Description
 - [ReachV1ProfilesProfileResourceProfilesInner](docs/Model/ReachV1ProfilesProfileResourceProfilesInner.md)
 - [ReachV1ProfilesSettingsSettingsResource](docs/Model/ReachV1ProfilesSettingsSettingsResource.md)
 - [ReachV1ProfilesSettingsUpdateRequest](docs/Model/ReachV1ProfilesSettingsUpdateRequest.md)
+- [ReachV1StoresStoreResource](docs/Model/ReachV1StoresStoreResource.md)
+- [ReachV1StoresStoreResourceSalesChannelsInner](docs/Model/ReachV1StoresStoreResourceSalesChannelsInner.md)
 - [ReachV1TemplatesStoreRequest](docs/Model/ReachV1TemplatesStoreRequest.md)
+- [ReachV1TemplatesTemplateDetailsResource](docs/Model/ReachV1TemplatesTemplateDetailsResource.md)
 - [ReachV1TemplatesTemplateResource](docs/Model/ReachV1TemplatesTemplateResource.md)
+- [ReachV1WebsitesWebsiteBuilderConnectRequest](docs/Model/ReachV1WebsitesWebsiteBuilderConnectRequest.md)
+- [ReachV1WebsitesWebsiteBuilderDisconnectRequest](docs/Model/ReachV1WebsitesWebsiteBuilderDisconnectRequest.md)
+- [ReachV1WebsitesWebsiteResource](docs/Model/ReachV1WebsitesWebsiteResource.md)
+- [ReachV1WebsitesWordPressDisconnectRequest](docs/Model/ReachV1WebsitesWordPressDisconnectRequest.md)
 - [VPSV1ActionActionResource](docs/Model/VPSV1ActionActionResource.md)
 - [VPSV1ActionListResponse](docs/Model/VPSV1ActionListResponse.md)
 - [VPSV1BackupBackupResource](docs/Model/VPSV1BackupBackupResource.md)

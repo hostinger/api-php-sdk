@@ -66,7 +66,7 @@ getCampaignDetailsV1($profileUuid, $campaignUuid): \Hostinger\Model\ReachV1Campa
 
 Get campaign details
 
-Get a single campaign with its sender, subject, template reference, targeting and delivery progress.  This describes how the campaign was set up and how far it has got. For opens, clicks and unsubscribes use the campaign statistics endpoint.
+Get a single campaign with its sender, subject, template reference, targeting and delivery progress.  This describes how the campaign was set up and how far it has got. For opens, clicks and unsubscribes use the campaign statistics endpoint. The email content is not included: pass `template_uuid` to the get email template endpoint to read its HTML.
 
 ### Example
 
