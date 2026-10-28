@@ -5,6 +5,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**connectAIWebsiteBuilderSiteV1()**](ReachIntegrationsApi.md#connectAIWebsiteBuilderSiteV1) | **POST** /api/reach/v1/profiles/{profileUuid}/websites/website-builder | Connect AI Website Builder site |
+| [**connectEcommerceStoreV1()**](ReachIntegrationsApi.md#connectEcommerceStoreV1) | **POST** /api/reach/v1/profiles/{profileUuid}/ecommerce/stores/{storeId} | Connect Ecommerce store |
 | [**disconnectAIWebsiteBuilderSiteV1()**](ReachIntegrationsApi.md#disconnectAIWebsiteBuilderSiteV1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/websites/website-builder | Disconnect AI Website Builder site |
 | [**disconnectEcommerceStoreV1()**](ReachIntegrationsApi.md#disconnectEcommerceStoreV1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/ecommerce/stores/{storeId} | Disconnect Ecommerce store |
 | [**disconnectWordPressSiteV1()**](ReachIntegrationsApi.md#disconnectWordPressSiteV1) | **DELETE** /api/reach/v1/profiles/{profileUuid}/websites/wordpress | Disconnect WordPress site |
@@ -55,6 +56,54 @@ try {
 ### Return type
 
 [**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectEcommerceStoreV1()`
+
+```php
+connectEcommerceStoreV1($profileUuid, $storeId): \Hostinger\Model\ReachV1StoresConnectionResource
+```
+
+Connect Ecommerce store
+
+Connect one of the customer's eCommerce stores to the profile, so Reach receives its customers and orders.  Take `store_id` from the list eCommerce stores endpoint. Fails with not found (`ECOMMERCE_STORE_NOT_FOUND`) when the store is not one of the customer's own stores, also when the eCommerce service cannot be reached. Fails with a conflict (`ECOMMERCE_CONNECTION_ALREADY_EXISTS`) when the store is connected to any profile or this profile already has a store - to move a store to another plan, disconnect it from the profile that holds it first.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachIntegrationsApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+$storeId = ec_123; // string | Hostinger eCommerce store ID, as returned by the eCommerce stores list
+
+try {
+    $result = $apiInstance->connectEcommerceStoreV1($profileUuid, $storeId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachIntegrationsApi->connectEcommerceStoreV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+| **storeId** | **string**| Hostinger eCommerce store ID, as returned by the eCommerce stores list | |
+
+### Return type
+
+[**\Hostinger\Model\ReachV1StoresConnectionResource**](../Model/ReachV1StoresConnectionResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -116,7 +165,7 @@ disconnectEcommerceStoreV1($profileUuid, $storeId): \Hostinger\Model\CommonSucce
 
 Disconnect Ecommerce store
 
-Disconnect an eCommerce store from the profile.  Reach stops receiving the store's customers and orders, and its products and coupons are removed from Reach; contacts and past orders stay. Take `store_id` from the list eCommerce stores endpoint; for a store that is `connected_to_other_profile`, call this with that profile. Also succeeds when the store is not connected to this profile, so success is not proof that anything was disconnected. Confirm the store and the plan with the customer before calling.
+Disconnect an eCommerce store from the profile.  Reach stops receiving the store's customers and orders, and its products and coupons are removed from Reach; contacts and past orders stay. Take `store_id` from the list eCommerce stores endpoint; for a store that is `connected_to_other_profile`, call this with that profile. Also succeeds when the store is not connected to this profile, so success is not proof that anything was disconnected. To move the store to another plan, connect it to the new profile afterwards. Confirm the store and the plan with the customer before calling.
 
 ### Example
 
@@ -258,7 +307,7 @@ listEcommerceStoresV1($profileUuid): \Hostinger\Model\ReachV1StoresStoreResource
 
 List Ecommerce stores
 
-Get all of the customer's Hostinger eCommerce stores, each with its `store_id` and `connection_status` for the profile in the path.  A store is connected to at most one profile. `connected_to_other_profile` does not name that profile - call this for each profile to find it. The list is empty, not an error, when the eCommerce service cannot be reached. Pass `store_id` to the disconnect eCommerce store endpoint. Connecting an AI Website Builder site connects the store selling on it.
+Get all of the customer's Hostinger eCommerce stores, each with its `store_id` and `connection_status` for the profile in the path.  A store is connected to at most one profile. `connected_to_other_profile` does not name that profile - call this for each profile to find it. The list is empty, not an error, when the eCommerce service cannot be reached. Pass `store_id` to the connect or disconnect eCommerce store endpoint.
 
 ### Example
 
