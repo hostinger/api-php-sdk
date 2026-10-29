@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **itemCount** | **int** | Number of distinct line items. |
 **createdAt** | **\DateTime** | ISO timestamp of when the order was created. |
 **merchantNote** | **string** | Internal note visible only to the merchant. |
+**metadata** | [**\Hostinger\Model\EcommerceV1OrderOrderMetadataResource**](EcommerceV1OrderOrderMetadataResource.md) |  |
 **subtotal** | **int** | Subtotal in the smallest currency unit. |
 **discountTotal** | **int** | Discount total in the smallest currency unit. |
 **taxTotal** | **int** | Tax total in the smallest currency unit. |
