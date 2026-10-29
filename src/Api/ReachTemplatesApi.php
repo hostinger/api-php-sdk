@@ -143,11 +143,14 @@ class ReachTemplatesApi
     private function buildResourcePath(string $path, array $values): string
     {
         foreach ($values as $key => $value) {
-            if (is_array($value)) {
-                $value = implode(',', $value);
+            $value = is_array($value) ? implode(',', $value) : (string) $value;
+
+            // Empty values and dot segments survive encoding and collapse or resolve away, changing the endpoint.
+            if ($value === '' || $value === '.' || $value === '..') {
+                throw new \InvalidArgumentException(sprintf('Invalid value for path parameter "%s".', $key));
             }
 
-            $path = str_replace('{' . $key . '}', $value, $path);
+            $path = str_replace('{' . $key . '}', rawurlencode($value), $path);
         }
 
         return $path;
