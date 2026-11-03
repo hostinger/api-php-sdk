@@ -194,6 +194,10 @@ Class | Method | HTTP request | Description
 *EcommerceStoresApi* | [**deleteStoreV1**](docs/Api/EcommerceStoresApi.md#deletestorev1) | **DELETE** /api/ecommerce/v1/stores/{store_id} | Delete store
 *EcommerceStoresApi* | [**getStoreMetadataV1**](docs/Api/EcommerceStoresApi.md#getstoremetadatav1) | **GET** /api/ecommerce/v1/stores/{store_id}/metadata | Get store metadata
 *EcommerceStoresApi* | [**getStoresV1**](docs/Api/EcommerceStoresApi.md#getstoresv1) | **GET** /api/ecommerce/v1/stores | Get stores
+*GPUCatalogApi* | [**getPoolGroupsV1**](docs/Api/GPUCatalogApi.md#getpoolgroupsv1) | **GET** /api/gpu/v1/pools/groups | Get pool groups
+*GPUCatalogApi* | [**getPoolInstanceTypesV1**](docs/Api/GPUCatalogApi.md#getpoolinstancetypesv1) | **GET** /api/gpu/v1/pools/{poolId}/instances | Get pool instance types
+*GPUCatalogApi* | [**getPoolListV1**](docs/Api/GPUCatalogApi.md#getpoollistv1) | **GET** /api/gpu/v1/pools | Get pool list
+*GPUCatalogApi* | [**getPoolOSTemplatesV1**](docs/Api/GPUCatalogApi.md#getpoolostemplatesv1) | **GET** /api/gpu/v1/pools/{poolId}/instances/{poolInstanceId}/os-templates | Get pool OS templates
 *HorizonsWebsitesApi* | [**cloneWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#clonewebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/clone | Clone website
 *HorizonsWebsitesApi* | [**createWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#createwebsitev1) | **POST** /api/horizons/v1/websites | Create website
 *HorizonsWebsitesApi* | [**editWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#editwebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/messages | Edit website
@@ -722,6 +726,11 @@ Class | Method | HTTP request | Description
 - [EcommerceV1VariantVariantResource](docs/Model/EcommerceV1VariantVariantResource.md)
 - [EcommerceV1VariantVariantResourceOptionsInner](docs/Model/EcommerceV1VariantVariantResourceOptionsInner.md)
 - [EcommerceV1VariantVariantResponseResource](docs/Model/EcommerceV1VariantVariantResponseResource.md)
+- [GPUV1OsTemplateOsTemplateResource](docs/Model/GPUV1OsTemplateOsTemplateResource.md)
+- [GPUV1PoolPoolGroupResource](docs/Model/GPUV1PoolPoolGroupResource.md)
+- [GPUV1PoolPoolInstanceResource](docs/Model/GPUV1PoolPoolInstanceResource.md)
+- [GPUV1PoolPoolResource](docs/Model/GPUV1PoolPoolResource.md)
+- [GPUV1RegionRegionResource](docs/Model/GPUV1RegionRegionResource.md)
 - [HorizonsV1WebsitesCreateWebsiteRequest](docs/Model/HorizonsV1WebsitesCreateWebsiteRequest.md)
 - [HorizonsV1WebsitesCreateWebsiteRequestMessageInner](docs/Model/HorizonsV1WebsitesCreateWebsiteRequestMessageInner.md)
 - [HorizonsV1WebsitesCreatedWebsiteResource](docs/Model/HorizonsV1WebsitesCreatedWebsiteResource.md)
