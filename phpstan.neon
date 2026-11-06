@@ -8,10 +8,6 @@ parameters:
             paths:
                 - src/Api/*
         -
-            identifier: missingType.iterableValue
-            paths:
-                - src/Normalizers/*
-        -
             identifier: missingType.generics
             paths:
                 - src/Normalizers/*
