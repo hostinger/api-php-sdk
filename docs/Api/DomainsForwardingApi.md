@@ -110,7 +110,7 @@ getDomainForwardingV1($domain): \Hostinger\Model\DomainsV1ForwardingForwardingRe
 
 Get domain forwarding
 
-Retrieve domain forwarding data.  Use this endpoint to view current redirect configuration for domains.
+Retrieve domain forwarding data.  Returns 404 when the domain has no forwarding.  Use this endpoint to view current redirect configuration for domains.
 
 ### Example
 
