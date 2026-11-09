@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **domain** | **string** | Domain name |
-**authCode** | **string** | Authorization code from the current registrar |
+**authCode** | **string** | EPP code that authorizes this transfer, which the domain owner gets from the current registrar. Required only for TLDs whose transfers use one. |
 **domainContacts** | [**\Hostinger\Model\DomainsV1PortfolioClaimRequestDomainContacts**](DomainsV1PortfolioClaimRequestDomainContacts.md) |  |
 **shouldKeepNs** | **bool** | Keep the existing nameservers of the domain | [default to true]
 
