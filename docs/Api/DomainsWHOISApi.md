@@ -208,7 +208,7 @@ getPendingIRTPVerificationV1($domain): \Hostinger\Model\DomainsV1IRTPVerificatio
 
 Get pending IRTP verification
 
-Retrieve a pending IRTP verification for a domain.  Both the old and new registrant must confirm it before the WHOIS change takes effect.  Use this endpoint to check the status of a WHOIS change awaiting registrant confirmation.
+Retrieve a pending IRTP verification for a domain.  Both the old and new registrant must confirm it before the WHOIS change takes effect.  Returns 404 when the domain has no pending IRTP verification.  Use this endpoint to check the status of a WHOIS change awaiting registrant confirmation.
 
 ### Example
 
