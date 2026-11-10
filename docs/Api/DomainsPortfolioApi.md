@@ -439,7 +439,7 @@ getDomainRenewalInformationV1($domain): \Hostinger\Model\DomainsV1PortfolioRenew
 
 Get domain renewal information
 
-Retrieve renewal information for a specified domain, including its status and current expiration date.  Use this endpoint to build renewal automation and expiry monitoring for a single domain.
+Retrieve renewal information for a specified domain, including its status, current expiration date, whether it can be renewed, whether it is in its grace or redemption period, and when each of those periods ends.  Use this endpoint to build renewal automation and expiry monitoring for a single domain.
 
 ### Example
 
