@@ -620,6 +620,7 @@ Class | Method | HTTP request | Description
 - [DomainsV1DomainDomainExtendedResourceDomainContacts](docs/Model/DomainsV1DomainDomainExtendedResourceDomainContacts.md)
 - [DomainsV1DomainDomainExtendedResourceNameServers](docs/Model/DomainsV1DomainDomainExtendedResourceNameServers.md)
 - [DomainsV1DomainDomainResource](docs/Model/DomainsV1DomainDomainResource.md)
+- [DomainsV1DomainDomainVerificationResource](docs/Model/DomainsV1DomainDomainVerificationResource.md)
 - [DomainsV1ForwardingForwardingResource](docs/Model/DomainsV1ForwardingForwardingResource.md)
 - [DomainsV1ForwardingStoreRequest](docs/Model/DomainsV1ForwardingStoreRequest.md)
 - [DomainsV1ForwardingUpdateRequest](docs/Model/DomainsV1ForwardingUpdateRequest.md)
