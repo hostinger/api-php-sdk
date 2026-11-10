@@ -20,7 +20,7 @@ class Configuration
 
     protected string $host = 'https://developers.hostinger.com';
 
-    protected string $userAgent = 'hostinger-php-sdk/2.11.4';
+    protected string $userAgent = 'hostinger-php-sdk/2.11.5';
 
     protected bool $debug = false;
 
