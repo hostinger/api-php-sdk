@@ -350,7 +350,7 @@ getDomainDetailsV1($domain): \Hostinger\Model\DomainsV1DomainDomainExtendedResou
 
 Get domain details
 
-Retrieve detailed information for specified domain.  A domain is found here only once it is registered. Until then, `Get domain list` shows it, and its `verification` field says what registration waits for when the domain is held for verification.  Use this endpoint to view comprehensive domain configuration and status.
+Retrieve detailed information for specified domain.  A domain is found here only once it is registered. Until then, `Get domain list` shows it, and its `verification` field says what registration waits for when the domain is held for verification.  After registration, the registry may require the owner contact to be verified by email, phone number or contact name before a deadline, after which the domain is suspended. The `contact_verification` field shows what needs verifying, its state and the deadline.  Use this endpoint to view comprehensive domain configuration and status.
 
 ### Example
 

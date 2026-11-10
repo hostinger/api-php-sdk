@@ -19,5 +19,6 @@ Name | Type | Description | Notes
 **_60daysLockExpiresAt** | **\DateTime** |  |
 **registeredAt** | **\DateTime** |  |
 **expiresAt** | **\DateTime** |  |
+**contactVerification** | [**\Hostinger\Model\DomainsV1DomainDomainContactVerificationResource**](DomainsV1DomainDomainContactVerificationResource.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
