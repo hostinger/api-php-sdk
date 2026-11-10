@@ -110,7 +110,7 @@ getSnapshotV1($virtualMachineId): \Hostinger\Model\VPSV1SnapshotSnapshotResource
 
 Get snapshot
 
-Retrieve snapshot for a specified virtual machine.  Use this endpoint to view current VPS snapshot information.
+Retrieve snapshot for a specified virtual machine.  Use this endpoint to view current VPS snapshot information.  Returns 404 when the virtual machine has no snapshot.
 
 ### Example
 
