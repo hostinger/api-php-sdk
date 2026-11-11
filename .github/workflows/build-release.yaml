@@ -7,16 +7,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
       - name: Repo checkout
         uses: actions/checkout@v4
 
       - name: Composer install
-        uses: php-actions/composer@v6
+        uses: php-actions/composer@8a65f0d3c6a1d17ca4800491a40b5756a4c164f3 # v6.1.2
 
       - name: PHPStan check
-        uses: php-actions/phpstan@v3
+        uses: php-actions/phpstan@d8f8887acaac249b05ac11909c4cdbb018f52211 # v3.0.3
         with:
           path: src/
 
@@ -49,10 +51,10 @@ jobs:
 
       - name: Create release
         if: steps.version.outputs.released == 'true'
-        uses: ncipollo/release-action@v1
-        with:
-          tag: v${{ steps.version.outputs.version }}
-          generateReleaseNotes: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: gh release create "v$VERSION" --target "$GITHUB_SHA" --generate-notes
 
   notify-failure:
     needs: [build, release]
@@ -60,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Notify Slack on release failure
-        uses: slackapi/slack-github-action@v4.0.0
+        uses: slackapi/slack-github-action@dcb1066f776dd043e64d0e8ba94ca15cc7e1875d # v4.0.0
         with:
           errors: true
           webhook: ${{ secrets.PLATFORM_INCIDENT_SLACK_CHANNEL_WEBHOOK }}
