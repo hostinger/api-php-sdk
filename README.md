@@ -271,6 +271,11 @@ Class | Method | HTTP request | Description
 *HostingPHPApi* | [**updatePHPExtensionsV1**](docs/Api/HostingPHPApi.md#updatephpextensionsv1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/php/extensions | Update PHP extensions
 *HostingPHPApi* | [**updatePHPOptionsV1**](docs/Api/HostingPHPApi.md#updatephpoptionsv1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/php/options | Update PHP options
 *HostingPHPApi* | [**updatePHPVersionV1**](docs/Api/HostingPHPApi.md#updatephpversionv1) | **PATCH** /api/hosting/v1/accounts/{username}/websites/{domain}/php/version | Update PHP version
+*HostingPocketBaseApi* | [**createPocketBaseBackendV1**](docs/Api/HostingPocketBaseApi.md#createpocketbasebackendv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/pocketbase | Create PocketBase backend
+*HostingPocketBaseApi* | [**deletePocketBaseBackendV1**](docs/Api/HostingPocketBaseApi.md#deletepocketbasebackendv1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/pocketbase | Delete PocketBase backend
+*HostingPocketBaseApi* | [**getPocketBaseBackendV1**](docs/Api/HostingPocketBaseApi.md#getpocketbasebackendv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/pocketbase | Get PocketBase backend
+*HostingPocketBaseApi* | [**listAccountPocketBaseBackendsV1**](docs/Api/HostingPocketBaseApi.md#listaccountpocketbasebackendsv1) | **GET** /api/hosting/v1/accounts/{username}/pocketbase | List account PocketBase backends
+*HostingPocketBaseApi* | [**setPocketBaseSuperuserV1**](docs/Api/HostingPocketBaseApi.md#setpocketbasesuperuserv1) | **PUT** /api/hosting/v1/accounts/{username}/websites/{domain}/pocketbase/superuser | Set PocketBase superuser
 *HostingRedirectsApi* | [**createWebsiteRedirectV1**](docs/Api/HostingRedirectsApi.md#createwebsiteredirectv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/redirects | Create website redirect
 *HostingRedirectsApi* | [**deleteWebsiteRedirectV1**](docs/Api/HostingRedirectsApi.md#deletewebsiteredirectv1) | **DELETE** /api/hosting/v1/accounts/{username}/websites/{domain}/redirects | Delete website redirect
 *HostingRedirectsApi* | [**listWebsiteRedirectsV1**](docs/Api/HostingRedirectsApi.md#listwebsiteredirectsv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/redirects | List website redirects
@@ -831,6 +836,12 @@ Class | Method | HTTP request | Description
 - [HostingV1PhpUpdatePhpOptionsRequest](docs/Model/HostingV1PhpUpdatePhpOptionsRequest.md)
 - [HostingV1PhpUpdatePhpOptionsRequestOptionsValue](docs/Model/HostingV1PhpUpdatePhpOptionsRequestOptionsValue.md)
 - [HostingV1PhpUpdatePhpVersionRequest](docs/Model/HostingV1PhpUpdatePhpVersionRequest.md)
+- [HostingV1PocketBaseBackendCreatedResource](docs/Model/HostingV1PocketBaseBackendCreatedResource.md)
+- [HostingV1PocketBaseBackendResource](docs/Model/HostingV1PocketBaseBackendResource.md)
+- [HostingV1PocketBaseCreateBackendRequest](docs/Model/HostingV1PocketBaseCreateBackendRequest.md)
+- [HostingV1PocketBaseInstanceResource](docs/Model/HostingV1PocketBaseInstanceResource.md)
+- [HostingV1PocketBaseSuperuserResource](docs/Model/HostingV1PocketBaseSuperuserResource.md)
+- [HostingV1PocketBaseUpdateSuperuserRequest](docs/Model/HostingV1PocketBaseUpdateSuperuserRequest.md)
 - [HostingV1RedirectsCreateRedirectRequest](docs/Model/HostingV1RedirectsCreateRedirectRequest.md)
 - [HostingV1RedirectsDeleteRedirectRequest](docs/Model/HostingV1RedirectsDeleteRedirectRequest.md)
 - [HostingV1RedirectsRedirectResource](docs/Model/HostingV1RedirectsRedirectResource.md)
