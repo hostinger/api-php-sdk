@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **string** |  |
 **status** | **string** |  |
 **actionLock** | **string** | Whether an action is in progress on the instance |
+**actionLockReason** | **string** | Action in progress on the instance, &#x60;null&#x60; when unlocked |
 **pool** | [**\Hostinger\Model\GPUV1PoolPoolResource**](GPUV1PoolPoolResource.md) |  |
 **poolInstance** | [**\Hostinger\Model\GPUV1PoolPoolInstanceResource**](GPUV1PoolPoolInstanceResource.md) |  |
 **osTemplate** | [**\Hostinger\Model\GPUV1OsTemplateOsTemplateResource**](GPUV1OsTemplateOsTemplateResource.md) |  |

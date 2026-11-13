@@ -13,12 +13,12 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 ## `getPoolGroupsV1()`
 
 ```php
-getPoolGroupsV1($currency): \Hostinger\Model\GPUV1PoolPoolGroupResource[]
+getPoolGroupsV1(): \Hostinger\Model\GPUV1PoolPoolGroupResource[]
 ```
 
 Get pool groups
 
-Retrieve GPU pool groups, ordered by name.  Each group bundles the pools of one GPU model and lists its currently available pools, whether any of them is available and the lowest hourly price among its instance types. The price is returned even when the group is out of stock.  Use this endpoint to show which GPU models can be ordered and from what price.
+Retrieve GPU pool groups, ordered by name.  Each group bundles the pools of one GPU model and lists its currently available pools, whether any of them is available and the lowest hourly price, in credits, among its instance types. The price is returned even when the group is out of stock.  Use this endpoint to show which GPU models can be ordered and from what price.
 
 ### Example
 
@@ -32,10 +32,9 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 
 $apiInstance = new Hostinger\Api\GPUCatalogApi(config: $config);
-$currency = EUR; // string | Currency of the returned prices, `USD` by default
 
 try {
-    $result = $apiInstance->getPoolGroupsV1($currency);
+    $result = $apiInstance->getPoolGroupsV1();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GPUCatalogApi->getPoolGroupsV1: ', $e->getMessage(), PHP_EOL;
@@ -44,9 +43,7 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **currency** | **string**| Currency of the returned prices, &#x60;USD&#x60; by default | [optional] |
+This endpoint does not need any parameter.
 
 ### Return type
 

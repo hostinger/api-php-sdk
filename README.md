@@ -749,6 +749,7 @@ Class | Method | HTTP request | Description
 - [GPUV1InstanceInstanceListResource](docs/Model/GPUV1InstanceInstanceListResource.md)
 - [GPUV1InstanceInstanceResource](docs/Model/GPUV1InstanceInstanceResource.md)
 - [GPUV1InstanceStoreRequest](docs/Model/GPUV1InstanceStoreRequest.md)
+- [GPUV1LlmModelVariantLlmModelVariantResource](docs/Model/GPUV1LlmModelVariantLlmModelVariantResource.md)
 - [GPUV1MetricsMetricsResource](docs/Model/GPUV1MetricsMetricsResource.md)
 - [GPUV1OsTemplateOsTemplateResource](docs/Model/GPUV1OsTemplateOsTemplateResource.md)
 - [GPUV1PoolPoolGroupResource](docs/Model/GPUV1PoolPoolGroupResource.md)

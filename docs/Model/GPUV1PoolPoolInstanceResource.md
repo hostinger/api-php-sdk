@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **cpuCores** | **int** | Number of CPU cores |
 **ram** | **int** | Total RAM in bytes |
 **storage** | **int** | Total storage in bytes |
-**pricePerHour** | **int** | Hourly price in cents (USD) |
+**pricePerHour** | **int** | Hourly price in credits |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
