@@ -198,6 +198,11 @@ Class | Method | HTTP request | Description
 *GPUCatalogApi* | [**getPoolInstanceTypesV1**](docs/Api/GPUCatalogApi.md#getpoolinstancetypesv1) | **GET** /api/gpu/v1/pools/{poolId}/instances | Get pool instance types
 *GPUCatalogApi* | [**getPoolListV1**](docs/Api/GPUCatalogApi.md#getpoollistv1) | **GET** /api/gpu/v1/pools | Get pool list
 *GPUCatalogApi* | [**getPoolOSTemplatesV1**](docs/Api/GPUCatalogApi.md#getpoolostemplatesv1) | **GET** /api/gpu/v1/pools/{poolId}/instances/{poolInstanceId}/os-templates | Get pool OS templates
+*GPUInstancesApi* | [**createInstanceV1**](docs/Api/GPUInstancesApi.md#createinstancev1) | **POST** /api/gpu/v1/instances | Create instance
+*GPUInstancesApi* | [**deleteInstanceV1**](docs/Api/GPUInstancesApi.md#deleteinstancev1) | **DELETE** /api/gpu/v1/instances/{instanceId} | Delete instance
+*GPUInstancesApi* | [**getInstanceDetailsV1**](docs/Api/GPUInstancesApi.md#getinstancedetailsv1) | **GET** /api/gpu/v1/instances/{instanceId} | Get instance details
+*GPUInstancesApi* | [**getInstanceMetricsV1**](docs/Api/GPUInstancesApi.md#getinstancemetricsv1) | **GET** /api/gpu/v1/instances/{instanceId}/metrics | Get instance metrics
+*GPUInstancesApi* | [**getInstancesV1**](docs/Api/GPUInstancesApi.md#getinstancesv1) | **GET** /api/gpu/v1/instances | Get instances
 *HorizonsWebsitesApi* | [**cloneWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#clonewebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/clone | Clone website
 *HorizonsWebsitesApi* | [**createWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#createwebsitev1) | **POST** /api/horizons/v1/websites | Create website
 *HorizonsWebsitesApi* | [**editWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#editwebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/messages | Edit website
@@ -734,11 +739,16 @@ Class | Method | HTTP request | Description
 - [EcommerceV1VariantVariantResource](docs/Model/EcommerceV1VariantVariantResource.md)
 - [EcommerceV1VariantVariantResourceOptionsInner](docs/Model/EcommerceV1VariantVariantResourceOptionsInner.md)
 - [EcommerceV1VariantVariantResponseResource](docs/Model/EcommerceV1VariantVariantResponseResource.md)
+- [GPUV1InstanceInstanceListResource](docs/Model/GPUV1InstanceInstanceListResource.md)
+- [GPUV1InstanceInstanceResource](docs/Model/GPUV1InstanceInstanceResource.md)
+- [GPUV1InstanceStoreRequest](docs/Model/GPUV1InstanceStoreRequest.md)
+- [GPUV1MetricsMetricsResource](docs/Model/GPUV1MetricsMetricsResource.md)
 - [GPUV1OsTemplateOsTemplateResource](docs/Model/GPUV1OsTemplateOsTemplateResource.md)
 - [GPUV1PoolPoolGroupResource](docs/Model/GPUV1PoolPoolGroupResource.md)
 - [GPUV1PoolPoolInstanceResource](docs/Model/GPUV1PoolPoolInstanceResource.md)
 - [GPUV1PoolPoolResource](docs/Model/GPUV1PoolPoolResource.md)
 - [GPUV1RegionRegionResource](docs/Model/GPUV1RegionRegionResource.md)
+- [GPUV1SshKeySshKeyResource](docs/Model/GPUV1SshKeySshKeyResource.md)
 - [HorizonsV1WebsitesCreateWebsiteRequest](docs/Model/HorizonsV1WebsitesCreateWebsiteRequest.md)
 - [HorizonsV1WebsitesCreateWebsiteRequestMessageInner](docs/Model/HorizonsV1WebsitesCreateWebsiteRequestMessageInner.md)
 - [HorizonsV1WebsitesCreatedWebsiteResource](docs/Model/HorizonsV1WebsitesCreatedWebsiteResource.md)
