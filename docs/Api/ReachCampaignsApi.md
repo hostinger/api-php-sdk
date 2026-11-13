@@ -8,6 +8,8 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**getCampaignDetailsV1()**](ReachCampaignsApi.md#getCampaignDetailsV1) | **GET** /api/reach/v1/profiles/{profileUuid}/campaigns/{campaignUuid} | Get campaign details |
 | [**getCampaignPerformanceV1()**](ReachCampaignsApi.md#getCampaignPerformanceV1) | **GET** /api/reach/v1/profiles/{profileUuid}/campaigns/{campaignUuid}/statistics | Get campaign performance |
 | [**listCampaignsV1()**](ReachCampaignsApi.md#listCampaignsV1) | **GET** /api/reach/v1/profiles/{profileUuid}/campaigns | List campaigns |
+| [**sendCampaignV1()**](ReachCampaignsApi.md#sendCampaignV1) | **POST** /api/reach/v1/profiles/{profileUuid}/campaigns/{campaignUuid}/send | Send campaign |
+| [**updateCampaignV1()**](ReachCampaignsApi.md#updateCampaignV1) | **PATCH** /api/reach/v1/profiles/{profileUuid}/campaigns/{campaignUuid} | Update campaign |
 
 
 ## `createADraftCampaignV1()`
@@ -205,6 +207,104 @@ try {
 ### Return type
 
 [**\Hostinger\Model\ReachListCampaignsV1200Response**](../Model/ReachListCampaignsV1200Response.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `sendCampaignV1()`
+
+```php
+sendCampaignV1($profileUuid, $campaignUuid): \Hostinger\Model\CommonSuccessEmptyResource
+```
+
+Send campaign
+
+Send a campaign now to the audience stored on it.  This is irreversible: once accepted, the emails go out and cannot be recalled. Confirm with the customer before calling. The campaign needs a subject, sender, template and audience first - set them with the update endpoint. Delivery is asynchronous, so success means accepted, not delivered: the campaign moves to `sending` and later to `publish`, or to `failed`. Read the campaign to follow it. The request is rejected when the campaign has no recipients, its sender domain is not verified or is blocked, the plan's sending limits would be exceeded, or the campaign is already being sent.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachCampaignsApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+$campaignUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Campaign uuid parameter
+
+try {
+    $result = $apiInstance->sendCampaignV1($profileUuid, $campaignUuid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachCampaignsApi->sendCampaignV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+| **campaignUuid** | **string**| Campaign uuid parameter | |
+
+### Return type
+
+[**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateCampaignV1()`
+
+```php
+updateCampaignV1($profileUuid, $campaignUuid, $reachV1CampaignsUpdateRequest): \Hostinger\Model\ReachV1CampaignsCreatedCampaignResource
+```
+
+Update campaign
+
+Update a campaign's content, sender, template and audience.  Only `draft`, `scheduled` and `failed` campaigns can be updated; a campaign that is sending or already sent is rejected. Updating a `failed` campaign moves it back to `draft`. Audience changes replace rather than merge: `all_contacts: true` targets every contact of the profile, while `segment_uuids` replaces the segments currently targeted. Leave both out to keep the audience as it is. This does not send the campaign - use the send endpoint for that.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\ReachCampaignsApi(config: $config);
+$profileUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Profile uuid parameter
+$campaignUuid = 550e8400-e09b-41d4-a716-400055000000; // string | Campaign uuid parameter
+$reachV1CampaignsUpdateRequest = new \Hostinger\Model\ReachV1CampaignsUpdateRequest(); // \Hostinger\Model\ReachV1CampaignsUpdateRequest
+
+try {
+    $result = $apiInstance->updateCampaignV1($profileUuid, $campaignUuid, $reachV1CampaignsUpdateRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReachCampaignsApi->updateCampaignV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profileUuid** | **string**| Profile uuid parameter | |
+| **campaignUuid** | **string**| Campaign uuid parameter | |
+| **reachV1CampaignsUpdateRequest** | [**\Hostinger\Model\ReachV1CampaignsUpdateRequest**](../Model/ReachV1CampaignsUpdateRequest.md)|  | |
+
+### Return type
+
+[**\Hostinger\Model\ReachV1CampaignsCreatedCampaignResource**](../Model/ReachV1CampaignsCreatedCampaignResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

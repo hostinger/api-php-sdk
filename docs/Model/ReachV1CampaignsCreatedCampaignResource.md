@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **senderName** | **string** |  |
 **senderEmail** | **string** |  |
 **templateUuid** | **string** |  |
-**status** | **string** | Always &#x60;draft&#x60; for a campaign that was just created. |
+**status** | **string** | Always &#x60;draft&#x60; for a campaign that was just created; the current status after an update. |
 **type** | **string** |  |
 **isAllContacts** | **bool** | Whether the campaign targets every contact instead of selected segments. |
 **metadata** | **array<string,string>** | The stored extra fields, including the ones Reach sets itself. |
