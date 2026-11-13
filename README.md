@@ -198,6 +198,9 @@ Class | Method | HTTP request | Description
 *GPUCatalogApi* | [**getPoolInstanceTypesV1**](docs/Api/GPUCatalogApi.md#getpoolinstancetypesv1) | **GET** /api/gpu/v1/pools/{poolId}/instances | Get pool instance types
 *GPUCatalogApi* | [**getPoolListV1**](docs/Api/GPUCatalogApi.md#getpoollistv1) | **GET** /api/gpu/v1/pools | Get pool list
 *GPUCatalogApi* | [**getPoolOSTemplatesV1**](docs/Api/GPUCatalogApi.md#getpoolostemplatesv1) | **GET** /api/gpu/v1/pools/{poolId}/instances/{poolInstanceId}/os-templates | Get pool OS templates
+*GPUExposedServicesApi* | [**createExposedServiceV1**](docs/Api/GPUExposedServicesApi.md#createexposedservicev1) | **POST** /api/gpu/v1/instances/{instanceId}/exposed-services | Create exposed service
+*GPUExposedServicesApi* | [**deleteExposedServiceV1**](docs/Api/GPUExposedServicesApi.md#deleteexposedservicev1) | **DELETE** /api/gpu/v1/instances/{instanceId}/exposed-services/{exposedServiceId} | Delete exposed service
+*GPUExposedServicesApi* | [**getExposedServicesV1**](docs/Api/GPUExposedServicesApi.md#getexposedservicesv1) | **GET** /api/gpu/v1/instances/{instanceId}/exposed-services | Get exposed services
 *GPUInstancesApi* | [**createInstanceV1**](docs/Api/GPUInstancesApi.md#createinstancev1) | **POST** /api/gpu/v1/instances | Create instance
 *GPUInstancesApi* | [**deleteInstanceV1**](docs/Api/GPUInstancesApi.md#deleteinstancev1) | **DELETE** /api/gpu/v1/instances/{instanceId} | Delete instance
 *GPUInstancesApi* | [**getInstanceDetailsV1**](docs/Api/GPUInstancesApi.md#getinstancedetailsv1) | **GET** /api/gpu/v1/instances/{instanceId} | Get instance details
@@ -739,6 +742,8 @@ Class | Method | HTTP request | Description
 - [EcommerceV1VariantVariantResource](docs/Model/EcommerceV1VariantVariantResource.md)
 - [EcommerceV1VariantVariantResourceOptionsInner](docs/Model/EcommerceV1VariantVariantResourceOptionsInner.md)
 - [EcommerceV1VariantVariantResponseResource](docs/Model/EcommerceV1VariantVariantResponseResource.md)
+- [GPUV1ExposedServiceExposedServiceResource](docs/Model/GPUV1ExposedServiceExposedServiceResource.md)
+- [GPUV1ExposedServiceStoreRequest](docs/Model/GPUV1ExposedServiceStoreRequest.md)
 - [GPUV1InstanceInstanceListResource](docs/Model/GPUV1InstanceInstanceListResource.md)
 - [GPUV1InstanceInstanceResource](docs/Model/GPUV1InstanceInstanceResource.md)
 - [GPUV1InstanceStoreRequest](docs/Model/GPUV1InstanceStoreRequest.md)
