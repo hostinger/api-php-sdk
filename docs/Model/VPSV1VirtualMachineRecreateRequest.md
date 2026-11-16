@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **templateId** | **int** | Template ID |
-**password** | **string** | Root password for the virtual machine. If not provided, random password will be generated. Password will not be shown in the response. |
-**panelPassword** | **string** | Panel password for the panel-based OS template. If not provided, random password will be generated. If OS does not support panel_password this field will be ignored. Password will not be shown in the response. |
+**password** | **string** | Root password for the virtual machine. If not provided, random password will be generated. Password will not be shown in the response. 12 to 50 characters with an uppercase letter, a lowercase letter, a number and at least one of -().&amp;@?&#39;#;/,+ (no other symbols). Known compromised passwords are rejected. |
+**panelPassword** | **string** | Panel password for the panel-based OS template. If not provided, random password will be generated. If OS does not support panel_password this field will be ignored. Password will not be shown in the response. 12 to 50 characters with an uppercase letter, a lowercase letter, a number and at least one of #%+:?@ (no other symbols). Known compromised passwords are rejected. |
 **postInstallScriptId** | **int** | Post-install script to execute after virtual machine was recreated |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
