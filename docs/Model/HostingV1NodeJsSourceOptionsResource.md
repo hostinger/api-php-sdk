@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **archivePath** | **string** | Present if sourceType is \&quot;archive\&quot; |
+**message** | **string** | Summary of the deployment given when it was started (present if source_type is \&quot;archive\&quot; and one was sent) |
 **owner** | **string** | Repository owner login (present if source_type is \&quot;git\&quot;) |
 **repository** | **string** | Repository name without the .git suffix (present if source_type is \&quot;git\&quot;) |
 **branch** | **string** | Branch that was built (present if source_type is \&quot;git\&quot;) |
