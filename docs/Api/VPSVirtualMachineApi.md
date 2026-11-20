@@ -4,7 +4,6 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getAttachedPublicKeysV1()**](VPSVirtualMachineApi.md#getAttachedPublicKeysV1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/public-keys | Get attached public keys |
 | [**getMetricsV1()**](VPSVirtualMachineApi.md#getMetricsV1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId}/metrics | Get metrics |
 | [**getVirtualMachineDetailsV1()**](VPSVirtualMachineApi.md#getVirtualMachineDetailsV1) | **GET** /api/vps/v1/virtual-machines/{virtualMachineId} | Get virtual machine details |
 | [**getVirtualMachinesV1()**](VPSVirtualMachineApi.md#getVirtualMachinesV1) | **GET** /api/vps/v1/virtual-machines | Get virtual machines |
@@ -20,54 +19,6 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | [**startVirtualMachineV1()**](VPSVirtualMachineApi.md#startVirtualMachineV1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/start | Start virtual machine |
 | [**stopVirtualMachineV1()**](VPSVirtualMachineApi.md#stopVirtualMachineV1) | **POST** /api/vps/v1/virtual-machines/{virtualMachineId}/stop | Stop virtual machine |
 
-
-## `getAttachedPublicKeysV1()`
-
-```php
-getAttachedPublicKeysV1($virtualMachineId, $page): \Hostinger\Model\VPSV1PublicKeyListResponse
-```
-
-Get attached public keys
-
-Deprecated: use `GET /api/vps/v1/virtual-machines/{virtualMachineId}/ssh-keys` instead.  Retrieve public keys attached to a specified virtual machine.  Use this endpoint to view SSH keys configured for specific VPS instances.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer authorization: apiToken
-$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Hostinger\Api\VPSVirtualMachineApi(config: $config);
-$virtualMachineId = 1268054; // int | Virtual Machine ID
-$page = 1; // int | Page number
-
-try {
-    $result = $apiInstance->getAttachedPublicKeysV1($virtualMachineId, $page);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling VPSVirtualMachineApi->getAttachedPublicKeysV1: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **virtualMachineId** | **int**| Virtual Machine ID | |
-| **page** | **int**| Page number | [optional] |
-
-### Return type
-
-[**\Hostinger\Model\VPSV1PublicKeyListResponse**](../Model/VPSV1PublicKeyListResponse.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `getMetricsV1()`
 

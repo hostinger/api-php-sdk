@@ -4,59 +4,10 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**attachPublicKeyV1()**](VPSPublicKeysApi.md#attachPublicKeyV1) | **POST** /api/vps/v1/public-keys/attach/{virtualMachineId} | Attach public key |
 | [**createPublicKeyV1()**](VPSPublicKeysApi.md#createPublicKeyV1) | **POST** /api/vps/v1/public-keys | Create public key |
 | [**deletePublicKeyV1()**](VPSPublicKeysApi.md#deletePublicKeyV1) | **DELETE** /api/vps/v1/public-keys/{publicKeyId} | Delete public key |
 | [**getPublicKeysV1()**](VPSPublicKeysApi.md#getPublicKeysV1) | **GET** /api/vps/v1/public-keys | Get public keys |
 
-
-## `attachPublicKeyV1()`
-
-```php
-attachPublicKeyV1($virtualMachineId, $vPSV1PublicKeyAttachRequest): \Hostinger\Model\VPSV1ActionActionResource
-```
-
-Attach public key
-
-Deprecated: use `POST /api/vps/v1/virtual-machines/{virtualMachineId}/ssh-keys` instead.  Attach existing public keys from your account to a specified virtual machine.  Multiple keys can be attached to a single virtual machine.  Use this endpoint to enable SSH key authentication for VPS instances.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer authorization: apiToken
-$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Hostinger\Api\VPSPublicKeysApi(config: $config);
-$virtualMachineId = 1268054; // int | Virtual Machine ID
-$vPSV1PublicKeyAttachRequest = new \Hostinger\Model\VPSV1PublicKeyAttachRequest(); // \Hostinger\Model\VPSV1PublicKeyAttachRequest
-
-try {
-    $result = $apiInstance->attachPublicKeyV1($virtualMachineId, $vPSV1PublicKeyAttachRequest);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling VPSPublicKeysApi->attachPublicKeyV1: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **virtualMachineId** | **int**| Virtual Machine ID | |
-| **vPSV1PublicKeyAttachRequest** | [**\Hostinger\Model\VPSV1PublicKeyAttachRequest**](../Model/VPSV1PublicKeyAttachRequest.md)|  | |
-
-### Return type
-
-[**\Hostinger\Model\VPSV1ActionActionResource**](../Model/VPSV1ActionActionResource.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `createPublicKeyV1()`
 
