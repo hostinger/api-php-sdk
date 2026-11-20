@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **domain** | **string** | The domain the website is published on, if it has been published |
 **status** | **string** | The website status |
 **createdAt** | **\DateTime** | The website creation date |
-**websiteUrl** | **string** | The website URL for the user to access their website in Hostinger Horizons interface |
+**websiteUrl** | **string** | The website URL for the user to access their website in Hostinger AI Builder interface |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

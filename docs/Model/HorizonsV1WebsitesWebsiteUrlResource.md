@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**websiteUrl** | **string** | The website URL for the user to access their website in Hostinger Horizons interface |
+**websiteUrl** | **string** | The website URL for the user to access their website in Hostinger AI Builder interface |
 **publishedAt** | **\DateTime** | When the website was last published, or null if it has never been published |
 **isTemplate** | **bool** | Whether the website is published as a template, so its published pages show a \&quot;Use template\&quot; banner |
-**isInProgress** | **bool** | Whether Hostinger Horizons is still generating changes or publishing the website. Publishing is refused while it is true, and editing while changes are being generated. An unfinished template migration also refuses publishing, with its own error, without setting this flag. |
-**isGenerating** | **bool** | Whether Hostinger Horizons is generating changes to the website. Editing and publishing are refused while it is true |
+**isInProgress** | **bool** | Whether Hostinger AI Builder is still generating changes or publishing the website. Publishing is refused while it is true, and editing while changes are being generated. An unfinished template migration also refuses publishing, with its own error, without setting this flag. |
+**isGenerating** | **bool** | Whether Hostinger AI Builder is generating changes to the website. Editing and publishing are refused while it is true |
 **actionsInProgress** | **string[]** | What is running on the website right now: &#x60;website_publish&#x60; while it is being published right now, when publishing is refused; empty otherwise. An unfinished template migration also refuses publishing, with its own error, without appearing here. |
 **hasEcommerceStore** | **bool** | Whether the website has an ecommerce store |
 
