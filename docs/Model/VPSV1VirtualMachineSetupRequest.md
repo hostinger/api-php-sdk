@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **ns1** | **string** | Name server 1 |
 **ns2** | **string** | Name server 2 |
 **publicKey** | [**\Hostinger\Model\VPSV1VirtualMachineSetupRequestPublicKey**](VPSV1VirtualMachineSetupRequestPublicKey.md) |  |
+**sshKeys** | **string[]** | SSH public keys to add to the virtual machine |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
