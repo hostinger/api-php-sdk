@@ -216,6 +216,7 @@ Class | Method | HTTP request | Description
 *HorizonsWebsitesApi* | [**cloneWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#clonewebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/clone | Clone website
 *HorizonsWebsitesApi* | [**createWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#createwebsitev1) | **POST** /api/horizons/v1/websites | Create website
 *HorizonsWebsitesApi* | [**editWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#editwebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/messages | Edit website
+*HorizonsWebsitesApi* | [**getWebsiteBuildTaskV1**](docs/Api/HorizonsWebsitesApi.md#getwebsitebuildtaskv1) | **GET** /api/horizons/v1/websites/{websiteId}/tasks/{taskId} | Get website build task
 *HorizonsWebsitesApi* | [**getWebsiteListV1**](docs/Api/HorizonsWebsitesApi.md#getwebsitelistv1) | **GET** /api/horizons/v1/websites | Get website list
 *HorizonsWebsitesApi* | [**getWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#getwebsitev1) | **GET** /api/horizons/v1/websites/{websiteId} | Get website
 *HorizonsWebsitesApi* | [**publishWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#publishwebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/publish | Publish website
@@ -773,6 +774,7 @@ Class | Method | HTTP request | Description
 - [GPUV1PoolPoolResource](docs/Model/GPUV1PoolPoolResource.md)
 - [GPUV1RegionRegionResource](docs/Model/GPUV1RegionRegionResource.md)
 - [GPUV1SshKeySshKeyResource](docs/Model/GPUV1SshKeySshKeyResource.md)
+- [HorizonsV1WebsitesBuildTaskResource](docs/Model/HorizonsV1WebsitesBuildTaskResource.md)
 - [HorizonsV1WebsitesCreateWebsiteRequest](docs/Model/HorizonsV1WebsitesCreateWebsiteRequest.md)
 - [HorizonsV1WebsitesCreateWebsiteRequestMessageInner](docs/Model/HorizonsV1WebsitesCreateWebsiteRequestMessageInner.md)
 - [HorizonsV1WebsitesCreatedWebsiteResource](docs/Model/HorizonsV1WebsitesCreatedWebsiteResource.md)
