@@ -30,7 +30,7 @@ $config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 $apiInstance = new Hostinger\Api\DNSPropagationApi(config: $config);
 $domain = www.mydomain.tld; // string | Domain or host name to check, either a domain or a subdomain
-$type = A; // string | DNS record type to check. One of: A, AAAA, CNAME, MX, SRV, TXT, CAA
+$type = A; // string | DNS record type to check, uppercase. One of: A, AAAA, CAA, CNAME, DNAME, DNSKEY, HTTPS, LOC, MX, NS, PTR, SOA, SRV, SSHFP, SVCB, TLSA, TXT, URI. PTR takes the reverse name, e.g. 10.2.0.192.in-addr.arpa, not the IP address. SOA exists only at a zone's apex. DS and ALIAS cannot be checked.
 
 try {
     $result = $apiInstance->checkDNSRecordPropagationV1($domain, $type);
@@ -45,7 +45,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **domain** | **string**| Domain or host name to check, either a domain or a subdomain | |
-| **type** | **string**| DNS record type to check. One of: A, AAAA, CNAME, MX, SRV, TXT, CAA | |
+| **type** | **string**| DNS record type to check, uppercase. One of: A, AAAA, CAA, CNAME, DNAME, DNSKEY, HTTPS, LOC, MX, NS, PTR, SOA, SRV, SSHFP, SVCB, TLSA, TXT, URI. PTR takes the reverse name, e.g. 10.2.0.192.in-addr.arpa, not the IP address. SOA exists only at a zone&#39;s apex. DS and ALIAS cannot be checked. | |
 
 ### Return type
 
