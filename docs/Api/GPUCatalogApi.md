@@ -4,54 +4,10 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getPoolGroupsV1()**](GPUCatalogApi.md#getPoolGroupsV1) | **GET** /api/gpu/v1/pools/groups | Get pool groups |
 | [**getPoolInstanceTypesV1()**](GPUCatalogApi.md#getPoolInstanceTypesV1) | **GET** /api/gpu/v1/pools/{poolId}/instances | Get pool instance types |
 | [**getPoolListV1()**](GPUCatalogApi.md#getPoolListV1) | **GET** /api/gpu/v1/pools | Get pool list |
 | [**getPoolOSTemplatesV1()**](GPUCatalogApi.md#getPoolOSTemplatesV1) | **GET** /api/gpu/v1/pools/{poolId}/instances/{poolInstanceId}/os-templates | Get pool OS templates |
 
-
-## `getPoolGroupsV1()`
-
-```php
-getPoolGroupsV1(): \Hostinger\Model\GPUV1PoolPoolGroupResource[]
-```
-
-Get pool groups
-
-Retrieve GPU pool groups, ordered by name.  Each group bundles the pools of one GPU model and lists its currently available pools, whether any of them is available and the lowest hourly price, in credits, among its instance types. The price is returned even when the group is out of stock.  Use this endpoint to show which GPU models can be ordered and from what price.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer authorization: apiToken
-$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Hostinger\Api\GPUCatalogApi(config: $config);
-
-try {
-    $result = $apiInstance->getPoolGroupsV1();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling GPUCatalogApi->getPoolGroupsV1: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**\Hostinger\Model\GPUV1PoolPoolGroupResource[]**](../Model/GPUV1PoolPoolGroupResource.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `getPoolInstanceTypesV1()`
 
