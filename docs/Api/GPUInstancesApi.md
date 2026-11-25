@@ -6,6 +6,7 @@ All URIs are relative to https://developers.hostinger.com, except if the operati
 | ------------- | ------------- | ------------- |
 | [**createInstanceV1()**](GPUInstancesApi.md#createInstanceV1) | **POST** /api/gpu/v1/instances | Create instance |
 | [**deleteInstanceV1()**](GPUInstancesApi.md#deleteInstanceV1) | **DELETE** /api/gpu/v1/instances/{instanceId} | Delete instance |
+| [**getInstanceCredentialsV1()**](GPUInstancesApi.md#getInstanceCredentialsV1) | **GET** /api/gpu/v1/instances/{instanceId}/credentials | Get instance credentials |
 | [**getInstanceDetailsV1()**](GPUInstancesApi.md#getInstanceDetailsV1) | **GET** /api/gpu/v1/instances/{instanceId} | Get instance details |
 | [**getInstanceMetricsV1()**](GPUInstancesApi.md#getInstanceMetricsV1) | **GET** /api/gpu/v1/instances/{instanceId}/metrics | Get instance metrics |
 | [**getInstancesV1()**](GPUInstancesApi.md#getInstancesV1) | **GET** /api/gpu/v1/instances | Get instances |
@@ -98,6 +99,52 @@ try {
 ### Return type
 
 [**\Hostinger\Model\CommonSuccessEmptyResource**](../Model/CommonSuccessEmptyResource.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getInstanceCredentialsV1()`
+
+```php
+getInstanceCredentialsV1($instanceId): \Hostinger\Model\GPUV1InstanceCredentialsResource
+```
+
+Get instance credentials
+
+Retrieve SSH connection credentials (hostname, port, username and password) of a specified GPU instance.  Credentials become available once the instance is provisioned; until then the endpoint responds with `409 Conflict`, so retry later.  Use this endpoint to connect to a GPU instance over SSH.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: apiToken
+$config = Hostinger\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hostinger\Api\GPUInstancesApi(config: $config);
+$instanceId = 6325; // int | GPU instance ID
+
+try {
+    $result = $apiInstance->getInstanceCredentialsV1($instanceId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling GPUInstancesApi->getInstanceCredentialsV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **instanceId** | **int**| GPU instance ID | |
+
+### Return type
+
+[**\Hostinger\Model\GPUV1InstanceCredentialsResource**](../Model/GPUV1InstanceCredentialsResource.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
