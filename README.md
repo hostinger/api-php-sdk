@@ -213,13 +213,6 @@ Class | Method | HTTP request | Description
 *GPUInstancesApi* | [**getInstanceDetailsV1**](docs/Api/GPUInstancesApi.md#getinstancedetailsv1) | **GET** /api/gpu/v1/instances/{instanceId} | Get instance details
 *GPUInstancesApi* | [**getInstanceMetricsV1**](docs/Api/GPUInstancesApi.md#getinstancemetricsv1) | **GET** /api/gpu/v1/instances/{instanceId}/metrics | Get instance metrics
 *GPUInstancesApi* | [**getInstancesV1**](docs/Api/GPUInstancesApi.md#getinstancesv1) | **GET** /api/gpu/v1/instances | Get instances
-*HorizonsWebsitesApi* | [**cloneWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#clonewebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/clone | Clone website
-*HorizonsWebsitesApi* | [**createWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#createwebsitev1) | **POST** /api/horizons/v1/websites | Create website
-*HorizonsWebsitesApi* | [**editWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#editwebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/messages | Edit website
-*HorizonsWebsitesApi* | [**getWebsiteBuildTaskV1**](docs/Api/HorizonsWebsitesApi.md#getwebsitebuildtaskv1) | **GET** /api/horizons/v1/websites/{websiteId}/tasks/{taskId} | Get website build task
-*HorizonsWebsitesApi* | [**getWebsiteListV1**](docs/Api/HorizonsWebsitesApi.md#getwebsitelistv1) | **GET** /api/horizons/v1/websites | Get website list
-*HorizonsWebsitesApi* | [**getWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#getwebsitev1) | **GET** /api/horizons/v1/websites/{websiteId} | Get website
-*HorizonsWebsitesApi* | [**publishWebsiteV1**](docs/Api/HorizonsWebsitesApi.md#publishwebsitev1) | **POST** /api/horizons/v1/websites/{websiteId}/publish | Publish website
 *HostingCDNApi* | [**disableCDNV1**](docs/Api/HostingCDNApi.md#disablecdnv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/cdn/disable | Disable CDN
 *HostingCDNApi* | [**enableCDNV1**](docs/Api/HostingCDNApi.md#enablecdnv1) | **POST** /api/hosting/v1/accounts/{username}/websites/{domain}/cdn/enable | Enable CDN
 *HostingCDNApi* | [**getCDNStatusV1**](docs/Api/HostingCDNApi.md#getcdnstatusv1) | **GET** /api/hosting/v1/accounts/{username}/websites/{domain}/cdn/status | Get CDN status
@@ -774,16 +767,6 @@ Class | Method | HTTP request | Description
 - [GPUV1PoolPoolResource](docs/Model/GPUV1PoolPoolResource.md)
 - [GPUV1RegionRegionResource](docs/Model/GPUV1RegionRegionResource.md)
 - [GPUV1SshKeySshKeyResource](docs/Model/GPUV1SshKeySshKeyResource.md)
-- [HorizonsV1WebsitesBuildTaskResource](docs/Model/HorizonsV1WebsitesBuildTaskResource.md)
-- [HorizonsV1WebsitesCreateWebsiteRequest](docs/Model/HorizonsV1WebsitesCreateWebsiteRequest.md)
-- [HorizonsV1WebsitesCreateWebsiteRequestMessageInner](docs/Model/HorizonsV1WebsitesCreateWebsiteRequestMessageInner.md)
-- [HorizonsV1WebsitesCreatedWebsiteResource](docs/Model/HorizonsV1WebsitesCreatedWebsiteResource.md)
-- [HorizonsV1WebsitesEditWebsiteRequest](docs/Model/HorizonsV1WebsitesEditWebsiteRequest.md)
-- [HorizonsV1WebsitesEditWebsiteRequestMessageInner](docs/Model/HorizonsV1WebsitesEditWebsiteRequestMessageInner.md)
-- [HorizonsV1WebsitesPublishWebsiteRequest](docs/Model/HorizonsV1WebsitesPublishWebsiteRequest.md)
-- [HorizonsV1WebsitesPublishedWebsiteResource](docs/Model/HorizonsV1WebsitesPublishedWebsiteResource.md)
-- [HorizonsV1WebsitesWebsiteResource](docs/Model/HorizonsV1WebsitesWebsiteResource.md)
-- [HorizonsV1WebsitesWebsiteUrlResource](docs/Model/HorizonsV1WebsitesWebsiteUrlResource.md)
 - [HostingListAccountDatabasesV1200Response](docs/Model/HostingListAccountDatabasesV1200Response.md)
 - [HostingListNodeJSBuildsV1200Response](docs/Model/HostingListNodeJSBuildsV1200Response.md)
 - [HostingListOrdersV1200Response](docs/Model/HostingListOrdersV1200Response.md)
