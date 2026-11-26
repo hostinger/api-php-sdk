@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **domain** | **string** | Domain name |
 **status** | **string** | Status of the domain |
 **message** | **string** |  |
-**isPrivacyProtectionAllowed** | **bool** | Is privacy protection allowed for the domain |
+**isPrivacyProtectionAllowed** | **bool** | Whether the domain&#39;s TLD supports privacy protection |
 **isPrivacyProtected** | **bool** | Is privacy protection enabled for the domain |
-**isLockable** | **bool** | Is domain allowed to be locked |
+**isLockable** | **bool** | Whether the domain&#39;s TLD supports domain lock |
 **isLocked** | **bool** | Is domain locked |
 **nameServers** | [**\Hostinger\Model\DomainsV1DomainDomainExtendedResourceNameServers**](DomainsV1DomainDomainExtendedResourceNameServers.md) |  |
 **childNameServers** | **string[][]** | Child name servers |
